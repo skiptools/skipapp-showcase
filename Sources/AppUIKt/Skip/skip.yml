@@ -1,0 +1,28 @@
+build:
+  contents:
+    - block: 'plugins'
+      contents:
+        - 'id("com.android.application") version "8.1.0"'
+      remove:
+        - 'id("com.android.library") version "8.1.0"'
+    - block: 'android'
+      contents:
+        - 'namespace = "tools.skip.scratchpad"'
+        - block: 'defaultConfig'
+          contents:
+            # transfer App.xcconfig configuration over to the Android metadata
+            - 'applicationId = System.getenv("PRODUCT_BUNDLE_IDENTIFIER") ?: "tools.skip.scratchpad"'
+            - 'versionCode = System.getenv("CURRENT_PROJECT_VERSION")?.toInt() ?: 1'
+            - 'versionName = System.getenv("MARKETING_VERSION") ?: "0.0.0"'
+            - 'manifestPlaceholders["PRODUCT_NAME"] = System.getenv("PRODUCT_NAME") ?: "Scratch Pad"'
+        - block: 'buildFeatures'
+          contents:
+            - 'buildConfig = true'
+        - block: 'buildTypes'
+          contents:
+            - block: 'release'
+              contents:
+                # by default we sign with the debug key; for publishing to an app store, the developer key will need to be supplied
+                - 'signingConfig = signingConfigs.getByName("debug")'
+                - 'isMinifyEnabled = true'
+                - 'proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")'

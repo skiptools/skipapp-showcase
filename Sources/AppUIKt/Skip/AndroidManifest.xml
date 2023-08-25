@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- permissions needed for the weather lookup button -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!-- permissions needed for using the embedded WebKit browser -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing" android:value="false" />
+<!--    android:configChanges="orientation|screenSize"-->
+
+    <application
+        android:label="${PRODUCT_NAME}"
+        android:name="app.ui.AndroidAppMain"
+        android:allowBackup="true">
+        <activity
+            android:name="app.ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

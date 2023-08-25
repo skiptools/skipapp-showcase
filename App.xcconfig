@@ -1,0 +1,22 @@
+// The configuration file for your Skip App (https://skip.tools)
+
+// PRODUCT_NAME is the default title of the app
+PRODUCT_NAME = Scratch Pad
+
+// PRODUCT_BUNDLE_IDENTIFIER is the unique id for the app
+PRODUCT_BUNDLE_IDENTIFIER = app.ui
+
+// The semantic version for the app matching the git tag for the release
+MARKETING_VERSION = 0.0.1
+
+// The monotonically increasing build number specifying the internal app version
+CURRENT_PROJECT_VERSION = 1
+
+IPHONEOS_DEPLOYMENT_TARGET = 16.0
+MACOSX_DEPLOYMENT_TARGET = 13.0
+
+// On-device testing may need to override the bundle ID
+// PRODUCT_BUNDLE_IDENTIFIER[config=Debug][sdk=iphoneos*] = myorg.app.App-Name
+
+// Development team ID for on-device testing
+// DEVELOPMENT_TEAM =
