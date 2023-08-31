@@ -18,7 +18,6 @@ import AndroidxComposeFoundation
 import AndroidxComposeUi
 import AndroidxComposeUiPlatform
 
-
 @ExperimentalMaterial3Api
 @Composable func RootView() {
     let context: Context = LocalContext.current
@@ -30,10 +29,9 @@ import AndroidxComposeUiPlatform
         : (darkMode ? darkColorScheme() : lightColorScheme())
 
     MaterialTheme(colorScheme: colorScheme, typography: typography) {
-        ContentView().Compose(ComposeContext())
+        ContentView().Compose()
     }
 }
-
 
 /// AndroidAppMain is initial `androidx.appcompat.app.AppCompatActivity`, and must match `activity android:name` in the AndroidMainfest.xml file
 public class MainActivity : AppCompatActivity {
