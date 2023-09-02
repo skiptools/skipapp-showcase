@@ -3,19 +3,26 @@
 // This is free software: you can redistribute and/or modify it
 // under the terms of the GNU Lesser General Public License 3.0
 // as published by the Free Software Foundation https://fsf.org
-import Observation
 import SwiftUI
+#if canImport(Observation)
+import Observation
+#endif
 
 struct ObservablePlayground: View {
     var body: some View {
         if #available(iOS 17.0, macOS 14.0, *) {
+            #if !os(macOS)
             ObservablesOuterView()
                 .environmentObject(PlaygroundEnvironmentObject(text: "initialEnvironment"))
+            #endif
         } else {
             Text("iOS 17 / macOS 14 required")
         }
     }
 }
+
+#if !os(macOS) // crashes on macOS 13 hosts: type metadata completion function for PlaygroundObservable ()
+#if canImport(Observation)
 
 class PlaygroundEnvironmentObject: ObservableObject {
     @Published var text: String
@@ -23,6 +30,7 @@ class PlaygroundEnvironmentObject: ObservableObject {
         self.text = text
     }
 }
+
 @available(iOS 17.0, macOS 14.0, *)
 @Observable class PlaygroundObservable {
     var text = ""
@@ -45,6 +53,7 @@ struct ObservablesOuterView: View {
         }
     }
 }
+
 @available(iOS 17.0, macOS 14.0, *)
 struct ObservablesObservableView: View {
     let observable: PlaygroundObservable
@@ -58,6 +67,10 @@ struct ObservablesObservableView: View {
         }
     }
 }
+
+#endif
+#endif
+
 struct ObservablesBindingView: View {
     @Binding var text: String
     var body: some View {
