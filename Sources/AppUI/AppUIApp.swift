@@ -3,15 +3,28 @@
 // This is free software: you can redistribute and/or modify it
 // under the terms of the GNU Lesser General Public License 3.0
 // as published by the Free Software Foundation https://fsf.org
-#if SKIP
-import AppModel
 import Foundation
 import SwiftUI
 
+#if !SKIP
+public protocol AppUIApp : App {
+}
+
+/// The entry point to the app, which simply loads the `ContentView` from the `AppUI` module.
+public extension AppUIApp {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+
+#else
 import AndroidApp
 import AndroidContent.Context
 import AndroidxAppcompatApp
 import AndroidxActivityCompose
+import AndroidxComposeFoundationLayout
 import AndroidxComposeRuntime
 import AndroidxComposeMaterial3
 import AndroidxComposeFoundation
@@ -29,7 +42,9 @@ import AndroidxComposeUiPlatform
         : (darkMode ? darkColorScheme() : lightColorScheme())
 
     MaterialTheme(colorScheme: colorScheme, typography: typography) {
-        ContentView().Compose()
+        Box(modifier: Modifier.fillMaxSize(), contentAlignment: androidx.compose.ui.Alignment.Center) {
+            ContentView().Compose()
+        }
     }
 }
 

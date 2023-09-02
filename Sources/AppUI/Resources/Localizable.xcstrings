@@ -1,7 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Ahoy Skipper!" : {
+    "Bold" : {
+
+    },
+    "Border" : {
+
+    },
+    "Button" : {
+
+    },
+    "Color" : {
 
     },
     "Done" : {
@@ -57,6 +66,27 @@
         }
       }
     },
+    "First" : {
+
+    },
+    "Font" : {
+
+    },
+    "iOS 17 / macOS 14 required" : {
+
+    },
+    "Italic" : {
+
+    },
+    "Last" : {
+
+    },
+    "Overridden to title font" : {
+
+    },
+    "Plain" : {
+
+    },
     "Recent" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -109,6 +139,33 @@
           }
         }
       }
+    },
+    "Row %lld" : {
+
+    },
+    "Row 1" : {
+
+    },
+    "Row 2" : {
+
+    },
+    "Row 3a" : {
+
+    },
+    "Row 3b" : {
+
+    },
+    "Spacer" : {
+
+    },
+    "Tap count: %lld" : {
+
+    },
+    "Thin footnote container" : {
+
+    },
+    "Title bold italic" : {
+
     }
   },
   "version" : "1.0"

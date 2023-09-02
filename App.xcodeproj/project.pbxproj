@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		493A5C522A6B851600379601 /* AppModel in Frameworks */ = {isa = PBXBuildFile; productRef = 493A5C512A6B851600379601 /* AppModel */; };
 		493A5C542A6B851600379601 /* AppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 493A5C532A6B851600379601 /* AppUI */; };
 		49429E432A61DC3C00AA21A8 /* AppDroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49429E422A61DC3C00AA21A8 /* AppDroid.swift */; };
 		49429E592A61E02A00AA21A8 /* SkipDrive in Frameworks */ = {isa = PBXBuildFile; productRef = 49429E582A61E02A00AA21A8 /* SkipDrive */; };
 		49813B532A521AA700612428 /* AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C472A52156300F06D93 /* AppUITests.swift */; };
 		4990AB3E2A91B00F005777FD /* AppUIKt in Frameworks */ = {isa = PBXBuildFile; productRef = 4990AB3D2A91B00F005777FD /* AppUIKt */; };
-		4990AB422A91C57D005777FD /* AppModelKt in Frameworks */ = {isa = PBXBuildFile; productRef = 4990AB412A91C57D005777FD /* AppModelKt */; };
 		49F90C2C2A52156200F06D93 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C2B2A52156200F06D93 /* AppMain.swift */; };
 		49F90C302A52156300F06D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C2F2A52156300F06D93 /* Assets.xcassets */; };
 		49F90C342A52156300F06D93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C332A52156300F06D93 /* Preview Assets.xcassets */; };
@@ -63,7 +61,6 @@
 			files = (
 				49429E592A61E02A00AA21A8 /* SkipDrive in Frameworks */,
 				4990AB3E2A91B00F005777FD /* AppUIKt in Frameworks */,
-				4990AB422A91C57D005777FD /* AppModelKt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +69,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				493A5C542A6B851600379601 /* AppUI in Frameworks */,
-				493A5C522A6B851600379601 /* AppModel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +184,6 @@
 			packageProductDependencies = (
 				49429E582A61E02A00AA21A8 /* SkipDrive */,
 				4990AB3D2A91B00F005777FD /* AppUIKt */,
-				4990AB412A91C57D005777FD /* AppModelKt */,
 			);
 			productName = AppDroid;
 			productReference = 49429E402A61DC3C00AA21A8 /* Scratch Pad */;
@@ -208,7 +203,6 @@
 			);
 			name = App;
 			packageProductDependencies = (
-				493A5C512A6B851600379601 /* AppModel */,
 				493A5C532A6B851600379601 /* AppUI */,
 			);
 			productName = App;
@@ -753,10 +747,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		493A5C512A6B851600379601 /* AppModel */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppModel;
-		};
 		493A5C532A6B851600379601 /* AppUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppUI;
@@ -768,10 +758,6 @@
 		4990AB3D2A91B00F005777FD /* AppUIKt */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppUIKt;
-		};
-		4990AB412A91C57D005777FD /* AppModelKt */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppModelKt;
 		};
 		49978E642A930F330088CCC1 /* AppModel */ = {
 			isa = XCSwiftPackageProductDependency;
