@@ -37,7 +37,7 @@ let package = Package(
                 .product(name: "SkipUIKt", package: "skip-ui"),
             ],
             resources: [.process("Skip")],
-            plugins: [.plugin(name: "transpile", package: "skip"), .plugin(name: "skipbuild", package: "skip")]),
+            plugins: [.plugin(name: "transpile", package: "skip")]),
         .testTarget(name: "AppUIKtTests",
             dependencies: [
                 "AppUIKt",
