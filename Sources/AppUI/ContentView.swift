@@ -15,6 +15,7 @@ enum PlaygroundType: String, CaseIterable {
     case border
     case spacer
     case list
+    case state
     case observable
 }
 
@@ -47,6 +48,8 @@ struct ContentView: View {
                     SpacerPlayground()
                 case .list:
                     ListPlayground()
+                case .state:
+                    StatePlayground()
                 case .observable:
                     ObservablePlayground()
                 }

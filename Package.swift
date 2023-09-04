@@ -24,9 +24,9 @@ let package = Package(
         .target(name: "AppUI",
             dependencies: [],
             resources: [.process("Resources")],
-            plugins: [.plugin(name: "preflight", package: "skip")]),
+            plugins: [.plugin(name: "skippy", package: "skip")]),
         .testTarget(name: "AppUITests", dependencies: ["AppUI"],
-            plugins: [.plugin(name: "preflight", package: "skip")]),
+            plugins: [.plugin(name: "skippy", package: "skip")]),
 
         // The Kotlin side of the app's user interface (Jetpack Compose)
         .target(name: "AppUIKt",
