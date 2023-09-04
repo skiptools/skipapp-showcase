@@ -5,9 +5,9 @@
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
 
-struct ButtonPlayground: View {
+struct TogglePlayground: View {
     @State var tapCount = 0
-    
+
     var body: some View {
         ScrollView {
             VStack {
