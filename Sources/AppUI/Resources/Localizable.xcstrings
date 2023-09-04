@@ -10,6 +10,9 @@
     "Button" : {
 
     },
+    "Collection Content" : {
+
+    },
     "Color" : {
 
     },
@@ -69,7 +72,13 @@
     "First" : {
 
     },
+    "Fixed Content" : {
+
+    },
     "Font" : {
+
+    },
+    "Indexed Content" : {
 
     },
     "iOS 17 / macOS 14 required" : {

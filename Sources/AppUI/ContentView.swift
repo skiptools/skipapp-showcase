@@ -8,28 +8,32 @@ import SwiftUI
 
 let logger = Logger(subsystem: "app.ui", category: "AppUI")
 
-enum Playground: String, CaseIterable {
+enum PlaygroundType: String, CaseIterable {
     case color
     case font
     case button
     case border
     case spacer
-    case fixedContentList
-    case indexedContentList
-    case collectionContentList
+    case list
     case observable
+}
+
+enum ListPlaygroundType {
+    case fixedContent
+    case indexedContent
+    case collectionContent
 }
 
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            List(Playground.allCases, id: \.rawValue) { playground in
+            List(PlaygroundType.allCases, id: \.rawValue) { playground in
                 NavigationLink(value: playground) {
-                    Text(playground.rawValue.uppercased())
+                    Text(playground.rawValue.capitalized)
                 }
                 .padding()
             }
-            .navigationDestination(for: Playground.self) {
+            .navigationDestination(for: PlaygroundType.self) {
                 switch $0 {
                 case .color:
                     ColorPlayground()
@@ -41,14 +45,20 @@ struct ContentView: View {
                     BorderPlayground()
                 case .spacer:
                     SpacerPlayground()
-                case .fixedContentList:
-                    FixedContentListPlayground()
-                case .indexedContentList:
-                    IndexedContentListPlayground()
-                case .collectionContentList:
-                    CollectionContentListPlayground()
+                case .list:
+                    ListPlayground()
                 case .observable:
                     ObservablePlayground()
+                }
+            }
+            .navigationDestination(for: ListPlaygroundType.self) {
+                switch $0 {
+                case .fixedContent:
+                    FixedContentListPlayground()
+                case .indexedContent:
+                    IndexedContentListPlayground()
+                case .collectionContent:
+                    CollectionContentListPlayground()
                 }
             }
         }

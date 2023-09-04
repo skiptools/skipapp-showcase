@@ -26,6 +26,15 @@ struct BorderPlayground: View {
                 Color.red
                     .frame(width: 100.0, height: 100.0)
                     .border(Color.blue, width: 5.0)
+                VStack {
+                    Color.red
+                        .frame(width: 100.0, height: 100.0)
+                        .padding()
+                    Color.red
+                        .frame(width: 100.0, height: 100.0)
+                        .padding()
+                }
+                .border(Color.green)
             }
             .padding()
         }

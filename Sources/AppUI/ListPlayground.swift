@@ -5,6 +5,19 @@
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
 
+struct ListPlayground: View {
+    var body: some View {
+        List {
+            NavigationLink("Fixed Content", value: ListPlaygroundType.fixedContent)
+                .padding()
+            NavigationLink("Indexed Content", value: ListPlaygroundType.indexedContent)
+                .padding()
+            NavigationLink("Collection Content", value: ListPlaygroundType.collectionContent)
+                .padding()
+        }
+    }
+}
+
 struct FixedContentListPlayground: View {
     var body: some View {
         List {
