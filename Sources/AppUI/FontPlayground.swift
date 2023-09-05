@@ -14,14 +14,19 @@ struct FontPlayground: View {
                 Divider()
 
                 Text("Plain")
+                    .padding()
                 Text("Bold").bold()
+                    .padding()
                 Text("Italic").italic()
+                    .padding()
                 Text("Title bold italic").font(.title).bold().italic()
+                    .padding()
                 VStack {
                     Text("Thin footnote container")
                     Text("Overridden to title font").font(.title)
                 }
                 .font(.footnote).fontWeight(.thin)
+                .padding()
             }
             .padding()
         }

@@ -17,6 +17,7 @@ struct ButtonPlayground: View {
                 Button(action: { tapCount += 1 }) {
                     Text("ViewBuilder init: \(tapCount)")
                 }
+                .padding()
                 Button("String init: \(tapCount)") {
                     tapCount += 1
                 }

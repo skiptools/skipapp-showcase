@@ -12,29 +12,49 @@ struct BorderPlayground: View {
                 Text("Border")
                     .font(.title)
                 Divider()
-                Color.red
-                    .frame(width: 100.0, height: 100.0)
-                    .border(Color.black)
-                Color.red
-                    .frame(width: 100.0, height: 100.0)
-                    .padding()
-                    .border(Color.black)
-                Color.red
-                    .frame(width: 100.0, height: 100.0)
-                    .padding([.top, .leading], 32.0)
-                    .border(Color.black)
-                Color.red
-                    .frame(width: 100.0, height: 100.0)
-                    .border(Color.blue, width: 5.0)
-                VStack {
+                HStack {
+                    Text("Black")
+                    Spacer()
                     Color.red
                         .frame(width: 100.0, height: 100.0)
-                        .padding()
-                    Color.red
-                        .frame(width: 100.0, height: 100.0)
-                        .padding()
+                        .border(Color.black)
                 }
-                .border(Color.green)
+                HStack {
+                    Text(".padding()")
+                    Spacer()
+                    Color.red
+                        .frame(width: 100.0, height: 100.0)
+                        .padding()
+                        .border(Color.black)
+                }
+                HStack {
+                    Text(".padding([.top, .leading])")
+                    Spacer()
+                    Color.red
+                        .frame(width: 100.0, height: 100.0)
+                        .padding([.top, .leading], 32.0)
+                        .border(Color.black)
+                }
+                HStack {
+                    Text("Blue, 5.0")
+                    Spacer()
+                    Color.red
+                        .frame(width: 100.0, height: 100.0)
+                        .border(Color.blue, width: 5.0)
+                }
+                HStack {
+                    Text("VStack")
+                    Spacer()
+                    VStack {
+                        Color.red
+                            .frame(width: 100.0, height: 100.0)
+                            .padding()
+                        Color.red
+                            .frame(width: 100.0, height: 100.0)
+                            .padding()
+                    }
+                    .border(Color.black)
+                }
             }
             .padding()
         }

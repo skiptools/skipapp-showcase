@@ -1,6 +1,42 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ".labelsHidden():" : {
+
+    },
+    ".padding()" : {
+
+    },
+    ".padding([.top, .leading])" : {
+
+    },
+    "Accent color" : {
+
+    },
+    "After" : {
+
+    },
+    "After fixed" : {
+
+    },
+    "After vstack" : {
+
+    },
+    "Before" : {
+
+    },
+    "Before fixed" : {
+
+    },
+    "Before vstack" : {
+
+    },
+    "Black" : {
+
+    },
+    "Blue, 5.0" : {
+
+    },
     "Bold" : {
 
     },
@@ -69,10 +105,10 @@
         }
       }
     },
-    "First" : {
+    "Fixed Content" : {
 
     },
-    "Fixed Content" : {
+    "Fixed width" : {
 
     },
     "Font" : {
@@ -87,7 +123,7 @@
     "Italic" : {
 
     },
-    "Last" : {
+    "Label" : {
 
     },
     "Object" : {
@@ -100,6 +136,9 @@
 
     },
     "Plain" : {
+
+    },
+    "Prompt" : {
 
     },
     "Push another" : {
@@ -158,6 +197,15 @@
         }
       }
     },
+    "Red" : {
+
+    },
+    "Red, .opacity(0.5)" : {
+
+    },
+    "RGB" : {
+
+    },
     "Row %lld" : {
 
     },
@@ -182,13 +230,37 @@
     "State tap count: %lld" : {
 
     },
-    "Tap count: %lld" : {
+    "String init" : {
+
+    },
+    "String init: %lld" : {
+
+    },
+    "TextField" : {
 
     },
     "Thin footnote container" : {
 
     },
     "Title bold italic" : {
+
+    },
+    "Toggle" : {
+
+    },
+    "Viewbuilder init" : {
+
+    },
+    "ViewBuilder init: %lld" : {
+
+    },
+    "VStack" : {
+
+    },
+    "White, Opacity" : {
+
+    },
+    "With prompt" : {
 
     }
   },

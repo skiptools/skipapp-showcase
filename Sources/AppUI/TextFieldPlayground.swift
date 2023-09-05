@@ -5,30 +5,25 @@
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
 
-struct TogglePlayground: View {
-    @State var isOn = false
+struct TextFieldPlayground: View {
+    @State var text = ""
 
     var body: some View {
         ScrollView {
             VStack {
-                Text("Toggle")
+                Text("TextField")
                     .font(.title)
                 Divider()
-
-                Toggle(isOn: $isOn) {
+                TextField(text: $text) {
                     Text("Viewbuilder init")
                 }
                 .padding([.top, .bottom])
-                Toggle("String init", isOn: $isOn)
+                TextField("String init", text: $text)
                     .padding([.bottom])
-                Toggle("Fixed width", isOn: $isOn)
+                TextField("With prompt", text: $text, prompt: Text("Prompt"))
+                    .padding([.bottom])
+                TextField("Fixed width", text: $text)
                     .frame(width: 200.0)
-                    .padding([.bottom])
-                VStack {
-                    Text(".labelsHidden():")
-                    Toggle("Label", isOn: $isOn)
-                }
-                .labelsHidden()
             }
             .padding()
         }

@@ -13,16 +13,25 @@ struct SpacerPlayground: View {
                     .font(.title)
                 Divider()
                 HStack {
-                    Text("First")
+                    Text("Before")
                     Spacer()
-                    Text("Last")
+                    Text("After")
                 }
+                .padding([.top, .bottom])
                 HStack {
-                    Text("First")
+                    Text("Before fixed")
                     Spacer()
                         .frame(width: 100.0)
-                    Text("Last")
+                    Text("After fixed")
                 }
+                .padding([.top, .bottom])
+                VStack {
+                    Text("Before vstack")
+                    Spacer()
+                        .frame(height: 100.0)
+                    Text("After vstack")
+                }
+                .padding([.top, .bottom])
             }
             .padding()
         }

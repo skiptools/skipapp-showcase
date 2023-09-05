@@ -13,17 +13,37 @@ struct ColorPlayground: View {
                     .font(.title)
                 Divider()
 
-                Color.red
-                    .frame(width: 100.0, height: 100.0)
-                Color.red
-                    .opacity(0.5)
-                    .frame(width: 100.0, height: 100.0)
-                Color(red: 1.0, green: 0.0, blue: 0.0)
-                    .frame(width: 100.0, height: 100.0)
-                Color(white: 0.5, opacity: 1.0)
-                    .frame(width: 100.0, height: 100.0)
-                Color.accentColor
-                    .frame(width: 100.0, height: 100.0)
+                HStack {
+                    Text("Red")
+                    Spacer()
+                    Color.red
+                        .frame(width: 100.0, height: 100.0)
+                }
+                HStack {
+                    Text("Red, .opacity(0.5)")
+                    Spacer()
+                    Color.red
+                        .opacity(0.5)
+                        .frame(width: 100.0, height: 100.0)
+                }
+                HStack {
+                    Text("RGB")
+                    Spacer()
+                    Color(red: 1.0, green: 0.0, blue: 0.0)
+                        .frame(width: 100.0, height: 100.0)
+                }
+                HStack {
+                    Text("White, Opacity")
+                    Spacer()
+                    Color(white: 0.5, opacity: 1.0)
+                        .frame(width: 100.0, height: 100.0)
+                }
+                HStack {
+                    Text("Accent color")
+                    Spacer()
+                    Color.accentColor
+                        .frame(width: 100.0, height: 100.0)
+                }
             }
             .padding()
         }

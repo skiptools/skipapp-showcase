@@ -12,6 +12,8 @@ enum PlaygroundType: String, CaseIterable {
     case color
     case font
     case button
+    case toggle
+    case textField
     case border
     case spacer
     case list
@@ -42,6 +44,10 @@ struct ContentView: View {
                     FontPlayground()
                 case .button:
                     ButtonPlayground()
+                case .toggle:
+                    TogglePlayground()
+                case .textField:
+                    TextFieldPlayground()
                 case .border:
                     BorderPlayground()
                 case .spacer:
