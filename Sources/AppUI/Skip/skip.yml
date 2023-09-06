@@ -2,9 +2,9 @@ build:
   contents:
     - block: 'plugins'
       contents:
-        - 'id("com.android.application") version "8.1.0"'
+        - 'id("com.android.application") version "8.1.1"'
       remove:
-        - 'id("com.android.library") version "8.1.0"'
+        - 'id("com.android.library") version "8.1.1"'
     - block: 'android'
       contents:
         - 'namespace = "tools.skip.scratchpad"'
