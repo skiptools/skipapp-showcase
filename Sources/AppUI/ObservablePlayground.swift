@@ -11,18 +11,13 @@ import Observation
 struct ObservablePlayground: View {
     var body: some View {
         if #available(iOS 17.0, macOS 14.0, *) {
-            #if !os(macOS)
             ObservablesOuterView()
                 .environmentObject(PlaygroundEnvironmentObject(text: "initialEnvironment"))
-            #endif
         } else {
             Text("iOS 17 / macOS 14 required")
         }
     }
 }
-
-#if !os(macOS) // crashes on macOS 13 hosts: type metadata completion function for PlaygroundObservable ()
-#if canImport(Observation)
 
 class PlaygroundEnvironmentObject: ObservableObject {
     @Published var text: String
@@ -67,9 +62,6 @@ struct ObservablesObservableView: View {
         }
     }
 }
-
-#endif
-#endif
 
 struct ObservablesBindingView: View {
     @Binding var text: String

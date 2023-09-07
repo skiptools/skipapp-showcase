@@ -34,6 +34,9 @@
     "Black" : {
 
     },
+    "Blue" : {
+
+    },
     "Blue, 5.0" : {
 
     },
@@ -43,13 +46,22 @@
     "Border" : {
 
     },
+    "Brown" : {
+
+    },
     "Button" : {
+
+    },
+    "Clear" : {
 
     },
     "Collection Content" : {
 
     },
     "Color" : {
+
+    },
+    "Cyan" : {
 
     },
     "Done" : {
@@ -114,7 +126,16 @@
     "Font" : {
 
     },
+    "Gray" : {
+
+    },
+    "Green" : {
+
+    },
     "Indexed Content" : {
+
+    },
+    "Indigo" : {
 
     },
     "iOS 17 / macOS 14 required" : {
@@ -126,19 +147,34 @@
     "Label" : {
 
     },
+    "Mint" : {
+
+    },
     "Object" : {
 
     },
     "Object tap count: %lld" : {
 
     },
+    "Orange" : {
+
+    },
     "Overridden to title font" : {
+
+    },
+    "Pink" : {
 
     },
     "Plain" : {
 
     },
+    "Primary" : {
+
+    },
     "Prompt" : {
+
+    },
+    "Purple" : {
 
     },
     "Push another" : {
@@ -221,6 +257,9 @@
     "Row 3b" : {
 
     },
+    "Secondary" : {
+
+    },
     "Spacer" : {
 
     },
@@ -234,6 +273,9 @@
 
     },
     "String init: %lld" : {
+
+    },
+    "Teal" : {
 
     },
     "TextField" : {
@@ -257,10 +299,16 @@
     "VStack" : {
 
     },
+    "White" : {
+
+    },
     "White, Opacity" : {
 
     },
     "With prompt" : {
+
+    },
+    "Yellow" : {
 
     }
   },
