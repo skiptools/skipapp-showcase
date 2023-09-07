@@ -11,9 +11,9 @@ build:
         - block: 'defaultConfig'
           contents:
             # transfer App.xcconfig configuration over to the Android metadata
-            - 'applicationId = System.getenv("PRODUCT_BUNDLE_IDENTIFIER") ?: "tools.skip.scratchpad"'
-            - 'versionCode = System.getenv("CURRENT_PROJECT_VERSION")?.toInt() ?: 1'
-            - 'versionName = System.getenv("MARKETING_VERSION") ?: "0.0.0"'
+#            - 'applicationId = System.getenv("PRODUCT_BUNDLE_IDENTIFIER") ?: "tools.skip.scratchpad"'
+#            - 'versionCode = System.getenv("CURRENT_PROJECT_VERSION")?.toInt() ?: 1'
+#            - 'versionName = System.getenv("MARKETING_VERSION") ?: "0.0.0"'
             - 'manifestPlaceholders["PRODUCT_NAME"] = System.getenv("PRODUCT_NAME") ?: "Scratch Pad"'
         - block: 'buildFeatures'
           contents:

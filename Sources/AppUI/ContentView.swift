@@ -19,6 +19,31 @@ enum PlaygroundType: String, CaseIterable {
     case list
     case state
     case observable
+
+    var titleText: Text {
+        switch self {
+        case .color:
+            return Text("Color", bundle: .module)
+        case .font:
+            return Text("Font", bundle: .module)
+        case .button:
+            return Text("Button", bundle: .module)
+        case .toggle:
+            return Text("Toggle", bundle: .module)
+        case .textField:
+            return Text("Text Field", bundle: .module)
+        case .border:
+            return Text("Border", bundle: .module)
+        case .spacer:
+            return Text("Spacer", bundle: .module)
+        case .list:
+            return Text("List", bundle: .module)
+        case .state:
+            return Text("State", bundle: .module)
+        case .observable:
+            return Text("Observable", bundle: .module)
+        }
+    }
 }
 
 enum ListPlaygroundType {
@@ -34,7 +59,7 @@ struct ContentView: View {
         NavigationStack {
             List(PlaygroundType.allCases, id: \.rawValue) { playground in
                 NavigationLink(value: playground) {
-                    Text(playground.rawValue.capitalized)
+                    playground.titleText
                 }
             }
             .navigationDestination(for: PlaygroundType.self) {

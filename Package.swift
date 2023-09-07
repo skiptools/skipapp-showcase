@@ -9,19 +9,19 @@ let package = Package(
         .library(name: "AppUI", targets: ["AppUI"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "0.6.12"),
-        .package(url: "https://source.skip.tools/skip-ui.git", from: "0.1.1"),
+        .package(url: "https://source.skip.tools/skip.git", from: "0.6.56"),
+        .package(url: "https://source.skip.tools/skip-ui.git", from: "0.1.14"),
     ],
     targets: [
         .executableTarget(name: "AppDroid",
             dependencies: ["AppUI", .product(name: "SkipDrive", package: "skip")]),
 
-        // The Swift side of the app's user interface (SwiftUI)
         .target(name: "AppUI",
             dependencies: [.product(name: "SkipUI", package: "skip-ui", condition: .when(platforms: [.macOS]))],
             resources: [.process("Resources")],
             plugins: [.plugin(name: "skipstone", package: "skip")]),
-        .testTarget(name: "AppUITests", dependencies: ["AppUI"],
+
+        .testTarget(name: "AppUITests", dependencies: ["AppUI", .product(name: "SkipTest", package: "skip")],
             plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )

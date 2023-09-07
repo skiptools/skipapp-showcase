@@ -1,0 +1,8 @@
+build:
+  contents:
+    - block: 'plugins'
+#      contents:
+#        - 'id("com.android.library") version "8.1.0"'
+      remove:
+        - 'id("com.android.application") version "8.1.0"'
+
