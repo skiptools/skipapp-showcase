@@ -6,7 +6,7 @@ import SkipDrive
 let appName = "AppUI"
 
 /// The name of the SPM package in which this app is bundled
-let packageName = "skipapp"
+let packageName = "scratchpad"
 
 // Android app launcher for Skip app
 @available(macOS 13, macCatalyst 16, *)
