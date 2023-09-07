@@ -170,7 +170,7 @@
 			buildPhases = (
 				49429E3C2A61DC3C00AA21A8 /* Sources */,
 				49429E3D2A61DC3C00AA21A8 /* Frameworks */,
-				49429E4E2A61DD4900AA21A8 /* Gradle Build */,
+				49429E4E2A61DD4900AA21A8 /* Build APK */,
 			);
 			buildRules = (
 			);
@@ -318,7 +318,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		49429E4E2A61DD4900AA21A8 /* Gradle Build */ = {
+		49429E4E2A61DD4900AA21A8 /* Build APK */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -328,14 +328,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Gradle Build";
+			name = "Build APK";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -e";
-			shellScript = "PATH=${PATH}:${BUILT_PRODUCTS_DIR}:/opt/homebrew/bin/:/usr/local/homebrew/bin\nskip gradle --package scratchpad --module AppUI assemble${CONFIGURATION}\nmkdir -p Skip/build/artifacts/\nln -f ${BUILD_ROOT}/../../SourcePackages/plugins/skipapp.output/AppUI/skipstone/AppUI/.build/AppUI/outputs/apk/*/*.apk Skip/build/artifacts/\n";
+			shellScript = "PATH=${PATH}:${BUILT_PRODUCTS_DIR}:/opt/homebrew/bin/:/usr/local/homebrew/bin\nskip gradle --package scratchpad --module AppUI assemble${CONFIGURATION}\nmkdir -p Skip/build/artifacts/\nln -f ${BUILD_ROOT}/../../SourcePackages/plugins/scratchpad.output/AppUI/skipstone/AppUI/.build/AppUI/outputs/apk/*/*.apk Skip/build/artifacts/\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
