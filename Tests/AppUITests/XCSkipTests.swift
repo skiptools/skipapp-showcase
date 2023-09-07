@@ -1,5 +1,5 @@
-#if canImport(SkipUnit)
-import SkipUnit
+#if canImport(SkipTest)
+import SkipTest
 
 /// This test case will run the transpiled tests for the Skip module.
 @available(macOS 13, macCatalyst 16, *)

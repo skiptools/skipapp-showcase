@@ -14,7 +14,7 @@ let package = Package(
     ],
     targets: [
         .executableTarget(name: "AppDroid",
-            dependencies: ["AppUIKt", .product(name: "SkipDrive", package: "skip")]),
+            dependencies: ["AppUI", .product(name: "SkipDrive", package: "skip")]),
 
         // The Swift side of the app's user interface (SwiftUI)
         .target(name: "AppUI",

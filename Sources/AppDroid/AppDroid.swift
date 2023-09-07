@@ -1,3 +1,4 @@
+#if canImport(SkipDrive)
 import Foundation
 import SkipDrive
 
@@ -5,10 +6,9 @@ import SkipDrive
 let appName = "AppUI"
 
 /// The name of the SPM package in which this app is bundled
-let packageName = "scratchpad"
+let packageName = "skipapp"
 
 // Android app launcher for Skip app
-#if os(macOS)
 @available(macOS 13, macCatalyst 16, *)
 @main public struct AndroidAppMain : GradleHarness {
     static func main() async throws {

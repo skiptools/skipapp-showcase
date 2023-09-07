@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		493A5C542A6B851600379601 /* AppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 493A5C532A6B851600379601 /* AppUI */; };
 		49429E432A61DC3C00AA21A8 /* AppDroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49429E422A61DC3C00AA21A8 /* AppDroid.swift */; };
-		49429E592A61E02A00AA21A8 /* SkipDrive in Frameworks */ = {isa = PBXBuildFile; productRef = 49429E582A61E02A00AA21A8 /* SkipDrive */; };
 		49813B532A521AA700612428 /* AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C472A52156300F06D93 /* AppUITests.swift */; };
-		4990AB3E2A91B00F005777FD /* AppUIKt in Frameworks */ = {isa = PBXBuildFile; productRef = 4990AB3D2A91B00F005777FD /* AppUIKt */; };
+		498387A32AA949F300E6929D /* AppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 498387A22AA949F300E6929D /* AppUI */; };
+		498387A62AA94B5800E6929D /* SkipDrive in Frameworks */ = {isa = PBXBuildFile; productRef = 498387A52AA94B5800E6929D /* SkipDrive */; };
 		49F90C2C2A52156200F06D93 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C2B2A52156200F06D93 /* AppMain.swift */; };
 		49F90C302A52156300F06D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C2F2A52156300F06D93 /* Assets.xcassets */; };
 		49F90C342A52156300F06D93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C332A52156300F06D93 /* Preview Assets.xcassets */; };
@@ -59,8 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49429E592A61E02A00AA21A8 /* SkipDrive in Frameworks */,
-				4990AB3E2A91B00F005777FD /* AppUIKt in Frameworks */,
+				498387A62AA94B5800E6929D /* SkipDrive in Frameworks */,
+				498387A32AA949F300E6929D /* AppUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,15 +175,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				49978E652A930F330088CCC1 /* PBXTargetDependency */,
-				49978E672A930F330088CCC1 /* PBXTargetDependency */,
-				49978E692A930F330088CCC1 /* PBXTargetDependency */,
-				49978E6B2A930F330088CCC1 /* PBXTargetDependency */,
 			);
 			name = AppDroid;
 			packageProductDependencies = (
-				49429E582A61E02A00AA21A8 /* SkipDrive */,
-				4990AB3D2A91B00F005777FD /* AppUIKt */,
+				498387A22AA949F300E6929D /* AppUI */,
+				498387A52AA94B5800E6929D /* SkipDrive */,
 			);
 			productName = AppDroid;
 			productReference = 49429E402A61DC3C00AA21A8 /* Scratch Pad */;
@@ -280,6 +276,9 @@
 				Base,
 			);
 			mainGroup = 49F90C1F2A52156200F06D93;
+			packageReferences = (
+				498387A42AA94B4700E6929D /* XCRemoteSwiftPackageReference "skip" */,
+			);
 			productRefGroup = 49F90C292A52156200F06D93 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -336,7 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -e";
-			shellScript = "${BUILT_PRODUCTS_DIR}/skip gradle --package scratchpad --module AppUI assemble${CONFIGURATION}\nmkdir -p Packages/Skip/artifacts/\nls ${BUILD_ROOT}/../../SourcePackages/plugins/\nln -f ${BUILD_ROOT}/../../SourcePackages/plugins/scratchpad.output/AppUIKt/skip-transpiler/AppUI/.build/AppUI/outputs/apk/*/*.apk Packages/Skip/artifacts/\n";
+			shellScript = "PATH=${PATH}:${BUILT_PRODUCTS_DIR}:/opt/homebrew/bin/:/usr/local/homebrew/bin\nskip gradle --package scratchpad --module AppUI assemble${CONFIGURATION}\nmkdir -p Skip/build/artifacts/\nln -f ${BUILD_ROOT}/../../SourcePackages/plugins/skipapp.output/AppUI/skipstone/AppUI/.build/AppUI/outputs/apk/*/*.apk Skip/build/artifacts/\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -377,22 +376,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		49978E652A930F330088CCC1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 49978E642A930F330088CCC1 /* AppModel */;
-		};
-		49978E672A930F330088CCC1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 49978E662A930F330088CCC1 /* AppModelKt */;
-		};
-		49978E692A930F330088CCC1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 49978E682A930F330088CCC1 /* AppUI */;
-		};
-		49978E6B2A930F330088CCC1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 49978E6A2A930F330088CCC1 /* AppUIKt */;
-		};
 		49F90C3B2A52156300F06D93 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 49F90C272A52156200F06D93 /* App */;
@@ -410,6 +393,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				SDKROOT = macosx;
@@ -422,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				SDKROOT = macosx;
@@ -746,34 +731,30 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		498387A42AA94B4700E6929D /* XCRemoteSwiftPackageReference "skip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://source.skip.tools/skip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.55;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		493A5C532A6B851600379601 /* AppUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppUI;
 		};
-		49429E582A61E02A00AA21A8 /* SkipDrive */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SkipDrive;
-		};
-		4990AB3D2A91B00F005777FD /* AppUIKt */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppUIKt;
-		};
-		49978E642A930F330088CCC1 /* AppModel */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppModel;
-		};
-		49978E662A930F330088CCC1 /* AppModelKt */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppModelKt;
-		};
-		49978E682A930F330088CCC1 /* AppUI */ = {
+		498387A22AA949F300E6929D /* AppUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppUI;
 		};
-		49978E6A2A930F330088CCC1 /* AppUIKt */ = {
+		498387A52AA94B5800E6929D /* SkipDrive */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = AppUIKt;
+			package = 498387A42AA94B4700E6929D /* XCRemoteSwiftPackageReference "skip" */;
+			productName = SkipDrive;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
