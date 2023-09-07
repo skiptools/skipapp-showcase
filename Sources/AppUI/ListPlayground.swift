@@ -9,11 +9,10 @@ struct ListPlayground: View {
     var body: some View {
         List {
             NavigationLink("Fixed Content", value: ListPlaygroundType.fixedContent)
-                .padding()
             NavigationLink("Indexed Content", value: ListPlaygroundType.indexedContent)
-                .padding()
             NavigationLink("Collection Content", value: ListPlaygroundType.collectionContent)
-                .padding()
+            NavigationLink("Plain Style", value: ListPlaygroundType.plainStyle)
+            NavigationLink("Controls", value: ListPlaygroundType.controls)
         }
     }
 }
@@ -22,12 +21,12 @@ struct FixedContentListPlayground: View {
     var body: some View {
         List {
             Group {
-                Text("Row 1").padding()
-                Text("Row 2").padding()
+                Text("Row 1")
+                Text("Row 2")
             }
             VStack {
-                Text("Row 3a").padding()
-                Text("Row 3b").padding()
+                Text("Row 3a")
+                Text("Row 3b")
             }
         }
     }
@@ -36,7 +35,7 @@ struct FixedContentListPlayground: View {
 struct IndexedContentListPlayground: View {
     var body: some View {
         List(0..<100) {
-            Text("Row \($0)").padding()
+            Text("Row \($0)")
         }
     }
 }
@@ -57,7 +56,38 @@ struct CollectionContentListPlayground: View {
 
     var body: some View {
         List(items(), id: \.i) {
-            Text($0.s).padding()
+            Text($0.s)
+        }
+    }
+}
+
+struct PlainStyleListPlayground: View {
+    var body: some View {
+        List(0..<100) {
+            Text("Row \($0)")
+        }
+        .listStyle(.plain)
+    }
+}
+
+struct ControlsListPlayground: View {
+    @State var toggleValue = false
+
+    var body: some View {
+        List {
+            Button("Button .automatic", action: { logger.info("Tap") })
+            Button("Button .bordered", action: { logger.info("Tap") })
+                .buttonStyle(.bordered)
+            Button(action: { logger.info("Tap") }) {
+                HStack {
+                    Text("Complex content button")
+                    Spacer()
+                    Button("Inner button", action: { logger.info("Tap inner") })
+                }
+            }
+            Toggle(isOn: $toggleValue) {
+                Text("Toggle")
+            }
         }
     }
 }

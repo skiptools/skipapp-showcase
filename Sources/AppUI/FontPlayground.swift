@@ -8,25 +8,21 @@ import SwiftUI
 struct FontPlayground: View {
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 16.0) {
                 Text("Font")
                     .font(.title)
                 Divider()
 
                 Text("Plain")
-                    .padding()
                 Text("Bold").bold()
-                    .padding()
                 Text("Italic").italic()
-                    .padding()
                 Text("Title bold italic").font(.title).bold().italic()
-                    .padding()
                 VStack {
                     Text("Thin footnote container")
                     Text("Overridden to title font").font(.title)
                 }
                 .font(.footnote).fontWeight(.thin)
-                .padding()
+                .border(Color.black)
             }
             .padding()
         }

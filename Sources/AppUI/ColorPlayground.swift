@@ -8,7 +8,7 @@ import SwiftUI
 struct ColorPlayground: View {
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 16.0) {
                 Text("Color")
                     .font(.title)
                 Divider()

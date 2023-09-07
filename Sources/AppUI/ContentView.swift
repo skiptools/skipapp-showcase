@@ -25,6 +25,8 @@ enum ListPlaygroundType {
     case fixedContent
     case indexedContent
     case collectionContent
+    case plainStyle
+    case controls
 }
 
 struct ContentView: View {
@@ -34,7 +36,6 @@ struct ContentView: View {
                 NavigationLink(value: playground) {
                     Text(playground.rawValue.capitalized)
                 }
-                .padding()
             }
             .navigationDestination(for: PlaygroundType.self) {
                 switch $0 {
@@ -68,6 +69,10 @@ struct ContentView: View {
                     IndexedContentListPlayground()
                 case .collectionContent:
                     CollectionContentListPlayground()
+                case .plainStyle:
+                    PlainStyleListPlayground()
+                case .controls:
+                    ControlsListPlayground()
                 }
             }
         }

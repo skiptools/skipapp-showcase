@@ -8,7 +8,7 @@ import SwiftUI
 struct SpacerPlayground: View {
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 16.0) {
                 Text("Spacer")
                     .font(.title)
                 Divider()
@@ -17,21 +17,18 @@ struct SpacerPlayground: View {
                     Spacer()
                     Text("After")
                 }
-                .padding([.top, .bottom])
                 HStack {
                     Text("Before fixed")
                     Spacer()
                         .frame(width: 100.0)
                     Text("After fixed")
                 }
-                .padding([.top, .bottom])
                 VStack {
                     Text("Before vstack")
                     Spacer()
                         .frame(height: 100.0)
                     Text("After vstack")
                 }
-                .padding([.top, .bottom])
             }
             .padding()
         }

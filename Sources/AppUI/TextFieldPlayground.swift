@@ -10,18 +10,15 @@ struct TextFieldPlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 16.0) {
                 Text("TextField")
                     .font(.title)
                 Divider()
                 TextField(text: $text) {
                     Text("Viewbuilder init")
                 }
-                .padding([.top, .bottom])
                 TextField("String init", text: $text)
-                    .padding([.bottom])
                 TextField("With prompt", text: $text, prompt: Text("Prompt"))
-                    .padding([.bottom])
                 TextField("Fixed width", text: $text)
                     .frame(width: 200.0)
             }

@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ".bordered: %lld" : {
+
+    },
+    ".foregroundStyle(Color.green): %lld" : {
+
+    },
     ".labelsHidden():" : {
 
     },
@@ -8,6 +14,9 @@
 
     },
     ".padding([.top, .leading])" : {
+
+    },
+    ".plain: %lld" : {
 
     },
     "Accent color" : {
@@ -52,7 +61,10 @@
     "Button" : {
 
     },
-    "Clear" : {
+    "Button .automatic" : {
+
+    },
+    "Button .bordered" : {
 
     },
     "Collection Content" : {
@@ -61,8 +73,65 @@
     "Color" : {
 
     },
-    "Cyan" : {
+    "Complex content button" : {
 
+    },
+    "Controls" : {
+
+    },
+    "Done" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "סיום"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klar"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        }
+      }
+>>>>>>> cdfe0bf (Playground improvements)
     },
     "Fixed Content" : {
 
@@ -82,7 +151,7 @@
     "Indexed Content" : {
 
     },
-    "Indigo" : {
+    "Inner button" : {
 
     },
     "iOS 17 / macOS 14 required" : {
@@ -115,7 +184,7 @@
     "Plain" : {
 
     },
-    "Primary" : {
+    "Plain Style" : {
 
     },
     "Prompt" : {

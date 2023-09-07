@@ -8,7 +8,7 @@ import SwiftUI
 struct BorderPlayground: View {
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 16.0) {
                 Text("Border")
                     .font(.title)
                 Divider()

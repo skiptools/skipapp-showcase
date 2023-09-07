@@ -10,17 +10,28 @@ struct ButtonPlayground: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 16.0) {
                 Text("Button")
                     .font(.title)
                 Divider()
                 Button(action: { tapCount += 1 }) {
                     Text("ViewBuilder init: \(tapCount)")
                 }
-                .padding()
                 Button("String init: \(tapCount)") {
                     tapCount += 1
                 }
+                Button(".plain: \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.plain)
+                Button(".bordered: \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.bordered)
+                Button(".foregroundStyle(Color.green): \(tapCount)") {
+                    tapCount += 1
+                }
+                .foregroundStyle(Color.green)
             }
             .padding()
         }

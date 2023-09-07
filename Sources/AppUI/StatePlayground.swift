@@ -15,31 +15,26 @@ struct StatePlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 16.0) {
                 Text("Spacer")
                     .font(.title)
                 Divider()
 
                 Text("State tap count: \(tapCount)")
-                    .padding()
                 Button("State") {
                     tapCount += 1
                 }
-                .padding()
 
                 Divider()
 
                 Text("Object tap count: \(tapCountObject.tapCount)")
-                    .padding()
                 Button("Object") {
                     tapCountObject.tapCount += 1
                 }
-                .padding()
 
                 Divider()
                 
                 NavigationLink("Push another", value: PlaygroundType.state)
-                    .padding()
             }
         }
     }
