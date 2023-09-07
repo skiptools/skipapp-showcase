@@ -1,12 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    ".bordered: %lld" : {
-
-    },
-    ".foregroundStyle(Color.green): %lld" : {
-
-    },
     ".labelsHidden():" : {
 
     },
@@ -14,9 +8,6 @@
 
     },
     ".padding([.top, .leading])" : {
-
-    },
-    ".plain: %lld" : {
 
     },
     "Accent color" : {
@@ -61,10 +52,7 @@
     "Button" : {
 
     },
-    "Button .automatic" : {
-
-    },
-    "Button .bordered" : {
+    "Clear" : {
 
     },
     "Collection Content" : {
@@ -73,65 +61,8 @@
     "Color" : {
 
     },
-    "Complex content button" : {
+    "Cyan" : {
 
-    },
-    "Controls" : {
-
-    },
-    "Done" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تم"
-          }
-        },
-        "he" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "סיום"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完了"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Готово"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klar"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Готово"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完成"
-          }
-        }
-      }
->>>>>>> cdfe0bf (Playground improvements)
     },
     "Fixed Content" : {
 
@@ -151,7 +82,7 @@
     "Indexed Content" : {
 
     },
-    "Inner button" : {
+    "Indigo" : {
 
     },
     "iOS 17 / macOS 14 required" : {
@@ -163,9 +94,6 @@
     "Label" : {
 
     },
-    "List" : {
-
-    },
     "Mint" : {
 
     },
@@ -173,9 +101,6 @@
 
     },
     "Object tap count: %lld" : {
-
-    },
-    "Observable" : {
 
     },
     "Orange" : {
@@ -190,7 +115,7 @@
     "Plain" : {
 
     },
-    "Plain Style" : {
+    "Primary" : {
 
     },
     "Prompt" : {
@@ -245,9 +170,6 @@
 
     },
     "Teal" : {
-
-    },
-    "Text Field" : {
 
     },
     "TextField" : {
