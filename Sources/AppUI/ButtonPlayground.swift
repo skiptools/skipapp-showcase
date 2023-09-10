@@ -19,6 +19,7 @@ struct ButtonPlayground: View {
                     Text("ViewBuilder init: \(tapCount)")
                 }
                 Button("String init: \(tapCount)") {
+                    logger.log("string init")
                     tapCount += 1
                 }
                 Button(".plain: \(tapCount)") {

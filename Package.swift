@@ -21,7 +21,7 @@ let package = Package(
             resources: [.process("Resources")],
             plugins: [.plugin(name: "skipstone", package: "skip")]),
 
-        .testTarget(name: "AppUITests", dependencies: ["AppUI", .product(name: "SkipTest", package: "skip")],
+        .testTarget(name: "AppUITests", dependencies: ["AppUI", .product(name: "SkipTest", package: "skip", condition: .when(platforms: [.macOS]))],
             plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )
