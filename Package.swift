@@ -17,11 +17,11 @@ let package = Package(
             dependencies: ["AppUI", .product(name: "SkipDrive", package: "skip")]),
 
         .target(name: "AppUI",
-            dependencies: [.product(name: "SkipUI", package: "skip-ui", condition: .when(platforms: [.macOS]))],
+            dependencies: [.product(name: "SkipUI", package: "skip-ui")],
             resources: [.process("Resources")],
             plugins: [.plugin(name: "skipstone", package: "skip")]),
 
-        .testTarget(name: "AppUITests", dependencies: ["AppUI", .product(name: "SkipTest", package: "skip", condition: .when(platforms: [.macOS]))],
+        .testTarget(name: "AppUITests", dependencies: ["AppUI", .product(name: "SkipTest", package: "skip")],
             plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )
