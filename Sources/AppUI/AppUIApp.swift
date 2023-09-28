@@ -6,6 +6,9 @@
 import Foundation
 import SwiftUI
 
+/// The Android SDK number we are running against, or `nil` if not running on Android
+let androidSDK = ProcessInfo.processInfo.environment["android.os.Build.VERSION.SDK_INT"].flatMap({ Int($0) })
+
 #if !SKIP
 public protocol AppUIApp : App {
 }

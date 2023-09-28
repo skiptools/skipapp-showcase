@@ -1,10 +1,17 @@
 // The configuration file for your Skip App (https://skip.tools)
 
-// PRODUCT_NAME is the default title of the app
-PRODUCT_NAME = Scratch Pad
+// SKIP_MODULE_NAME must match BOTH the project name AND the `modulePrefix` constant in Package.swift
+SKIP_MODULE_NAME = PlaygroundApp
 
-// PRODUCT_BUNDLE_IDENTIFIER is the unique id for the app
-PRODUCT_BUNDLE_IDENTIFIER = app.ui
+// PRODUCT_NAME is the default title of the app
+PRODUCT_NAME = SkipPlayground
+
+// PRODUCT_BUNDLE_IDENTIFIER is the unique id for both the iOS and Android app
+PRODUCT_BUNDLE_IDENTIFIER = playground.app.ui
+
+// The user-visible name of the app (localizable)
+INFOPLIST_KEY_CFBundleDisplayName = Skip Playground
+INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.utilities
 
 // The semantic version for the app matching the git tag for the release
 MARKETING_VERSION = 0.0.1
@@ -18,8 +25,21 @@ MACOSX_DEPLOYMENT_TARGET = 13.0
 // On-device testing may need to override the bundle ID
 // PRODUCT_BUNDLE_IDENTIFIER[config=Debug][sdk=iphoneos*] = myorg.app.App-Name
 
-// Development team ID for on-device testing
-// DEVELOPMENT_TEAM =
-CODE_SIGNING_IDENTITY = -
-CODE_SIGNING_REQUIRED = NO
+// Assemble the APK as part of the build process
+SKIP_BUILD_APK = YES
 
+// Building the target will lauch the app for iphone* targets
+SKIP_LAUNCH_APK[sdk=iphone*] = YES
+
+// iOS-specific Info.plist property keys
+INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphone*] = YES
+INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphone*] = YES
+INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphone*] = YES
+INFOPLIST_KEY_UIStatusBarStyle[sdk=iphone*] = UIStatusBarStyleDefault
+INFOPLIST_KEY_UISupportedInterfaceOrientations[sdk=iphone*] = UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown
+
+
+// Development team ID for on-device testing
+//DEVELOPMENT_TEAM =
+//CODE_SIGNING_IDENTITY = -
+//CODE_SIGNING_REQUIRED = NO

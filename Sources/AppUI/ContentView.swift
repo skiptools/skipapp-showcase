@@ -6,11 +6,12 @@
 import OSLog
 import SwiftUI
 
-let logger = Logger(subsystem: "app.ui", category: "AppUI")
+let logger = Logger(subsystem: "playground.app.ui", category: "PlaygroundApp")
 
 enum PlaygroundType: String, CaseIterable {
     case color
     case font
+    case symbol
     case button
     case toggle
     case textField
@@ -23,25 +24,27 @@ enum PlaygroundType: String, CaseIterable {
     var titleText: Text {
         switch self {
         case .color:
-            return Text("Color", bundle: .module)
+            return Text("Color")
         case .font:
-            return Text("Font", bundle: .module)
+            return Text("Font")
+        case .symbol:
+            return Text("Symbol")
         case .button:
-            return Text("Button", bundle: .module)
+            return Text("Button")
         case .toggle:
-            return Text("Toggle", bundle: .module)
+            return Text("Toggle")
         case .textField:
-            return Text("Text Field", bundle: .module)
+            return Text("Text Field")
         case .border:
-            return Text("Border", bundle: .module)
+            return Text("Border")
         case .spacer:
-            return Text("Spacer", bundle: .module)
+            return Text("Spacer")
         case .list:
-            return Text("List", bundle: .module)
+            return Text("List")
         case .state:
-            return Text("State", bundle: .module)
+            return Text("State")
         case .observable:
-            return Text("Observable", bundle: .module)
+            return Text("Observable")
         }
     }
 }
@@ -68,6 +71,8 @@ struct ContentView: View {
                     ColorPlayground()
                 case .font:
                     FontPlayground()
+                case .symbol:
+                    SymbolPlayground()
                 case .button:
                     ButtonPlayground()
                 case .toggle:

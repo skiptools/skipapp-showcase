@@ -7,14 +7,15 @@ build:
         - 'id("com.android.library") version "8.1.0"'
     - block: 'android'
       contents:
-        - 'namespace = "tools.skip.scratchpad"'
+        - 'namespace = System.getenv("PRODUCT_BUNDLE_IDENTIFIER") ?: "app.ui"'
         - block: 'defaultConfig'
           contents:
             # transfer App.xcconfig configuration over to the Android metadata
-#            - 'applicationId = System.getenv("PRODUCT_BUNDLE_IDENTIFIER") ?: "tools.skip.scratchpad"'
-#            - 'versionCode = System.getenv("CURRENT_PROJECT_VERSION")?.toInt() ?: 1'
-#            - 'versionName = System.getenv("MARKETING_VERSION") ?: "0.0.0"'
-            - 'manifestPlaceholders["PRODUCT_NAME"] = System.getenv("PRODUCT_NAME") ?: "Scratch Pad"'
+            - 'applicationId = System.getenv("PRODUCT_BUNDLE_IDENTIFIER") ?: "app.ui"'
+            - 'versionCode = System.getenv("CURRENT_PROJECT_VERSION")?.toInt() ?: 1'
+            - 'versionName = System.getenv("MARKETING_VERSION") ?: "0.0.0"'
+            - 'manifestPlaceholders["PRODUCT_NAME"] = System.getenv("PRODUCT_NAME") ?: "Skip App"'
+            - 'manifestPlaceholders["PRODUCT_BUNDLE_IDENTIFIER"] = System.getenv("PRODUCT_BUNDLE_IDENTIFIER") ?: "app.ui"'
         - block: 'buildFeatures'
           contents:
             - 'buildConfig = true'

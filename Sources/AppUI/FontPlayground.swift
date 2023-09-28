@@ -23,6 +23,20 @@ struct FontPlayground: View {
                 }
                 .font(.footnote).fontWeight(.thin)
                 .border(Color.black)
+
+                Divider()
+
+                Text("Font.largeTitle").font(.largeTitle)
+                Text("Font.title").font(.title)
+                Text("Font.title2").font(.title2)
+                Text("Font.title3").font(.title3)
+                Text("Font.headline").font(.headline)
+                Text("Font.subheadline").font(.subheadline)
+                Text("Font.body").font(.body)
+                Text("Font.callout").font(.callout)
+                Text("Font.footnote").font(.footnote)
+                Text("Font.caption").font(.caption)
+                Text("Font.caption2").font(.caption2)
             }
             .padding()
         }

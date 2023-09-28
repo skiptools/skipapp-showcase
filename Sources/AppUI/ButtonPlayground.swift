@@ -12,7 +12,7 @@ struct ButtonPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Button", bundle: .module)
+                Text("Button")
                     .font(.title)
                 Divider()
                 Button(action: { tapCount += 1 }) {

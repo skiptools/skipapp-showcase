@@ -94,6 +94,39 @@
     "Font" : {
 
     },
+    "Font.body" : {
+
+    },
+    "Font.callout" : {
+
+    },
+    "Font.caption" : {
+
+    },
+    "Font.caption2" : {
+
+    },
+    "Font.footnote" : {
+
+    },
+    "Font.headline" : {
+
+    },
+    "Font.largeTitle" : {
+
+    },
+    "Font.subheadline" : {
+
+    },
+    "Font.title" : {
+
+    },
+    "Font.title2" : {
+
+    },
+    "Font.title3" : {
+
+    },
     "Gray" : {
 
     },
@@ -200,6 +233,12 @@
 
     },
     "String init: %lld" : {
+
+    },
+    "Symbol" : {
+
+    },
+    "Symbols" : {
 
     },
     "Teal" : {

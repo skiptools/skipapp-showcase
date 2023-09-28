@@ -12,10 +12,10 @@
 
     <application
         android:label="${PRODUCT_NAME}"
-        android:name="app.ui.AndroidAppMain"
+        android:name="${PRODUCT_BUNDLE_IDENTIFIER}.AndroidAppMain"
         android:allowBackup="true">
         <activity
-            android:name="app.ui.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:windowSoftInputMode="adjustResize">
