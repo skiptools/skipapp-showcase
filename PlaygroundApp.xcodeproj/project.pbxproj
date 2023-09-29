@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49231BA52AC5BBB700F98ADF /* AppModule2 in Frameworks */ = {isa = PBXBuildFile; productRef = 49231BA42AC5BBB700F98ADF /* AppModule2 */; };
-		49231BA62AC5BBB700F98ADF /* AppModule2 in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 49231BA42AC5BBB700F98ADF /* AppModule2 */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		49231BAC2AC5BCEF00F98ADF /* PlaygroundApp in Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* PlaygroundApp */; };
 		49231BAD2AC5BCEF00F98ADF /* PlaygroundApp in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* PlaygroundApp */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		499CD43B2AC5B799001AE8D8 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C2B2A52156200F06D93 /* AppMain.swift */; };
 		499CD43F2AC5B799001AE8D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C332A52156300F06D93 /* Preview Assets.xcassets */; };
 		499CD4402AC5B799001AE8D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C2F2A52156300F06D93 /* Assets.xcassets */; };
+		49A79E292AC6747500C307B2 /* PlaygroundApp in Frameworks */ = {isa = PBXBuildFile; productRef = 49A79E282AC6747500C307B2 /* PlaygroundApp */; };
+		49A79E2A2AC6747500C307B2 /* PlaygroundApp in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 49A79E282AC6747500C307B2 /* PlaygroundApp */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		49F90C2C2A52156200F06D93 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C2B2A52156200F06D93 /* AppMain.swift */; };
 		49F90C302A52156300F06D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C2F2A52156300F06D93 /* Assets.xcassets */; };
 		49F90C342A52156300F06D93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C332A52156300F06D93 /* Preview Assets.xcassets */; };
@@ -26,7 +26,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				49231BA62AC5BBB700F98ADF /* AppModule2 in Embed Frameworks */,
+				49A79E2A2AC6747500C307B2 /* PlaygroundApp in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49231BA52AC5BBB700F98ADF /* AppModule2 in Frameworks */,
+				49A79E292AC6747500C307B2 /* PlaygroundApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +141,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				49231BAF2AC5BD0500F98ADF /* PBXTargetDependency */,
 			);
 			name = "App+";
 			packageProductDependencies = (
@@ -155,6 +154,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49F90C4D2A52156300F06D93 /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
+				49A79E312AC67A3300C307B2 /* Enable Skippy */,
 				49F90C242A52156200F06D93 /* Sources */,
 				49F90C252A52156200F06D93 /* Frameworks */,
 				49F90C262A52156200F06D93 /* Resources */,
@@ -166,7 +166,7 @@
 			);
 			name = App;
 			packageProductDependencies = (
-				49231BA42AC5BBB700F98ADF /* AppModule2 */,
+				49A79E282AC6747500C307B2 /* PlaygroundApp */,
 			);
 			productName = App;
 			productReference = 49F90C282A52156200F06D93 /* SkipPlayground.app */;
@@ -269,6 +269,26 @@
 			shellPath = "/bin/sh -e";
 			shellScript = "if [ \"${SKIP_LAUNCH_APK}\" != \"YES\" ]; then\n  echo \"note: Not launching apk due to SKIP_LAUNCH_APK setting\"\n  exit 0\nfi\n\nPLUGIN=${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos\nPATH=${BUILD_ROOT}/Debug:${PLUGIN}:${PATH}:${HOMEBREW_PREFIX:-/opt/homebrew}/bin\necho \"note: Running skip adb install\"\nskip adb install -t -r -d -g Skip/build/artifacts/${PROJECT_NAME}UI-${CONFIGURATION}.apk\necho \"note: Running skip adb am start-activity\"\nskip adb shell am start-activity -S -W -n ${PRODUCT_BUNDLE_IDENTIFIER}/.MainActivity\n";
 		};
+		49A79E312AC67A3300C307B2 /* Enable Skippy */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Enable Skippy";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh -e";
+			shellScript = "env
+";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -289,13 +309,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		49231BAF2AC5BD0500F98ADF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 49231BAE2AC5BD0500F98ADF /* PlaygroundApp */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		499CD4422AC5B799001AE8D8 /* Debug */ = {
@@ -476,6 +489,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -498,6 +513,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -548,15 +565,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		49231BA42AC5BBB700F98ADF /* AppModule2 */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppModule2;
-		};
 		49231BAB2AC5BCEF00F98ADF /* PlaygroundApp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PlaygroundApp;
 		};
-		49231BAE2AC5BD0500F98ADF /* PlaygroundApp */ = {
+		49A79E282AC6747500C307B2 /* PlaygroundApp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PlaygroundApp;
 		};

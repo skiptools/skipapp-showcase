@@ -25,5 +25,11 @@ build:
               contents:
                 # by default we sign with the debug key; for publishing to an app store, the developer key will need to be supplied
                 - 'signingConfig = signingConfigs.getByName("debug")'
+                # enabling minification reduces compose dependency classe size ~85%
                 - 'isMinifyEnabled = true'
                 - 'proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")'
+#                - block: 'proguardOptions'
+#                  contents:
+#                    # must preserve all skip.* classes for public API
+#                    - 'option("-keep class skip.** { *; }")'
+#                    - 'option("-dontobfuscate")'
