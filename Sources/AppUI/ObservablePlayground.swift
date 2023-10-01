@@ -11,19 +11,14 @@ import Observation
 struct ObservablePlayground: View {
     var body: some View {
         if #available(iOS 17.0, macOS 14.0, *) {
-            #if os(macOS)
-            #else
             ObservablesOuterView()
                 .environmentObject(PlaygroundEnvironmentObject(text: "initialEnvironment"))
-            #endif
         } else {
-            Text("iOS 17 / macOS 14 required")
+            Text("iOS 17 / macOS 14 required for Observation framework")
         }
     }
 }
 
-#if os(macOS) // crashes on macOS 13 hosts: type metadata completion function for PlaygroundObservable ()
-#else
 class PlaygroundEnvironmentObject: ObservableObject {
     @Published var text: String
     init(text: String) {
@@ -78,4 +73,3 @@ struct ObservablesBindingView: View {
         .accessibilityIdentifier("binding-button")
     }
 }
-#endif

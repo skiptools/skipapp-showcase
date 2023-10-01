@@ -16,7 +16,7 @@ struct StatePlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Spacer")
+                Text("State")
                     .font(.title)
                 Divider()
 

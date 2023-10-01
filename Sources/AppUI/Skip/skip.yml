@@ -28,8 +28,3 @@ build:
                 # enabling minification reduces compose dependency classe size ~85%
                 - 'isMinifyEnabled = true'
                 - 'proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")'
-#                - block: 'proguardOptions'
-#                  contents:
-#                    # must preserve all skip.* classes for public API
-#                    - 'option("-keep class skip.** { *; }")'
-#                    - 'option("-dontobfuscate")'
