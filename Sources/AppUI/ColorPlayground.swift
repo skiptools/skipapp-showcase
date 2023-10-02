@@ -4,16 +4,11 @@
 // under the terms of the GNU Lesser General Public License 3.0
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
-import Foundation
 
 struct ColorPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Color")
-                    .font(.title)
-                Divider()
-
                 colorRow(label: Text("Red"), color: .red)
                 colorRow(label: Text("Red, .opacity(0.5)"), color: Color.red)
                 colorRow(label: Text("RGB"), color: Color(red: 1.0, green: 0.0, blue: 0.0))
@@ -50,5 +45,4 @@ struct ColorPlayground: View {
                 .frame(width: 100.0, height: 100.0)
         }
     }
-
 }

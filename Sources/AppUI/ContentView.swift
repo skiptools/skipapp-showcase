@@ -10,10 +10,11 @@ let logger = Logger(subsystem: "playground.app.ui", category: "PlaygroundApp")
 
 enum PlaygroundType: String, CaseIterable {
     case color
-    case font
+    case text
     case symbol
     case button
     case toggle
+    case progressView
     case textField
     case border
     case spacer
@@ -21,88 +22,80 @@ enum PlaygroundType: String, CaseIterable {
     case state
     case observable
 
-    var titleText: Text {
+    var title: String {
         switch self {
         case .color:
-            return Text("Color")
-        case .font:
-            return Text("Font")
+            return "Color"
+        case .text:
+            return "Text"
         case .symbol:
-            return Text("Symbol")
+            return "Symbol"
         case .button:
-            return Text("Button")
+            return "Button"
         case .toggle:
-            return Text("Toggle")
+            return "Toggle"
+        case .progressView:
+            return "ProgressView"
         case .textField:
-            return Text("Text Field")
+            return "TextField"
         case .border:
-            return Text("Border")
+            return "Border"
         case .spacer:
-            return Text("Spacer")
+            return "Spacer"
         case .list:
-            return Text("List")
+            return "List"
         case .state:
-            return Text("State")
+            return "State"
         case .observable:
-            return Text("Observable")
+            return "Observable"
         }
     }
-}
-
-enum ListPlaygroundType {
-    case fixedContent
-    case indexedContent
-    case collectionContent
-    case plainStyle
-    case controls
 }
 
 struct ContentView: View {
     var body: some View {
         NavigationStack {
             List(PlaygroundType.allCases, id: \.rawValue) { playground in
-                NavigationLink(value: playground) {
-                    playground.titleText
-                }
+                NavigationLink(playground.title, value: playground)
             }
             .navigationDestination(for: PlaygroundType.self) {
                 switch $0 {
                 case .color:
                     ColorPlayground()
-                case .font:
-                    FontPlayground()
+                        .navigationTitle($0.title)
+                case .text:
+                    TextPlayground()
+                        .navigationTitle($0.title)
                 case .symbol:
                     SymbolPlayground()
+                        .navigationTitle($0.title)
                 case .button:
                     ButtonPlayground()
+                        .navigationTitle($0.title)
                 case .toggle:
                     TogglePlayground()
+                        .navigationTitle($0.title)
+                case .progressView:
+                    ProgressViewPlayground()
+                        .navigationTitle($0.title)
                 case .textField:
                     TextFieldPlayground()
+                        .navigationTitle($0.title)
                 case .border:
                     BorderPlayground()
+                        .navigationTitle($0.title)
                 case .spacer:
                     SpacerPlayground()
+                        .navigationTitle($0.title)
                 case .list:
                     ListPlayground()
+                        .navigationTitle($0.title)
                 case .state:
                     StatePlayground()
+                        .navigationTitle($0.title)
                 case .observable:
                     ObservablePlayground()
-                }
-            }
-            .navigationDestination(for: ListPlaygroundType.self) {
-                switch $0 {
-                case .fixedContent:
-                    FixedContentListPlayground()
-                case .indexedContent:
-                    IndexedContentListPlayground()
-                case .collectionContent:
-                    CollectionContentListPlayground()
-                case .plainStyle:
-                    PlainStyleListPlayground()
-                case .controls:
-                    ControlsListPlayground()
+                        .navigationTitle($0.title)
                 }
             }
         }

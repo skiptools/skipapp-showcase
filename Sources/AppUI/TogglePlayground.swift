@@ -11,10 +11,6 @@ struct TogglePlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Toggle")
-                    .font(.title)
-                Divider()
-
                 Toggle(isOn: $isOn) {
                     Text("Viewbuilder init")
                 }
@@ -26,6 +22,10 @@ struct TogglePlayground: View {
                     Toggle("Label", isOn: $isOn)
                 }
                 .labelsHidden()
+                Toggle(".foregroundStyle(Color.green)", isOn: $isOn)
+                    .foregroundStyle(Color.green)
+                Toggle(".tint(.red)", isOn: $isOn)
+                    .tint(.red)
             }
             .padding()
         }

@@ -4,7 +4,6 @@
 // under the terms of the GNU Lesser General Public License 3.0
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
-import Foundation
 
 struct ButtonPlayground: View {
     @State var tapCount = 0
@@ -12,14 +11,10 @@ struct ButtonPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Button")
-                    .font(.title)
-                Divider()
                 Button(action: { tapCount += 1 }) {
                     Text("ViewBuilder init: \(tapCount)")
                 }
                 Button("String init: \(tapCount)") {
-                    logger.log("string init")
                     tapCount += 1
                 }
                 Button(".plain: \(tapCount)") {
@@ -34,6 +29,20 @@ struct ButtonPlayground: View {
                     tapCount += 1
                 }
                 .foregroundStyle(Color.green)
+                Button(".tint(.red): \(tapCount)") {
+                    tapCount += 1
+                }
+                .tint(.red)
+                Button(".bordered, .foregroundStyle(Color.green): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.bordered)
+                .foregroundStyle(Color.green)
+                Button(".bordered, .tint(.red): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.bordered)
+                .tint(.red)
             }
             .padding()
         }

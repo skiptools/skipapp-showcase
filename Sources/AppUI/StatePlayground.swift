@@ -16,10 +16,6 @@ struct StatePlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("State")
-                    .font(.title)
-                Divider()
-
                 Text("State tap count: \(tapCount)")
                 Button("State") {
                     tapCount += 1

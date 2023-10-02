@@ -11,9 +11,6 @@ struct TextFieldPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("TextField")
-                    .font(.title)
-                Divider()
                 TextField(text: $text) {
                     Text("Viewbuilder init")
                 }

@@ -9,9 +9,6 @@ struct SpacerPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Spacer")
-                    .font(.title)
-                Divider()
                 HStack {
                     Text("Before")
                     Spacer()

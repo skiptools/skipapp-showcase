@@ -1,7 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ".bordered, .foregroundStyle(Color.green): %lld" : {
+
+    },
+    ".bordered, .tint(.red): %lld" : {
+
+    },
     ".bordered: %lld" : {
+
+    },
+    ".foregroundStyle(Color.green)" : {
 
     },
     ".foregroundStyle(Color.green): %lld" : {
@@ -17,6 +26,12 @@
 
     },
     ".plain: %lld" : {
+
+    },
+    ".tint(.red)" : {
+
+    },
+    ".tint(.red): %lld" : {
 
     },
     "Accent color" : {
@@ -91,9 +106,6 @@
     "Fixed width" : {
 
     },
-    "Font" : {
-
-    },
     "Font.body" : {
 
     },
@@ -131,6 +143,15 @@
 
     },
     "Green" : {
+
+    },
+    "Indeterminate" : {
+
+    },
+    "Indeterminate linear" : {
+
+    },
+    "Indeterminate, .tint(.red)" : {
 
     },
     "Indexed Content" : {
@@ -182,6 +203,18 @@
 
     },
     "Primary" : {
+
+    },
+    "Progress 0.5" : {
+
+    },
+    "Progress 0.5 circular" : {
+
+    },
+    "Progress 0.5, .tint(.red)" : {
+
+    },
+    "Progress nil" : {
 
     },
     "Prompt" : {
@@ -238,16 +271,7 @@
     "Symbol" : {
 
     },
-    "Symbols" : {
-
-    },
     "Teal" : {
-
-    },
-    "Text Field" : {
-
-    },
-    "TextField" : {
 
     },
     "Thin footnote container" : {

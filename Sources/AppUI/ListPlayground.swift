@@ -5,14 +5,52 @@
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
 
+enum ListPlaygroundType: String, CaseIterable {
+    case fixedContent
+    case indexedContent
+    case collectionContent
+    case plainStyle
+    case controls
+
+    var title: String {
+        switch self {
+        case .fixedContent:
+            return "Fixed Content"
+        case .indexedContent:
+            return "Indexed Content"
+        case .collectionContent:
+            return "Collection Content"
+        case .plainStyle:
+            return "Plain Style"
+        case .controls:
+            return "Controls"
+        }
+    }
+}
+
 struct ListPlayground: View {
     var body: some View {
-        List {
-            NavigationLink("Fixed Content", value: ListPlaygroundType.fixedContent)
-            NavigationLink("Indexed Content", value: ListPlaygroundType.indexedContent)
-            NavigationLink("Collection Content", value: ListPlaygroundType.collectionContent)
-            NavigationLink("Plain Style", value: ListPlaygroundType.plainStyle)
-            NavigationLink("Controls", value: ListPlaygroundType.controls)
+        List(ListPlaygroundType.allCases, id: \.rawValue) { type in
+            NavigationLink(type.title, value: type)
+        }
+        .navigationDestination(for: ListPlaygroundType.self) {
+            switch $0 {
+            case .fixedContent:
+                FixedContentListPlayground()
+                    .navigationTitle($0.title)
+            case .indexedContent:
+                IndexedContentListPlayground()
+                    .navigationTitle($0.title)
+            case .collectionContent:
+                CollectionContentListPlayground()
+                    .navigationTitle($0.title)
+            case .plainStyle:
+                PlainStyleListPlayground()
+                    .navigationTitle($0.title)
+            case .controls:
+                ControlsListPlayground()
+                    .navigationTitle($0.title)
+            }
         }
     }
 }

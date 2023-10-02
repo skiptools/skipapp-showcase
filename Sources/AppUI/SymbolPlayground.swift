@@ -4,15 +4,11 @@
 // under the terms of the GNU Lesser General Public License 3.0
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
-import Foundation
 
 struct SymbolPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Symbols")
-                    .font(.title)
-                Divider()
                 symbolRow("person.crop.square")
                 symbolRow("person.crop.circle")
                 symbolRow("plus.circle.fill")
@@ -79,6 +75,18 @@ struct SymbolPlayground: View {
                 symbolRow("star.fill")
                 symbolRow("hand.thumbsup.fill")
                 symbolRow("exclamationmark.triangle.fill")
+                HStack {
+                    Text(".foregroundStyle(Color.green)")
+                    Spacer()
+                    Image(systemName: "star.fill")
+                        .foregroundStyle(Color.green)
+                }
+                HStack {
+                    Text(".tint(.red)")
+                    Spacer()
+                    Image(systemName: "star.fill")
+                        .tint(.red)
+                }
             }
         }
         .padding()

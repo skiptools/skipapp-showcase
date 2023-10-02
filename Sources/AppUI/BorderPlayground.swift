@@ -9,9 +9,6 @@ struct BorderPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Border")
-                    .font(.title)
-                Divider()
                 HStack {
                     Text("Black")
                     Spacer()

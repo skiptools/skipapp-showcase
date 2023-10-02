@@ -5,14 +5,10 @@
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
 
-struct FontPlayground: View {
+struct TextPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Font")
-                    .font(.title)
-                Divider()
-
                 Text("Plain")
                 Text("Bold").bold()
                 Text("Italic").italic()
