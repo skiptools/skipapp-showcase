@@ -122,7 +122,9 @@ struct ControlsListPlayground: View {
                 .tint(.red)
             Label("Label .listItemTint(.red)", systemImage: "star.fill")
                 .listItemTint(.red)
-            Button("Button .automatic", action: { logger.info("Tap") })
+            NavigationLink(value: "Test") {
+                Label("Label in NavigationLink", systemImage: "star.fill")
+            }
             Button("Button .automatic", action: { logger.info("Tap") })
             Button("Button .bordered", action: { logger.info("Tap") })
                 .buttonStyle(.bordered)
@@ -136,6 +138,9 @@ struct ControlsListPlayground: View {
             Toggle(isOn: $toggleValue) {
                 Text("Toggle")
             }
+        }
+        .navigationDestination(for: String.self) { value in
+            Text(value)
         }
     }
 }
