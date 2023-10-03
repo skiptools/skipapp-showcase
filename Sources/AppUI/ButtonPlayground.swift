@@ -25,23 +25,37 @@ struct ButtonPlayground: View {
                     tapCount += 1
                 }
                 .buttonStyle(.bordered)
-                Button(".foregroundStyle(Color.green): \(tapCount)") {
+                Button(".borderedProminent: \(tapCount)") {
                     tapCount += 1
                 }
-                .foregroundStyle(Color.green)
+                .buttonStyle(.borderedProminent)
+                Button(".foregroundStyle(Color.red): \(tapCount)") {
+                    tapCount += 1
+                }
+                .foregroundStyle(Color.red)
                 Button(".tint(.red): \(tapCount)") {
                     tapCount += 1
                 }
                 .tint(.red)
-                Button(".bordered, .foregroundStyle(Color.green): \(tapCount)") {
+                Button(".bordered, .foregroundStyle(Color.red): \(tapCount)") {
                     tapCount += 1
                 }
                 .buttonStyle(.bordered)
-                .foregroundStyle(Color.green)
+                .foregroundStyle(Color.red)
                 Button(".bordered, .tint(.red): \(tapCount)") {
                     tapCount += 1
                 }
                 .buttonStyle(.bordered)
+                .tint(.red)
+                Button(".borderedProminent, .foregroundStyle(Color.red): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.borderedProminent)
+                .foregroundStyle(Color.red)
+                Button(".borderedProminent, .tint(.red): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.borderedProminent)
                 .tint(.red)
             }
             .padding()

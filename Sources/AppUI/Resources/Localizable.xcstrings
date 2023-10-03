@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    ".bordered, .foregroundStyle(Color.green): %lld" : {
+    ".bordered, .foregroundStyle(Color.red): %lld" : {
 
     },
     ".bordered, .tint(.red): %lld" : {
@@ -10,10 +10,22 @@
     ".bordered: %lld" : {
 
     },
-    ".foregroundStyle(Color.green)" : {
+    ".borderedProminent, .foregroundStyle(Color.red): %lld" : {
 
     },
-    ".foregroundStyle(Color.green): %lld" : {
+    ".borderedProminent, .tint(.red): %lld" : {
+
+    },
+    ".borderedProminent: %lld" : {
+
+    },
+    ".font(.title)" : {
+
+    },
+    ".foregroundStyle(Color.red)" : {
+
+    },
+    ".foregroundStyle(Color.red): %lld" : {
 
     },
     ".labelsHidden():" : {
@@ -38,6 +50,9 @@
 
     },
     "After" : {
+
+    },
+    "After expanding" : {
 
     },
     "After fixed" : {
@@ -163,13 +178,28 @@
     "Inner button" : {
 
     },
-    "iOS 17 / macOS 14 required" : {
+    "iOS 17 / macOS 14 required for Observation framework" : {
 
     },
     "Italic" : {
 
     },
     "Label" : {
+
+    },
+    "Label .font(.title)" : {
+
+    },
+    "Label .foregroundStyle(Color.red)" : {
+
+    },
+    "Label .listItemTint(.red)" : {
+
+    },
+    "Label .tint(.red)" : {
+
+    },
+    "Label & Icon" : {
 
     },
     "List" : {
@@ -274,7 +304,16 @@
     "Teal" : {
 
     },
+    "Text1" : {
+
+    },
+    "Text2" : {
+
+    },
     "Thin footnote container" : {
+
+    },
+    "Title & SystemImage" : {
 
     },
     "Title bold italic" : {

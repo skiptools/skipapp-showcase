@@ -22,8 +22,8 @@ struct TogglePlayground: View {
                     Toggle("Label", isOn: $isOn)
                 }
                 .labelsHidden()
-                Toggle(".foregroundStyle(Color.green)", isOn: $isOn)
-                    .foregroundStyle(Color.green)
+                Toggle(".foregroundStyle(Color.red)", isOn: $isOn)
+                    .foregroundStyle(Color.red)
                 Toggle(".tint(.red)", isOn: $isOn)
                     .tint(.red)
             }

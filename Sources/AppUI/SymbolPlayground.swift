@@ -76,16 +76,22 @@ struct SymbolPlayground: View {
                 symbolRow("hand.thumbsup.fill")
                 symbolRow("exclamationmark.triangle.fill")
                 HStack {
-                    Text(".foregroundStyle(Color.green)")
+                    Text(".foregroundStyle(Color.red)")
                     Spacer()
                     Image(systemName: "star.fill")
-                        .foregroundStyle(Color.green)
+                        .foregroundStyle(Color.red)
                 }
                 HStack {
                     Text(".tint(.red)")
                     Spacer()
                     Image(systemName: "star.fill")
                         .tint(.red)
+                }
+                HStack {
+                    Text(".font(.title)")
+                    Spacer()
+                    Image(systemName: "star.fill")
+                        .font(.title)
                 }
             }
         }

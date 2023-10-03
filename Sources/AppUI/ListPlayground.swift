@@ -113,6 +113,16 @@ struct ControlsListPlayground: View {
 
     var body: some View {
         List {
+            Label("Label", systemImage: "star.fill")
+            Label("Label .font(.title)", systemImage: "star.fill")
+                .font(.title)
+            Label("Label .foregroundStyle(Color.red)", systemImage: "star.fill")
+                .foregroundStyle(Color.red)
+            Label("Label .tint(.red)", systemImage: "star.fill")
+                .tint(.red)
+            Label("Label .listItemTint(.red)", systemImage: "star.fill")
+                .listItemTint(.red)
+            Button("Button .automatic", action: { logger.info("Tap") })
             Button("Button .automatic", action: { logger.info("Tap") })
             Button("Button .bordered", action: { logger.info("Tap") })
                 .buttonStyle(.bordered)

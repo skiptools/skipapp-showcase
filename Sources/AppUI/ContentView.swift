@@ -12,12 +12,15 @@ enum PlaygroundType: String, CaseIterable {
     case color
     case text
     case symbol
+    case label
     case button
     case toggle
+    case slider
     case progressView
     case textField
     case border
     case spacer
+    case stack
     case list
     case state
     case observable
@@ -30,10 +33,14 @@ enum PlaygroundType: String, CaseIterable {
             return "Text"
         case .symbol:
             return "Symbol"
+        case .label:
+            return "Label"
         case .button:
             return "Button"
         case .toggle:
             return "Toggle"
+        case .slider:
+            return "Slider"
         case .progressView:
             return "ProgressView"
         case .textField:
@@ -42,6 +49,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Border"
         case .spacer:
             return "Spacer"
+        case .stack:
+            return "Stacks"
         case .list:
             return "List"
         case .state:
@@ -69,11 +78,17 @@ struct ContentView: View {
                 case .symbol:
                     SymbolPlayground()
                         .navigationTitle($0.title)
+                case .label:
+                    LabelPlayground()
+                        .navigationTitle($0.title)
                 case .button:
                     ButtonPlayground()
                         .navigationTitle($0.title)
                 case .toggle:
                     TogglePlayground()
+                        .navigationTitle($0.title)
+                case .slider:
+                    SliderPlayground()
                         .navigationTitle($0.title)
                 case .progressView:
                     ProgressViewPlayground()
@@ -86,6 +101,9 @@ struct ContentView: View {
                         .navigationTitle($0.title)
                 case .spacer:
                     SpacerPlayground()
+                        .navigationTitle($0.title)
+                case .stack:
+                    StackPlayground()
                         .navigationTitle($0.title)
                 case .list:
                     ListPlayground()
