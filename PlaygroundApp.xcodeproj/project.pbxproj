@@ -197,7 +197,6 @@
 			);
 			mainGroup = 49F90C1F2A52156200F06D93;
 			packageReferences = (
-				498387A42AA94B4700E6929D /* XCRemoteSwiftPackageReference "skip" */,
 			);
 			productRefGroup = 49F90C292A52156200F06D93 /* Products */;
 			projectDirPath = "";
@@ -552,17 +551,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		498387A42AA94B4700E6929D /* XCRemoteSwiftPackageReference "skip" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://source.skip.tools/skip.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.55;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		49231BAB2AC5BCEF00F98ADF /* PlaygroundApp */ = {
