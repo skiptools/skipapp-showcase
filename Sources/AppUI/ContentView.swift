@@ -22,6 +22,8 @@ enum PlaygroundType: String, CaseIterable {
     case spacer
     case stack
     case list
+    case listControls
+    case form
     case state
     case observable
 
@@ -53,6 +55,10 @@ enum PlaygroundType: String, CaseIterable {
             return "Stacks"
         case .list:
             return "List"
+        case .listControls:
+            return "List Controls"
+        case .form:
+            return "Form"
         case .state:
             return "State"
         case .observable:
@@ -107,6 +113,12 @@ struct ContentView: View {
                         .navigationTitle($0.title)
                 case .list:
                     ListPlayground()
+                        .navigationTitle($0.title)
+                case .listControls:
+                    ListControlsPlayground()
+                        .navigationTitle($0.title)
+                case .form:
+                    FormPlayground()
                         .navigationTitle($0.title)
                 case .state:
                     StatePlayground()

@@ -9,8 +9,12 @@ enum ListPlaygroundType: String, CaseIterable {
     case fixedContent
     case indexedContent
     case collectionContent
+    case forEachContent
+    case sectioned
+    case empty
     case plainStyle
-    case controls
+    case plainStyleSectioned
+    case plainStyleEmpty
 
     var title: String {
         switch self {
@@ -20,10 +24,18 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Indexed Content"
         case .collectionContent:
             return "Collection Content"
+        case .forEachContent:
+            return "ForEach Content"
+        case .sectioned:
+            return "Sectioned"
+        case .empty:
+            return "Empty"
         case .plainStyle:
             return "Plain Style"
-        case .controls:
-            return "Controls"
+        case .plainStyleSectioned:
+            return "Plain Style Sectioned"
+        case .plainStyleEmpty:
+            return "Plain Style Empty"
         }
     }
 }
@@ -44,11 +56,23 @@ struct ListPlayground: View {
             case .collectionContent:
                 CollectionContentListPlayground()
                     .navigationTitle($0.title)
+            case .forEachContent:
+                ForEachContentListPlayground()
+                    .navigationTitle($0.title)
+            case .sectioned:
+                SectionedListPlayground()
+                    .navigationTitle($0.title)
+            case .empty:
+                EmptyListPlayground()
+                    .navigationTitle($0.title)
             case .plainStyle:
                 PlainStyleListPlayground()
                     .navigationTitle($0.title)
-            case .controls:
-                ControlsListPlayground()
+            case .plainStyleSectioned:
+                PlainStyleSectionedListPlayground()
+                    .navigationTitle($0.title)
+            case .plainStyleEmpty:
+                PlainStyleEmptyListPlayground()
                     .navigationTitle($0.title)
             }
         }
@@ -99,6 +123,60 @@ struct CollectionContentListPlayground: View {
     }
 }
 
+struct ForEachContentListPlayground: View {
+    struct ListItem {
+        let i: Int
+        let s: String
+    }
+
+    func items() -> [ListItem] {
+        var items: [ListItem] = []
+        for i in 0..<10 {
+            items.append(ListItem(i: i, s: "Foreach object row \(i)"))
+        }
+        return items
+    }
+
+    var body: some View {
+        List {
+            Text("Standalone row 1")
+            ForEach(0..<10) { index in
+                Text("ForEach index row: \(index)")
+            }
+            Text("Standalone row 2")
+            ForEach(items(), id: \.i) {
+                Text($0.s)
+            }
+        }
+    }
+}
+
+struct SectionedListPlayground: View {
+    var body: some View {
+        List {
+            Section("Section 1") {
+                Text("Row 1.1")
+                ForEach(0..<10) { index in
+                    Text("ForEach row: 1.\(index)")
+                }
+            }
+            Section("Section 2") {
+                Text("Row 2.1")
+                ForEach(0..<10) { index in
+                    Text("ForEach row: 2.\(index)")
+                }
+            }
+        }
+    }
+}
+
+struct EmptyListPlayground: View {
+    var body: some View {
+        List {
+        }
+    }
+}
+
 struct PlainStyleListPlayground: View {
     var body: some View {
         List(0..<100) {
@@ -108,39 +186,30 @@ struct PlainStyleListPlayground: View {
     }
 }
 
-struct ControlsListPlayground: View {
-    @State var toggleValue = false
-
+struct PlainStyleSectionedListPlayground: View {
     var body: some View {
         List {
-            Label("Label", systemImage: "star.fill")
-            Label("Label .font(.title)", systemImage: "star.fill")
-                .font(.title)
-            Label("Label .foregroundStyle(Color.red)", systemImage: "star.fill")
-                .foregroundStyle(Color.red)
-            Label("Label .tint(.red)", systemImage: "star.fill")
-                .tint(.red)
-            Label("Label .listItemTint(.red)", systemImage: "star.fill")
-                .listItemTint(.red)
-            NavigationLink(value: "Test") {
-                Label("Label in NavigationLink", systemImage: "star.fill")
-            }
-            Button("Button .automatic", action: { logger.info("Tap") })
-            Button("Button .bordered", action: { logger.info("Tap") })
-                .buttonStyle(.bordered)
-            Button(action: { logger.info("Tap") }) {
-                HStack {
-                    Text("Complex content button")
-                    Spacer()
-                    Button("Inner button", action: { logger.info("Tap inner") })
+            Section("Section 1") {
+                Text("Row 1.1")
+                ForEach(0..<10) { index in
+                    Text("ForEach row: 1.\(index)")
                 }
             }
-            Toggle(isOn: $toggleValue) {
-                Text("Toggle")
+            Section("Section 2") {
+                Text("Row 2.1")
+                ForEach(0..<10) { index in
+                    Text("ForEach row: 2.\(index)")
+                }
             }
         }
-        .navigationDestination(for: String.self) { value in
-            Text(value)
+        .listStyle(.plain)
+    }
+}
+
+struct PlainStyleEmptyListPlayground: View {
+    var body: some View {
+        List {
         }
+        .listStyle(.plain)
     }
 }
