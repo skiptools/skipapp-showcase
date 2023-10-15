@@ -151,13 +151,35 @@
     "Font.title3" : {
 
     },
+    "Footer 2" : {
+
+    },
+    "Footer 3" : {
+
+    },
     "ForEach index row: %lld" : {
 
+    },
+    "ForEach row: %lld.%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ForEach row: %1$lld.%2$lld"
+          }
+        }
+      }
     },
     "ForEach row: 1.%lld" : {
 
     },
     "ForEach row: 2.%lld" : {
+
+    },
+    "ForEach row: 3.%lld" : {
+
+    },
+    "ForEach section %lld" : {
 
     },
     "Gray" : {
@@ -216,6 +238,16 @@
     },
     "Mint" : {
 
+    },
+    "Nested ForEach row: %lld.%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Nested ForEach row: %1$lld.%2$lld"
+          }
+        }
+      }
     },
     "Object" : {
 
@@ -311,6 +343,9 @@
 
     },
     "Standalone row 2" : {
+
+    },
+    "Standalone row 3" : {
 
     },
     "State" : {

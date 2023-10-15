@@ -147,6 +147,12 @@ struct ForEachContentListPlayground: View {
             ForEach(items(), id: \.i) {
                 Text($0.s)
             }
+            Text("Standalone row 3")
+            ForEach(0..<10) { index1 in
+                ForEach(0..<2) { index2 in
+                    Text("Nested ForEach row: \(index1).\(index2)")
+                }
+            }
         }
     }
 }
@@ -160,10 +166,21 @@ struct SectionedListPlayground: View {
                     Text("ForEach row: 1.\(index)")
                 }
             }
-            Section("Section 2") {
+            Section {
                 Text("Row 2.1")
                 ForEach(0..<10) { index in
                     Text("ForEach row: 2.\(index)")
+                }
+            } header: {
+                Text("Section 2")
+            } footer: {
+                Text("Footer 2")
+            }
+            ForEach(0..<2) { index1 in
+                Section("ForEach section \(index1)") {
+                    ForEach(0..<5) { index2 in
+                        Text("ForEach row: \(index1).\(index2)")
+                    }
                 }
             }
         }
@@ -191,15 +208,26 @@ struct PlainStyleSectionedListPlayground: View {
         List {
             Section("Section 1") {
                 Text("Row 1.1")
-                ForEach(0..<10) { index in
+                ForEach(0..<30) { index in
                     Text("ForEach row: 1.\(index)")
                 }
             }
-            Section("Section 2") {
+            Section {
                 Text("Row 2.1")
-                ForEach(0..<10) { index in
+                ForEach(0..<30) { index in
                     Text("ForEach row: 2.\(index)")
                 }
+            } header: {
+                Text("Section 2")
+            } footer: {
+                Text("Footer 2")
+            }
+            Section {
+                ForEach(0..<30) { index in
+                    Text("ForEach row: 3.\(index)")
+                }
+            } footer: {
+                Text("Footer 3")
             }
         }
         .listStyle(.plain)
