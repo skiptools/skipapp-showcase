@@ -109,10 +109,16 @@
     "Complex content button" : {
 
     },
+    "Content row %lld" : {
+
+    },
     "Cyan" : {
 
     },
-    "Dismiss" : {
+    "Dismiss via environment" : {
+
+    },
+    "Dismiss via state" : {
 
     },
     "Favorites" : {
@@ -194,6 +200,12 @@
     "Green" : {
 
     },
+    "Home" : {
+
+    },
+    "Increment counter: %lld" : {
+
+    },
     "Indeterminate" : {
 
     },
@@ -207,6 +219,9 @@
 
     },
     "Indigo" : {
+
+    },
+    "Info" : {
 
     },
     "Inner button" : {
@@ -282,6 +297,9 @@
     "Pop" : {
 
     },
+    "Present another" : {
+
+    },
     "Present sheet" : {
 
     },
@@ -348,6 +366,9 @@
     "Section 2" : {
 
     },
+    "Sheet" : {
+
+    },
     "Spacer" : {
 
     },
@@ -373,12 +394,6 @@
 
     },
     "Symbol" : {
-
-    },
-    "Tab 1" : {
-
-    },
-    "Tab 3" : {
 
     },
     "Teal" : {

@@ -6,14 +6,16 @@
 import SwiftUI
 
 struct TabViewPlayground: View {
+    @State var isPresented = false
+
     var body: some View {
         TabView {
-            Text("Tab 1")
-                .tabItem { Text("Tab 1") }
+            Text("Home")
+                .tabItem { Label("Home", systemImage: "house.fill") }
             Text("Favorites")
                 .tabItem { Label("Favorites", systemImage: "heart.fill") }
-            Text("Tab 3")
-                .tabItem { Text("Tab 3") }
+            Text("Info")
+                .tabItem { Label("Info", systemImage: "info.circle.fill") }
         }
     }
 }

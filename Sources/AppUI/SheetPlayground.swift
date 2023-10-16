@@ -7,21 +7,46 @@ import SwiftUI
 
 struct SheetPlayground: View {
     @State var isPresented = false
-    @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        VStack {
-            Button("Present sheet") {
-                isPresented = true
-            }
-            .padding()
-            Button("Dismiss") {
-                dismiss()
-            }
-            .padding()
+        Button("Present sheet") {
+            isPresented = true
         }
         .sheet(isPresented: $isPresented) {
-            SheetPlayground()
+            SheetContentView(dismissSheet: { isPresented = false })
+        }
+    }
+}
+
+struct SheetContentView: View {
+    @State var isPresented = false
+    @State var counter = 0
+    @Environment(\.dismiss) var dismiss
+    let dismissSheet: () -> Void
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Button("Present another") {
+                    isPresented = true
+                }
+                Button("Dismiss via state") {
+                    dismissSheet()
+                }
+                Button("Dismiss via environment") {
+                    dismiss()
+                }
+                Button("Increment counter: \(counter)") {
+                    counter += 1
+                }
+                ForEach(0..<40) { index in
+                    Text("Content row \(index)")
+                }
+            }
+            .navigationTitle("Sheet")
+        }
+        .sheet(isPresented: $isPresented) {
+            SheetContentView(dismissSheet: { isPresented = false })
         }
     }
 }
