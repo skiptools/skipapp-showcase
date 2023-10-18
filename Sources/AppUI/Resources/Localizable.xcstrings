@@ -121,6 +121,26 @@
     "Dismiss via state" : {
 
     },
+    "Double tap: (%lf, %lf)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Double tap: (%1$lf, %2$lf)"
+          }
+        }
+      }
+    },
+    "Double tap: (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Double tap: (%1$lld, %2$lld)"
+          }
+        }
+      }
+    },
     "Favorites" : {
 
     },
@@ -255,6 +275,9 @@
 
     },
     "List" : {
+
+    },
+    "Long press: %lld" : {
 
     },
     "Mint" : {
@@ -395,6 +418,26 @@
     },
     "Symbol" : {
 
+    },
+    "Tap: (%lf, %lf)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tap: (%1$lf, %2$lf)"
+          }
+        }
+      }
+    },
+    "Tap: (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tap: (%1$lld, %2$lld)"
+          }
+        }
+      }
     },
     "Teal" : {
 
