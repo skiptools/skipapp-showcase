@@ -1,4 +1,4 @@
-name: skipapp-playground
+name: skipapp-showcase
 on:
   push:
     branches: '*'
