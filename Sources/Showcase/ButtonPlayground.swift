@@ -29,14 +29,36 @@ struct ButtonPlayground: View {
                     tapCount += 1
                 }
                 .buttonStyle(.borderedProminent)
+                Button(".disabled(true): \(tapCount)") {
+                    tapCount += 1
+                }
+                .disabled(true)
+                Button(".bordered, .disabled(true): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.bordered)
+                .disabled(true)
+                Button(".borderedProminent, .disabled(true): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(true)
                 Button(".foregroundStyle(Color.red): \(tapCount)") {
                     tapCount += 1
                 }
                 .foregroundStyle(Color.red)
+                Button(".foregroundStyle(Color.red), .disabled(true): \(tapCount)") {
+                    tapCount += 1
+                }
+                .foregroundStyle(Color.red).disabled(true)
                 Button(".tint(.red): \(tapCount)") {
                     tapCount += 1
                 }
                 .tint(.red)
+                Button(".tint(.red), .disabled(true): \(tapCount)") {
+                    tapCount += 1
+                }
+                .tint(.red).disabled(true)
                 Button(".bordered, .foregroundStyle(Color.red): \(tapCount)") {
                     tapCount += 1
                 }

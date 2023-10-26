@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ".bordered, .disabled(true): %lld" : {
+
+    },
     ".bordered, .foregroundStyle(Color.red): %lld" : {
 
     },
@@ -8,6 +11,9 @@
 
     },
     ".bordered: %lld" : {
+
+    },
+    ".borderedProminent, .disabled(true): %lld" : {
 
     },
     ".borderedProminent, .foregroundStyle(Color.red): %lld" : {
@@ -19,13 +25,25 @@
     ".borderedProminent: %lld" : {
 
     },
+    ".disabled(true)" : {
+
+    },
+    ".disabled(true): %lld" : {
+
+    },
     ".font(.title)" : {
 
     },
     ".foregroundStyle(Color.red)" : {
 
     },
+    ".foregroundStyle(Color.red), .disabled(true): %lld" : {
+
+    },
     ".foregroundStyle(Color.red): %lld" : {
+
+    },
+    ".frame(150, 150):" : {
 
     },
     ".labelsHidden():" : {
@@ -40,7 +58,13 @@
     ".plain: %lld" : {
 
     },
+    ".resizable(), .frame(150, 150):" : {
+
+    },
     ".tint(.red)" : {
+
+    },
+    ".tint(.red), .disabled(true): %lld" : {
 
     },
     ".tint(.red): %lld" : {
@@ -59,6 +83,9 @@
 
     },
     "After vstack" : {
+
+    },
+    "Basic:" : {
 
     },
     "Before" : {
@@ -112,8 +139,24 @@
     "Content row %lld" : {
 
     },
+    "Custom phase closure:" : {
+
+    },
+    "Custom placeholder:" : {
+
+    },
     "Cyan" : {
 
+    },
+    "Disabled tap: (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Disabled tap: (%1$lld, %2$lld)"
+          }
+        }
+      }
     },
     "Dismiss via environment" : {
 
@@ -293,6 +336,12 @@
         }
       }
     },
+    "No URL, .frame(150, 150):" : {
+
+    },
+    "No URL:" : {
+
+    },
     "Object" : {
 
     },
@@ -378,6 +427,9 @@
 
     },
     "Row 3b" : {
+
+    },
+    "scale: 2.0:" : {
 
     },
     "Secondary" : {

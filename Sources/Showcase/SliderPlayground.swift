@@ -13,6 +13,11 @@ struct SliderPlayground: View {
             VStack(spacing: 16.0) {
                 Slider(value: $value)
                 HStack {
+                    Text(".disabled(true)")
+                    Slider(value: $value)
+                        .disabled(true)
+                }
+                HStack {
                     Text(".foregroundStyle(Color.red)")
                     Slider(value: $value)
                         .foregroundStyle(Color.red)

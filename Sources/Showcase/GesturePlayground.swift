@@ -63,6 +63,16 @@ struct GesturePlayground: View {
                             combinedLongPressCount += 1
                         }
                 }
+                HStack {
+                    Text("Disabled tap: (\(Int(tapPosition.x)), \(Int(tapPosition.y)))")
+                    Spacer()
+                    Color.red
+                        .frame(width: 150.0, height: 150.0)
+                        .onTapGesture {
+                            tapPosition = $0
+                        }
+                        .disabled(true)
+                }
             }
             .padding()
         }

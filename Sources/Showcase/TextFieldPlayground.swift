@@ -18,6 +18,8 @@ struct TextFieldPlayground: View {
                 TextField("With prompt", text: $text, prompt: Text("Prompt"))
                 TextField("Fixed width", text: $text)
                     .frame(width: 200.0)
+                TextField(".disabled(true)", text: $text)
+                    .disabled(true)
                 TextField(".foregroundStyle(Color.red)", text: $text)
                     .foregroundStyle(Color.red)
                 TextField(".tint(.red)", text: $text)
