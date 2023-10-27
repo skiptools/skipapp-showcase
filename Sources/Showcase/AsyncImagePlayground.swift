@@ -28,8 +28,6 @@ struct AsyncImagePlayground: View {
                         .frame(width: 150.0, height: 150.0)
                         .border(Color.blue)
                 }
-                //~~~
-                #if !SKIP
                 HStack {
                     Text(".resizable(), .frame(150, 150):")
                     Spacer()
@@ -40,7 +38,6 @@ struct AsyncImagePlayground: View {
                     .frame(width: 150.0, height: 150.0)
                     .border(Color.blue)
                 }
-                #endif
                 HStack {
                     Text("No URL:")
                     Spacer()
