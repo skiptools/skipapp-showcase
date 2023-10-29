@@ -43,10 +43,16 @@
     ".foregroundStyle(Color.red): %lld" : {
 
     },
-    ".frame(150, 150):" : {
+    ".frame(100, 100)" : {
+
+    },
+    ".frame(100, 100)\nclipped" : {
 
     },
     ".labelsHidden():" : {
+
+    },
+    ".lineLimit(1): This is some long text that should wrap when it exceeds the width of its frame" : {
 
     },
     ".padding()" : {
@@ -58,7 +64,28 @@
     ".plain: %lld" : {
 
     },
-    ".resizable(), .frame(150, 150):" : {
+    ".resizable\n.frame(100, 100)" : {
+
+    },
+    ".resizable()\n.aspectRatio(0.33, .fill)\n.frame(100, 100)\n.clipped" : {
+
+    },
+    ".resizable()\n.aspectRatio(0.33, .fit)\n.frame(100, 100)" : {
+
+    },
+    ".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)" : {
+
+    },
+    ".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)\n.foregroundStyle(Color.red)" : {
+
+    },
+    ".resizable()\n.frame(100, 100)" : {
+
+    },
+    ".resizable()\n.scaleToFill\n.frame(100, 100)\n.clipped" : {
+
+    },
+    ".resizable()\n.scaleToFit\n.frame(100, 100)" : {
 
     },
     ".tint(.red)" : {
@@ -85,7 +112,7 @@
     "After vstack" : {
 
     },
-    "Basic:" : {
+    "AsyncImage" : {
 
     },
     "Before" : {
@@ -139,10 +166,10 @@
     "Content row %lld" : {
 
     },
-    "Custom phase closure:" : {
+    "Custom closure" : {
 
     },
-    "Custom placeholder:" : {
+    "Custom placeholder" : {
 
     },
     "Cyan" : {
@@ -336,10 +363,10 @@
         }
       }
     },
-    "No URL, .frame(150, 150):" : {
+    "No URL" : {
 
     },
-    "No URL:" : {
+    "No URL\n.frame(100, 100)" : {
 
     },
     "Object" : {
@@ -429,7 +456,7 @@
     "Row 3b" : {
 
     },
-    "scale: 2.0:" : {
+    "scale: 2.0" : {
 
     },
     "Secondary" : {
@@ -469,6 +496,9 @@
 
     },
     "Symbol" : {
+
+    },
+    "systemName" : {
 
     },
     "Tap: (%lf, %lf)" : {
@@ -531,6 +561,9 @@
 
     },
     "With prompt" : {
+
+    },
+    "Wrap: This is some long text that should wrap when it exceeds the width of its frame" : {
 
     },
     "Yellow" : {

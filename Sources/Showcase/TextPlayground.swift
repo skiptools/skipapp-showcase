@@ -33,6 +33,16 @@ struct TextPlayground: View {
                 Text("Font.footnote").font(.footnote)
                 Text("Font.caption").font(.caption)
                 Text("Font.caption2").font(.caption2)
+
+                Divider()
+
+                Text("Wrap: This is some long text that should wrap when it exceeds the width of its frame")
+                    .frame(width: 200.0)
+                    .border(Color.blue)
+                Text(".lineLimit(1): This is some long text that should wrap when it exceeds the width of its frame")
+                    .lineLimit(1)
+                    .frame(width: 200.0)
+                    .border(Color.blue)
             }
             .padding()
         }

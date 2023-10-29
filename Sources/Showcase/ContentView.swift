@@ -9,12 +9,12 @@ import SwiftUI
 let logger = Logger(subsystem: "playground.app.ui", category: "PlaygroundApp")
 
 enum PlaygroundType: String, CaseIterable {
-    case asyncImage
     case border
     case button
     case color
     case form
     case gesture
+    case image
     case label
     case list
     case listControls
@@ -34,8 +34,6 @@ enum PlaygroundType: String, CaseIterable {
 
     var title: String {
         switch self {
-        case .asyncImage:
-            return "AsyncImage"
         case .border:
             return "Border"
         case .button:
@@ -46,6 +44,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Form"
         case .gesture:
             return "Gestures"
+        case .image:
+            return "Image"
         case .label:
             return "Label"
         case .list:
@@ -90,9 +90,6 @@ struct ContentView: View {
             }
             .navigationDestination(for: PlaygroundType.self) {
                 switch $0 {
-                case .asyncImage:
-                    AsyncImagePlayground()
-                        .navigationTitle($0.title)
                 case .border:
                     BorderPlayground()
                         .navigationTitle($0.title)
@@ -107,6 +104,9 @@ struct ContentView: View {
                         .navigationTitle($0.title)
                 case .gesture:
                     GesturePlayground()
+                        .navigationTitle($0.title)
+                case .image:
+                    ImagePlayground()
                         .navigationTitle($0.title)
                 case .label:
                     LabelPlayground()
