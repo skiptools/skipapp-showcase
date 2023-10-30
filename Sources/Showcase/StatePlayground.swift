@@ -11,14 +11,20 @@ class TapCount: ObservableObject {
 
 struct StatePlayground: View {
     @State var tapCount = 0
+    @State var hasStateTapped: Bool? // Test optional vars
     @StateObject var tapCountObject = TapCount()
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("State tap count: \(tapCount)")
+                if hasStateTapped == true {
+                    Text("State tap count: \(tapCount)")
+                } else {
+                    Text("Tap below to increment state tap count")
+                }
                 Button("State") {
                     tapCount += 1
+                    hasStateTapped = true
                 }
 
                 Divider()
