@@ -55,6 +55,18 @@
     ".lineLimit(1): This is some long text that should wrap when it exceeds the width of its frame" : {
 
     },
+    ".offset(-50, 50)" : {
+
+    },
+    ".offset(0, 0)" : {
+
+    },
+    ".offset(50, -50)" : {
+
+    },
+    ".offset(CGSize(50, 50))" : {
+
+    },
     ".padding()" : {
 
     },
