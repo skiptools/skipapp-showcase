@@ -1,4 +1,4 @@
-			// !$*UTF8*$!
+// !$*UTF8*$!
 {
 	archiveVersion = 1;
 	classes = {
@@ -122,7 +122,7 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1500;
 			};
-			buildConfigurationList = 49F90C232A52156200F06D93 /* Build configuration list for PBXProject "ShowcaseApp" */;
+			buildConfigurationList = 49F90C232A52156200F06D93 /* Build configuration list for PBXProject "Showcase" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -171,7 +171,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -e";
-			shellScript = "if [ \"${SKIP_BUILD_APK}\" != \"YES\" -o \"${SKIP_ZERO}\" != \"\" ]; then\n  echo \"note: Not building apk due to SKIP_BUILD_APK setting\"\n  exit 0\nfi\n\nPROJECT=$(basename ${PROJECT_DIR})\nPLUGIN=${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos\nPATH=${BUILD_ROOT}/Debug:${PLUGIN}:${PATH}:${HOMEBREW_PREFIX:-/opt/homebrew}/bin\nANDROID_HOME=${ANDROID_HOME:-${HOME}/Library/Android/sdk}\nSRCPKG=${BUILD_ROOT}/../../SourcePackages\necho \"note: Building APK for: ${PROJECT}\"\nwhich skip\nmkdir -p Skip/build/artifacts/\nskip gradle --package \"${PROJECT}\" --module ${PROJECT_NAME} assemble${CONFIGURATION}\ncd Skip/build/\nln -sfh ${SRCPKG}/plugins/*.output .\ncd artifacts/\nln -f ${SRCPKG}/plugins/*.output/*/skipstone/*/.build/*/outputs/apk/*/*.apk .";
+			shellScript = "if [ \"${SKIP_BUILD_APK}\" != \"YES\" -o \"${SKIP_ZERO}\" != \"\" ]; then\n  echo \"note: Not building apk due to SKIP_BUILD_APK setting\"\n  exit 0\nfi\n\nPROJECT=$(basename ${PROJECT_DIR})\nPLUGIN=${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos\nPATH=${BUILD_ROOT}/Debug:${PLUGIN}:${PATH}:${HOMEBREW_PREFIX:-/opt/homebrew}/bin\nANDROID_HOME=${ANDROID_HOME:-${HOME}/Library/Android/sdk}\nSRCPKG=${BUILD_ROOT}/../../SourcePackages\necho \"note: Building APK for: ${PROJECT}\"\nwhich skip\nmkdir -p Skip/build/artifacts/\nskip gradle --package \"${PROJECT}\" --module ${PROJECT_NAME} assemble${CONFIGURATION}\ncd Skip/build/\nln -sfh ${SRCPKG}/plugins/*.output .\ncd artifacts/\nln -f ${SRCPKG}/plugins/*.output/*/skipstone/*/.build/*/outputs/apk/*/*.apk .\n";
 		};
 		499CD4462AC5B86B001AE8D8 /* Launch Android APK */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -329,7 +329,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49F90C232A52156200F06D93 /* Build configuration list for PBXProject "ShowcaseApp" */ = {
+		49F90C232A52156200F06D93 /* Build configuration list for PBXProject "Showcase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49F90C4B2A52156300F06D93 /* Debug */,
