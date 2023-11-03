@@ -14,6 +14,7 @@ enum PlaygroundType: String, CaseIterable {
     case color
     case form
     case gesture
+    case gradient
     case image
     case label
     case list
@@ -45,6 +46,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Form"
         case .gesture:
             return "Gestures"
+        case .gradient:
+            return "Gradients"
         case .image:
             return "Image"
         case .label:
@@ -107,6 +110,9 @@ struct ContentView: View {
                         .navigationTitle($0.title)
                 case .gesture:
                     GesturePlayground()
+                        .navigationTitle($0.title)
+                case .gradient:
+                    GradientPlayground()
                         .navigationTitle($0.title)
                 case .image:
                     ImagePlayground()

@@ -76,6 +76,9 @@
     ".plain: %lld" : {
 
     },
+    ".red.gradient" : {
+
+    },
     ".resizable\n.frame(100, 100)" : {
 
     },
@@ -537,6 +540,9 @@
       }
     },
     "Teal" : {
+
+    },
+    "Text" : {
 
     },
     "Text field" : {
