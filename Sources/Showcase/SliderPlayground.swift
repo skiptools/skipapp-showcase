@@ -18,9 +18,9 @@ struct SliderPlayground: View {
                         .disabled(true)
                 }
                 HStack {
-                    Text(".foregroundStyle(Color.red)")
+                    Text(".foregroundStyle(.red)")
                     Slider(value: $value)
-                        .foregroundStyle(Color.red)
+                        .foregroundStyle(.red)
                 }
                 HStack {
                     Text(".tint(.red)")

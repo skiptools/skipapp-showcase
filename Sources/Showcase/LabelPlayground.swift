@@ -17,8 +17,8 @@ struct LabelPlayground: View {
                 Label("Title & SystemImage", systemImage: "star.fill")
                 Label(".font(.title)", systemImage: "star.fill")
                     .font(.title)
-                Label(".foregroundStyle(Color.red)", systemImage: "star.fill")
-                    .foregroundStyle(Color.red)
+                Label(".foregroundStyle(.red)", systemImage: "star.fill")
+                    .foregroundStyle(.red)
                 Label(".tint(.red)", systemImage: "star.fill")
                     .tint(.red)
             }

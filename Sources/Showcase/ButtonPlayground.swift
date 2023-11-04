@@ -43,14 +43,14 @@ struct ButtonPlayground: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled(true)
-                Button(".foregroundStyle(Color.red): \(tapCount)") {
+                Button(".foregroundStyle(.red): \(tapCount)") {
                     tapCount += 1
                 }
-                .foregroundStyle(Color.red)
-                Button(".foregroundStyle(Color.red), .disabled(true): \(tapCount)") {
+                .foregroundStyle(.red)
+                Button(".foregroundStyle(.red), .disabled(true): \(tapCount)") {
                     tapCount += 1
                 }
-                .foregroundStyle(Color.red).disabled(true)
+                .foregroundStyle(.red).disabled(true)
                 Button(".tint(.red): \(tapCount)") {
                     tapCount += 1
                 }
@@ -59,21 +59,21 @@ struct ButtonPlayground: View {
                     tapCount += 1
                 }
                 .tint(.red).disabled(true)
-                Button(".bordered, .foregroundStyle(Color.red): \(tapCount)") {
+                Button(".bordered, .foregroundStyle(.red): \(tapCount)") {
                     tapCount += 1
                 }
                 .buttonStyle(.bordered)
-                .foregroundStyle(Color.red)
+                .foregroundStyle(.red)
                 Button(".bordered, .tint(.red): \(tapCount)") {
                     tapCount += 1
                 }
                 .buttonStyle(.bordered)
                 .tint(.red)
-                Button(".borderedProminent, .foregroundStyle(Color.red): \(tapCount)") {
+                Button(".borderedProminent, .foregroundStyle(.red): \(tapCount)") {
                     tapCount += 1
                 }
                 .buttonStyle(.borderedProminent)
-                .foregroundStyle(Color.red)
+                .foregroundStyle(.red)
                 Button(".borderedProminent, .tint(.red): \(tapCount)") {
                     tapCount += 1
                 }

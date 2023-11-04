@@ -68,13 +68,13 @@ struct ImagePlayground: View {
                         .border(Color.blue)
                 }
                 HStack {
-                    Text(".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)\n.foregroundStyle(Color.red)")
+                    Text(".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)\n.foregroundStyle(.red)")
                     Spacer()
                     Image(systemName: systemNameSample)
                         .resizable()
                         .aspectRatio(3.0, contentMode: .fit)
                         .frame(width: 100.0, height: 100.0)
-                        .foregroundStyle(Color.red)
+                        .foregroundStyle(.red)
                         .border(Color.blue)
                 }
 

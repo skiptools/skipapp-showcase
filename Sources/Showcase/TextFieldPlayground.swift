@@ -20,8 +20,8 @@ struct TextFieldPlayground: View {
                     .frame(width: 200.0)
                 TextField(".disabled(true)", text: $text)
                     .disabled(true)
-                TextField(".foregroundStyle(Color.red)", text: $text)
-                    .foregroundStyle(Color.red)
+                TextField(".foregroundStyle(.red)", text: $text)
+                    .foregroundStyle(.red)
                 TextField(".tint(.red)", text: $text)
                     .tint(.red)
             }

@@ -4,7 +4,7 @@
     ".bordered, .disabled(true): %lld" : {
 
     },
-    ".bordered, .foregroundStyle(Color.red): %lld" : {
+    ".bordered, .foregroundStyle(.red): %lld" : {
 
     },
     ".bordered, .tint(.red): %lld" : {
@@ -16,7 +16,7 @@
     ".borderedProminent, .disabled(true): %lld" : {
 
     },
-    ".borderedProminent, .foregroundStyle(Color.red): %lld" : {
+    ".borderedProminent, .foregroundStyle(.red): %lld" : {
 
     },
     ".borderedProminent, .tint(.red): %lld" : {
@@ -34,13 +34,13 @@
     ".font(.title)" : {
 
     },
-    ".foregroundStyle(Color.red)" : {
+    ".foregroundStyle(.red)" : {
 
     },
-    ".foregroundStyle(Color.red), .disabled(true): %lld" : {
+    ".foregroundStyle(.red), .disabled(true): %lld" : {
 
     },
-    ".foregroundStyle(Color.red): %lld" : {
+    ".foregroundStyle(.red): %lld" : {
 
     },
     ".frame(100, 100)" : {
@@ -91,7 +91,7 @@
     ".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)" : {
 
     },
-    ".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)\n.foregroundStyle(Color.red)" : {
+    ".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)\n.foregroundStyle(.red)" : {
 
     },
     ".resizable()\n.frame(100, 100)" : {
@@ -188,6 +188,9 @@
 
     },
     "Cyan" : {
+
+    },
+    "Default" : {
 
     },
     "Disabled tap: (%lld, %lld)" : {
@@ -344,7 +347,7 @@
     "Label .font(.title)" : {
 
     },
-    "Label .foregroundStyle(Color.red)" : {
+    "Label .foregroundStyle(.red)" : {
 
     },
     "Label .listItemTint(.red)" : {
@@ -564,6 +567,12 @@
 
     },
     "Toggle" : {
+
+    },
+    "Vertical" : {
+
+    },
+    "Vertical fixed height" : {
 
     },
     "Viewbuilder init" : {
