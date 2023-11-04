@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ".blue.gradient, 10.0" : {
+
+    },
     ".bordered, .disabled(true): %lld" : {
 
     },
@@ -164,6 +167,12 @@
 
     },
     "Button .bordered" : {
+
+    },
+    "Circle.fill()" : {
+
+    },
+    "Circle.offset(20.0, 20.0).fill()" : {
 
     },
     "Clear" : {
@@ -543,6 +552,9 @@
       }
     },
     "Teal" : {
+
+    },
+    "Test" : {
 
     },
     "Text" : {

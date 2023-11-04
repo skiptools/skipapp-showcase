@@ -14,7 +14,7 @@ struct BorderPlayground: View {
                     Spacer()
                     Color.red
                         .frame(width: 100.0, height: 100.0)
-                        .border(Color.black)
+                        .border(.black)
                 }
                 HStack {
                     Text(".padding()")
@@ -22,7 +22,7 @@ struct BorderPlayground: View {
                     Color.red
                         .frame(width: 100.0, height: 100.0)
                         .padding()
-                        .border(Color.black)
+                        .border(.black)
                 }
                 HStack {
                     Text(".padding([.top, .leading])")
@@ -30,14 +30,21 @@ struct BorderPlayground: View {
                     Color.red
                         .frame(width: 100.0, height: 100.0)
                         .padding([.top, .leading], 32.0)
-                        .border(Color.black)
+                        .border(.black)
                 }
                 HStack {
                     Text("Blue, 5.0")
                     Spacer()
                     Color.red
                         .frame(width: 100.0, height: 100.0)
-                        .border(Color.blue, width: 5.0)
+                        .border(.blue, width: 5.0)
+                }
+                HStack {
+                    Text(".blue.gradient, 10.0")
+                    Spacer()
+                    Color.red
+                        .frame(width: 100.0, height: 100.0)
+                        .border(.blue.gradient, width: 10.0)
                 }
                 HStack {
                     Text("VStack")
@@ -50,7 +57,7 @@ struct BorderPlayground: View {
                             .frame(width: 100.0, height: 100.0)
                             .padding()
                     }
-                    .border(Color.black)
+                    .border(.black)
                 }
             }
             .padding()

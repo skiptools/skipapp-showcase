@@ -24,6 +24,7 @@ enum PlaygroundType: String, CaseIterable {
     case observable
     case offset
     case progressView
+    case shape
     case sheet
     case slider
     case spacer
@@ -67,6 +68,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Offset"
         case .progressView:
             return "ProgressView"
+        case .shape:
+            return "Shape"
         case .sheet:
             return "Sheet"
         case .slider:
@@ -143,6 +146,9 @@ struct ContentView: View {
                         .navigationTitle($0.title)
                 case .progressView:
                     ProgressViewPlayground()
+                        .navigationTitle($0.title)
+                case .shape:
+                    ShapePlayground()
                         .navigationTitle($0.title)
                 case .sheet:
                     SheetPlayground()
