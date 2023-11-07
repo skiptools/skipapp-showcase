@@ -169,10 +169,7 @@
     "Button .bordered" : {
 
     },
-    "Circle.fill()" : {
-
-    },
-    "Circle.offset(20.0, 20.0).fill()" : {
+    "Circle" : {
 
     },
     "Clear" : {
@@ -239,6 +236,18 @@
       }
     },
     "Favorites" : {
+
+    },
+    "fill(.red.gradient)" : {
+
+    },
+    "fill(.red)" : {
+
+    },
+    "fill(.red)\n  .stroke(.green, lineWidth: 10)" : {
+
+    },
+    "fill()" : {
 
     },
     "Fixed Content" : {
@@ -405,6 +414,9 @@
     "Observable" : {
 
     },
+    "offset(20, 20).fill()" : {
+
+    },
     "Orange" : {
 
     },
@@ -520,6 +532,21 @@
 
     },
     "String init: %lld" : {
+
+    },
+    "stroke(.red,\n    style: StrokeStyle(\n    lineWidth: 10.0,\n      dash: [10]))" : {
+
+    },
+    "stroke(.red, lineWidth: 10)" : {
+
+    },
+    "stroke(.red.gradient, lineWidth: 10)" : {
+
+    },
+    "stroke()" : {
+
+    },
+    "strokeBorder(.red, lineWidth: 10)" : {
 
     },
     "Symbol" : {
