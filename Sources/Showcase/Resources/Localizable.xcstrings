@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ".backgroundStyle(.red)" : {
+
+    },
     ".blue.gradient, 10.0" : {
 
     },
@@ -79,6 +82,9 @@
     ".plain: %lld" : {
 
     },
+    ".red" : {
+
+    },
     ".red.gradient" : {
 
     },
@@ -115,6 +121,9 @@
     ".tint(.red): %lld" : {
 
     },
+    "A" : {
+
+    },
     "Accent color" : {
 
     },
@@ -131,6 +140,12 @@
 
     },
     "AsyncImage" : {
+
+    },
+    "B" : {
+
+    },
+    "background()" : {
 
     },
     "Before" : {
@@ -326,7 +341,13 @@
     "Green" : {
 
     },
+    "Hello" : {
+
+    },
     "Home" : {
+
+    },
+    "idealWidth: 100,\n  minHeight: 0, maxHeight: .infinity" : {
 
     },
     "Increment counter: %lld" : {
@@ -387,6 +408,15 @@
 
     },
     "Mint" : {
+
+    },
+    "minWidth: 0, maxWidth: .infinity,\n  minHeight: 0, maxHeight: .infinity" : {
+
+    },
+    "minWidth: 100,\n  minHeight: 0, maxHeight: .infinity" : {
+
+    },
+    "minWidth: 300, maxWidth: .infinity,\n  minHeight: 100, maxHeight: .infinity" : {
 
     },
     "Nested ForEach row: %lld.%lld" : {
@@ -534,9 +564,6 @@
     "String init: %lld" : {
 
     },
-    "stroke(.red,\n    style: StrokeStyle(\n    lineWidth: 10.0,\n      dash: [10]))" : {
-
-    },
     "stroke(.red, lineWidth: 10)" : {
 
     },
@@ -627,6 +654,9 @@
 
     },
     "White, Opacity" : {
+
+    },
+    "width: 100, height: 50" : {
 
     },
     "With prompt" : {

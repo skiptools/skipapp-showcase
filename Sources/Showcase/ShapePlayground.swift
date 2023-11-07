@@ -80,16 +80,17 @@ struct ShapePlayground: View {
                     .frame(width: 100.0, height: 100.0)
                     .border(.blue)
                 }
-                HStack {
-                    Text("stroke(.red,\n    style: StrokeStyle(\n    lineWidth: 10.0,\n      dash: [10]))")
-                    Spacer()
-                    ZStack {
-                        Circle()
-                            .stroke(.red, style: StrokeStyle(lineWidth: 10.0, dash: [10.0]))
-                    }
-                    .frame(width: 100.0, height: 100.0)
-                    .border(.blue)
-                }
+                //~~~
+//                HStack {
+//                    Text("stroke(.red,\n    style: StrokeStyle(\n    lineWidth: 10.0,\n      dash: [10]))")
+//                    Spacer()
+//                    ZStack {
+//                        Circle()
+//                            .stroke(.red, style: StrokeStyle(lineWidth: 10.0, dash: [10.0]))
+//                    }
+//                    .frame(width: 100.0, height: 100.0)
+//                    .border(.blue)
+//                }
                 HStack {
                     Text("strokeBorder(.red, lineWidth: 10)")
                     Spacer()
