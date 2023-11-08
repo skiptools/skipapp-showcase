@@ -124,6 +124,9 @@
     "A" : {
 
     },
+    "Accent color" : {
+
+    },
     "After" : {
 
     },
@@ -160,6 +163,9 @@
     "Black" : {
 
     },
+    "Blue" : {
+
+    },
     "Blue, 5.0" : {
 
     },
@@ -167,6 +173,9 @@
 
     },
     "Border" : {
+
+    },
+    "Brown" : {
 
     },
     "Button" : {
@@ -179,6 +188,9 @@
 
     },
     "Circle" : {
+
+    },
+    "Clear" : {
 
     },
     "Collection Content" : {
@@ -197,6 +209,9 @@
 
     },
     "Custom placeholder" : {
+
+    },
+    "Cyan" : {
 
     },
     "Default" : {
@@ -323,6 +338,12 @@
     "ForEach section %lld" : {
 
     },
+    "Gray" : {
+
+    },
+    "Green" : {
+
+    },
     "height: 50" : {
 
     },
@@ -345,6 +366,9 @@
 
     },
     "Indexed Content" : {
+
+    },
+    "Indigo" : {
 
     },
     "Info" : {
@@ -386,6 +410,9 @@
     "Long press: %lld" : {
 
     },
+    "Mint" : {
+
+    },
     "minWidth: 0, maxWidth: .infinity,\n  minHeight: 0, maxHeight: .infinity" : {
 
     },
@@ -423,7 +450,13 @@
     "offset(20, 20).fill()" : {
 
     },
+    "Orange" : {
+
+    },
     "Overridden to title font" : {
+
+    },
+    "Pink" : {
 
     },
     "Plain" : {
@@ -441,6 +474,9 @@
     "Present sheet" : {
 
     },
+    "Primary" : {
+
+    },
     "Progress 0.5" : {
 
     },
@@ -456,7 +492,19 @@
     "Prompt" : {
 
     },
+    "Purple" : {
+
+    },
     "Push another" : {
+
+    },
+    "Red" : {
+
+    },
+    "Red, .opacity(0.5)" : {
+
+    },
+    "RGB" : {
 
     },
     "Row %lld" : {
@@ -481,6 +529,9 @@
 
     },
     "scale: 2.0" : {
+
+    },
+    "Secondary" : {
 
     },
     "Section 1" : {
@@ -560,6 +611,9 @@
         }
       }
     },
+    "Teal" : {
+
+    },
     "Test" : {
 
     },
@@ -602,6 +656,12 @@
     "VStack" : {
 
     },
+    "White" : {
+
+    },
+    "White, Opacity" : {
+
+    },
     "width: 100" : {
 
     },
@@ -615,6 +675,9 @@
 
     },
     "Wrap: This is some long text that should wrap when it exceeds the width of its frame" : {
+
+    },
+    "Yellow" : {
 
     }
   },

@@ -40,6 +40,24 @@ struct StackPlayground: View {
                     Text("Text2")
                 }
                 .border(Color.blue)
+                VStack {
+                    Spacer()
+                    Color.red.frame(height: 20.0)
+                    Spacer()
+                    Color.red.frame(height: 20.0)
+                    Spacer()
+                }
+                .background(.yellow)
+                .frame(width: 100.0, height: 100.0)
+                HStack {
+                    Spacer()
+                    Color.red.frame(width: 20.0)
+                    Spacer()
+                    Color.red.frame(width: 20.0)
+                    Spacer()
+                }
+                .background(.yellow)
+                .frame(width: 100.0, height: 100.0)
             }
             .padding()
         }
