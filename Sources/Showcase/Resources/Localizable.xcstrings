@@ -124,9 +124,6 @@
     "A" : {
 
     },
-    "Accent color" : {
-
-    },
     "After" : {
 
     },
@@ -137,6 +134,9 @@
 
     },
     "After vstack" : {
+
+    },
+    "alignment: .bottomTrailing" : {
 
     },
     "AsyncImage" : {
@@ -160,9 +160,6 @@
     "Black" : {
 
     },
-    "Blue" : {
-
-    },
     "Blue, 5.0" : {
 
     },
@@ -170,9 +167,6 @@
 
     },
     "Border" : {
-
-    },
-    "Brown" : {
 
     },
     "Button" : {
@@ -185,9 +179,6 @@
 
     },
     "Circle" : {
-
-    },
-    "Clear" : {
 
     },
     "Collection Content" : {
@@ -206,9 +197,6 @@
 
     },
     "Custom placeholder" : {
-
-    },
-    "Cyan" : {
 
     },
     "Default" : {
@@ -335,19 +323,13 @@
     "ForEach section %lld" : {
 
     },
-    "Gray" : {
-
-    },
-    "Green" : {
+    "height: 50" : {
 
     },
     "Hello" : {
 
     },
     "Home" : {
-
-    },
-    "idealWidth: 100,\n  minHeight: 0, maxHeight: .infinity" : {
 
     },
     "Increment counter: %lld" : {
@@ -363,9 +345,6 @@
 
     },
     "Indexed Content" : {
-
-    },
-    "Indigo" : {
 
     },
     "Info" : {
@@ -407,9 +386,6 @@
     "Long press: %lld" : {
 
     },
-    "Mint" : {
-
-    },
     "minWidth: 0, maxWidth: .infinity,\n  minHeight: 0, maxHeight: .infinity" : {
 
     },
@@ -447,13 +423,7 @@
     "offset(20, 20).fill()" : {
 
     },
-    "Orange" : {
-
-    },
     "Overridden to title font" : {
-
-    },
-    "Pink" : {
 
     },
     "Plain" : {
@@ -471,9 +441,6 @@
     "Present sheet" : {
 
     },
-    "Primary" : {
-
-    },
     "Progress 0.5" : {
 
     },
@@ -489,19 +456,7 @@
     "Prompt" : {
 
     },
-    "Purple" : {
-
-    },
     "Push another" : {
-
-    },
-    "Red" : {
-
-    },
-    "Red, .opacity(0.5)" : {
-
-    },
-    "RGB" : {
 
     },
     "Row %lld" : {
@@ -526,9 +481,6 @@
 
     },
     "scale: 2.0" : {
-
-    },
-    "Secondary" : {
 
     },
     "Section 1" : {
@@ -562,6 +514,9 @@
 
     },
     "String init: %lld" : {
+
+    },
+    "stroke(.red,\n    style: StrokeStyle(\n    lineWidth: 10.0,\n      dash: [10]))" : {
 
     },
     "stroke(.red, lineWidth: 10)" : {
@@ -605,9 +560,6 @@
         }
       }
     },
-    "Teal" : {
-
-    },
     "Test" : {
 
     },
@@ -650,22 +602,19 @@
     "VStack" : {
 
     },
-    "White" : {
-
-    },
-    "White, Opacity" : {
+    "width: 100" : {
 
     },
     "width: 100, height: 50" : {
+
+    },
+    "width: 100, height: 100" : {
 
     },
     "With prompt" : {
 
     },
     "Wrap: This is some long text that should wrap when it exceeds the width of its frame" : {
-
-    },
-    "Yellow" : {
 
     }
   },

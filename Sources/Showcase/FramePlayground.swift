@@ -10,6 +10,25 @@ struct FramePlayground: View {
         ScrollView {
             VStack(spacing: 16.0) {
                 VStack {
+                    Text("width: 100")
+                    HStack {
+                        Text("A")
+                        Color.red
+                            .frame(width: 100.0)
+                        Text("B")
+                    }
+                }
+                .frame(height: 50.0)
+                VStack {
+                    Text("height: 50")
+                    HStack {
+                        Text("A")
+                        Color.red
+                            .frame(height: 50.0)
+                        Text("B")
+                    }
+                }
+                VStack {
                     Text("width: 100, height: 50")
                     HStack {
                         Text("A")
@@ -61,15 +80,16 @@ struct FramePlayground: View {
                     }
                 }
                 VStack {
-                    Text("idealWidth: 100,\n  minHeight: 0, maxHeight: .infinity")
-                    HStack {
-                        Text("A")
-                        Color.red
-                            .frame(idealWidth: 100.0, minHeight: 0.0, maxHeight: .infinity)
-                        Color.blue
-                            .frame(minWidth: 0.0, maxWidth: .infinity, minHeight: 0.0, maxHeight: .infinity)
-                        Text("B")
-                    }
+                    Text("width: 100, height: 100")
+                    Text("A")
+                        .frame(width: 100.0, height: 100.0)
+                        .border(.black)
+                }
+                VStack {
+                    Text("alignment: .bottomTrailing")
+                    Text("A")
+                        .frame(width: 100.0, height: 100.0, alignment: .bottomTrailing)
+                        .border(.black)
                 }
             }
             .padding()
