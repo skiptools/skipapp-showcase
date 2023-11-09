@@ -31,6 +31,9 @@
     ".borderedProminent: %lld" : {
 
     },
+    ".clipShape(.capsule)" : {
+
+    },
     ".disabled(true)" : {
 
     },
@@ -187,6 +190,9 @@
     "Button .bordered" : {
 
     },
+    "Capsule" : {
+
+    },
     "Circle" : {
 
     },
@@ -253,7 +259,13 @@
         }
       }
     },
+    "Ellipse" : {
+
+    },
     "Favorites" : {
+
+    },
+    "Fill & Stroke" : {
 
     },
     "fill(.red.gradient)" : {
@@ -263,9 +275,6 @@
 
     },
     "fill(.red)\n  .stroke(.green, lineWidth: 10)" : {
-
-    },
-    "fill()" : {
 
     },
     "Fixed Content" : {
@@ -377,6 +386,9 @@
     "Inner button" : {
 
     },
+    "inset(by: 10)" : {
+
+    },
     "iOS 17 / macOS 14 required for Observation framework" : {
 
     },
@@ -447,7 +459,7 @@
     "Observable" : {
 
     },
-    "offset(20, 20).fill()" : {
+    "offset(x: 30, y: 10)" : {
 
     },
     "Orange" : {
@@ -498,6 +510,9 @@
     "Push another" : {
 
     },
+    "Rectangle" : {
+
+    },
     "Red" : {
 
     },
@@ -505,6 +520,12 @@
 
     },
     "RGB" : {
+
+    },
+    "rotation(Angle(degrees: 45))" : {
+
+    },
+    "RoundedRectangle" : {
 
     },
     "Row %lld" : {
@@ -528,7 +549,13 @@
     "Row 3b" : {
 
     },
+    "scale, rotate, offset, stroke" : {
+
+    },
     "scale: 2.0" : {
+
+    },
+    "scale(x: 0.5, y: 1.2)" : {
 
     },
     "Secondary" : {
@@ -565,6 +592,9 @@
 
     },
     "String init: %lld" : {
+
+    },
+    "stroke x2" : {
 
     },
     "stroke(.red,\n    style: StrokeStyle(\n    lineWidth: 10.0,\n      dash: [10]))" : {
@@ -639,6 +669,12 @@
 
     },
     "Toggle" : {
+
+    },
+    "Transforms" : {
+
+    },
+    "UnevenRoundedRectangle" : {
 
     },
     "Vertical" : {

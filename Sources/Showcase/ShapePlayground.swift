@@ -9,9 +9,28 @@ struct ShapePlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Circle").font(.title).bold()
                 HStack {
-                    Text("fill()")
+                    Text("Capsule")
+                    Spacer()
+                    ZStack {
+                        Capsule()
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 50.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Capsule")
+                    Spacer()
+                    ZStack {
+                        Capsule()
+                            .fill()
+                    }
+                    .frame(width: 50.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Circle")
                     Spacer()
                     ZStack {
                         Circle()
@@ -21,15 +40,86 @@ struct ShapePlayground: View {
                     .border(.blue)
                 }
                 HStack {
-                    Text("fill()")
+                    Text("Circle")
                     Spacer()
                     ZStack {
                         Circle()
                             .fill()
                     }
-                    .frame(width: 50.0, height: 100.0)
+                    .frame(width: 100.0, height: 50.0)
                     .border(.blue)
                 }
+                HStack {
+                    Text("Ellipse")
+                    Spacer()
+                    ZStack {
+                        Ellipse()
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Ellipse")
+                    Spacer()
+                    ZStack {
+                        Ellipse()
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 50.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Rectangle")
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Rectangle")
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 50.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("RoundedRectangle")
+                    Spacer()
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 40.0)
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("RoundedRectangle")
+                    Spacer()
+                    ZStack {
+                        RoundedRectangle(cornerSize: CGSize(width: 40.0, height: 20.0))
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 50.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("UnevenRoundedRectangle")
+                    Spacer()
+                    ZStack {
+                        UnevenRoundedRectangle(topLeadingRadius: 10.0, bottomLeadingRadius: 20.0, bottomTrailingRadius: 30.0, topTrailingRadius: 40.0)
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                Text("Fill & Stroke").font(.title).bold()
                 HStack {
                     Text("fill(.red)")
                     Spacer()
@@ -114,12 +204,72 @@ struct ShapePlayground: View {
                     .border(.blue)
                 }
                 HStack {
-                    Text("offset(20, 20).fill()")
+                    Text("stroke x2")
                     Spacer()
                     ZStack {
-                        Circle()
-                            .offset(x: 20.0, y: 20.0)
+                        if #available(iOS 17, macOS 14, *) {
+                            Circle()
+                                .stroke(.red, lineWidth: 10.0)
+                                .stroke(.green, lineWidth: 5.0)
+                        }
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                Text("Transforms").font(.title).bold()
+                HStack {
+                    Text("inset(by: 10)")
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .inset(by: 10.0)
                             .fill()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("offset(x: 30, y: 10)")
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .offset(x: 30.0, y: 10.0)
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("rotation(Angle(degrees: 45))")
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .rotation(Angle(degrees: -30.0))
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("scale(x: 0.5, y: 1.2)")
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .scale(x: 0.5, y: 1.2)
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("scale, rotate, offset, stroke")
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .scale(x: 0.5, y: 1.2)
+                            .rotation(Angle(degrees: -30.0))
+                            .offset(x: 30.0, y: 10.0)
+                            .stroke(.red, lineWidth: 10.0)
                     }
                     .frame(width: 100.0, height: 100.0)
                     .border(.blue)

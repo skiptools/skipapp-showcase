@@ -45,6 +45,14 @@ struct BackgroundPlayground: View {
                     .frame(width: 100.0, height: 100.0)
                     .backgroundStyle(.red)
                 }
+                HStack {
+                    Text(".clipShape(.capsule)")
+                    Spacer()
+                    Image(systemName: "heart.fill")
+                        .frame(width: 100.0, height: 50.0)
+                        .background(.red.gradient)
+                        .clipShape(.capsule)
+                }
             }
             .padding()
         }
