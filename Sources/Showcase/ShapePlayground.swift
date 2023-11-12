@@ -262,6 +262,17 @@ struct ShapePlayground: View {
                     .border(.blue)
                 }
                 HStack {
+                    Text("scale(x: 1.0, y: -1.0)")
+                    Spacer()
+                    ZStack {
+                        UnevenRoundedRectangle(topLeadingRadius: 10.0, bottomLeadingRadius: 20.0, bottomTrailingRadius: 30.0, topTrailingRadius: 40.0)
+                            .scale(x: 1.0, y: -1.0)
+                            .fill()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
                     Text("scale, rotate, offset, stroke")
                     Spacer()
                     ZStack {

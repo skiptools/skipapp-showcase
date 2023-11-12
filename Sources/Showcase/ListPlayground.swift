@@ -15,6 +15,8 @@ enum ListPlaygroundType: String, CaseIterable {
     case plainStyle
     case plainStyleSectioned
     case plainStyleEmpty
+    case editActions
+    case observableEditActions
 
     var title: String {
         switch self {
@@ -36,11 +38,17 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Plain Style Sectioned"
         case .plainStyleEmpty:
             return "Plain Style Empty"
+        case .editActions:
+            return "EditActions"
+        case .observableEditActions:
+            return "Observable EditActions"
         }
     }
 }
 
 struct ListPlayground: View {
+    @StateObject var editActionsModel = ObservableEditActionsPlayground.Model()
+
     var body: some View {
         List(ListPlaygroundType.allCases, id: \.rawValue) { type in
             NavigationLink(type.title, value: type)
@@ -73,6 +81,12 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .plainStyleEmpty:
                 PlainStyleEmptyListPlayground()
+                    .navigationTitle($0.title)
+            case .editActions:
+                EditActionsPlayground()
+                    .navigationTitle($0.title)
+            case .observableEditActions:
+                ObservableEditActionsPlayground(model: editActionsModel)
                     .navigationTitle($0.title)
             }
         }
@@ -237,6 +251,54 @@ struct PlainStyleSectionedListPlayground: View {
 struct PlainStyleEmptyListPlayground: View {
     var body: some View {
         List {
+        }
+        .listStyle(.plain)
+    }
+}
+
+struct EditActionsPlayground: View {
+    struct ListItem {
+        let i: Int
+        let s: String
+    }
+
+    @State var items = {
+        var items: [ListItem] = []
+        for i in 0..<50 {
+            items.append(ListItem(i: i, s: "Item \(i)"))
+        }
+        return items
+    }()
+
+    var body: some View {
+        List($items, id: \.i, editActions: .delete) { $item in
+            Text("\(item.s) \(item.i % 5 == 0 ? " (Fixed)" : "")")
+                .deleteDisabled(item.i % 5 == 0)
+        }
+        .listStyle(.plain)
+    }
+}
+
+struct ObservableEditActionsPlayground: View {
+    class Model: ObservableObject {
+        @Published var items: [ListItem] = {
+            var items: [ListItem] = []
+            for i in 0..<50 {
+                items.append(ListItem(i: i, s: "Item \(i)"))
+            }
+            return items
+        }()
+    }
+    struct ListItem {
+        let i: Int
+        let s: String
+    }
+
+    @ObservedObject var model: Model
+
+    var body: some View {
+        List($model.items, id: \.i, editActions: .delete) { $item in
+            Text(item.s)
         }
         .listStyle(.plain)
     }
