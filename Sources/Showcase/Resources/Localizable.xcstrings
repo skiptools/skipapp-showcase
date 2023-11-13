@@ -124,15 +124,11 @@
     ".tint(.red): %lld" : {
 
     },
-    "%@ %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@"
-          }
-        }
-      }
+    "%@ .deleteDisabled" : {
+
+    },
+    "%@ .moveDisabled" : {
+
     },
     "A" : {
 
@@ -402,7 +398,13 @@
     "iOS 17 / macOS 14 required for Observation framework" : {
 
     },
+    "isOn" : {
+
+    },
     "Italic" : {
+
+    },
+    "Item %lld" : {
 
     },
     "Label" : {
@@ -572,6 +574,9 @@
 
     },
     "Secondary" : {
+
+    },
+    "Section 0 (Fixed)" : {
 
     },
     "Section 1" : {

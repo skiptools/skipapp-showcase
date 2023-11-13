@@ -17,6 +17,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case plainStyleEmpty
     case editActions
     case observableEditActions
+    case sectionedEditActions
 
     var title: String {
         switch self {
@@ -42,6 +43,8 @@ enum ListPlaygroundType: String, CaseIterable {
             return "EditActions"
         case .observableEditActions:
             return "Observable EditActions"
+        case .sectionedEditActions:
+            return "Sectioned EditActions"
         }
     }
 }
@@ -87,6 +90,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .observableEditActions:
                 ObservableEditActionsPlayground(model: editActionsModel)
+                    .navigationTitle($0.title)
+            case .sectionedEditActions:
+                SectionedEditActionsPlayground()
                     .navigationTitle($0.title)
             }
         }
@@ -260,6 +266,7 @@ struct EditActionsPlayground: View {
     struct ListItem {
         let i: Int
         let s: String
+        var toggled = false
     }
 
     @State var items = {
@@ -271,11 +278,22 @@ struct EditActionsPlayground: View {
     }()
 
     var body: some View {
-        List($items, id: \.i, editActions: .delete) { $item in
-            Text("\(item.s) \(item.i % 5 == 0 ? " (Fixed)" : "")")
-                .deleteDisabled(item.i % 5 == 0)
+        List($items, id: \.i, editActions: .all) { $item in
+            if item.i % 5 == 0 {
+                Text("\(item.s) .deleteDisabled")
+                    .deleteDisabled(true)
+            } else if item.i % 4 == 0 {
+                Text("\(item.s) .moveDisabled")
+                    .moveDisabled(true)
+            } else {
+                HStack {
+                    Text(item.s)
+                    Spacer()
+                    Toggle("isOn", isOn: $item.toggled)
+                        .labelsHidden()
+                }
+            }
         }
-        .listStyle(.plain)
     }
 }
 
@@ -292,14 +310,63 @@ struct ObservableEditActionsPlayground: View {
     struct ListItem {
         let i: Int
         let s: String
+        var toggled = false
     }
 
     @ObservedObject var model: Model
 
     var body: some View {
-        List($model.items, id: \.i, editActions: .delete) { $item in
-            Text(item.s)
+        List($model.items, id: \.i, editActions: .all) { $item in
+            HStack {
+                Text(item.s)
+                Spacer()
+                Toggle("isOn", isOn: $item.toggled)
+                    .labelsHidden()
+            }
         }
-        .listStyle(.plain)
+    }
+}
+
+struct SectionedEditActionsPlayground: View {
+    @State var items0 = {
+        var items: [Int] = []
+        for i in 0..<10 {
+            items.append(i)
+        }
+        return items
+    }()
+    @State var items1 = {
+        var items: [Int] = []
+        for i in 11..<20 {
+            items.append(i)
+        }
+        return items
+    }()
+    @State var items2 = {
+        var items: [Int] = []
+        for i in 21..<30 {
+            items.append(i)
+        }
+        return items
+    }()
+
+    var body: some View {
+        List {
+            Section("Section 0 (Fixed)") {
+                ForEach(items0, id: \.self) { item in
+                    Text("Item \(item)")
+                }
+            }
+            Section("Section 1") {
+                ForEach($items1, id: \.self, editActions: .all) { $item in
+                    Text("Item \(item)")
+                }
+            }
+            Section("Section 2") {
+                ForEach($items2, id: \.self, editActions: .all) { $item in
+                    Text("Item \(item)")
+                }
+            }
+        }
     }
 }
