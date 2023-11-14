@@ -3,6 +3,7 @@ xcuserdata/
 
 xcodebuild*.log
 
+.gradle/
 .*.swp
 .*.swo
 .DS_Store
