@@ -4,22 +4,3 @@
 # settings are all specified here. See https://skip.tools/docs
 build:
   contents:
-    - block: 'plugins'
-      contents:
-        - 'id("com.android.application") version "8.1.0"'
-      remove:
-        - 'id("com.android.library") version "8.1.0"'
-    - block: 'android'
-      contents:
-        - block: 'buildFeatures'
-          contents:
-            - 'buildConfig = true'
-        - block: 'buildTypes'
-          contents:
-            - block: 'release'
-              contents:
-                # by default we sign with the debug key; for publishing to an app store, the developer key will need to be supplied
-                - 'signingConfig = signingConfigs.getByName("debug")'
-                # enabling minification reduces compose dependency classe size ~85%
-                - 'isMinifyEnabled = true'
-                - 'proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")'
