@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49231BAC2AC5BCEF00F98ADF /* Showcase in Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* Showcase */; };
-		49231BAD2AC5BCEF00F98ADF /* Showcase in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* Showcase */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		49231BAC2AC5BCEF00F98ADF /* ShowcaseApp in Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */; };
+		49231BAD2AC5BCEF00F98ADF /* ShowcaseApp in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		499CD43B2AC5B799001AE8D8 /* ShowcaseAppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */; };
 		499CD4402AC5B799001AE8D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C2F2A52156300F06D93 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -28,13 +28,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		493609562A6B7EAE00C401E2 /* Showcase */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Showcase; path = .; sourceTree = "<group>"; };
+		493609562A6B7EAE00C401E2 /* Showcase */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Showcase; path = ..; sourceTree = "<group>"; };
+		496EB72F2A6AE4DE00C1253A /* ../Skip.env */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Skip.env; path = ../Skip.env; sourceTree = "<group>"; };
 		496EB72F2A6AE4DE00C1253B /* Showcase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Showcase.xcconfig; sourceTree = "<group>"; };
+		496EB72F2A6AE4DE00C1253C /* README.md */ = {isa = PBXFileReference; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4990AB3B2A91AFC5005777FD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		499CD4442AC5B799001AE8D8 /* ShowcaseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowcaseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowcaseAppMain.swift; path = Sources/ShowcaseApp/ShowcaseAppMain.swift; sourceTree = SOURCE_ROOT; };
-		49F90C2F2A52156300F06D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Showcase/Skip/Assets.xcassets; sourceTree = "<group>"; };
-		49F90C312A52156300F06D93 /* Capabilities.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Capabilities.entitlements; path = Sources/Showcase/Skip/Capabilities.entitlements; sourceTree = "<group>"; };
+		499CD4442AC5B799001AE8D8 /* Showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Showcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowcaseAppMain.swift; path = Sources/ShowcaseAppMain.swift; sourceTree = SOURCE_ROOT; };
+		49F90C2F2A52156300F06D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Assets.xcassets; sourceTree = "<group>"; };
+		49F90C312A52156300F06D93 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Entitlements.plist; path = Entitlements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,31 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49429E532A61E02A00AA21A8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4990AB3B2A91AFC5005777FD /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		49F90C1F2A52156200F06D93 = {
 			isa = PBXGroup;
 			children = (
+				496EB72F2A6AE4DE00C1253C /* README.md */,
+				496EB72F2A6AE4DE00C1253A /* ../Skip.env */,
 				496EB72F2A6AE4DE00C1253B /* Showcase.xcconfig */,
 				493609562A6B7EAE00C401E2 /* Showcase */,
 				49F90C2A2A52156200F06D93 /* App */,
-				49F90C292A52156200F06D93 /* Products */,
-				49429E532A61E02A00AA21A8 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		49F90C292A52156200F06D93 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				499CD4442AC5B799001AE8D8 /* ShowcaseApp.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		49F90C2A2A52156200F06D93 /* App */ = {
@@ -81,7 +67,7 @@
 			children = (
 				49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */,
 				49F90C2F2A52156300F06D93 /* Assets.xcassets */,
-				49F90C312A52156300F06D93 /* Capabilities.entitlements */,
+				49F90C312A52156300F06D93 /* Entitlements.plist */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -89,27 +75,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		499CD4382AC5B799001AE8D8 /* ShowcaseApp */ = {
+		499CD4382AC5B799001AE8D8 /* Showcase */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 499CD4412AC5B799001AE8D8 /* Build configuration list for PBXNativeTarget "ShowcaseApp" */;
+			buildConfigurationList = 499CD4412AC5B799001AE8D8 /* Build configuration list for PBXNativeTarget "Showcase" */;
 			buildPhases = (
 				499CD43A2AC5B799001AE8D8 /* Sources */,
 				499CD43C2AC5B799001AE8D8 /* Frameworks */,
 				499CD43E2AC5B799001AE8D8 /* Resources */,
-				499CD4452AC5B869001AE8D8 /* Build Android APK */,
-				499CD4462AC5B86B001AE8D8 /* Launch Android APK */,
+				499CD4452AC5B869001AE8D8 /* Run skip gradle */,
 				499CD44A2AC5B9C6001AE8D8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ShowcaseApp;
+			name = Showcase;
 			packageProductDependencies = (
-				49231BAB2AC5BCEF00F98ADF /* Showcase */,
+				49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */,
 			);
 			productName = App;
-			productReference = 499CD4442AC5B799001AE8D8 /* ShowcaseApp.app */;
+			productReference = 499CD4442AC5B799001AE8D8 /* Showcase.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -137,7 +122,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				499CD4382AC5B799001AE8D8 /* ShowcaseApp */,
+				499CD4382AC5B799001AE8D8 /* Showcase */,
 			);
 		};
 /* End PBXProject section */
@@ -154,7 +139,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		499CD4452AC5B869001AE8D8 /* Build Android APK */ = {
+		499CD4452AC5B869001AE8D8 /* Run skip gradle */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -164,33 +149,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Build Android APK";
+			name = "Run skip gradle";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -e";
-			shellScript = "if [ \"${SKIP_BUILD_APK}\" != \"YES\" -o \"${SKIP_ZERO}\" != \"\" ]; then\n  echo \"note: Not building apk due to SKIP_BUILD_APK setting\"\n  exit 0\nfi\n\nPROJECT=$(basename ${PROJECT_DIR})\nPLUGIN=${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos\nPATH=${BUILD_ROOT}/Debug:${PLUGIN}:${PATH}:${HOMEBREW_PREFIX:-/opt/homebrew}/bin\nANDROID_HOME=${ANDROID_HOME:-${HOME}/Library/Android/sdk}\nSRCPKG=${BUILD_ROOT}/../../SourcePackages\necho \"note: Building APK for: ${PROJECT}\"\nwhich skip\nmkdir -p Skip/build/artifacts/\nskip gradle --package \"${PROJECT}\" --module ${PROJECT_NAME} assemble${CONFIGURATION}\ncd Skip/build/\nln -sfh ${SRCPKG}/plugins/*.output .\ncd artifacts/\nln -f ${SRCPKG}/plugins/*.output/*/skipstone/*/.build/*/outputs/apk/*/*.apk .\n";
-		};
-		499CD4462AC5B86B001AE8D8 /* Launch Android APK */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Launch Android APK";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/sh -e";
-			shellScript = "if [ \"${SKIP_LAUNCH_APK}\" != \"YES\" -o \"${SKIP_ZERO}\" != \"\" ]; then\n  echo \"note: Not launching apk due to SKIP_LAUNCH_APK setting\"\n  exit 0\nfi\n\nPROJECT=$(basename ${PROJECT_DIR})\nPLUGIN=${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos\nPATH=${BUILD_ROOT}/Debug:${PLUGIN}:${PATH}:${HOMEBREW_PREFIX:-/opt/homebrew}/bin\nANDROID_HOME=${ANDROID_HOME:-${HOME}/Library/Android/sdk}\n\necho \"note: Running skip adb install\"\nskip adb install -t -r -d -g Skip/build/artifacts/${PROJECT_NAME}-${CONFIGURATION}.apk\necho \"note: Running skip adb am start-activity\"\nskip adb shell am start-activity -S -W -n ${PRODUCT_BUNDLE_IDENTIFIER}/${ANDROID_PACKAGE_NAME}.MainActivity\n";
+			shellScript = "if [ \"${SKIP_ZERO}\" != \"\" -o \"${ACTION}\" = \"install\" ]; then\n	echo \"note: skipping skip due to SKIP_ZERO\"\n	exit 0\nfi\nSKIP_ACTION=\"${SKIP_ACTION:-launch}\"\nPATH=${BUILD_ROOT}/Debug:${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos:${PATH}:/opt/homebrew/bin:/usr/local/bin\necho \"note: running gradle build with: $(which skip) gradle -p ${PWD}/../Android ${SKIP_ACTION:-launch}Debug\"\nskip gradle -p ../Android ${SKIP_ACTION:-launch}${CONFIGURATION:-Debug}\n\nif [ \"${SKIP_ZERO}\" != \"\" ]; then\n	echo \"note: skipping skip due to SKIP_ZERO\"\n	exit 0\nfi\nif [ \"${ACTION}\" = \"install\" ]; then\n	SKIP_ACTION=\"build\"\nelse\n	SKIP_ACTION=\"${SKIP_ACTION:-launch}\"\nfi\nPATH=${BUILD_ROOT}/Debug:${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos:${PATH}:${HOMEBREW_PREFIX:-/opt/homebrew}/bin\necho \"note: running gradle build with: $(which skip) gradle -p ${PWD}/../Android ${SKIP_ACTION:-launch}Debug\"\nskip gradle -p ../Android ${SKIP_ACTION:-launch}${CONFIGURATION:-Debug}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -229,11 +195,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_PREVIEWS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.4;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -246,11 +209,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_PREVIEWS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.4;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -263,11 +223,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_PREVIEWS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.4;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -319,7 +276,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		499CD4412AC5B799001AE8D8 /* Build configuration list for PBXNativeTarget "ShowcaseApp" */ = {
+		499CD4412AC5B799001AE8D8 /* Build configuration list for PBXNativeTarget "Showcase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				499CD4422AC5B799001AE8D8 /* Debug */,
@@ -342,9 +299,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		49231BAB2AC5BCEF00F98ADF /* Showcase */ = {
+		49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Showcase;
+			productName = ShowcaseApp;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

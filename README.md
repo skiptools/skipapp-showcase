@@ -145,3 +145,11 @@ Examples of the List component, which can be seen at https://source.skip.tools/s
 
 
 
+## Project
+
+This project was initialized with the command:
+
+```
+skip init --no-module-tests --no-build --icon-color=8E8E93 --free --zero --appid=skip.showcase.App skipapp-showcase Showcase
+```
+
