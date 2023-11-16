@@ -37,6 +37,7 @@ enum PlaygroundType: String, CaseIterable {
     case text
     case textField
     case toggle
+    case toolbar
 
     var title: String {
         switch self {
@@ -96,6 +97,8 @@ enum PlaygroundType: String, CaseIterable {
             return "TextField"
         case .toggle:
             return "Toggle"
+        case .toolbar:
+            return "Toolbar"
         }
     }
 }
@@ -194,6 +197,9 @@ public struct ContentView: View {
                         .navigationTitle($0.title)
                 case .toggle:
                     TogglePlayground()
+                        .navigationTitle($0.title)
+                case .toolbar:
+                    ToolbarPlayground()
                         .navigationTitle($0.title)
                 }
             }

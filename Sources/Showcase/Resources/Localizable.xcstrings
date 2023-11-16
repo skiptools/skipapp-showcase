@@ -220,6 +220,9 @@
     "Complex content button" : {
 
     },
+    "Content %lld" : {
+
+    },
     "Content row %lld" : {
 
     },
@@ -296,6 +299,9 @@
 
     },
     "fill(.red)\n  .stroke(.green, lineWidth: 10)" : {
+
+    },
+    "First: %lld" : {
 
     },
     "Fixed Content" : {
@@ -592,6 +598,9 @@
 
     },
     "scale(x: 1.0, y: -1.0)" : {
+
+    },
+    "Second: %lld" : {
 
     },
     "Secondary" : {
