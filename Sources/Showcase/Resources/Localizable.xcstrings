@@ -268,6 +268,9 @@
         }
       }
     },
+    "EllipitcalGradient" : {
+
+    },
     "Ellipse" : {
 
     },
@@ -434,6 +437,9 @@
     "Label in NavigationLink" : {
 
     },
+    "LinearGradient" : {
+
+    },
     "List" : {
 
     },
@@ -526,6 +532,9 @@
 
     },
     "Push another" : {
+
+    },
+    "RadialGradient" : {
 
     },
     "Rectangle" : {
