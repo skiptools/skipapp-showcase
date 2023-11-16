@@ -217,6 +217,9 @@
     "Content row %lld" : {
 
     },
+    "Custom" : {
+
+    },
     "Custom closure" : {
 
     },
@@ -269,6 +272,9 @@
 
     },
     "Favorites" : {
+
+    },
+    "Fill" : {
 
     },
     "Fill & Stroke" : {
@@ -534,6 +540,9 @@
     "RGB" : {
 
     },
+    "Rotation" : {
+
+    },
     "rotation(Angle(degrees: 45))" : {
 
     },
@@ -610,6 +619,9 @@
 
     },
     "String init: %lld" : {
+
+    },
+    "Stroke" : {
 
     },
     "stroke x2" : {

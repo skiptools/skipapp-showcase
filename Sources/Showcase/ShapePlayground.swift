@@ -119,6 +119,35 @@ struct ShapePlayground: View {
                     .frame(width: 100.0, height: 100.0)
                     .border(.blue)
                 }
+                Text("Custom").font(.title).bold()
+                HStack {
+                    Text("Fill")
+                    Spacer()
+                    ZStack {
+                        CustomShape()
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Stroke")
+                    Spacer()
+                    ZStack {
+                        CustomShape()
+                            .stroke(lineWidth: 10.0)
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Rotation")
+                    Spacer()
+                    ZStack {
+                        customPath(in: CGSize(width: 100.0, height: 100.0), transform: CGAffineTransform(rotationAngle: Angle(degrees: 30.0).radians))
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .border(.blue)
+                }
                 Text("Fill & Stroke").font(.title).bold()
                 HStack {
                     Text("fill(.red)")
@@ -288,4 +317,25 @@ struct ShapePlayground: View {
             }.padding()
         }
     }
+}
+
+struct CustomShape: Shape {
+    let arcSize = 20.0
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX, y: rect.minY + arcSize))
+        path.addLine(to: CGPoint(x: rect.maxX - arcSize - arcSize * 2, y: rect.minY + arcSize))
+        path.addRelativeArc(center: CGPoint(x: rect.maxX - arcSize - arcSize, y: rect.minY + arcSize), radius: arcSize, startAngle: Angle(degrees: -180.0), delta: Angle(degrees: 180.0))
+        path.addArc(center: CGPoint(x: rect.maxX - arcSize, y: rect.minY + arcSize + arcSize), radius: arcSize, startAngle: Angle(degrees: -90.0), endAngle: Angle(degrees: 90.0), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        return path
+    }
+}
+
+func customPath(in size: CGSize, transform: CGAffineTransform) -> Path {
+    var path = Path()
+    let rect = CGRect(origin: .zero, size: size).insetBy(dx: 20.0, dy: 0.0)
+    path.addRect(rect, transform: transform)
+    return path
 }
