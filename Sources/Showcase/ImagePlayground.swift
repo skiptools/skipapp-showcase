@@ -8,11 +8,17 @@ import SwiftUI
 
 struct ImagePlayground: View {
     let systemNameSample = "heart.fill"
-    let asyncImageSample = "https://picsum.photos/id/237/200/300"
+    let remoteImageResourceURL: URL? = URL(string: "https://picsum.photos/id/237/200/300")
+    let localImageResourceURL: URL? = Bundle.module.url(forResource: "swift-logo", withExtension: "png")
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
+                Text("Bundled Image Resource").font(.title).bold()
+                HStack {
+                    AsyncImage(url: localImageResourceURL)
+                }
+
                 Text("systemName").font(.title).bold()
                 HStack {
                     Text(".frame(100, 100)")
@@ -81,26 +87,26 @@ struct ImagePlayground: View {
                 Text("AsyncImage").font(.title).bold()
                 HStack {
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample))
+                    AsyncImage(url: remoteImageResourceURL)
                         .border(Color.blue)
                 }
                 HStack {
                     Text("scale: 2.0")
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample), scale: 2.0)
+                    AsyncImage(url: remoteImageResourceURL, scale: 2.0)
                         .border(Color.blue)
                 }
                 HStack {
                     Text(".frame(100, 100)")
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample))
+                    AsyncImage(url: remoteImageResourceURL)
                         .frame(width: 100.0, height: 100.0)
                         .border(Color.blue)
                 }
                 HStack {
                     Text(".frame(100, 100)\nclipped")
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample))
+                    AsyncImage(url: remoteImageResourceURL)
                         .frame(width: 100.0, height: 100.0)
                         .clipped()
                         .border(Color.blue)
@@ -108,7 +114,7 @@ struct ImagePlayground: View {
                 HStack {
                     Text(".resizable()\n.frame(100, 100)")
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample)) { image in
+                    AsyncImage(url: remoteImageResourceURL) { image in
                         image.resizable()
                     } placeholder: {
                     }
@@ -118,7 +124,7 @@ struct ImagePlayground: View {
                 HStack {
                     Text(".resizable()\n.scaleToFill\n.frame(100, 100)\n.clipped")
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample)) { image in
+                    AsyncImage(url: remoteImageResourceURL) { image in
                         image.resizable()
                     } placeholder: {
                     }
@@ -130,7 +136,7 @@ struct ImagePlayground: View {
                 HStack {
                     Text(".resizable()\n.scaleToFit\n.frame(100, 100)")
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample)) { image in
+                    AsyncImage(url: remoteImageResourceURL) { image in
                         image.resizable()
                     } placeholder: {
                     }
@@ -141,7 +147,7 @@ struct ImagePlayground: View {
                 HStack {
                     Text(".resizable()\n.aspectRatio(0.33, .fill)\n.frame(100, 100)\n.clipped")
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample)) { image in
+                    AsyncImage(url: remoteImageResourceURL) { image in
                         image.resizable()
                     } placeholder: {
                     }
@@ -153,7 +159,7 @@ struct ImagePlayground: View {
                 HStack {
                     Text(".resizable()\n.aspectRatio(0.33, .fit)\n.frame(100, 100)")
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample)) { image in
+                    AsyncImage(url: remoteImageResourceURL) { image in
                         image.resizable()
                     } placeholder: {
                     }
@@ -164,7 +170,7 @@ struct ImagePlayground: View {
                 HStack {
                     Text(".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)")
                     Spacer()
-                    AsyncImage(url: URL(string: asyncImageSample)) { image in
+                    AsyncImage(url: remoteImageResourceURL) { image in
                         image.resizable()
                     } placeholder: {
                     }
