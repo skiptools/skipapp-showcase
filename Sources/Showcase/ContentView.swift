@@ -100,8 +100,11 @@ enum PlaygroundType: String, CaseIterable {
     }
 }
 
-struct ContentView: View {
-    var body: some View {
+public struct ContentView: View {
+    public init() {
+    }
+    
+    public var body: some View {
         NavigationStack {
             List(PlaygroundType.allCases, id: \.rawValue) { playground in
                 NavigationLink(playground.title, value: playground)
