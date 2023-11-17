@@ -53,7 +53,7 @@ struct ListPlayground: View {
     @StateObject var editActionsModel = ObservableEditActionsPlayground.Model()
 
     var body: some View {
-        List(ListPlaygroundType.allCases, id: \.rawValue) { type in
+        List(ListPlaygroundType.allCases, id: \.self) { type in
             NavigationLink(type.title, value: type)
         }
         .navigationDestination(for: ListPlaygroundType.self) {
@@ -145,6 +145,7 @@ struct CollectionContentListPlayground: View {
 
 struct ForEachContentListPlayground: View {
     struct ListItem {
+        let id: UUID // Test ID serialization
         let i: Int
         let s: String
     }
@@ -152,7 +153,7 @@ struct ForEachContentListPlayground: View {
     func items() -> [ListItem] {
         var items: [ListItem] = []
         for i in 0..<10 {
-            items.append(ListItem(i: i, s: "Foreach object row \(i)"))
+            items.append(ListItem(id: UUID(), i: i, s: "Foreach object row \(i)"))
         }
         return items
     }
@@ -164,7 +165,7 @@ struct ForEachContentListPlayground: View {
                 Text("ForEach index row: \(index)")
             }
             Text("Standalone row 2")
-            ForEach(items(), id: \.i) {
+            ForEach(items(), id: \.id) {
                 Text($0.s)
             }
             Text("Standalone row 3")

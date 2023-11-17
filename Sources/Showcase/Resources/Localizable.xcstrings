@@ -169,6 +169,9 @@
     "Before vstack" : {
 
     },
+    "Binding" : {
+
+    },
     "Black" : {
 
     },
@@ -474,13 +477,10 @@
     "No URL\n.frame(100, 100)" : {
 
     },
-    "Object" : {
-
-    },
-    "Object tap count: %lld" : {
-
-    },
     "Observable" : {
+
+    },
+    "Observable tap count: %lld" : {
 
     },
     "offset(x: 30, y: 10)" : {
@@ -649,6 +649,12 @@
 
     },
     "strokeBorder(.red, lineWidth: 10)" : {
+
+    },
+    "Struct" : {
+
+    },
+    "Struct tap count: %lld" : {
 
     },
     "Symbol" : {

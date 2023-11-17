@@ -106,7 +106,7 @@ public struct ContentView: View {
     
     public var body: some View {
         NavigationStack {
-            List(PlaygroundType.allCases, id: \.rawValue) { playground in
+            List(PlaygroundType.allCases, id: \.self) { playground in
                 NavigationLink(playground.title, value: playground)
             }
             .navigationDestination(for: PlaygroundType.self) {
