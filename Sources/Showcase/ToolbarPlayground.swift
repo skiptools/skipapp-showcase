@@ -54,14 +54,20 @@ struct ToolbarPlayground: View {
                 ToolbarItemGroupPlayground(placement: ToolbarItemPlacement.automatic)
                     .navigationTitle($0.title)
             case .topLeadingItem:
+                #if !os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
                 ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading)
                     .navigationTitle($0.title)
+                #endif
             case .topLeadingItemGroup:
+                #if !os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
                 ToolbarItemGroupPlayground(placement: ToolbarItemPlacement.topBarLeading)
                     .navigationTitle($0.title)
+                #endif
             case .topLeadingTrailingItems:
+                #if !os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
                 ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading, placement2: ToolbarItemPlacement.topBarTrailing)
                     .navigationTitle($0.title)
+                #endif
             }
         }
     }

@@ -9,14 +9,19 @@ import SwiftUI
 struct ImagePlayground: View {
     let systemNameSample = "heart.fill"
     let remoteImageResourceURL: URL? = URL(string: "https://picsum.photos/id/237/200/300")
+
+    // iOS: file://…/Application/…/Showcase.app/skipapp-showcase_Showcase.bundle/swift-logo.png
+    // Android: jar:file:/data/app/…/base.apk!/showcase/module/Resources/swift-logo.png
     let localImageResourceURL: URL? = Bundle.module.url(forResource: "swift-logo", withExtension: "png")
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Bundled Image Resource").font(.title).bold()
+                Text("Bundled Image").font(.title).bold()
                 HStack {
+                    Spacer()
                     AsyncImage(url: localImageResourceURL)
+                    Spacer()
                 }
 
                 Text("systemName").font(.title).bold()
