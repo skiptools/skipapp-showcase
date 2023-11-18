@@ -226,7 +226,7 @@ struct ImagePlayground: View {
                     .border(Color.blue)
                 }
             }
+            .padding()
         }
-        .padding()
     }
 }
