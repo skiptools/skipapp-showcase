@@ -13,6 +13,7 @@ enum ToolbarPlaygroundType: String, CaseIterable {
     case toolbarItemGroup
     case topLeadingItem
     case topLeadingItemGroup
+    case topLeadingBackButtonHidden
     case topLeadingTrailingItems
     case bottom
     case bottomGroup
@@ -34,6 +35,8 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return ".topLeading"
         case .topLeadingItemGroup:
             return ".topLeading Group"
+        case .topLeadingBackButtonHidden:
+            return ".topLeading Back Hidden"
         case .topLeadingTrailingItems:
             return "Both Top"
         case .bottom:
@@ -69,29 +72,47 @@ struct ToolbarPlayground: View {
                 ToolbarItemGroupPlayground(placement: ToolbarItemPlacement.automatic)
                     .navigationTitle($0.title)
             case .topLeadingItem:
-                #if !os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+                #else
                 ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading)
                     .navigationTitle($0.title)
                 #endif
             case .topLeadingItemGroup:
-                #if !os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+                #else
                 ToolbarItemGroupPlayground(placement: ToolbarItemPlacement.topBarLeading)
                     .navigationTitle($0.title)
                 #endif
+            case .topLeadingBackButtonHidden:
+                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+                #else
+                ToolbarBackButtonHiddenPlayground()
+                    .navigationTitle($0.title)
+                #endif
             case .topLeadingTrailingItems:
-                #if !os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+                #else
                 ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading, placement2: ToolbarItemPlacement.topBarTrailing)
                     .navigationTitle($0.title)
                 #endif
             case .bottom:
+                #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
+                #else
                 ToolbarItemPlayground(placement: ToolbarItemPlacement.bottomBar, placement2: ToolbarItemPlacement.bottomBar)
                     .navigationTitle($0.title)
+                #endif
             case .bottomGroup:
+                #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
+                #else
                 ToolbarBottomThreePlayground(spaced: false)
                     .navigationTitle($0.title)
+                #endif
             case .bottomSpaced:
+                #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
+                #else
                 ToolbarBottomThreePlayground(spaced: true)
                     .navigationTitle($0.title)
+                #endif
             }
         }
     }
@@ -267,6 +288,26 @@ struct ToolbarBottomThreePlayground: View {
                 }
                 Button("Third: \(thirdTapCount)") {
                     thirdTapCount += 1
+                }
+            }
+        }
+    }
+}
+
+struct ToolbarBackButtonHiddenPlayground: View {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        List {
+            ForEach(0..<100) { i in
+                Text("Content \(i)")
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Cancel") {
+                    dismiss()
                 }
             }
         }
