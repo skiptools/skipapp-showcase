@@ -7,17 +7,23 @@ import SwiftUI
 
 enum ToolbarPlaygroundType: String, CaseIterable {
     case `default`
+    case tint
     case custom
     case toolbarItem
     case toolbarItemGroup
     case topLeadingItem
     case topLeadingItemGroup
     case topLeadingTrailingItems
+    case bottom
+    case bottomGroup
+    case bottomSpaced
 
     var title: String {
         switch self {
         case .default:
             return "Default"
+        case .tint:
+            return "Tint"
         case .custom:
             return "Custom"
         case .toolbarItem:
@@ -30,6 +36,12 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return ".topLeading Group"
         case .topLeadingTrailingItems:
             return "Both Top"
+        case .bottom:
+            return "Bottom"
+        case .bottomGroup:
+            return "Bottom 3 Group"
+        case .bottomSpaced:
+            return "Bottom 3 Spaced"
         }
     }
 }
@@ -43,6 +55,9 @@ struct ToolbarPlayground: View {
             switch $0 {
             case .default:
                 DefaultToolbarItemPlayground()
+                    .navigationTitle($0.title)
+            case .tint:
+                TintToolbarItemGroupPlayground()
                     .navigationTitle($0.title)
             case .custom:
                 CustomToolbarItemPlayground()
@@ -68,6 +83,15 @@ struct ToolbarPlayground: View {
                 ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading, placement2: ToolbarItemPlacement.topBarTrailing)
                     .navigationTitle($0.title)
                 #endif
+            case .bottom:
+                ToolbarItemPlayground(placement: ToolbarItemPlacement.bottomBar, placement2: ToolbarItemPlacement.bottomBar)
+                    .navigationTitle($0.title)
+            case .bottomGroup:
+                ToolbarBottomThreePlayground(spaced: false)
+                    .navigationTitle($0.title)
+            case .bottomSpaced:
+                ToolbarBottomThreePlayground(spaced: true)
+                    .navigationTitle($0.title)
             }
         }
     }
@@ -117,6 +141,35 @@ struct CustomToolbarItemPlayground: View {
                 .onTapGesture {
                     dismiss()
                 }
+        }
+    }
+}
+
+struct TintToolbarItemGroupPlayground: View {
+    @Environment(\.dismiss) var dismiss
+    @State var firstTapCount = 0
+    @State var secondTapCount = 0
+
+    var body: some View {
+        List {
+            Button("Pop") {
+                dismiss()
+            }
+            ForEach(0..<100) { i in
+                Text("Content \(i)")
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup {
+                Button("First: \(firstTapCount)") {
+                    firstTapCount += 1
+                }
+                .tint(.red)
+                Button("Second: \(secondTapCount)") {
+                    secondTapCount += 1
+                }
+                .tint(.green)
+            }
         }
     }
 }
@@ -176,6 +229,44 @@ struct ToolbarItemGroupPlayground: View {
                 }
                 Button("Second: \(secondTapCount)") {
                     secondTapCount += 1
+                }
+            }
+        }
+    }
+}
+
+struct ToolbarBottomThreePlayground: View {
+    @Environment(\.dismiss) var dismiss
+    @State var firstTapCount = 0
+    @State var secondTapCount = 0
+    @State var thirdTapCount = 0
+    let spaced: Bool
+
+    var body: some View {
+        List {
+            Button("Pop") {
+                dismiss()
+            }
+            ForEach(0..<100) { i in
+                Text("Content \(i)")
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .bottomBar) {
+                Button("First: \(firstTapCount)") {
+                    firstTapCount += 1
+                }
+                if spaced {
+                    Spacer()
+                }
+                Button("Second: \(secondTapCount)") {
+                    secondTapCount += 1
+                }
+                if spaced {
+                    Spacer()
+                }
+                Button("Third: \(thirdTapCount)") {
+                    thirdTapCount += 1
                 }
             }
         }
