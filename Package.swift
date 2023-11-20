@@ -19,7 +19,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "0.7.28"),
-        .package(url: "https://source.skip.tools/skip-ui.git", from: "0.3.16")
+        .package(url: "https://source.skip.tools/skip-ui.git", from: "0.3.19")
     ],
     targets: [
         .target(name: "Showcase", dependencies: (zero ? [] : [.product(name: "SkipUI", package: "skip-ui")]), resources: [.process("Resources")], plugins: skipstone),
