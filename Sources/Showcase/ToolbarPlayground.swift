@@ -273,6 +273,8 @@ struct ToolbarBottomThreePlayground: View {
             }
         }
         .toolbar {
+            #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
+            #else
             ToolbarItemGroup(placement: .bottomBar) {
                 Button("First: \(firstTapCount)") {
                     firstTapCount += 1
@@ -290,6 +292,7 @@ struct ToolbarBottomThreePlayground: View {
                     thirdTapCount += 1
                 }
             }
+            #endif
         }
     }
 }
@@ -305,11 +308,14 @@ struct ToolbarBackButtonHiddenPlayground: View {
         }
         .navigationBarBackButtonHidden()
         .toolbar {
+            #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+            #else
             ToolbarItem(placement: .topBarLeading) {
                 Button("Cancel") {
                     dismiss()
                 }
             }
+            #endif
         }
     }
 }
