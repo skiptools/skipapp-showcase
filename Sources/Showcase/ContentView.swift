@@ -13,6 +13,7 @@ enum PlaygroundType: String, CaseIterable {
     case border
     case button
     case color
+    case confirmationDialog
     case divider
     case form
     case frame
@@ -49,6 +50,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Button"
         case .color:
             return "Color"
+        case .confirmationDialog:
+            return "ConfirmationDialog"
         case .divider:
             return "Divider"
         case .form:
@@ -125,6 +128,9 @@ public struct ContentView: View {
                         .navigationTitle($0.title)
                 case .color:
                     ColorPlayground()
+                        .navigationTitle($0.title)
+                case .confirmationDialog:
+                    ConfirmationDialogPlayground()
                         .navigationTitle($0.title)
                 case .divider:
                     DividerPlayground()

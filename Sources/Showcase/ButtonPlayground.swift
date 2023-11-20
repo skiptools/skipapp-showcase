@@ -17,6 +17,9 @@ struct ButtonPlayground: View {
                 Button("String init: \(tapCount)") {
                     tapCount += 1
                 }
+                Button(".destructive: \(tapCount)", role: .destructive) {
+                    tapCount += 1
+                }
                 Button(".plain: \(tapCount)") {
                     tapCount += 1
                 }
@@ -26,6 +29,10 @@ struct ButtonPlayground: View {
                 }
                 .buttonStyle(.bordered)
                 Button(".borderedProminent: \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.borderedProminent)
+                Button(".borderedProminent, .destructive: \(tapCount)", role: .destructive) {
                     tapCount += 1
                 }
                 .buttonStyle(.borderedProminent)

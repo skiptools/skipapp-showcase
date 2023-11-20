@@ -19,6 +19,9 @@
     ".bordered: %lld" : {
 
     },
+    ".borderedProminent, .destructive: %lld" : {
+
+    },
     ".borderedProminent, .disabled(true): %lld" : {
 
     },
@@ -32,6 +35,9 @@
 
     },
     ".clipShape(.capsule)" : {
+
+    },
+    ".destructive: %lld" : {
 
     },
     ".disabled(true)" : {
@@ -498,6 +504,12 @@
     "offset(x: 30, y: 10)" : {
 
     },
+    "Option 1" : {
+
+    },
+    "Option 2" : {
+
+    },
     "Orange" : {
 
     },
@@ -723,6 +735,9 @@
 
     },
     "Third: %lld" : {
+
+    },
+    "Title" : {
 
     },
     "Title & SystemImage" : {
