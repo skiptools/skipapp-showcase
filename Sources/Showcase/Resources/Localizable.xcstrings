@@ -145,10 +145,19 @@
     "After" : {
 
     },
+    "After another section empty row" : {
+
+    },
     "After expanding" : {
 
     },
     "After fixed" : {
+
+    },
+    "After initial empty row" : {
+
+    },
+    "After initial section empty row" : {
 
     },
     "After vstack" : {
@@ -167,6 +176,12 @@
 
     },
     "Before" : {
+
+    },
+    "Before final empty row" : {
+
+    },
+    "Before final section empty row" : {
 
     },
     "Before fixed" : {

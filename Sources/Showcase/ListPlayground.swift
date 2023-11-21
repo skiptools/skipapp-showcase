@@ -12,6 +12,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case forEachContent
     case sectioned
     case empty
+    case emptyItems
     case plainStyle
     case plainStyleSectioned
     case plainStyleEmpty
@@ -33,6 +34,8 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Sectioned"
         case .empty:
             return "Empty"
+        case .emptyItems:
+            return "Empty Items"
         case .plainStyle:
             return "Plain Style"
         case .plainStyleSectioned:
@@ -75,6 +78,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .empty:
                 EmptyListPlayground()
+                    .navigationTitle($0.title)
+            case .emptyItems:
+                EmptyItemsListPlayground()
                     .navigationTitle($0.title)
             case .plainStyle:
                 PlainStyleListPlayground()
@@ -211,6 +217,27 @@ struct SectionedListPlayground: View {
 struct EmptyListPlayground: View {
     var body: some View {
         List {
+        }
+    }
+}
+
+struct EmptyItemsListPlayground: View {
+    var body: some View {
+        List {
+            EmptyView()
+            Text("After initial empty row")
+            Section("Section 1") {
+                EmptyView()
+                Text("After initial section empty row")
+                EmptyView()
+                Text("After another section empty row")
+            }
+            Section("Section 2") {
+                Text("Before final section empty row")
+                EmptyView()
+            }
+            Text("Before final empty row")
+            EmptyView()
         }
     }
 }
