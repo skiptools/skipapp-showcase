@@ -7,21 +7,100 @@ import SwiftUI
 
 struct ConfirmationDialogPlayground: View {
     @State var value = ""
-    @State var isPresented = false
+    @State var data: Int? = nil
+    @State var defaultIsPresented = false
+    @State var titleIsPresented = false
+    @State var titleMessageIsPresented = false
+    @State var customCancelIsPresented = false
+    @State var dataIsPresented = false
+    @State var scrollingIsPresented = false
 
     var body: some View {
-        VStack {
+        VStack(spacing: 16.0) {
             Text(value).bold()
+            Button("Data: \(String(describing: data))") {
+                if data == nil {
+                    data = 1
+                } else {
+                    data = data! + 1
+                }
+            }
+            Button("Nil Data") {
+                data = nil
+            }
+            Divider()
             Button("Default") {
-                isPresented = true
+                defaultIsPresented = true
+            }
+            Button("Title") {
+                titleIsPresented = true
+            }
+            Button("Title + Message") {
+                titleMessageIsPresented = true
+            }
+            Button("Custom Cancel") {
+                customCancelIsPresented = true
+            }
+            Button("Data Actions") {
+                dataIsPresented = true
+            }
+            Button("Scrolling") {
+                scrollingIsPresented = true
             }
         }
-        .confirmationDialog("Title", isPresented: $isPresented, titleVisibility: .visible) {
-            Button("Option 1") {
-                value = "Option 1"
+        .confirmationDialog("Title", isPresented: $defaultIsPresented) {
+            Button("Destructive", role: .destructive) {
+                value = "Destructive"
             }
-            Button("Option 2") {
-                value = "Option 2"
+            Button("Option") {
+                value = "Option"
+            }
+        }
+        .confirmationDialog("Title", isPresented: $titleIsPresented, titleVisibility: .visible) {
+            Button("Destructive", role: .destructive) {
+                value = "Destructive"
+            }
+            Button("Option") {
+                value = "Option"
+            }
+        }
+        .confirmationDialog("Title", isPresented: $titleMessageIsPresented, titleVisibility: .visible) {
+            Button("Destructive", role: .destructive) {
+                value = "Destructive"
+            }
+            Button("Option") {
+                value = "Option"
+            }
+        } message: {
+            Text("This is the message")
+        }
+        .confirmationDialog("Title", isPresented: $customCancelIsPresented) {
+            Button("Custom Cancel", role: .cancel) {
+                value = "Custom Cancel"
+            }
+            Button("Destructive", role: .destructive) {
+                value = "Destructive"
+            }
+            Button("Option") {
+                value = "Option"
+            }
+        }
+        .confirmationDialog("Title", isPresented: $dataIsPresented, presenting: data) { d in
+            Button("Data: \(d)") {
+                value = "\(d)"
+            }
+            Button("Nil Data", role: .destructive) {
+                data = nil
+            }
+        }
+        .confirmationDialog("Title", isPresented: $scrollingIsPresented) {
+            Button("Destructive", role: .destructive) {
+                value = "Destructive"
+            }
+            ForEach(0..<20) { i in
+                Button("Option \(i)") {
+                    value = "Option \(i)"
+                }
             }
         }
     }

@@ -238,6 +238,9 @@
     "Custom" : {
 
     },
+    "Custom Cancel" : {
+
+    },
     "Custom closure" : {
 
     },
@@ -247,7 +250,19 @@
     "Cyan" : {
 
     },
+    "Data Actions" : {
+
+    },
+    "Data: %@" : {
+
+    },
+    "Data: %lld" : {
+
+    },
     "Default" : {
+
+    },
+    "Destructive" : {
 
     },
     "Disabled tap: (%lld, %lld)" : {
@@ -489,6 +504,9 @@
         }
       }
     },
+    "Nil Data" : {
+
+    },
     "No URL" : {
 
     },
@@ -504,10 +522,10 @@
     "offset(x: 30, y: 10)" : {
 
     },
-    "Option 1" : {
+    "Option" : {
 
     },
-    "Option 2" : {
+    "Option %lld" : {
 
     },
     "Orange" : {
@@ -613,6 +631,9 @@
 
     },
     "scale(x: 1.0, y: -1.0)" : {
+
+    },
+    "Scrolling" : {
 
     },
     "Second: %lld" : {
@@ -737,10 +758,16 @@
     "Third: %lld" : {
 
     },
+    "This is the message" : {
+
+    },
     "Title" : {
 
     },
     "Title & SystemImage" : {
+
+    },
+    "Title + Message" : {
 
     },
     "Title bold italic" : {
