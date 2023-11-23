@@ -82,6 +82,15 @@
     ".offset(CGSize(50, 50))" : {
 
     },
+    ".onDelete" : {
+
+    },
+    ".onMove" : {
+
+    },
+    ".onMove, .onDelete" : {
+
+    },
     ".padding()" : {
 
     },

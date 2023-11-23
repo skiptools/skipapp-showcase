@@ -19,6 +19,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case editActions
     case observableEditActions
     case sectionedEditActions
+    case onMoveDelete
 
     var title: String {
         switch self {
@@ -48,12 +49,14 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Observable EditActions"
         case .sectionedEditActions:
             return "Sectioned EditActions"
+        case .onMoveDelete:
+            return ".onMove, .onDelete"
         }
     }
 }
 
 struct ListPlayground: View {
-    @StateObject var editActionsModel = ObservableEditActionsPlayground.Model()
+    @StateObject var editActionsModel = ObservableEditActionsListPlayground.Model()
 
     var body: some View {
         List(ListPlaygroundType.allCases, id: \.self) { type in
@@ -92,13 +95,16 @@ struct ListPlayground: View {
                 PlainStyleEmptyListPlayground()
                     .navigationTitle($0.title)
             case .editActions:
-                EditActionsPlayground()
+                EditActionsListPlayground()
                     .navigationTitle($0.title)
             case .observableEditActions:
-                ObservableEditActionsPlayground(model: editActionsModel)
+                ObservableEditActionsListPlayground(model: editActionsModel)
                     .navigationTitle($0.title)
             case .sectionedEditActions:
-                SectionedEditActionsPlayground()
+                SectionedEditActionsListPlayground()
+                    .navigationTitle($0.title)
+            case .onMoveDelete:
+                OnMoveDeleteListPlayground()
                     .navigationTitle($0.title)
             }
         }
@@ -290,7 +296,7 @@ struct PlainStyleEmptyListPlayground: View {
     }
 }
 
-struct EditActionsPlayground: View {
+struct EditActionsListPlayground: View {
     struct ListItem {
         let i: Int
         let s: String
@@ -325,7 +331,7 @@ struct EditActionsPlayground: View {
     }
 }
 
-struct ObservableEditActionsPlayground: View {
+struct ObservableEditActionsListPlayground: View {
     class Model: ObservableObject {
         @Published var items: [ListItem] = {
             var items: [ListItem] = []
@@ -355,7 +361,7 @@ struct ObservableEditActionsPlayground: View {
     }
 }
 
-struct SectionedEditActionsPlayground: View {
+struct SectionedEditActionsListPlayground: View {
     @State var items0 = {
         var items: [Int] = []
         for i in 0..<10 {
@@ -395,6 +401,89 @@ struct SectionedEditActionsPlayground: View {
                     Text("Item \(item)")
                 }
             }
+        }
+    }
+}
+
+struct OnMoveDeleteListPlayground: View {
+    @State var items0 = {
+        var items: [Int] = []
+        for i in 0..<10 {
+            items.append(i)
+        }
+        return items
+    }()
+    @State var items1 = {
+        var items: [Int] = []
+        for i in 11..<20 {
+            items.append(i)
+        }
+        return items
+    }()
+    @State var items2 = {
+        var items: [Int] = []
+        for i in 21..<30 {
+            items.append(i)
+        }
+        return items
+    }()
+
+    @State var actionString = ""
+    @State var action: () -> Void = {}
+    @State var actionIsPresented = false
+
+    var body: some View {
+        List {
+            Section(".onMove") {
+                ForEach(items0, id: \.self) { item in
+                    Text("Item \(item)")
+                }
+                .onMove { fromOffsets, toOffset in
+                    actionString = "Move \(fromOffsets.count) item(s)"
+                    action = {
+                        withAnimation { items0.move(fromOffsets: fromOffsets, toOffset: toOffset) }
+                        action = {}
+                    }
+                    actionIsPresented = true
+                }
+            }
+            Section(".onDelete") {
+                ForEach(items1, id: \.self) { item in
+                    Text("Item \(item)")
+                }
+                .onDelete { offsets in
+                    actionString = "Delete \(offsets.count) item(s)"
+                    action = {
+                        withAnimation { items1.remove(atOffsets: offsets) }
+                        action = {}
+                    }
+                    actionIsPresented = true
+                }
+            }
+            Section(".onMove, .onDelete") {
+                ForEach(items2, id: \.self) { item in
+                    Text("Item \(item)")
+                }
+                .onMove { fromOffsets, toOffset in
+                    actionString = "Move \(fromOffsets.count) item(s)"
+                    action = {
+                        withAnimation { items2.move(fromOffsets: fromOffsets, toOffset: toOffset) }
+                        action = {}
+                    }
+                    actionIsPresented = true
+                }
+                .onDelete { offsets in
+                    actionString = "Delete \(offsets.count) item(s)"
+                    action = {
+                        withAnimation { items2.remove(atOffsets: offsets) }
+                        action = {}
+                    }
+                    actionIsPresented = true
+                }
+            }
+        }
+        .confirmationDialog(actionString, isPresented: $actionIsPresented) {
+            Button(actionString, role: .destructive, action: action)
         }
     }
 }
