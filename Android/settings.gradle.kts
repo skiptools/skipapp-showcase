@@ -11,6 +11,7 @@ pluginManagement {
 
 dependencyResolutionManagement {
     repositories {
+        maven("https://maven.skip.tools")
         mavenCentral()
         google()
     }
@@ -75,7 +76,20 @@ fun prop(key: String): String {
 }
 
 fun addSkipModules() {
-    val builtProductsDir = System.getenv("BUILT_PRODUCTS_DIR")
+    // When running from Xcode, the BUILT_PRODUCTS_DIR environment
+    // variable will point to the project's DerivedData path, like:
+    // ~/Library/Developer/Xcode/DerivedData/NAME-HASH/Build/Products/Debug-iphonesimulator
+    //
+    // When unset, we assume using the local SwiftPM .build folder, and
+    // will invoke `swift build` to perform transpilation at the
+    // beginning of the build
+    var builtProductsDir = System.getenv("BUILT_PRODUCTS_DIR")
+
+    // In order to build and debug in an IDE using locally-sourced modules,
+    // temporarily override this setting with the known-local BUILT_PRODUCTS_DIR,
+    // which can be found in Xcode's Reports Navigator Build log for the app in the
+    // environment settings list of the "Run custom shell script 'Run skip gradle'" log entry
+    // builtProductsDir = "/Users/marc/Library/Developer/Xcode/DerivedData/Skip-App-aqywrhrzhkbvfseiqgxuufbdwdft/Build/Products/Debug-iphonesimulator"
 
     var skipOutputs: File
     if (builtProductsDir != null) {
