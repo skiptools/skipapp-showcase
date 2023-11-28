@@ -14,14 +14,19 @@ struct KeyboardPlayground: View {
                 TextField("Default", text: $text)
                 TextField(".autocorrectionDisabled()", text: $text)
                     .autocorrectionDisabled()
+                #if os(macOS)
+                #else
                 ForEach(keyboardTypes, id: \.0) {
                     TextField(".keyboardType(.\($0.0))", text: $text)
                         .keyboardType($0.1)
                 }
+                #endif
                 ForEach(submitLabels, id: \.0) {
                     TextField(".submitLabel(.\($0.0))", text: $text)
                         .submitLabel($0.1)
                 }
+                #if os(macOS)
+                #else
                 ForEach(textInputAutocapitalizations, id: \.0) {
                     TextField(".textInputAutocapitalization(.\($0.0))", text: $text)
                         .textInputAutocapitalization($0.1)
@@ -30,12 +35,15 @@ struct KeyboardPlayground: View {
                     .submitLabel(.next)
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.words)
+                #endif
             }
             .textFieldStyle(.roundedBorder)
             .padding()
         }
     }
 
+    #if os(macOS)
+    #else
     private var keyboardTypes: [(String, UIKeyboardType)] {
         return [
             ("default", UIKeyboardType.default),
@@ -53,6 +61,7 @@ struct KeyboardPlayground: View {
             ("alphabet", UIKeyboardType.alphabet)
         ]
     }
+    #endif
 
     private var submitLabels: [(String, SubmitLabel)] {
         return [
@@ -68,6 +77,8 @@ struct KeyboardPlayground: View {
         ]
     }
 
+    #if os(macOS)
+    #else
     private var textInputAutocapitalizations: [(String, TextInputAutocapitalization)] {
         return [
             ("never", TextInputAutocapitalization.never),
@@ -76,4 +87,5 @@ struct KeyboardPlayground: View {
             ("characters", TextInputAutocapitalization.characters)
         ]
     }
+    #endif
 }
