@@ -28,6 +28,7 @@ enum PlaygroundType: String, CaseIterable {
     case navigationStack
     case observable
     case offset
+    case onSubmit
     case progressView
     case searchable
     case shape
@@ -82,6 +83,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Observable"
         case .offset:
             return "Offset"
+        case .onSubmit:
+            return "OnSubmit"
         case .progressView:
             return "ProgressView"
         case .searchable:
@@ -183,6 +186,9 @@ public struct ContentView: View {
                         .navigationTitle($0.title)
                 case .offset:
                     OffsetPlayground()
+                        .navigationTitle($0.title)
+                case .onSubmit:
+                    OnSubmitPlayground()
                         .navigationTitle($0.title)
                 case .progressView:
                     ProgressViewPlayground()

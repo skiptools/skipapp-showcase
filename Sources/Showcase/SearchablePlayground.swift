@@ -8,12 +8,15 @@ import SwiftUI
 
 enum SearchablePlaygroundType: String, CaseIterable {
     case list
+    case submit
     case isSearching
 
     var title: String {
         switch self {
         case .list:
             return "List"
+        case .submit:
+            return "Submit"
         case .isSearching:
             return "isSearching"
         }
@@ -30,9 +33,31 @@ struct SearchablePlayground: View {
             case .list:
                 ListSearchablePlayground()
                     .navigationTitle($0.title)
+            case .submit:
+                SubmitSearchablePlayground()
+                    .navigationTitle($0.title)
             case .isSearching:
                 IsSearchingSearchablePlayground()
                     .navigationTitle($0.title)
+            }
+        }
+    }
+}
+
+struct SubmitSearchablePlayground: View {
+    @State var searchText = ""
+    @State var matchingAnimals = animals()
+
+    var body: some View {
+        List {
+            ForEach(matchingAnimals, id: \.self) {
+                Text($0)
+            }
+        }
+        .searchable(text: $searchText)
+        .onSubmit(of: .search) {
+            matchingAnimals = animals().filter {
+                $0.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
             }
         }
     }
