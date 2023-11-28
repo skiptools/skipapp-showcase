@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ".autocorrectionDisabled()" : {
+
+    },
     ".backgroundStyle(.red)" : {
 
     },
@@ -62,6 +65,9 @@
 
     },
     ".frame(100, 100)\nclipped" : {
+
+    },
+    ".keyboardType(.%@)" : {
 
     },
     ".labelsHidden():" : {
@@ -128,6 +134,12 @@
 
     },
     ".resizable()\n.scaleToFit\n.frame(100, 100)" : {
+
+    },
+    ".submitLabel(.%@)" : {
+
+    },
+    ".textInputAutocapitalization(.%@)" : {
 
     },
     ".tint(.red)" : {
@@ -248,6 +260,9 @@
 
     },
     "Color" : {
+
+    },
+    "Combination" : {
 
     },
     "Complex content button" : {
@@ -470,6 +485,9 @@
     "isOn" : {
 
     },
+    "isSearching:" : {
+
+    },
     "Italic" : {
 
     },
@@ -529,6 +547,9 @@
       }
     },
     "Nil Data" : {
+
+    },
+    "NO" : {
 
     },
     "No URL" : {
@@ -676,6 +697,9 @@
 
     },
     "Sheet" : {
+
+    },
+    "Showcase" : {
 
     },
     "Spacer" : {
@@ -843,6 +867,9 @@
 
     },
     "Yellow" : {
+
+    },
+    "YES" : {
 
     }
   },

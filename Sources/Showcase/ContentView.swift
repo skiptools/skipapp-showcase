@@ -3,6 +3,7 @@
 // This is free software: you can redistribute and/or modify it
 // under the terms of the GNU Lesser General Public License 3.0
 // as published by the Free Software Foundation https://fsf.org
+import Foundation
 import OSLog
 import SwiftUI
 
@@ -20,6 +21,7 @@ enum PlaygroundType: String, CaseIterable {
     case gesture
     case gradient
     case image
+    case keyboard
     case label
     case list
     case listControls
@@ -27,6 +29,7 @@ enum PlaygroundType: String, CaseIterable {
     case observable
     case offset
     case progressView
+    case searchable
     case shape
     case sheet
     case slider
@@ -65,6 +68,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Gradients"
         case .image:
             return "Image"
+        case .keyboard:
+            return "Keyboard"
         case .label:
             return "Label"
         case .list:
@@ -79,6 +84,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Offset"
         case .progressView:
             return "ProgressView"
+        case .searchable:
+            return "Searchable"
         case .shape:
             return "Shape"
         case .sheet:
@@ -110,14 +117,17 @@ enum PlaygroundType: String, CaseIterable {
 }
 
 public struct ContentView: View {
+    @State var searchText = ""
+
     public init() {
     }
     
     public var body: some View {
         NavigationStack {
-            List(PlaygroundType.allCases, id: \.self) { playground in
+            List(matchingPlaygroundTypes(), id: \.self) { playground in
                 NavigationLink(playground.title, value: playground)
             }
+            .navigationTitle("Showcase")
             .navigationDestination(for: PlaygroundType.self) {
                 switch $0 {
                 case .background:
@@ -153,6 +163,9 @@ public struct ContentView: View {
                 case .image:
                     ImagePlayground()
                         .navigationTitle($0.title)
+                case .keyboard:
+                    KeyboardPlayground()
+                        .navigationTitle($0.title)
                 case .label:
                     LabelPlayground()
                         .navigationTitle($0.title)
@@ -173,6 +186,9 @@ public struct ContentView: View {
                         .navigationTitle($0.title)
                 case .progressView:
                     ProgressViewPlayground()
+                        .navigationTitle($0.title)
+                case .searchable:
+                    SearchablePlayground()
                         .navigationTitle($0.title)
                 case .shape:
                     ShapePlayground()
@@ -216,5 +232,10 @@ public struct ContentView: View {
                 }
             }
         }
+        .searchable(text: $searchText)
+    }
+
+    private func matchingPlaygroundTypes() -> [PlaygroundType] {
+        return PlaygroundType.allCases.filter { $0.rawValue.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) }
     }
 }
