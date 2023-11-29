@@ -91,11 +91,24 @@
     ".onDelete" : {
 
     },
+    ".onLongPressGesture: %lld" : {
+
+    },
     ".onMove" : {
 
     },
     ".onMove, .onDelete" : {
 
+    },
+    ".onTapGesture(2): (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ".onTapGesture(2): (%1$lld, %2$lld)"
+          }
+        }
+      }
     },
     ".padding()" : {
 
@@ -340,6 +353,9 @@
         }
       }
     },
+    "Drag" : {
+
+    },
     "EllipitcalGradient" : {
 
     },
@@ -524,6 +540,9 @@
     "Long press: %lld" : {
 
     },
+    "LongPress: %lld" : {
+
+    },
     "Mint" : {
 
     },
@@ -566,6 +585,16 @@
     },
     "offset(x: 30, y: 10)" : {
 
+    },
+    "onTapGesture: (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "onTapGesture: (%1$lld, %2$lld)"
+          }
+        }
+      }
     },
     "Option" : {
 
@@ -778,6 +807,26 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Tap: (%1$lld, %2$lld)"
+          }
+        }
+      }
+    },
+    "Tap(2): (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tap(2): (%1$lld, %2$lld)"
+          }
+        }
+      }
+    },
+    "TapGesture: (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "TapGesture: (%1$lld, %2$lld)"
           }
         }
       }

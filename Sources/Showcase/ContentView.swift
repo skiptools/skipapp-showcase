@@ -31,6 +31,7 @@ enum PlaygroundType: String, CaseIterable {
     case onSubmit
     case progressView
     case searchable
+    case secureField
     case shape
     case sheet
     case slider
@@ -89,6 +90,8 @@ enum PlaygroundType: String, CaseIterable {
             return "ProgressView"
         case .searchable:
             return "Searchable"
+        case .secureField:
+            return "SecureField"
         case .shape:
             return "Shape"
         case .sheet:
@@ -195,6 +198,9 @@ public struct ContentView: View {
                         .navigationTitle($0.title)
                 case .searchable:
                     SearchablePlayground()
+                        .navigationTitle($0.title)
+                case .secureField:
+                    SecureFieldPlayground()
                         .navigationTitle($0.title)
                 case .shape:
                     ShapePlayground()
