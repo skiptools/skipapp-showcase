@@ -8,6 +8,7 @@ import SwiftUI
 
 enum SearchablePlaygroundType: String, CaseIterable {
     case list
+    case plainList
     case submit
     case isSearching
 
@@ -15,6 +16,8 @@ enum SearchablePlaygroundType: String, CaseIterable {
         switch self {
         case .list:
             return "List"
+        case .plainList:
+            return "Plain style"
         case .submit:
             return "Submit"
         case .isSearching:
@@ -33,31 +36,15 @@ struct SearchablePlayground: View {
             case .list:
                 ListSearchablePlayground()
                     .navigationTitle($0.title)
+            case .plainList:
+                PlainListSearchablePlayground()
+                    .navigationTitle($0.title)
             case .submit:
                 SubmitSearchablePlayground()
                     .navigationTitle($0.title)
             case .isSearching:
                 IsSearchingSearchablePlayground()
                     .navigationTitle($0.title)
-            }
-        }
-    }
-}
-
-struct SubmitSearchablePlayground: View {
-    @State var searchText = ""
-    @State var matchingAnimals = animals()
-
-    var body: some View {
-        List {
-            ForEach(matchingAnimals, id: \.self) {
-                Text($0)
-            }
-        }
-        .searchable(text: $searchText)
-        .onSubmit(of: .search) {
-            matchingAnimals = animals().filter {
-                $0.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
             }
         }
     }
@@ -82,6 +69,45 @@ struct ListSearchablePlayground: View {
     }
 }
 
+struct PlainListSearchablePlayground: View {
+    @State var searchText = ""
+
+    var body: some View {
+        List {
+            ForEach(matchingAnimals(), id: \.self) {
+                Text($0)
+            }
+        }
+        .listStyle(.plain)
+        .searchable(text: $searchText)
+    }
+
+    func matchingAnimals() -> [String] {
+        return animals().filter {
+            $0.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
+        }
+    }
+}
+
+struct SubmitSearchablePlayground: View {
+    @State var searchText = ""
+    @State var matchingAnimals = animals()
+
+    var body: some View {
+        List {
+            ForEach(matchingAnimals, id: \.self) {
+                Text($0)
+            }
+        }
+        .searchable(text: $searchText)
+        .onSubmit(of: .search) {
+            matchingAnimals = animals().filter {
+                $0.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
+            }
+        }
+    }
+}
+
 struct IsSearchingSearchablePlayground: View {
     @State var searchText = ""
 
@@ -94,7 +120,7 @@ struct IsSearchingSearchablePlayground: View {
         @Environment(\.isSearching) var isSearching
 
         var body: some View {
-            VStack {
+            List {
                 Text("isSearching:")
                 if isSearching {
                     Text("YES").foregroundStyle(.green)

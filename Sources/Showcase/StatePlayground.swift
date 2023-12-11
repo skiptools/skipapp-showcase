@@ -53,6 +53,15 @@ struct StatePlayground: View {
                 
                 NavigationLink("Push another", value: PlaygroundType.state)
             }
+            .onChange(of: tapCount) {
+                logger.log("onChange(of: tapCount): \($0)")
+            }
+            .onChange(of: tapCountObservable.tapCount) {
+                logger.log("onChange(of: tapCountObservable.tapCount): \($0)")
+            }
+            .onChange(of: tapCountStruct.tapCount) {
+                logger.log("onChange(of: tapCountStruct.tapCount): \($0)")
+            }
         }
     }
 }
