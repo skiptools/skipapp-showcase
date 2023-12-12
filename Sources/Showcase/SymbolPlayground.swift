@@ -94,8 +94,11 @@ struct SymbolPlayground: View {
                         .font(.title)
                 }
             }
+            .padding()
         }
-        .padding()
+        .toolbar {
+            PlaygroundSourceLink(file: "SymbolPlayground.swift")
+        }
     }
 
     func symbolRow(_ systemName: String) -> some View {

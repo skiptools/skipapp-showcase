@@ -10,11 +10,11 @@ struct LabelPlayground: View {
         ScrollView {
             VStack(spacing: 16.0) {
                 Label {
-                    Text("Label & Icon")
+                    Text(".init(_:icon:)")
                 } icon: {
                     Image(systemName: "star.fill")
                 }
-                Label("Title & SystemImage", systemImage: "star.fill")
+                Label(".init(_:systemImage:)", systemImage: "star.fill")
                 Label(".font(.title)", systemImage: "star.fill")
                     .font(.title)
                 Label(".foregroundStyle(.red)", systemImage: "star.fill")
@@ -25,6 +25,9 @@ struct LabelPlayground: View {
                     .font(.caption)
             }
             .padding()
+        }
+        .toolbar {
+            PlaygroundSourceLink(file: "LabelPlayground.swift")
         }
     }
 }

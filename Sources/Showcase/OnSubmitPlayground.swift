@@ -31,5 +31,8 @@ struct OnSubmitPlayground: View {
         .onSubmit {
             submitText = submitText + "Form "
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "OnSubmitPlayground.swift")
+        }
     }
 }

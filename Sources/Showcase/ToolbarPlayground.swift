@@ -54,6 +54,9 @@ struct ToolbarPlayground: View {
         List(ToolbarPlaygroundType.allCases, id: \.self) { type in
             NavigationLink(type.title, value: type)
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "ToolbarPlayground.swift")
+        }
         .navigationDestination(for: ToolbarPlaygroundType.self) {
             switch $0 {
             case .default:

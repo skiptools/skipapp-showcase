@@ -40,6 +40,9 @@ struct KeyboardPlayground: View {
             .textFieldStyle(.roundedBorder)
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "KeyboardPlayground.swift")
+        }
     }
 
     #if os(macOS)

@@ -38,6 +38,9 @@ struct ListControlsPlayground: View {
             }
             TextField("Text field", text: $stringValue)
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "ListControlsPlayground.swift")
+        }
         .navigationDestination(for: String.self) { value in
             Text(value)
         }

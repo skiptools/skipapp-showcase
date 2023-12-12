@@ -130,5 +130,8 @@ struct GesturePlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "GesturePlayground.swift")
+        }
     }
 }

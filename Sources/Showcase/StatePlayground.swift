@@ -64,6 +64,9 @@ struct StatePlayground: View {
                 logger.log("onChange(of: tapCountStruct.tapCount): \($0)")
             }
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "StatePlayground.swift")
+        }
     }
 }
 

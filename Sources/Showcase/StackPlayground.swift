@@ -61,5 +61,8 @@ struct StackPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "StackPlayground.swift")
+        }
     }
 }

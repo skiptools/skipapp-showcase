@@ -13,6 +13,9 @@ struct ObservablePlayground: View {
         if #available(iOS 17.0, macOS 14.0, *) {
             ObservablesOuterView()
                 .environmentObject(PlaygroundEnvironmentObject(text: "initialEnvironment"))
+                .toolbar {
+                    PlaygroundSourceLink(file: "ObservablePlayground.swift")
+                }
         } else {
             Text("iOS 17 / macOS 14 required for Observation framework")
         }

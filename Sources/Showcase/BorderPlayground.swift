@@ -62,5 +62,8 @@ struct BorderPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "BorderPlayground.swift")
+        }
     }
 }

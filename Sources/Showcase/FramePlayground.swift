@@ -94,5 +94,8 @@ struct FramePlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "FramePlayground.swift")
+        }
     }
 }

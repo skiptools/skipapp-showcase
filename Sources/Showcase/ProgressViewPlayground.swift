@@ -51,5 +51,8 @@ struct ProgressViewPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "ProgressViewPlayground.swift")
+        }
     }
 }

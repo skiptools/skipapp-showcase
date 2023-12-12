@@ -23,5 +23,8 @@ struct VideoPlayerPlayground: View {
             }
             VideoPlayer(player: player)
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "VideoPlayerPlayground.swift")
+        }
     }
 }

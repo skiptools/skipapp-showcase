@@ -50,6 +50,9 @@ struct ConfirmationDialogPlayground: View {
             }
         }
         .padding()
+        .toolbar {
+            PlaygroundSourceLink(file: "ConfirmationDialogPlayground.swift")
+        }
         .confirmationDialog("Title", isPresented: $defaultIsPresented) {
             Button("Destructive", role: .destructive) {
                 value = "Destructive"

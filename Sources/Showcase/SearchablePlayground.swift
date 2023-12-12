@@ -31,6 +31,9 @@ struct SearchablePlayground: View {
         List(SearchablePlaygroundType.allCases, id: \.self) { type in
             NavigationLink(type.title, value: type)
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "SearchablePlayground.swift")
+        }
         .navigationDestination(for: SearchablePlaygroundType.self) {
             switch $0 {
             case .list:

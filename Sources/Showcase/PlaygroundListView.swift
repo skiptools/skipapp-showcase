@@ -19,6 +19,7 @@ enum PlaygroundType: String, CaseIterable {
     case image
     case keyboard
     case label
+    case link
     case list
     case listControls
     case navigationStack
@@ -35,6 +36,7 @@ enum PlaygroundType: String, CaseIterable {
     case stack
     case state
     case symbol
+    case tabView
     case text
     case textField
     case toggle
@@ -67,6 +69,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Image"
         case .keyboard:
             return "Keyboard"
+        case .link:
+            return "Link"
         case .label:
             return "Label"
         case .list:
@@ -101,6 +105,8 @@ enum PlaygroundType: String, CaseIterable {
             return "State"
         case .symbol:
             return "Symbol"
+        case .tabView:
+            return "TabView"
         case .text:
             return "Text"
         case .textField:
@@ -168,6 +174,9 @@ public struct PlaygroundNavigationView: View {
                 case .label:
                     LabelPlayground()
                         .navigationTitle($0.title)
+                case .link:
+                    LinkPlayground()
+                        .navigationTitle($0.title)
                 case .list:
                     ListPlayground()
                         .navigationTitle($0.title)
@@ -216,6 +225,9 @@ public struct PlaygroundNavigationView: View {
                 case .symbol:
                     SymbolPlayground()
                         .navigationTitle($0.title)
+                case .tabView:
+                    TabViewPlayground()
+                        .navigationTitle($0.title)
                 case .text:
                     TextPlayground()
                         .navigationTitle($0.title)
@@ -238,6 +250,6 @@ public struct PlaygroundNavigationView: View {
     }
 
     private func matchingPlaygroundTypes() -> [PlaygroundType] {
-        return PlaygroundType.allCases.filter { $0.rawValue.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) }
+        return PlaygroundType.allCases.filter { $0.title.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) }
     }
 }

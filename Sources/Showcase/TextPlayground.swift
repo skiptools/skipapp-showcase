@@ -46,5 +46,8 @@ struct TextPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "TextPlayground.swift")
+        }
     }
 }

@@ -228,5 +228,8 @@ struct ImagePlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "ImagePlayground.swift")
+        }
     }
 }

@@ -316,6 +316,9 @@ struct ShapePlayground: View {
                 }
             }.padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "ShapePlayground.swift")
+        }
     }
 }
 

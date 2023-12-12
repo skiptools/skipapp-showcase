@@ -76,10 +76,22 @@
     ".init(_ label:action:): %lld" : {
 
     },
+    ".init(_:destination:)" : {
+
+    },
+    ".init(_:icon:)" : {
+
+    },
+    ".init(_:systemImage:)" : {
+
+    },
     ".init(_:text:)" : {
 
     },
     ".init(action:label:): %lld" : {
+
+    },
+    ".init(destination:label:)" : {
 
     },
     ".init(text:label:)" : {
@@ -180,6 +192,9 @@
 
     },
     ".tint(.red): %lld" : {
+
+    },
+    "@Environment(\\.openURL)" : {
 
     },
     "%@ .deleteDisabled" : {
@@ -377,6 +392,9 @@
     "Ellipse" : {
 
     },
+    "Favorites" : {
+
+    },
     "Fill" : {
 
     },
@@ -477,6 +495,9 @@
     "Hello" : {
 
     },
+    "Home" : {
+
+    },
     "Increment counter: %lld" : {
 
     },
@@ -493,6 +514,9 @@
 
     },
     "Indigo" : {
+
+    },
+    "Info" : {
 
     },
     "Inner button" : {
@@ -529,9 +553,6 @@
 
     },
     "Label .tint(.red)" : {
-
-    },
-    "Label & Icon" : {
 
     },
     "Label in NavigationLink" : {
@@ -752,6 +773,9 @@
     "Skip" : {
 
     },
+    "Source" : {
+
+    },
     "Spacer" : {
 
     },
@@ -877,9 +901,6 @@
 
     },
     "Title" : {
-
-    },
-    "Title & SystemImage" : {
 
     },
     "Title + Message" : {

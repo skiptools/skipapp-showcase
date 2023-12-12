@@ -56,6 +56,9 @@ struct BackgroundPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "BackgroundPlayground.swift")
+        }
     }
 }
 

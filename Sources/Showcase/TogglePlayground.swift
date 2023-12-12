@@ -31,5 +31,8 @@ struct TogglePlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "TogglePlayground.swift")
+        }
     }
 }

@@ -13,5 +13,8 @@ struct NavigationStackPlayground: View {
         Button("Pop") {
             dismiss()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "NavigationStackPlayground.swift")
+        }
     }
 }

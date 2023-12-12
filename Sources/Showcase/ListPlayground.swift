@@ -62,6 +62,9 @@ struct ListPlayground: View {
         List(ListPlaygroundType.allCases, id: \.self) { type in
             NavigationLink(type.title, value: type)
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "ListPlayground.swift")
+        }
         .navigationDestination(for: ListPlaygroundType.self) {
             switch $0 {
             case .fixedContent:

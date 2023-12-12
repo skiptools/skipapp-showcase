@@ -15,6 +15,9 @@ struct SheetPlayground: View {
         .sheet(isPresented: $isPresented) {
             SheetContentView(dismissSheet: { isPresented = false })
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "SheetPlayground.swift")
+        }
     }
 }
 

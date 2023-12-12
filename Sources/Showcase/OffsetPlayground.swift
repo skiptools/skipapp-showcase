@@ -60,6 +60,9 @@ struct OffsetPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "OffsetPlayground.swift")
+        }
     }
 }
 

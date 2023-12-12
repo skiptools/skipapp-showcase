@@ -33,8 +33,11 @@ struct ColorPlayground: View {
                 colorRow(label: Text("Primary"), color: .primary)
                 colorRow(label: Text("Secondary"), color: .secondary)
             }
+            .padding()
         }
-        .padding()
+        .toolbar {
+            PlaygroundSourceLink(file: "ColorPlayground.swift")
+        }
     }
 
     func colorRow(label: Text, color: Color) -> some View {

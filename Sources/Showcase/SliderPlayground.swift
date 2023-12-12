@@ -30,5 +30,8 @@ struct SliderPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "SliderPlayground.swift")
+        }
     }
 }

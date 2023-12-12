@@ -28,5 +28,8 @@ struct TextFieldPlayground: View {
             .textFieldStyle(.roundedBorder)
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "TextFieldPlayground.swift")
+        }
     }
 }

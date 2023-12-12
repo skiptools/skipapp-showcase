@@ -89,5 +89,8 @@ struct ButtonPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "ButtonPlayground.swift")
+        }
     }
 }

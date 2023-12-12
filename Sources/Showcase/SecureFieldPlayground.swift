@@ -25,5 +25,8 @@ struct SecureFieldPlayground: View {
             .textFieldStyle(.roundedBorder)
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "SecureFieldPlayground.swift")
+        }
     }
 }

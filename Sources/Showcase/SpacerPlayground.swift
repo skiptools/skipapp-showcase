@@ -29,6 +29,9 @@ struct SpacerPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "SpacerPlayground.swift")
+        }
     }
 }
 

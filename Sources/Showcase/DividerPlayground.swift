@@ -46,5 +46,8 @@ struct DividerPlayground: View {
             }
             .padding()
         }
+        .toolbar {
+            PlaygroundSourceLink(file: "DividerPlayground.swift")
+        }
     }
 }
