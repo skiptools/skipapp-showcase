@@ -18,7 +18,7 @@ struct TextPlayground: View {
                     Text("Overridden to title font").font(.title)
                 }
                 .font(.footnote).fontWeight(.thin)
-                .border(Color.black)
+                .border(.primary)
 
                 Divider()
 

@@ -7,7 +7,13 @@
     ".backgroundStyle(.red)" : {
 
     },
+    ".blue, 5.0" : {
+
+    },
     ".blue.gradient, 10.0" : {
+
+    },
+    ".border" : {
 
     },
     ".bordered, .disabled(true): %lld" : {
@@ -65,6 +71,18 @@
 
     },
     ".frame(100, 100)\nclipped" : {
+
+    },
+    ".init(_ label:action:): %lld" : {
+
+    },
+    ".init(_:text:)" : {
+
+    },
+    ".init(action:label:): %lld" : {
+
+    },
+    ".init(text:label:)" : {
 
     },
     ".keyboardType(.%@)" : {
@@ -173,6 +191,9 @@
     "A" : {
 
     },
+    "About" : {
+
+    },
     "Accent color" : {
 
     },
@@ -231,9 +252,6 @@
 
     },
     "Blue" : {
-
-    },
-    "Blue, 5.0" : {
 
     },
     "Bold" : {
@@ -302,9 +320,6 @@
     "Cyan" : {
 
     },
-    "Data Actions" : {
-
-    },
     "Data: %@" : {
 
     },
@@ -360,9 +375,6 @@
 
     },
     "Ellipse" : {
-
-    },
-    "Favorites" : {
 
     },
     "Fill" : {
@@ -465,9 +477,6 @@
     "Hello" : {
 
     },
-    "Home" : {
-
-    },
     "Increment counter: %lld" : {
 
     },
@@ -484,9 +493,6 @@
 
     },
     "Indigo" : {
-
-    },
-    "Info" : {
 
     },
     "Inner button" : {
@@ -577,6 +583,12 @@
     "No URL\n.frame(100, 100)" : {
 
     },
+    "Note: colors should not affect Divider appearance" : {
+
+    },
+    "Note: tint should not affect Label appearance" : {
+
+    },
     "Observable" : {
 
     },
@@ -620,10 +632,16 @@
     "Pop" : {
 
     },
+    "Present" : {
+
+    },
     "Present another" : {
 
     },
     "Present sheet" : {
+
+    },
+    "Present with data" : {
 
     },
     "Primary" : {
@@ -731,6 +749,9 @@
     "Showcase" : {
 
     },
+    "Skip" : {
+
+    },
     "Spacer" : {
 
     },
@@ -750,9 +771,6 @@
 
     },
     "String init" : {
-
-    },
-    "String init: %lld" : {
 
     },
     "Stroke" : {
@@ -886,9 +904,6 @@
 
     },
     "Viewbuilder init" : {
-
-    },
-    "ViewBuilder init: %lld" : {
 
     },
     "VStack" : {

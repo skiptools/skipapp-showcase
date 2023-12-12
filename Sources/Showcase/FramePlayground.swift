@@ -83,13 +83,13 @@ struct FramePlayground: View {
                     Text("width: 100, height: 100")
                     Text("A")
                         .frame(width: 100.0, height: 100.0)
-                        .border(.black)
+                        .border(.primary)
                 }
                 VStack {
                     Text("alignment: .bottomTrailing")
                     Text("A")
                         .frame(width: 100.0, height: 100.0, alignment: .bottomTrailing)
-                        .border(.black)
+                        .border(.primary)
                 }
             }
             .padding()

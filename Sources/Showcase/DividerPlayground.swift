@@ -41,6 +41,8 @@ struct DividerPlayground: View {
                     Divider()
                         .tint(.red)
                 }
+                Text("Note: colors should not affect Divider appearance")
+                    .font(.caption)
             }
             .padding()
         }

@@ -12,9 +12,9 @@ struct TextFieldPlayground: View {
         ScrollView {
             VStack(spacing: 16.0) {
                 TextField(text: $text) {
-                    Text("Viewbuilder init")
+                    Text(".init(text:label:)")
                 }
-                TextField("String init", text: $text)
+                TextField(".init(_:text:)", text: $text)
                 TextField("With prompt", text: $text, prompt: Text("Prompt"))
                 TextField("Fixed width", text: $text)
                     .frame(width: 200.0)

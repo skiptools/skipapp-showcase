@@ -12,9 +12,9 @@ struct ButtonPlayground: View {
         ScrollView {
             VStack(spacing: 16.0) {
                 Button(action: { tapCount += 1 }) {
-                    Text("ViewBuilder init: \(tapCount)")
+                    Text(".init(action:label:): \(tapCount)")
                 }
-                Button("String init: \(tapCount)") {
+                Button(".init(_ label:action:): \(tapCount)") {
                     tapCount += 1
                 }
                 Button(".destructive: \(tapCount)", role: .destructive) {

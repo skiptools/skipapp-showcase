@@ -15,7 +15,7 @@ struct OffsetPlayground: View {
                     ZStack {
                         Color.clear
                             .frame(width: 100.0, height: 100.0)
-                            .border(Color.black)
+                            .border(.primary)
                         Color.red
                             .frame(width: 20.0, height: 20.0)
                             .offset(x: 0.0, y: 0.0)
@@ -27,7 +27,7 @@ struct OffsetPlayground: View {
                     ZStack {
                         Color.clear
                             .frame(width: 100.0, height: 100.0)
-                            .border(Color.black)
+                            .border(.primary)
                         Color.red
                             .frame(width: 20.0, height: 20.0)
                             .offset(x: 50.0, y: -50.0)
@@ -39,7 +39,7 @@ struct OffsetPlayground: View {
                     ZStack {
                         Color.clear
                             .frame(width: 100.0, height: 100.0)
-                            .border(Color.black)
+                            .border(.primary)
                         Color.red
                             .frame(width: 20.0, height: 20.0)
                             .offset(x: -50.0, y: 50.0)
@@ -51,7 +51,7 @@ struct OffsetPlayground: View {
                     ZStack {
                         Color.clear
                             .frame(width: 100.0, height: 100.0)
-                            .border(Color.black)
+                            .border(.primary)
                         Color.red
                             .frame(width: 20.0, height: 20.0)
                             .offset(CGSize(width: 50.0, height: 50.0))

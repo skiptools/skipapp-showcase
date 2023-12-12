@@ -10,11 +10,11 @@ struct BorderPlayground: View {
         ScrollView {
             VStack(spacing: 16.0) {
                 HStack {
-                    Text("Black")
+                    Text(".border")
                     Spacer()
                     Color.red
                         .frame(width: 100.0, height: 100.0)
-                        .border(.black)
+                        .border(.primary)
                 }
                 HStack {
                     Text(".padding()")
@@ -22,7 +22,7 @@ struct BorderPlayground: View {
                     Color.red
                         .frame(width: 100.0, height: 100.0)
                         .padding()
-                        .border(.black)
+                        .border(.primary)
                 }
                 HStack {
                     Text(".padding([.top, .leading])")
@@ -30,10 +30,10 @@ struct BorderPlayground: View {
                     Color.red
                         .frame(width: 100.0, height: 100.0)
                         .padding([.top, .leading], 32.0)
-                        .border(.black)
+                        .border(.primary)
                 }
                 HStack {
-                    Text("Blue, 5.0")
+                    Text(".blue, 5.0")
                     Spacer()
                     Color.red
                         .frame(width: 100.0, height: 100.0)
@@ -57,7 +57,7 @@ struct BorderPlayground: View {
                             .frame(width: 100.0, height: 100.0)
                             .padding()
                     }
-                    .border(.black)
+                    .border(.primary)
                 }
             }
             .padding()

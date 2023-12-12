@@ -31,7 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ActivityCompat
 
-internal val logger: SkipLogger = SkipLogger(subsystem = "skip.hello.App", category = "HelloSkip")
+internal val logger: SkipLogger = SkipLogger(subsystem = "showcase.app", category = "ShowcaseApp")
 
 /// AndroidAppMain is the `android.app.Application` entry point, and must match `application android:name` in the AndroidMainfest.xml file.
 open class AndroidAppMain: Application {

@@ -18,17 +18,6 @@ struct ConfirmationDialogPlayground: View {
     var body: some View {
         VStack(spacing: 16.0) {
             Text(value).bold()
-            Button("Data: \(String(describing: data))") {
-                if data == nil {
-                    data = 1
-                } else {
-                    data = data! + 1
-                }
-            }
-            Button("Nil Data") {
-                data = nil
-            }
-            Divider()
             Button("Default") {
                 defaultIsPresented = true
             }
@@ -41,13 +30,26 @@ struct ConfirmationDialogPlayground: View {
             Button("Custom Cancel") {
                 customCancelIsPresented = true
             }
-            Button("Data Actions") {
-                dataIsPresented = true
-            }
             Button("Scrolling") {
                 scrollingIsPresented = true
             }
+            Divider()
+            Text("Present with data")
+            Button("Data: \(String(describing: data))") {
+                if data == nil {
+                    data = 1
+                } else {
+                    data = data! + 1
+                }
+            }
+            Button("Nil Data") {
+                data = nil
+            }
+            Button("Present") {
+                dataIsPresented = true
+            }
         }
+        .padding()
         .confirmationDialog("Title", isPresented: $defaultIsPresented) {
             Button("Destructive", role: .destructive) {
                 value = "Destructive"
@@ -85,14 +87,6 @@ struct ConfirmationDialogPlayground: View {
                 value = "Option"
             }
         }
-        .confirmationDialog("Title", isPresented: $dataIsPresented, presenting: data) { d in
-            Button("Data: \(d)") {
-                value = "\(d)"
-            }
-            Button("Nil Data", role: .destructive) {
-                data = nil
-            }
-        }
         .confirmationDialog("Title", isPresented: $scrollingIsPresented) {
             Button("Destructive", role: .destructive) {
                 value = "Destructive"
@@ -101,6 +95,14 @@ struct ConfirmationDialogPlayground: View {
                 Button("Option \(i)") {
                     value = "Option \(i)"
                 }
+            }
+        }
+        .confirmationDialog("Title", isPresented: $dataIsPresented, presenting: data) { d in
+            Button("Data: \(d)") {
+                value = "\(d)"
+            }
+            Button("Nil Data", role: .destructive) {
+                data = nil
             }
         }
     }

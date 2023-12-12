@@ -21,6 +21,8 @@ struct LabelPlayground: View {
                     .foregroundStyle(.red)
                 Label(".tint(.red)", systemImage: "star.fill")
                     .tint(.red)
+                Text("Note: tint should not affect Label appearance")
+                    .font(.caption)
             }
             .padding()
         }
