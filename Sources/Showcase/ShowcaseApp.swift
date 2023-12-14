@@ -4,8 +4,9 @@ import SwiftUI
 
 let logger = Logger(subsystem: "showcase.app", category: "ShowcaseApp")
 
-/// URL string of the source directory for this app.
-let showcaseSourceURLString = "https://github.com/skiptools/skipapp-showcase/blob/main/Sources/Showcase/"
+/// URL string of the source this app.
+let showcaseSourceURLString = "https://github.com/skiptools/skipapp-showcase/tree/main/"
+let playgroundPath = "Sources/Showcase/"
 
 /// The Android SDK number we are running against, or `nil` if not running on Android
 let androidSDK = ProcessInfo.processInfo.environment["android.os.Build.VERSION.SDK_INT"].flatMap({ Int($0) })

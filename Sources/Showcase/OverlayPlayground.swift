@@ -5,67 +5,30 @@
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
 
-struct BackgroundPlayground: View {
+struct OverlayPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
                 HStack {
-                    Text(".red")
+                    Text(".red.opacity(0.2)")
                     Spacer()
-                    ZStack {
-                    }
-                    .frame(width: 100.0, height: 100.0)
-                    .background(.red)
-                }
-                HStack {
-                    Text("background()")
-                    Spacer()
-                    ZStack {
-                        Text("Hello")
-                            .background()
-                    }
-                    .frame(width: 100.0, height: 100.0)
-                    .background(.red)
-                }
-                HStack {
-                    Text(".red.gradient")
-                    Spacer()
-                    ZStack {
-                    }
-                    .frame(width: 100.0, height: 100.0)
-                    .background(.red.gradient)
-                }
-                HStack {
-                    Text(".backgroundStyle(.red)")
-                    Spacer()
-                    ZStack {
-                        Text("Hello")
-                            .background()
-                    }
-                    .frame(width: 100.0, height: 100.0)
-                    .backgroundStyle(.red)
-                }
-                HStack {
-                    Text(".clipShape(.capsule)")
-                    Spacer()
-                    Image(systemName: "heart.fill")
-                        .frame(width: 100.0, height: 50.0)
-                        .background(.red.gradient)
-                        .clipShape(.capsule)
+                    Text("Hello")
+                        .padding()
+                        .overlay(.red.opacity(0.2))
                 }
                 HStack {
                     Text("in: Capsule()")
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background(.red.opacity(0.2), in: Capsule())
+                        .overlay(.red.opacity(0.2), in: Capsule())
                 }
                 HStack {
                     Text("Circles")
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background {
+                        .overlay {
                             HStack {
                                 Circle().fill(.red.opacity(0.2))
                                 Circle().fill(.green.opacity(0.2))
@@ -78,7 +41,7 @@ struct BackgroundPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background {
+                        .overlay {
                             Circle()
                                 .fill(.red.opacity(0.2))
                                 .frame(width: 100.0, height: 100.0)
@@ -90,7 +53,7 @@ struct BackgroundPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background {
+                        .overlay {
                             HStack {
                                 Circle().fill(.red.opacity(0.2))
                                 Circle().fill(.red.opacity(0.2))
@@ -105,7 +68,7 @@ struct BackgroundPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background {
+                        .overlay {
                             Circle()
                                 .fill(.red.opacity(0.2))
                                 .frame(width: 20.0, height: 20.0)
@@ -117,7 +80,7 @@ struct BackgroundPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background(alignment: .topLeading) {
+                        .overlay(alignment: .topLeading) {
                             Circle()
                                 .fill(.red.opacity(0.2))
                                 .frame(width: 20.0, height: 20.0)
@@ -129,7 +92,7 @@ struct BackgroundPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background(alignment: .bottomTrailing) {
+                        .overlay(alignment: .bottomTrailing) {
                             Circle()
                                 .fill(.red.opacity(0.2))
                                 .frame(width: 20.0, height: 20.0)
@@ -140,8 +103,7 @@ struct BackgroundPlayground: View {
             .padding()
         }
         .toolbar {
-            PlaygroundSourceLink(file: "BackgroundPlayground.swift")
+            PlaygroundSourceLink(file: "OverlayPlayground.swift")
         }
     }
 }
-

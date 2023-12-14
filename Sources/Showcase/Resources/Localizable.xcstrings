@@ -43,6 +43,9 @@
     ".borderedProminent: %lld" : {
 
     },
+    ".clipped()" : {
+
+    },
     ".clipShape(.capsule)" : {
 
     },
@@ -155,6 +158,9 @@
     ".red.gradient" : {
 
     },
+    ".red.opacity(0.2)" : {
+
+    },
     ".resizable\n.frame(100, 100)" : {
 
     },
@@ -236,6 +242,9 @@
     "alignment: .bottomTrailing" : {
 
     },
+    "alignment: .topLeading" : {
+
+    },
     "AsyncImage" : {
 
     },
@@ -297,6 +306,9 @@
 
     },
     "Circle" : {
+
+    },
+    "Circles" : {
 
     },
     "Clear" : {
@@ -498,6 +510,9 @@
     "Home" : {
 
     },
+    "in: Capsule()" : {
+
+    },
     "Increment counter: %lld" : {
 
     },
@@ -556,6 +571,9 @@
 
     },
     "Label in NavigationLink" : {
+
+    },
+    "Large circle" : {
 
     },
     "LinearGradient" : {
@@ -770,7 +788,16 @@
     "Showcase" : {
 
     },
-    "Skip" : {
+    "Showcase is a dual-platform iOS + Android app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs on Android" : {
+
+    },
+    "Showcase Source" : {
+
+    },
+    "Skip Technology" : {
+
+    },
+    "Small circle" : {
 
     },
     "Source" : {

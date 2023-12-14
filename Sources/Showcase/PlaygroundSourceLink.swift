@@ -10,7 +10,7 @@ struct PlaygroundSourceLink : View {
     private let destination: URL
 
     init(file: String) {
-        destination = URL(string: showcaseSourceURLString + file)!
+        destination = URL(string: showcaseSourceURLString + playgroundPath + file)!
     }
 
     var body: some View {

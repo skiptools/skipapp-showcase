@@ -10,9 +10,9 @@ struct ImagePlayground: View {
     let systemNameSample = "heart.fill"
     let remoteImageResourceURL: URL? = URL(string: "https://picsum.photos/id/237/200/300")
 
-    // iOS: file://…/Application/…/Showcase.app/skipapp-showcase_Showcase.bundle/swift-logo.png
-    // Android: jar:file:/data/app/…/base.apk!/showcase/module/Resources/swift-logo.png
-    let localImageResourceURL: URL? = Bundle.module.url(forResource: "swift-logo", withExtension: "png")
+    // iOS: file://…/Application/…/Showcase.app/skipapp-showcase_Showcase.bundle/skip-logo.png
+    // Android: jar:file:/data/app/…/base.apk!/showcase/module/Resources/skip-logo.png
+    let localImageResourceURL: URL? = Bundle.module.url(forResource: "skip-logo", withExtension: "png")
 
     var body: some View {
         ScrollView {
@@ -21,6 +21,7 @@ struct ImagePlayground: View {
                 HStack {
                     Spacer()
                     AsyncImage(url: localImageResourceURL)
+                        .border(.blue)
                     Spacer()
                 }
 

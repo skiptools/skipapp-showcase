@@ -8,7 +8,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            SkipInfoView()
+            AboutView()
                 .tabItem {
                     Label("About", systemImage: "info.circle")
                 }

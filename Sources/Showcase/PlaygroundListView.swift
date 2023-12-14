@@ -5,7 +5,8 @@
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
 
-enum PlaygroundType: String, CaseIterable {
+/// All Showcase playgrounds.
+enum PlaygroundType: CaseIterable {
     case background
     case border
     case button
@@ -26,6 +27,7 @@ enum PlaygroundType: String, CaseIterable {
     case observable
     case offset
     case onSubmit
+    case overlay
     case progressView
     case searchable
     case secureField
@@ -85,6 +87,8 @@ enum PlaygroundType: String, CaseIterable {
             return "Offset"
         case .onSubmit:
             return "OnSubmit"
+        case .overlay:
+            return "Overlay"
         case .progressView:
             return "ProgressView"
         case .searchable:
@@ -121,6 +125,7 @@ enum PlaygroundType: String, CaseIterable {
     }
 }
 
+/// List to navigate to each playground.
 public struct PlaygroundNavigationView: View {
     @State var searchText = ""
 
@@ -194,6 +199,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .onSubmit:
                     OnSubmitPlayground()
+                        .navigationTitle($0.title)
+                case .overlay:
+                    OverlayPlayground()
                         .navigationTitle($0.title)
                 case .progressView:
                     ProgressViewPlayground()
