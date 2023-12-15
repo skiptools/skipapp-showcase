@@ -50,6 +50,11 @@ struct ButtonPlayground: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled(true)
+                Button {
+                    tapCount += 1
+                } label: {
+                    Label("Label", systemImage: "star")
+                }
                 Button(".foregroundStyle(.red): \(tapCount)") {
                     tapCount += 1
                 }

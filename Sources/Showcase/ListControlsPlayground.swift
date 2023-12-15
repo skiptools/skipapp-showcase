@@ -33,6 +33,7 @@ struct ListControlsPlayground: View {
                     Button("Inner button", action: { logger.info("Tap inner") })
                 }
             }
+            ButtonRow()
             Toggle(isOn: $boolValue) {
                 Text("Toggle")
             }
@@ -43,6 +44,14 @@ struct ListControlsPlayground: View {
         }
         .navigationDestination(for: String.self) { value in
             Text(value)
+        }
+    }
+
+    struct ButtonRow: View {
+        var body: some View {
+            Button("Button in custom view") {
+                logger.info("Tap")
+            }
         }
     }
 }

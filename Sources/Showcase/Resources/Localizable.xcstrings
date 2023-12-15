@@ -299,6 +299,9 @@
     "Button .bordered" : {
 
     },
+    "Button in custom view" : {
+
+    },
     "Cancel" : {
 
     },
@@ -368,6 +371,9 @@
           }
         }
       }
+    },
+    "Dismiss" : {
+
     },
     "Dismiss via environment" : {
 
@@ -925,6 +931,9 @@
 
     },
     "This is the message" : {
+
+    },
+    "This text uses a custom modifier that adds a Dismiss button to the navigation bar above" : {
 
     },
     "Title" : {

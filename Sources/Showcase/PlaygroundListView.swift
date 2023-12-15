@@ -23,6 +23,7 @@ enum PlaygroundType: CaseIterable {
     case link
     case list
     case listControls
+    case modifier
     case navigationStack
     case observable
     case offset
@@ -79,6 +80,8 @@ enum PlaygroundType: CaseIterable {
             return "List"
         case .listControls:
             return "List Controls"
+        case .modifier:
+            return "Custom Modifiers"
         case .navigationStack:
             return "NavigationStack"
         case .observable:
@@ -187,6 +190,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .listControls:
                     ListControlsPlayground()
+                        .navigationTitle($0.title)
+                case .modifier:
+                    ModifierPlayground()
                         .navigationTitle($0.title)
                 case .navigationStack:
                     NavigationStackPlayground()

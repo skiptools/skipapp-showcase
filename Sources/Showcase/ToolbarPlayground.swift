@@ -9,6 +9,7 @@ enum ToolbarPlaygroundType: String, CaseIterable {
     case `default`
     case tint
     case custom
+    case label
     case toolbarItem
     case toolbarItemGroup
     case topLeadingItem
@@ -27,6 +28,8 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return "Tint"
         case .custom:
             return "Custom"
+        case .label:
+            return "Label"
         case .toolbarItem:
             return "ToolbarItem"
         case .toolbarItemGroup:
@@ -67,6 +70,9 @@ struct ToolbarPlayground: View {
                     .navigationTitle($0.title)
             case .custom:
                 CustomToolbarItemPlayground()
+                    .navigationTitle($0.title)
+            case .label:
+                LabelToolbarItemPlayground()
                     .navigationTitle($0.title)
             case .toolbarItem:
                 ToolbarItemPlayground(placement: ToolbarItemPlacement.automatic, placement2: ToolbarItemPlacement.automatic)
@@ -165,6 +171,26 @@ struct CustomToolbarItemPlayground: View {
                 .onTapGesture {
                     dismiss()
                 }
+        }
+    }
+}
+
+struct LabelToolbarItemPlayground: View {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        List {
+            Button("Pop") {
+                dismiss()
+            }
+            ForEach(0..<100) { i in
+                Text("Content \(i)")
+            }
+        }
+        .toolbar {
+            Button(action: { dismiss() }) {
+                Label("Dismiss", systemImage: "trash")
+            }
         }
     }
 }
