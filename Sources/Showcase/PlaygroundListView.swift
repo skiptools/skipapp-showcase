@@ -264,6 +264,10 @@ public struct PlaygroundNavigationView: View {
     }
 
     private func matchingPlaygroundTypes() -> [PlaygroundType] {
-        return PlaygroundType.allCases.filter { $0.title.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) }
+        return PlaygroundType.allCases.filter {
+            let words = $0.title.split(separator: " ")
+            let prefix = searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+            return words.contains { $0.lowercased().starts(with: prefix) }
+        }
     }
 }
