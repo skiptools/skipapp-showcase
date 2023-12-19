@@ -43,6 +43,9 @@
     ".borderedProminent: %lld" : {
 
     },
+    ".buttonStyle(.bordered)" : {
+
+    },
     ".clipped()" : {
 
     },
@@ -579,6 +582,9 @@
     "Label in NavigationLink" : {
 
     },
+    "Label items" : {
+
+    },
     "Large circle" : {
 
     },
@@ -594,6 +600,9 @@
     "LongPress: %lld" : {
 
     },
+    "Menu" : {
+
+    },
     "Mint" : {
 
     },
@@ -606,6 +615,9 @@
     "minWidth: 300, maxWidth: .infinity,\n  minHeight: 100, maxHeight: .infinity" : {
 
     },
+    "Nested" : {
+
+    },
     "Nested ForEach row: %lld.%lld" : {
       "localizations" : {
         "en" : {
@@ -615,6 +627,9 @@
           }
         }
       }
+    },
+    "Nested menu" : {
+
     },
     "Nil Data" : {
 
@@ -659,6 +674,18 @@
     "Option %lld" : {
 
     },
+    "Option 1" : {
+
+    },
+    "Option 2" : {
+
+    },
+    "Option 3" : {
+
+    },
+    "Option 4" : {
+
+    },
     "Orange" : {
 
     },
@@ -690,6 +717,9 @@
 
     },
     "Primary" : {
+
+    },
+    "PrimaryAction: %lld" : {
 
     },
     "Progress 0.5" : {
@@ -777,6 +807,9 @@
 
     },
     "Secondary" : {
+
+    },
+    "Section" : {
 
     },
     "Section 0 (Fixed)" : {
@@ -915,6 +948,9 @@
     "Text" : {
 
     },
+    "Text & Divider" : {
+
+    },
     "Text field" : {
 
     },
@@ -982,6 +1018,15 @@
 
     },
     "With prompt" : {
+
+    },
+    "With zIndex" : {
+
+    },
+    "With zIndex before frame" : {
+
+    },
+    "Without zIndex" : {
 
     },
     "Wrap: This is some long text that should wrap when it exceeds the width of its frame" : {

@@ -20,6 +20,8 @@ struct LinkPlayground: View {
                     Image(systemName: "heart.fill")
                 }
                 .border(.blue)
+                Link(".buttonStyle(.bordered)", destination: destination)
+                    .buttonStyle(.bordered)
                 Link(".foregroundStyle(.red)", destination: destination)
                     .foregroundStyle(.red)
                 Link(".tint(.red)", destination: destination)

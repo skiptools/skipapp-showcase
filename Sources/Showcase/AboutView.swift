@@ -46,7 +46,7 @@ struct AboutView: View {
                 $0.image?.resizable()
             }
             .frame(width: 80.0, height: 80.0)
-            .padding(.all, 20.0)
+            .padding(20.0)
             .background(.white) // Fill area outside of image, which has a white background
             .clipShape(Circle())
             .overlay {

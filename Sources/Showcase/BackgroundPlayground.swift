@@ -18,6 +18,14 @@ struct BackgroundPlayground: View {
                     .background(.red)
                 }
                 HStack {
+                    Text(".red.gradient")
+                    Spacer()
+                    ZStack {
+                    }
+                    .frame(width: 100.0, height: 100.0)
+                    .background(.red.gradient)
+                }
+                HStack {
                     Text("background()")
                     Spacer()
                     ZStack {
@@ -26,14 +34,6 @@ struct BackgroundPlayground: View {
                     }
                     .frame(width: 100.0, height: 100.0)
                     .background(.red)
-                }
-                HStack {
-                    Text(".red.gradient")
-                    Spacer()
-                    ZStack {
-                    }
-                    .frame(width: 100.0, height: 100.0)
-                    .background(.red.gradient)
                 }
                 HStack {
                     Text(".backgroundStyle(.red)")

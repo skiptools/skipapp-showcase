@@ -23,6 +23,7 @@ enum PlaygroundType: CaseIterable {
     case link
     case list
     case listControls
+    case menu
     case modifier
     case navigationStack
     case observable
@@ -45,6 +46,7 @@ enum PlaygroundType: CaseIterable {
     case toggle
     case toolbar
     case videoPlayer
+    case zIndex
 
     var title: String {
         switch self {
@@ -80,8 +82,10 @@ enum PlaygroundType: CaseIterable {
             return "List"
         case .listControls:
             return "List Controls"
+        case .menu:
+            return "Menu"
         case .modifier:
-            return "Custom Modifiers"
+            return "Modifiers"
         case .navigationStack:
             return "NavigationStack"
         case .observable:
@@ -124,6 +128,8 @@ enum PlaygroundType: CaseIterable {
             return "Toolbar"
         case .videoPlayer:
             return "Video Player"
+        case .zIndex:
+            return "ZIndex"
         }
     }
 }
@@ -191,6 +197,9 @@ public struct PlaygroundNavigationView: View {
                 case .listControls:
                     ListControlsPlayground()
                         .navigationTitle($0.title)
+                case .menu:
+                    MenuPlayground()
+                        .navigationTitle($0.title)
                 case .modifier:
                     ModifierPlayground()
                         .navigationTitle($0.title)
@@ -256,6 +265,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .videoPlayer:
                     VideoPlayerPlayground()
+                        .navigationTitle($0.title)
+                case .zIndex:
+                    ZIndexPlayground()
                         .navigationTitle($0.title)
                 }
             }
