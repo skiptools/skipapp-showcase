@@ -6,18 +6,28 @@
 require('dotenv')
 Dotenv.load '../../Skip.env'
 
-#default_platform(:android)
+default_platform(:android)
+
+# use the Homebrew gradle rather than expecting a local gradlew
+gradle_bin = (ENV['HOMEBREW_PREFIX'] ? ENV['HOMEBREW_PREFIX'] : "/opt/homebrew") + "/bin/gradle"
 
 platform :android do
   desc "Build Skip Android App"
   lane :build do |options|
     build_config = (options[:release] ? "Release" : "Debug")
-    build_ios_app(scheme: ENV['PRODUCT_NAME'], configuration: build_config)
+    gradle(
+      task: "build${build_config}",
+      gradle_path: gradle_bin,
+      flags: "--warning-mode none -x lint"
+    )
   end
 
   desc "Test Skip Android App"
   lane :test do
-    gradle(task: "test")
+    gradle(
+      task: "test",
+      gradle_path: gradle_bin
+    )
   end
 
   desc "Assemble Skip Android App"
