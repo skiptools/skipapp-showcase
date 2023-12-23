@@ -1,0 +1,53 @@
+# This file contains the fastlane.tools configuration
+# for the Darwin half of the Skip app.
+# You can find the documentation at https://docs.fastlane.tools
+
+# Load the shared Skip.env properties with the app info
+require('dotenv')
+Dotenv.load '../../Skip.env'
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Build Skip iOS App"
+  lane :build do |options|
+    build_config = (options[:release] ? "Release" : "Debug")
+    # enable SKIP_ZERO mode and skip Android build
+    ENV['SKIP_ZERO'] = 'YES'
+    build_ios_app(
+      scheme: "#{ENV['PRODUCT_NAME']}", 
+      configuration: build_config,
+      destination: "generic/platform=iOS",
+      sdk: "iphoneos",
+      skip_codesigning: true,
+      skip_archive: false
+    )
+  end
+
+  #desc "Test Skip iOS App"
+  #lane :test do
+    #build(release: false)
+    #run_tests(
+      #workspace: "App.xcworkspace",
+      #scheme: "MyTests",
+      #clean: false
+    #)
+  #end
+#
+ #lane :archive do
+   #gym(
+     #scheme: ENV['PRODUCT_NAME'],
+     #export_method: "app-store",
+     #output_directory: "./archive",
+     #export_team_id: ENV['TEAM_ID'],
+     #output_name: ENV['PRODUCT_NAME'] + "-" + ENV['MARKETING_VERSION'] + ".ipa"
+   #)
+ #end
+#
+  #desc "Deploy Skip Android App to TestFlight"
+  #lane :deploy_testflight do
+    #build(release: true)
+    #upload_to_testflight
+  #end
+#
+end

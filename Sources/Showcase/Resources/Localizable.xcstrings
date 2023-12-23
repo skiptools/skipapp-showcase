@@ -384,6 +384,47 @@
     "Dismiss via state" : {
 
     },
+    "Done" : {
+      "comment" : "Done button text",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        }
+      }
+    },
     "Double tap: (%lf, %lf)" : {
       "localizations" : {
         "en" : {
@@ -615,6 +656,9 @@
     "minWidth: 300, maxWidth: .infinity,\n  minHeight: 100, maxHeight: .infinity" : {
 
     },
+    "Multi-Line 1\nMulti-Line **2**\nMulti-Line \"3\"" : {
+      "comment" : "multi-line text"
+    },
     "Nested" : {
 
     },
@@ -825,15 +869,9 @@
 
     },
     "Showcase" : {
-
+      "comment" : "localized string"
     },
     "Showcase is a dual-platform iOS + Android app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs on Android" : {
-
-    },
-    "Showcase Source" : {
-
-    },
-    "Skip Technology" : {
 
     },
     "Small circle" : {
@@ -862,6 +900,16 @@
     },
     "String init" : {
 
+    },
+    "String: %@ Number: %lf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "String: %1$@ Number: %2$lf"
+          }
+        }
+      }
     },
     "Stroke" : {
 

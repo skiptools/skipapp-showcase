@@ -1,0 +1,16 @@
+# This file contains the app distribution configuration
+# for the Darwin half of the Skip app.
+# You can find the documentation at https://docs.fastlane.tools
+
+# Load the shared Skip.env properties with the app info
+require('dotenv')
+Dotenv.load '../../Skip.env'
+
+app_identifier("skip.showcase.App") # The bundle identifier of your app
+apple_id("appfair@appfair.org") # Your Apple Developer Portal username
+
+itc_team_id("124868656") # App Store Connect Team ID
+team_id(ENV['TEAM_ID']) # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
