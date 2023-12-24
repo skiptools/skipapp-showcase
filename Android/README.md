@@ -2,6 +2,38 @@
 
 This folder contains the scaffolding for the Android half of the Skip app.
 
+## Structure
+
+The Android folder will look something like this:
+
+```plaintext
+Android/
+├── README.md
+├── app
+│   ├── build.gradle.kts
+│   ├── keystore.jks -> ../../../keystore.jks
+│   ├── keystore.properties -> ../../../keystore.properties
+│   ├── proguard-rules.pro
+│   └── src
+│       └── main
+│           ├── AndroidManifest.xml
+│           ├── kotlin
+│           │   └── showcase
+│           │       └── module
+│           │           └── Main.kt
+│           └── res
+│               └── mipmap-xxxhdpi
+│                   └── ic_launcher.png
+├── fastlane
+│   ├── Appfile
+│   ├── Fastfile
+├── gradle
+│   └── wrapper
+│       └── gradle-wrapper.properties
+├── gradle.properties
+└── settings.gradle.kts
+```
+
 ## Signing
 
 Create the `Android/app/keystore.jks` file by running this command and following the prompts:
