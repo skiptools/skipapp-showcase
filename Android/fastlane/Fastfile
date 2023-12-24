@@ -32,13 +32,17 @@ platform :android do
 
   desc "Assemble Skip Android App"
   lane :assemble do
-    gradle(task: "clean assembleRelease")
+    gradle(
+      task: "assembleRelease",
+      gradle_path: gradle_bin,
+      flags: "--warning-mode none -x lint"
+    )
     # sh "your_script.sh"
   end
 
   desc "Deploy Skip Android App to Google Play"
   lane :upload_play_store do
-    gradle(task: "clean assembleRelease")
+    gradle(task: "assembleRelease")
     upload_to_play_store
   end
 end

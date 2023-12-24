@@ -11,8 +11,8 @@ val keystorePropertiesFile = file("keystore.properties")
 android {
     compileSdk = 34
     defaultConfig {
-        targetSdk = 34
         minSdk = 29
+        targetSdk = 34
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders["PRODUCT_NAME"] = prop("PRODUCT_NAME")
         manifestPlaceholders["PRODUCT_BUNDLE_IDENTIFIER"] = prop("PRODUCT_BUNDLE_IDENTIFIER")
