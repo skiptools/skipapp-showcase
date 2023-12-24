@@ -8,6 +8,8 @@ xcodebuild*.log
 .*.swp
 .*.swo
 .DS_Store
+Android/app/keystore.jks
+Android/app/keystore.properties
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint

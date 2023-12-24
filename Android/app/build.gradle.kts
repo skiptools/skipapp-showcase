@@ -1,10 +1,17 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     kotlin("android") version "1.9.0"
     id("com.android.application") version "8.1.0"
 }
 
+val keystorePropertiesFile = file("keystore.properties")
+
 android {
+    compileSdk = 34
     defaultConfig {
+        targetSdk = 34
         minSdk = 29
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders["PRODUCT_NAME"] = prop("PRODUCT_NAME")
@@ -20,12 +27,25 @@ android {
         buildConfig = true
         compose = true
     }
+    signingConfigs {
+        create("release") {
+            if (keystorePropertiesFile.exists()) {
+                val keystoreProperties = Properties()
+                keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+            }
+        }
+    }
     buildTypes {
         release {
             signingConfig = signingConfigs.findByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
-            isDebuggable = true
+            isDebuggable = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
@@ -33,7 +53,6 @@ android {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
     namespace = group as String
-    compileSdk = 34
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
