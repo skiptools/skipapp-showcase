@@ -221,6 +221,9 @@
     "Accent color" : {
 
     },
+    "Add item" : {
+
+    },
     "After" : {
 
     },
@@ -566,6 +569,9 @@
     "Increment counter: %lld" : {
 
     },
+    "Increment last" : {
+
+    },
     "Indeterminate" : {
 
     },
@@ -797,6 +803,9 @@
 
     },
     "Red, .opacity(0.5)" : {
+
+    },
+    "Repository item tap count: %lld" : {
 
     },
     "RGB" : {
