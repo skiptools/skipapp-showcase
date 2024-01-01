@@ -63,13 +63,14 @@ struct AboutView: View {
     }
 
     struct LinkLabel : View {
+        @Environment(\.layoutDirection) var layoutDirection
         let text: String
 
         var body: some View {
             HStack {
                 Text(text)
                 Spacer()
-                Image(systemName: "arrow.forward")
+                Image(systemName: layoutDirection == LayoutDirection.rightToLeft ? "arrow.left" : "arrow.forward")
             }
             .padding()
         }

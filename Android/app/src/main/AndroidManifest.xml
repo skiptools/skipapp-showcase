@@ -13,6 +13,7 @@
         android:label="${PRODUCT_NAME}"
         android:name=".AndroidAppMain"
         android:allowBackup="true"
+        android:supportsRtl="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
