@@ -35,6 +35,7 @@ enum PlaygroundType: CaseIterable {
     case searchable
     case secureField
     case shape
+    case shareLink
     case sheet
     case slider
     case spacer
@@ -107,6 +108,8 @@ enum PlaygroundType: CaseIterable {
             return "SecureField"
         case .shape:
             return "Shape"
+        case .shareLink:
+            return "ShareLink"
         case .sheet:
             return "Sheet"
         case .slider:
@@ -235,6 +238,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .shape:
                     ShapePlayground()
+                        .navigationTitle($0.title)
+                case .shareLink:
+                    ShareLinkPlayground()
                         .navigationTitle($0.title)
                 case .sheet:
                     SheetPlayground()
