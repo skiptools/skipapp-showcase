@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     ".autocorrectionDisabled()" : {
 
     },
@@ -44,6 +47,9 @@
 
     },
     ".buttonStyle(.bordered)" : {
+
+    },
+    ".buttonStyle(.plain)" : {
 
     },
     ".clipped()" : {
@@ -150,6 +156,9 @@
 
     },
     ".padding([.top, .leading])" : {
+
+    },
+    ".pickerStyle(.navigationLink)" : {
 
     },
     ".plain: %lld" : {
@@ -360,6 +369,15 @@
 
     },
     "Data: %lld" : {
+
+    },
+    "Date only" : {
+
+    },
+    "DatePicker" : {
+
+    },
+    "DatePicker .disabled" : {
 
     },
     "Default" : {
@@ -751,6 +769,24 @@
     "Overridden to title font" : {
 
     },
+    "Picker" : {
+
+    },
+    "Picker .disabled" : {
+
+    },
+    "Picker .foregroundStyle(.red)" : {
+
+    },
+    "Picker .labelsHidden (below)" : {
+
+    },
+    "Picker .navigationLink" : {
+
+    },
+    "Picker .tint(.red)" : {
+
+    },
     "Pink" : {
 
     },
@@ -953,6 +989,12 @@
     "Struct" : {
 
     },
+    "Struct (field)" : {
+
+    },
+    "Struct tap count (field): %lld" : {
+
+    },
     "Struct tap count: %lld" : {
 
     },
@@ -1042,6 +1084,12 @@
 
     },
     "This text uses a custom modifier that adds a Dismiss button to the navigation bar above" : {
+
+    },
+    "This view only renders on Android" : {
+
+    },
+    "Time only" : {
 
     },
     "Title" : {

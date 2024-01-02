@@ -11,7 +11,9 @@ enum PlaygroundType: CaseIterable {
     case border
     case button
     case color
+    case compose
     case confirmationDialog
+    case datePicker
     case divider
     case form
     case frame
@@ -22,7 +24,6 @@ enum PlaygroundType: CaseIterable {
     case label
     case link
     case list
-    case listControls
     case localization
     case menu
     case modifier
@@ -31,6 +32,7 @@ enum PlaygroundType: CaseIterable {
     case offset
     case onSubmit
     case overlay
+    case picker
     case progressView
     case searchable
     case secureField
@@ -60,8 +62,12 @@ enum PlaygroundType: CaseIterable {
             return "Button"
         case .color:
             return "Color"
+        case .compose:
+            return "Compose"
         case .confirmationDialog:
             return "ConfirmationDialog"
+        case .datePicker:
+            return "DatePicker"
         case .divider:
             return "Divider"
         case .form:
@@ -82,8 +88,6 @@ enum PlaygroundType: CaseIterable {
             return "Label"
         case .list:
             return "List"
-        case .listControls:
-            return "List Controls"
         case .localization:
             return "Localization"
         case .menu:
@@ -100,6 +104,8 @@ enum PlaygroundType: CaseIterable {
             return "OnSubmit"
         case .overlay:
             return "Overlay"
+        case .picker:
+            return "Picker"
         case .progressView:
             return "ProgressView"
         case .searchable:
@@ -167,8 +173,14 @@ public struct PlaygroundNavigationView: View {
                 case .color:
                     ColorPlayground()
                         .navigationTitle($0.title)
+                case .compose:
+                    ComposePlayground()
+                        .navigationTitle($0.title)
                 case .confirmationDialog:
                     ConfirmationDialogPlayground()
+                        .navigationTitle($0.title)
+                case .datePicker:
+                    DatePickerPlayground()
                         .navigationTitle($0.title)
                 case .divider:
                     DividerPlayground()
@@ -200,9 +212,6 @@ public struct PlaygroundNavigationView: View {
                 case .list:
                     ListPlayground()
                         .navigationTitle($0.title)
-                case .listControls:
-                    ListControlsPlayground()
-                        .navigationTitle($0.title)
                 case .localization:
                     LocalizationPlayground()
                         .navigationTitle($0.title)
@@ -226,6 +235,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .overlay:
                     OverlayPlayground()
+                        .navigationTitle($0.title)
+                case .picker:
+                    PickerPlayground()
                         .navigationTitle($0.title)
                 case .progressView:
                     ProgressViewPlayground()

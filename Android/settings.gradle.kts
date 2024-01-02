@@ -90,6 +90,7 @@ fun addSkipModules() {
     // which can be found in Xcode's Reports Navigator Build log for the app in the
     // environment settings list of the "Run custom shell script 'Run skip gradle'" log entry
     // builtProductsDir = "/Users/marc/Library/Developer/Xcode/DerivedData/Skip-App-aqywrhrzhkbvfseiqgxuufbdwdft/Build/Products/Debug-iphonesimulator"
+    builtProductsDir = "/Users/awhite/Library/Developer/Xcode/DerivedData/Skip-cpwfvqbznbgqkbhfdalldovwowpp/Build/Products/Debug-iphonesimulator" //~~~
 
     var skipOutputs: File
     if (builtProductsDir != null) {

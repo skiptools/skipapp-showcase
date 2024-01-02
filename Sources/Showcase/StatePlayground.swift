@@ -64,6 +64,13 @@ struct StatePlayground: View {
                 Button("Struct") {
                     tapCountStruct.tapCount += 1
                 }
+                StatePlaygroundStructBindingView(tapCountStruct: $tapCountStruct)
+            }
+            Section {
+                Text("Struct tap count (field): \(tapCountStruct.tapCount)")
+                Button("Struct (field)") {
+                    tapCountStruct.tapCount += 1
+                }
                 StatePlaygroundBindingView(tapCount: $tapCountStruct.tapCount)
             }
             Section {
@@ -94,6 +101,15 @@ struct StatePlaygroundBindingView: View {
     var body: some View {
         Button("Binding") {
             tapCount += 1
+        }
+    }
+}
+
+struct StatePlaygroundStructBindingView: View {
+    @Binding var tapCountStruct: TapCountStruct
+    var body: some View {
+        Button("Binding") {
+            tapCountStruct.tapCount += 1
         }
     }
 }

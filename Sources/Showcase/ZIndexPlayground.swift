@@ -17,7 +17,7 @@ struct ZIndexPlayground: View {
                             .frame(width: 20.0, height: 20.0)
                         Color.green.opacity(0.5)
                             .frame(width: 60.0, height: 60.0)
-                        Color.red.opacity(0.5)
+                        Color.pink.opacity(0.5) //~~~
                             .frame(width: 100.0, height: 100.0)
                     }
                 }
