@@ -91,6 +91,8 @@ struct PickerPlayground: View {
                         }
                     }
                 }
+                #if os(macOS)
+                #else
                 Picker(".pickerStyle(.navigationLink)", selection: $selectedValue) {
                     ForEach(values, id: \.self) {
                         Text($0)
@@ -103,6 +105,7 @@ struct PickerPlayground: View {
                     }
                 }
                 .pickerStyle(.navigationLink)
+                #endif
             }
             .padding()
         }

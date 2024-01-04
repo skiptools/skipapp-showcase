@@ -45,12 +45,15 @@ struct FormPlayground: View {
                     Text($0)
                 }
             }
+            #if os(macOS)
+            #else
             Picker("Picker .navigationLink", selection: $pickerValue) {
                 ForEach(pickerValues, id: \.self) {
                     Text($0)
                 }
             }
             .pickerStyle(.navigationLink)
+            #endif
             Picker("Picker .disabled", selection: $pickerValue) {
                 ForEach(pickerValues, id: \.self) {
                     Text($0)
