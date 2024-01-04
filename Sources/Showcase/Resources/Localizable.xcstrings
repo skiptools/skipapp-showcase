@@ -161,6 +161,9 @@
     ".pickerStyle(.navigationLink)" : {
 
     },
+    ".plain, .disabled(true): %lld" : {
+
+    },
     ".plain: %lld" : {
 
     },
@@ -260,6 +263,9 @@
     "alignment: .topLeading" : {
 
     },
+    "AppStorage" : {
+
+    },
     "AsyncImage" : {
 
     },
@@ -287,6 +293,9 @@
     "Binding" : {
 
     },
+    "Binding View" : {
+
+    },
     "Black" : {
 
     },
@@ -297,6 +306,12 @@
 
     },
     "Border" : {
+
+    },
+    "Bound tap count 1: %lld" : {
+
+    },
+    "Bound tap count 2: %lld" : {
 
     },
     "Brown" : {
@@ -499,6 +514,9 @@
     "First: %lld" : {
 
     },
+    "Fixed content" : {
+
+    },
     "Fixed Content" : {
 
     },
@@ -605,6 +623,9 @@
     "Indexed Content" : {
 
     },
+    "Indexed ForEach" : {
+
+    },
     "Indigo" : {
 
     },
@@ -642,6 +663,9 @@
 
     },
     "Label .listItemTint(.red)" : {
+
+    },
+    "Label .navigationLink" : {
 
     },
     "Label .tint(.red)" : {
@@ -838,6 +862,12 @@
     "Push another" : {
 
     },
+    "Push binding" : {
+
+    },
+    "Push binding view" : {
+
+    },
     "RadialGradient" : {
 
     },
@@ -950,6 +980,12 @@
 
     },
     "State tap count: %lld" : {
+
+    },
+    "Storage" : {
+
+    },
+    "Storage Binding" : {
 
     },
     "String init" : {

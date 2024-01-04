@@ -40,29 +40,35 @@ struct StackPlayground: View {
                     Text("Text2")
                 }
                 .border(Color.blue)
-                VStack {
-                    Spacer()
-                    Color.red.frame(height: 20.0)
-                    Spacer()
-                    Color.red.frame(height: 20.0)
-                    Spacer()
-                }
-                .background(.yellow)
-                .frame(width: 100.0, height: 100.0)
-                HStack {
-                    Spacer()
-                    Color.red.frame(width: 20.0)
-                    Spacer()
-                    Color.red.frame(width: 20.0)
-                    Spacer()
-                }
-                .background(.yellow)
-                .frame(width: 100.0, height: 100.0)
+                VStack(content: horizontalStripes)
+                    .background(.yellow)
+                    .frame(width: 100.0, height: 100.0)
+                HStack(content: verticalStripes)
+                    .background(.yellow)
+                    .frame(width: 100.0, height: 100.0)
             }
             .padding()
         }
         .toolbar {
             PlaygroundSourceLink(file: "StackPlayground.swift")
         }
+    }
+
+    // Note: these functions are also a test that we can pass functions to SwiftUI content view builders.
+
+    @ViewBuilder private func horizontalStripes() -> some View {
+        Spacer()
+        Color.red.frame(height: 20.0)
+        Spacer()
+        Color.red.frame(height: 20.0)
+        Spacer()
+    }
+
+    @ViewBuilder private func verticalStripes() -> some View {
+        Spacer()
+        Color.red.frame(height: 20.0)
+        Spacer()
+        Color.red.frame(height: 20.0)
+        Spacer()
     }
 }

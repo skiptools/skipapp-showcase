@@ -9,7 +9,6 @@ struct NavigationStackPlayground: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        // We're already in a nav stack. For now we're just testing manual pop
         Button("Pop") {
             dismiss()
         }
@@ -18,3 +17,5 @@ struct NavigationStackPlayground: View {
         }
     }
 }
+
+

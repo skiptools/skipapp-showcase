@@ -39,6 +39,9 @@ struct StatePlayground: View {
         List {
             Section {
                 NavigationLink("Push another", value: PlaygroundType.state)
+                NavigationLink("Push binding view") {
+                    StatePlaygroundDestinationBindingView(tapCount: $tapCount)
+                }
             }
             Section {
                 if hasStateTapped == true {
@@ -114,3 +117,36 @@ struct StatePlaygroundStructBindingView: View {
     }
 }
 
+struct StatePlaygroundDestinationBindingView: View {
+    @Binding var tapCount: Int
+
+    var body: some View {
+        VStack {
+            SubView1(tapCount: _tapCount)
+            SubView2(tapCount: _tapCount)
+        }
+        .navigationTitle("Binding View")
+    }
+
+    struct SubView1: View {
+        @Binding var tapCount: Int
+
+        var body: some View {
+            Button("Bound tap count 1: \(tapCount)") {
+                tapCount += 1
+            }
+            .buttonStyle(.bordered)
+        }
+    }
+
+    struct SubView2: View {
+        @Binding var tapCount: Int
+
+        var body: some View {
+            Button("Bound tap count 2: \(tapCount)") {
+                tapCount += 1
+            }
+            .buttonStyle(.bordered)
+        }
+    }
+}

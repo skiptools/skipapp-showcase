@@ -40,6 +40,11 @@ struct ButtonPlayground: View {
                     tapCount += 1
                 }
                 .disabled(true)
+                Button(".plain, .disabled(true): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.plain)
+                .disabled(true)
                 Button(".bordered, .disabled(true): \(tapCount)") {
                     tapCount += 1
                 }

@@ -37,7 +37,6 @@ struct FormPlayground: View {
                 }
             }
             ButtonRow()
-            //~~~ navigation link with texts, button with multiple texts
             DatePicker("DatePicker", selection: $dateValue)
             DatePicker("DatePicker .disabled", selection: $dateValue)
                 .disabled(true)

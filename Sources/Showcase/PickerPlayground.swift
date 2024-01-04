@@ -53,7 +53,7 @@ struct PickerPlayground: View {
                     .foregroundStyle(.red)
                 }
                 HStack {
-                    Text(".foregroundStyle(.red)")
+                    Text(".tint(.red)")
                     Spacer()
                     Picker(".tint(.red)", selection: $selectedValue) {
                         ForEach(values, id: \.self) {
@@ -62,17 +62,44 @@ struct PickerPlayground: View {
                     }
                     .tint(.red)
                 }
-                //~~~ Also tag within ForEach, indexed ForEach, something other than Text values
-//                Picker("Fixed content", selection: $selectedValue) {
-//                    Text(verbatim: values[0]).tag(values[0])
-//                    Text(verbatim: values[1]).tag(values[1])
-//                    Text(verbatim: values[2]).tag(values[2])
-//                    Text(verbatim: values[3]).tag(values[3])
-//                    Text(verbatim: values[4]).tag(values[4])
-//                }
+                HStack {
+                    Text("Label")
+                    Spacer()
+                    Picker("Label", selection: $selectedValue) {
+                        ForEach(values, id: \.self) {
+                            Label($0, systemImage: "heart.fill")
+                        }
+                    }
+                }
+                HStack {
+                    Text("Fixed content")
+                    Spacer()
+                    Picker("Fixed content", selection: $selectedValue) {
+                        Text(verbatim: values[0]).tag(values[0])
+                        Text(verbatim: values[1]).tag(values[1])
+                        Text(verbatim: values[2]).tag(values[2])
+                        Text(verbatim: values[3]).tag(values[3])
+                        Text(verbatim: values[4]).tag(values[4])
+                    }
+                }
+                HStack {
+                    Text("Indexed ForEach")
+                    Spacer()
+                    Picker("Indexed ForEach", selection: $selectedValue) {
+                        ForEach(0..<5) { index in
+                            Text(verbatim: values[index]).tag(values[index])
+                        }
+                    }
+                }
                 Picker(".pickerStyle(.navigationLink)", selection: $selectedValue) {
                     ForEach(values, id: \.self) {
                         Text($0)
+                    }
+                }
+                .pickerStyle(.navigationLink)
+                Picker("Label .navigationLink", selection: $selectedValue) {
+                    ForEach(values, id: \.self) {
+                        Label($0, systemImage: "heart.fill")
                     }
                 }
                 .pickerStyle(.navigationLink)

@@ -9,9 +9,6 @@ struct ShareLinkPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                #if SKIP
-                EmptyView()
-                #else
                 HStack {
                     Text("Default")
                     Spacer()
@@ -50,7 +47,6 @@ struct ShareLinkPlayground: View {
                         Label("Title", systemImage: "heart.fill")
                     }
                 }
-                #endif
             }
             .padding()
         }
