@@ -6,19 +6,48 @@
 import SwiftUI
 
 struct TabViewPlayground: View {
-    @State var isPresented = false
+    @State var selectedTab = "Home"
 
     var body: some View {
-        TabView {
-            Text("Home")
+        TabView(selection: $selectedTab) {
+            TabPlaygroundContentView(label: "Home", selectedTab: $selectedTab)
                 .tabItem { Label("Home", systemImage: "house.fill") }
-            Text("Favorites")
+                .tag("Home")
+            TabPlaygroundContentView(label: "Favorites", selectedTab: $selectedTab)
                 .tabItem { Label("Favorites", systemImage: "heart.fill") }
-            Text("Info")
+                .tag("Favorites")
+            TabPlaygroundContentView(label: "Info", selectedTab: $selectedTab)
                 .tabItem { Label("Info", systemImage: "info.circle.fill") }
+                .tag("Info")
         }
         .toolbar {
             PlaygroundSourceLink(file: "TabViewPlayground.swift")
+        }
+    }
+}
+
+struct TabPlaygroundContentView: View {
+    let label: String
+    @Binding var selectedTab: String
+
+    var body: some View {
+        VStack {
+            Text(label).bold()
+            if label != "Home" {
+                Button("Switch to Home") {
+                    selectedTab = "Home"
+                }
+            }
+            if label != "Favorites" {
+                Button("Switch to Favorites") {
+                    selectedTab = "Favorites"
+                }
+            }
+            if label != "Info" {
+                Button("Switch to Info") {
+                    selectedTab = "Info"
+                }
+            }
         }
     }
 }

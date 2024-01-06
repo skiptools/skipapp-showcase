@@ -12,9 +12,10 @@ struct PickerPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                HStack {
+                Text("Note: Picker displays differently when in a Form. See the Form playground")
+                    .font(.caption)
+                VStack {
                     Text("Viewbuilder init")
-                    Spacer()
                     Picker(selection: $selectedValue) {
                         ForEach(values, id: \.self) {
                             Text($0)
@@ -23,18 +24,16 @@ struct PickerPlayground: View {
                         Text("Label")
                     }
                 }
-                HStack {
+                VStack {
                     Text("String init")
-                    Spacer()
                     Picker("Label", selection: $selectedValue) {
                         ForEach(values, id: \.self) {
                             Text($0)
                         }
                     }
                 }
-                HStack {
+                VStack {
                     Text(".disabled(true)")
-                    Spacer()
                     Picker("Label", selection: $selectedValue) {
                         ForEach(values, id: \.self) {
                             Text($0)
@@ -42,9 +41,8 @@ struct PickerPlayground: View {
                     }
                     .disabled(true)
                 }
-                HStack {
+                VStack {
                     Text(".foregroundStyle(.red)")
-                    Spacer()
                     Picker("Label", selection: $selectedValue) {
                         ForEach(values, id: \.self) {
                             Text($0)
@@ -52,29 +50,26 @@ struct PickerPlayground: View {
                     }
                     .foregroundStyle(.red)
                 }
-                HStack {
+                VStack {
                     Text(".tint(.red)")
-                    Spacer()
-                    Picker(".tint(.red)", selection: $selectedValue) {
+                    Picker("Label", selection: $selectedValue) {
                         ForEach(values, id: \.self) {
                             Text($0)
                         }
                     }
                     .tint(.red)
                 }
-                HStack {
+                VStack {
                     Text("Label")
-                    Spacer()
                     Picker("Label", selection: $selectedValue) {
                         ForEach(values, id: \.self) {
                             Label($0, systemImage: "heart.fill")
                         }
                     }
                 }
-                HStack {
+                VStack {
                     Text("Fixed content")
-                    Spacer()
-                    Picker("Fixed content", selection: $selectedValue) {
+                    Picker("Label", selection: $selectedValue) {
                         Text(verbatim: values[0]).tag(values[0])
                         Text(verbatim: values[1]).tag(values[1])
                         Text(verbatim: values[2]).tag(values[2])
@@ -82,10 +77,9 @@ struct PickerPlayground: View {
                         Text(verbatim: values[4]).tag(values[4])
                     }
                 }
-                HStack {
+                VStack {
                     Text("Indexed ForEach")
-                    Spacer()
-                    Picker("Indexed ForEach", selection: $selectedValue) {
+                    Picker("Label", selection: $selectedValue) {
                         ForEach(0..<5) { index in
                             Text(verbatim: values[index]).tag(values[index])
                         }

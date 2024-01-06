@@ -25,10 +25,18 @@ struct StackPlayground: View {
                     Text("Text2")
                 }
                 .border(Color.blue)
-                VStack {
+                Text("Sized to content:")
+                VStack(spacing: 0.0) {
                     Color.red.frame(width: 50.0, height: 50.0)
                     Color.green.frame(width: 50.0, height: 50.0)
                 }
+                .border(Color.blue)
+                Text("Content sizes to stack:")
+                VStack(spacing: 0.0) {
+                    Color.red
+                    Color.green
+                }
+                .frame(width: 50.0, height: 100.0)
                 .border(Color.blue)
                 VStack {
                     Text("Text1")
@@ -46,6 +54,11 @@ struct StackPlayground: View {
                 HStack(content: verticalStripes)
                     .background(.yellow)
                     .frame(width: 100.0, height: 100.0)
+                ZStack {
+                    Color.yellow
+                    Color.red.padding(25.0)
+                }
+                .frame(width: 100.0, height: 100.0)
             }
             .padding()
         }
@@ -66,9 +79,9 @@ struct StackPlayground: View {
 
     @ViewBuilder private func verticalStripes() -> some View {
         Spacer()
-        Color.red.frame(height: 20.0)
+        Color.red.frame(width: 20.0)
         Spacer()
-        Color.red.frame(height: 20.0)
+        Color.red.frame(width: 20.0)
         Spacer()
     }
 }

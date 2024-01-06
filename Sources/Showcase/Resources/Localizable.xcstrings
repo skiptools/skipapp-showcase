@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "... and hidden separators" : {
+
+    },
     ".autocorrectionDisabled()" : {
 
     },
@@ -173,7 +176,7 @@
     ".red.gradient" : {
 
     },
-    ".red.opacity(0.2)" : {
+    ".red.opacity(0.5)" : {
 
     },
     ".resizable\n.frame(100, 100)" : {
@@ -363,6 +366,9 @@
 
     },
     "Content row %lld" : {
+
+    },
+    "Content sizes to stack:" : {
 
     },
     "Custom" : {
@@ -556,6 +562,9 @@
     "Font.title3" : {
 
     },
+    "Footer" : {
+
+    },
     "Footer 2" : {
 
     },
@@ -747,6 +756,9 @@
     "Note: colors should not affect Divider appearance" : {
 
     },
+    "Note: Picker displays differently when in a Form. See the Form playground" : {
+
+    },
     "Note: tint should not affect Label appearance" : {
 
     },
@@ -812,6 +824,9 @@
 
     },
     "Pink" : {
+
+    },
+    "Pink Row Background" : {
 
     },
     "Plain" : {
@@ -916,6 +931,12 @@
     "Row 3b" : {
 
     },
+    "Row: 1.%lld" : {
+
+    },
+    "Row: 2.%lld" : {
+
+    },
     "scale, rotate, offset, stroke" : {
 
     },
@@ -958,6 +979,9 @@
     "Showcase is a dual-platform iOS + Android app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs on Android" : {
 
     },
+    "Sized to content:" : {
+
+    },
     "Small circle" : {
 
     },
@@ -974,6 +998,9 @@
 
     },
     "Standalone row 3" : {
+
+    },
+    "Standard Row Background" : {
 
     },
     "State" : {
@@ -1038,6 +1065,15 @@
 
     },
     "Subject & Message URL" : {
+
+    },
+    "Switch to Favorites" : {
+
+    },
+    "Switch to Home" : {
+
+    },
+    "Switch to Info" : {
 
     },
     "Symbol" : {

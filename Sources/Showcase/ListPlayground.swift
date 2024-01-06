@@ -16,6 +16,8 @@ enum ListPlaygroundType: String, CaseIterable {
     case plainStyle
     case plainStyleSectioned
     case plainStyleEmpty
+    case hiddenBackground
+    case hiddenBackgroundPlainStyle
     case editActions
     case observableEditActions
     case sectionedEditActions
@@ -43,6 +45,10 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Plain Style Sectioned"
         case .plainStyleEmpty:
             return "Plain Style Empty"
+        case .hiddenBackground:
+            return "Hidden Background"
+        case .hiddenBackgroundPlainStyle:
+            return "Hidden Background Plain Style"
         case .editActions:
             return "EditActions"
         case .observableEditActions:
@@ -96,6 +102,12 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .plainStyleEmpty:
                 PlainStyleEmptyListPlayground()
+                    .navigationTitle($0.title)
+            case .hiddenBackground:
+                HiddenBackgroundListPlayground()
+                    .navigationTitle($0.title)
+            case .hiddenBackgroundPlainStyle:
+                HiddenBackgroundPlainStyleListPlayground()
                     .navigationTitle($0.title)
             case .editActions:
                 EditActionsListPlayground()
@@ -296,6 +308,61 @@ struct PlainStyleEmptyListPlayground: View {
         List {
         }
         .listStyle(.plain)
+    }
+}
+
+struct HiddenBackgroundListPlayground: View {
+    var body: some View {
+        ZStack {
+            Color.yellow.opacity(0.5)
+            List {
+                Section("Standard Row Background") {
+                    ForEach(0..<30) { index in
+                        Text("Row: 1.\(index)")
+                    }
+                }
+                Section {
+                    ForEach(0..<30) { index in
+                        Text("Row: 2.\(index)")
+                            .listRowBackground(Color.pink)
+                            .listRowSeparator(.hidden)
+                    }
+                } header: {
+                    Text("Pink Row Background")
+                } footer: {
+                    Text("... and hidden separators")
+                }
+            }
+            .scrollContentBackground(.hidden)
+        }
+    }
+}
+
+struct HiddenBackgroundPlainStyleListPlayground: View {
+    var body: some View {
+        ZStack {
+            Color.yellow.opacity(0.5)
+            List {
+                Section("Section 1") {
+                    ForEach(0..<30) { index in
+                        Text("Row: 1.\(index)")
+                    }
+                }
+                Section {
+                    ForEach(0..<30) { index in
+                        Text("Row: 2.\(index)")
+                            .listRowBackground(Color.pink)
+                            .listRowSeparator(.hidden)
+                    }
+                } header: {
+                    Text("Section 2")
+                } footer: {
+                    Text("Footer")
+                }
+            }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+        }
     }
 }
 

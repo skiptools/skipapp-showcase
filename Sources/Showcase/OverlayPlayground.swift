@@ -10,18 +10,18 @@ struct OverlayPlayground: View {
         ScrollView {
             VStack(spacing: 16.0) {
                 HStack {
-                    Text(".red.opacity(0.2)")
+                    Text(".red.opacity(0.5)")
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .overlay(.red.opacity(0.2))
+                        .overlay(.red.opacity(0.5))
                 }
                 HStack {
                     Text("in: Capsule()")
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .overlay(.red.opacity(0.2), in: Capsule())
+                        .overlay(.red.opacity(0.5), in: Capsule())
                 }
                 HStack {
                     Text("Circles")
@@ -30,8 +30,8 @@ struct OverlayPlayground: View {
                         .padding()
                         .overlay {
                             HStack {
-                                Circle().fill(.red.opacity(0.2))
-                                Circle().fill(.green.opacity(0.2))
+                                Circle().fill(.red.opacity(0.5))
+                                Circle().fill(.green.opacity(0.5))
                             }
                         }
                         .border(.blue)
@@ -43,7 +43,7 @@ struct OverlayPlayground: View {
                         .padding()
                         .overlay {
                             Circle()
-                                .fill(.red.opacity(0.2))
+                                .fill(.red.opacity(0.5))
                                 .frame(width: 100.0, height: 100.0)
                         }
                         .border(.blue)
@@ -55,8 +55,8 @@ struct OverlayPlayground: View {
                         .padding()
                         .overlay {
                             HStack {
-                                Circle().fill(.red.opacity(0.2))
-                                Circle().fill(.red.opacity(0.2))
+                                Circle().fill(.red.opacity(0.5))
+                                Circle().fill(.red.opacity(0.5))
                             }
                             .frame(width: 200.0, height: 100.0)
                         }
@@ -70,7 +70,7 @@ struct OverlayPlayground: View {
                         .padding()
                         .overlay {
                             Circle()
-                                .fill(.red.opacity(0.2))
+                                .fill(.red.opacity(0.5))
                                 .frame(width: 20.0, height: 20.0)
                         }
                         .border(.blue)
@@ -82,7 +82,7 @@ struct OverlayPlayground: View {
                         .padding()
                         .overlay(alignment: .topLeading) {
                             Circle()
-                                .fill(.red.opacity(0.2))
+                                .fill(.red.opacity(0.5))
                                 .frame(width: 20.0, height: 20.0)
                         }
                         .border(.blue)
@@ -94,7 +94,7 @@ struct OverlayPlayground: View {
                         .padding()
                         .overlay(alignment: .bottomTrailing) {
                             Circle()
-                                .fill(.red.opacity(0.2))
+                                .fill(.red.opacity(0.5))
                                 .frame(width: 20.0, height: 20.0)
                         }
                         .border(.blue)
