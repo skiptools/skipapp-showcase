@@ -266,9 +266,6 @@
     "alignment: .topLeading" : {
 
     },
-    "AppStorage" : {
-
-    },
     "AsyncImage" : {
 
     },
@@ -306,6 +303,9 @@
 
     },
     "Bold" : {
+
+    },
+    "Bool AppStorage" : {
 
     },
     "Border" : {
@@ -499,6 +499,9 @@
     "Ellipse" : {
 
     },
+    "Enum AppStorage" : {
+
+    },
     "Favorites" : {
 
     },
@@ -515,6 +518,9 @@
 
     },
     "fill(.red)\n  .stroke(.green, lineWidth: 10)" : {
+
+    },
+    "First" : {
 
     },
     "First: %lld" : {
@@ -726,6 +732,9 @@
 
     },
     "Nested" : {
+
+    },
+    "Nested Again" : {
 
     },
     "Nested ForEach row: %lld.%lld" : {
@@ -952,6 +961,9 @@
     "Scrolling" : {
 
     },
+    "Second" : {
+
+    },
     "Second: %lld" : {
 
     },
@@ -1147,6 +1159,9 @@
 
     },
     "Thin footnote container" : {
+
+    },
+    "Third" : {
 
     },
     "Third: %lld" : {

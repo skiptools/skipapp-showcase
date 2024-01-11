@@ -6,13 +6,27 @@
 import SwiftUI
 
 struct StoragePlayground: View {
-    @AppStorage("appstorage") var appstorage = false
+    @AppStorage("boolAppStorage") var boolAppStorage = false
+    @AppStorage("enumAppStorage") var enumAppStorage = E.first
+
+    enum E: Int {
+        case first, second, third
+    }
 
     var body: some View {
         VStack(spacing: 16.0) {
-            Toggle("AppStorage", isOn: $appstorage)
+            HStack {
+                Text("Enum AppStorage")
+                Spacer()
+                Picker("Enum AppStorage", selection: $enumAppStorage) {
+                    Text("First").tag(E.first)
+                    Text("Second").tag(E.second)
+                    Text("Third").tag(E.third)
+                }
+            }
+            Toggle("Bool AppStorage", isOn: $boolAppStorage)
             NavigationLink("Push binding") {
-                StoragePlaygroundBindingView(binding: $appstorage)
+                StoragePlaygroundBindingView(binding: $boolAppStorage)
             }
             NavigationLink("Push another", value: PlaygroundType.storage)
         }

@@ -59,6 +59,9 @@ struct MenuPlayground: View {
                     Menu("Nested") {
                         Button("Option 1") { logger.log("Option 1") }
                         Button("Option 2") { logger.log("Option 2") }
+                        Menu("Nested Again") {
+                            Button("Option 3") { logger.log("Option 3") }
+                        }
                     }
                     Button("Option 3") { logger.log("Option 3") }
                     Button("Option 4") { logger.log("Option 4") }
