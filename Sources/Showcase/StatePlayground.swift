@@ -31,9 +31,15 @@ class TapCountRepository: ObservableObject {
 struct StatePlayground: View {
     @State var tapCount = 0
     @State var hasStateTapped: Bool? // Test optional vars
-    @StateObject var tapCountObservable = TapCountObservable()
-    @State var tapCountStruct = TapCountStruct()
+    @StateObject var tapCountObservable: TapCountObservable
+    @State var tapCountStruct: TapCountStruct
     @StateObject var tapCountRepository = TapCountRepository() // Test ForEach observable
+
+    init() {
+        // Test that we can initialze state property wrappers
+        _tapCountObservable = StateObject(wrappedValue: TapCountObservable())
+        _tapCountStruct = State(wrappedValue: TapCountStruct())
+    }
 
     var body: some View {
         List {

@@ -58,6 +58,9 @@
     ".clipped()" : {
 
     },
+    ".clipShape" : {
+
+    },
     ".clipShape(.capsule)" : {
 
     },
@@ -311,6 +314,9 @@
     "Border" : {
 
     },
+    "Bottom" : {
+
+    },
     "Bound tap count 1: %lld" : {
 
     },
@@ -356,10 +362,16 @@
     "Color" : {
 
     },
+    "Color + Offset" : {
+
+    },
     "Combination" : {
 
     },
     "Complex content button" : {
+
+    },
+    "Container" : {
 
     },
     "Content %lld" : {
@@ -655,6 +667,9 @@
     "Home" : {
 
     },
+    "Image" : {
+
+    },
     "in: Capsule()" : {
 
     },
@@ -815,6 +830,9 @@
     "Observable tap count: %lld" : {
 
     },
+    "Offset" : {
+
+    },
     "offset(x: 30, y: 10)" : {
 
     },
@@ -847,6 +865,9 @@
 
     },
     "Orange" : {
+
+    },
+    "Overlay" : {
 
     },
     "Overridden to title font" : {
@@ -931,6 +952,9 @@
 
     },
     "RadialGradient" : {
+
+    },
+    "Radius" : {
 
     },
     "Rectangle" : {
@@ -1018,6 +1042,18 @@
 
     },
     "Section 2" : {
+
+    },
+    "Shadow" : {
+
+    },
+    "Shape" : {
+
+    },
+    "Shape with background" : {
+
+    },
+    "Shape with overlay" : {
 
     },
     "Sheet" : {
@@ -1122,6 +1158,9 @@
     "systemName" : {
 
     },
+    "Tap" : {
+
+    },
     "Tap below to increment state tap count" : {
 
     },
@@ -1180,6 +1219,9 @@
     "Text field" : {
 
     },
+    "Text with background" : {
+
+    },
     "Text1" : {
 
     },
@@ -1217,6 +1259,9 @@
 
     },
     "Toggle" : {
+
+    },
+    "Top" : {
 
     },
     "Transforms" : {
