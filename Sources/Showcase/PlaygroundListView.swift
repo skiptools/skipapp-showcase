@@ -161,7 +161,7 @@ public struct PlaygroundNavigationView: View {
             List(matchingPlaygroundTypes(), id: \.self) { playground in
                 NavigationLink(playground.title, value: playground)
             }
-            .navigationTitle("Showcase")
+            .navigationTitle(Text("Showcase"))
             .navigationDestination(for: PlaygroundType.self) {
                 switch $0 {
                 case .background:

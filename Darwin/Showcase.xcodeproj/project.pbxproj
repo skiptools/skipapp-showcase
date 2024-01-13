@@ -20,7 +20,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				49231BAD2AC5BCEF00F98ADF /* Showcase in Embed Frameworks */,
+				49231BAD2AC5BCEF00F98ADF /* ShowcaseApp in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -28,16 +28,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		490A40BF2B37A3C300275405 /* Showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Showcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		493609562A6B7EAE00C401E2 /* Showcase */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Showcase; path = ..; sourceTree = "<group>"; };
-		496EB72F2A6AE4DE00C1253A /* ../Skip.env */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Skip.env; path = ../Skip.env; sourceTree = "<group>"; };
+		496EB72F2A6AE4DE00C1253A /* Skip.env */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Skip.env; path = ../Skip.env; sourceTree = "<group>"; };
 		496EB72F2A6AE4DE00C1253B /* Showcase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Showcase.xcconfig; sourceTree = "<group>"; };
-		496EB72F2A6AE4DE00C1253C /* README.md */ = {isa = PBXFileReference; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		4990AB3B2A91AFC5005777FD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		499CD4442AC5B799001AE8D8 /* Showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Showcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		496EB72F2A6AE4DE00C1253C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		499AB9082B0581F4005E8330 /* plugins */ = {isa = PBXFileReference; lastKnownFileType = folder; name = plugins; path = ../../../SourcePackages/plugins; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowcaseAppMain.swift; path = Sources/ShowcaseAppMain.swift; sourceTree = SOURCE_ROOT; };
-		49F90C2F2A52156300F06D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Assets.xcassets; sourceTree = "<group>"; };
-		49F90C312A52156300F06D93 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Entitlements.plist; path = Entitlements.plist; sourceTree = "<group>"; };
+		49F90C2F2A52156300F06D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49F90C312A52156300F06D93 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,20 +44,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49231BAC2AC5BCEF00F98ADF /* Showcase in Frameworks */,
+				49231BAC2AC5BCEF00F98ADF /* ShowcaseApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490A40C02B37A3C300275405 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				490A40BF2B37A3C300275405 /* Showcase.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		49AB54462B066A7E007B79B2 /* SkipStone */ = {
-				isa = PBXGroup;
-				children = (
-						499AB9082B0581F4005E8330 /* plugins */,
-				);
-				name = SkipStone;
-				sourceTree = "<group>";
+			isa = PBXGroup;
+			children = (
+				499AB9082B0581F4005E8330 /* plugins */,
+			);
+			name = SkipStone;
+			sourceTree = "<group>";
 		};
 		49F90C1F2A52156200F06D93 = {
 			isa = PBXGroup;
@@ -69,6 +76,7 @@
 				493609562A6B7EAE00C401E2 /* Showcase */,
 				49F90C2A2A52156200F06D93 /* App */,
 				49AB54462B066A7E007B79B2 /* SkipStone */,
+				490A40C02B37A3C300275405 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,7 +112,7 @@
 				49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */,
 			);
 			productName = App;
-			productReference = 499CD4442AC5B799001AE8D8 /* Showcase.app */;
+			productReference = 490A40BF2B37A3C300275405 /* Showcase.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -128,7 +136,7 @@
 			mainGroup = 49F90C1F2A52156200F06D93;
 			packageReferences = (
 			);
-			productRefGroup = 49F90C292A52156200F06D93 /* Products */;
+			productRefGroup = 490A40C02B37A3C300275405 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -166,7 +174,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -e";
-			shellScript = "if [ \"${SKIP_ZERO}\" != \"\" ]; then\n	echo \"note: skipping skip due to SKIP_ZERO\"\n	exit 0\nfi\nif [ \"${ACTION}\" = \"install\" ]; then\n	SKIP_ACTION=\"build\"\nelse\n	SKIP_ACTION=\"${SKIP_ACTION:-launch}\"\nfi\nPATH=${BUILD_ROOT}/Debug:${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos:${PATH}:${HOMEBREW_PREFIX:-/opt/homebrew}/bin\necho \"note: running gradle build with: $(which skip) gradle -p ${PWD}/../Android ${SKIP_ACTION:-launch}${CONFIGURATION:-Debug}\"\nskip gradle -p ../Android ${SKIP_ACTION:-launch}${CONFIGURATION:-Debug}\n";
+			shellScript = "if [ \"${SKIP_ZERO}\" != \"\" ]; then\n\techo \"note: skipping skip due to SKIP_ZERO\"\n\texit 0\nfi\nif [ \"${ENABLE_PREVIEWS}\" == \"YES\" ]; then\n    echo \"note: skipping skip due to ENABLE_PREVIEWS\"\n    exit 0\nfi\nif [ \"${ACTION}\" = \"install\" ]; then\n\tSKIP_ACTION=\"build\"\nelse\n\tSKIP_ACTION=\"${SKIP_ACTION:-launch}\"\nfi\nPATH=${BUILD_ROOT}/Debug:${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos:${PATH}:${HOMEBREW_PREFIX:-/opt/homebrew}/bin\necho \"note: running gradle build with: $(which skip) gradle -p ${PWD}/../Android ${SKIP_ACTION:-launch}${CONFIGURATION:-Debug}\"\nskip gradle -p ../Android ${SKIP_ACTION:-launch}${CONFIGURATION:-Debug}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
