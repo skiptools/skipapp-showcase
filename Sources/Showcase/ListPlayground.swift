@@ -143,7 +143,7 @@ struct FixedContentListPlayground: View {
 
 struct IndexedContentListPlayground: View {
     var body: some View {
-        List(0..<100) {
+        List(100..<200) {
             Text("Row \($0)")
         }
     }
@@ -197,7 +197,7 @@ struct ForEachContentListPlayground: View {
             }
             Text("Standalone row 3")
             ForEach(0..<10) { index1 in
-                ForEach(0..<2) { index2 in
+                ForEach(1..<3) { index2 in
                     Text("Nested ForEach row: \(index1).\(index2)")
                 }
             }

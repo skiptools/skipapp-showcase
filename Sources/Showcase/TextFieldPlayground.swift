@@ -14,18 +14,41 @@ struct TextFieldPlayground: View {
                 TextField(text: $text) {
                     Text(".init(text:label:)")
                 }
+                .textFieldStyle(.roundedBorder)
                 TextField(".init(_:text:)", text: $text)
+                    .textFieldStyle(.roundedBorder)
                 TextField("With prompt", text: $text, prompt: Text("Prompt"))
+                    .textFieldStyle(.roundedBorder)
                 TextField("Fixed width", text: $text)
+                    .textFieldStyle(.roundedBorder)
                     .frame(width: 200.0)
                 TextField(".disabled(true)", text: $text)
+                    .textFieldStyle(.roundedBorder)
                     .disabled(true)
                 TextField(".foregroundStyle(.red)", text: $text)
+                    .textFieldStyle(.roundedBorder)
                     .foregroundStyle(.red)
                 TextField(".tint(.red)", text: $text)
+                    .textFieldStyle(.roundedBorder)
                     .tint(.red)
+                TextField(".plain", text: $text)
+                    .textFieldStyle(.roundedBorder)
+                TextField(".plain .disabled(true)", text: $text)
+                    .textFieldStyle(.plain)
+                    .disabled(true)
+                TextField(".plain .foregroundStyle(.red)", text: $text)
+                    .textFieldStyle(.plain)
+                    .foregroundStyle(.red)
+                TextField(".plain .tint(.red)", text: $text)
+                    .textFieldStyle(.plain)
+                    .tint(.red)
+                TextField("Custom background", text: $text)
+                    .textFieldStyle(.plain)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .fill(.yellow)
+                    }
             }
-            .textFieldStyle(.roundedBorder)
             .padding()
         }
         .toolbar {

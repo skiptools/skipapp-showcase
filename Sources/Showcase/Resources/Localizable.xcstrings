@@ -167,6 +167,18 @@
     ".pickerStyle(.navigationLink)" : {
 
     },
+    ".plain" : {
+
+    },
+    ".plain .disabled(true)" : {
+
+    },
+    ".plain .foregroundStyle(.red)" : {
+
+    },
+    ".plain .tint(.red)" : {
+
+    },
     ".plain, .disabled(true): %lld" : {
 
     },
@@ -384,6 +396,9 @@
 
     },
     "Custom" : {
+
+    },
+    "Custom background" : {
 
     },
     "Custom Cancel" : {
