@@ -3,146 +3,23 @@
 The Skip Playground app showcases many of the components
 available in SkipUI.
 
-### NavigationStack
-
-![Screenshot](https://assets.skip.tools/components/ContentView.png)
-
-https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/ContentView.swift
-
-
-### Border
-
-Examples of the Border component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/BorderPlayground.swift 
-
-![Border Preview Screenshot](https://assets.skip.tools/components/Border.png)
-
-
-### Button
-
-Examples of the Button component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/ButtonPlayground.swift 
-
-![Button Preview Screenshot](https://assets.skip.tools/components/Button.png)
-
-
-### Color
-
-Examples of the Color component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/ColorPlayground.swift 
-
-![Color Preview Screenshot](https://assets.skip.tools/components/Color.png)
-
-
-### Form
-
-Examples of the Form component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/FormPlayground.swift 
-
-![Form Preview Screenshot](https://assets.skip.tools/components/Form.png)
-
-
-### Label
-
-Examples of the Label component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/LabelPlayground.swift 
-
-![Label Preview Screenshot](https://assets.skip.tools/components/Label.png)
-
-
-### ProgressView
-
-Examples of the ProgressView component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/ProgressViewPlayground.swift 
-
-![ProgressView Preview Screenshot](https://assets.skip.tools/components/ProgressView.png)
-
-
-### Slider
-
-Examples of the Slider component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/SliderPlayground.swift 
-
-![Slider Preview Screenshot](https://assets.skip.tools/components/Slider.png)
-
-
-### Spacer
-
-Examples of the Spacer component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/SpacerPlayground.swift 
-
-![Spacer Preview Screenshot](https://assets.skip.tools/components/Spacer.png)
-
-
-### Stack
-
-Examples of the Stack component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/StackPlayground.swift 
-
-![Stack Preview Screenshot](https://assets.skip.tools/components/Stack.png)
-
-
-### State
-
-Examples of the State component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/StatePlayground.swift 
-
-![State Preview Screenshot](https://assets.skip.tools/components/State.png)
-
-
-### Symbol
-
-Examples of the Symbol component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/SymbolPlayground.swift 
-
-![Symbol Preview Screenshot](https://assets.skip.tools/components/Symbol.png)
-
-
-### Text
-
-Examples of the Text component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/TextPlayground.swift 
-
-![Text Preview Screenshot](https://assets.skip.tools/components/Text.png)
-
-
-### TextField
-
-Examples of the TextField component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/TextFieldPlayground.swift 
-
-![TextField Preview Screenshot](https://assets.skip.tools/components/TextField.png)
-
-
-### List
-
-Examples of the List component, which can be seen at https://source.skip.tools/skipapp-playground/blob/main/Sources/AppUI/ListPlayground.swift 
-
-![List Preview Screenshot](https://assets.skip.tools/components/List.png)
-
-
-
-### List with Sections
-
-![List Preview Screenshot](https://assets.skip.tools/components/List-Sectioned.png)
-
-
-#### List with Collection Content
-
-![List Preview Screenshot](https://assets.skip.tools/components/List-CollectionContent.png)
-
-
-### List with Fixed Content
-
-![List Preview Screenshot](https://assets.skip.tools/components/List-Fixed.png)
-
-
-### List with ForEach Content
-
-![List Preview Screenshot](https://assets.skip.tools/components/List-ForEachContent.png)
-
-
-### List with Indexed Content
-
-![List Preview Screenshot](https://assets.skip.tools/components/List-Indexed.png)
-
-
-### List with Plain Content
-
-![List Preview Screenshot](https://assets.skip.tools/components/List-Plain.png)
-
-
-### List with Plain Sectioned Content
-
-![List Preview Screenshot](https://assets.skip.tools/components/List-PlainSectioned.png)
-
+## Quickstart
+
+This repository contains an Xcode project with a SwiftUI app that uses the
+Skip plugin to transpile the app into Kotlin then build and launch it on Android.
+To get started:
+
+1. Install skip (requires macOS 13+ with [Homebrew](https://brew.sh), [Xcode](https://developer.apple.com/xcode/), and [Android Studio](https://developer.android.com/studio)) with the Terminal command:
+```
+$ brew install skiptools/skip/skip
+```
+2. Configure and launch an Android emulator from the [Android Studio device manager](https://developer.android.com/studio/run/emulator-launch-without-app).
+3. Download this [repository as a zip file](https://github.com/skiptools/skipapp-showcase/archive/main.zip) and unzip it, or clone the repository:
+```
+$ git clone https://github.com/skiptools/skipapp-showcase.git
+```
+4. Navigate to the *Darwin* folder and open the Xcode project: `Showcase.xcodeproj`
+5. Select and Run the `Showcase` target with an iOS simulator destination; the app will build and run side-by-side on the iOS simulator and Android emulator.
 
 
 ## Project
@@ -153,3 +30,27 @@ This project was initialized with the command:
 skip init --no-module-tests --no-build --icon-color=8E8E93 --free --zero --appid=skip.showcase.App skipapp-showcase Showcase
 ```
 
+
+## Testing
+
+The module can be tested using the standard `swift test` command
+or by running the test target for the macOS destination in Xcode,
+which will run the Swift tests as well as the transpiled
+Kotlin JUnit tests in the Robolectric Android simulation environment.
+
+Parity testing can be performed with `skip test`,
+which will output a table of the test results for both platforms.
+
+## Running
+
+Xcode and Android Studio must be downloaded and installed in order to
+run the app in the iOS simulator / Android emulator.
+An Android emulator must already be running, which can be launched from 
+Android Studio's Device Manager.
+
+To run both the Swift and Kotlin apps simultaneously, 
+launch the FireSideApp target from Xcode.
+A build phases runs the "Launch Android APK" script that
+will deploy the transpiled app a running Android emulator or connected device.
+Logging output for the iOS app can be viewed in the Xcode console, and in
+Android Studio's logcat tab for the transpiled Kotlin app.
