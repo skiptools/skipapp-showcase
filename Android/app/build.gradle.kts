@@ -2,18 +2,17 @@ import java.io.FileInputStream
 import java.util.Properties
 
 plugins {
-    kotlin("android") version "1.9.0"
-    id("com.android.application") version "8.1.0"
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.android.application)
 }
 
 val keystorePropertiesFile = file("keystore.properties")
 
 android {
-    compileSdk = 34
+    compileSdk = libs.versions.android.sdk.compile.get().toInt()
     defaultConfig {
-        minSdk = 29
-        targetSdk = 34
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        minSdk = libs.versions.android.sdk.min.get().toInt()
+
         manifestPlaceholders["PRODUCT_NAME"] = prop("PRODUCT_NAME")
         manifestPlaceholders["PRODUCT_BUNDLE_IDENTIFIER"] = prop("PRODUCT_BUNDLE_IDENTIFIER")
         manifestPlaceholders["MARKETING_VERSION"] = prop("MARKETING_VERSION")
@@ -40,6 +39,7 @@ android {
             }
         }
     }
+
     buildTypes {
         release {
             signingConfig = signingConfigs.findByName("release")
@@ -49,48 +49,15 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
     namespace = group as String
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
     }
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
-        }
-    }
-}
 
-afterEvaluate {
-    dependencies {
-        // SKIP_DEPENDENCIES is set by the settings.gradle.kts as a list of the modules that were created as a result of the Skip build
-        var deps = prop(key = "DEPENDENCIES")
-        deps.split(":").filter { it.isNotEmpty() }.forEach { skipModuleName ->
-            if (skipModuleName != "SkipUnit") {
-                implementation(project(":" + skipModuleName))
-            }
-        }
-    }
-}
-
-kotlin {
-    jvmToolchain(17)
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>() {
-    kotlinOptions {
-        suppressWarnings = true
-    }
-}
-
-tasks.withType<Test>().configureEach {
-    systemProperties.put("robolectric.logging", "stdout")
-    systemProperties.put("robolectric.graphicsMode", "NATIVE")
-    testLogging {
-        this.showStandardStreams = true
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.extension.get()
     }
 }
 
@@ -101,6 +68,8 @@ fun prop(key: String): String {
     }
     return value
 }
+
+//@include:file("")
 
 // add the "launchDebug" and "launchRelease" commands
 listOf("Debug", "Release").forEach { buildType ->
@@ -130,5 +99,19 @@ listOf("Debug", "Release").forEach { buildType ->
                 )
             }
         }
+    }
+}
+
+dependencies {
+    implementation("showcase.module:Showcase")
+}
+
+kotlin {
+    jvmToolchain(libs.versions.jvm.get().toInt())
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>() {
+    kotlinOptions {
+        suppressWarnings = true
     }
 }

@@ -1,21 +1,6 @@
 // This is the top-level Gradle settings for a Skip App project.
 // It reads from the Skip.env file in the root of the project
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        mavenCentral()
-        google()
-    }
-}
-
-dependencyResolutionManagement {
-    repositories {
-        maven("https://maven.skip.tools")
-        mavenCentral()
-        google()
-    }
-}
 
 // Use the properties in the Skip.env file for configuration
 val parentFolder = file("..")
@@ -37,11 +22,6 @@ gradle.projectsLoaded {
 rootProject.name = prop(key = "ANDROID_PACKAGE_NAME")
 val swiftProjectName = prop(key = "SKIP_PROJECT_NAME")
 val swiftModuleName = prop(key = "PRODUCT_NAME")
-
-// After the settings have been evaluated, resolve the Skip transpilation output folders
-gradle.settingsEvaluated {
-    addSkipModules()
-}
 
 // Parse .env file into a map of strings
 fun loadSkipEnv(file: File): Map<String, String> {
@@ -75,7 +55,8 @@ fun prop(key: String): String {
     return value
 }
 
-fun addSkipModules() {
+// After the settings have been evaluated, resolve the Skip transpilation output folders
+gradle.settingsEvaluated {
     // When running from Xcode, the BUILT_PRODUCTS_DIR environment
     // variable will point to the project's DerivedData path, like:
     // ~/Library/Developer/Xcode/DerivedData/NAME-HASH/Build/Products/Debug-iphonesimulator
@@ -112,25 +93,8 @@ fun addSkipModules() {
         .resolve(swiftModuleName)
         .resolve("skipstone")
 
-    if (!projectDir.exists()) {
-        // If the directory does not exist, fail the build
-        throw GradleException("Skip output directory does not exist at: $projectDir")
+    apply(projectDir.resolve("settings.gradle.kts"))
+    includeBuild(projectDir) {
     }
-
-    var skipDependencies: List<String> = listOf()
-    projectDir.listFiles()?.forEach { outputDir ->
-        // for each child package, include it in this build
-        if (outputDir.resolve("build.gradle.kts").exists()) {
-            val moduleName = outputDir.name
-            logger.log(LogLevel.LIFECYCLE, "Skip module :${moduleName} added to project: ${outputDir}")
-            include(":${moduleName}")
-            project(":${moduleName}").projectDir = outputDir
-            skipDependencies += ":${moduleName}"
-        }
-    }
-
-    // pass down the list of dynamic Skip dependencies to the app build
-    // we would prefer to use the `exta` property for this, but it doesn't seem to be readable in app/build.gradle.kts
-    System.setProperty("SKIP_DEPENDENCIES", skipDependencies.joinToString(separator = ":"))
     include(":app")
 }
