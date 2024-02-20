@@ -1,1 +1,2 @@
-#-keep class skip.** { *; }
+-keep class skip.** { *; }
+-keep class showcase.module.** { *; }
