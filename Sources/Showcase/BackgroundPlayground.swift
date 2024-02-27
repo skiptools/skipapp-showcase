@@ -8,13 +8,13 @@ import SwiftUI
 struct BackgroundPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 HStack {
                     Text(".red")
                     Spacer()
                     ZStack {
                     }
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .background(.red)
                 }
                 HStack {
@@ -22,7 +22,7 @@ struct BackgroundPlayground: View {
                     Spacer()
                     ZStack {
                     }
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .background(.red.gradient)
                 }
                 HStack {
@@ -32,7 +32,7 @@ struct BackgroundPlayground: View {
                         Text("Hello")
                             .background()
                     }
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .background(.red)
                 }
                 HStack {
@@ -42,14 +42,14 @@ struct BackgroundPlayground: View {
                         Text("Hello")
                             .background()
                     }
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .backgroundStyle(.red)
                 }
                 HStack {
                     Text(".clipShape(.capsule)")
                     Spacer()
                     Image(systemName: "heart.fill")
-                        .frame(width: 100.0, height: 50.0)
+                        .frame(width: 100, height: 50)
                         .background(.red.gradient)
                         .clipShape(.capsule)
                 }
@@ -81,7 +81,7 @@ struct BackgroundPlayground: View {
                         .background {
                             Circle()
                                 .fill(.red.opacity(0.2))
-                                .frame(width: 100.0, height: 100.0)
+                                .frame(width: 100, height: 100)
                         }
                         .border(.blue)
                 }
@@ -95,7 +95,7 @@ struct BackgroundPlayground: View {
                                 Circle().fill(.red.opacity(0.2))
                                 Circle().fill(.red.opacity(0.2))
                             }
-                            .frame(width: 200.0, height: 100.0)
+                            .frame(width: 200, height: 100)
                         }
                         .clipped()
                         .border(.blue)
@@ -108,7 +108,7 @@ struct BackgroundPlayground: View {
                         .background {
                             Circle()
                                 .fill(.red.opacity(0.2))
-                                .frame(width: 20.0, height: 20.0)
+                                .frame(width: 20, height: 20)
                         }
                         .border(.blue)
                 }
@@ -120,7 +120,7 @@ struct BackgroundPlayground: View {
                         .background(alignment: .topLeading) {
                             Circle()
                                 .fill(.red.opacity(0.2))
-                                .frame(width: 20.0, height: 20.0)
+                                .frame(width: 20, height: 20)
                         }
                         .border(.blue)
                 }
@@ -132,7 +132,7 @@ struct BackgroundPlayground: View {
                         .background(alignment: .bottomTrailing) {
                             Circle()
                                 .fill(.red.opacity(0.2))
-                                .frame(width: 20.0, height: 20.0)
+                                .frame(width: 20, height: 20)
                         }
                         .border(.blue)
                 }

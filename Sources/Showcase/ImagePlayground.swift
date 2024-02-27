@@ -16,7 +16,7 @@ struct ImagePlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 Text("Bundled Image").font(.title).bold()
                 HStack {
                     Spacer()
@@ -30,7 +30,7 @@ struct ImagePlayground: View {
                     Text(".frame(100, 100)")
                     Spacer()
                     Image(systemName: systemNameSample)
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .border(Color.blue)
                 }
                 HStack {
@@ -38,7 +38,7 @@ struct ImagePlayground: View {
                     Spacer()
                     Image(systemName: systemNameSample)
                         .resizable()
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .border(Color.blue)
                 }
                 HStack {
@@ -47,7 +47,7 @@ struct ImagePlayground: View {
                     Image(systemName: systemNameSample)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .clipped()
                         .border(Color.blue)
                 }
@@ -57,7 +57,7 @@ struct ImagePlayground: View {
                     Image(systemName: systemNameSample)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .border(Color.blue)
                 }
                 HStack {
@@ -66,7 +66,7 @@ struct ImagePlayground: View {
                     Image(systemName: systemNameSample)
                         .resizable()
                         .aspectRatio(0.33, contentMode: .fill)
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .clipped()
                         .border(Color.blue)
                 }
@@ -76,7 +76,7 @@ struct ImagePlayground: View {
                     Image(systemName: systemNameSample)
                         .resizable()
                         .aspectRatio(0.33, contentMode: .fit)
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .border(Color.blue)
                 }
                 HStack {
@@ -84,8 +84,8 @@ struct ImagePlayground: View {
                     Spacer()
                     Image(systemName: systemNameSample)
                         .resizable()
-                        .aspectRatio(3.0, contentMode: .fit)
-                        .frame(width: 100.0, height: 100.0)
+                        .aspectRatio(3, contentMode: .fit)
+                        .frame(width: 100, height: 100)
                         .foregroundStyle(.red)
                         .border(Color.blue)
                 }
@@ -97,23 +97,23 @@ struct ImagePlayground: View {
                         .border(Color.blue)
                 }
                 HStack {
-                    Text("scale: 2.0")
+                    Text("scale: 2")
                     Spacer()
-                    AsyncImage(url: remoteImageResourceURL, scale: 2.0)
+                    AsyncImage(url: remoteImageResourceURL, scale: 2)
                         .border(Color.blue)
                 }
                 HStack {
                     Text(".frame(100, 100)")
                     Spacer()
                     AsyncImage(url: remoteImageResourceURL)
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .border(Color.blue)
                 }
                 HStack {
                     Text(".frame(100, 100)\nclipped")
                     Spacer()
                     AsyncImage(url: remoteImageResourceURL)
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .clipped()
                         .border(Color.blue)
                 }
@@ -124,7 +124,7 @@ struct ImagePlayground: View {
                         image.resizable()
                     } placeholder: {
                     }
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .border(Color.blue)
                 }
                 HStack {
@@ -135,7 +135,7 @@ struct ImagePlayground: View {
                     } placeholder: {
                     }
                     .scaledToFill()
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .clipped()
                     .border(Color.blue)
                 }
@@ -147,7 +147,7 @@ struct ImagePlayground: View {
                     } placeholder: {
                     }
                     .scaledToFit()
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .border(Color.blue)
                 }
                 HStack {
@@ -158,7 +158,7 @@ struct ImagePlayground: View {
                     } placeholder: {
                     }
                     .aspectRatio(0.33, contentMode: .fill)
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .clipped()
                     .border(Color.blue)
                 }
@@ -170,7 +170,7 @@ struct ImagePlayground: View {
                     } placeholder: {
                     }
                     .aspectRatio(0.33, contentMode: .fit)
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .border(Color.blue)
                 }
                 HStack {
@@ -180,8 +180,8 @@ struct ImagePlayground: View {
                         image.resizable()
                     } placeholder: {
                     }
-                    .aspectRatio(3.0, contentMode: .fit)
-                    .frame(width: 100.0, height: 100.0)
+                    .aspectRatio(3, contentMode: .fit)
+                    .frame(width: 100, height: 100)
                     .border(Color.blue)
                 }
                 HStack {
@@ -194,7 +194,7 @@ struct ImagePlayground: View {
                     Text("No URL\n.frame(100, 100)")
                     Spacer()
                     AsyncImage(url: nil)
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .border(Color.blue)
                 }
                 HStack {
@@ -205,7 +205,7 @@ struct ImagePlayground: View {
                     } placeholder: {
                         ProgressView()
                     }
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .border(Color.blue)
                 }
                 HStack {
@@ -223,7 +223,7 @@ struct ImagePlayground: View {
                             EmptyView()
                         }
                     }
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 100, height: 100)
                     .border(Color.blue)
                 }
             }

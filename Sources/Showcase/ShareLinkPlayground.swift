@@ -8,7 +8,7 @@ import SwiftUI
 struct ShareLinkPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 HStack {
                     Text("Default")
                     Spacer()

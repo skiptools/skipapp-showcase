@@ -14,7 +14,7 @@ struct StoragePlayground: View {
     }
 
     var body: some View {
-        VStack(spacing: 16.0) {
+        VStack(spacing: 16) {
             HStack {
                 Text("Enum AppStorage")
                 Spacer()

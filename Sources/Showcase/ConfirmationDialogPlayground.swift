@@ -16,7 +16,7 @@ struct ConfirmationDialogPlayground: View {
     @State var scrollingIsPresented = false
 
     var body: some View {
-        VStack(spacing: 16.0) {
+        VStack(spacing: 16) {
             Text(value).bold()
             Button("Default") {
                 defaultIsPresented = true

@@ -8,7 +8,7 @@ import SwiftUI
 struct DividerPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 VStack {
                     Text("Default")
                     Divider()
@@ -16,21 +16,21 @@ struct DividerPlayground: View {
                 VStack {
                     Text("Fixed width")
                     Divider()
-                        .frame(width: 100.0)
+                        .frame(width: 100)
                 }
                 HStack {
                     Text("Vertical")
                         .padding()
                     Divider()
                 }
-                .frame(height: 100.0)
+                .frame(height: 100)
                 HStack {
                     Text("Vertical fixed height")
                         .padding()
                     Divider()
-                        .frame(height: 50.0)
+                        .frame(height: 50)
                 }
-                .frame(height: 100.0)
+                .frame(height: 100)
                 VStack {
                     Text(".foregroundStyle(.red)")
                     Divider()

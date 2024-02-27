@@ -11,7 +11,7 @@ struct LinkPlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 Link(destination: destination) {
                     Text(".init(destination:label:)")
                 }

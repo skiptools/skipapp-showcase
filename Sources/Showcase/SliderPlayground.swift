@@ -10,7 +10,7 @@ struct SliderPlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 Slider(value: $value)
                 HStack {
                     Text(".disabled(true)")

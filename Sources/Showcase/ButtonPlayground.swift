@@ -10,7 +10,7 @@ struct ButtonPlayground: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 Button(action: { tapCount += 1 }) {
                     Text(".init(action:label:): \(tapCount)")
                 }

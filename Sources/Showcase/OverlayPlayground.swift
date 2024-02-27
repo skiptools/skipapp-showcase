@@ -8,7 +8,7 @@ import SwiftUI
 struct OverlayPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 HStack {
                     Text(".red.opacity(0.5)")
                     Spacer()
@@ -44,7 +44,7 @@ struct OverlayPlayground: View {
                         .overlay {
                             Circle()
                                 .fill(.red.opacity(0.5))
-                                .frame(width: 100.0, height: 100.0)
+                                .frame(width: 100, height: 100)
                         }
                         .border(.blue)
                 }
@@ -58,7 +58,7 @@ struct OverlayPlayground: View {
                                 Circle().fill(.red.opacity(0.5))
                                 Circle().fill(.red.opacity(0.5))
                             }
-                            .frame(width: 200.0, height: 100.0)
+                            .frame(width: 200, height: 100)
                         }
                         .clipped()
                         .border(.blue)
@@ -71,7 +71,7 @@ struct OverlayPlayground: View {
                         .overlay {
                             Circle()
                                 .fill(.red.opacity(0.5))
-                                .frame(width: 20.0, height: 20.0)
+                                .frame(width: 20, height: 20)
                         }
                         .border(.blue)
                 }
@@ -83,7 +83,7 @@ struct OverlayPlayground: View {
                         .overlay(alignment: .topLeading) {
                             Circle()
                                 .fill(.red.opacity(0.5))
-                                .frame(width: 20.0, height: 20.0)
+                                .frame(width: 20, height: 20)
                         }
                         .border(.blue)
                 }
@@ -95,7 +95,7 @@ struct OverlayPlayground: View {
                         .overlay(alignment: .bottomTrailing) {
                             Circle()
                                 .fill(.red.opacity(0.5))
-                                .frame(width: 20.0, height: 20.0)
+                                .frame(width: 20, height: 20)
                         }
                         .border(.blue)
                 }

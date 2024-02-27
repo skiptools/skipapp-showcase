@@ -8,7 +8,7 @@ import SwiftUI
 struct LabelPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 Label {
                     Text(".init(_:icon:)")
                 } icon: {

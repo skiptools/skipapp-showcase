@@ -8,11 +8,11 @@ import SwiftUI
 struct ColorPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 colorRow(label: Text("Red"), color: .red)
                 colorRow(label: Text("Red, .opacity(0.5)"), color: Color.red)
-                colorRow(label: Text("RGB"), color: Color(red: 1.0, green: 0.0, blue: 0.0))
-                colorRow(label: Text("White, Opacity"), color: Color(white: 0.5, opacity: 1.0))
+                colorRow(label: Text("RGB"), color: Color(red: 1, green: 0, blue: 0))
+                colorRow(label: Text("White, Opacity"), color: Color(white: 0.5, opacity: 1))
                 colorRow(label: Text("Accent color"), color: .accentColor)
                 colorRow(label: Text("Red"), color: .red)
                 colorRow(label: Text("Orange"), color: .orange)
@@ -45,7 +45,7 @@ struct ColorPlayground: View {
             label
             Spacer()
             color
-                .frame(width: 100.0, height: 100.0)
+                .frame(width: 100, height: 100)
         }
     }
 }

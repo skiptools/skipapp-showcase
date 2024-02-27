@@ -10,13 +10,13 @@ struct TogglePlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 Toggle(isOn: $isOn) {
                     Text("Viewbuilder init")
                 }
                 Toggle("String init", isOn: $isOn)
                 Toggle("Fixed width", isOn: $isOn)
-                    .frame(width: 200.0)
+                    .frame(width: 200)
                 VStack {
                     Text(".labelsHidden():")
                     Toggle("Label", isOn: $isOn)

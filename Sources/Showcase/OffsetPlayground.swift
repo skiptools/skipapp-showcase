@@ -8,17 +8,17 @@ import SwiftUI
 struct OffsetPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 HStack {
                     Text(".offset(0, 0)")
                     Spacer()
                     ZStack {
                         Color.clear
-                            .frame(width: 100.0, height: 100.0)
+                            .frame(width: 100, height: 100)
                             .border(.primary)
                         Color.red
-                            .frame(width: 20.0, height: 20.0)
-                            .offset(x: 0.0, y: 0.0)
+                            .frame(width: 20, height: 20)
+                            .offset(x: 0, y: 0)
                     }
                 }
                 HStack {
@@ -26,11 +26,11 @@ struct OffsetPlayground: View {
                     Spacer()
                     ZStack {
                         Color.clear
-                            .frame(width: 100.0, height: 100.0)
+                            .frame(width: 100, height: 100)
                             .border(.primary)
                         Color.red
-                            .frame(width: 20.0, height: 20.0)
-                            .offset(x: 50.0, y: -50.0)
+                            .frame(width: 20, height: 20)
+                            .offset(x: 50, y: -50)
                     }
                 }
                 HStack {
@@ -38,11 +38,11 @@ struct OffsetPlayground: View {
                     Spacer()
                     ZStack {
                         Color.clear
-                            .frame(width: 100.0, height: 100.0)
+                            .frame(width: 100, height: 100)
                             .border(.primary)
                         Color.red
-                            .frame(width: 20.0, height: 20.0)
-                            .offset(x: -50.0, y: 50.0)
+                            .frame(width: 20, height: 20)
+                            .offset(x: -50, y: 50)
                     }
                 }
                 HStack {
@@ -50,11 +50,11 @@ struct OffsetPlayground: View {
                     Spacer()
                     ZStack {
                         Color.clear
-                            .frame(width: 100.0, height: 100.0)
+                            .frame(width: 100, height: 100)
                             .border(.primary)
                         Color.red
-                            .frame(width: 20.0, height: 20.0)
-                            .offset(CGSize(width: 50.0, height: 50.0))
+                            .frame(width: 20, height: 20)
+                            .offset(CGSize(width: 50, height: 50))
                     }
                 }
             }

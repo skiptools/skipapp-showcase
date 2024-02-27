@@ -11,7 +11,7 @@ struct PickerPlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 Text("Note: Picker displays differently when in a Form. See the Form playground")
                     .font(.caption)
                 VStack {

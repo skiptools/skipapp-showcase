@@ -13,10 +13,10 @@
     ".backgroundStyle(.red)" : {
 
     },
-    ".blue, 5.0" : {
+    ".blue, 5" : {
 
     },
-    ".blue.gradient, 10.0" : {
+    ".blue.gradient, 10" : {
 
     },
     ".border" : {
@@ -1026,13 +1026,13 @@
     "scale, rotate, offset, stroke" : {
 
     },
-    "scale: 2.0" : {
+    "scale: 2" : {
 
     },
     "scale(x: 0.5, y: 1.2)" : {
 
     },
-    "scale(x: 1.0, y: -1.0)" : {
+    "scale(x: 1, y: -1)" : {
 
     },
     "Scrolling" : {
@@ -1125,7 +1125,7 @@
     "stroke x2" : {
 
     },
-    "stroke(.red,\n    style: StrokeStyle(\n    lineWidth: 10.0,\n      dash: [10]))" : {
+    "stroke(.red,\n    style: StrokeStyle(\n    lineWidth: 10,\n      dash: [10]))" : {
 
     },
     "stroke(.red, lineWidth: 10)" : {

@@ -8,19 +8,19 @@ import SwiftUI
 struct BorderPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 HStack {
                     Text(".border")
                     Spacer()
                     Color.red
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .border(.primary)
                 }
                 HStack {
                     Text(".padding()")
                     Spacer()
                     Color.red
-                        .frame(width: 100.0, height: 100.0)
+                        .frame(width: 100, height: 100)
                         .padding()
                         .border(.primary)
                 }
@@ -28,33 +28,33 @@ struct BorderPlayground: View {
                     Text(".padding([.top, .leading])")
                     Spacer()
                     Color.red
-                        .frame(width: 100.0, height: 100.0)
-                        .padding([.top, .leading], 32.0)
+                        .frame(width: 100, height: 100)
+                        .padding([.top, .leading], 32)
                         .border(.primary)
                 }
                 HStack {
-                    Text(".blue, 5.0")
+                    Text(".blue, 5")
                     Spacer()
                     Color.red
-                        .frame(width: 100.0, height: 100.0)
-                        .border(.blue, width: 5.0)
+                        .frame(width: 100, height: 100)
+                        .border(.blue, width: 5)
                 }
                 HStack {
-                    Text(".blue.gradient, 10.0")
+                    Text(".blue.gradient, 10")
                     Spacer()
                     Color.red
-                        .frame(width: 100.0, height: 100.0)
-                        .border(.blue.gradient, width: 10.0)
+                        .frame(width: 100, height: 100)
+                        .border(.blue.gradient, width: 10)
                 }
                 HStack {
                     Text("VStack")
                     Spacer()
                     VStack {
                         Color.red
-                            .frame(width: 100.0, height: 100.0)
+                            .frame(width: 100, height: 100)
                             .padding()
                         Color.red
-                            .frame(width: 100.0, height: 100.0)
+                            .frame(width: 100, height: 100)
                             .padding()
                     }
                     .border(.primary)

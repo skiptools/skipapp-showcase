@@ -12,7 +12,7 @@ struct AboutView: View {
             LogoView()
                 .padding()
 
-            VStack(spacing: 0.0) {
+            VStack(spacing: 0) {
                 Text("Showcase is a dual-platform iOS + Android app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs on Android")
                     .padding()
                 LinkDivider()
@@ -33,7 +33,7 @@ struct AboutView: View {
                 }
             }
             .background {
-                RoundedRectangle(cornerRadius: 20.0)
+                RoundedRectangle(cornerRadius: 20)
                     .stroke(borderColor)
             }
         }
@@ -45,18 +45,18 @@ struct AboutView: View {
             AsyncImage(url: Bundle.module.url(forResource: "skip-logo", withExtension: "png")) {
                 $0.image?.resizable()
             }
-            .frame(width: 80.0, height: 80.0)
-            .padding(20.0)
+            .frame(width: 80, height: 80)
+            .padding(20)
             .background(.white) // Fill area outside of image, which has a white background
             .clipShape(Circle())
             .overlay {
                 ZStack {
                     Circle()
-                        .inset(by: 2.0)
-                        .stroke(.black, lineWidth: 4.0)
+                        .inset(by: 2)
+                        .stroke(.black, lineWidth: 4)
                     Circle()
-                        .inset(by: 2.0)
-                        .stroke(Color(red: 1.0, green: 1.0, blue: 0.0), lineWidth: 2.0) // Match logo pure yellow
+                        .inset(by: 2)
+                        .stroke(Color(red: 1, green: 1, blue: 0), lineWidth: 2) // Match logo pure yellow
                 }
             }
         }

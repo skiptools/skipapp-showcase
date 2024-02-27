@@ -10,7 +10,7 @@ struct KeyboardPlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 TextField("Default", text: $text)
                 TextField(".autocorrectionDisabled()", text: $text)
                     .autocorrectionDisabled()

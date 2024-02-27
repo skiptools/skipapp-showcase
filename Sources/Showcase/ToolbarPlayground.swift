@@ -167,7 +167,7 @@ struct CustomToolbarItemPlayground: View {
         .toolbar {
             Ellipse()
                 .fill(.red.gradient)
-                .frame(width: 100.0, height: 50.0)
+                .frame(width: 100, height: 50)
                 .onTapGesture {
                     dismiss()
                 }

@@ -18,12 +18,12 @@ struct GesturePlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 HStack {
                     Text("onTapGesture: (\(Int(tapPosition.x)), \(Int(tapPosition.y)))")
                     Spacer()
                     Color.red
-                        .frame(width: 150.0, height: 150.0)
+                        .frame(width: 150, height: 150)
                         .onTapGesture {
                             tapPosition = $0
                         }
@@ -32,17 +32,17 @@ struct GesturePlayground: View {
                     Text("TapGesture: (\(Int(tapPosition.x)), \(Int(tapPosition.y)))")
                     Spacer()
                     Color.red
-                        .frame(width: 150.0, height: 150.0)
+                        .frame(width: 150, height: 150)
                         .gesture(
                             TapGesture()
-                                .onEnded { _ in tapPosition = CGPoint(x: -1.0, y: -1.0) }
+                                .onEnded { _ in tapPosition = CGPoint(x: -1, y: -1) }
                         )
                 }
                 HStack {
                     Text(".onTapGesture(2): (\(Int(doubleTapPosition.x)), \(Int(doubleTapPosition.y)))")
                     Spacer()
                     Color.red
-                        .frame(width: 150.0, height: 150.0)
+                        .frame(width: 150, height: 150)
                         .onTapGesture(count: 2) {
                             doubleTapPosition = $0
                         }
@@ -51,17 +51,17 @@ struct GesturePlayground: View {
                     Text("Tap(2): (\(Int(doubleTapPosition.x)), \(Int(doubleTapPosition.y)))")
                     Spacer()
                     Color.red
-                        .frame(width: 150.0, height: 150.0)
+                        .frame(width: 150, height: 150)
                         .gesture(
                             TapGesture(count: 2)
-                                .onEnded { _ in doubleTapPosition = CGPoint(x: -1.0, y: -1.0) }
+                                .onEnded { _ in doubleTapPosition = CGPoint(x: -1, y: -1) }
                         )
                 }
                 HStack {
                     Text(".onLongPressGesture: \(longPressCount)")
                     Spacer()
                     Color.red
-                        .frame(width: 150.0, height: 150.0)
+                        .frame(width: 150, height: 150)
                         .onLongPressGesture {
                             longPressCount += 1
                         } onPressingChanged: { val in
@@ -72,7 +72,7 @@ struct GesturePlayground: View {
                     Text("LongPress: \(longPressCount)")
                     Spacer()
                     Color.red
-                        .frame(width: 150.0, height: 150.0)
+                        .frame(width: 150, height: 150)
                         .gesture(
                             LongPressGesture()
                                 .onChanged { val in logger.log("LongPress onChanged: \(val)") }
@@ -83,7 +83,7 @@ struct GesturePlayground: View {
                     Text("Drag")
                     Spacer()
                     Color.red
-                        .frame(width: 150.0, height: 150.0)
+                        .frame(width: 150, height: 150)
                         .offset(dragOffset)
                         .gesture(
                             DragGesture()
@@ -100,7 +100,7 @@ struct GesturePlayground: View {
                     }
                     Spacer()
                     Color.red
-                        .frame(width: 150.0, height: 150.0)
+                        .frame(width: 150, height: 150)
                         .offset(combinedDragOffset)
                         .gesture(
                             DragGesture()
@@ -121,7 +121,7 @@ struct GesturePlayground: View {
                     Text("Disabled tap: (\(Int(tapPosition.x)), \(Int(tapPosition.y)))")
                     Spacer()
                     Color.red
-                        .frame(width: 150.0, height: 150.0)
+                        .frame(width: 150, height: 150)
                         .onTapGesture {
                             tapPosition = $0
                         }

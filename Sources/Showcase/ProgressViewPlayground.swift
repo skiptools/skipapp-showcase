@@ -8,7 +8,7 @@ import SwiftUI
 struct ProgressViewPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 HStack {
                     Text("Indeterminate")
                     Spacer()
@@ -17,7 +17,7 @@ struct ProgressViewPlayground: View {
                 HStack {
                     Text("Progress nil")
                     Spacer()
-                    ProgressView(value: nil, total: 1.0)
+                    ProgressView(value: nil, total: 1)
                 }
                 HStack {
                     Text("Progress 0.5")

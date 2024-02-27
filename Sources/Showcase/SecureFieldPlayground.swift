@@ -10,11 +10,11 @@ struct SecureFieldPlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 SecureField("Default", text: $text)
                 SecureField("With prompt", text: $text, prompt: Text("Prompt"))
                 SecureField("Fixed width", text: $text)
-                    .frame(width: 200.0)
+                    .frame(width: 200)
                 SecureField(".disabled(true)", text: $text)
                     .disabled(true)
                 SecureField(".foregroundStyle(.red)", text: $text)

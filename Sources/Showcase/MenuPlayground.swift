@@ -10,7 +10,7 @@ struct MenuPlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 Menu("Default") {
                     Button("Option 1") { logger.log("Option 1") }
                     Button("Option 2") { logger.log("Option 2") }

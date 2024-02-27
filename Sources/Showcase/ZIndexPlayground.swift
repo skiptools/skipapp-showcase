@@ -8,17 +8,17 @@ import SwiftUI
 struct ZIndexPlayground: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 HStack {
                     Text("Without zIndex")
                     Spacer()
                     ZStack {
                         Color.blue.opacity(0.5)
-                            .frame(width: 20.0, height: 20.0)
+                            .frame(width: 20, height: 20)
                         Color.green.opacity(0.5)
-                            .frame(width: 60.0, height: 60.0)
+                            .frame(width: 60, height: 60)
                         Color.red.opacity(0.5)
-                            .frame(width: 100.0, height: 100.0)
+                            .frame(width: 100, height: 100)
                     }
                 }
                 HStack {
@@ -26,13 +26,13 @@ struct ZIndexPlayground: View {
                     Spacer()
                     ZStack {
                         Color.blue.opacity(0.5)
-                            .frame(width: 20.0, height: 20.0)
-                            .zIndex(2.0)
+                            .frame(width: 20, height: 20)
+                            .zIndex(2)
                         Color.green.opacity(0.5)
-                            .frame(width: 60.0, height: 60.0)
-                            .zIndex(1.0)
+                            .frame(width: 60, height: 60)
+                            .zIndex(1)
                         Color.red.opacity(0.5)
-                            .frame(width: 100.0, height: 100.0)
+                            .frame(width: 100, height: 100)
                     }
                 }
                 HStack {
@@ -40,13 +40,13 @@ struct ZIndexPlayground: View {
                     Spacer()
                     ZStack {
                         Color.blue.opacity(0.5)
-                            .zIndex(2.0)
-                            .frame(width: 20.0, height: 20.0)
+                            .zIndex(2)
+                            .frame(width: 20, height: 20)
                         Color.green.opacity(0.5)
-                            .zIndex(1.0)
-                            .frame(width: 60.0, height: 60.0)
+                            .zIndex(1)
+                            .frame(width: 60, height: 60)
                         Color.red.opacity(0.5)
-                            .frame(width: 100.0, height: 100.0)
+                            .frame(width: 100, height: 100)
                     }
                 }
             }

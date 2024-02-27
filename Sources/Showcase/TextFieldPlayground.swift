@@ -10,7 +10,7 @@ struct TextFieldPlayground: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: 16) {
                 TextField(text: $text) {
                     Text(".init(text:label:)")
                 }
@@ -21,7 +21,7 @@ struct TextFieldPlayground: View {
                     .textFieldStyle(.roundedBorder)
                 TextField("Fixed width", text: $text)
                     .textFieldStyle(.roundedBorder)
-                    .frame(width: 200.0)
+                    .frame(width: 200)
                 TextField(".disabled(true)", text: $text)
                     .textFieldStyle(.roundedBorder)
                     .disabled(true)
@@ -45,7 +45,7 @@ struct TextFieldPlayground: View {
                 TextField("Custom background", text: $text)
                     .textFieldStyle(.plain)
                     .background {
-                        RoundedRectangle(cornerRadius: 20.0)
+                        RoundedRectangle(cornerRadius: 20)
                             .fill(.yellow)
                     }
             }
