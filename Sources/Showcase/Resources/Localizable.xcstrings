@@ -927,7 +927,10 @@
     "Present another" : {
 
     },
-    "Present sheet" : {
+    "Present navigation stack sheet" : {
+
+    },
+    "Present simple button sheet" : {
 
     },
     "Present with data" : {
@@ -1177,6 +1180,9 @@
 
     },
     "Tap below to increment state tap count" : {
+
+    },
+    "Tap to dismiss" : {
 
     },
     "Tap: (%lf, %lf)" : {

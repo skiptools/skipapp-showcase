@@ -6,14 +6,25 @@
 import SwiftUI
 
 struct SheetPlayground: View {
-    @State var isPresented = false
+    @State var isNavigationPresented = false
+    @State var isSimplePresented = false
 
     var body: some View {
-        Button("Present sheet") {
-            isPresented = true
+        VStack {
+            Button("Present navigation stack sheet") {
+                isNavigationPresented = true
+            }
+            Button("Present simple button sheet") {
+                isSimplePresented = true
+            }
         }
-        .sheet(isPresented: $isPresented) {
-            SheetContentView(dismissSheet: { isPresented = false })
+        .sheet(isPresented: $isNavigationPresented) {
+            SheetContentView(dismissSheet: { isNavigationPresented = false })
+        }
+        .sheet(isPresented: $isSimplePresented) {
+            Button("Tap to dismiss") {
+                isSimplePresented = false
+            }
         }
         .toolbar {
             PlaygroundSourceLink(file: "SheetPlayground.swift")
