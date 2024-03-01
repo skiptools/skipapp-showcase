@@ -12,6 +12,27 @@ struct SheetPlayground: View {
     @State var isSimpleFullScreenPresented = false
 
     var body: some View {
+        #if os(macOS)
+        VStack(spacing: 16) {
+            Button("Present sheet with navigation stack") {
+                isSheetPresented = true
+            }
+            Button("Present sheet with simple content") {
+                isSimpleSheetPresented = true
+            }
+        }
+        .sheet(isPresented: $isSheetPresented) {
+            SheetContentView(dismissSheet: { isSheetPresented = false })
+        }
+        .sheet(isPresented: $isSimpleSheetPresented) {
+            Button("Tap to dismiss") {
+                isSimpleSheetPresented = false
+            }
+        }
+        .toolbar {
+            PlaygroundSourceLink(file: "SheetPlayground.swift")
+        }
+        #else
         VStack(spacing: 16) {
             Button("Present sheet with navigation stack") {
                 isSheetPresented = true
@@ -45,6 +66,7 @@ struct SheetPlayground: View {
         .toolbar {
             PlaygroundSourceLink(file: "SheetPlayground.swift")
         }
+        #endif
     }
 }
 

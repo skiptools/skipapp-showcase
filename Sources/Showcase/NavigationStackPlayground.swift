@@ -55,12 +55,20 @@ private struct PathBindingSheetContentView: View {
                 .navigationDestination(for: PathElement.self) { element in
                     PathElementView(element: element, path: $path)
                 }
+                #if os(macOS)
+                .toolbar {
+                    Button("Dismiss") {
+                        dismiss()
+                    }
+                }
+                #else
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     Button("Dismiss") {
                         dismiss()
                     }
                 }
+                #endif
         }
     }
 }
@@ -85,15 +93,27 @@ private struct NavigationPathBindingSheetContentView: View {
                             path.removeLast()
                         }
                     }
+                    #if os(macOS)
+                    .navigationTitle(value)
+                    #else
                     .navigationTitle(value)
                     .navigationBarTitleDisplayMode(.large)
+                    #endif
                 }
+                #if os(macOS)
+                .toolbar {
+                    Button("Dismiss") {
+                        dismiss()
+                    }
+                }
+                #else
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     Button("Dismiss") {
                         dismiss()
                     }
                 }
+                #endif
         }
     }
 }
