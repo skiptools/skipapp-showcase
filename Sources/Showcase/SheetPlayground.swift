@@ -6,24 +6,40 @@
 import SwiftUI
 
 struct SheetPlayground: View {
-    @State var isNavigationPresented = false
-    @State var isSimplePresented = false
+    @State var isSheetPresented = false
+    @State var isSimpleSheetPresented = false
+    @State var isFullScreenPresented = false
+    @State var isSimpleFullScreenPresented = false
 
     var body: some View {
-        VStack {
-            Button("Present navigation stack sheet") {
-                isNavigationPresented = true
+        VStack(spacing: 16) {
+            Button("Present sheet with navigation stack") {
+                isSheetPresented = true
             }
-            Button("Present simple button sheet") {
-                isSimplePresented = true
+            Button("Present sheet with simple content") {
+                isSimpleSheetPresented = true
+            }
+            Button("Present full screen cover with navigation stack") {
+                isFullScreenPresented = true
+            }
+            Button("Present full screen cover with simple content") {
+                isSimpleFullScreenPresented = true
             }
         }
-        .sheet(isPresented: $isNavigationPresented) {
-            SheetContentView(dismissSheet: { isNavigationPresented = false })
+        .sheet(isPresented: $isSheetPresented) {
+            SheetContentView(dismissSheet: { isSheetPresented = false })
         }
-        .sheet(isPresented: $isSimplePresented) {
+        .sheet(isPresented: $isSimpleSheetPresented) {
             Button("Tap to dismiss") {
-                isSimplePresented = false
+                isSimpleSheetPresented = false
+            }
+        }
+        .fullScreenCover(isPresented: $isFullScreenPresented) {
+            SheetContentView(dismissSheet: { isFullScreenPresented = false })
+        }
+        .fullScreenCover(isPresented: $isSimpleFullScreenPresented) {
+            Button("Tap to dismiss") {
+                isSimpleFullScreenPresented = false
             }
         }
         .toolbar {

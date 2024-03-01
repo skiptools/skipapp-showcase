@@ -799,6 +799,15 @@
     "My subject" : {
 
     },
+    "Navigate back" : {
+
+    },
+    "Navigate forward" : {
+
+    },
+    "NavigationPath binding sheet" : {
+
+    },
     "Nested" : {
 
     },
@@ -888,6 +897,49 @@
     "Overridden to title font" : {
 
     },
+    "path += [%lld, %lld]" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "path += [%1$lld, %2$lld]"
+          }
+        }
+      }
+    },
+    "Path binding sheet" : {
+
+    },
+    "Path binding sheet with initial stack" : {
+
+    },
+    "Path count: %lld" : {
+
+    },
+    "Path: %@" : {
+
+    },
+    "path.append(\"X\")" : {
+
+    },
+    "path.append(%@)" : {
+
+    },
+    "path.append(%lld)" : {
+
+    },
+    "path.removeLast()" : {
+
+    },
+    "path.removeLast(2)" : {
+
+    },
+    "path.removeLast(2); path.append(%lld)" : {
+
+    },
+    "path.reverse()" : {
+
+    },
     "Picker" : {
 
     },
@@ -927,10 +979,16 @@
     "Present another" : {
 
     },
-    "Present navigation stack sheet" : {
+    "Present full screen cover with navigation stack" : {
 
     },
-    "Present simple button sheet" : {
+    "Present full screen cover with simple content" : {
+
+    },
+    "Present sheet with navigation stack" : {
+
+    },
+    "Present sheet with simple content" : {
 
     },
     "Present with data" : {
@@ -1289,6 +1347,9 @@
 
     },
     "UnevenRoundedRectangle" : {
+
+    },
+    "Value: %@" : {
 
     },
     "Vertical" : {
