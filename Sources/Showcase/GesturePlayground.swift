@@ -88,7 +88,7 @@ struct GesturePlayground: View {
                         .gesture(
                             DragGesture()
                                 .onChanged { val in dragOffset = val.translation }
-                                .onEnded { _ in dragOffset = .zero }
+                                .onEnded { _ in withAnimation { dragOffset = .zero } }
                         )
                 }
                 HStack {
@@ -105,7 +105,7 @@ struct GesturePlayground: View {
                         .gesture(
                             DragGesture()
                                 .onChanged { val in combinedDragOffset = val.translation }
-                                .onEnded { _ in combinedDragOffset = .zero }
+                                .onEnded { _ in withAnimation { combinedDragOffset = .zero } }
                         )
                         .onTapGesture(count: 2) {
                             combinedDoubleTapPosition = $0

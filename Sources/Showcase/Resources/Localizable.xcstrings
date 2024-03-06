@@ -7,6 +7,18 @@
     "... and hidden separators" : {
 
     },
+    ".animation(.easeIn(duration: 1))" : {
+
+    },
+    ".animation(.spring)" : {
+
+    },
+    ".animation(autoreverses: false))" : {
+
+    },
+    ".animation(repeatCount(3))" : {
+
+    },
     ".autocorrectionDisabled()" : {
 
     },
@@ -73,7 +85,25 @@
     ".disabled(true): %lld" : {
 
     },
+    ".fill" : {
+
+    },
+    ".fill.animation" : {
+
+    },
+    ".font" : {
+
+    },
+    ".font.animation" : {
+
+    },
     ".font(.title)" : {
+
+    },
+    ".foreground/.background" : {
+
+    },
+    ".foreground/.background.animation" : {
 
     },
     ".foregroundStyle(.red)" : {
@@ -83,6 +113,12 @@
 
     },
     ".foregroundStyle(.red): %lld" : {
+
+    },
+    ".frame" : {
+
+    },
+    ".frame.animation" : {
 
     },
     ".frame(100, 100)" : {
@@ -124,6 +160,12 @@
     ".lineLimit(1): This is some long text that should wrap when it exceeds the width of its frame" : {
 
     },
+    ".offset" : {
+
+    },
+    ".offset.animation" : {
+
+    },
     ".offset(-50, 50)" : {
 
     },
@@ -157,6 +199,15 @@
           }
         }
       }
+    },
+    ".opacity" : {
+
+    },
+    ".opacity.animation" : {
+
+    },
+    ".opacity.animation\n(different value)" : {
+
     },
     ".padding()" : {
 
@@ -194,6 +245,9 @@
     ".red.opacity(0.5)" : {
 
     },
+    ".repeatForever()" : {
+
+    },
     ".resizable\n.frame(100, 100)" : {
 
     },
@@ -216,6 +270,18 @@
 
     },
     ".resizable()\n.scaleToFit\n.frame(100, 100)" : {
+
+    },
+    ".rotationEffect" : {
+
+    },
+    ".rotationEffect.animation" : {
+
+    },
+    ".scaleEffect" : {
+
+    },
+    ".scaleEffect.animation" : {
 
     },
     ".submitLabel(.%@)" : {
@@ -1018,6 +1084,9 @@
     "Purple" : {
 
     },
+    "Push" : {
+
+    },
     "Push another" : {
 
     },
@@ -1025,6 +1094,9 @@
 
     },
     "Push binding view" : {
+
+    },
+    "Pushed" : {
 
     },
     "RadialGradient" : {
@@ -1522,6 +1594,18 @@
 
     },
     "With zIndex before frame" : {
+
+    },
+    "withAnimation" : {
+
+    },
+    "withAnimation(.easeIn(duration: 1))" : {
+
+    },
+    "withAnimation(.spring)" : {
+
+    },
+    "withAnimation(repeatCount(3))" : {
 
     },
     "Without zIndex" : {

@@ -7,6 +7,7 @@ import SwiftUI
 
 /// All Showcase playgrounds.
 enum PlaygroundType: CaseIterable {
+    case animation
     case background
     case border
     case button
@@ -56,6 +57,8 @@ enum PlaygroundType: CaseIterable {
 
     var title: String {
         switch self {
+        case .animation:
+            return "Animation"
         case .background:
             return "Background"
         case .border:
@@ -167,6 +170,9 @@ public struct PlaygroundNavigationView: View {
             .navigationTitle(Text("Showcase"))
             .navigationDestination(for: PlaygroundType.self) {
                 switch $0 {
+                case .animation:
+                    AnimationPlayground()
+                        .navigationTitle($0.title)
                 case .background:
                     BackgroundPlayground()
                         .navigationTitle($0.title)
