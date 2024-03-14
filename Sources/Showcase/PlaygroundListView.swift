@@ -49,6 +49,7 @@ enum PlaygroundType: CaseIterable {
     case symbol
     case tabView
     case text
+    case textEditor
     case textField
     case toggle
     case toolbar
@@ -141,6 +142,8 @@ enum PlaygroundType: CaseIterable {
             return "TabView"
         case .text:
             return "Text"
+        case .textEditor:
+            return "TextEditor"
         case .textField:
             return "TextField"
         case .toggle:
@@ -295,6 +298,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .text:
                     TextPlayground()
+                        .navigationTitle($0.title)
+                case .textEditor:
+                    TextEditorPlayground()
                         .navigationTitle($0.title)
                 case .textField:
                     TextFieldPlayground()
