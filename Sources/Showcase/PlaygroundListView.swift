@@ -53,6 +53,7 @@ enum PlaygroundType: CaseIterable {
     case textField
     case toggle
     case toolbar
+    case transition
     case videoPlayer
     case zIndex
 
@@ -150,6 +151,8 @@ enum PlaygroundType: CaseIterable {
             return "Toggle"
         case .toolbar:
             return "Toolbar"
+        case .transition:
+            return "Transition"
         case .videoPlayer:
             return "Video Player"
         case .zIndex:
@@ -310,6 +313,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .toolbar:
                     ToolbarPlayground()
+                        .navigationTitle($0.title)
+                case .transition:
+                    TransitionPlayground()
                         .navigationTitle($0.title)
                 case .videoPlayer:
                     VideoPlayerPlayground()

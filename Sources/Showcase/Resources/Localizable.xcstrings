@@ -7,6 +7,9 @@
     "... and hidden separators" : {
 
     },
+    ".animation" : {
+
+    },
     ".animation(.easeIn(duration: 1))" : {
 
     },
@@ -299,6 +302,24 @@
     ".tint(.red): %lld" : {
 
     },
+    ".transition(.move(edge: .top))" : {
+
+    },
+    ".transition(.offset)" : {
+
+    },
+    ".transition(.opacity)" : {
+
+    },
+    ".transition(.push(from: .top))" : {
+
+    },
+    ".transition(.scale)" : {
+
+    },
+    ".transition(.slide)" : {
+
+    },
     "@Environment(\\.openURL)" : {
 
     },
@@ -345,6 +366,9 @@
 
     },
     "alignment: .topLeading" : {
+
+    },
+    "Asymmetric: opacity+slide" : {
 
     },
     "AsyncImage" : {
@@ -444,6 +468,9 @@
 
     },
     "Combination" : {
+
+    },
+    "Combined: opacity+slide" : {
 
     },
     "Complex content button" : {
@@ -748,6 +775,9 @@
     "Home" : {
 
     },
+    "HStack.animation" : {
+
+    },
     "Image" : {
 
     },
@@ -891,6 +921,9 @@
       }
     },
     "Nested menu" : {
+
+    },
+    "Nested views" : {
 
     },
     "Nil Data" : {
@@ -1216,6 +1249,9 @@
     "Sized to content:" : {
 
     },
+    "Slow spring" : {
+
+    },
     "Small circle" : {
 
     },
@@ -1436,6 +1472,9 @@
     "VStack" : {
 
     },
+    "VStack.animation" : {
+
+    },
     "Welcome" : {
       "localizations" : {
         "ar" : {
@@ -1618,6 +1657,9 @@
 
     },
     "YES" : {
+
+    },
+    "ZStack.animation" : {
 
     }
   },

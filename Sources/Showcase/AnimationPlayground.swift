@@ -116,7 +116,7 @@ struct AnimationPlayground: View {
                             .offset(isOn ? CGSize(width: 50, height: 10) : CGSize(width: 0, height: 0))
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         isOn = !isOn
                     }
@@ -131,7 +131,7 @@ struct AnimationPlayground: View {
                             .animation(.default, value: isOn)
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         isOn = !isOn
                     }
@@ -148,7 +148,7 @@ struct AnimationPlayground: View {
                             .frame(width: isOn ? 100.0 : 40.0, height: isOn ? 60.0 : 40.0)
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         isOn = !isOn
                     }
@@ -162,7 +162,7 @@ struct AnimationPlayground: View {
                             .animation(.default, value: isOn)
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         isOn = !isOn
                     }
@@ -258,7 +258,7 @@ struct AnimationPlayground: View {
                             .animation(.spring, value: isOn)
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         isOn = !isOn
                     }
@@ -272,7 +272,7 @@ struct AnimationPlayground: View {
                             .offset(isOn ? CGSize(width: 0, height: 50) : CGSize(width: 0, height: -50))
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         withAnimation(.spring) { isOn = !isOn }
                     }
@@ -287,7 +287,7 @@ struct AnimationPlayground: View {
                             .animation(.easeIn(duration: 1), value: isOn)
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         isOn = !isOn
                     }
@@ -301,7 +301,7 @@ struct AnimationPlayground: View {
                             .offset(isOn ? CGSize(width: 0, height: 50) : CGSize(width: 0, height: -50))
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         withAnimation(.easeIn(duration: 1)) { isOn = !isOn }
                     }
@@ -316,7 +316,7 @@ struct AnimationPlayground: View {
                             .animation(.default.repeatCount(3), value: isOn)
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         isOn = !isOn
                     }
@@ -330,7 +330,7 @@ struct AnimationPlayground: View {
                             .offset(isOn ? CGSize(width: 0, height: 50) : CGSize(width: 0, height: -50))
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         withAnimation(.default.repeatCount(3)) { isOn = !isOn }
                     }
@@ -345,7 +345,7 @@ struct AnimationPlayground: View {
                             .animation(.default.repeatCount(3, autoreverses: false), value: isOn)
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onTapGesture {
                         isOn = !isOn
                     }
@@ -360,7 +360,7 @@ struct AnimationPlayground: View {
                             .animation(.default.repeatForever(), value: isRepeatOn)
                     }
                     .frame(width: 100, height: 100)
-                    .border(Color.blue)
+                    .background(.gray)
                     .onAppear {
                         isRepeatOn = true
                     }
