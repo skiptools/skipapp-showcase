@@ -6,7 +6,12 @@
 import SwiftUI
 
 enum ToolbarPlaygroundType: String, CaseIterable {
+    case hideNavigationBar
+    case hideBars
+    case hideBarBackgrounds
+    case customBarBackgrounds
     case `default`
+    case updating
     case tint
     case custom
     case label
@@ -22,8 +27,18 @@ enum ToolbarPlaygroundType: String, CaseIterable {
 
     var title: String {
         switch self {
+        case .hideNavigationBar:
+            return "Hide Navigation Bar"
+        case .hideBars:
+            return "Hide Bars"
+        case .hideBarBackgrounds:
+            return "Hide Bar Backgrounds"
+        case .customBarBackgrounds:
+            return "Custom Bar Backgrounds"
         case .default:
             return "Default"
+        case .updating:
+            return "Updating"
         case .tint:
             return "Tint"
         case .custom:
@@ -62,8 +77,28 @@ struct ToolbarPlayground: View {
         }
         .navigationDestination(for: ToolbarPlaygroundType.self) {
             switch $0 {
+            case .hideNavigationBar:
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .toolbar(.hidden, for: .navigationBar)
+            case .hideBars:
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .toolbar(.hidden, for: .navigationBar, .tabBar)
+            case .hideBarBackgrounds:
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .toolbarBackground(.hidden, for: .navigationBar, .tabBar)
+                    .ignoresSafeArea()
+            case .customBarBackgrounds:
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
             case .default:
                 DefaultToolbarItemPlayground()
+                    .navigationTitle($0.title)
+            case .updating:
+                UpdatingToolbarItemPlayground()
                     .navigationTitle($0.title)
             case .tint:
                 TintToolbarItemGroupPlayground()
@@ -127,6 +162,27 @@ struct ToolbarPlayground: View {
     }
 }
 
+struct HideToolbarsPlayground: View {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        ZStack {
+            Color.yellow
+            VStack {
+                Text("Fullscreen content")
+                    .font(.largeTitle)
+                Button("Pop") {
+                    dismiss()
+                }
+                NavigationLink("Push") {
+                    Text("Content")
+                        .navigationTitle("Pushed")
+                }
+            }
+        }
+    }
+}
+
 struct DefaultToolbarItemPlayground: View {
     @Environment(\.dismiss) var dismiss
     @State var firstTapCount = 0
@@ -147,6 +203,33 @@ struct DefaultToolbarItemPlayground: View {
             }
             Button("Second: \(secondTapCount)") {
                 secondTapCount += 1
+            }
+        }
+    }
+}
+
+struct UpdatingToolbarItemPlayground: View {
+    @Environment(\.dismiss) var dismiss
+    @State var tapCount = 0
+
+    var body: some View {
+        List {
+            Button("Pop") {
+                dismiss()
+            }
+            ForEach(0..<100) { i in
+                Text("Content \(i)")
+            }
+        }
+        .toolbar {
+            if tapCount % 2 == 0 {
+                Button("Even") {
+                    tapCount += 1
+                }
+            } else {
+                Button("Odd") {
+                    tapCount += 1
+                }
             }
         }
     }
