@@ -947,6 +947,9 @@
     "No URL\n.frame(100, 100)" : {
 
     },
+    "Not supported on macOS" : {
+
+    },
     "Note: colors should not affect Divider appearance" : {
 
     },

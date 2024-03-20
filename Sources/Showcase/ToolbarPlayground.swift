@@ -78,22 +78,38 @@ struct ToolbarPlayground: View {
         .navigationDestination(for: ToolbarPlaygroundType.self) {
             switch $0 {
             case .hideNavigationBar:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
                     .toolbar(.hidden, for: .navigationBar)
+                #endif
             case .hideBars:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
                     .toolbar(.hidden, for: .navigationBar, .tabBar)
+                #endif
             case .hideBarBackgrounds:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
                     .toolbarBackground(.hidden, for: .navigationBar, .tabBar)
                     .ignoresSafeArea()
+                #endif
             case .customBarBackgrounds:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
                     .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
+                #endif
             case .default:
                 DefaultToolbarItemPlayground()
                     .navigationTitle($0.title)
