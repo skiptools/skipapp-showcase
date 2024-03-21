@@ -22,6 +22,11 @@ struct TextPlayground: View {
 
                 Divider()
 
+                Text("Custom Font")
+                    .font(Font.custom("Protest Guerrilla", size: 30.0)) // protest_guerrilla.ttf
+
+                Divider()
+
                 text("Font.largeTitle", with: .largeTitle)
                 text("Font.title", with: .title)
                 text("Font.title2", with: .title2)

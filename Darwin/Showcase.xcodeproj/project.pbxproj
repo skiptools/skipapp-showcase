@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490010192BACD83F0000DE33 /* protest_guerrilla.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 490010182BACD83F0000DE33 /* protest_guerrilla.ttf */; };
 		49231BAC2AC5BCEF00F98ADF /* ShowcaseApp in Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */; };
 		49231BAD2AC5BCEF00F98ADF /* ShowcaseApp in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		499CD43B2AC5B799001AE8D8 /* ShowcaseAppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		490010182BACD83F0000DE33 /* protest_guerrilla.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = protest_guerrilla.ttf; path = ../Sources/Showcase/Resources/protest_guerrilla.ttf; sourceTree = "<group>"; };
+		4900101C2BACEA710000DE33 /* Showcase-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Showcase-Info.plist"; sourceTree = "<group>"; };
 		490A40BF2B37A3C300275405 /* Showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Showcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		493609562A6B7EAE00C401E2 /* Showcase */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Showcase; path = ..; sourceTree = "<group>"; };
 		496EB72F2A6AE4DE00C1253A /* Skip.env */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Skip.env; path = ../Skip.env; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 			children = (
 				49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */,
 				49F90C2F2A52156300F06D93 /* Assets.xcassets */,
+				4900101C2BACEA710000DE33 /* Showcase-Info.plist */,
+				490010182BACD83F0000DE33 /* protest_guerrilla.ttf */,
 				49F90C312A52156300F06D93 /* Entitlements.plist */,
 			);
 			name = App;
@@ -123,7 +128,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1530;
 			};
 			buildConfigurationList = 49F90C232A52156200F06D93 /* Build configuration list for PBXProject "Showcase" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -151,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				499CD4402AC5B799001AE8D8 /* Assets.xcassets in Resources */,
+				490010192BACD83F0000DE33 /* protest_guerrilla.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +219,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Showcase-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				SDKROOT = auto;
@@ -227,6 +234,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Showcase-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				SDKROOT = auto;
@@ -241,6 +249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Showcase-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				SDKROOT = auto;
