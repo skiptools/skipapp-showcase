@@ -27,17 +27,17 @@ struct TextPlayground: View {
 
                 Divider()
 
-                text("Font.largeTitle", with: .largeTitle)
-                text("Font.title", with: .title)
-                text("Font.title2", with: .title2)
-                text("Font.title3", with: .title3)
-                text("Font.headline", with: .headline)
-                text("Font.subheadline", with: .subheadline)
-                text("Font.body", with: .body)
-                text("Font.callout", with: .callout)
-                text("Font.footnote", with: .footnote)
-                text("Font.caption", with: .caption)
-                text("Font.caption2", with: .caption2)
+                Text("Font.largeTitle").font(.largeTitle)
+                Text("Font.title").font(.title)
+                Text("Font.title2").font(.title2)
+                Text("Font.title3").font(.title3)
+                Text("Font.headline").font(.headline)
+                Text("Font.subheadline").font(.subheadline)
+                Text("Font.body").font(.body)
+                Text("Font.callout").font(.callout)
+                Text("Font.footnote").font(.footnote)
+                Text("Font.caption").font(.caption)
+                Text("Font.caption2").font(.caption2)
 
                 Divider()
 
@@ -54,10 +54,5 @@ struct TextPlayground: View {
         .toolbar {
             PlaygroundSourceLink(file: "TextPlayground.swift")
         }
-    }
-
-    // Test that the .font modifier (along with many others) returns Text rather than any View
-    private func text(_ text: String, with font: Font) -> Text {
-        return Text(text).font(font)
     }
 }
