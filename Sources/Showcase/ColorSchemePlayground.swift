@@ -22,6 +22,7 @@ struct ColorSchemePlayground: View {
             }
             .padding(32)
             .background()
+            .padding(32)
             .colorScheme(isDarkMode ? .dark : .light)
             Picker(".preferredColorScheme", selection: $preferredColorScheme) {
                 Text("System").tag("")
