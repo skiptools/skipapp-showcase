@@ -21,6 +21,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case editActions
     case observableEditActions
     case sectionedEditActions
+    case plainStyleSectionedEditActions
     case onMoveDelete
 
     var title: String {
@@ -55,6 +56,8 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Observable EditActions"
         case .sectionedEditActions:
             return "Sectioned EditActions"
+        case .plainStyleSectionedEditActions:
+            return "Plain Style Sectioned EditActions"
         case .onMoveDelete:
             return ".onMove, .onDelete"
         }
@@ -117,6 +120,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .sectionedEditActions:
                 SectionedEditActionsListPlayground()
+                    .navigationTitle($0.title)
+            case .plainStyleSectionedEditActions:
+                PlainStyleSectionedEditActionsListPlayground()
                     .navigationTitle($0.title)
             case .onMoveDelete:
                 OnMoveDeleteListPlayground()
@@ -472,6 +478,51 @@ struct SectionedEditActionsListPlayground: View {
                 }
             }
         }
+    }
+}
+
+struct PlainStyleSectionedEditActionsListPlayground: View {
+    @State var items0 = {
+        var items: [Int] = []
+        for i in 0..<10 {
+            items.append(i)
+        }
+        return items
+    }()
+    @State var items1 = {
+        var items: [Int] = []
+        for i in 11..<20 {
+            items.append(i)
+        }
+        return items
+    }()
+    @State var items2 = {
+        var items: [Int] = []
+        for i in 21..<30 {
+            items.append(i)
+        }
+        return items
+    }()
+
+    var body: some View {
+        List {
+            Section("Section 0 (Fixed)") {
+                ForEach(items0, id: \.self) { item in
+                    Text("Item \(item)")
+                }
+            }
+            Section("Section 1") {
+                ForEach($items1, id: \.self, editActions: .all) { $item in
+                    Text("Item \(item)")
+                }
+            }
+            Section("Section 2") {
+                ForEach($items2, id: \.self, editActions: .all) { $item in
+                    Text("Item \(item)")
+                }
+            }
+        }
+        .listStyle(.plain)
     }
 }
 

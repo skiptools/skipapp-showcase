@@ -12,6 +12,7 @@ enum PlaygroundType: CaseIterable {
     case border
     case button
     case color
+    case colorScheme
     case compose
     case confirmationDialog
     case datePicker
@@ -69,6 +70,8 @@ enum PlaygroundType: CaseIterable {
             return "Button"
         case .color:
             return "Color"
+        case .colorScheme:
+            return "ColorScheme"
         case .compose:
             return "Compose"
         case .confirmationDialog:
@@ -190,6 +193,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .color:
                     ColorPlayground()
+                        .navigationTitle($0.title)
+                case .colorScheme:
+                    ColorSchemePlayground()
                         .navigationTitle($0.title)
                 case .compose:
                     ComposePlayground()

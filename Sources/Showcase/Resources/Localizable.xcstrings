@@ -239,6 +239,9 @@
     ".plain: %lld" : {
 
     },
+    ".preferredColorScheme" : {
+
+    },
     ".red" : {
 
     },
@@ -510,6 +513,9 @@
 
     },
     "Cyan" : {
+
+    },
+    "Dark" : {
 
     },
     "Data: %@" : {
@@ -869,6 +875,9 @@
 
     },
     "Large circle" : {
+
+    },
+    "Light" : {
 
     },
     "LinearGradient" : {
@@ -1357,6 +1366,9 @@
     "Symbol" : {
 
     },
+    "System" : {
+
+    },
     "systemName" : {
 
     },
@@ -1443,6 +1455,9 @@
 
     },
     "This is the message" : {
+
+    },
+    "This text is in %@ mode" : {
 
     },
     "This text uses a custom modifier that adds a Dismiss button to the navigation bar above" : {

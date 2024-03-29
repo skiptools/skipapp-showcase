@@ -5,14 +5,6 @@ import skip.model.*
 import skip.foundation.*
 import skip.ui.*
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.Saver
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-
 import android.Manifest
 import android.app.Application
 import androidx.activity.compose.setContent
@@ -20,15 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ActivityCompat
 
 internal val logger: SkipLogger = SkipLogger(subsystem = "showcase.app", category = "ShowcaseApp")
@@ -59,7 +46,7 @@ open class MainActivity: AppCompatActivity {
         setContent {
             val saveableStateHolder = rememberSaveableStateHolder()
             saveableStateHolder.SaveableStateProvider(true) {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { MaterialThemedRootView() }
+                PresentationRootView(ComposeContext())
             }
         }
 
@@ -123,14 +110,12 @@ open class MainActivity: AppCompatActivity {
 }
 
 @Composable
-internal fun MaterialThemedRootView() {
-    val context = LocalContext.current.sref()
-    val darkMode = isSystemInDarkTheme()
-    // Dynamic color is available on Android 12+
-    val dynamicColor = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S
-
-    val colorScheme = if (dynamicColor) (if (darkMode) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)) else (if (darkMode) darkColorScheme() else lightColorScheme())
-
-    MaterialTheme(colorScheme = colorScheme) { RootView().Compose() }
+internal fun PresentationRootView(context: ComposeContext) {
+    val colorScheme = if (isSystemInDarkTheme()) ColorScheme.dark else ColorScheme.light
+    PresentationRoot(defaultColorScheme = colorScheme, context = context) { ctx ->
+        val contentContext = ctx.content()
+        Box(modifier = ctx.modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            RootView().Compose(context = contentContext)
+        }
+    }
 }
-
