@@ -790,6 +790,9 @@
         }
       }
     },
+    "Hit testing" : {
+
+    },
     "Home" : {
 
     },
@@ -1174,6 +1177,9 @@
     "Red, .opacity(0.5)" : {
 
     },
+    "Remapped URL" : {
+
+    },
     "Repository item tap count: %lld" : {
 
     },
@@ -1376,6 +1382,9 @@
 
     },
     "Tap below to increment state tap count" : {
+
+    },
+    "Tap count: %lld" : {
 
     },
     "Tap to dismiss" : {

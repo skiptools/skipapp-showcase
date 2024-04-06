@@ -24,6 +24,7 @@ enum ToolbarPlaygroundType: String, CaseIterable {
     case bottom
     case bottomGroup
     case bottomSpaced
+    case customToolbarContent
 
     var title: String {
         switch self {
@@ -63,6 +64,8 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return "Bottom 3 Group"
         case .bottomSpaced:
             return "Bottom 3 Spaced"
+        case .customToolbarContent:
+            return "Custom ToolbarContent"
         }
     }
 }
@@ -171,6 +174,12 @@ struct ToolbarPlayground: View {
                 #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
                 #else
                 ToolbarBottomThreePlayground(spaced: true)
+                    .navigationTitle($0.title)
+                #endif
+            case .customToolbarContent:
+                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+                #else
+                ToolbarCustomContentPlayground()
                     .navigationTitle($0.title)
                 #endif
             }
@@ -444,6 +453,29 @@ struct ToolbarBackButtonHiddenPlayground: View {
                 }
             }
             #endif
+        }
+    }
+}
+
+struct ToolbarCustomContentPlayground: View {
+    var body: some View {
+        List {
+            ForEach(0..<100) { i in
+                Text("Content \(i)")
+            }
+        }
+        .toolbar {
+            ToolbarCustomContentItem()
+        }
+    }
+}
+
+struct ToolbarCustomContentItem: ToolbarContent {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            Button("Cancel", role: .cancel, action: { dismiss() })
         }
     }
 }

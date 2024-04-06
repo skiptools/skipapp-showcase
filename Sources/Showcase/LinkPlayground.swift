@@ -26,6 +26,10 @@ struct LinkPlayground: View {
                     .foregroundStyle(.red)
                 Link(".tint(.red)", destination: destination)
                     .tint(.red)
+                Link("Remapped URL", destination: destination)
+                    .environment(\.openURL, OpenURLAction { url in
+                        return .systemAction(URL(string: url.absoluteString + "/docs")!)
+                    })
                 Button("@Environment(\\.openURL)") {
                     openURL(destination)
                 }
