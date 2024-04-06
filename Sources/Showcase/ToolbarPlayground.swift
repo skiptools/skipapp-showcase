@@ -457,6 +457,8 @@ struct ToolbarBackButtonHiddenPlayground: View {
     }
 }
 
+#if os(macOS)
+#else
 struct ToolbarCustomContentPlayground: View {
     var body: some View {
         List {
@@ -479,3 +481,4 @@ struct ToolbarCustomContentItem: ToolbarContent {
         }
     }
 }
+#endif
