@@ -87,6 +87,7 @@ struct ToolbarPlayground: View {
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
                     .toolbar(.hidden, for: .navigationBar)
+                    .ignoresSafeArea(edges: .top)
                 #endif
             case .hideBars:
                 #if os(macOS)
@@ -95,6 +96,7 @@ struct ToolbarPlayground: View {
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
                     .toolbar(.hidden, for: .navigationBar, .tabBar)
+                    .ignoresSafeArea()
                 #endif
             case .hideBarBackgrounds:
                 #if os(macOS)
@@ -193,6 +195,7 @@ struct HideToolbarsPlayground: View {
     var body: some View {
         ZStack {
             Color.yellow
+                .border(.blue, width: 20.0)
             VStack {
                 Text("Fullscreen content")
                     .font(.largeTitle)

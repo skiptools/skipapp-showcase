@@ -53,7 +53,7 @@ enum ListPlaygroundType: String, CaseIterable {
         case .editActions:
             return "EditActions"
         case .observableEditActions:
-            return "Observable EditActions"
+            return "Observable Plain Style EditActions"
         case .sectionedEditActions:
             return "Sectioned EditActions"
         case .plainStyleSectionedEditActions:
@@ -434,6 +434,7 @@ struct ObservableEditActionsListPlayground: View {
                     .labelsHidden()
             }
         }
+        .listStyle(.plain)
     }
 }
 

@@ -321,9 +321,48 @@ struct ShapePlayground: View {
                     Text("Tap count: \(tapCount)")
                     Spacer()
                     ZStack {
+                        Circle()
+                            .inset(by: 20.0)
+                            .fill(.primary)
+                            .onTapGesture { tapCount += 1 }
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Tap count: \(tapCount)")
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .inset(by: 20.0)
+                            .stroke(.primary, lineWidth: 20)
+                            .onTapGesture { tapCount += 1 }
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Tap count: \(tapCount)")
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .inset(by: 20.0)
+                            .rotation(.degrees(30))
+                            .stroke(.primary, lineWidth: 20)
+                            .onTapGesture { tapCount += 1 }
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Tap count: \(tapCount)")
+                    Spacer()
+                    ZStack {
                         customInsetPath()
+                            .rotation(.degrees(45))
                             .fill()
                             .onTapGesture { tapCount += 1 }
+                            .background(.yellow)
                     }
                     .frame(width: 200, height: 200)
                     .border(.blue)
@@ -337,6 +376,28 @@ struct ShapePlayground: View {
                             .stroke(.primary, lineWidth: 20)
                             .onTapGesture { tapCount += 1 }
                             .background(.yellow)
+                    }
+                    .frame(width: 200, height: 200)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Tap count: \(tapCount)")
+                    Spacer()
+                    ZStack {
+                        customCompoundShapePath()
+                            .fill(.primary)
+                            .onTapGesture { tapCount += 1 }
+                    }
+                    .frame(width: 200, height: 200)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Tap count: \(tapCount)")
+                    Spacer()
+                    ZStack {
+                        customCompoundShapePath()
+                            .stroke(.primary)
+                            .onTapGesture { tapCount += 1 }
                     }
                     .frame(width: 200, height: 200)
                     .border(.blue)
@@ -372,10 +433,18 @@ func customPath(in size: CGSize, transform: CGAffineTransform) -> Path {
 
 func customInsetPath() -> Path {
     Path { p in
-//        p.addRect(CGRect(x: 20, y: 20, width: 60, height: 60))
         p.move(to: CGPoint(x: 100, y: 50))
         p.addLine(to: CGPoint(x: 150, y: 150))
         p.addLine(to: CGPoint(x: 50, y: 150))
         p.closeSubpath()
+    }
+}
+
+func customCompoundShapePath() -> Path {
+    Path { p in
+        p.addEllipse(in: CGRect(x: 10, y: 85, width: 30, height: 30))
+        p.addEllipse(in: CGRect(x: 85, y: 10, width: 30, height: 30))
+        p.addEllipse(in: CGRect(x: 85, y: 160, width: 30, height: 30))
+        p.addEllipse(in: CGRect(x: 160, y: 85, width: 30, height: 30))
     }
 }
