@@ -20,6 +20,7 @@ enum PlaygroundType: CaseIterable {
     case form
     case frame
     case gesture
+    case geometryReader
     case gradient
     case image
     case keyboard
@@ -85,6 +86,8 @@ enum PlaygroundType: CaseIterable {
             return "Form"
         case .frame:
             return "Frame"
+        case .geometryReader:
+            return "GeometryReader"
         case .gesture:
             return "Gestures"
         case .gradient:
@@ -217,6 +220,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .frame:
                     FramePlayground()
+                        .navigationTitle($0.title)
+                case .geometryReader:
+                    GeometryReaderPlayground()
                         .navigationTitle($0.title)
                 case .gesture:
                     GesturePlayground()

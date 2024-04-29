@@ -29,7 +29,15 @@ struct BorderPlayground: View {
                     Spacer()
                     Color.red
                         .frame(width: 100, height: 100)
-                        .padding([.top, .leading], 32)
+                        .padding([.top, .leading], 16)
+                        .border(.primary)
+                }
+                HStack {
+                    Text("Negative padding")
+                    Spacer()
+                    Color.red
+                        .frame(width: 100, height: 100)
+                        .padding([.top, .leading], -16)
                         .border(.primary)
                 }
                 HStack {

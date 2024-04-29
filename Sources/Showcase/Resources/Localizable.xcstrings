@@ -332,6 +332,12 @@
     "%@ .moveDisabled" : {
 
     },
+    "1/3" : {
+
+    },
+    "2/3" : {
+
+    },
     "A" : {
 
     },
@@ -741,10 +747,16 @@
     "ForEach section %lld" : {
 
     },
+    "Frame" : {
+
+    },
     "Fullscreen" : {
 
     },
     "Fullscreen content" : {
+
+    },
+    "Global frame: %@" : {
 
     },
     "Gray" : {
@@ -895,6 +907,9 @@
     "List" : {
 
     },
+    "Local frame: %@" : {
+
+    },
     "Localization" : {
 
     },
@@ -932,6 +947,9 @@
 
     },
     "NavigationPath binding sheet" : {
+
+    },
+    "Negative padding" : {
 
     },
     "Nested" : {
@@ -1286,6 +1304,9 @@
       "comment" : "localized string"
     },
     "Showcase is a dual-platform iOS + Android app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs on Android" : {
+
+    },
+    "Size" : {
 
     },
     "Sized to content:" : {
