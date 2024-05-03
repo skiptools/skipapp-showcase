@@ -113,6 +113,7 @@ struct ToolbarPlayground: View {
                 #else
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
+                    .toolbarColorScheme(.dark, for: .navigationBar, .tabBar)
                     .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
                 #endif
             case .default:

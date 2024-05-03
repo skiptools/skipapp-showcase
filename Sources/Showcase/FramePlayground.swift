@@ -38,44 +38,74 @@ struct FramePlayground: View {
                     }
                 }
                 VStack {
-                    Text("minWidth: 0, maxWidth: .infinity,\n  minHeight: 0, maxHeight: .infinity")
+                    Text("maxWidth: .infinity, maxHeight: .infinity")
                     HStack {
                         Text("A")
                         Color.red
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         Text("B")
                     }
                 }
                 VStack {
-                    Text("minWidth: 0, maxWidth: .infinity,\n  minHeight: 0, maxHeight: .infinity")
+                    Text("HStack maxWidth: .infinity")
+                    HStack {
+                        Text("A")
+                        Text("B")
+                            .frame(maxWidth: .infinity)
+                            .border(.blue)
+                        Text("C")
+                    }
+                }
+                VStack {
+                    Text("VStack maxWidth: .infinity")
+                    VStack {
+                        Text("A")
+                        Text("B")
+                            .frame(maxWidth: .infinity)
+                            .border(.blue)
+                        Text("C")
+                    }
+                }
+                VStack {
+                    Text("VStack minWidth: 20, maxWidth: .infinity")
+                    VStack {
+                        Text("A")
+                        Text("B")
+                            .frame(minWidth: 20, maxWidth: .infinity)
+                            .border(.blue)
+                        Text("C")
+                    }
+                }
+                VStack {
+                    Text("maxWidth: .infinity, maxHeight: .infinity")
                     HStack {
                         Text("A")
                         Color.red
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         Color.blue
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         Text("B")
                     }
                 }
                 VStack {
-                    Text("minWidth: 300, maxWidth: .infinity,\n  minHeight: 100, maxHeight: .infinity")
+                    Text("minWidth: 300, minHeight: 100\n  minHeight: 100, maxHeight: .infinity")
                     HStack {
                         Text("A")
                         Color.red
-                            .frame(minWidth: 300, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity)
+                            .frame(minWidth: 300, minHeight: 100, maxHeight: .infinity)
                         Color.blue
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         Text("B")
                     }
                 }
                 VStack {
-                    Text("minWidth: 100,\n  minHeight: 0, maxHeight: .infinity")
+                    Text("minWidth: 100, maxHeight: .infinity\n  maxWidth: .infinity, maxHeight: .infinity")
                     HStack {
                         Text("A")
                         Color.red
-                            .frame(minWidth: 100, minHeight: 0, maxHeight: .infinity)
+                            .frame(minWidth: 100, maxHeight: .infinity)
                         Color.blue
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         Text("B")
                     }
                 }

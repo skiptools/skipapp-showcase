@@ -21,17 +21,17 @@ struct StackPlayground: View {
                         .border(Color.blue)
                 }
                 VStack {
-                    Text("Text1")
-                    Text("Text2")
+                    Text("Text1 gy")
+                    Text("Text2 TA")
                 }
                 .border(Color.blue)
-                Text("Sized to content:")
+                Text("Sized to content:").bold()
                 VStack(spacing: 0) {
                     Color.red.frame(width: 50, height: 50)
                     Color.green.frame(width: 50, height: 50)
                 }
                 .border(Color.blue)
-                Text("Content sizes to stack:")
+                Text("Content sizes to stack:").bold()
                 VStack(spacing: 0) {
                     Color.red
                     Color.green
@@ -59,6 +59,35 @@ struct StackPlayground: View {
                     Color.red.padding(25)
                 }
                 .frame(width: 100, height: 100)
+                Text("ForEach:").bold()
+                HStack {
+                    ForEach(words, id: \.self) { word in
+                        Text(word).border(.blue)
+                    }
+                }
+                HStack {
+                    ForEach(images, id: \.self) { image in
+                        Image(systemName: image)
+                    }
+                }
+                Text("LazyHStack").bold()
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        ForEach(0..<20) { i in
+                            ZStack {
+                                Color.yellow
+                                Text(String(describing: i))
+                            }
+                            .frame(width: 40, height: 40)
+                        }
+                    }
+                }
+                NavigationLink {
+                    LazyVStackView()
+                        .navigationTitle("LazyVStack")
+                } label: {
+                    Text("LazyVStack").bold()
+                }
             }
             .padding()
         }
@@ -66,6 +95,9 @@ struct StackPlayground: View {
             PlaygroundSourceLink(file: "StackPlayground.swift")
         }
     }
+
+    private let words = ["The", "quick", "brown", "fox"]
+    private let images = ["wrench", "phone", "pencil", "calendar"]
 
     // Note: these functions are also a test that we can pass functions to SwiftUI content view builders.
 
@@ -83,5 +115,22 @@ struct StackPlayground: View {
         Spacer()
         Color.red.frame(width: 20)
         Spacer()
+    }
+}
+
+private struct LazyVStackView: View {
+    var body: some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(0..<50) { index in
+                    ZStack {
+                        Color.yellow
+                        Text(String(describing: index))
+                    }
+                    .frame(width: 40, height: 40)
+                }
+            }
+            .border(.blue, width: 5)
+        }
     }
 }
