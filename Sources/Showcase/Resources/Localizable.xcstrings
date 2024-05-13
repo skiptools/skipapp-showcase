@@ -1646,6 +1646,9 @@
     "Transforms" : {
 
     },
+    "UIPasteboard is not available on macOS" : {
+
+    },
     "UnevenRoundedRectangle" : {
 
     },
