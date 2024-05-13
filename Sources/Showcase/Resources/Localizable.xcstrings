@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "-" : {
+
+    },
     "... and hidden separators" : {
 
     },
@@ -326,10 +329,16 @@
     "@Environment(\\.openURL)" : {
 
     },
+    "%@" : {
+
+    },
     "%@ .deleteDisabled" : {
 
     },
     "%@ .moveDisabled" : {
+
+    },
+    "+" : {
 
     },
     "1/3" : {
@@ -501,6 +510,9 @@
 
     },
     "Content sizes to stack:" : {
+
+    },
+    "Copy" : {
 
     },
     "Custom" : {
@@ -771,6 +783,12 @@
     "Green" : {
 
     },
+    "Has strings:" : {
+
+    },
+    "Has URLs:" : {
+
+    },
     "height: 50" : {
 
     },
@@ -813,6 +831,12 @@
           }
         }
       }
+    },
+    "Hidden" : {
+
+    },
+    "Hide the following element from accessibility:" : {
+
     },
     "Hit testing" : {
 
@@ -919,6 +943,9 @@
     "LazyHGrid .flexible" : {
 
     },
+    "LazyHGrid sectioned" : {
+
+    },
     "LazyHGridView" : {
 
     },
@@ -935,6 +962,9 @@
 
     },
     "LazyVGrid .trailing" : {
+
+    },
+    "LazyVGrid sectioned" : {
 
     },
     "LazyVGridView" : {
@@ -980,6 +1010,9 @@
 
     },
     "multilineTextAlignment: This is some long text that should wrap when it exceeds the width of its frame" : {
+
+    },
+    "My custom control" : {
 
     },
     "My message" : {
@@ -1055,10 +1088,16 @@
     "Odd" : {
 
     },
+    "Off" : {
+
+    },
     "Offset" : {
 
     },
     "offset(x: 30, y: 10)" : {
+
+    },
+    "On" : {
 
     },
     "onTapGesture: (%lld, %lld)" : {
@@ -1096,6 +1135,12 @@
 
     },
     "Overridden to title font" : {
+
+    },
+    "Pager" : {
+
+    },
+    "Pasteboard count:" : {
 
     },
     "path += [%lld, %lld]" : {
@@ -1324,6 +1369,9 @@
     "Section" : {
 
     },
+    "Section %lld Header" : {
+
+    },
     "Section 0 (Fixed)" : {
 
     },
@@ -1331,6 +1379,9 @@
 
     },
     "Section 2" : {
+
+    },
+    "Section footer" : {
 
     },
     "Shadow" : {
@@ -1352,6 +1403,9 @@
       "comment" : "localized string"
     },
     "Showcase is a dual-platform iOS + Android app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs on Android" : {
+
+    },
+    "Simulate a custom control with an accessibility label, value, and traits:" : {
 
     },
     "Size" : {
@@ -1397,6 +1451,9 @@
 
     },
     "String init" : {
+
+    },
+    "Strings:" : {
 
     },
     "Stroke" : {
@@ -1468,6 +1525,9 @@
     "Tap to dismiss" : {
 
     },
+    "Tap to recompose in 1 sec" : {
+
+    },
     "Tap: (%lf, %lf)" : {
       "localizations" : {
         "en" : {
@@ -1517,6 +1577,9 @@
     "Text" : {
 
     },
+    "Text / URL" : {
+
+    },
     "Text & Divider" : {
 
     },
@@ -1562,6 +1625,9 @@
     "Time only" : {
 
     },
+    "Timer date: %@" : {
+
+    },
     "Title" : {
 
     },
@@ -1581,6 +1647,9 @@
 
     },
     "UnevenRoundedRectangle" : {
+
+    },
+    "URLs:" : {
 
     },
     "Value: %@" : {

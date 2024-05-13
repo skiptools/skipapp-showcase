@@ -6,17 +6,19 @@
 import Foundation
 import SwiftUI
 
+private let systemNameSample = "heart.fill"
+private let remoteImageResourceURL: URL? = URL(string: "https://picsum.photos/id/237/200/300")
+// iOS: file://…/Application/…/Showcase.app/skipapp-showcase_Showcase.bundle/skip-logo.png
+// Android: jar:file:/data/app/…/base.apk!/showcase/module/Resources/skip-logo.png
+private let localImageResourceURL: URL? = Bundle.module.url(forResource: "skip-logo", withExtension: "png")
+
 struct ImagePlayground: View {
-    let systemNameSample = "heart.fill"
-    let remoteImageResourceURL: URL? = URL(string: "https://picsum.photos/id/237/200/300")
-
-    // iOS: file://…/Application/…/Showcase.app/skipapp-showcase_Showcase.bundle/skip-logo.png
-    // Android: jar:file:/data/app/…/base.apk!/showcase/module/Resources/skip-logo.png
-    let localImageResourceURL: URL? = Bundle.module.url(forResource: "skip-logo", withExtension: "png")
-
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                NavigationLink("Pager") {
+                    ImagePlaygroundPagerView()
+                }
                 Text("Bundled Image").font(.title).bold()
                 HStack {
                     Spacer()
@@ -232,5 +234,42 @@ struct ImagePlayground: View {
         .toolbar {
             PlaygroundSourceLink(file: "ImagePlayground.swift")
         }
+    }
+}
+
+private struct ImagePlaygroundPagerView: View {
+    var body: some View {
+        GeometryReader { proxy in
+            ScrollView(.horizontal) {
+                LazyHStack(spacing: 0) {
+                    ForEach(0..<10) { _ in
+                        AsyncImage(url: remoteImageResourceURL) { image in
+                            image.resizable()
+                        } placeholder: {
+                        }
+                        .scaledToFit()
+                        .padding(.horizontal, 20)
+                        .frame(width: proxy.size.width)
+                        .clipped()
+                    }
+                }
+            }
+            .modifier(PagingModifier())
+        }
+    }
+}
+
+struct PagingModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        #if !SKIP
+        if #available(iOS 17.0, *) {
+            content
+                .scrollTargetBehavior(.paging)
+        } else {
+            content
+        }
+        #else
+        content
+        #endif
     }
 }

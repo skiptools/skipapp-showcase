@@ -25,6 +25,10 @@ struct GridPlayground: View {
                     LazyVGridTrailingView()
                         .navigationTitle("LazyVGridView")
                 }
+                NavigationLink("LazyVGrid sectioned") {
+                    LazyVGridSectionedView()
+                        .navigationTitle("LazyVGridView")
+                }
                 NavigationLink("LazyHGrid .adaptive") {
                     LazyHGridAdaptiveView()
                         .navigationTitle("LazyHGridView")
@@ -39,6 +43,10 @@ struct GridPlayground: View {
                 }
                 NavigationLink("LazyHGrid .bottom") {
                     LazyHGridBottomView()
+                        .navigationTitle("LazyHGridView")
+                }
+                NavigationLink("LazyHGrid sectioned") {
+                    LazyHGridSectionedView()
                         .navigationTitle("LazyHGridView")
                 }
             }
@@ -134,6 +142,30 @@ private struct LazyVGridTrailingView: View {
     }
 }
 
+private struct LazyVGridSectionedView: View {
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
+                ForEach(0..<5) { index in
+                    Section {
+                        ForEach(0..<10) { index in
+                            ZStack {
+                                Color.yellow
+                                Text(String(describing: index))
+                            }
+                            .frame(height: 80)
+                        }
+                    } header: {
+                        Text("Section \(index) Header")
+                    } footer: {
+                        Text("Section footer")
+                    }
+                }
+            }
+        }
+    }
+}
+
 private struct LazyHGridAdaptiveView: View {
     var body: some View {
         ScrollView(.horizontal) {
@@ -213,6 +245,30 @@ private struct LazyHGridBottomView: View {
                         Text(String(describing: index))
                     }
                     .frame(width: 40, height: 40)
+                }
+            }
+        }
+    }
+}
+
+private struct LazyHGridSectionedView: View {
+    var body: some View {
+        ScrollView(.horizontal) {
+            LazyHGrid(rows: [GridItem(.adaptive(minimum: 80))]) {
+                ForEach(0..<5) { index in
+                    Section {
+                        ForEach(0..<10) { index in
+                            ZStack {
+                                Color.yellow
+                                Text(String(describing: index))
+                            }
+                            .frame(width: 80)
+                        }
+                    } header: {
+                        Text("Section \(index) Header")
+                    } footer: {
+                        Text("Section footer")
+                    }
                 }
             }
         }

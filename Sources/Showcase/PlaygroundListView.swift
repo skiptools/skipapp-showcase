@@ -7,6 +7,7 @@ import SwiftUI
 
 /// All Showcase playgrounds.
 enum PlaygroundType: CaseIterable {
+    case accessibility
     case animation
     case background
     case border
@@ -36,6 +37,7 @@ enum PlaygroundType: CaseIterable {
     case offset
     case onSubmit
     case overlay
+    case pasteboard
     case picker
     case progressView
     case safeArea
@@ -57,12 +59,15 @@ enum PlaygroundType: CaseIterable {
     case textField
     case toggle
     case toolbar
+    case timer
     case transition
     case videoPlayer
     case zIndex
 
     var title: String {
         switch self {
+        case .accessibility:
+            return "Accessibility"
         case .animation:
             return "Animation"
         case .background:
@@ -121,6 +126,8 @@ enum PlaygroundType: CaseIterable {
             return "OnSubmit"
         case .overlay:
             return "Overlay"
+        case .pasteboard:
+            return "Pasteboard"
         case .picker:
             return "Picker"
         case .progressView:
@@ -159,6 +166,8 @@ enum PlaygroundType: CaseIterable {
             return "TextEditor"
         case .textField:
             return "TextField"
+        case .timer:
+            return "Timer"
         case .toggle:
             return "Toggle"
         case .toolbar:
@@ -188,6 +197,9 @@ public struct PlaygroundNavigationView: View {
             .navigationTitle(Text("Showcase"))
             .navigationDestination(for: PlaygroundType.self) {
                 switch $0 {
+                case .accessibility:
+                    AccessibilityPlayground()
+                        .navigationTitle($0.title)
                 case .animation:
                     AnimationPlayground()
                         .navigationTitle($0.title)
@@ -275,6 +287,9 @@ public struct PlaygroundNavigationView: View {
                 case .overlay:
                     OverlayPlayground()
                         .navigationTitle($0.title)
+                case .pasteboard:
+                    PasteboardPlayground()
+                        .navigationTitle($0.title)
                 case .picker:
                     PickerPlayground()
                         .navigationTitle($0.title)
@@ -331,6 +346,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .textField:
                     TextFieldPlayground()
+                        .navigationTitle($0.title)
+                case .timer:
+                    TimerPlayground()
                         .navigationTitle($0.title)
                 case .toggle:
                     TogglePlayground()
