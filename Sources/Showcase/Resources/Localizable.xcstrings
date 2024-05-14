@@ -386,6 +386,9 @@
     "alignment: .topLeading" : {
 
     },
+    "Asset Image" : {
+
+    },
     "Asymmetric: opacity+slide" : {
 
     },
@@ -468,6 +471,9 @@
 
     },
     "Capsule" : {
+
+    },
+    "Cat JPEG image" : {
 
     },
     "Circle" : {
@@ -1420,6 +1426,9 @@
     "Small circle" : {
 
     },
+    "Smiley Face" : {
+
+    },
     "Source" : {
 
     },
@@ -1505,6 +1514,12 @@
 
     },
     "Symbol" : {
+
+    },
+    "Symbol Image Sizes" : {
+
+    },
+    "Symbol Image Weights" : {
 
     },
     "System" : {

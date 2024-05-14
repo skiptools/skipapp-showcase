@@ -19,6 +19,18 @@ struct ImagePlayground: View {
                 NavigationLink("Pager") {
                     ImagePlaygroundPagerView()
                 }
+
+                Text("Asset Image").font(.title).bold()
+                HStack {
+                    Spacer()
+                    Image("Cat", bundle: .module, label: Text("Cat JPEG image"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .border(.yellow, width: 5.0)
+                        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                    Spacer()
+                }
+
                 Text("Bundled Image").font(.title).bold()
                 HStack {
                     Spacer()
@@ -26,6 +38,46 @@ struct ImagePlayground: View {
                         .border(.blue)
                     Spacer()
                 }
+
+                Text("Symbol Image Weights").font(.title).bold()
+                HStack {
+                    // Image(systemName:) will load the SVG from the Module.xcassets/face.dashed.fill.symbolset/face.dashed.fill.svg file on Android, but use the named system image on iOS
+                    Image(systemName: "face.dashed.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(.red)
+                        .fontWeight(.ultraLight)
+                        .frame(width: 80.0, height: 80.0)
+                    // named images will load the SVG from the Module.xcassets/face.dashed.fill.svg file on both iOS and Android
+                    Image("face.dashed.fill", bundle: .module)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(.green)
+                        .frame(width: 80.0, height: 80.0)
+                    Image("face.dashed.fill", bundle: .module, label: Text("Smiley Face"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(.blue)
+                        .fontWeight(.black)
+                        .frame(width: 80.0, height: 80.0)
+                }
+
+                Text("Symbol Image Sizes").font(.title).bold()
+                HStack {
+                    Image("textformat.size.smaller", bundle: .module)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 80.0, height: 80.0)
+                    Image("textformat.size", bundle: .module)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 80.0, height: 80.0)
+                    Image("textformat.size.larger", bundle: .module)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 80.0, height: 80.0)
+                }
+
 
                 Text("systemName").font(.title).bold()
                 HStack {
