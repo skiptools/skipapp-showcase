@@ -38,11 +38,11 @@ struct LocalizationPreview: View {
         VStack {
             Text("Welcome", bundle: .module)
                 .font(.largeTitle)
-            Text(verbatim: currentLocale.localizedString(forLanguageCode: currentLocale.languageCode ?? currentLocale.identifier) ?? "")
+            Text(verbatim: currentLocale.localizedString(forLanguageCode: currentLocale.language.languageCode?.identifier ?? currentLocale.identifier) ?? "")
                 .font(.title)
-            Text(verbatim: currentLocale.localizedString(forRegionCode: currentLocale.regionCode ?? currentLocale.identifier) ?? "")
+            Text(verbatim: currentLocale.localizedString(forRegionCode: currentLocale.region?.identifier ?? currentLocale.identifier) ?? "")
                 .font(.title2)
-            Text(verbatim: currentLocale.localizedString(forScriptCode: currentLocale.scriptCode ?? currentLocale.identifier) ?? "")
+            Text(verbatim: currentLocale.localizedString(forScriptCode: currentLocale.language.script?.identifier ?? currentLocale.identifier) ?? "")
                 .font(.title2)
 
             Divider()

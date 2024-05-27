@@ -29,7 +29,7 @@ struct AboutView: View {
                 }
                 LinkDivider()
                 Link(destination: URL(string: showcaseSourceURLString)!) {
-                    LinkLabel(text: "Showcase Source")
+                    LinkLabel(text: "Showcase \(appVersion ?? "Unknown") Source")
                 }
             }
             .background {
@@ -87,3 +87,16 @@ struct AboutView: View {
 }
 
 private let borderColor = Color.primary.opacity(0.2)
+
+let appVersion: String? = {
+    #if !SKIP
+    return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    #else
+    let context = ProcessInfo.processInfo.androidContext
+    let packageManager = context.getPackageManager()
+    let packageInfo = packageManager.getPackageInfo(context.getPackageName(), android.content.pm.PackageManager.GET_META_DATA)
+    let versionName = packageInfo.versionName
+    let versionCode = packageInfo.versionCode
+    return versionName
+    #endif
+}()
