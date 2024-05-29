@@ -862,6 +862,30 @@
     "Image" : {
 
     },
+    "Impact Intensity: 20%" : {
+
+    },
+    "Impact Intensity: 40%" : {
+
+    },
+    "Impact Intensity: 60%" : {
+
+    },
+    "Impact Intensity: 80%" : {
+
+    },
+    "Impact Intensity: 100%" : {
+
+    },
+    "Impact: Heavy" : {
+
+    },
+    "Impact: Medium" : {
+
+    },
+    "Impact: Soft" : {
+
+    },
     "in: Capsule()" : {
 
     },
@@ -1086,6 +1110,15 @@
 
     },
     "Note: tint should not affect Label appearance" : {
+
+    },
+    "Notification: Error" : {
+
+    },
+    "Notification: Success" : {
+
+    },
+    "Notification: Warning" : {
 
     },
     "Observable" : {
@@ -1391,6 +1424,9 @@
 
     },
     "Section footer" : {
+
+    },
+    "Selection: Changed" : {
 
     },
     "Shadow" : {
