@@ -42,9 +42,9 @@ struct AboutView: View {
 
     struct LogoView : View {
         var body: some View {
-            AsyncImage(url: Bundle.module.url(forResource: "skip-logo", withExtension: "png")) {
-                $0.image?.resizable()
-            }
+            Image("skiplogo", bundle: .module)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
             .frame(width: 80, height: 80)
             .padding(20)
             .background(.white) // Fill area outside of image, which has a white background
@@ -53,10 +53,10 @@ struct AboutView: View {
                 ZStack {
                     Circle()
                         .inset(by: 2)
-                        .stroke(.black, lineWidth: 4)
+                        .stroke(Color(red: 68.0 / 255.0, green: 140.0 / 255.0, blue: 206.0 / 255.0), lineWidth: 8)
                     Circle()
                         .inset(by: 2)
-                        .stroke(Color(red: 1, green: 1, blue: 0), lineWidth: 2) // Match logo pure yellow
+                        .stroke(Color(red: 41.0 / 255.0, green: 167.0 / 255.0, blue: 104.0 / 255.0), lineWidth: 4)
                 }
             }
         }
