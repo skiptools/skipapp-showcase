@@ -8,6 +8,7 @@ import SwiftUI
 struct SheetPlayground: View {
     @State var isSheetPresented = false
     @State var isSimpleSheetPresented = false
+    @State var isDetentSheetPresented = false
     @State var isFullScreenPresented = false
     @State var isSimpleFullScreenPresented = false
 
@@ -40,6 +41,9 @@ struct SheetPlayground: View {
             Button("Present sheet with simple content") {
                 isSimpleSheetPresented = true
             }
+            Button("Present sheet with medium detent") {
+                isDetentSheetPresented = true
+            }
             Button("Present full screen cover with navigation stack") {
                 isFullScreenPresented = true
             }
@@ -55,6 +59,12 @@ struct SheetPlayground: View {
                 isSimpleSheetPresented = false
             }
         }
+        .sheet(isPresented: $isDetentSheetPresented, content: {
+            Button("Tap to dismiss") {
+                isDetentSheetPresented = false
+            }
+            .presentationDetents([.medium])
+        })
         .fullScreenCover(isPresented: $isFullScreenPresented) {
             SheetContentView(dismissSheet: { isFullScreenPresented = false })
         }

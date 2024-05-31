@@ -9,7 +9,8 @@ struct HapticFeedbackPlayground: View {
     var body: some View {
         ScrollView {
             VStack {
-                #if !os(macOS)
+                #if os(macOS)
+                #else
                 Button("Impact: Soft") {
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 }
