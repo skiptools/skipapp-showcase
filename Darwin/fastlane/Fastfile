@@ -1,53 +1,36 @@
 # This file contains the fastlane.tools configuration
-# for the Darwin half of the Skip app.
 # You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
 
-# Load the shared Skip.env properties with the app info
-require('dotenv')
-Dotenv.load '../../Skip.env'
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
 
 default_platform(:ios)
 
-# enable SKIP_ZERO mode and skip Android build
-ENV['SKIP_ZERO'] = 'YES'
+lane :release do |options|
+  desc "Build and release app"
+  # only build the iOS side of the app
+  ENV["SKIP_ZERO"] = "true"
 
-platform :ios do
-  desc "Build Skip iOS App"
-  lane :build do |options|
-    build_config = (options[:release] ? "Release" : "Debug")
-    build_ios_app(
-      scheme: "#{ENV['PRODUCT_NAME']}", 
-      configuration: build_config,
-      destination: "generic/platform=iOS",
-      sdk: "iphoneos",
-      skip_codesigning: true,
-      skip_archive: false
-    )
-  end
-
-  desc "Test Skip iOS App"
-  lane :test do
-    build(release: false)
-    run_tests(
-      scheme: "#{ENV['PRODUCT_NAME']}Tests",
-      clean: false
-    )
-  end
-
-  lane :archive do
-    gym(
-      scheme: ENV['PRODUCT_NAME'],
-      export_method: "app-store",
-      output_directory: "./archive",
-      export_team_id: ENV['TEAM_ID'],
-      output_name: ENV['PRODUCT_NAME'] + "-" + ENV['MARKETING_VERSION'] + ".ipa"
-    )
-  end
-
-  desc "Deploy Skip Android App to TestFlight"
-  lane :deploy_testflight do
-    build(release: true)
-    upload_to_testflight
-  end
-
+  build_app(
+    sdk: "iphoneos",
+    xcconfig: "fastlane/AppStore.xcconfig",
+    output_directory: "../.build/fastlane/Darwin")
+  upload_to_app_store(
+    api_key_path: "fastlane/apikey.json",
+    submission_information: { 
+      add_id_info_uses_idfa: false,
+      export_compliance_uses_encryption: false
+    },
+    release_notes: { default: "Fixes and improvements." }
+  )
 end
+

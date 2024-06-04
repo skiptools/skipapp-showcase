@@ -82,6 +82,7 @@ Dependencies/
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/#source-control
 
+**/fastlane/apikey.json
 **/fastlane/report.xml
 **/fastlane/README.md
 **/fastlane/Preview.html

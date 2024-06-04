@@ -1,0 +1,5 @@
+// Additional properties included by the Fastfile build_app
+
+//PRODUCT_BUNDLE_IDENTIFIER = org.appfair.app.Showcase
+DEVELOPMENT_TEAM = 25KG25YA3R
+

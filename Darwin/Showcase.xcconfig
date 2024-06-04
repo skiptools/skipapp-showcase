@@ -13,7 +13,7 @@ GENERATE_INFOPLIST_FILE = YES
 
 // The user-visible name of the app (localizable)
 //INFOPLIST_KEY_CFBundleDisplayName = App Name
-//INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.utilities
+INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.utilities
 
 // iOS-specific Info.plist property keys
 INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphone*] = YES
@@ -37,5 +37,7 @@ CODE_SIGN_STYLE = Automatic
 CODE_SIGN_ENTITLEMENTS = Entitlements.plist
 //CODE_SIGNING_IDENTITY = -
 //DEVELOPMENT_TEAM = 
+
+PRODUCT_BUNDLE_IDENTIFIER[config=Release] = org.appfair.app.Showcase
 
 
