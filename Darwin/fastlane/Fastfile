@@ -24,23 +24,10 @@ lane :release do |options|
     sdk: "iphoneos",
     xcconfig: "fastlane/AppStore.xcconfig",
     output_directory: "../.build/fastlane/Darwin")
+
   upload_to_app_store(
     api_key_path: "fastlane/apikey.json",
-    submission_information: { 
-      add_id_info_limits_tracking: true,
-      add_id_info_serves_ads: false,
-      add_id_info_tracks_action: false,
-      add_id_info_tracks_install: false,
-      add_id_info_uses_idfa: false,
-      content_rights_has_rights: true,
-      export_compliance_platform: 'ios',
-      export_compliance_compliance_required: false,
-      export_compliance_encryption_updated: false,
-      export_compliance_uses_encryption: false,
-      export_compliance_is_exempt: false,
-      export_compliance_contains_third_party_cryptography: false,
-      export_compliance_contains_proprietary_cryptography: false
-    },
+    app_rating_config_path: "fastlane/metadata/rating.json",
     release_notes: { default: "Fixes and improvements." }
   )
 end

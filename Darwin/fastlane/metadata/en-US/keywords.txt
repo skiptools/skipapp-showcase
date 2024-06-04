@@ -1,1 +1,1 @@
-skip,swift,swiftui,android
+skip,swift,swiftui,showcase,demo
