@@ -30,7 +30,7 @@
 
 /* Begin PBXFileReference section */
 		490010182BACD83F0000DE33 /* protest_guerrilla.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = protest_guerrilla.ttf; path = ../Sources/Showcase/Resources/protest_guerrilla.ttf; sourceTree = "<group>"; };
-		4900101C2BACEA710000DE33 /* Showcase-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Showcase-Info.plist"; sourceTree = "<group>"; };
+		4900101C2BACEA710000DE33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		490A40BF2B37A3C300275405 /* Showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Showcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		493609562A6B7EAE00C401E2 /* Showcase */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Showcase; path = ..; sourceTree = "<group>"; };
 		496EB72F2A6AE4DE00C1253A /* Skip.env */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Skip.env; path = ../Skip.env; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 			children = (
 				49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */,
 				49F90C2F2A52156300F06D93 /* Assets.xcassets */,
-				4900101C2BACEA710000DE33 /* Showcase-Info.plist */,
+				4900101C2BACEA710000DE33 /* Info.plist */,
 				490010182BACD83F0000DE33 /* protest_guerrilla.ttf */,
 				49F90C312A52156300F06D93 /* Entitlements.plist */,
 			);
@@ -219,7 +219,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Showcase-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				SDKROOT = auto;
@@ -234,7 +233,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Showcase-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				SDKROOT = auto;
@@ -249,7 +247,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Showcase-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				SDKROOT = auto;

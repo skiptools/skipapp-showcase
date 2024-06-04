@@ -1450,7 +1450,7 @@
     "Showcase" : {
       "comment" : "localized string"
     },
-    "Showcase is a dual-platform iOS + Android app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs on Android" : {
+    "Showcase is a dual-platform app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs." : {
 
     },
     "Simulate a custom control with an accessibility label, value, and traits:" : {

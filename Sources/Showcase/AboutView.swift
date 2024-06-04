@@ -13,7 +13,7 @@ struct AboutView: View {
                 .padding()
 
             VStack(spacing: 0) {
-                Text("Showcase is a dual-platform iOS + Android app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs on Android")
+                Text("Showcase is a dual-platform app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs.")
                     .padding()
                 LinkDivider()
                 Link(destination: URL(string: "https://skip.tools")!) {
@@ -22,9 +22,9 @@ struct AboutView: View {
                 LinkDivider()
                 Link(destination: URL(string: showcaseSourceURLString + "DOWNLOAD.md")!) {
                     #if SKIP
-                    LinkLabel(text: "Showcase iOS Version")
-                    #else
                     LinkLabel(text: "Showcase Android Version")
+                    #else
+                    LinkLabel(text: "Showcase iOS Version")
                     #endif
                 }
                 LinkDivider()
