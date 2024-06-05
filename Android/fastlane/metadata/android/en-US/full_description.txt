@@ -1,0 +1,3 @@
+This app demonstrates the output of the Skip transpiler, which takes an iOS SwiftUI app and converts into an Android Jetpack Compose app. 
+
+This application shows the various components that are generated from the SwiftUI transpilation.
