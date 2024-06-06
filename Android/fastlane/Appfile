@@ -5,7 +5,6 @@
 # Load the shared Skip.env properties with the app info
 require('dotenv')
 Dotenv.load '../../Skip.env'
+package_name(ENV['PRODUCT_BUNDLE_IDENTIFIER'])
 
 json_key_file("fastlane/apikey.json")
-# package_name("org.appfair.app.Showcase")
-package_name("skip.showcase.App")

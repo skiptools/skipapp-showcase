@@ -87,6 +87,7 @@ Dependencies/
 **/fastlane/README.md
 **/fastlane/Preview.html
 **/fastlane/screenshots/**/*.png
+**/fastlane/metadata/android/*/images/**/*.png
 **/fastlane/test_output
 
 # Code Injection
