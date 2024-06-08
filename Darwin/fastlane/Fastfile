@@ -12,7 +12,10 @@ lane :assemble do |options|
     xcconfig: "fastlane/AppStore.xcconfig",
     xcargs: "-skipPackagePluginValidation -skipMacroValidation",
     derived_data_path: "../.build/Darwin/DerivedData",
-    output_directory: "../.build/fastlane/Darwin")
+    output_directory: "../.build/fastlane/Darwin",
+    skip_archive: ENV["FASTLANE_SKIP_ARCHIVE"] == "YES",
+    skip_codesigning: ENV["FASTLANE_SKIP_CODESIGNING"] == "YES"
+  )
 end
 
 lane :release do |options|
