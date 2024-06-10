@@ -13,6 +13,10 @@ struct SliderPlayground: View {
             VStack(spacing: 16) {
                 Slider(value: $value)
                 HStack {
+                    Text("in: 0...2")
+                    Slider(value: $value, in: 0...2)
+                }
+                HStack {
                     Text(".disabled(true)")
                     Slider(value: $value)
                         .disabled(true)

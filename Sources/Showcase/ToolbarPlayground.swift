@@ -21,6 +21,7 @@ enum ToolbarPlaygroundType: String, CaseIterable {
     case topLeadingItemGroup
     case topLeadingBackButtonHidden
     case topLeadingTrailingItems
+    case principalItem
     case bottom
     case bottomGroup
     case bottomSpaced
@@ -56,6 +57,8 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return ".topLeading Group"
         case .topLeadingBackButtonHidden:
             return ".topLeading Back Hidden"
+        case .principalItem:
+            return ".principal"
         case .topLeadingTrailingItems:
             return "Both Top"
         case .bottom:
@@ -95,7 +98,7 @@ struct ToolbarPlayground: View {
                 #else
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
-                    .toolbar(.hidden, for: .navigationBar, .tabBar)
+                    .toolbar(.hidden)
                     .ignoresSafeArea()
                 #endif
             case .hideBarBackgrounds:
@@ -161,6 +164,9 @@ struct ToolbarPlayground: View {
                 ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading, placement2: ToolbarItemPlacement.topBarTrailing)
                     .navigationTitle($0.title)
                 #endif
+            case .principalItem:
+                ToolbarItemPrincipalPlayground()
+                    .navigationTitle($0.title)
             case .bottom:
                 #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
                 #else
@@ -251,12 +257,14 @@ struct UpdatingToolbarItemPlayground: View {
             }
         }
         .toolbar {
+            Button("Inc") {
+                tapCount += 1
+            }
+        }
+        .navigationTitle("Tap Count: \(tapCount)")
+        .toolbar {
             if tapCount % 2 == 0 {
                 Button("Even") {
-                    tapCount += 1
-                }
-            } else {
-                Button("Odd") {
                     tapCount += 1
                 }
             }
@@ -392,6 +400,34 @@ struct ToolbarItemGroupPlayground: View {
                 Button("Second: \(secondTapCount)") {
                     secondTapCount += 1
                 }
+            }
+        }
+    }
+}
+
+struct ToolbarItemPrincipalPlayground: View {
+    @Environment(\.dismiss) var dismiss
+    @State var tapCount = 0
+
+    var body: some View {
+        List {
+            Button("Pop") {
+                dismiss()
+            }
+            ForEach(0..<100) { i in
+                Text("Content \(i)")
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Principal: \(tapCount)")
+                    .bold()
+                    .onTapGesture { tapCount += 1 }
+            }
+        }
+        .toolbar {
+            Button(action: { dismiss() }) {
+                Label("Dismiss", systemImage: "trash")
             }
         }
     }

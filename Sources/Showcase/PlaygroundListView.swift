@@ -43,6 +43,7 @@ enum PlaygroundType: CaseIterable {
     case picker
     case progressView
     case safeArea
+    case scenePhase
     case searchable
     case secureField
     case shadow
@@ -140,6 +141,8 @@ enum PlaygroundType: CaseIterable {
             return "ProgressView"
         case .safeArea:
             return "SafeArea"
+        case .scenePhase:
+            return "ScenePhase"
         case .searchable:
             return "Searchable"
         case .secureField:
@@ -310,6 +313,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .safeArea:
                     SafeAreaPlayground()
+                        .navigationTitle($0.title)
+                case .scenePhase:
+                    ScenePhasePlayground()
                         .navigationTitle($0.title)
                 case .searchable:
                     SearchablePlayground()

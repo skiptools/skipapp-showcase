@@ -26,6 +26,12 @@ struct SpacerPlayground: View {
                         .frame(height: 100)
                     Text("After vstack")
                 }
+                HStack {
+                    Text("Before minLength")
+                    Spacer(minLength: 32)
+                    Text("After minLength")
+                }
+                .frame(width: 200)
             }
             .padding()
         }
