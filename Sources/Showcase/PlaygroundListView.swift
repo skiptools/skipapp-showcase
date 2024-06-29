@@ -56,6 +56,7 @@ enum PlaygroundType: CaseIterable {
     case state
     case storage
     case symbol
+    case table
     case tabView
     case text
     case textEditor
@@ -167,6 +168,8 @@ enum PlaygroundType: CaseIterable {
             return "Storage"
         case .symbol:
             return "Symbol"
+        case .table:
+            return "Table"
         case .tabView:
             return "TabView"
         case .text:
@@ -352,6 +355,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .symbol:
                     SymbolPlayground()
+                        .navigationTitle($0.title)
+                case .table:
+                    TablePlayground()
                         .navigationTitle($0.title)
                 case .tabView:
                     TabViewPlayground()
