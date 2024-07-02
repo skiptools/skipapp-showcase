@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ScenePhasePlayground: View {
     @Environment(\.scenePhase) var scenePhase
-    @State var history: [Any] = [] //~~~
+    @State var history: [ScenePhase] = []
 
     var body: some View {
         List {

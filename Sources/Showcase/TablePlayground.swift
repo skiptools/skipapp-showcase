@@ -44,16 +44,12 @@ private struct EvenColumnsTablePlayground: View {
     @State var data = Self.initialData
 
     var body: some View {
-        #if !SKIP
         Table(data) {
             TableColumn("Name", value: \.name)
-            TableColumn("Value") { data in
+            TableColumn("Value", content: { data in
                 Text("\(data.value)")
-            }
+            })
         }
-        #else
-        EmptyView()
-        #endif
     }
 
     static var initialData: [TableData] {
