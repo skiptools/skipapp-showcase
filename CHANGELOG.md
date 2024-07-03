@@ -1,3 +1,39 @@
+## 1.1.0
+
+Released 2024-07-03
+
+  - Update app project for Kotlin 2 integrated compose compiler
+  - Additional exercising of latest SkipUI features
+  - Add Table playground and support iPad
+  - Experiment with .scenePhase and keychain support
+  - Update gradle build to match kotlinOptions in new template
+  - Remove jvmToolchain from build.gradle.kts
+  - Update README with correct Play Store link
+
+## 1.1.0
+
+Released 2024-07-03
+
+  - Update app project for Kotlin 2 integrated compose compiler
+  - Additional exercising of latest SkipUI features
+  - Add Table playground and support iPad
+  - Experiment with .scenePhase and keychain support
+  - Update gradle build to match kotlinOptions in new template
+  - Remove jvmToolchain from build.gradle.kts
+  - Update README with correct Play Store link
+
+## 1.0.2
+
+Released 2024-07-03
+
+  - Update app project for Kotlin 2 integrated compose compiler
+  - Additional exercising of latest SkipUI features
+  - Add Table playground and support iPad
+  - Experiment with .scenePhase and keychain support
+  - Update gradle build to match kotlinOptions in new template
+  - Remove jvmToolchain from build.gradle.kts
+  - Update README with correct Play Store link
+
 ## 0.3.0
 
 Released 2024-02-20

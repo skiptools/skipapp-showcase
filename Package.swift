@@ -20,7 +20,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "0.9.2"),
         .package(url: "https://source.skip.tools/skip-ui.git", from: "0.10.0"),
-        .package(url: "https://source.skip.tools/skip-av.git", from: "0.0.2")
+        .package(url: "https://source.skip.tools/skip-av.git", from: "0.0.3")
     ],
     targets: [
         .target(name: "Showcase", dependencies: (zero ? [] : [
