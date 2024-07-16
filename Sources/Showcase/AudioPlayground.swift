@@ -4,13 +4,17 @@
 // under the terms of the GNU Lesser General Public License 3.0
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
+#if SKIP
 import SkipAV
+#else
+import AVFoundation
+#endif
 
 struct AudioPlayground: View {
     @State var isRecording: Bool = false
     @State var errorMessage: String? = nil
     
-    var audioRecorder: AVAudioRecorder!
+    @State var audioRecorder: AVAudioRecorder?
     @State var audioPlayer: AVAudioPlayer?
     
     var captureURL: URL {
@@ -24,11 +28,6 @@ struct AudioPlayground: View {
                 .first!.appendingPathComponent("recording.m4a")
 #endif
         }
-    }
-    
-    init() {
-        // issue: AVAudioRecorder isn't being set properly?
-        self.audioRecorder = try! AVAudioRecorder(url: captureURL, settings: [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue])
     }
     
     var body: some View {
@@ -46,7 +45,7 @@ struct AudioPlayground: View {
             .cornerRadius(10)
             
             Button(action: {
-                try! self.playRecording()
+                try? self.playRecording()
             }) {
                 Text("Play Recording")
                     .fontWeight(.bold)
@@ -67,6 +66,15 @@ struct AudioPlayground: View {
     }
     
     func startRecording() {
+        do {
+            #if !SKIP
+            setupAudioSession()
+            #endif
+            self.audioRecorder = try AVAudioRecorder(url: captureURL, settings: [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1,
+                                                            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue])
+        } catch {
+            print(error.localizedDescription)
+        }
         audioRecorder?.record()
         isRecording = true
     }
@@ -78,9 +86,10 @@ struct AudioPlayground: View {
     
     func playRecording() throws {
         do {
-            audioPlayer?.stop()
-            audioPlayer = nil
-            
+            guard FileManager.default.fileExists(atPath: captureURL.path) else {
+                errorMessage = "Recording file does not exist."
+                return
+            }
             audioPlayer = try AVAudioPlayer(contentsOf: captureURL)
             
             audioPlayer?.play()
@@ -91,4 +100,16 @@ struct AudioPlayground: View {
             errorMessage = "Could not play audio: \(error.localizedDescription)"
         }
     }
+    
+    #if !SKIP
+    func setupAudioSession() {
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(.playAndRecord, mode: .default)
+            try session.setActive(true)
+        } catch {
+            errorMessage = "Failed to setup audio session: \(error.localizedDescription)"
+        }
+    }
+    #endif
 }
