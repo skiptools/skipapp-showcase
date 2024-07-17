@@ -9,6 +9,7 @@ import SwiftUI
 enum PlaygroundType: CaseIterable {
     case accessibility
     case animation
+    case audio
     case background
     case border
     case button
@@ -74,6 +75,8 @@ enum PlaygroundType: CaseIterable {
             return "Accessibility"
         case .animation:
             return "Animation"
+        case .audio:
+            return "Audio"
         case .background:
             return "Background"
         case .border:
@@ -214,6 +217,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .animation:
                     AnimationPlayground()
+                        .navigationTitle($0.title)
+                case .audio:
+                    AudioPlayground()
                         .navigationTitle($0.title)
                 case .background:
                     BackgroundPlayground()
