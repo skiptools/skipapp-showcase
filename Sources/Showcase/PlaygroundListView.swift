@@ -37,7 +37,7 @@ enum PlaygroundType: CaseIterable {
     case modifier
     case navigationStack
     case observable
-    case offset
+    case offsetPosition
     case onSubmit
     case overlay
     case pasteboard
@@ -131,8 +131,8 @@ enum PlaygroundType: CaseIterable {
             return "NavigationStack"
         case .observable:
             return "Observable"
-        case .offset:
-            return "Offset"
+        case .offsetPosition:
+            return "Offset/Position"
         case .onSubmit:
             return "OnSubmit"
         case .overlay:
@@ -302,8 +302,8 @@ public struct PlaygroundNavigationView: View {
                 case .observable:
                     ObservablePlayground()
                         .navigationTitle($0.title)
-                case .offset:
-                    OffsetPlayground()
+                case .offsetPosition:
+                    OffsetPositionPlayground()
                         .navigationTitle($0.title)
                 case .onSubmit:
                     OnSubmitPlayground()

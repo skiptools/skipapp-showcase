@@ -242,6 +242,15 @@
     ".plain: %lld" : {
 
     },
+    ".position(0, 0)" : {
+
+    },
+    ".position(50, 50)" : {
+
+    },
+    ".position(CGPoint(75, 75))" : {
+
+    },
     ".preferredColorScheme" : {
 
     },
@@ -713,34 +722,67 @@
     "Font.body" : {
 
     },
+    "Font.body: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
+
+    },
     "Font.callout" : {
+
+    },
+    "Font.callout: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
 
     },
     "Font.caption" : {
 
     },
+    "Font.caption: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
+
+    },
     "Font.caption2" : {
+
+    },
+    "Font.caption2: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
 
     },
     "Font.footnote" : {
 
     },
+    "Font.footnote: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
+
+    },
     "Font.headline" : {
+
+    },
+    "Font.headline: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
 
     },
     "Font.largeTitle" : {
 
     },
+    "Font.largeTitle: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
+
+    },
     "Font.subheadline" : {
+
+    },
+    "Font.subheadline: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
 
     },
     "Font.title" : {
 
     },
+    "Font.title: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
+
+    },
     "Font.title2" : {
 
     },
+    "Font.title2: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
+
+    },
     "Font.title3" : {
+
+    },
+    "Font.title3: This is some long text that we use to preview the default line spacing under different fonts. The quick brown fox jumped over the lazy dog." : {
 
     },
     "Footer" : {
@@ -869,6 +911,9 @@
 
     },
     "Image" : {
+
+    },
+    "Image from Data" : {
 
     },
     "Impact Intensity: 20%" : {
@@ -1078,6 +1123,12 @@
     "Navigate forward" : {
 
     },
+    "NavigationLink" : {
+
+    },
+    "NavigationLink .buttonStyle" : {
+
+    },
     "NavigationPath binding sheet" : {
 
     },
@@ -1148,9 +1199,6 @@
     "Off" : {
 
     },
-    "Offset" : {
-
-    },
     "offset(x: 30, y: 10)" : {
 
     },
@@ -1186,6 +1234,9 @@
 
     },
     "Orange" : {
+
+    },
+    "Over here!" : {
 
     },
     "Overlay" : {
@@ -1340,6 +1391,9 @@
 
     },
     "Push binding view" : {
+
+    },
+    "Push Text.position(100, 100)" : {
 
     },
     "Pushed" : {

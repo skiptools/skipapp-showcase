@@ -5,7 +5,7 @@
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
 
-struct OffsetPlayground: View {
+struct OffsetPositionPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -57,11 +57,49 @@ struct OffsetPlayground: View {
                             .offset(CGSize(width: 50, height: 50))
                     }
                 }
+                HStack {
+                    Text(".position(0, 0)")
+                    Spacer()
+                    ZStack {
+                        Color.red
+                            .frame(width: 20, height: 20)
+                            .position(x: 0, y: 0)
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.primary)
+                }
+                HStack {
+                    Text(".position(50, 50)")
+                    Spacer()
+                    ZStack {
+                        Color.red
+                            .frame(width: 20, height: 20)
+                            .position(x: 50, y: 50)
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.primary)
+                }
+                HStack {
+                    Text(".position(CGPoint(75, 75))")
+                    Spacer()
+                    ZStack {
+                        Color.red
+                            .frame(width: 20, height: 20)
+                            .position(CGPoint(x: 75, y: 75))
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.primary)
+                }
+                NavigationLink("Push Text.position(100, 100)") {
+                    Text("Over here!")
+                        .background(.yellow)
+                        .position(x: 100, y: 100)
+                }
             }
             .padding()
         }
         .toolbar {
-            PlaygroundSourceLink(file: "OffsetPlayground.swift")
+            PlaygroundSourceLink(file: "OffsetPositionPlayground.swift")
         }
     }
 }

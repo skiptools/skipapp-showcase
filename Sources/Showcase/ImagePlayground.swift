@@ -39,6 +39,14 @@ struct ImagePlayground: View {
                     Spacer()
                 }
 
+                Text("Image from Data").font(.title).bold()
+                HStack {
+                    Spacer()
+                    Image(uiImage: UIImage(data: try! Data(contentsOf: localImageResourceURL!))!)
+                        .border(.blue)
+                    Spacer()
+                }
+
                 Text("Symbol Image Weights").font(.title).bold()
                 HStack {
                     // Image(systemName:) will load the SVG from the Module.xcassets/face.dashed.fill.symbolset/face.dashed.fill.svg file on Android, but use the named system image on iOS

@@ -83,12 +83,14 @@ struct SheetPlayground: View {
 struct SheetContentView: View {
     @State var isPresented = false
     @State var counter = 0
+    @State var text = ""
     @Environment(\.dismiss) var dismiss
     let dismissSheet: () -> Void
 
     var body: some View {
         NavigationStack {
             List {
+                TextField("Text", text: $text)
                 Button("Present another") {
                     isPresented = true
                 }

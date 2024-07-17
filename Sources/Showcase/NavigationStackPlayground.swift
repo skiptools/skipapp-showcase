@@ -25,6 +25,14 @@ struct NavigationStackPlayground: View {
             Button("NavigationPath binding sheet") {
                 isNavigationPathBindingSheetPresented = true
             }
+            Divider()
+            NavigationLink("NavigationLink") {
+                Text("Pushed")
+            }
+            NavigationLink("NavigationLink .buttonStyle") {
+                Text("Pushed")
+            }
+            .buttonStyle(.borderedProminent)
         }
         .sheet(isPresented: $isPathBindingSheetPresented) {
             PathBindingSheetContentView()
