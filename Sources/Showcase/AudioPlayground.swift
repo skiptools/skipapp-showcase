@@ -19,30 +19,33 @@ struct AudioPlayground: View {
     
     var captureURL: URL {
         get {
-#if SKIP
+            #if SKIP
             let context = ProcessInfo.processInfo.androidContext
             let file = java.io.File(context.filesDir, "recording.m4a")
             return URL(fileURLWithPath: file.absolutePath)
-#else
+            #else
             return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
                 .first!.appendingPathComponent("recording.m4a")
-#endif
+            #endif
         }
     }
     
     var body: some View {
-        VStack(spacing: 20) {
+        #if SKIP
+        let context = androidx.compose.ui.platform.LocalContext.current
+        #endif
+        return VStack(spacing: 20) {
             Button(action: {
                 self.isRecording ? self.stopRecording() : self.startRecording()
             }) {
                 Text(isRecording ? "Stop Recording" : "Start Recording")
                     .fontWeight(.bold)
                     .frame(minWidth: 0, maxWidth: .infinity)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(isRecording ? Color.red : Color.green)
+                    .cornerRadius(10)
             }
-            .padding()
-            .foregroundColor(.white)
-            .background(isRecording ? Color.red : Color.green)
-            .cornerRadius(10)
             
             Button(action: {
                 try? self.playRecording()
@@ -50,12 +53,12 @@ struct AudioPlayground: View {
                 Text("Play Recording")
                     .fontWeight(.bold)
                     .frame(minWidth: 0, maxWidth: .infinity)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
             }
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .cornerRadius(10)
-            .shadow(radius: 5)
             
             if let errorMessage = errorMessage {
                 Text(errorMessage)
@@ -63,6 +66,11 @@ struct AudioPlayground: View {
             }
         }
         .padding()
+        #if SKIP
+        .onAppear {
+            requestAudioRecordingPermission(context: context)
+        }
+        #endif
     }
     
     func startRecording() {
@@ -70,8 +78,7 @@ struct AudioPlayground: View {
             #if !SKIP
             setupAudioSession()
             #endif
-            self.audioRecorder = try AVAudioRecorder(url: captureURL, settings: [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1,
-                                                            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue])
+            self.audioRecorder = try AVAudioRecorder(url: captureURL, settings: [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue])
         } catch {
             print(error.localizedDescription)
         }
@@ -101,7 +108,17 @@ struct AudioPlayground: View {
         }
     }
     
-    #if !SKIP
+    #if SKIP
+    func requestAudioRecordingPermission(context: android.content.Context) {
+        guard let activity = context as? android.app.Activity else {
+            return
+        }
+        let permissions = listOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        androidx.core.app.ActivityCompat.requestPermissions(activity, permissions.toTypedArray(), 1)
+    }
+    
+    #else
+    
     func setupAudioSession() {
         let session = AVAudioSession.sharedInstance()
         do {

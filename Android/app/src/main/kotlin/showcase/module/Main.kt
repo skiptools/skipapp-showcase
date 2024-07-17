@@ -59,18 +59,9 @@ open class MainActivity: AppCompatActivity {
         //    Manifest.permission.ACCESS_FINE_LOCATION
         //    Manifest.permission.CAMERA,
         //    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        //    Manifest.permission.RECORD_AUDIO
         //)
         //let requestTag = 1
         //ActivityCompat.requestPermissions(self, permissions.toTypedArray(), requestTag)
-        
-        requestAudioPermission()
-    }
-    
-    // Added for AudioPlayground.
-    private fun requestAudioPermission() {
-        val permissions = listOf(Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        ActivityCompat.requestPermissions(this, permissions.toTypedArray(), 1)
     }
 
     override fun onSaveInstanceState(bundle: android.os.Bundle): Unit = super.onSaveInstanceState(bundle)
