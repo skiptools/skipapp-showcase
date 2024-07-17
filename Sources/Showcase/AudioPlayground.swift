@@ -4,19 +4,24 @@
 // under the terms of the GNU Lesser General Public License 3.0
 // as published by the Free Software Foundation https://fsf.org
 import SwiftUI
+#if os(macOS)
+#else
 #if SKIP
 import SkipAV
 #else
 import AVFoundation
 #endif
+#endif
 
 struct AudioPlayground: View {
+    #if os(macOS)
+    #else
     @State var isRecording: Bool = false
     @State var errorMessage: String? = nil
     
     @State var audioRecorder: AVAudioRecorder?
     @State var audioPlayer: AVAudioPlayer?
-    
+
     var captureURL: URL {
         get {
             #if SKIP
@@ -29,8 +34,12 @@ struct AudioPlayground: View {
             #endif
         }
     }
-    
+    #endif
+
     var body: some View {
+        #if os(macOS)
+        Text("Not supported on macOS")
+        #else
         #if SKIP
         let context = androidx.compose.ui.platform.LocalContext.current
         #endif
@@ -71,8 +80,11 @@ struct AudioPlayground: View {
             requestAudioRecordingPermission(context: context)
         }
         #endif
+        #endif
     }
     
+    #if os(macOS)
+    #else
     func startRecording() {
         do {
             #if !SKIP
@@ -128,5 +140,6 @@ struct AudioPlayground: View {
             errorMessage = "Failed to setup audio session: \(error.localizedDescription)"
         }
     }
+    #endif
     #endif
 }
