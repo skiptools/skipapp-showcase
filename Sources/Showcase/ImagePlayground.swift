@@ -39,6 +39,8 @@ struct ImagePlayground: View {
                     Spacer()
                 }
 
+                #if os(macOS)
+                #else
                 Text("Image from Data").font(.title).bold()
                 HStack {
                     Spacer()
@@ -46,6 +48,7 @@ struct ImagePlayground: View {
                         .border(.blue)
                     Spacer()
                 }
+                #endif
 
                 Text("Symbol Image Weights").font(.title).bold()
                 HStack {
