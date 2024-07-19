@@ -6,11 +6,7 @@
 import SwiftUI
 #if os(macOS)
 #else
-#if SKIP
-import SkipAV
-#else
 import AVFoundation
-#endif
 #endif
 
 struct AudioPlayground: View {
