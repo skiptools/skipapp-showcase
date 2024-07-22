@@ -8,6 +8,7 @@ import SwiftUI
 /// All Showcase playgrounds.
 enum PlaygroundType: CaseIterable {
     case accessibility
+    case alert
     case animation
     case audio
     case background
@@ -73,6 +74,8 @@ enum PlaygroundType: CaseIterable {
         switch self {
         case .accessibility:
             return "Accessibility"
+        case .alert:
+            return "Alert"
         case .animation:
             return "Animation"
         case .audio:
@@ -214,6 +217,9 @@ public struct PlaygroundNavigationView: View {
                 switch $0 {
                 case .accessibility:
                     AccessibilityPlayground()
+                        .navigationTitle($0.title)
+                case .alert:
+                    AlertPlayground()
                         .navigationTitle($0.title)
                 case .animation:
                     AnimationPlayground()
