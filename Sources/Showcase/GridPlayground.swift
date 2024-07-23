@@ -29,6 +29,10 @@ struct GridPlayground: View {
                     LazyVGridSectionedView()
                         .navigationTitle("LazyVGridView")
                 }
+                NavigationLink("LazyVGrid refreshable") {
+                    LazyVGridRefreshableView()
+                        .navigationTitle("Refreshable")
+                }
                 NavigationLink("LazyHGrid .adaptive") {
                     LazyHGridAdaptiveView()
                         .navigationTitle("LazyHGridView")
@@ -162,6 +166,25 @@ private struct LazyVGridSectionedView: View {
                     }
                 }
             }
+        }
+    }
+}
+
+private struct LazyVGridRefreshableView: View {
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
+                ForEach(0..<100) { index in
+                    ZStack {
+                        Color.yellow
+                        Text(String(describing: index))
+                    }
+                    .frame(height: 80)
+                }
+            }
+        }
+        .refreshable {
+            do { try await Task.sleep(nanoseconds: 3_000_000_000) } catch { }
         }
     }
 }

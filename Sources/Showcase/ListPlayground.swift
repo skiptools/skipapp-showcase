@@ -16,6 +16,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case plainStyle
     case plainStyleSectioned
     case plainStyleEmpty
+    case refreshable
     case hiddenBackground
     case hiddenBackgroundPlainStyle
     case editActions
@@ -46,6 +47,8 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Plain Style Sectioned"
         case .plainStyleEmpty:
             return "Plain Style Empty"
+        case .refreshable:
+            return "Refreshable"
         case .hiddenBackground:
             return "Hidden Background"
         case .hiddenBackgroundPlainStyle:
@@ -105,6 +108,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .plainStyleEmpty:
                 PlainStyleEmptyListPlayground()
+                    .navigationTitle($0.title)
+            case .refreshable:
+                RefreshableListPlayground()
                     .navigationTitle($0.title)
             case .hiddenBackground:
                 HiddenBackgroundListPlayground()
@@ -314,6 +320,31 @@ struct PlainStyleEmptyListPlayground: View {
         List {
         }
         .listStyle(.plain)
+    }
+}
+
+struct RefreshableListPlayground: View {
+    class Model: ObservableObject {
+        @Published var items: [Int] = {
+            var items: [Int] = []
+            for i in 0..<50 {
+                items.append(i)
+            }
+            return items
+        }()
+    }
+
+    @StateObject var model = Model()
+
+    var body: some View {
+        List(model.items, id: \.self) { item in
+            Text(verbatim: "Item \(item)")
+        }
+        .refreshable {
+            do { try await Task.sleep(nanoseconds: 3_000_000_000) } catch { }
+            let min = model.items[0]
+            model.items.insert(min - 1, at: 0)
+        }
     }
 }
 
