@@ -69,6 +69,10 @@ struct StatePlayground: View {
                 StatePlaygroundBindingView(tapCount: $tapCountObservable.tapCount)
             }
             Section {
+                StatePlaygroundEnvironmentObjectView()
+                    .environmentObject(tapCountObservable)
+            }
+            Section {
                 Text("Struct tap count: \(tapCountStruct.tapCount)")
                 Button("Struct") {
                     tapCountStruct.tapCount += 1
@@ -120,6 +124,18 @@ struct StatePlaygroundStructBindingView: View {
         Button("Binding") {
             tapCountStruct.tapCount += 1
         }
+    }
+}
+
+struct StatePlaygroundEnvironmentObjectView: View {
+    @EnvironmentObject var tapCountObservable: TapCountObservable
+
+    var body: some View {
+        Text("EnvironmentObject tap count: \(tapCountObservable.tapCount)")
+        Button("EnvironmentObject") {
+            tapCountObservable.tapCount += 1
+        }
+        StatePlaygroundBindingView(tapCount: $tapCountObservable.tapCount)
     }
 }
 

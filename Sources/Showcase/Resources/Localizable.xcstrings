@@ -689,6 +689,12 @@
     "Enum AppStorage" : {
 
     },
+    "EnvironmentObject" : {
+
+    },
+    "EnvironmentObject tap count: %lld" : {
+
+    },
     "Even" : {
 
     },
