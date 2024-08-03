@@ -91,8 +91,9 @@ struct FramePlayground: View {
                     Text("minWidth: 300, minHeight: 100\n  minHeight: 100, maxHeight: .infinity")
                     HStack {
                         Text("A")
-                        Color.red
+                        Text("minWidth")
                             .frame(minWidth: 300, minHeight: 100, maxHeight: .infinity)
+                            .background(.red)
                         Color.blue
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                         Text("B")

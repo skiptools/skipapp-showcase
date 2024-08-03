@@ -9,8 +9,11 @@ import SwiftUI
 enum SearchablePlaygroundType: String, CaseIterable {
     case list
     case plainList
+    case grid
+    case lazyStack
     case submit
     case isSearching
+    case withoutNavStack
 
     var title: String {
         switch self {
@@ -18,18 +21,32 @@ enum SearchablePlaygroundType: String, CaseIterable {
             return "List"
         case .plainList:
             return "Plain style"
+        case .grid:
+            return "LazyVGrid"
+        case .lazyStack:
+            return "LazyVStack"
         case .submit:
             return "Submit"
         case .isSearching:
             return "isSearching"
+        case .withoutNavStack:
+            return "Without NavStack"
         }
     }
 }
 
 struct SearchablePlayground: View {
+    @State var isPresentingWithoutNavStack = false
+
     var body: some View {
         List(SearchablePlaygroundType.allCases, id: \.self) { type in
-            NavigationLink(type.title, value: type)
+            if type == .withoutNavStack {
+                Button(type.title) {
+                    isPresentingWithoutNavStack = true
+                }
+            } else {
+                NavigationLink(type.title, value: type)
+            }
         }
         .toolbar {
             PlaygroundSourceLink(file: "SearchablePlayground.swift")
@@ -42,13 +59,24 @@ struct SearchablePlayground: View {
             case .plainList:
                 PlainListSearchablePlayground()
                     .navigationTitle($0.title)
+            case .grid:
+                GridSearchablePlayground()
+                    .navigationTitle($0.title)
+            case .lazyStack:
+                LazyVStackSearchablePlayground()
+                    .navigationTitle($0.title)
             case .submit:
                 SubmitSearchablePlayground()
                     .navigationTitle($0.title)
             case .isSearching:
                 IsSearchingSearchablePlayground()
                     .navigationTitle($0.title)
+            case .withoutNavStack:
+                EmptyView()
             }
+        }
+        .fullScreenCover(isPresented: $isPresentingWithoutNavStack) {
+            WithoutNavStackSearchablePlayground()
         }
     }
 }
@@ -82,6 +110,46 @@ struct PlainListSearchablePlayground: View {
             }
         }
         .listStyle(.plain)
+        .searchable(text: $searchText)
+    }
+
+    func matchingAnimals() -> [String] {
+        return animals().filter {
+            $0.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
+        }
+    }
+}
+
+struct GridSearchablePlayground: View {
+    @State var searchText = ""
+
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
+                ForEach(0..<100) { index in
+                    ZStack {
+                        Color.yellow
+                        Text(String(describing: index))
+                    }
+                    .frame(height: 80)
+                }
+            }
+        }
+        .searchable(text: $searchText)
+    }
+}
+
+struct LazyVStackSearchablePlayground: View {
+    @State var searchText = ""
+
+    var body: some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(matchingAnimals(), id: \.self) {
+                    Text($0)
+                }
+            }
+        }
         .searchable(text: $searchText)
     }
 
@@ -131,6 +199,27 @@ struct IsSearchingSearchablePlayground: View {
                     Text("NO").foregroundStyle(.red)
                 }
             }
+        }
+    }
+}
+
+struct WithoutNavStackSearchablePlayground: View {
+    @Environment(\.dismiss) var dismiss
+    @State var searchText = ""
+
+    var body: some View {
+        List {
+            Button("Dismiss") { dismiss() }
+            ForEach(matchingAnimals(), id: \.self) {
+                Text($0)
+            }
+        }
+        .searchable(text: $searchText)
+    }
+
+    func matchingAnimals() -> [String] {
+        return animals().filter {
+            $0.lowercased().starts(with: searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
         }
     }
 }

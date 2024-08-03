@@ -53,6 +53,10 @@ struct GridPlayground: View {
                     LazyHGridSectionedView()
                         .navigationTitle("LazyHGridView")
                 }
+                NavigationLink("LazyVGrid .padding") {
+                    LazyVGridPaddingView()
+                        .navigationTitle("LazyVGridView")
+                }
             }
             .padding()
         }
@@ -294,6 +298,23 @@ private struct LazyHGridSectionedView: View {
                     }
                 }
             }
+        }
+    }
+}
+
+private struct LazyVGridPaddingView: View {
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
+                ForEach(0..<100) { index in
+                    ZStack {
+                        Color.yellow
+                        Text(String(describing: index))
+                    }
+                    .frame(height: 80)
+                }
+            }
+            .padding(32)
         }
     }
 }
