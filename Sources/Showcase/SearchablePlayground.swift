@@ -75,9 +75,15 @@ struct SearchablePlayground: View {
                 EmptyView()
             }
         }
+        #if os(macOS)
+        .sheet(isPresented: $isPresentingWithoutNavStack) {
+            WithoutNavStackSearchablePlayground()
+        }
+        #else
         .fullScreenCover(isPresented: $isPresentingWithoutNavStack) {
             WithoutNavStackSearchablePlayground()
         }
+        #endif
     }
 }
 
