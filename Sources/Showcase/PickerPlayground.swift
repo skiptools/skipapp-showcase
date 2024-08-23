@@ -40,6 +40,13 @@ struct PickerPlayground: View {
                         }
                     }
                     .disabled(true)
+                    Picker(".pickerStyle(.segmented)", selection: $selectedValue) {
+                        ForEach(values, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .disabled(true)
                 }
                 VStack {
                     Text(".foregroundStyle(.red)")
@@ -48,6 +55,13 @@ struct PickerPlayground: View {
                             Text($0)
                         }
                     }
+                    .foregroundStyle(.red)
+                    Picker(".pickerStyle(.segmented)", selection: $selectedValue) {
+                        ForEach(values, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(.segmented)
                     .foregroundStyle(.red)
                 }
                 VStack {
@@ -58,6 +72,13 @@ struct PickerPlayground: View {
                         }
                     }
                     .tint(.red)
+                    Picker(".pickerStyle(.segmented)", selection: $selectedValue) {
+                        ForEach(values, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .tint(.red)
                 }
                 VStack {
                     Text("Label")
@@ -66,6 +87,12 @@ struct PickerPlayground: View {
                             Label($0, systemImage: "heart.fill")
                         }
                     }
+                    Picker(".pickerStyle(.segmented)", selection: $selectedValue) {
+                        ForEach(values, id: \.self) {
+                            Label($0, systemImage: "heart.fill")
+                        }
+                    }
+                    .pickerStyle(.segmented)
                 }
                 VStack {
                     Text("Fixed content")
@@ -104,7 +131,7 @@ struct PickerPlayground: View {
             .padding()
         }
         .toolbar {
-            PlaygroundSourceLink(file: "TogglePlayground.swift")
+            PlaygroundSourceLink(file: "PickerPlayground.swift")
         }
     }
 }

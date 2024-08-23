@@ -45,6 +45,12 @@ struct FormPlayground: View {
                     Text($0)
                 }
             }
+            Picker("Picker .segmented", selection: $pickerValue) {
+                ForEach(pickerValues, id: \.self) {
+                    Text($0)
+                }
+            }
+            .pickerStyle(.segmented)
             #if os(macOS)
             #else
             Picker("Picker .navigationLink", selection: $pickerValue) {
@@ -82,6 +88,9 @@ struct FormPlayground: View {
             Toggle(isOn: $boolValue) {
                 Text("Toggle")
             }
+            Toggle(isOn: $boolValue) {
+                Text("Toggle with label text that is too long to fit on a single line and should be wrapped").lineLimit(100)
+            }
             TextField("Text field", text: $stringValue)
         }
         .toolbar {
@@ -89,6 +98,12 @@ struct FormPlayground: View {
         }
         .navigationDestination(for: String.self) { value in
             Text(value)
+        }
+        .onAppear() {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        .onDisappear() {
+            UIApplication.shared.isIdleTimerDisabled = false
         }
     }
 

@@ -83,10 +83,16 @@ struct StackPlayground: View {
                     }
                 }
                 NavigationLink {
-                    LazyVStackView()
+                    LazyVStackScrollView()
                         .navigationTitle("LazyVStack")
                 } label: {
                     Text("LazyVStack").bold()
+                }
+                NavigationLink {
+                    ScrollViewStacksView()
+                        .navigationTitle("Scroll View Stacks")
+                } label: {
+                    Text("Scroll View Stacks").bold()
                 }
             }
             .padding()
@@ -118,19 +124,59 @@ struct StackPlayground: View {
     }
 }
 
-private struct LazyVStackView: View {
+private struct LazyVStackScrollView: View {
     var body: some View {
         ScrollView {
-            LazyVStack {
-                ForEach(0..<50) { index in
-                    ZStack {
-                        Color.yellow
-                        Text(String(describing: index))
-                    }
-                    .frame(width: 40, height: 40)
+            // Test that we can nest the LazyVStack in a custom view within the parent ScrollView
+            LazyVStackView()
+                .border(.blue, width: 5)
+        }
+    }
+}
+
+private struct LazyVStackView: View {
+    var body: some View {
+        LazyVStack {
+            ForEach(0..<50) { index in
+                ZStack {
+                    Color.yellow
+                    Text(String(describing: index))
                 }
+                .frame(width: 40, height: 40)
             }
-            .border(.blue, width: 5)
+        }
+    }
+}
+
+private struct ScrollViewStacksView: View {
+    var body: some View {
+        ScrollView(.vertical) {
+          ScrollView(.horizontal) {
+            HStack(alignment: .top, spacing: 8.0) {
+              VStack {
+                VStack {
+                  Text("Test 1")
+
+                  Spacer()
+
+                  Text("Test 2")
+                }
+                .border(.blue)
+              }
+              .frame(width: 150.0)
+              .border(.red)
+
+              VStack {
+                VStack {
+                  Text("Test A\nTest B\nTest C\nTest D\nTest E")
+                }
+                .border(.blue)
+              }
+              .frame(width: 150.0)
+              .border(.red)
+            }
+          }
+          .border(.black)
         }
     }
 }

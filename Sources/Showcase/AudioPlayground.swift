@@ -21,8 +21,8 @@ struct AudioPlayground: View {
     var captureURL: URL {
         get {
             #if SKIP
-            let context = ProcessInfo.processInfo.androidContext
-            let file = java.io.File(context.filesDir, "recording.m4a")
+            let activity = UIApplication.shared.androidActivity
+            let file = java.io.File(activity.filesDir, "recording.m4a")
             return URL(fileURLWithPath: file.absolutePath)
             #else
             return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
@@ -36,9 +36,6 @@ struct AudioPlayground: View {
         #if os(macOS)
         Text("Not supported on macOS")
         #else
-        #if SKIP
-        let context = androidx.compose.ui.platform.LocalContext.current
-        #endif
         return VStack(spacing: 20) {
             Button(action: {
                 self.isRecording ? self.stopRecording() : self.startRecording()
@@ -73,7 +70,7 @@ struct AudioPlayground: View {
         .padding()
         #if SKIP
         .onAppear {
-            requestAudioRecordingPermission(context: context)
+            requestAudioRecordingPermission()
         }
         #endif
         #endif
@@ -117,10 +114,8 @@ struct AudioPlayground: View {
     }
     
     #if SKIP
-    func requestAudioRecordingPermission(context: android.content.Context) {
-        guard let activity = context as? android.app.Activity else {
-            return
-        }
+    func requestAudioRecordingPermission() {
+        let activity = UIApplication.shared.androidActivity
         let permissions = listOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
         androidx.core.app.ActivityCompat.requestPermissions(activity, permissions.toTypedArray(), 1)
     }

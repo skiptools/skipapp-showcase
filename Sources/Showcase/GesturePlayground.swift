@@ -10,6 +10,7 @@ struct GesturePlayground: View {
     @State var doubleTapPosition: CGPoint = .zero
     @State var longPressCount = 0
     @State var dragOffset: CGSize = .zero
+    @State var isTouchDown = false
 
     @State var combinedTapPosition: CGPoint = .zero
     @State var combinedDoubleTapPosition: CGPoint = .zero
@@ -89,6 +90,18 @@ struct GesturePlayground: View {
                             DragGesture()
                                 .onChanged { val in dragOffset = val.translation }
                                 .onEnded { _ in withAnimation { dragOffset = .zero } }
+                        )
+                }
+                HStack {
+                    Text("Touch")
+                    Spacer()
+                    Rectangle()
+                        .fill(isTouchDown ? Color.green : Color.red)
+                        .frame(width: 150, height: 150)
+                        .gesture(
+                            DragGesture(minimumDistance: 0)
+                                .onChanged { _ in isTouchDown = true }
+                                .onEnded { _ in isTouchDown = false }
                         )
                 }
                 HStack {

@@ -6,6 +6,8 @@
 import SwiftUI
 
 struct TextPlayground: View {
+    let markdownVar = "String `var` with markdown"
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -13,6 +15,8 @@ struct TextPlayground: View {
                 Text("Bold").bold()
                 Text("Italic").italic()
                 Text("Title bold italic").font(.title).bold().italic()
+                Text("Strikethrough").strikethrough()
+                Text("Underline").underline()
                 VStack {
                     Text("Thin footnote container")
                     Text("Overridden to title font").font(.title)
@@ -38,6 +42,34 @@ struct TextPlayground: View {
                 Text("Font.footnote").font(.footnote)
                 Text("Font.caption").font(.caption)
                 Text("Font.caption2").font(.caption2)
+
+                Divider()
+
+                Text("Markdown\nspanning multiple\nlines")
+                Text("Markdown *Italic text* including _underscores_")
+                Text("Markdown **Bold text**")
+                Text("Markdown ~~Strikethrough text~~")
+                Text("Markdown `Code text`")
+                Text("Markdown [Link text](https://skip.tools) and [\("Another link")](\("https://swift.org"))")
+                Text("Markdown **Bold text** with .italic()")
+                    .italic()
+                Text("Markdown **bold** \("**String interpolation**") is not formatted")
+                Text("Markdown\n\n- Block\n-Elements\n\nare **not** supported")
+
+                Divider()
+
+                Text("Passing a string var does not format as markdown:")
+                    .font(.footnote)
+                Text(markdownVar)
+                Text("Initializing a localized key **does** format as markdown:")
+                    .font(.footnote)
+                Text(LocalizedStringKey(markdownVar))
+
+                Divider()
+
+                Text(try! AttributedString(markdown: "Attributed *Italic text* with \("substitution1") and \("substitution2")"))
+                Text(try! AttributedString(markdown: "Attributed **Bold text** with .italic()"))
+                    .italic()
 
                 Divider()
 

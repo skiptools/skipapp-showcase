@@ -6,15 +6,21 @@
 import SwiftUI
 
 struct SliderPlayground: View {
-    @State var value = 0.5
+    @State var value = 0.0
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                Text("Value: \(value)").bold().font(.title)
+                Divider()
                 Slider(value: $value)
                 HStack {
-                    Text("in: 0...2")
-                    Slider(value: $value, in: 0...2)
+                    Text("in: 0...2 step 0.5")
+                    Slider(value: $value, in: 0...2, step: 0.5)
+                }
+                HStack {
+                    Text("in: 0...1000 step 25")
+                    Slider(value: $value, in: 0...1000, step: 25)
                 }
                 HStack {
                     Text(".disabled(true)")

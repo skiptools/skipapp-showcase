@@ -7,7 +7,10 @@ import SwiftUI
 
 struct StoragePlayground: View {
     @AppStorage("boolAppStorage") var boolAppStorage = false
+    @AppStorage("doubleAppStorage") var doubleAppStorage = 5.0
     @AppStorage("enumAppStorage") var enumAppStorage = E.first
+
+    let doubleAppStorageValues = [1.0, 5.0, 10.0, 20.0, 25.0]
 
     enum E: Int {
         case first, second, third
@@ -15,6 +18,15 @@ struct StoragePlayground: View {
 
     var body: some View {
         VStack(spacing: 16) {
+            VStack {
+                Text("Double AppStorage")
+                Picker("Double AppStorage", selection: $doubleAppStorage) {
+                    ForEach(doubleAppStorageValues, id: \.self) {
+                        Text(String(Int($0)))
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
             HStack {
                 Text("Enum AppStorage")
                 Spacer()
