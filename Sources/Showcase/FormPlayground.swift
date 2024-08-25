@@ -99,12 +99,6 @@ struct FormPlayground: View {
         .navigationDestination(for: String.self) { value in
             Text(value)
         }
-        .onAppear() {
-            UIApplication.shared.isIdleTimerDisabled = true
-        }
-        .onDisappear() {
-            UIApplication.shared.isIdleTimerDisabled = false
-        }
     }
 
     struct ButtonRow: View {
