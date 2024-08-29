@@ -133,6 +133,12 @@
     ".frame(100, 100)\nclipped" : {
 
     },
+    ".grayscale(0.25)" : {
+
+    },
+    ".grayscale(0.99)" : {
+
+    },
     ".init(_ label:action:): %lld" : {
 
     },
@@ -1661,6 +1667,9 @@
     "Standalone row 3" : {
 
     },
+    "Standard" : {
+
+    },
     "Standard Row Background" : {
 
     },
@@ -1861,6 +1870,9 @@
 
     },
     "Third: %lld" : {
+
+    },
+    "This is text that uses a function that returns EmptyModifier()" : {
 
     },
     "This is the alert message to show beneath the title" : {

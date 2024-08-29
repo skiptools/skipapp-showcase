@@ -86,6 +86,9 @@ private struct VerticalScrollViewPlayground: View {
                 }
             }
         }
+        .refreshable {
+            do { try await Task.sleep(nanoseconds: 3_000_000_000) } catch { }
+        }
     }
 }
 

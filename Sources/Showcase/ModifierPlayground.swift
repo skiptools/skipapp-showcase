@@ -7,12 +7,20 @@ import SwiftUI
 
 struct ModifierPlayground: View {
     var body: some View {
-        Text("This text uses a custom modifier that adds a Dismiss button to the navigation bar above")
-            .padding()
-            .dismissable()
-            .toolbar {
-                PlaygroundSourceLink(file: "ModifierPlayground.swift")
-            }
+        VStack(spacing: 16) {
+            Text("This text uses a custom modifier that adds a Dismiss button to the navigation bar above")
+                .dismissable()
+                .toolbar {
+                    PlaygroundSourceLink(file: "ModifierPlayground.swift")
+                }
+            Text("This is text that uses a function that returns EmptyModifier()")
+                .modifier(someModifier)
+        }
+        .padding()
+    }
+
+    private var someModifier: some ViewModifier {
+        return EmptyModifier()
     }
 }
 

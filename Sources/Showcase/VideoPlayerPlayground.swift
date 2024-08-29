@@ -16,12 +16,15 @@ struct VideoPlayerPlayground: View {
             Button {
                 isPlaying ? player.pause() : player.play()
                 isPlaying = !isPlaying
-                player.seek(to: .zero)
             } label: {
                 Image(systemName: isPlaying ? "stop" : "play")
                     .padding()
             }
             VideoPlayer(player: player)
+                .onDisappear {
+                    player.pause()
+                    isPlaying = false
+                }
         }
         .toolbar {
             PlaygroundSourceLink(file: "VideoPlayerPlayground.swift")
