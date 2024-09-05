@@ -1330,6 +1330,9 @@
     "Passing a string var does not format as markdown:" : {
 
     },
+    "Passkey" : {
+
+    },
     "Pasteboard count:" : {
 
     },
@@ -1647,9 +1650,6 @@
 
     },
     "Small circle" : {
-
-    },
-    "Smiley Face" : {
 
     },
     "Source" : {

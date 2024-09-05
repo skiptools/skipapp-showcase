@@ -52,20 +52,19 @@ struct ImagePlayground: View {
 
                 Text("Symbol Image Weights").font(.title).bold()
                 HStack {
-                    // Image(systemName:) will load the SVG from the Module.xcassets/face.dashed.fill.symbolset/face.dashed.fill.svg file on Android, but use the named system image on iOS
-                    Image(systemName: "face.dashed.fill")
+                    // This symbol was downloaded from the Google Material Icons catalog and imported into the Module.xcassets: https://fonts.google.com/icons?selected=Material+Symbols+Outlined:passkey:FILL@0;wght@400;GRAD@0;opsz@24&icon.query=passkey&icon.size=24&icon.color=%235f6368&icon.platform=ios
+                    Image("passkey_passkey_symbol", bundle: .module)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundStyle(.red)
                         .fontWeight(.ultraLight)
                         .frame(width: 80.0, height: 80.0)
-                    // named images will load the SVG from the Module.xcassets/face.dashed.fill.svg file on both iOS and Android
-                    Image("face.dashed.fill", bundle: .module)
+                    Image("passkey_passkey_symbol", bundle: .module)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundStyle(.green)
                         .frame(width: 80.0, height: 80.0)
-                    Image("face.dashed.fill", bundle: .module, label: Text("Smiley Face"))
+                    Image("passkey_passkey_symbol", bundle: .module, label: Text("Passkey"))
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundStyle(.blue)

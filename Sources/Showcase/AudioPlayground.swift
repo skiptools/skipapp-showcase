@@ -115,9 +115,10 @@ struct AudioPlayground: View {
     
     #if SKIP
     func requestAudioRecordingPermission() {
-        let activity = UIApplication.shared.androidActivity
-        let permissions = listOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        androidx.core.app.ActivityCompat.requestPermissions(activity, permissions.toTypedArray(), 1)
+        if let activity = UIApplication.shared.androidActivity {
+            let permissions = listOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            androidx.core.app.ActivityCompat.requestPermissions(activity, permissions.toTypedArray(), 1)
+        }
     }
     
     #else
