@@ -21,7 +21,7 @@ struct AudioPlayground: View {
     var captureURL: URL {
         get {
             #if SKIP
-            let activity = UIApplication.shared.androidActivity
+            let activity = UIApplication.shared.androidActivity!
             let file = java.io.File(activity.filesDir, "recording.m4a")
             return URL(fileURLWithPath: file.absolutePath)
             #else
