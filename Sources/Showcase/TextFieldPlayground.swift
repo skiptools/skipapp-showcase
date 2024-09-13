@@ -33,7 +33,7 @@ struct TextFieldPlayground: View {
                     .textFieldStyle(.roundedBorder)
                     .tint(.red)
                 TextField(".plain", text: $text)
-                    .textFieldStyle(.roundedBorder)
+                    .textFieldStyle(.plain)
                 TextField(".plain .disabled(true)", text: $text)
                     .textFieldStyle(.plain)
                     .disabled(true)

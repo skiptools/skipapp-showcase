@@ -343,7 +343,7 @@ struct RefreshableListPlayground: View {
         .refreshable {
             do { try await Task.sleep(nanoseconds: 3_000_000_000) } catch { }
             let min = model.items[0]
-            model.items.insert(min - 1, at: 0)
+            withAnimation { model.items.insert(min - 1, at: 0) }
         }
     }
 }
