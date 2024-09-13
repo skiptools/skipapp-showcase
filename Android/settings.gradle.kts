@@ -1,10 +1,10 @@
 // This gradle project is part of a conventional Skip app project.
 // It invokes the shared build skip plugin logic, which included as part of the skip-unit buildSrc
-// When built from Xcode, it uses the BUILT_PRODUCTS_DIR folder to share the same build outputs as Xcode, otherwise it uses SwiftPM's .build/ folder
+// When built from Android Studio, it uses the BUILT_PRODUCTS_DIR folder to share the same build outputs as Xcode, otherwise it uses SwiftPM's .build/ folder
 pluginManagement {
     // local override of BUILT_PRODUCTS_DIR
     if (System.getenv("BUILT_PRODUCTS_DIR") == null) {
-        //System.setProperty("BUILT_PRODUCTS_DIR", "${System.getProperty("user.home")}/Library/Developer/Xcode/DerivedData/Skip-Everything-aqywrhrzhkbvfseiqgxuufbdwdft/Build/Products/Debug-iphonesimulator")
+        //System.setProperty("BUILT_PRODUCTS_DIR", "${System.getProperty("user.home")}/Library/Developer/Xcode/DerivedData/MySkipProject-aqywrhrzhkbvfseiqgxuufbdwdft/Build/Products/Debug-iphonesimulator")
     }
 
     // the source for the plugin is linked as part of the SkipUnit transpilation
@@ -26,7 +26,12 @@ pluginManagement {
 
     // load the Skip plugin (part of the skip-unit project), which handles configuring the Android project
     // because this path is a symlink, we need to use the canonical path or gradle will mis-interpret it as a different build source
-    val pluginSource = skipOutputs.resolve("skip-unit${outputExt}/SkipUnit/skipstone/buildSrc/").canonicalFile
+    var pluginSource = skipOutputs.resolve("skip-unit${outputExt}/SkipUnit/skipstone/buildSrc/").canonicalFile
+    if (!pluginSource.isDirectory) {
+        // check new SwiftPM6 plugin "destination" folder for command-line builds
+        pluginSource = skipOutputs.resolve("skip-unit${outputExt}/SkipUnit/destination/skipstone/buildSrc/").canonicalFile
+    }
+
     if (!pluginSource.isDirectory) {
         throw GradleException("Missing expected Skip output folder: ${pluginSource}. Run `swift build` in the root folder to create, or specify Xcode environment BUILT_PRODUCTS_DIR.")
     }
