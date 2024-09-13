@@ -7,7 +7,9 @@ import SwiftUI
 
 struct PickerPlayground: View {
     let values = ["One", "Two", "Three", "Four", "Five"]
+    let longValues = Array(0..<500)
     @State var selectedValue = "Two"
+    @State var selectedLongValue = 2
 
     var body: some View {
         ScrollView {
@@ -123,6 +125,13 @@ struct PickerPlayground: View {
                 Picker("Label .navigationLink", selection: $selectedValue) {
                     ForEach(values, id: \.self) {
                         Label($0, systemImage: "heart.fill")
+                    }
+                }
+                .pickerStyle(.navigationLink)
+                Picker("Long values", selection: $selectedLongValue) {
+                    ForEach(longValues, id: \.self) {
+                        // We can only display long values efficiently when we use untagged views
+                        Text("Value \($0)")
                     }
                 }
                 .pickerStyle(.navigationLink)

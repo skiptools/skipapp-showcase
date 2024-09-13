@@ -82,6 +82,9 @@
     ".clipShape(.capsule)" : {
 
     },
+    ".composeModifier()" : {
+
+    },
     ".destructive: %lld" : {
 
     },
@@ -368,7 +371,22 @@
     "2/3" : {
 
     },
+    "1111" : {
+
+    },
+    "2222" : {
+
+    },
+    "3333" : {
+
+    },
     "A" : {
+
+    },
+    "AA" : {
+
+    },
+    "AAAA" : {
 
     },
     "About" : {
@@ -426,6 +444,12 @@
 
     },
     "background()" : {
+
+    },
+    "BB" : {
+
+    },
+    "BBBB" : {
 
     },
     "Before" : {
@@ -504,6 +528,12 @@
 
     },
     "Cat JPEG image" : {
+
+    },
+    "CC" : {
+
+    },
+    "CCCC" : {
 
     },
     "Circle" : {
@@ -605,6 +635,9 @@
     "Dimiss" : {
 
     },
+    "Disabled" : {
+
+    },
     "Disabled tap: (%lld, %lld)" : {
       "localizations" : {
         "en" : {
@@ -614,6 +647,12 @@
           }
         }
       }
+    },
+    "DisclosureGroup" : {
+
+    },
+    "DisclosureGroup .disabled" : {
+
     },
     "Dismiss" : {
 
@@ -1121,6 +1160,9 @@
 
     },
     "Long press: %lld" : {
+
+    },
+    "Long values" : {
 
     },
     "LongPress: %lld" : {
@@ -1911,6 +1953,9 @@
     "Toggle" : {
 
     },
+    "Toggle Group" : {
+
+    },
     "Toggle with label text that is too long to fit on a single line and should be wrapped" : {
 
     },
@@ -1942,6 +1987,9 @@
 
     },
     "Value" : {
+
+    },
+    "Value %lld" : {
 
     },
     "Value: %@" : {

@@ -11,6 +11,9 @@ struct FormPlayground: View {
     @State var dateValue = Date.now
     @State var pickerValue = "Two"
     let pickerValues = ["One", "Two", "Three"]
+    @State var expanded = false
+    @State var disabledExpanded = false
+    @State var nestedModel = DisclosureGroupPlaygroundModel(title: "Multi-Level", items: ["AAAA", "BBBB", "CCCC"], nested: [DisclosureGroupPlaygroundModel(title: "Nested", items: ["1111", "2222", "3333"])])
 
     var body: some View {
         List {
@@ -85,6 +88,29 @@ struct FormPlayground: View {
                 }
             }
             .tint(.red)
+            DisclosureGroup("DisclosureGroup", isExpanded: $expanded) {
+                Text("A")
+                Text("B")
+                Text("C")
+            }
+            DisclosureGroup(nestedModel.title, isExpanded: $nestedModel.isExpanded) {
+                ForEach(nestedModel.items, id: \.self) { text in
+                    Text(text)
+                }
+                ForEach($nestedModel.nested, id: \.title) { $item in
+                    DisclosureGroup(item.title, isExpanded: $item.isExpanded) {
+                        ForEach(item.items, id: \.self) { text in
+                            Text(text)
+                        }
+                    }
+                }
+            }
+            DisclosureGroup("DisclosureGroup .disabled", isExpanded: $disabledExpanded) {
+                Text("AA")
+                Text("BB")
+                Text("CC")
+            }
+            .disabled(true)
             Toggle(isOn: $boolValue) {
                 Text("Toggle")
             }

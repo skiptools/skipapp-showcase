@@ -19,6 +19,7 @@ enum PlaygroundType: CaseIterable {
     case compose
     case confirmationDialog
     case datePicker
+    case disclosureGroup
     case divider
     case form
     case frame
@@ -98,6 +99,8 @@ enum PlaygroundType: CaseIterable {
             return "ConfirmationDialog"
         case .datePicker:
             return "DatePicker"
+        case .disclosureGroup:
+            return "DisclosureGroup"
         case .divider:
             return "Divider"
         case .form:
@@ -256,6 +259,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .datePicker:
                     DatePickerPlayground()
+                        .navigationTitle($0.title)
+                case .disclosureGroup:
+                    DisclosureGroupPlayground()
                         .navigationTitle($0.title)
                 case .divider:
                     DividerPlayground()

@@ -12,7 +12,7 @@ struct TimerPlayground: View {
         VStack(spacing: 16) {
             TimerPlaygroundTimerView(message: "Tap count: \(count)")
             Button("Tap to recompose in 1 sec") {
-                DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     count += 1
                 }
             }
