@@ -24,6 +24,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case sectionedEditActions
     case plainStyleSectionedEditActions
     case onMoveDelete
+    case positioned
 
     var title: String {
         switch self {
@@ -63,6 +64,8 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Plain Style Sectioned EditActions"
         case .onMoveDelete:
             return ".onMove, .onDelete"
+        case .positioned:
+            return "Positioned"
         }
     }
 }
@@ -132,6 +135,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .onMoveDelete:
                 OnMoveDeleteListPlayground()
+                    .navigationTitle($0.title)
+            case .positioned:
+                PositionedListPlayground()
                     .navigationTitle($0.title)
             }
         }
@@ -637,6 +643,24 @@ struct OnMoveDeleteListPlayground: View {
         }
         .confirmationDialog(actionString, isPresented: $actionIsPresented) {
             Button(actionString, role: .destructive, action: action)
+        }
+    }
+}
+
+struct PositionedListPlayground: View {
+    var body: some View {
+        VStack {
+            Text("Content above")
+                .font(.largeTitle)
+            List {
+                Text("Row 1")
+                Text("Row 2")
+                Text("Row 3")
+                Text("Row 4")
+                Text("Row 5")
+            }
+            Text("Content below")
+                .font(.largeTitle)
         }
     }
 }

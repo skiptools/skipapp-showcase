@@ -22,10 +22,10 @@ struct SheetPlayground: View {
                 isSimpleSheetPresented = true
             }
         }
-        .sheet(isPresented: $isSheetPresented) {
+        .sheet(isPresented: $isSheetPresented, onDismiss: { logger.info("onDismiss called") }) {
             SheetContentView(dismissSheet: { isSheetPresented = false })
         }
-        .sheet(isPresented: $isSimpleSheetPresented) {
+        .sheet(isPresented: $isSimpleSheetPresented, onDismiss: { logger.info("onDismiss called") }) {
             Button("Tap to dismiss") {
                 isSimpleSheetPresented = false
             }
@@ -51,10 +51,10 @@ struct SheetPlayground: View {
                 isSimpleFullScreenPresented = true
             }
         }
-        .sheet(isPresented: $isSheetPresented) {
+        .sheet(isPresented: $isSheetPresented, onDismiss: { logger.info("onDismiss called") }) {
             SheetContentView(dismissSheet: { isSheetPresented = false })
         }
-        .sheet(isPresented: $isSimpleSheetPresented) {
+        .sheet(isPresented: $isSimpleSheetPresented, onDismiss: { logger.info("onDismiss called") }) {
             Button("Tap to dismiss") {
                 isSimpleSheetPresented = false
             }

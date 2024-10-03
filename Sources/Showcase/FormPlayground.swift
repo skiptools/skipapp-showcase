@@ -14,6 +14,7 @@ struct FormPlayground: View {
     @State var expanded = false
     @State var disabledExpanded = false
     @State var nestedModel = DisclosureGroupPlaygroundModel(title: "Multi-Level", items: ["AAAA", "BBBB", "CCCC"], nested: [DisclosureGroupPlaygroundModel(title: "Nested", items: ["1111", "2222", "3333"])])
+    var redaction: RedactionReasons = []
 
     var body: some View {
         List {
@@ -119,6 +120,7 @@ struct FormPlayground: View {
             }
             TextField("Text field", text: $stringValue)
         }
+        .redacted(reason: redaction)
         .toolbar {
             PlaygroundSourceLink(file: "ListControlsPlayground.swift")
         }

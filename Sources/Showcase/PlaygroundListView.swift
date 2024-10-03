@@ -46,6 +46,7 @@ enum PlaygroundType: CaseIterable {
     case pasteboard
     case picker
     case progressView
+    case redacted
     case safeArea
     case scenePhase
     case scrollView
@@ -153,6 +154,8 @@ enum PlaygroundType: CaseIterable {
             return "Picker"
         case .progressView:
             return "ProgressView"
+        case .redacted:
+            return "Redacted"
         case .safeArea:
             return "SafeArea"
         case .scenePhase:
@@ -340,6 +343,9 @@ public struct PlaygroundNavigationView: View {
                         .navigationTitle($0.title)
                 case .progressView:
                     ProgressViewPlayground()
+                        .navigationTitle($0.title)
+                case .redacted:
+                    RedactedPlayground()
                         .navigationTitle($0.title)
                 case .safeArea:
                     SafeAreaPlayground()

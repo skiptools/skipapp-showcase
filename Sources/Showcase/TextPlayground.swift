@@ -6,6 +6,7 @@
 import SwiftUI
 
 struct TextPlayground: View {
+    var redaction: RedactionReasons = []
     let markdownVar = "String `var` with markdown"
 
     var body: some View {
@@ -123,6 +124,7 @@ struct TextPlayground: View {
             }
             .padding()
         }
+        .redacted(reason: redaction)
         .toolbar {
             PlaygroundSourceLink(file: "TextPlayground.swift")
         }

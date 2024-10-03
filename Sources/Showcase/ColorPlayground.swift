@@ -12,6 +12,7 @@ struct ColorPlayground: View {
                 colorRow(label: Text("Red"), color: .red)
                 colorRow(label: Text("Red, .opacity(0.5)"), color: Color.red.opacity(0.5))
                 colorRow(label: Text("RGB"), color: Color(red: 1, green: 0, blue: 0))
+                colorRow(label: Text("HSV"), color: Color(hue: 0.5, saturation: 0.75, brightness: 0.5))
                 colorRow(label: Text("White, Opacity"), color: Color(white: 0.5, opacity: 1))
                 colorRow(label: Text("Accent color"), color: .accentColor)
                 colorRow(label: Text("Red"), color: .red)

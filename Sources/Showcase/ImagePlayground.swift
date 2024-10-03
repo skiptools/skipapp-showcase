@@ -13,6 +13,8 @@ private let remoteImageResourceURL: URL? = URL(string: "https://picsum.photos/id
 private let localImageResourceURL: URL? = Bundle.module.url(forResource: "skip-logo", withExtension: "png")
 
 struct ImagePlayground: View {
+    var redaction: RedactionReasons = []
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -293,6 +295,7 @@ struct ImagePlayground: View {
             }
             .padding()
         }
+        .redacted(reason: redaction)
         .toolbar {
             PlaygroundSourceLink(file: "ImagePlayground.swift")
         }

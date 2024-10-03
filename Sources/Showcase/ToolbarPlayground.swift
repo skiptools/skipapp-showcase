@@ -9,7 +9,11 @@ enum ToolbarPlaygroundType: String, CaseIterable {
     case hideNavigationBar
     case hideBars
     case hideBarBackgrounds
-    case customBarBackgrounds
+    case customBarColor
+    case customBarBrush
+    case customInlineBarBrush
+    case customBarColorScheme
+    case customBarColorSchemeBrush
     case `default`
     case updating
     case tint
@@ -23,6 +27,7 @@ enum ToolbarPlaygroundType: String, CaseIterable {
     case topLeadingTrailingItems
     case principalItem
     case bottom
+    case bottomPlain
     case bottomGroup
     case bottomSpaced
     case customToolbarContent
@@ -35,8 +40,16 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return "Hide Bars"
         case .hideBarBackgrounds:
             return "Hide Bar Backgrounds"
-        case .customBarBackgrounds:
-            return "Custom Bar Backgrounds"
+        case .customBarColor:
+            return "Custom Bar Color"
+        case .customBarBrush:
+            return "Custom Bar Brush"
+        case .customInlineBarBrush:
+            return "Custom Inline Bar Brush"
+        case .customBarColorScheme:
+            return "Custom Color Scheme"
+        case .customBarColorSchemeBrush:
+            return "Custom Color Scheme Bar Brush"
         case .default:
             return "Default"
         case .updating:
@@ -63,6 +76,8 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return "Both Top"
         case .bottom:
             return "Bottom"
+        case .bottomPlain:
+            return "Bottom Plain List"
         case .bottomGroup:
             return "Bottom 3 Group"
         case .bottomSpaced:
@@ -108,9 +123,41 @@ struct ToolbarPlayground: View {
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
                     .toolbarBackground(.hidden, for: .navigationBar, .tabBar)
-                    .ignoresSafeArea()
                 #endif
-            case .customBarBackgrounds:
+            case .customBarColor:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .toolbarBackground(.blue, for: .navigationBar, .tabBar)
+                #endif
+            case .customBarBrush:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
+                #endif
+            case .customInlineBarBrush:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
+                #endif
+            case .customBarColorScheme:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .toolbarColorScheme(.dark, for: .navigationBar, .tabBar)
+                #endif
+            case .customBarColorSchemeBrush:
                 #if os(macOS)
                 Text("Not supported on macOS")
                 #else
@@ -173,6 +220,12 @@ struct ToolbarPlayground: View {
                 ToolbarItemPlayground(placement: ToolbarItemPlacement.bottomBar, placement2: ToolbarItemPlacement.bottomBar)
                     .navigationTitle($0.title)
                 #endif
+            case .bottomPlain:
+                #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
+                #else
+                ToolbarItemPlainStylePlayground(placement: ToolbarItemPlacement.bottomBar, placement2: ToolbarItemPlacement.bottomBar)
+                    .navigationTitle($0.title)
+                #endif
             case .bottomGroup:
                 #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
                 #else
@@ -200,19 +253,12 @@ struct HideToolbarsPlayground: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        ZStack {
-            Color.yellow
-                .border(.blue, width: 20.0)
-            VStack {
-                Text("Fullscreen content")
-                    .font(.largeTitle)
-                Button("Pop") {
-                    dismiss()
-                }
-                NavigationLink("Push") {
-                    Text("Content")
-                        .navigationTitle("Pushed")
-                }
+        List {
+            Button("Dismiss") {
+                dismiss()
+            }
+            ForEach(1..<50) { i in
+                Text("Row \(i)")
             }
         }
     }
@@ -360,6 +406,40 @@ struct ToolbarItemPlayground: View {
                 Text("Content \(i)")
             }
         }
+        .toolbar {
+            ToolbarItem(placement: placement) {
+                Button("First: \(firstTapCount)") {
+                    firstTapCount += 1
+                }
+            }
+            if let placement2 {
+                ToolbarItem(placement: placement2) {
+                    Button("Second: \(secondTapCount)") {
+                        secondTapCount += 1
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct ToolbarItemPlainStylePlayground: View {
+    @Environment(\.dismiss) var dismiss
+    @State var firstTapCount = 0
+    @State var secondTapCount = 0
+    let placement: ToolbarItemPlacement
+    var placement2: ToolbarItemPlacement? = nil
+
+    var body: some View {
+        List {
+            Button("Pop") {
+                dismiss()
+            }
+            ForEach(0..<100) { i in
+                Text("Content \(i)")
+            }
+        }
+        .listStyle(.plain)
         .toolbar {
             ToolbarItem(placement: placement) {
                 Button("First: \(firstTapCount)") {
