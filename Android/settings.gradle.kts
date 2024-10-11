@@ -17,7 +17,7 @@ pluginManagement {
     } else {
         exec {
             // create transpiled Kotlin and generate Gradle projects from SwiftPM modules
-            commandLine("swift", "build")
+            commandLine("sh", "-c", "xcrun swift build --triple arm64-apple-ios --sdk $(xcrun --sdk iphoneos --show-sdk-path)")
             workingDir = file("..")
         }
         // SPM output folder is a peer of the parent Package.swift

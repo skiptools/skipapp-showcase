@@ -21,15 +21,11 @@ struct AboutView: View {
                 }
                 LinkDivider()
                 Link(destination: URL(string: showcaseSourceURLString + "DOWNLOAD.md")!) {
-                    #if SKIP
-                    LinkLabel(text: "Showcase Android Version")
-                    #else
-                    LinkLabel(text: "Showcase iOS Version")
-                    #endif
+                    LinkLabel(text: "Showcase \(isAndroid ? "Android" : "iOS") \(isDebugBuild ? "Development" : "Release")")
                 }
                 LinkDivider()
                 Link(destination: URL(string: showcaseSourceURLString)!) {
-                    LinkLabel(text: "Showcase \(appVersion ?? "Unknown") Source")
+                    LinkLabel(text: "Showcase \(appVersion ?? "Unknown")  Source")
                 }
             }
             .background {
@@ -88,6 +84,12 @@ struct AboutView: View {
 
 private let borderColor = Color.primary.opacity(0.2)
 
+#if SKIP
+let isAndroid = true
+#else
+let isAndroid = false
+#endif
+
 let appVersion: String? = {
     #if !SKIP
     return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
@@ -100,3 +102,14 @@ let appVersion: String? = {
     return versionName
     #endif
 }()
+
+let isDebugBuild: Bool = {
+    #if SKIP
+    return (ProcessInfo.processInfo.androidContext.getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0
+    #elseif DEBUG
+    return true
+    #else
+    return false
+    #endif
+}()
+
