@@ -1,3 +1,10 @@
+## 1.7.1
+
+Released 2024-10-16
+
+  - Factor out helper class; add some localizations
+  - Update settings.gradle.kts to use new xcrun swift build command so skip export does not use macOS target
+
 ## 1.3.0
 
 Released 2024-08-15
