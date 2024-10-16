@@ -17,15 +17,15 @@ struct AboutView: View {
                     .padding()
                 LinkDivider()
                 Link(destination: URL(string: "https://skip.tools")!) {
-                    LinkLabel(text: "Skip Technology")
+                    LinkLabel(text: NSLocalizedString("Skip Technology", bundle: .module, comment: "localized technology title"))
                 }
                 LinkDivider()
                 Link(destination: URL(string: showcaseSourceURLString + "DOWNLOAD.md")!) {
-                    LinkLabel(text: "Showcase \(isAndroid ? "Android" : "iOS") \(isDebugBuild ? "Development" : "Release")")
+                    LinkLabel(text: "\(appName) \(isAndroid ? "Android" : "iOS") \(isDebugBuild ? "Development" : "Release")")
                 }
                 LinkDivider()
                 Link(destination: URL(string: showcaseSourceURLString)!) {
-                    LinkLabel(text: "Showcase \(appVersion ?? "Unknown")  Source")
+                    LinkLabel(text: "\(appName) \(appVersion) Source")
                 }
             }
             .background {
@@ -83,33 +83,3 @@ struct AboutView: View {
 }
 
 private let borderColor = Color.primary.opacity(0.2)
-
-#if SKIP
-let isAndroid = true
-#else
-let isAndroid = false
-#endif
-
-let appVersion: String? = {
-    #if !SKIP
-    return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-    #else
-    let context = ProcessInfo.processInfo.androidContext
-    let packageManager = context.getPackageManager()
-    let packageInfo = packageManager.getPackageInfo(context.getPackageName(), android.content.pm.PackageManager.GET_META_DATA)
-    let versionName = packageInfo.versionName
-    let versionCode = packageInfo.versionCode
-    return versionName
-    #endif
-}()
-
-let isDebugBuild: Bool = {
-    #if SKIP
-    return (ProcessInfo.processInfo.androidContext.getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0
-    #elseif DEBUG
-    return true
-    #else
-    return false
-    #endif
-}()
-
