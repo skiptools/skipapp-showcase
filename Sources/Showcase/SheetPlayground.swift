@@ -6,11 +6,17 @@
 import SwiftUI
 
 struct SheetPlayground: View {
+    struct Item: Identifiable {
+        var id: Int
+    }
+
     @State var isSheetPresented = false
     @State var isSimpleSheetPresented = false
     @State var isDetentSheetPresented = false
     @State var isFullScreenPresented = false
     @State var isSimpleFullScreenPresented = false
+    @State var item: Item? = nil
+    @State var itemID = 0
 
     var body: some View {
         #if os(macOS)
@@ -44,6 +50,10 @@ struct SheetPlayground: View {
             Button("Present sheet with medium detent") {
                 isDetentSheetPresented = true
             }
+            Button("Present item sheet: \(itemID + 1)") {
+                itemID += 1
+                item = Item(id: itemID)
+            }
             Button("Present full screen cover with navigation stack") {
                 isFullScreenPresented = true
             }
@@ -57,6 +67,14 @@ struct SheetPlayground: View {
         .sheet(isPresented: $isSimpleSheetPresented, onDismiss: { logger.info("onDismiss called") }) {
             Button("Tap to dismiss") {
                 isSimpleSheetPresented = false
+            }
+        }
+        .sheet(item: $item, onDismiss: { logger.info("onDismiss called") }) { value in
+            VStack(spacing: 16) {
+                Text("Value: \(value.id)")
+                Button("Tap to dismiss") {
+                    item = nil
+                }
             }
         }
         .sheet(isPresented: $isDetentSheetPresented, content: {

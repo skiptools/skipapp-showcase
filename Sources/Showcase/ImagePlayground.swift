@@ -21,6 +21,31 @@ struct ImagePlayground: View {
                 NavigationLink("Pager") {
                     ImagePlaygroundPagerView()
                 }
+                NavigationLink("Layout") {
+                    GeometryReader { geometry in
+                        ScrollView {
+                            VStack {
+                                VStack {
+                                    Text("Header")
+                                    Spacer()
+                                    Image("Cat", bundle: .module)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(maxWidth: .infinity)
+                                    Spacer()
+                                    Spacer()
+                                    Text("Description")
+                                    Spacer()
+                                    Text("Footer")
+                                    Spacer()
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                                .background(Color.cyan)
+                            }
+                            .frame(minHeight: geometry.size.height, alignment: .topLeading)
+                        }
+                    }
+                }
 
                 Text("Asset Image").font(.title).bold()
                 HStack {

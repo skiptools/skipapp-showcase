@@ -122,6 +122,43 @@ struct FramePlayground: View {
                         .frame(width: 100, height: 100, alignment: .bottomTrailing)
                         .border(.primary)
                 }
+                NavigationLink("Full screen .topLeading content") {
+                    VStack {
+                        VStack {
+                            Text(".topLeading Text")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                                .background { Color.yellow }
+                        }
+                        Text("Bottom text")
+                    }
+                }
+                NavigationLink("Full screen .topLeading container") {
+                    VStack {
+                        VStack {
+                            Text(".topLeading Text")
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                        .background { Color.yellow }
+                        Text("Bottom text")
+                    }
+                }
+                NavigationLink("Expanding container in scroll view") {
+                    GeometryReader { geometry in
+                        ScrollView {
+                            VStack {
+                                Text("Header")
+                                VStack {
+                                    Text("Content")
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                                .background(.yellow)
+                                Text("Footer")
+                            }
+                            .frame(minHeight: geometry.size.height, alignment: .topLeading)
+                            .background(.blue)
+                        }
+                    }
+                }
             }
             .padding()
         }

@@ -13,6 +13,7 @@ struct AnimationPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                Text("Also see the `Transition` playground for view enter/exit animations")
                 HStack {
                     Text(".opacity")
                     Spacer()

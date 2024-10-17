@@ -98,6 +98,9 @@ struct ButtonPlayground: View {
                 .tint(.red)
             }
             .padding()
+            #if SKIP
+            .material3Ripple { $0?.copy(color: androidx.compose.ui.graphics.Color.Red) }
+            #endif
         }
         .toolbar {
             PlaygroundSourceLink(file: "ButtonPlayground.swift")
