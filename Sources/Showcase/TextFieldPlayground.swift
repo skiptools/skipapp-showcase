@@ -8,6 +8,7 @@ import SwiftUI
 
 struct TextFieldPlayground: View {
     @State var text = ""
+    @State var phone = ""
 
     var body: some View {
         ScrollView {
@@ -49,11 +50,39 @@ struct TextFieldPlayground: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.yellow)
                     }
+                TextField("(###) ###-####", text: $phone)
+                    .textFieldStyle(.plain)
+                    .keyboardType(UIKeyboardType.phonePad)
+                    .onChange(of: phone) { newValue in
+                        phone = formatPhone(newValue)
+                    }
             }
             .padding()
         }
         .toolbar {
             PlaygroundSourceLink(file: "TextFieldPlayground.swift")
         }
+    }
+
+    func formatPhone(_ phoneNumber: String) -> String {
+        guard !phoneNumber.isEmpty else {
+            return ""
+        }
+
+        let digits = String(phoneNumber.filter { $0 >= "0" && $0 <= "9" }.prefix(10))
+        var result = digits
+
+        if digits.count > 3 {
+            let areaCode = "(\(digits.prefix(3))) "
+            result = areaCode + String(digits.dropFirst(3))
+        }
+
+        if digits.count > 6 {
+            let firstPart = result.prefix(9)
+            let secondPart = result.suffix(result.count - 9)
+            result = firstPart + "-" + secondPart
+        }
+
+        return result
     }
 }

@@ -356,6 +356,9 @@
     ".transition(.slide)" : {
 
     },
+    "(###) ###-####" : {
+
+    },
     "@Environment(\\.openURL)" : {
 
     },
@@ -630,6 +633,9 @@
     "Blue" : {
 
     },
+    "Body" : {
+
+    },
     "Bold" : {
 
     },
@@ -714,6 +720,12 @@
     "Complex content button" : {
 
     },
+    "Complex Layout (Landscape)" : {
+
+    },
+    "Complex Layout (Portrait)" : {
+
+    },
     "Container" : {
 
     },
@@ -784,9 +796,6 @@
 
     },
     "Default URL" : {
-
-    },
-    "Description" : {
 
     },
     "Destructive" : {
@@ -1273,9 +1282,6 @@
 
     },
     "Large circle" : {
-
-    },
-    "Layout" : {
 
     },
     "LazyHGrid .adaptive" : {

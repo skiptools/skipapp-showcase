@@ -20,6 +20,7 @@
         android:name=".AndroidAppMain"
         android:allowBackup="true"
         android:supportsRtl="true"
+        android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

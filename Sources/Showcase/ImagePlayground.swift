@@ -21,30 +21,11 @@ struct ImagePlayground: View {
                 NavigationLink("Pager") {
                     ImagePlaygroundPagerView()
                 }
-                NavigationLink("Layout") {
-                    GeometryReader { geometry in
-                        ScrollView {
-                            VStack {
-                                VStack {
-                                    Text("Header")
-                                    Spacer()
-                                    Image("Cat", bundle: .module)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(maxWidth: .infinity)
-                                    Spacer()
-                                    Spacer()
-                                    Text("Description")
-                                    Spacer()
-                                    Text("Footer")
-                                    Spacer()
-                                }
-                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                                .background(Color.cyan)
-                            }
-                            .frame(minHeight: geometry.size.height, alignment: .topLeading)
-                        }
-                    }
+                NavigationLink("Complex Layout (Landscape)") {
+                    ImagePlaygroundComplexLayoutView(imageName: "Cat")
+                }
+                NavigationLink("Complex Layout (Portrait)") {
+                    ImagePlaygroundComplexLayoutView(imageName: "CatPortrait")
                 }
 
                 Text("Asset Image").font(.title).bold()
@@ -361,5 +342,35 @@ struct PagingModifier: ViewModifier {
         #else
         content
         #endif
+    }
+}
+
+private struct ImagePlaygroundComplexLayoutView: View {
+    let imageName: String
+
+    var body: some View {
+        GeometryReader { geometry in
+            ScrollView {
+                VStack {
+                    VStack {
+                        Text("Header")
+                        Spacer()
+                        Image(imageName, bundle: .module)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity)
+                            .border(Color.pink)
+                        Spacer()
+                        Text("Body")
+                        Spacer()
+                        Text("Footer")
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .background(Color.cyan)
+                }
+                .frame(minHeight: geometry.size.height, alignment: .topLeading)
+            }
+        }
     }
 }
