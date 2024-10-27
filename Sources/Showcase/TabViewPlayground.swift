@@ -20,6 +20,7 @@ struct TabViewPlayground: View {
                 .tabItem { Label("Info", systemImage: "info.circle.fill") }
                 .tag("Info")
         }
+        .tint(.red)
         .toolbar {
             PlaygroundSourceLink(file: "TabViewPlayground.swift")
         }

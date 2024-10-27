@@ -332,6 +332,12 @@
     ".tint(.red): %lld" : {
 
     },
+    ".topLeading" : {
+
+    },
+    ".topLeading Text" : {
+
+    },
     ".transition(.move(edge: .top))" : {
 
     },
@@ -348,6 +354,9 @@
 
     },
     ".transition(.slide)" : {
+
+    },
+    "(###) ###-####" : {
 
     },
     "@Environment(\\.openURL)" : {
@@ -564,6 +573,9 @@
     "alignment: .topLeading" : {
 
     },
+    "Also see the `Transition` playground for view enter/exit animations" : {
+
+    },
     "Animated" : {
 
     },
@@ -577,6 +589,9 @@
 
     },
     "B" : {
+
+    },
+    "Background" : {
 
     },
     "background()" : {
@@ -618,6 +633,9 @@
     "Blue" : {
 
     },
+    "Body" : {
+
+    },
     "Bold" : {
 
     },
@@ -628,6 +646,9 @@
 
     },
     "Bottom" : {
+
+    },
+    "Bottom text" : {
 
     },
     "Bound tap count 1: %lld" : {
@@ -699,7 +720,16 @@
     "Complex content button" : {
 
     },
+    "Complex Layout (Landscape)" : {
+
+    },
+    "Complex Layout (Portrait)" : {
+
+    },
     "Container" : {
+
+    },
+    "Content" : {
 
     },
     "Content %lld" : {
@@ -888,6 +918,9 @@
     "Even" : {
 
     },
+    "Expanding container in scroll view" : {
+
+    },
     "Favorites" : {
 
     },
@@ -1033,7 +1066,16 @@
     "Frame" : {
 
     },
-    "Fullscreen" : {
+    "Full screen .topLeading container" : {
+
+    },
+    "Full screen .topLeading content" : {
+
+    },
+    "Fullscreen cover" : {
+
+    },
+    "Global Drag" : {
 
     },
     "Global frame: %@" : {
@@ -1049,6 +1091,9 @@
 
     },
     "Has URLs:" : {
+
+    },
+    "Header" : {
 
     },
     "height: 50" : {
@@ -1613,6 +1658,9 @@
 
     },
     "Present full screen cover with simple content" : {
+
+    },
+    "Present item sheet: %lld" : {
 
     },
     "Present sheet with medium detent" : {
@@ -2293,6 +2341,9 @@
 
     },
     "Value: %lf" : {
+
+    },
+    "Value: %lld" : {
 
     },
     "Vertical" : {

@@ -10,6 +10,7 @@ struct GesturePlayground: View {
     @State var doubleTapPosition: CGPoint = .zero
     @State var longPressCount = 0
     @State var dragOffset: CGSize = .zero
+    @State var globalDragOffset: CGSize = .zero
     @State var isTouchDown = false
 
     @State var combinedTapPosition: CGPoint = .zero
@@ -88,8 +89,26 @@ struct GesturePlayground: View {
                         .offset(dragOffset)
                         .gesture(
                             DragGesture()
-                                .onChanged { val in dragOffset = val.translation }
+                                .onChanged { val in
+                                    dragOffset = val.translation
+                                    logger.info("Drag position: (\(val.location.x), \(val.location.y))")
+                                }
                                 .onEnded { _ in withAnimation { dragOffset = .zero } }
+                        )
+                }
+                HStack {
+                    Text("Global Drag")
+                    Spacer()
+                    Color.red
+                        .frame(width: 150, height: 150)
+                        .offset(globalDragOffset)
+                        .gesture(
+                            DragGesture(coordinateSpace: .global)
+                                .onChanged { val in
+                                    globalDragOffset = val.translation
+                                    logger.info("Drag position: (\(val.location.x), \(val.location.y))")
+                                }
+                                .onEnded { _ in withAnimation { globalDragOffset = .zero } }
                         )
                 }
                 HStack {

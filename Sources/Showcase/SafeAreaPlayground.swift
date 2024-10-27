@@ -46,7 +46,10 @@ struct SafeAreaPlayground: View {
 
     var body: some View {
         List {
-            Section("Fullscreen") {
+            NavigationLink("Background") {
+                SafeAreaBackgroundView()
+            }
+            Section("Fullscreen cover") {
                 ForEach(SafeAreaPlaygroundType.allCases, id: \.coverId) { playgroundType in
                     Button(playgroundType.title) {
                         self.playgroundType = playgroundType
@@ -96,6 +99,18 @@ struct SafeAreaPlayground: View {
             SafeAreaBottomBar()
             #endif
         }
+    }
+}
+
+struct SafeAreaBackgroundView: View {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        Button("Dismiss") {
+            dismiss()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.yellow, ignoresSafeAreaEdges: .all)
     }
 }
 
