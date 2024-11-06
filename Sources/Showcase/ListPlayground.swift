@@ -650,15 +650,27 @@ struct OnMoveDeleteListPlayground: View {
 struct PositionedListPlayground: View {
     var body: some View {
         VStack {
-            Text("Content above")
-                .font(.largeTitle)
-            List {
-                Text("Row 1")
-                Text("Row 2")
-                Text("Row 3")
-                Text("Row 4")
-                Text("Row 5")
+            HStack {
+                Button("Button 1") {
+                    logger.log("Button 1")
+                }
+                .frame(maxWidth: .infinity)
+                Button("Button 2") {
+                    logger.log("Button 2")
+                }
+                .frame(maxWidth: .infinity)
+                Button("Button 3") {
+                    logger.log("Button 3")
+                }
+                .frame(maxWidth: .infinity)
             }
+            .padding()
+            List {
+                ForEach(0..<100) { i in
+                    Text("Row \(i)")
+                }
+            }
+            .listStyle(.plain)
             Text("Content below")
                 .font(.largeTitle)
         }

@@ -678,6 +678,15 @@
     "Button .bordered" : {
 
     },
+    "Button 1" : {
+
+    },
+    "Button 2" : {
+
+    },
+    "Button 3" : {
+
+    },
     "Button in custom view" : {
 
     },
@@ -747,9 +756,6 @@
     "Content %lld" : {
 
     },
-    "Content above" : {
-
-    },
     "Content below" : {
 
     },
@@ -765,9 +771,6 @@
     "Custom" : {
 
     },
-    "Custom background" : {
-
-    },
     "Custom Cancel" : {
 
     },
@@ -778,6 +781,9 @@
 
     },
     "Custom placeholder" : {
+
+    },
+    "Custom styling" : {
 
     },
     "Cyan" : {
@@ -1069,6 +1075,12 @@
     "ForEach section %lld" : {
 
     },
+    "ForEach state" : {
+
+    },
+    "ForEach taps: %lld" : {
+
+    },
     "ForEach:" : {
 
     },
@@ -1240,6 +1252,9 @@
 
     },
     "Indigo" : {
+
+    },
+    "Infinite frame with padding" : {
 
     },
     "Info" : {
@@ -1789,19 +1804,10 @@
     "Row 2.1" : {
 
     },
-    "Row 3" : {
-
-    },
     "Row 3a" : {
 
     },
     "Row 3b" : {
-
-    },
-    "Row 4" : {
-
-    },
-    "Row 5" : {
 
     },
     "Row: %lld" : {

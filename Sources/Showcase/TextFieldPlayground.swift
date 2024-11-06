@@ -44,11 +44,13 @@ struct TextFieldPlayground: View {
                 TextField(".plain .tint(.red)", text: $text)
                     .textFieldStyle(.plain)
                     .tint(.red)
-                TextField("Custom background", text: $text)
+                TextField("Custom styling", text: $text)
                     .textFieldStyle(.plain)
+                    .font(.title.bold().italic())
+                    .foregroundStyle(LinearGradient(colors: [.green, .blue], startPoint: .top, endPoint: .bottom))
                     .background {
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(.yellow)
+                            .fill(.yellow.gradient)
                     }
                 TextField("(###) ###-####", text: $phone)
                     .textFieldStyle(.plain)

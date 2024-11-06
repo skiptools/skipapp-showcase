@@ -40,6 +40,16 @@ struct BorderPlayground: View {
                         .padding([.top, .leading], -16)
                         .border(.primary)
                 }
+                NavigationLink("Infinite frame with padding") {
+                    VStack {
+                        Rectangle()
+                            .fill(Color.green)
+                            .frame(height: 200)
+                        Text("Hello")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .padding(.horizontal)
+                    }
+                }
                 HStack {
                     Text(".blue, 5")
                     Spacer()
