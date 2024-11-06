@@ -579,7 +579,10 @@
     "Animated" : {
 
     },
-    "Asset Image" : {
+    "Asset JPEG Image" : {
+
+    },
+    "Asset SVG Image" : {
 
     },
     "Asymmetric: opacity+slide" : {
@@ -661,6 +664,9 @@
 
     },
     "Bundled Image" : {
+
+    },
+    "Butterfly SVG image" : {
 
     },
     "Button" : {
@@ -1609,6 +1615,9 @@
     "path.reverse()" : {
 
     },
+    "PDF Image" : {
+
+    },
     "Picker" : {
 
     },
@@ -2032,6 +2041,9 @@
           }
         }
       }
+    },
+    "skiplogo PDF image" : {
+
     },
     "Slow spring" : {
 

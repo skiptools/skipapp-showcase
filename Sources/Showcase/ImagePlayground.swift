@@ -28,7 +28,7 @@ struct ImagePlayground: View {
                     ImagePlaygroundComplexLayoutView(imageName: "CatPortrait")
                 }
 
-                Text("Asset Image").font(.title).bold()
+                Text("Asset JPEG Image").font(.title).bold()
                 HStack {
                     Spacer()
                     Image("Cat", bundle: .module, label: Text("Cat JPEG image"))
@@ -39,11 +39,29 @@ struct ImagePlayground: View {
                     Spacer()
                 }
 
+                Text("Asset SVG Image").font(.title).bold()
+                HStack {
+                    Spacer()
+                    Image("Butterfly", bundle: .module, label: Text("Butterfly SVG image"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    Spacer()
+                }
+
                 Text("Bundled Image").font(.title).bold()
                 HStack {
                     Spacer()
                     AsyncImage(url: localImageResourceURL)
                         .border(.blue)
+                    Spacer()
+                }
+
+                Text("PDF Image").font(.title).bold()
+                HStack {
+                    Spacer()
+                    Image("skiplogo", bundle: .module, label: Text("skiplogo PDF image"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                     Spacer()
                 }
 
@@ -95,7 +113,6 @@ struct ImagePlayground: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 80.0, height: 80.0)
                 }
-
 
                 Text("systemName").font(.title).bold()
                 HStack {
