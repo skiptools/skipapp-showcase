@@ -305,6 +305,9 @@
     ".resizable()\n.scaleToFit\n.frame(100, 100)" : {
 
     },
+    ".rotation3DEffects" : {
+
+    },
     ".rotationEffect" : {
 
     },
