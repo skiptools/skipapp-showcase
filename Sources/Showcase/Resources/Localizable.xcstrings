@@ -699,6 +699,12 @@
     "CCCC" : {
 
     },
+    "Change notPublished" : {
+
+    },
+    "Change text" : {
+
+    },
     "Circle" : {
 
     },
@@ -1505,6 +1511,9 @@
     "Notification: Warning" : {
 
     },
+    "notPublished: %@" : {
+
+    },
     "Observable" : {
 
     },
@@ -2019,9 +2028,6 @@
         }
       }
     },
-    "Showcase is a dual-platform app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs." : {
-
-    },
     "Simulate a custom control with an accessibility label, value, and traits:" : {
 
     },
@@ -2248,6 +2254,9 @@
 
     },
     "Text with background" : {
+
+    },
+    "text: %@" : {
 
     },
     "Text1" : {
