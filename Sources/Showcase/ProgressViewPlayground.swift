@@ -48,6 +48,36 @@ struct ProgressViewPlayground: View {
                     ProgressView(value: 0.5)
                         .tint(.red)
                 }
+
+                // Labeled
+
+                HStack {
+                    ProgressView("Indeterminate")
+                    Spacer()
+                    ProgressView("Progress nil", value: nil, total: 1)
+                }
+                HStack {
+                    ProgressView("Progress 0.5", value: 0.5)
+                    Spacer()
+                    ProgressView("Indeterminate linear")
+                        .progressViewStyle(.linear)
+                }
+                HStack {
+                    ProgressView("Progress 0.5 circular", value: 0.5)
+                        .progressViewStyle(.circular)
+                    Spacer()
+                    ProgressView {
+                        Text("Indeterminate")
+                        Text(".tint(.red)")
+                    }
+                        .tint(.red)
+                }
+                ProgressView("Progress 0.5, .tint(.red)", value: 0.5)
+                    .tint(.red)
+                ProgressView(value: 2, total: 3) {
+                    Text("2/3")
+                    Divider()
+                }
             }
             .padding()
         }
@@ -55,4 +85,8 @@ struct ProgressViewPlayground: View {
             PlaygroundSourceLink(file: "ProgressViewPlayground.swift")
         }
     }
+}
+
+#Preview {
+    ProgressViewPlayground()
 }
