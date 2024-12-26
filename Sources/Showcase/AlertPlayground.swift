@@ -14,6 +14,10 @@ struct AlertPlayground: View {
     @State var twoButtonsIsPresented = false
     @State var threeButtonsIsPresented = false
     @State var fiveButtonsIsPresented = false
+    @State var textFieldIsPresented = false
+    @State var secureFieldIsPresented = false
+    @State var textFieldText = ""
+    @State var secureFieldText = ""
 //    @State var errorIsPresented = false
     @State var dataIsPresented = false
 
@@ -35,6 +39,15 @@ struct AlertPlayground: View {
                 }
                 Button("Five Buttons") {
                     fiveButtonsIsPresented = true
+                }
+            }
+            Divider()
+            Group {
+                Button("Text Field") {
+                    textFieldIsPresented = true
+                }
+                Button("Secure Field") {
+                    secureFieldIsPresented = true
                 }
             }
             Divider()
@@ -114,14 +127,25 @@ struct AlertPlayground: View {
                 value = "Option 3"
             }
         }
-//        .alert(isPresented: $errorIsPresented, error: error) {
-//            Button("Error: \(String(describing: error))") {
-//                value = "\(String(describing: error))"
-//            }
-//            Button("Nil Error", role: .destructive) {
-//                error = nil
-//            }
-//        }
+        .alert("Text Field", isPresented: $textFieldIsPresented) {
+            TextField("Enter text", text: $textFieldText)
+            Button("Submit") {
+                value = textFieldText
+            }
+            Button("Cancel", role: .cancel) {
+                value = "Custom Cancel"
+            }
+        }
+        .alert("Sign In", isPresented: $secureFieldIsPresented) {
+            TextField("Username", text: $textFieldText)
+            SecureField("Password", text: $secureFieldText)
+            Button("Submit") {
+                value = textFieldText
+            }
+            Button("Cancel", role: .cancel) {
+                value = "Custom Cancel"
+            }
+        }
         .alert("Data", isPresented: $dataIsPresented, presenting: data) { d in
             Button("Data: \(d)") {
                 value = "\(d)"
@@ -130,6 +154,14 @@ struct AlertPlayground: View {
                 data = nil
             }
         }
+        //        .alert(isPresented: $errorIsPresented, error: error) {
+        //            Button("Error: \(String(describing: error))") {
+        //                value = "\(String(describing: error))"
+        //            }
+        //            Button("Nil Error", role: .destructive) {
+        //                error = nil
+        //            }
+        //        }
     }
 }
 

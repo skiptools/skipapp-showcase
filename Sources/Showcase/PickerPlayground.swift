@@ -35,6 +35,29 @@ struct PickerPlayground: View {
                     }
                 }
                 VStack {
+                    Text(".pickerStyle(.segmented)")
+                    Picker("Label", selection: $selectedValue) {
+                        ForEach(values, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                }
+                .pickerStyle(.segmented)
+                VStack {
+                    Text(".material3SegmentedButton")
+                    Picker("Label", selection: $selectedValue) {
+                        ForEach(values, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                }
+                .pickerStyle(.segmented)
+                #if os(Android)
+                .material3SegmentedButton {
+                    $0.copy(icon: {})
+                }
+                #endif
+                VStack {
                     Text(".disabled(true)")
                     Picker("Label", selection: $selectedValue) {
                         ForEach(values, id: \.self) {
