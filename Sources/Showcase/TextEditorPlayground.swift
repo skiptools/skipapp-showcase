@@ -14,6 +14,7 @@ struct TextEditorPlayground: View {
 
     var body: some View {
         TextEditor(text: $text)
+            .italic()
         .toolbar {
             PlaygroundSourceLink(file: "TextEditorPlayground.swift")
         }

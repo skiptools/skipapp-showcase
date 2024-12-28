@@ -10,6 +10,7 @@ enum ToolbarPlaygroundType: String, CaseIterable {
     case hideBars
     case hideBarBackgrounds
     case customBarColor
+    case visibleCustomBarColor
     case customBarBrush
     case customInlineBarBrush
     case customBarColorScheme
@@ -42,6 +43,8 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return "Hide Bar Backgrounds"
         case .customBarColor:
             return "Custom Bar Color"
+        case .visibleCustomBarColor:
+            return "Always Visible Custom Bar Color"
         case .customBarBrush:
             return "Custom Bar Brush"
         case .customInlineBarBrush:
@@ -131,6 +134,15 @@ struct ToolbarPlayground: View {
                 HideToolbarsPlayground()
                     .navigationTitle($0.title)
                     .toolbarBackground(.blue, for: .navigationBar, .tabBar)
+                #endif
+            case .visibleCustomBarColor:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .toolbarBackground(.blue, for: .navigationBar, .tabBar)
+                    .toolbarBackground(.visible, for: .navigationBar, .tabBar)
                 #endif
             case .customBarBrush:
                 #if os(macOS)

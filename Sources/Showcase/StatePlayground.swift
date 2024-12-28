@@ -93,6 +93,11 @@ struct StatePlayground: View {
                 Button("Add item") { tapCountRepository.add() }
                 Button("Increment last") { tapCountRepository.increment() }
             }
+            Section {
+                NavigationLink("ForEach state") {
+                    StatePlaygroundForEachView()
+                }
+            }
         }
         .onChange(of: tapCount) {
             logger.log("onChange(of: tapCount): \($0)")
@@ -169,6 +174,21 @@ struct StatePlaygroundDestinationBindingView: View {
                 tapCount += 1
             }
             .buttonStyle(.bordered)
+        }
+    }
+}
+
+struct StatePlaygroundForEachView: View {
+    @State var tapCount = 0
+
+    var body: some View {
+        VStack {
+            ForEach(0..<1) { i in
+                Text("ForEach taps: \(tapCount)")
+                    .onTapGesture {
+                        tapCount += 1
+                    }
+            }
         }
     }
 }

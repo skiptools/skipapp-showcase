@@ -6,6 +6,8 @@
 import SwiftUI
 
 struct OffsetPositionPlayground: View {
+    @State var tapCount = 0
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -54,6 +56,21 @@ struct OffsetPositionPlayground: View {
                             .border(.primary)
                         Color.red
                             .frame(width: 20, height: 20)
+                            .offset(CGSize(width: 50, height: 50))
+                    }
+                }
+                HStack {
+                    Text("Tap count: \(tapCount)")
+                    Spacer()
+                    ZStack {
+                        Color.clear
+                            .frame(width: 100, height: 100)
+                            .border(.primary)
+                        Color.red
+                            .frame(width: 20, height: 20)
+                            .onTapGesture {
+                                tapCount += 1
+                            }
                             .offset(CGSize(width: 50, height: 50))
                     }
                 }

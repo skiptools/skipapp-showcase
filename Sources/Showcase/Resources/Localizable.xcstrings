@@ -40,10 +40,22 @@
     ".border" : {
 
     },
+    ".bordered" : {
+
+    },
+    ".bordered, .disabled(true)" : {
+
+    },
     ".bordered, .disabled(true): %lld" : {
 
     },
+    ".bordered, .foregroundStyle(.red)" : {
+
+    },
     ".bordered, .foregroundStyle(.red): %lld" : {
+
+    },
+    ".bordered, .tint(.red)" : {
 
     },
     ".bordered, .tint(.red): %lld" : {
@@ -52,13 +64,25 @@
     ".bordered: %lld" : {
 
     },
+    ".borderedProminent" : {
+
+    },
     ".borderedProminent, .destructive: %lld" : {
+
+    },
+    ".borderedProminent, .disabled(true)" : {
 
     },
     ".borderedProminent, .disabled(true): %lld" : {
 
     },
+    ".borderedProminent, .foregroundStyle(.red)" : {
+
+    },
     ".borderedProminent, .foregroundStyle(.red): %lld" : {
+
+    },
+    ".borderedProminent, .tint(.red)" : {
 
     },
     ".borderedProminent, .tint(.red): %lld" : {
@@ -83,6 +107,9 @@
 
     },
     ".composeModifier()" : {
+
+    },
+    ".destructive" : {
 
     },
     ".destructive: %lld" : {
@@ -116,6 +143,9 @@
 
     },
     ".foregroundStyle(.red)" : {
+
+    },
+    ".foregroundStyle(.red), .disabled(true)" : {
 
     },
     ".foregroundStyle(.red), .disabled(true): %lld" : {
@@ -173,6 +203,9 @@
 
     },
     ".lineLimit(1): This is some long text that should wrap when it exceeds the width of its frame" : {
+
+    },
+    ".material3SegmentedButton" : {
 
     },
     ".offset" : {
@@ -305,6 +338,9 @@
     ".resizable()\n.scaleToFit\n.frame(100, 100)" : {
 
     },
+    ".rotation3DEffects" : {
+
+    },
     ".rotationEffect" : {
 
     },
@@ -324,6 +360,9 @@
 
     },
     ".tint(.red)" : {
+
+    },
+    ".tint(.red), .disabled(true)" : {
 
     },
     ".tint(.red), .disabled(true): %lld" : {
@@ -360,6 +399,9 @@
 
     },
     "@Environment(\\.openURL)" : {
+
+    },
+    "#colorLiteral" : {
 
     },
     "%@" : {
@@ -594,6 +636,9 @@
     "B" : {
 
     },
+    "Back button is disabled. Tap to dismiss" : {
+
+    },
     "Background" : {
 
     },
@@ -678,6 +723,15 @@
     "Button .bordered" : {
 
     },
+    "Button 1" : {
+
+    },
+    "Button 2" : {
+
+    },
+    "Button 3" : {
+
+    },
     "Button in custom view" : {
 
     },
@@ -697,12 +751,6 @@
 
     },
     "CCCC" : {
-
-    },
-    "Change notPublished" : {
-
-    },
-    "Change text" : {
 
     },
     "Circle" : {
@@ -747,9 +795,6 @@
     "Content %lld" : {
 
     },
-    "Content above" : {
-
-    },
     "Content below" : {
 
     },
@@ -765,9 +810,6 @@
     "Custom" : {
 
     },
-    "Custom background" : {
-
-    },
     "Custom Cancel" : {
 
     },
@@ -778,6 +820,9 @@
 
     },
     "Custom placeholder" : {
+
+    },
+    "Custom styling" : {
 
     },
     "Cyan" : {
@@ -916,6 +961,9 @@
 
     },
     "Ellipse" : {
+
+    },
+    "Enter text" : {
 
     },
     "Enum AppStorage" : {
@@ -1067,6 +1115,12 @@
 
     },
     "ForEach section %lld" : {
+
+    },
+    "ForEach state" : {
+
+    },
+    "ForEach taps: %lld" : {
 
     },
     "ForEach:" : {
@@ -1242,6 +1296,9 @@
     "Indigo" : {
 
     },
+    "Infinite frame with padding" : {
+
+    },
     "Info" : {
 
     },
@@ -1252,6 +1309,9 @@
 
     },
     "inset(by: 10)" : {
+
+    },
+    "Interactive dismiss: %@" : {
 
     },
     "iOS 17 / macOS 14 required for Observation framework" : {
@@ -1511,9 +1571,6 @@
     "Notification: Warning" : {
 
     },
-    "notPublished: %@" : {
-
-    },
     "Observable" : {
 
     },
@@ -1576,6 +1633,9 @@
 
     },
     "Passkey" : {
+
+    },
+    "Password" : {
 
     },
     "Pasteboard count:" : {
@@ -1789,19 +1849,10 @@
     "Row 2.1" : {
 
     },
-    "Row 3" : {
-
-    },
     "Row 3a" : {
 
     },
     "Row 3b" : {
-
-    },
-    "Row 4" : {
-
-    },
-    "Row 5" : {
 
     },
     "Row: %lld" : {
@@ -1871,6 +1922,9 @@
 
     },
     "Section footer" : {
+
+    },
+    "Secure Field" : {
 
     },
     "Selection: Changed" : {
@@ -2028,6 +2082,12 @@
         }
       }
     },
+    "Showcase is a dual-platform app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs." : {
+
+    },
+    "Sign In" : {
+
+    },
     "Simulate a custom control with an accessibility label, value, and traits:" : {
 
     },
@@ -2144,6 +2204,9 @@
     "Subject & Message URL" : {
 
     },
+    "Submit" : {
+
+    },
     "Switch to Favorites" : {
 
     },
@@ -2253,10 +2316,10 @@
     "Text field" : {
 
     },
-    "Text with background" : {
+    "Text Field" : {
 
     },
-    "text: %@" : {
+    "Text with background" : {
 
     },
     "Text1" : {
@@ -2347,6 +2410,9 @@
 
     },
     "URLs:" : {
+
+    },
+    "Username" : {
 
     },
     "UUID" : {

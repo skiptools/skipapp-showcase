@@ -35,6 +35,7 @@ struct SheetPlayground: View {
             Button("Tap to dismiss") {
                 isSimpleSheetPresented = false
             }
+
         }
         .toolbar {
             PlaygroundSourceLink(file: "SheetPlayground.swift")
@@ -65,9 +66,12 @@ struct SheetPlayground: View {
             SheetContentView(dismissSheet: { isSheetPresented = false })
         }
         .sheet(isPresented: $isSimpleSheetPresented, onDismiss: { logger.info("onDismiss called") }) {
-            Button("Tap to dismiss") {
+            Button("Back button is disabled. Tap to dismiss") {
                 isSimpleSheetPresented = false
             }
+            #if os(Android)
+            .backDismissDisabled()
+            #endif
         }
         .sheet(item: $item, onDismiss: { logger.info("onDismiss called") }) { value in
             VStack(spacing: 16) {
@@ -87,9 +91,12 @@ struct SheetPlayground: View {
             SheetContentView(dismissSheet: { isFullScreenPresented = false })
         }
         .fullScreenCover(isPresented: $isSimpleFullScreenPresented) {
-            Button("Tap to dismiss") {
+            Button("Back button is disabled. Tap to dismiss") {
                 isSimpleFullScreenPresented = false
             }
+            #if os(Android)
+            .backDismissDisabled()
+            #endif
         }
         .toolbar {
             PlaygroundSourceLink(file: "SheetPlayground.swift")
@@ -102,6 +109,7 @@ struct SheetContentView: View {
     @State var isPresented = false
     @State var counter = 0
     @State var text = ""
+    @State var interactiveDismissDisabled = false
     @Environment(\.dismiss) var dismiss
     let dismissSheet: () -> Void
 
@@ -121,10 +129,14 @@ struct SheetContentView: View {
                 Button("Increment counter: \(counter)") {
                     counter += 1
                 }
+                Button("Interactive dismiss: \(interactiveDismissDisabled ? "disabled" : "enabled")") {
+                    interactiveDismissDisabled = !interactiveDismissDisabled
+                }
                 ForEach(0..<40) { index in
                     Text("Content row \(index)")
                 }
             }
+            .interactiveDismissDisabled(interactiveDismissDisabled)
             .navigationTitle("Sheet")
         }
         .sheet(isPresented: $isPresented) {
