@@ -25,6 +25,7 @@ jobs:
       # These optional secrets enable the iOS app to be signed
       APPLE_CERTIFICATES_P12: ${{ secrets.APPLE_CERTIFICATES_P12 }}
       APPLE_CERTIFICATES_P12_PASSWORD: ${{ secrets.APPLE_CERTIFICATES_P12_PASSWORD }}
+      APPLE_MOBILEPROVISION: ${{ secrets.APPLE_MOBILEPROVISION }}
       # This secret enables the iOS app to be uploaded to the App Store
       APPLE_APPSTORE_APIKEY: ${{ secrets.APPLE_APPSTORE_APIKEY }}
 
