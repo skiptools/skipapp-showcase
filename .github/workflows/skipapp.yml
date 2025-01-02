@@ -22,6 +22,8 @@ jobs:
       KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
       # This secret enables the Android app to be uploaded to the Play Store
       GOOGLE_PLAY_APIKEY: ${{ secrets.GOOGLE_PLAY_APIKEY }}
+      # These optional secrets enable the iOS app to be signed
+      APPLE_CERTIFICATES_P12: ${{ secrets.APPLE_CERTIFICATES_P12 }}
       # This secret enables the iOS app to be uploaded to the App Store
       APPLE_APPSTORE_APIKEY: ${{ secrets.APPLE_APPSTORE_APIKEY }}
 
