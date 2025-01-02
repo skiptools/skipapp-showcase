@@ -5,7 +5,8 @@
 default_platform(:ios)
 
 lane :assemble do |options|
-  get_certificates(api_key_path: "fastlane/apikey.json")
+  #get_certificates(api_key_path: "fastlane/apikey.json")
+  get_provisioning_profile(api_key_path: "fastlane/apikey.json")
   # only build the iOS side of the app
   ENV["SKIP_ZERO"] = "true"
   build_app(
