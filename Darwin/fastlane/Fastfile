@@ -12,7 +12,7 @@ lane :assemble do |options|
   build_app(
     sdk: "iphoneos",
     xcconfig: "fastlane/AppStore.xcconfig",
-    xcargs: "-allowProvisioningUpdates -skipPackagePluginValidation -skipMacroValidation",
+    xcargs: "-skipPackagePluginValidation -skipMacroValidation",
     derived_data_path: "../.build/Darwin/DerivedData",
     output_directory: "../.build/fastlane/Darwin",
     skip_archive: ENV["FASTLANE_SKIP_ARCHIVE"] == "YES",
