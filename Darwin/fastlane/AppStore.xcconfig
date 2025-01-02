@@ -1,9 +1,9 @@
 // Additional properties included by the Fastfile build_app
 
-CODE_SIGN_STYLE = Manual
+//CODE_SIGN_STYLE = Manual
 DEVELOPMENT_TEAM = 25KG25YA3R
 PRODUCT_BUNDLE_IDENTIFIER = org.appfair.app.Showcase
-PROVISIONING_PROFILE_SPECIFIER = Showcase
+//PROVISIONING_PROFILE_SPECIFIER = Showcase
 //PROVISIONING_PROFILE_SPECIFIER = match AppStore org.appfair.app.Showcase
 //PROVISIONING_PROFILE_SPECIFIER = 25KG25YA3R.org.appfair.app.Showcase
 
