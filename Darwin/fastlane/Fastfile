@@ -11,6 +11,13 @@ lane :assemble do |options|
     sdk: "iphoneos",
     xcconfig: "fastlane/AppStore.xcconfig",
     xcargs: "-skipPackagePluginValidation -skipMacroValidation",
+    #export_xcargs: "-allowProvisioningUpdates",
+    export_options: {
+        signingStyle: "manual",
+        provisioningProfiles: {
+            "org.appfair.app.Showcase" => "org.appfair.app.Showcase"
+        }
+    },
     derived_data_path: "../.build/Darwin/DerivedData",
     output_directory: "../.build/fastlane/Darwin",
     skip_archive: ENV["FASTLANE_SKIP_ARCHIVE"] == "YES",
@@ -21,7 +28,7 @@ end
 lane :release do |options|
   desc "Build and release app"
 
-  get_certificates(api_key_path: "fastlane/apikey.json")
+  #get_certificates(api_key_path: "fastlane/apikey.json")
   get_provisioning_profile(api_key_path: "fastlane/apikey.json")
 
   assemble

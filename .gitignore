@@ -3,6 +3,10 @@ xcuserdata/
 
 xcodebuild*.log
 
+default.profraw
+*.mobileprovision
+*.cer
+
 .gradle/
 .idea/
 .*.swp
