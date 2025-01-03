@@ -65,8 +65,6 @@ struct TabPlaygroundContentView: View {
 #if os(macOS)
 #else
 struct TabPageViewContentView: View {
-    @State var pageCount = 1
-
     var body: some View {
         ScrollView {
             VStack {
