@@ -22,7 +22,7 @@ lane :release do |options|
   desc "Build and release app"
 
   #get_certificates(api_key_path: "fastlane/apikey.json")
-  #get_provisioning_profile(api_key_path: "fastlane/apikey.json")
+  get_provisioning_profile(api_key_path: "fastlane/apikey.json")
 
   assemble
 
