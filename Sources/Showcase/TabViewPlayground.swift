@@ -13,12 +13,21 @@ struct TabViewPlayground: View {
             TabPlaygroundContentView(label: "Home", selectedTab: $selectedTab)
                 .tabItem { Label("Home", systemImage: "house.fill") }
                 .tag("Home")
-            TabPlaygroundContentView(label: "Favorites", selectedTab: $selectedTab)
-                .tabItem { Label("Favorites", systemImage: "heart.fill") }
-                .tag("Favorites")
-            TabPlaygroundContentView(label: "Info", selectedTab: $selectedTab)
-                .tabItem { Label("Info", systemImage: "info.circle.fill") }
-                .tag("Info")
+            TabView {
+                TabPlaygroundContentView(label: "Favorites (page 1)", selectedTab: $selectedTab)
+                    .padding(32)
+                    .background {
+                        Capsule()
+                            .fill(Color.pink.opacity(0.1))
+                    }
+                Text("More (page 2)")
+            }
+            .tabViewStyle(.page)
+            .tabItem { Label("Favorites", systemImage: "heart.fill") }
+            .tag("Favorites")
+            TabPageViewContentView()
+                .tabItem { Label("Paging", systemImage: "arrow.forward.square") }
+                .tag("Paging")
         }
         .tint(.red)
         .toolbar {
@@ -44,11 +53,76 @@ struct TabPlaygroundContentView: View {
                     selectedTab = "Favorites"
                 }
             }
-            if label != "Info" {
-                Button("Switch to Info") {
-                    selectedTab = "Info"
+            if label != "Paging" {
+                Button("Switch to Paging") {
+                    selectedTab = "Paging"
                 }
             }
         }
     }
 }
+
+#if os(macOS)
+#else
+struct TabPageViewContentView: View {
+    var body: some View {
+        ScrollView {
+            VStack {
+                TabView {
+                    Rectangle()
+                        .fill(.gray)
+                        .overlay {
+                            Text("This is a horizontally swipable paging TabView")
+                                .padding()
+                        }
+                    Rectangle()
+                        .fill(.blue)
+                        .overlay {
+                            Text("Page 2")
+                                .padding()
+                        }
+                    Rectangle()
+                        .fill(.green)
+                        .overlay {
+                            Text("I heard you like TabViews so we put a TabView inside your TabView inside your TabView")
+                                .padding()
+                        }
+                }
+                .frame(height: 128)
+                TabView {
+                    Image(systemName: "heart")
+                        .resizable()
+                        .background(.teal)
+                    Image(systemName: "heart.fill")
+                        .resizable()
+                        .background(.red)
+                }
+                .aspectRatio(2, contentMode: .fill)
+                TabView {
+                    Rectangle()
+                        .fill(.mint)
+                        .overlay {
+                            Text("Single page with indicator showing")
+                        }
+                }
+                .tabViewStyle(.page(indexDisplayMode: .always))
+                .frame(height: 128)
+                TabView {
+                    Rectangle()
+                        .fill(.green)
+                        .overlay {
+                            Text("Multi page with indicator hidden")
+                        }
+                    Text("Page 2")
+                        .background(.red)
+                        .padding()
+                }
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                .frame(height: 128)
+            }
+            .tabViewStyle(.page)
+            .foregroundStyle(Color.white)
+        }
+    }
+}
+#endif
