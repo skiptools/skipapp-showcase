@@ -3,7 +3,7 @@
 //CODE_SIGN_STYLE = Manual
 DEVELOPMENT_TEAM = 25KG25YA3R
 
-//CODE_SIGN_IDENTITY = iPhone Distribution: The App Fair Project Inc (25KG25YA3R)
+CODE_SIGN_IDENTITY = iPhone Distribution: The App Fair Project Inc (25KG25YA3R)
 //PRODUCT_BUNDLE_IDENTIFIER = org.appfair.app.Showcase
 //PROVISIONING_PROFILE_SPECIFIER = org.appfair.app.Showcase
 
