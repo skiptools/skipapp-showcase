@@ -13,8 +13,8 @@ lane :assemble do |options|
     xcargs: "-skipPackagePluginValidation -skipMacroValidation",
     #export_xcargs: "-allowProvisioningUpdates",
     export_options: {
-        "signingStyle": "manual",
-        "provisioningProfiles": {
+        signingStyle: "manual",
+        provisioningProfiles: {
             "org.appfair.app.Showcase" => "org.appfair.app.Showcase"
         }
     },
