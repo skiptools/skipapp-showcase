@@ -5,8 +5,6 @@
 default_platform(:ios)
 
 lane :assemble do |options|
-  get_certificates(api_key_path: "fastlane/apikey.json")
-  get_provisioning_profile(api_key_path: "fastlane/apikey.json")
   # only build the iOS side of the app
   ENV["SKIP_ZERO"] = "true"
   build_app(
@@ -23,9 +21,11 @@ end
 lane :release do |options|
   desc "Build and release app"
 
+  #get_certificates(api_key_path: "fastlane/apikey.json")
+  #get_provisioning_profile(api_key_path: "fastlane/apikey.json")
+
   assemble
 
-  #app_store_connect_api_key(path: "fastlane/apikey.json")
   upload_to_app_store(
     api_key_path: "fastlane/apikey.json",
     app_rating_config_path: "fastlane/metadata/rating.json"
