@@ -1,3 +1,11 @@
+## 1.8.1
+
+Released 2025-01-09
+
+  - Merge pull request #11 from skiptools/pagestyle
+  - Remove now-unused @State var
+  - Add paging tab view style to playground
+
 ## 1.8.0
 
 Released 2025-01-09
