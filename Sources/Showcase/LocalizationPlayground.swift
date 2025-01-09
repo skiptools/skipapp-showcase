@@ -36,8 +36,10 @@ struct LocalizationPreview: View {
 
     var body: some View {
         VStack {
-            Text("Welcome", bundle: .module)
+            Text("Welcome")
                 .font(.largeTitle)
+            Text(LocalizedStringResource("Welcome"))
+                .font(.title)
             Text(verbatim: currentLocale.localizedString(forLanguageCode: currentLocale.language.languageCode?.identifier ?? currentLocale.identifier) ?? "")
                 .font(.title)
             Text(verbatim: currentLocale.localizedString(forRegionCode: currentLocale.region?.identifier ?? currentLocale.identifier) ?? "")

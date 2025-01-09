@@ -12,6 +12,7 @@
 		49231BAD2AC5BCEF00F98ADF /* ShowcaseApp in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		499CD43B2AC5B799001AE8D8 /* ShowcaseAppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */; };
 		499CD4402AC5B799001AE8D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C2F2A52156300F06D93 /* Assets.xcassets */; };
+		49DAAD422D2F51F60086DB92 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 49DAAD412D2F51F60086DB92 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,7 +38,7 @@
 		496EB72F2A6AE4DE00C1253B /* Showcase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Showcase.xcconfig; sourceTree = "<group>"; };
 		496EB72F2A6AE4DE00C1253C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		499AB9082B0581F4005E8330 /* plugins */ = {isa = PBXFileReference; lastKnownFileType = folder; name = plugins; path = ../../../SourcePackages/plugins; sourceTree = BUILT_PRODUCTS_DIR; };
-		49A75E792CBDB6910005D837 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = ../Sources/Showcase/Resources/Localizable.xcstrings; sourceTree = "<group>"; };
+		49DAAD412D2F51F60086DB92 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = ../Sources/Showcase/Resources/Localizable.xcstrings; sourceTree = "<group>"; };
 		49F90C2B2A52156200F06D93 /* ShowcaseAppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowcaseAppMain.swift; path = Sources/ShowcaseAppMain.swift; sourceTree = SOURCE_ROOT; };
 		49F90C2F2A52156300F06D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49F90C312A52156300F06D93 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.plist; sourceTree = "<group>"; };
@@ -74,7 +75,7 @@
 		49F90C1F2A52156200F06D93 = {
 			isa = PBXGroup;
 			children = (
-				49A75E792CBDB6910005D837 /* Localizable.xcstrings */,
+				49DAAD412D2F51F60086DB92 /* Localizable.xcstrings */,
 				496EB72F2A6AE4DE00C1253C /* README.md */,
 				496EB72F2A6AE4DE00C1253A /* Skip.env */,
 				496EB72F2A6AE4DE00C1253B /* Showcase.xcconfig */,
@@ -158,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				499CD4402AC5B799001AE8D8 /* Assets.xcassets in Resources */,
+				49DAAD422D2F51F60086DB92 /* Localizable.xcstrings in Resources */,
 				490010192BACD83F0000DE33 /* protest_guerrilla.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

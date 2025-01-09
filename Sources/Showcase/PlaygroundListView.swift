@@ -6,7 +6,7 @@
 import SwiftUI
 
 /// All Showcase playgrounds.
-enum PlaygroundType: CaseIterable {
+enum PlaygroundType: CaseIterable, View {
     case accessibility
     case alert
     case animation
@@ -36,6 +36,7 @@ enum PlaygroundType: CaseIterable {
     case link
     case list
     case localization
+    case map
     case menu
     case modifier
     case navigationStack
@@ -74,140 +75,281 @@ enum PlaygroundType: CaseIterable {
     case videoPlayer
     case zIndex
 
-    var title: String {
+    var title: LocalizedStringResource {
         switch self {
         case .accessibility:
-            return "Accessibility"
+            return LocalizedStringResource("Accessibility")
         case .alert:
-            return "Alert"
+            return LocalizedStringResource("Alert")
         case .animation:
-            return "Animation"
+            return LocalizedStringResource("Animation")
         case .audio:
-            return "Audio"
+            return LocalizedStringResource("Audio")
         case .background:
-            return "Background"
+            return LocalizedStringResource("Background")
         case .border:
-            return "Border"
+            return LocalizedStringResource("Border")
         case .button:
-            return "Button"
+            return LocalizedStringResource("Button")
         case .color:
-            return "Color"
+            return LocalizedStringResource("Color")
         case .colorScheme:
-            return "ColorScheme"
+            return LocalizedStringResource("ColorScheme")
         case .compose:
-            return "Compose"
+            return LocalizedStringResource("Compose")
         case .confirmationDialog:
-            return "ConfirmationDialog"
+            return LocalizedStringResource("ConfirmationDialog")
         case .datePicker:
-            return "DatePicker"
+            return LocalizedStringResource("DatePicker")
         case .disclosureGroup:
-            return "DisclosureGroup"
+            return LocalizedStringResource("DisclosureGroup")
         case .divider:
-            return "Divider"
+            return LocalizedStringResource("Divider")
         case .form:
-            return "Form"
+            return LocalizedStringResource("Form")
         case .frame:
-            return "Frame"
+            return LocalizedStringResource("Frame")
         case .geometryReader:
-            return "GeometryReader"
+            return LocalizedStringResource("GeometryReader")
         case .gesture:
-            return "Gestures"
+            return LocalizedStringResource("Gestures")
         case .gradient:
-            return "Gradients"
+            return LocalizedStringResource("Gradients")
         case .graphics:
-            return "Graphics"
+            return LocalizedStringResource("Graphics")
         case .grid:
-            return "Grids"
+            return LocalizedStringResource("Grids")
         case .hapticFeedback:
-            return "Haptic Feedback"
+            return LocalizedStringResource("Haptic Feedback")
         case .icon:
-            return "Icons"
+            return LocalizedStringResource("Icons")
         case .image:
-            return "Image"
+            return LocalizedStringResource("Image")
         case .keyboard:
-            return "Keyboard"
+            return LocalizedStringResource("Keyboard")
         case .link:
-            return "Link"
+            return LocalizedStringResource("Link")
         case .label:
-            return "Label"
+            return LocalizedStringResource("Label")
         case .list:
-            return "List"
+            return LocalizedStringResource("List")
         case .localization:
-            return "Localization"
+            return LocalizedStringResource("Localization")
+        case .map:
+            return LocalizedStringResource("Map")
         case .menu:
-            return "Menu"
+            return LocalizedStringResource("Menu")
         case .modifier:
-            return "Modifiers"
+            return LocalizedStringResource("Modifiers")
         case .navigationStack:
-            return "NavigationStack"
+            return LocalizedStringResource("NavigationStack")
         case .observable:
-            return "Observable"
+            return LocalizedStringResource("Observable")
         case .offsetPosition:
-            return "Offset/Position"
+            return LocalizedStringResource("Offset/Position")
         case .onSubmit:
-            return "OnSubmit"
+            return LocalizedStringResource("OnSubmit")
         case .overlay:
-            return "Overlay"
+            return LocalizedStringResource("Overlay")
         case .pasteboard:
-            return "Pasteboard"
+            return LocalizedStringResource("Pasteboard")
         case .picker:
-            return "Picker"
+            return LocalizedStringResource("Picker")
         case .progressView:
-            return "ProgressView"
+            return LocalizedStringResource("ProgressView")
         case .redacted:
-            return "Redacted"
+            return LocalizedStringResource("Redacted")
         case .safeArea:
-            return "SafeArea"
+            return LocalizedStringResource("SafeArea")
         case .scenePhase:
-            return "ScenePhase"
+            return LocalizedStringResource("ScenePhase")
         case .scrollView:
-            return "ScrollView"
+            return LocalizedStringResource("ScrollView")
         case .searchable:
-            return "Searchable"
+            return LocalizedStringResource("Searchable")
         case .secureField:
-            return "SecureField"
+            return LocalizedStringResource("SecureField")
         case .shadow:
-            return "Shadow"
+            return LocalizedStringResource("Shadow")
         case .shape:
-            return "Shape"
+            return LocalizedStringResource("Shape")
         case .shareLink:
-            return "ShareLink"
+            return LocalizedStringResource("ShareLink")
         case .sheet:
-            return "Sheet"
+            return LocalizedStringResource("Sheet")
         case .slider:
-            return "Slider"
+            return LocalizedStringResource("Slider")
         case .spacer:
-            return "Spacer"
+            return LocalizedStringResource("Spacer")
         case .stack:
-            return "Stacks"
+            return LocalizedStringResource("Stacks")
         case .state:
-            return "State"
+            return LocalizedStringResource("State")
         case .storage:
-            return "Storage"
+            return LocalizedStringResource("Storage")
         case .symbol:
-            return "Symbol"
+            return LocalizedStringResource("Symbol")
         case .table:
-            return "Table"
+            return LocalizedStringResource("Table")
         case .tabView:
-            return "TabView"
+            return LocalizedStringResource("TabView")
         case .text:
-            return "Text"
+            return LocalizedStringResource("Text")
         case .textEditor:
-            return "TextEditor"
+            return LocalizedStringResource("TextEditor")
         case .textField:
-            return "TextField"
+            return LocalizedStringResource("TextField")
         case .timer:
-            return "Timer"
+            return LocalizedStringResource("Timer")
         case .toggle:
-            return "Toggle"
+            return LocalizedStringResource("Toggle")
         case .toolbar:
-            return "Toolbar"
+            return LocalizedStringResource("Toolbar")
         case .transition:
-            return "Transition"
+            return LocalizedStringResource("Transition")
         case .videoPlayer:
-            return "Video Player"
+            return LocalizedStringResource("Video Player")
         case .zIndex:
-            return "ZIndex"
+            return LocalizedStringResource("ZIndex")
+        }
+    }
+
+    var body: some View {
+        switch self {
+        case .accessibility:
+            AccessibilityPlayground()
+        case .alert:
+            AlertPlayground()
+        case .animation:
+            AnimationPlayground()
+        case .audio:
+            AudioPlayground()
+        case .background:
+            BackgroundPlayground()
+        case .border:
+            BorderPlayground()
+        case .button:
+            ButtonPlayground()
+        case .color:
+            ColorPlayground()
+        case .colorScheme:
+            ColorSchemePlayground()
+        case .compose:
+            ComposePlayground()
+        case .confirmationDialog:
+            ConfirmationDialogPlayground()
+        case .datePicker:
+            DatePickerPlayground()
+        case .disclosureGroup:
+            DisclosureGroupPlayground()
+        case .divider:
+            DividerPlayground()
+        case .form:
+            FormPlayground()
+        case .frame:
+            FramePlayground()
+        case .geometryReader:
+            GeometryReaderPlayground()
+        case .gesture:
+            GesturePlayground()
+        case .gradient:
+            GradientPlayground()
+        case .graphics:
+            GraphicsPlayground()
+        case .grid:
+            GridPlayground()
+        case .hapticFeedback:
+            HapticFeedbackPlayground()
+        case .icon:
+            IconPlayground()
+        case .image:
+            ImagePlayground()
+        case .keyboard:
+            KeyboardPlayground()
+        case .label:
+            LabelPlayground()
+        case .link:
+            LinkPlayground()
+        case .list:
+            ListPlayground()
+        case .localization:
+            LocalizationPlayground()
+        case .map:
+            MapPlayground()
+        case .menu:
+            MenuPlayground()
+        case .modifier:
+            ModifierPlayground()
+        case .navigationStack:
+            NavigationStackPlayground()
+        case .observable:
+            ObservablePlayground()
+        case .offsetPosition:
+            OffsetPositionPlayground()
+        case .onSubmit:
+            OnSubmitPlayground()
+        case .overlay:
+            OverlayPlayground()
+        case .pasteboard:
+            PasteboardPlayground()
+        case .picker:
+            PickerPlayground()
+        case .progressView:
+            ProgressViewPlayground()
+        case .redacted:
+            RedactedPlayground()
+        case .safeArea:
+            SafeAreaPlayground()
+        case .scenePhase:
+            ScenePhasePlayground()
+        case .scrollView:
+            ScrollViewPlayground()
+        case .searchable:
+            SearchablePlayground()
+        case .secureField:
+            SecureFieldPlayground()
+        case .shadow:
+            ShadowPlayground()
+        case .shape:
+            ShapePlayground()
+        case .shareLink:
+            ShareLinkPlayground()
+        case .sheet:
+            SheetPlayground()
+        case .slider:
+            SliderPlayground()
+        case .spacer:
+            SpacerPlayground()
+        case .stack:
+            StackPlayground()
+        case .state:
+            StatePlayground()
+        case .storage:
+            StoragePlayground()
+        case .symbol:
+            SymbolPlayground()
+        case .table:
+            TablePlayground()
+        case .tabView:
+            TabViewPlayground()
+        case .text:
+            TextPlayground()
+        case .textEditor:
+            TextEditorPlayground()
+        case .textField:
+            TextFieldPlayground()
+        case .timer:
+            TimerPlayground()
+        case .toggle:
+            TogglePlayground()
+        case .toolbar:
+            ToolbarPlayground()
+        case .transition:
+            TransitionPlayground()
+        case .videoPlayer:
+            VideoPlayerPlayground()
+        case .zIndex:
+            ZIndexPlayground()
         }
     }
 }
@@ -222,210 +364,11 @@ public struct PlaygroundNavigationView: View {
     public var body: some View {
         NavigationStack {
             List(matchingPlaygroundTypes(), id: \.self) { playground in
-                NavigationLink(playground.title, value: playground)
+                NavigationLink(value: playground, label: { Text(playground.title) })
             }
             .navigationTitle(Text("Showcase"))
             .navigationDestination(for: PlaygroundType.self) {
-                switch $0 {
-                case .accessibility:
-                    AccessibilityPlayground()
-                        .navigationTitle($0.title)
-                case .alert:
-                    AlertPlayground()
-                        .navigationTitle($0.title)
-                case .animation:
-                    AnimationPlayground()
-                        .navigationTitle($0.title)
-                case .audio:
-                    AudioPlayground()
-                        .navigationTitle($0.title)
-                case .background:
-                    BackgroundPlayground()
-                        .navigationTitle($0.title)
-                case .border:
-                    BorderPlayground()
-                        .navigationTitle($0.title)
-                case .button:
-                    ButtonPlayground()
-                        .navigationTitle($0.title)
-                case .color:
-                    ColorPlayground()
-                        .navigationTitle($0.title)
-                case .colorScheme:
-                    ColorSchemePlayground()
-                        .navigationTitle($0.title)
-                case .compose:
-                    ComposePlayground()
-                        .navigationTitle($0.title)
-                case .confirmationDialog:
-                    ConfirmationDialogPlayground()
-                        .navigationTitle($0.title)
-                case .datePicker:
-                    DatePickerPlayground()
-                        .navigationTitle($0.title)
-                case .disclosureGroup:
-                    DisclosureGroupPlayground()
-                        .navigationTitle($0.title)
-                case .divider:
-                    DividerPlayground()
-                        .navigationTitle($0.title)
-                case .form:
-                    FormPlayground()
-                        .navigationTitle($0.title)
-                case .frame:
-                    FramePlayground()
-                        .navigationTitle($0.title)
-                case .geometryReader:
-                    GeometryReaderPlayground()
-                        .navigationTitle($0.title)
-                case .gesture:
-                    GesturePlayground()
-                        .navigationTitle($0.title)
-                case .gradient:
-                    GradientPlayground()
-                        .navigationTitle($0.title)
-                case .graphics:
-                    GraphicsPlayground()
-                        .navigationTitle($0.title)
-                case .grid:
-                    GridPlayground()
-                        .navigationTitle($0.title)
-                case .hapticFeedback:
-                    HapticFeedbackPlayground()
-                        .navigationTitle($0.title)
-                case .icon:
-                    IconPlayground()
-                        .navigationTitle($0.title)
-                case .image:
-                    ImagePlayground()
-                        .navigationTitle($0.title)
-                case .keyboard:
-                    KeyboardPlayground()
-                        .navigationTitle($0.title)
-                case .label:
-                    LabelPlayground()
-                        .navigationTitle($0.title)
-                case .link:
-                    LinkPlayground()
-                        .navigationTitle($0.title)
-                case .list:
-                    ListPlayground()
-                        .navigationTitle($0.title)
-                case .localization:
-                    LocalizationPlayground()
-                        .navigationTitle($0.title)
-                case .menu:
-                    MenuPlayground()
-                        .navigationTitle($0.title)
-                case .modifier:
-                    ModifierPlayground()
-                        .navigationTitle($0.title)
-                case .navigationStack:
-                    NavigationStackPlayground()
-                        .navigationTitle($0.title)
-                case .observable:
-                    ObservablePlayground()
-                        .navigationTitle($0.title)
-                case .offsetPosition:
-                    OffsetPositionPlayground()
-                        .navigationTitle($0.title)
-                case .onSubmit:
-                    OnSubmitPlayground()
-                        .navigationTitle($0.title)
-                case .overlay:
-                    OverlayPlayground()
-                        .navigationTitle($0.title)
-                case .pasteboard:
-                    PasteboardPlayground()
-                        .navigationTitle($0.title)
-                case .picker:
-                    PickerPlayground()
-                        .navigationTitle($0.title)
-                case .progressView:
-                    ProgressViewPlayground()
-                        .navigationTitle($0.title)
-                case .redacted:
-                    RedactedPlayground()
-                        .navigationTitle($0.title)
-                case .safeArea:
-                    SafeAreaPlayground()
-                        .navigationTitle($0.title)
-                case .scenePhase:
-                    ScenePhasePlayground()
-                        .navigationTitle($0.title)
-                case .scrollView:
-                    ScrollViewPlayground()
-                        .navigationTitle($0.title)
-                case .searchable:
-                    SearchablePlayground()
-                        .navigationTitle($0.title)
-                case .secureField:
-                    SecureFieldPlayground()
-                        .navigationTitle($0.title)
-                case .shadow:
-                    ShadowPlayground()
-                        .navigationTitle($0.title)
-                case .shape:
-                    ShapePlayground()
-                        .navigationTitle($0.title)
-                case .shareLink:
-                    ShareLinkPlayground()
-                        .navigationTitle($0.title)
-                case .sheet:
-                    SheetPlayground()
-                        .navigationTitle($0.title)
-                case .slider:
-                    SliderPlayground()
-                        .navigationTitle($0.title)
-                case .spacer:
-                    SpacerPlayground()
-                        .navigationTitle($0.title)
-                case .stack:
-                    StackPlayground()
-                        .navigationTitle($0.title)
-                case .state:
-                    StatePlayground()
-                        .navigationTitle($0.title)
-                case .storage:
-                    StoragePlayground()
-                        .navigationTitle($0.title)
-                case .symbol:
-                    SymbolPlayground()
-                        .navigationTitle($0.title)
-                case .table:
-                    TablePlayground()
-                        .navigationTitle($0.title)
-                case .tabView:
-                    TabViewPlayground()
-                        .navigationTitle($0.title)
-                case .text:
-                    TextPlayground()
-                        .navigationTitle($0.title)
-                case .textEditor:
-                    TextEditorPlayground()
-                        .navigationTitle($0.title)
-                case .textField:
-                    TextFieldPlayground()
-                        .navigationTitle($0.title)
-                case .timer:
-                    TimerPlayground()
-                        .navigationTitle($0.title)
-                case .toggle:
-                    TogglePlayground()
-                        .navigationTitle($0.title)
-                case .toolbar:
-                    ToolbarPlayground()
-                        .navigationTitle($0.title)
-                case .transition:
-                    TransitionPlayground()
-                        .navigationTitle($0.title)
-                case .videoPlayer:
-                    VideoPlayerPlayground()
-                        .navigationTitle($0.title)
-                case .zIndex:
-                    ZIndexPlayground()
-                        .navigationTitle($0.title)
-                }
+                $0.navigationTitle(Text($0.title))
             }
         }
         .searchable(text: $searchText)
@@ -433,7 +376,7 @@ public struct PlaygroundNavigationView: View {
 
     private func matchingPlaygroundTypes() -> [PlaygroundType] {
         return PlaygroundType.allCases.filter {
-            let words = $0.title.split(separator: " ")
+            let words = String(localized: $0.title).split(separator: " ")
             let prefix = searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
             return words.contains { $0.lowercased().starts(with: prefix) }
         }
