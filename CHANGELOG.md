@@ -1,3 +1,9 @@
+## 1.8.0
+
+Released 2025-01-09
+
+  - Add VideoPlayer looping sample, MapPlayground sample, and more localization examples (#12)
+
 ## 1.7.1
 
 Released 2024-10-16
