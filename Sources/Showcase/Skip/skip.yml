@@ -4,3 +4,7 @@
 # settings are all specified here. See https://skip.tools/docs
 build:
   contents:
+    - block: 'dependencies'
+      contents:
+        # dependency used by MapPlayground for custom compose integration
+        - 'implementation("com.google.maps.android:maps-compose:6.4.1")'
