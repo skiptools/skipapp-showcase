@@ -395,6 +395,18 @@
     ".transition(.slide)" : {
 
     },
+    "\"CustomRed\"" : {
+
+    },
+    "\"CustomRed\", bundle: .module" : {
+
+    },
+    "\"SystemBlue\"" : {
+
+    },
+    "\"SystemBlue\", bundle: .module" : {
+
+    },
     "(###) ###-####" : {
 
     },
@@ -1661,7 +1673,10 @@
     "minWidth: 300, minHeight: 100\n  minHeight: 100, maxHeight: .infinity" : {
 
     },
-    "Modifiers" : {
+    "More (page 2)" : {
+
+    },
+    "Multi page with indicator hidden" : {
 
     },
     "More (page 2)" : {

@@ -7,6 +7,9 @@ import SwiftUI
 
 /// Information and links for Skip and the Showcase app.
 struct AboutView: View {
+    init() {
+        #warning("Some warning here")
+    }
     var body: some View {
         VStack {
             LogoView()
