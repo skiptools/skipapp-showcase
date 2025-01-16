@@ -579,6 +579,17 @@
         }
       }
     },
+    "about_label" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
     "Accent color" : {
 
     },
@@ -1272,6 +1283,9 @@
     "HSV" : {
 
     },
+    "I heard you like TabViews so we put a TabView inside your TabView inside your TabView" : {
+
+    },
     "Icons" : {
 
     },
@@ -1342,9 +1356,6 @@
 
     },
     "Infinite frame with padding" : {
-
-    },
-    "Info" : {
 
     },
     "Initializing a localized key **does** format as markdown:" : {
@@ -1540,6 +1551,12 @@
     "Modifiers" : {
 
     },
+    "More (page 2)" : {
+
+    },
+    "Multi page with indicator hidden" : {
+
+    },
     "multilineTextAlignment: This is some long text that should wrap when it exceeds the width of its frame" : {
 
     },
@@ -1695,7 +1712,13 @@
     "Overridden to title font" : {
 
     },
+    "Page 2" : {
+
+    },
     "Pager" : {
+
+    },
+    "Paging" : {
 
     },
     "Passing a string var does not format as markdown:" : {
@@ -2030,7 +2053,80 @@
 
     },
     "Settings" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurações"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inställningar"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Налаштування"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        }
+      }
     },
     "Shadow" : {
 
@@ -2190,13 +2286,23 @@
     "Showcase Icon" : {
 
     },
-    "Showcase is a dual-platform app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs." : {
-
+    "showcase_blurb" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Showcase is a _dual-platform_ app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs."
+          }
+        }
+      }
     },
     "Sign In" : {
 
     },
     "Simulate a custom control with an accessibility label, value, and traits:" : {
+
+    },
+    "Single page with indicator showing" : {
 
     },
     "Size" : {
@@ -2327,7 +2433,7 @@
     "Switch to Home" : {
 
     },
-    "Switch to Info" : {
+    "Switch to Paging" : {
 
     },
     "Symbol" : {
@@ -2467,6 +2573,9 @@
 
     },
     "Third: %lld" : {
+
+    },
+    "This is a horizontally swipable paging TabView" : {
 
     },
     "This is text that uses a function that returns EmptyModifier()" : {
