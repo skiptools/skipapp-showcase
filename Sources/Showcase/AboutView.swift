@@ -13,7 +13,7 @@ struct AboutView: View {
                 .padding()
 
             VStack(spacing: 0) {
-                Text("showcase_blurb", bundle: .module)
+                Text("Showcase is a dual-platform app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs.")
                     .padding()
                 LinkDivider()
                 Link(destination: URL(string: "https://skip.tools")!) {
