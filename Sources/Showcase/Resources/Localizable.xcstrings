@@ -2286,7 +2286,11 @@
     "Showcase Icon" : {
 
     },
+    "Showcase is a dual-platform app written in Swift and SwiftUI. It demonstrates and exercises Skip's support for various SwiftUI constructs." : {
+
+    },
     "showcase_blurb" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
