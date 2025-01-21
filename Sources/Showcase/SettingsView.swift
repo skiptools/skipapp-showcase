@@ -11,7 +11,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Appearance", selection: $appearance) {
+                Picker("appearance_key", selection: $appearance) {
                     Text("System").tag("")
                     Text("Light").tag("light")
                     Text("Dark").tag("dark")
