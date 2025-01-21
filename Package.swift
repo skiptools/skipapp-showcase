@@ -18,8 +18,8 @@ let package = Package(
         .library(name: "ShowcaseApp", type: .dynamic, targets: ["Showcase"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.2.18"),
-        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.17.2"),
+        .package(url: "https://source.skip.tools/skip.git", from: "1.2.22"),
+        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.19.0"),
         .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0")
     ],
     targets: [

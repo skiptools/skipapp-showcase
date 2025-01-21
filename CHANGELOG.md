@@ -1,3 +1,9 @@
+## 1.8.3
+
+Released 2025-01-21
+
+  - Update translations
+
 ## 1.8.1
 
 Released 2025-01-09
