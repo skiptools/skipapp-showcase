@@ -1150,6 +1150,9 @@
     "Favorites" : {
 
     },
+    "Feedback Type" : {
+
+    },
     "Fill" : {
 
     },
@@ -1337,6 +1340,12 @@
     "Haptic Feedback" : {
 
     },
+    "Haptic Feedback Unavailable in this OS version" : {
+
+    },
+    "Haptic Feedback: %@" : {
+
+    },
     "Has strings:" : {
 
     },
@@ -1421,30 +1430,6 @@
 
     },
     "Image from Data" : {
-
-    },
-    "Impact Intensity: 20%" : {
-
-    },
-    "Impact Intensity: 40%" : {
-
-    },
-    "Impact Intensity: 60%" : {
-
-    },
-    "Impact Intensity: 80%" : {
-
-    },
-    "Impact Intensity: 100%" : {
-
-    },
-    "Impact: Heavy" : {
-
-    },
-    "Impact: Medium" : {
-
-    },
-    "Impact: Soft" : {
 
     },
     "in: 0...2 step 0.5" : {
@@ -1768,15 +1753,6 @@
 
     },
     "Note: tint should not affect Label appearance" : {
-
-    },
-    "Notification: Error" : {
-
-    },
-    "Notification: Success" : {
-
-    },
-    "Notification: Warning" : {
 
     },
     "Observable" : {
@@ -2177,9 +2153,6 @@
     "SecureField" : {
 
     },
-    "Selection: Changed" : {
-
-    },
     "Settings" : {
       "localizations" : {
         "de" : {
@@ -2578,6 +2551,9 @@
 
     },
     "System" : {
+
+    },
+    "System Information" : {
 
     },
     "systemName" : {
