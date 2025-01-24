@@ -49,9 +49,12 @@ SWIFT_VERSION = 5.0
 CODE_SIGNING_REQUIRED = NO
 CODE_SIGN_STYLE = Automatic
 CODE_SIGN_ENTITLEMENTS = Entitlements.plist
-//CODE_SIGNING_IDENTITY = -
-//DEVELOPMENT_TEAM = 
 
 PRODUCT_BUNDLE_IDENTIFIER[config=Release] = org.appfair.app.Showcase
+
+DEVELOPMENT_TEAM[config=Release] = 25KG25YA3R
+CODE_SIGN_IDENTITY[config=Release] = iPhone Distribution: The App Fair Project Inc (25KG25YA3R)
+CODE_SIGN_STYLE[config=Release] = Manual
+PROVISIONING_PROFILE_SPECIFIER[config=Release] = org.appfair.app.Showcase
 
 
