@@ -1,3 +1,11 @@
+## 1.8.5
+
+Released 2025-01-24
+
+  - Merge pull request #14 from skiptools/update-haptics
+  - Add System Information to Settings
+  - Update the HapticsPlayground to use View.sensoryFeedback
+
 ## 1.8.3
 
 Released 2025-01-21
