@@ -16,6 +16,20 @@ struct SettingsView: View {
                     Text("Light").tag("light")
                     Text("Dark").tag("dark")
                 }
+                NavigationLink("System Information") {
+                    let env = ProcessInfo.processInfo.environment
+                    List {
+                        ForEach(env.keys.sorted(), id: \.self) { key in
+                            HStack {
+                                Text(key)
+                                Text(env[key] ?? "")
+                                    .frame(alignment: .trailing)
+                            }
+                            .font(Font.caption.monospaced())
+                        }
+                    }
+                    .navigationTitle("System Information")
+                }
                 HStack {
                     #if SKIP
                     ComposeView { ctx in // Mix in Compose code!
@@ -31,7 +45,6 @@ struct SettingsView: View {
                     }
                     Text("Powered by [Skip](https://skip.tools)")
                 }
-                .foregroundStyle(.gray)
             }
             .navigationTitle("Settings")
         }
