@@ -259,7 +259,11 @@ enum PlaygroundType: CaseIterable, View {
         case .grid:
             GridPlayground()
         case .hapticFeedback:
-            HapticFeedbackPlayground()
+            if #available(iOS 17.0, *) {
+                HapticFeedbackPlayground()
+            } else {
+                Text("Haptic Feedback Unavailable in this OS version")
+            }
         case .icon:
             IconPlayground()
         case .image:

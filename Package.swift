@@ -13,7 +13,7 @@ let skipstone = !zero ? [Target.PluginUsage.plugin(name: "skipstone", package: "
 let package = Package(
     name: "skipapp-showcase",
     defaultLocalization: "en",
-    platforms: [.iOS(.v16), .macOS(.v13), .tvOS(.v16), .watchOS(.v9), .macCatalyst(.v16)],
+    platforms: [.iOS(.v16), .macOS(.v14), .tvOS(.v16), .watchOS(.v9), .macCatalyst(.v16)],
     products: [
         .library(name: "ShowcaseApp", type: .dynamic, targets: ["Showcase"]),
     ],
