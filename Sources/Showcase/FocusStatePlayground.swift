@@ -1,4 +1,4 @@
-// Copyright 2023 Skip
+// Copyright 2025 Skip
 //
 // This is free software: you can redistribute and/or modify it
 // under the terms of the GNU Lesser General Public License 3.0

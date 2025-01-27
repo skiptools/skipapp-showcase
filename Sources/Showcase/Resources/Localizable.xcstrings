@@ -979,6 +979,9 @@
     "Copy" : {
 
     },
+    "Current Page: %lld" : {
+
+    },
     "Custom" : {
 
     },
@@ -1685,12 +1688,6 @@
     "Multi page with indicator hidden" : {
 
     },
-    "More (page 2)" : {
-
-    },
-    "Multi page with indicator hidden" : {
-
-    },
     "multilineTextAlignment: This is some long text that should wrap when it exceeds the width of its frame" : {
 
     },
@@ -2130,6 +2127,9 @@
 
     },
     "Scroll to 29" : {
+
+    },
+    "Scroll to Page 2" : {
 
     },
     "Scroll View Stacks" : {
