@@ -850,6 +850,9 @@
     "Bool AppStorage" : {
 
     },
+    "Boolean: %@" : {
+
+    },
     "Border" : {
 
     },
@@ -1141,6 +1144,9 @@
     "Enum AppStorage" : {
 
     },
+    "Enum: %@" : {
+
+    },
     "EnvironmentObject" : {
 
     },
@@ -1190,6 +1196,9 @@
 
     },
     "Fixed width" : {
+
+    },
+    "FocusState" : {
 
     },
     "Font.body" : {
@@ -1746,6 +1755,9 @@
     "Nil Data" : {
 
     },
+    "Nil Enum" : {
+
+    },
     "NO" : {
 
     },
@@ -2166,6 +2178,18 @@
 
     },
     "SecureField" : {
+
+    },
+    "Selection: Changed" : {
+
+    },
+    "Set focus to A via Boolean" : {
+
+    },
+    "Set focus to A via Enum" : {
+
+    },
+    "Set focus to B via Enum" : {
 
     },
     "Settings" : {
@@ -2681,6 +2705,12 @@
 
     },
     "Text2 TA" : {
+
+    },
+    "textA" : {
+
+    },
+    "textB" : {
 
     },
     "TextEditor" : {
