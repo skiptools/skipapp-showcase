@@ -10,11 +10,15 @@ struct NavigationStackPlayground: View {
     @State var isPathBindingSheetPresented = false
     @State var isPathBindingSheetWithInitialStackPresented = false
     @State var isNavigationPathBindingSheetPresented = false
+    @State var nextIsPresented = false
 
     var body: some View {
         VStack(spacing: 16) {
             Button("Pop") {
                 dismiss()
+            }
+            Button("Present with binding") {
+                nextIsPresented = true
             }
             Button("Path binding sheet") {
                 isPathBindingSheetPresented = true
@@ -33,6 +37,9 @@ struct NavigationStackPlayground: View {
                 Text("Pushed")
             }
             .buttonStyle(.borderedProminent)
+        }
+        .navigationDestination(isPresented: $nextIsPresented) {
+            Text("Pushed")
         }
         .sheet(isPresented: $isPathBindingSheetPresented) {
             PathBindingSheetContentView()
