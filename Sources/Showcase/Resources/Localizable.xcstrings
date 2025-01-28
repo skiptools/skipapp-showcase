@@ -2707,13 +2707,19 @@
     "Three Buttons" : {
 
     },
+    "Ticks: %lld" : {
+
+    },
+    "Ticks: %llu" : {
+
+    },
     "Time only" : {
 
     },
-    "Timer" : {
+    "Time: %@" : {
 
     },
-    "Timer date: %@" : {
+    "Timer" : {
 
     },
     "Title" : {

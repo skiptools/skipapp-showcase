@@ -45,6 +45,7 @@ struct ImagePlayground: View {
                     Image("Butterfly", bundle: .module, label: Text("Butterfly SVG image"))
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(.red)
                     Spacer()
                 }
 
