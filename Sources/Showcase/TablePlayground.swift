@@ -12,18 +12,18 @@ enum TablePlaygroundType: String, CaseIterable {
     case selection
     case selectionSet
 
-    var title: String {
+    var title: LocalizedStringResource {
         switch self {
         case .defaultColumns:
-            return "Default Columns"
+            return LocalizedStringResource("Default Columns")
         case .fixedWidthColumns:
-            return "Fixed Width Columns"
+            return LocalizedStringResource("Fixed Width Columns")
         case .rangeWidthColumns:
-            return "Range Width Columns"
+            return LocalizedStringResource("Range Width Columns")
         case .selection:
-            return "Selection"
+            return LocalizedStringResource("Selection")
         case .selectionSet:
-            return "Selection Set"
+            return LocalizedStringResource("Selection Set")
         }
     }
 }
@@ -31,7 +31,7 @@ enum TablePlaygroundType: String, CaseIterable {
 struct TablePlayground: View {
     var body: some View {
         List(TablePlaygroundType.allCases, id: \.self) { type in
-            NavigationLink(type.title, value: type)
+            NavigationLink(value: type) { Text(type.title) }
         }
         .toolbar {
             PlaygroundSourceLink(file: "TablePlayground.swift")
@@ -40,19 +40,19 @@ struct TablePlayground: View {
             switch $0 {
             case .defaultColumns:
                 DefaultColumnsTablePlayground()
-                    .navigationTitle($0.title)
+                    .navigationTitle(Text($0.title))
             case .fixedWidthColumns:
                 FixedWidthColumnsTablePlayground()
-                    .navigationTitle($0.title)
+                    .navigationTitle(Text($0.title))
             case .rangeWidthColumns:
                 RangeWidthColumnsTablePlayground()
-                    .navigationTitle($0.title)
+                    .navigationTitle(Text($0.title))
             case .selection:
                 SelectionTablePlayground()
-                    .navigationTitle($0.title)
+                    .navigationTitle(Text($0.title))
             case .selectionSet:
                 SelectionSetTablePlayground()
-                    .navigationTitle($0.title)
+                    .navigationTitle(Text($0.title))
             }
         }
     }

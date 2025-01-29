@@ -1027,6 +1027,9 @@
     "Default" : {
 
     },
+    "Default Columns" : {
+
+    },
     "Default URL" : {
 
     },
@@ -1199,6 +1202,9 @@
 
     },
     "Fixed width" : {
+
+    },
+    "Fixed Width Columns" : {
 
     },
     "FocusState" : {
@@ -1621,6 +1627,9 @@
     "LongPress: %lld" : {
 
     },
+    "Looping Clip" : {
+
+    },
     "Map" : {
 
     },
@@ -2033,6 +2042,9 @@
     "Radius" : {
 
     },
+    "Range Width Columns" : {
+
+    },
     "Rate" : {
 
     },
@@ -2180,7 +2192,10 @@
     "SecureField" : {
 
     },
-    "Selection: Changed" : {
+    "Selection" : {
+
+    },
+    "Selection Set" : {
 
     },
     "Set focus to A via Boolean" : {
@@ -2453,6 +2468,9 @@
 
     },
     "Sized to content:" : {
+
+    },
+    "Skip Intro" : {
 
     },
     "Skip Technology" : {
@@ -2850,6 +2868,9 @@
 
     },
     "Vertical fixed height" : {
+
+    },
+    "Video List" : {
 
     },
     "Video Player" : {
