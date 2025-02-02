@@ -395,6 +395,12 @@
     ".transition(.slide)" : {
 
     },
+    "\"CustomRed\"" : {
+
+    },
+    "\"SystemBlue\"" : {
+
+    },
     "(###) ###-####" : {
 
     },
@@ -579,17 +585,6 @@
         }
       }
     },
-    "about_label" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "About"
-          }
-        }
-      }
-    },
     "Accent color" : {
 
     },
@@ -641,8 +636,147 @@
     "Animation" : {
 
     },
-    "Appearance" : {
-
+    "appearance_key" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "المظهر"
+          }
+        },
+        "ca" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Apariènc"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Aussehen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Φαρμακευτικός"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Apariencia"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparence"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kepadaaran"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Apparenza"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "外観"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "모양"
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Pemandangan"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Uitzicht"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Widaż"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Apariência"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Apariência"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Utseende"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "การแสดงออก"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Görüntüleme"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Вид"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Xuất hiện"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "外观"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "外觀"
+          }
+        }
+      }
     },
     "Asset JPEG Image" : {
 
@@ -714,6 +848,9 @@
 
     },
     "Bool AppStorage" : {
+
+    },
+    "Boolean: %@" : {
 
     },
     "Border" : {
@@ -842,6 +979,9 @@
     "Copy" : {
 
     },
+    "Current Page: %lld" : {
+
+    },
     "Custom" : {
 
     },
@@ -885,6 +1025,9 @@
 
     },
     "Default" : {
+
+    },
+    "Default Columns" : {
 
     },
     "Default URL" : {
@@ -1007,6 +1150,9 @@
     "Enum AppStorage" : {
 
     },
+    "Enum: %@" : {
+
+    },
     "EnvironmentObject" : {
 
     },
@@ -1020,6 +1166,9 @@
 
     },
     "Favorites" : {
+
+    },
+    "Feedback Type" : {
 
     },
     "Fill" : {
@@ -1053,6 +1202,12 @@
 
     },
     "Fixed width" : {
+
+    },
+    "Fixed Width Columns" : {
+
+    },
+    "FocusState" : {
 
     },
     "Font.body" : {
@@ -1209,6 +1364,12 @@
     "Haptic Feedback" : {
 
     },
+    "Haptic Feedback Unavailable in this OS version" : {
+
+    },
+    "Haptic Feedback: %@" : {
+
+    },
     "Has strings:" : {
 
     },
@@ -1293,30 +1454,6 @@
 
     },
     "Image from Data" : {
-
-    },
-    "Impact Intensity: 20%" : {
-
-    },
-    "Impact Intensity: 40%" : {
-
-    },
-    "Impact Intensity: 60%" : {
-
-    },
-    "Impact Intensity: 80%" : {
-
-    },
-    "Impact Intensity: 100%" : {
-
-    },
-    "Impact: Heavy" : {
-
-    },
-    "Impact: Medium" : {
-
-    },
-    "Impact: Soft" : {
 
     },
     "in: 0...2 step 0.5" : {
@@ -1490,6 +1627,9 @@
     "LongPress: %lld" : {
 
     },
+    "Looping Clip" : {
+
+    },
     "Map" : {
 
     },
@@ -1621,6 +1761,9 @@
     "Nil Data" : {
 
     },
+    "Nil Enum" : {
+
+    },
     "NO" : {
 
     },
@@ -1640,15 +1783,6 @@
 
     },
     "Note: tint should not affect Label appearance" : {
-
-    },
-    "Notification: Error" : {
-
-    },
-    "Notification: Success" : {
-
-    },
-    "Notification: Warning" : {
 
     },
     "Observable" : {
@@ -1848,6 +1982,9 @@
     "Present sheet with simple content" : {
 
     },
+    "Present with binding" : {
+
+    },
     "Present with data" : {
 
     },
@@ -1903,6 +2040,9 @@
 
     },
     "Radius" : {
+
+    },
+    "Range Width Columns" : {
 
     },
     "Rate" : {
@@ -2001,6 +2141,9 @@
     "Scroll to 29" : {
 
     },
+    "Scroll to Page 2" : {
+
+    },
     "Scroll View Stacks" : {
 
     },
@@ -2049,7 +2192,19 @@
     "SecureField" : {
 
     },
-    "Selection: Changed" : {
+    "Selection" : {
+
+    },
+    "Selection Set" : {
+
+    },
+    "Set focus to A via Boolean" : {
+
+    },
+    "Set focus to A via Enum" : {
+
+    },
+    "Set focus to B via Enum" : {
 
     },
     "Settings" : {
@@ -2315,6 +2470,9 @@
     "Sized to content:" : {
 
     },
+    "Skip Intro" : {
+
+    },
     "Skip Technology" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2452,6 +2610,9 @@
     "System" : {
 
     },
+    "System Information" : {
+
+    },
     "systemName" : {
 
     },
@@ -2564,6 +2725,12 @@
     "Text2 TA" : {
 
     },
+    "textA" : {
+
+    },
+    "textB" : {
+
+    },
     "TextEditor" : {
 
     },
@@ -2603,13 +2770,19 @@
     "Three Buttons" : {
 
     },
+    "Ticks: %lld" : {
+
+    },
+    "Ticks: %llu" : {
+
+    },
     "Time only" : {
 
     },
-    "Timer" : {
+    "Time: %@" : {
 
     },
-    "Timer date: %@" : {
+    "Timer" : {
 
     },
     "Title" : {
@@ -2695,6 +2868,9 @@
 
     },
     "Vertical fixed height" : {
+
+    },
+    "Video List" : {
 
     },
     "Video Player" : {
@@ -2809,6 +2985,7 @@
 
     },
     "Welcome" : {
+      "comment" : "welcome string",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

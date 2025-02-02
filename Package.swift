@@ -13,13 +13,13 @@ let skipstone = !zero ? [Target.PluginUsage.plugin(name: "skipstone", package: "
 let package = Package(
     name: "skipapp-showcase",
     defaultLocalization: "en",
-    platforms: [.iOS(.v16), .macOS(.v13), .tvOS(.v16), .watchOS(.v9), .macCatalyst(.v16)],
+    platforms: [.iOS(.v16), .macOS(.v14), .tvOS(.v16), .watchOS(.v9), .macCatalyst(.v16)],
     products: [
         .library(name: "ShowcaseApp", type: .dynamic, targets: ["Showcase"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.2.18"),
-        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.17.2"),
+        .package(url: "https://source.skip.tools/skip.git", from: "1.2.22"),
+        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.20.1"),
         .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0")
     ],
     targets: [

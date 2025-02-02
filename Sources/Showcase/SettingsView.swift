@@ -11,10 +11,24 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Appearance", selection: $appearance) {
+                Picker("appearance_key", selection: $appearance) {
                     Text("System").tag("")
                     Text("Light").tag("light")
                     Text("Dark").tag("dark")
+                }
+                NavigationLink("System Information") {
+                    let env = ProcessInfo.processInfo.environment
+                    List {
+                        ForEach(env.keys.sorted(), id: \.self) { key in
+                            HStack {
+                                Text(key)
+                                Text(env[key] ?? "")
+                                    .frame(alignment: .trailing)
+                            }
+                            .font(Font.caption.monospaced())
+                        }
+                    }
+                    .navigationTitle("System Information")
                 }
                 HStack {
                     #if SKIP
@@ -31,7 +45,6 @@ struct SettingsView: View {
                     }
                     Text("Powered by [Skip](https://skip.tools)")
                 }
-                .foregroundStyle(.gray)
             }
             .navigationTitle("Settings")
         }

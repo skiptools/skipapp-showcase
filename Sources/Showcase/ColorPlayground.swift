@@ -33,6 +33,8 @@ struct ColorPlayground: View {
                 colorRow(label: Text("Clear"), color: .clear)
                 colorRow(label: Text("Primary"), color: .primary)
                 colorRow(label: Text("Secondary"), color: .secondary)
+                colorRow(label: Text("\"CustomRed\""), color: Color("CustomRed", bundle: .module))
+                colorRow(label: Text("\"SystemBlue\""), color: Color("SystemBlue", bundle: .module))
                 colorRow(label: Text("#colorLiteral"), color: Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)))
                 HStack {
                     Text("Color invert")

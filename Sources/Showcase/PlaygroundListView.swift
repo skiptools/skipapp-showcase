@@ -21,6 +21,7 @@ enum PlaygroundType: CaseIterable, View {
     case datePicker
     case disclosureGroup
     case divider
+    case focusState
     case form
     case frame
     case gesture
@@ -105,6 +106,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("DisclosureGroup")
         case .divider:
             return LocalizedStringResource("Divider")
+        case .focusState:
+            return LocalizedStringResource("FocusState")
         case .form:
             return LocalizedStringResource("Form")
         case .frame:
@@ -244,6 +247,8 @@ enum PlaygroundType: CaseIterable, View {
             DisclosureGroupPlayground()
         case .divider:
             DividerPlayground()
+        case .focusState:
+            FocusStatePlayground()
         case .form:
             FormPlayground()
         case .frame:
@@ -259,7 +264,11 @@ enum PlaygroundType: CaseIterable, View {
         case .grid:
             GridPlayground()
         case .hapticFeedback:
-            HapticFeedbackPlayground()
+            if #available(iOS 17.0, *) {
+                HapticFeedbackPlayground()
+            } else {
+                Text("Haptic Feedback Unavailable in this OS version")
+            }
         case .icon:
             IconPlayground()
         case .image:

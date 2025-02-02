@@ -65,30 +65,41 @@ struct TabPlaygroundContentView: View {
 #if os(macOS)
 #else
 struct TabPageViewContentView: View {
+    @State var selection = 2
+
     var body: some View {
         ScrollView {
             VStack {
-                TabView {
+                TabView(selection: $selection) {
                     Rectangle()
                         .fill(.gray)
                         .overlay {
                             Text("This is a horizontally swipable paging TabView")
                                 .padding()
                         }
+                        .tag(1)
                     Rectangle()
                         .fill(.blue)
                         .overlay {
                             Text("Page 2")
                                 .padding()
                         }
+                        .tag(2)
                     Rectangle()
                         .fill(.green)
                         .overlay {
                             Text("I heard you like TabViews so we put a TabView inside your TabView inside your TabView")
                                 .padding()
                         }
+                        .tag(3)
                 }
                 .frame(height: 128)
+                Text("Current Page: \(selection)")
+                    .foregroundStyle(.gray)
+                Button("Scroll to Page 2") {
+                    withAnimation { selection = 2 }
+                }
+                .buttonStyle(.bordered)
                 TabView {
                     Image(systemName: "heart")
                         .resizable()
