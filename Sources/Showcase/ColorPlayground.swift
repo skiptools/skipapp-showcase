@@ -34,6 +34,24 @@ struct ColorPlayground: View {
                 colorRow(label: Text("Primary"), color: .primary)
                 colorRow(label: Text("Secondary"), color: .secondary)
                 colorRow(label: Text("#colorLiteral"), color: Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)))
+                HStack {
+                    Text("Color invert")
+                    Spacer()
+                    Image("skiplogo", bundle: .module)
+                        .resizable()
+                        .scaledToFit()
+                        .colorInvert()
+                        .frame(width: 50, height: 50)
+                    Image("Cat", bundle: .module)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(Color.red)
+                        .colorInvert()
+                        .frame(width: 100, height: 100)
+                    Text("123")
+                        .foregroundStyle(Color.red)
+                        .colorInvert()
+                }
             }
             .padding()
         }
