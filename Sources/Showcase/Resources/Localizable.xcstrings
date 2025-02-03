@@ -106,6 +106,9 @@
     ".clipShape(.capsule)" : {
 
     },
+    ".colorInvert()" : {
+
+    },
     ".composeModifier()" : {
 
     },
@@ -429,6 +432,9 @@
 
     },
     "2/3" : {
+
+    },
+    "123" : {
 
     },
     "1111" : {
