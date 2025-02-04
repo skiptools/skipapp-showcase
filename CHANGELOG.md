@@ -1,3 +1,22 @@
+## 1.8.6
+
+Released 2025-02-04
+
+  - Merge pull request #17 from skiptools/colorinvert
+  - Move .colorInvert sample to GraphicsPlayground with .grayscale
+  - Merge pull request #16 from AndreusPapandreus/andrew/feature
+  - Merge branch 'skiptools:main' into andrew/feature
+  - added usage example of color invert
+  - Update license header
+  - Update metadata
+  - Add WIP scrolling video list
+  - Merge pull request #15 from skiptools/focusstate
+  - Update TimerPlayground with current time
+  - Exercise binding to current tab with .page style
+  - Exercise @FocusState
+  - Exercise .navigationDestination(isPresented:destination:)
+  - Named colors
+
 ## 1.8.5
 
 Released 2025-01-24
