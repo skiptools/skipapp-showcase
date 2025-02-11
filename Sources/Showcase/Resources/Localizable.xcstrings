@@ -428,6 +428,9 @@
     "+" : {
 
     },
+    "+ Title" : {
+
+    },
     "1/3" : {
 
     },
@@ -1453,6 +1456,15 @@
     "I heard you like TabViews so we put a TabView inside your TabView inside your TabView" : {
 
     },
+    "Icon + Title" : {
+
+    },
+    "Icon Only" : {
+
+    },
+    "Icon Only:" : {
+
+    },
     "Icons" : {
 
     },
@@ -1553,6 +1565,9 @@
 
     },
     "Label items" : {
+
+    },
+    "Label Styles" : {
 
     },
     "Large circle" : {
@@ -2798,6 +2813,9 @@
 
     },
     "Title bold italic" : {
+
+    },
+    "Title Only" : {
 
     },
     "Toggle" : {

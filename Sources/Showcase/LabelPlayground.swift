@@ -19,12 +19,37 @@ struct LabelPlayground: View {
                     .font(.title)
                 Label(".foregroundStyle(.red)", systemImage: "star.fill")
                     .foregroundStyle(.red)
-                Label(".tint(.red)", systemImage: "star.fill")
-                    .tint(.red)
-                Text("Note: tint should not affect Label appearance")
-                    .font(.caption)
+
+                VStack {
+                    Label(".tint(.red)", systemImage: "star.fill")
+                        .tint(.red)
+                    Text("Note: tint should not affect Label appearance")
+                        .font(.caption)
+                }
+
+                Section("Label Styles") {
+                    Label("Icon + Title", systemImage: "heart.fill")
+                        .labelStyle(.titleAndIcon)
+                    Label("Title Only", systemImage: "heart.fill")
+                        .labelStyle(.titleOnly)
+                    HStack {
+                        Text("Icon Only:")
+                            .foregroundStyle(.secondary)
+                        Label("Icon Only", systemImage: "heart.fill")
+                            .labelStyle(.iconOnly)
+                    }
+                }
             }
             .padding()
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarLeading) {
+                    Label("Icon Only", systemImage: "heart.fill")
+                    Label("+ Title", systemImage: "star.fill")
+                        .labelStyle(.titleAndIcon)
+                    Label("Title Only", systemImage: "star.fill")
+                        .labelStyle(.titleOnly)
+                }
+            }
         }
         .toolbar {
             PlaygroundSourceLink(file: "LabelPlayground.swift")
