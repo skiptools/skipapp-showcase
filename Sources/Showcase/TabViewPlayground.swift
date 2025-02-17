@@ -22,12 +22,16 @@ struct TabViewPlayground: View {
                     }
                 Text("More (page 2)")
             }
+            #if !os(macOS) || os(Android)
             .tabViewStyle(.page)
+            #endif
             .tabItem { Label("Favorites", systemImage: "heart.fill") }
             .tag("Favorites")
+            #if !os(macOS) || os(Android)
             TabPageViewContentView()
                 .tabItem { Label("Paging", systemImage: "arrow.forward.square") }
                 .tag("Paging")
+            #endif
         }
         .tint(.red)
         .toolbar {
@@ -53,11 +57,13 @@ struct TabPlaygroundContentView: View {
                     selectedTab = "Favorites"
                 }
             }
+            #if !os(macOS) || os(Android)
             if label != "Paging" {
                 Button("Switch to Paging") {
                     selectedTab = "Paging"
                 }
             }
+            #endif
         }
     }
 }

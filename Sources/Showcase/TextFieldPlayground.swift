@@ -54,7 +54,9 @@ struct TextFieldPlayground: View {
                     }
                 TextField("(###) ###-####", text: $phone)
                     .textFieldStyle(.plain)
+                    #if !os(macOS) || os(Android)
                     .keyboardType(UIKeyboardType.phonePad)
+                    #endif
                     .onChange(of: phone) { newValue in
                         phone = formatPhone(newValue)
                     }
