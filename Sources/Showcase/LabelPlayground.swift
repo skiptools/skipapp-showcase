@@ -6,6 +6,11 @@
 import SwiftUI
 
 struct LabelPlayground: View {
+    #if os(macOS)
+    let placement: ToolbarItemPlacement = .automatic
+    #else
+    let placement: ToolbarItemPlacement = .topBarLeading
+    #endif
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -42,7 +47,8 @@ struct LabelPlayground: View {
             }
             .padding()
             .toolbar {
-                ToolbarItemGroup(placement: .topBarLeading) {
+                ToolbarItemGroup(placement: placement
+                ) {
                     Label("Icon Only", systemImage: "heart.fill")
                     Label("+ Title", systemImage: "star.fill")
                         .labelStyle(.titleAndIcon)
