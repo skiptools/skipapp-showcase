@@ -4,6 +4,8 @@
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>ATSApplicationFontsPath</key>
+	<string>./</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>protest_guerrilla.ttf</string>
