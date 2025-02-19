@@ -3008,6 +3008,9 @@
     "VStack.animation" : {
 
     },
+    "WebView" : {
+
+    },
     "Welcome" : {
       "comment" : "welcome string",
       "localizations" : {
