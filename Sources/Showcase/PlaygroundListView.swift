@@ -379,8 +379,8 @@ public struct PlaygroundNavigationView: View {
             .navigationDestination(for: PlaygroundType.self) {
                 $0.navigationTitle(Text($0.title))
             }
+            .searchable(text: $searchText)
         }
-        .searchable(text: $searchText)
     }
 
     private func matchingPlaygroundTypes() -> [PlaygroundType] {
