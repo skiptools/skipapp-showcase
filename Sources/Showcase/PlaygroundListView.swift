@@ -74,6 +74,7 @@ enum PlaygroundType: CaseIterable, View {
     case timer
     case transition
     case videoPlayer
+    case webView
     case zIndex
 
     var title: LocalizedStringResource {
@@ -212,6 +213,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Transition")
         case .videoPlayer:
             return LocalizedStringResource("Video Player")
+        case .webView:
+            return LocalizedStringResource("WebView")
         case .zIndex:
             return LocalizedStringResource("ZIndex")
         }
@@ -357,6 +360,8 @@ enum PlaygroundType: CaseIterable, View {
             TransitionPlayground()
         case .videoPlayer:
             VideoPlayerPlayground()
+        case .webView:
+            WebViewPlayground()
         case .zIndex:
             ZIndexPlayground()
         }
