@@ -1,3 +1,16 @@
+## 1.8.8
+
+Released 2025-02-20
+
+  - Merge pull request #25 from dfabulich/macos-searchable-playground
+  - Merge pull request #24 from skiptools/add-web-view
+  - Make Showcase tab searchable on macOS
+  - Add WebViewPlayground demonstrating UIViewRepresentable/ComposeView/AndroidView
+  - Merge pull request #23 from dfabulich/macos-custom-fonts
+  - Fix custom font on macOS
+  - Merge pull request #21 from dfabulich/fix-macos-destination
+  - Fix native macOS run destination
+
 ## 1.8.6
 
 Released 2025-02-04
