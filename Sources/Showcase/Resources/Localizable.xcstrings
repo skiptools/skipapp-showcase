@@ -2090,6 +2090,9 @@
     "Repository item tap count: %lld" : {
 
     },
+    "Requires iOS 17+" : {
+
+    },
     "RGB" : {
 
     },
