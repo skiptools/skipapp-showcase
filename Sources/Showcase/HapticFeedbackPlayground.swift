@@ -1,8 +1,4 @@
-// Copyright 2023 Skip
-//
-// This is free software: you can redistribute and/or modify it
-// under the terms of the GNU Lesser General Public License 3.0
-// as published by the Free Software Foundation https://fsf.org
+// Copyright 2023–2025 Skip
 import SwiftUI
 
 @available(macOS 14.0, iOS 17.0, *)
