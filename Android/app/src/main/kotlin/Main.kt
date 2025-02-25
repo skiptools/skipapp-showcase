@@ -7,6 +7,7 @@ import skip.ui.*
 
 import android.Manifest
 import android.app.Application
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
