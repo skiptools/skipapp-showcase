@@ -44,6 +44,8 @@ open class MainActivity: AppCompatActivity {
 
     override fun onCreate(savedInstanceState: android.os.Bundle?) {
         super.onCreate(savedInstanceState)
+        logger.info("starting activity")
+        UIApplication.launch(this)
         enableEdgeToEdge()
 
         setContent {
