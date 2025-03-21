@@ -645,7 +645,11 @@
     "Animation" : {
 
     },
+    "Appearance" : {
+
+    },
     "appearance_key" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
