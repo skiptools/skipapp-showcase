@@ -81,6 +81,10 @@ struct TextPlayground: View {
                     .lineLimit(1)
                     .frame(width: 200)
                     .border(Color.blue)
+                Text(".lineLimit(10, reservesSpace: true): 10-line short text")
+                    .lineLimit(10, reservesSpace: true)
+                    .frame(width: 200)
+                    .border(Color.blue)
 
                 Divider()
 
