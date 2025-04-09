@@ -1592,6 +1592,9 @@
     "LazyHGrid .flexible" : {
 
     },
+    "LazyHGrid (fewer items)" : {
+
+    },
     "LazyHGrid sectioned" : {
 
     },
@@ -1616,6 +1619,9 @@
     "LazyVGrid .trailing" : {
 
     },
+    "LazyVGrid (fewer items)" : {
+
+    },
     "LazyVGrid refreshable" : {
 
     },
@@ -1626,6 +1632,9 @@
 
     },
     "LazyVStack" : {
+
+    },
+    "LazyVStack (fewer items)" : {
 
     },
     "Light" : {
