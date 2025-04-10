@@ -6,7 +6,7 @@ struct GridPlayground: View {
         ScrollView {
             VStack(spacing: 16) {
                 NavigationLink("LazyVGrid .adaptive") {
-                    LazyVGridAdaptiveView()
+                    LazyVGridAdaptiveView(count: 100)
                         .navigationTitle("LazyVGridView")
                 }
                 NavigationLink("LazyVGrid .flexible") {
@@ -29,8 +29,12 @@ struct GridPlayground: View {
                     LazyVGridRefreshableView()
                         .navigationTitle("Refreshable")
                 }
+                NavigationLink("LazyVGrid (fewer items)") {
+                    LazyVGridAdaptiveView(count: 5)
+                        .navigationTitle("LazyVGridView")
+                }
                 NavigationLink("LazyHGrid .adaptive") {
-                    LazyHGridAdaptiveView()
+                    LazyHGridAdaptiveView(count: 100)
                         .navigationTitle("LazyHGridView")
                 }
                 NavigationLink("LazyHGrid .flexible") {
@@ -53,6 +57,10 @@ struct GridPlayground: View {
                     LazyVGridPaddingView()
                         .navigationTitle("LazyVGridView")
                 }
+                NavigationLink("LazyHGrid (fewer items)") {
+                    LazyHGridAdaptiveView(count: 5)
+                        .navigationTitle("LazyHGridView")
+                }
             }
             .padding()
         }
@@ -63,10 +71,12 @@ struct GridPlayground: View {
 }
 
 private struct LazyVGridAdaptiveView: View {
+    let count: Int
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
-                ForEach(0..<100) { index in
+                ForEach(0..<count, id: \.self) { index in
                     ZStack {
                         Color.yellow
                         Text(String(describing: index))
@@ -190,10 +200,12 @@ private struct LazyVGridRefreshableView: View {
 }
 
 private struct LazyHGridAdaptiveView: View {
+    let count: Int
+
     var body: some View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.adaptive(minimum: 80))]) {
-                ForEach(0..<100) { index in
+                ForEach(0..<count, id: \.self) { index in
                     ZStack {
                         Color.yellow
                         Text(String(describing: index))

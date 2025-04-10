@@ -4,6 +4,7 @@ import SwiftUI
 enum ScrollViewPlaygroundType: String, CaseIterable {
     case vertical
     case horizontal
+    case viewAligned
     case readerLazyVStack
     case readerLazyHStack
     case readerList
@@ -17,6 +18,8 @@ enum ScrollViewPlaygroundType: String, CaseIterable {
             return "Vertical"
         case .horizontal:
             return "Horizontal"
+        case .viewAligned:
+            return ".viewAligned"
         case .readerLazyVStack:
             return "ScrollViewReader: LazyVStack"
         case .readerLazyHStack:
@@ -48,6 +51,9 @@ struct ScrollViewPlayground: View {
                     .navigationTitle($0.title)
             case .horizontal:
                 HorizontalScrollViewPlayground()
+                    .navigationTitle($0.title)
+            case .viewAligned:
+                ViewAlignedScrollViewPlayground()
                     .navigationTitle($0.title)
             case .readerLazyVStack:
                 ScrollViewReaderLazyVStackPlayground()
@@ -97,6 +103,28 @@ private struct HorizontalScrollViewPlayground: View {
                         .padding()
                 }
             }
+        }
+    }
+}
+
+private struct ViewAlignedScrollViewPlayground: View {
+    var body: some View {
+        if #available(iOS 17, *) {
+            ScrollView(.horizontal) {
+                LazyHStack {
+                    ForEach(0..<20) { i in
+                        ZStack {
+                            Color.yellow
+                            Text(String(describing: i))
+                        }
+                        .frame(width: 80, height: 80)
+                    }
+                }
+                .scrollTargetLayout()
+            }
+            .scrollTargetBehavior(.viewAligned)
+        } else {
+            Text("Requires iOS 17+")
         }
     }
 }

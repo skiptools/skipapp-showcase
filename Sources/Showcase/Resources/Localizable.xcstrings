@@ -645,7 +645,11 @@
     "Animation" : {
 
     },
+    "Appearance" : {
+
+    },
     "appearance_key" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -848,6 +852,9 @@
 
     },
     "Blue" : {
+
+    },
+    "Blur" : {
 
     },
     "Body" : {
@@ -1585,6 +1592,9 @@
     "LazyHGrid .flexible" : {
 
     },
+    "LazyHGrid (fewer items)" : {
+
+    },
     "LazyHGrid sectioned" : {
 
     },
@@ -1609,6 +1619,9 @@
     "LazyVGrid .trailing" : {
 
     },
+    "LazyVGrid (fewer items)" : {
+
+    },
     "LazyVGrid refreshable" : {
 
     },
@@ -1619,6 +1632,9 @@
 
     },
     "LazyVStack" : {
+
+    },
+    "LazyVStack (fewer items)" : {
 
     },
     "Light" : {
@@ -2088,6 +2104,9 @@
 
     },
     "Repository item tap count: %lld" : {
+
+    },
+    "Requires iOS 17+" : {
 
     },
     "RGB" : {
