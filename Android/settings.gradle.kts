@@ -8,6 +8,7 @@ pluginManagement {
     @Suppress("DEPRECATION")
     exec {
         commandLine("skip", "plugin", "--prebuild", "--package-path", settings.rootDir.parent, "--plugin-ref", pluginPath.absolutePath)
+        environment("PATH", "${System.getenv("PATH")}:/opt/homebrew/bin")
     }
     includeBuild(pluginPath.readText()) {
         name = "skip-plugins"
