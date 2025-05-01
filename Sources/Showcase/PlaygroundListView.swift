@@ -13,6 +13,7 @@ enum PlaygroundType: CaseIterable, View {
     case button
     case color
     case colorScheme
+    case combineLatest
     case compose
     case confirmationDialog
     case datePicker
@@ -96,6 +97,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Color")
         case .colorScheme:
             return LocalizedStringResource("ColorScheme")
+        case .combineLatest:
+            return LocalizedStringResource("CombineLatest")
         case .compose:
             return LocalizedStringResource("Compose")
         case .confirmationDialog:
@@ -241,6 +244,8 @@ enum PlaygroundType: CaseIterable, View {
             ColorPlayground()
         case .colorScheme:
             ColorSchemePlayground()
+        case .combineLatest:
+            CombineLatestPlayground()
         case .compose:
             ComposePlayground()
         case .confirmationDialog:
@@ -377,16 +382,17 @@ public struct PlaygroundNavigationView: View {
     }
 
     public var body: some View {
-        NavigationStack {
-            List(matchingPlaygroundTypes(), id: \.self) { playground in
-                NavigationLink(value: playground, label: { Text(playground.title) })
-            }
-            .navigationTitle(Text("Showcase"))
-            .navigationDestination(for: PlaygroundType.self) {
-                $0.navigationTitle(Text($0.title))
-            }
-            .searchable(text: $searchText)
-        }
+        CombineLatestPlayground()
+//        NavigationStack {
+//            List(matchingPlaygroundTypes(), id: \.self) { playground in
+//                NavigationLink(value: playground, label: { Text(playground.title) })
+//            }
+//            .navigationTitle(Text("Showcase"))
+//            .navigationDestination(for: PlaygroundType.self) {
+//                $0.navigationTitle(Text($0.title))
+//            }
+//            .searchable(text: $searchText)
+//        }
     }
 
     private func matchingPlaygroundTypes() -> [PlaygroundType] {

@@ -959,6 +959,9 @@
     "Combined: opacity+slide" : {
 
     },
+    "CombineLatest" : {
+
+    },
     "Complex content button" : {
 
     },
@@ -993,6 +996,9 @@
 
     },
     "Copy" : {
+
+    },
+    "Create account" : {
 
     },
     "Current Page: %lld" : {
@@ -1653,6 +1659,9 @@
 
     },
     "Localization" : {
+
+    },
+    "Log out" : {
 
     },
     "Long press: %lld" : {
@@ -2895,6 +2904,9 @@
 
     },
     "Value: %lld" : {
+
+    },
+    "Verify" : {
 
     },
     "Version %@ (%@)" : {
