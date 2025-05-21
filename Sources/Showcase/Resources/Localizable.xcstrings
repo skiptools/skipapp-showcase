@@ -932,6 +932,15 @@
     "CCCC" : {
 
     },
+    "Change Preference to 'Goodbye'" : {
+
+    },
+    "Change Preference to 'Hello World'" : {
+
+    },
+    "Child View" : {
+
+    },
     "Circle" : {
 
     },
@@ -1892,6 +1901,9 @@
     "Paging" : {
 
     },
+    "Parent View" : {
+
+    },
     "Passing a string var does not format as markdown:" : {
 
     },
@@ -1995,6 +2007,9 @@
     "Powered by [Skip](https://skip.tools)" : {
 
     },
+    "Preference" : {
+
+    },
     "Present" : {
 
     },
@@ -2083,6 +2098,9 @@
 
     },
     "Rate" : {
+
+    },
+    "Received from child: %@" : {
 
     },
     "Rectangle" : {
