@@ -18,6 +18,7 @@ enum PlaygroundType: CaseIterable, View {
     case datePicker
     case disclosureGroup
     case divider
+    case documentPicker
     case focusState
     case form
     case frame
@@ -34,6 +35,7 @@ enum PlaygroundType: CaseIterable, View {
     case link
     case list
     case localization
+    case lottie
     case map
     case menu
     case modifier
@@ -106,6 +108,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("DisclosureGroup")
         case .divider:
             return LocalizedStringResource("Divider")
+        case .documentPicker:
+            return LocalizedStringResource("DocumentPicker")
         case .focusState:
             return LocalizedStringResource("FocusState")
         case .form:
@@ -138,6 +142,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("List")
         case .localization:
             return LocalizedStringResource("Localization")
+        case .lottie:
+            return LocalizedStringResource("Lottie Animation")
         case .map:
             return LocalizedStringResource("Map")
         case .menu:
@@ -251,6 +257,8 @@ enum PlaygroundType: CaseIterable, View {
             DisclosureGroupPlayground()
         case .divider:
             DividerPlayground()
+        case .documentPicker:
+            DocumentPickerPlayground()
         case .focusState:
             FocusStatePlayground()
         case .form:
@@ -287,6 +295,8 @@ enum PlaygroundType: CaseIterable, View {
             ListPlayground()
         case .localization:
             LocalizationPlayground()
+        case .lottie:
+            LottiePlayground()
         case .map:
             MapPlayground()
         case .menu:

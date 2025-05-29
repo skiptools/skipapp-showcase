@@ -50,12 +50,20 @@ struct TextFieldPlayground: View {
                     }
                 TextField("(###) ###-####", text: $phone)
                     .textFieldStyle(.plain)
+                    .textContentType(.telephoneNumber)
                     #if !os(macOS) || os(Android)
                     .keyboardType(UIKeyboardType.phonePad)
                     #endif
                     .onChange(of: phone) { newValue in
                         phone = formatPhone(newValue)
                     }
+                TextField("Email", text: $text)
+                    .textContentType(.emailAddress)
+                    #if !os(macOS) || os(Android)
+                    .keyboardType(UIKeyboardType.emailAddress)
+                    #endif
+                TextField("One Time Code", text: $text)
+                    .textContentType(.oneTimeCode)
             }
             .padding()
         }
