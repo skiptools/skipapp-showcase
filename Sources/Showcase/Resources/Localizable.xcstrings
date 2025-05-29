@@ -639,6 +639,9 @@
     "Also see the `Transition` playground for view enter/exit animations" : {
 
     },
+    "an animated heart in the Lottie JSON format" : {
+
+    },
     "Animated" : {
 
     },
@@ -1086,6 +1089,12 @@
     "Divider" : {
 
     },
+    "Document: %@" : {
+
+    },
+    "DocumentPicker" : {
+
+    },
     "Done" : {
       "comment" : "Done button text",
       "extractionState" : "stale",
@@ -1160,6 +1169,9 @@
     "Ellipse" : {
 
     },
+    "Email" : {
+
+    },
     "Enter text" : {
 
     },
@@ -1185,6 +1197,9 @@
 
     },
     "Feedback Type" : {
+
+    },
+    "Filename: %@" : {
 
     },
     "Fill" : {
@@ -1667,6 +1682,9 @@
     "Looping Clip" : {
 
     },
+    "Lottie Animation" : {
+
+    },
     "Map" : {
 
     },
@@ -1711,6 +1729,9 @@
 
     },
     "Menu" : {
+
+    },
+    "Mime Type: %@" : {
 
     },
     "Mint" : {
@@ -1840,6 +1861,9 @@
     "On" : {
 
     },
+    "One Time Code" : {
+
+    },
     "OnSubmit" : {
 
     },
@@ -1951,6 +1975,9 @@
 
     },
     "PDF Image" : {
+
+    },
+    "Pick Document" : {
 
     },
     "Picker" : {
