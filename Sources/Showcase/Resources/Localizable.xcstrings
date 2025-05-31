@@ -812,6 +812,9 @@
     "B" : {
 
     },
+    "Back" : {
+
+    },
     "Back button is disabled. Tap to dismiss" : {
 
     },
@@ -1351,6 +1354,9 @@
 
     },
     "Form" : {
+
+    },
+    "Forward" : {
 
     },
     "Frame" : {
@@ -2125,6 +2131,9 @@
 
     },
     "Refreshable" : {
+
+    },
+    "Reload" : {
 
     },
     "Remapped URL" : {

@@ -1,11 +1,11 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 // SPDX-License-Identifier: LGPL-3.0-only WITH LGPL-3.0-linking-exception
 import PackageDescription
 
 let package = Package(
     name: "skipapp-showcase",
     defaultLocalization: "en",
-    platforms: [.iOS(.v16), .macOS(.v14), .tvOS(.v16), .watchOS(.v9), .macCatalyst(.v16)],
+    platforms: [.iOS(.v17), .macOS(.v14), .tvOS(.v17), .watchOS(.v10), .macCatalyst(.v17)],
     products: [
         .library(name: "ShowcaseApp", type: .dynamic, targets: ["Showcase"]),
     ],
@@ -14,6 +14,7 @@ let package = Package(
         .package(url: "https://source.skip.tools/skip-ui.git", from: "1.26.0"),
         .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-kit.git", "0.0.0"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-web.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-motion.git", "0.0.0"..<"2.0.0"),
     ],
     targets: [
@@ -21,6 +22,7 @@ let package = Package(
             .product(name: "SkipUI", package: "skip-ui"),
             .product(name: "SkipAV", package: "skip-av"),
             .product(name: "SkipKit", package: "skip-kit"),
+            .product(name: "SkipWeb", package: "skip-web"),
             .product(name: "SkipMotion", package: "skip-motion"),
         ], resources: [.process("Resources")], plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]

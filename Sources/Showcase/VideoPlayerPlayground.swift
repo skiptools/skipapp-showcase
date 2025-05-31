@@ -2,6 +2,31 @@
 import AVKit
 import SwiftUI
 
+/// This component uses the `SkipAV` module from https://source.skip.tools/skip-av
+struct VideoPlayerPlayground: View {
+    var body: some View {
+        List(VideoPlaygroundType.allCases, id: \.self) { type in
+            NavigationLink(value: type) { Text(type.title) }
+        }
+        .toolbar {
+            PlaygroundSourceLink(file: "VideoPlayerPlayground.swift")
+        }
+        .navigationDestination(for: VideoPlaygroundType.self) {
+            switch $0 {
+            case .skipIntro:
+                PlayerView(url: URL(string: "https://skip.tools/assets/introduction.mov")!)
+                    .navigationTitle(Text($0.title))
+            case .loopingClip:
+                LoopingPlayerView(url: URL(string: "https://assets.skip.tools/videos/looping_showcase_clip.mp4")!)
+                    .navigationTitle(Text($0.title))
+            case .videoList:
+                ScrollingVideoList()
+                    .navigationTitle(Text($0.title))
+            }
+        }
+    }
+}
+
 enum VideoPlaygroundType: String, CaseIterable {
     case skipIntro
     case loopingClip
@@ -24,30 +49,6 @@ enum VideoPlaygroundType: String, CaseIterable {
             .loopingClip,
             //.videoList // needs work
         ]
-    }
-}
-
-struct VideoPlayerPlayground: View {
-    var body: some View {
-        List(VideoPlaygroundType.allCases, id: \.self) { type in
-            NavigationLink(value: type) { Text(type.title) }
-        }
-        .toolbar {
-            PlaygroundSourceLink(file: "VideoPlayerPlayground.swift")
-        }
-        .navigationDestination(for: VideoPlaygroundType.self) {
-            switch $0 {
-            case .skipIntro:
-                PlayerView(url: URL(string: "https://skip.tools/assets/introduction.mov")!)
-                    .navigationTitle(Text($0.title))
-            case .loopingClip:
-                LoopingPlayerView(url: URL(string: "https://assets.skip.tools/videos/looping_showcase_clip.mp4")!)
-                    .navigationTitle(Text($0.title))
-            case .videoList:
-                ScrollingVideoList()
-                    .navigationTitle(Text($0.title))
-            }
-        }
     }
 }
 

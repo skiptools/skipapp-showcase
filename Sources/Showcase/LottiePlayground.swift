@@ -3,6 +3,7 @@ import Foundation
 import SwiftUI
 import SkipMotion
 
+/// This component uses the `SkipMotion` module from https://source.skip.tools/skip-motion
 struct LottiePlayground: View {
     static let lottieAnimation = try! LottieContainer(data: Data(contentsOf: Bundle.module.url(forResource: "LottieHeart", withExtension: "json")!))
 
