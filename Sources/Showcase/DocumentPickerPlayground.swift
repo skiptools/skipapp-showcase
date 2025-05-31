@@ -3,6 +3,7 @@ import Foundation
 import SwiftUI
 import SkipKit
 
+/// This component uses the `SkipKit` module from https://source.skip.tools/skip-kit
 struct DocumentPickerPlayground: View {
     @State var presentPreview = false
     @State var selectedDocument: URL? = nil
