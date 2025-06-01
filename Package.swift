@@ -1,5 +1,4 @@
 // swift-tools-version: 6.0
-// SPDX-License-Identifier: LGPL-3.0-only WITH LGPL-3.0-linking-exception
 import PackageDescription
 
 let package = Package(
@@ -15,6 +14,7 @@ let package = Package(
         .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-kit.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-web.git", "0.0.0"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-device.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-motion.git", "0.0.0"..<"2.0.0"),
     ],
     targets: [
@@ -23,6 +23,7 @@ let package = Package(
             .product(name: "SkipAV", package: "skip-av"),
             .product(name: "SkipKit", package: "skip-kit"),
             .product(name: "SkipWeb", package: "skip-web"),
+            .product(name: "SkipDevice", package: "skip-device"),
             .product(name: "SkipMotion", package: "skip-motion"),
         ], resources: [.process("Resources")], plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
