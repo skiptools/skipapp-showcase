@@ -5,12 +5,20 @@
     <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> -->
     <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> -->
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
     <!-- permissions needed for using the internet or an embedded WebKit browser -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -34,5 +42,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- needed in order for the camera to be able to share the photo with the app -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 </manifest>
