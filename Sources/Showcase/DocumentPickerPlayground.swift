@@ -6,28 +6,42 @@ import SkipKit
 /// This component uses the `SkipKit` module from https://source.skip.tools/skip-kit
 struct DocumentPickerPlayground: View {
     @State var presentPreview = false
+    @State var presentCamera = false
+    @State var presentMediaPicker = false
     @State var selectedDocument: URL? = nil
     @State var filename: String? = nil
     @State var mimeType: String? = nil
 
     var body: some View {
         VStack(alignment: .center) {
-            Button("Pick Document") {
-                presentPreview = true
+            HStack {
+                Button("Pick Document") {
+                    presentPreview = true
+                }
+                .buttonStyle(.borderedProminent)
+                .withDocumentPicker(isPresented: $presentPreview, allowedContentTypes: [.image, .pdf], selectedDocumentURL: $selectedDocument, selectedFilename: $filename, selectedFileMimeType: $mimeType)
+
+                Button("Take Photo") {
+                    presentCamera = true
+                }
+                .buttonStyle(.borderedProminent)
+                .withMediaPicker(type: .camera, isPresented: $presentCamera, selectedImageURL: $selectedDocument)
+
+                Button("Select Media") {
+                    presentMediaPicker = true
+                }
+                .buttonStyle(.borderedProminent)
+                .withMediaPicker(type: .library, isPresented: $presentMediaPicker, selectedImageURL: $selectedDocument)
             }
-            .buttonStyle(.borderedProminent)
-            .withDocumentPicker(isPresented: $presentPreview, allowedContentTypes: [.image, .pdf], selectedDocumentURL: $selectedDocument, selectedFilename: $filename, selectedFileMimeType: $mimeType)
 
             if let selectedDocument {
-                Text("Document: \(selectedDocument.lastPathComponent)")
-            }
-
-            if let filename {
-                Text("Filename: \(filename)")
-            }
-
-            if let mimeType {
-                Text("Mime Type: \(mimeType)")
+                Text("Selected Image: \(selectedDocument.lastPathComponent)")
+                    .font(.callout)
+                AsyncImage(url: selectedDocument) { image in
+                    image.resizable().aspectRatio(contentMode: .fit)
+                } placeholder: {
+                    ProgressView()
+                }
             }
         }
     }

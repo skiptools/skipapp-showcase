@@ -23,6 +23,9 @@ INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphone*] = YES
 INFOPLIST_KEY_UIStatusBarStyle[sdk=iphone*] = UIStatusBarStyleDefault
 INFOPLIST_KEY_UISupportedInterfaceOrientations[sdk=iphone*] = UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown
 
+INFOPLIST_KEY_NSCameraUsageDescription = "This app accesses the camera to demonstrate using a photo picker";
+INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app accesses the media library to demonstrate using a photo picker";
+
 IPHONEOS_DEPLOYMENT_TARGET = 17.0
 MACOSX_DEPLOYMENT_TARGET = 14.0
 

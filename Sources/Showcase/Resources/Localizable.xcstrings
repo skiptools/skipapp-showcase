@@ -1092,9 +1092,6 @@
     "Divider" : {
 
     },
-    "Document: %@" : {
-
-    },
     "DocumentPicker" : {
 
     },
@@ -1200,9 +1197,6 @@
 
     },
     "Feedback Type" : {
-
-    },
-    "Filename: %@" : {
 
     },
     "Fill" : {
@@ -1737,9 +1731,6 @@
     "Menu" : {
 
     },
-    "Mime Type: %@" : {
-
-    },
     "Mint" : {
 
     },
@@ -2268,6 +2259,12 @@
     "SecureField" : {
 
     },
+    "Select Media" : {
+
+    },
+    "Selected Image: %@" : {
+
+    },
     "Selection" : {
 
     },
@@ -2696,6 +2693,9 @@
 
     },
     "TabView" : {
+
+    },
+    "Take Photo" : {
 
     },
     "Tap" : {
