@@ -1064,6 +1064,9 @@
     "Disabled" : {
 
     },
+    "Disabled Tab" : {
+
+    },
     "Disabled tap: (%lld, %lld)" : {
       "localizations" : {
         "en" : {
@@ -1455,6 +1458,9 @@
       }
     },
     "Hidden" : {
+
+    },
+    "Hidden Tab" : {
 
     },
     "Hide the following element from accessibility:" : {
@@ -2218,6 +2224,9 @@
 
     },
     "ScrollView" : {
+
+    },
+    "Search Tab" : {
 
     },
     "Searchable" : {
