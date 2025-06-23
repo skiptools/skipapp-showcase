@@ -5,33 +5,77 @@ struct TabViewPlayground: View {
     @State var selectedTab = "Home"
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            TabPlaygroundContentView(label: "Home", selectedTab: $selectedTab)
-                .tabItem { Label("Home", systemImage: "house.fill") }
-                .tag("Home")
-            TabView {
-                TabPlaygroundContentView(label: "Favorites (page 1)", selectedTab: $selectedTab)
-                    .padding(32)
-                    .background {
-                        Capsule()
-                            .fill(Color.pink.opacity(0.1))
+        if #available(iOS 18.4, *) {
+            TabView(selection: $selectedTab) {
+                Tab("Home", systemImage: "house.fill", value: "Home") {
+                    TabPlaygroundContentView(label: "Home", selectedTab: $selectedTab)
+                }
+                Tab("Favorites", systemImage: "heart.fill", value: "Favorites") {
+                    TabView {
+                        TabPlaygroundContentView(label: "Favorites (page 1)", selectedTab: $selectedTab)
+                            .padding(32)
+                            .background {
+                                Capsule()
+                                    .fill(Color.pink.opacity(0.1))
+                            }
+                        Text("More (page 2)")
                     }
-                Text("More (page 2)")
+                    #if !os(macOS) || os(Android)
+                    .tabViewStyle(.page)
+                    #endif
+                }
+                #if !os(macOS) || os(Android)
+                Tab("Paging", systemImage: "arrow.forward.square", value: "Paging") {
+                    TabPageViewContentView()
+                }
+                #endif
+                TabSection {
+                    Tab(value: "Search", role: .search) {
+                        Text("Search Tab")
+                    }
+                    Tab("Hidden", systemImage: "plus", value: "Hidden") {
+                        Text("Hidden Tab")
+                    }
+                    .hidden(true)
+                    Tab("Disabled", systemImage: "xmark", value: "Disabled") {
+                        Text("Disabled Tab")
+                    }
+                    .disabled(true)
+                }
             }
-            #if !os(macOS) || os(Android)
-            .tabViewStyle(.page)
-            #endif
-            .tabItem { Label("Favorites", systemImage: "heart.fill") }
-            .tag("Favorites")
-            #if !os(macOS) || os(Android)
-            TabPageViewContentView()
-                .tabItem { Label("Paging", systemImage: "arrow.forward.square") }
-                .tag("Paging")
-            #endif
-        }
-        .tint(.red)
-        .toolbar {
-            PlaygroundSourceLink(file: "TabViewPlayground.swift")
+            .tint(.red)
+            .toolbar {
+                PlaygroundSourceLink(file: "TabViewPlayground.swift")
+            }
+        } else {
+            TabView(selection: $selectedTab) {
+                TabPlaygroundContentView(label: "Home", selectedTab: $selectedTab)
+                    .tabItem { Label("Home", systemImage: "house.fill") }
+                    .tag("Home")
+                TabView {
+                    TabPlaygroundContentView(label: "Favorites (page 1)", selectedTab: $selectedTab)
+                        .padding(32)
+                        .background {
+                            Capsule()
+                                .fill(Color.pink.opacity(0.1))
+                        }
+                    Text("More (page 2)")
+                }
+                #if !os(macOS) || os(Android)
+                .tabViewStyle(.page)
+                #endif
+                .tabItem { Label("Favorites", systemImage: "heart.fill") }
+                .tag("Favorites")
+                #if !os(macOS) || os(Android)
+                TabPageViewContentView()
+                    .tabItem { Label("Paging", systemImage: "arrow.forward.square") }
+                    .tag("Paging")
+                #endif
+            }
+            .tint(.red)
+            .toolbar {
+                PlaygroundSourceLink(file: "TabViewPlayground.swift")
+            }
         }
     }
 }
