@@ -5,6 +5,8 @@ pluginManagement {
 
     // overriding outputs for an Android IDE can be done by un-commenting and setting the Xcode path:
     //System.setProperty("BUILT_PRODUCTS_DIR", "${System.getProperty("user.home")}/Library/Developer/Xcode/DerivedData/MySkipProject-HASH/Build/Products/Debug-iphonesimulator")
+    //~~~
+    System.setProperty("BUILT_PRODUCTS_DIR", "${System.getProperty("user.home")}/Library/Developer/Xcode/DerivedData/Skip-cpwfvqbznbgqkbhfdalldovwowpp/Build/Products/Debug-iphonesimulator")
     @Suppress("DEPRECATION")
     exec {
         commandLine("/bin/sh", "-c", "skip plugin --prebuild --package-path '${settings.rootDir.parent}' --plugin-ref '${pluginPath.absolutePath}'")
