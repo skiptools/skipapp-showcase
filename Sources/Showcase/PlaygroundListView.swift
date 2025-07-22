@@ -388,12 +388,8 @@ public struct PlaygroundNavigationView: View {
 
     public var body: some View {
         NavigationStack {
-            List {
-                ForEach(matchingPlaygroundTypes(), id: \.self) { playground in
-                    NavigationLink(value: playground, label: { Text(playground.title) })
-                        .padding(20.0)
-                        .border(.blue)
-                }
+            List(matchingPlaygroundTypes(), id: \.self) { playground in
+                NavigationLink(value: playground, label: { Text(playground.title) })
             }
             .navigationTitle(Text("Showcase"))
             .navigationDestination(for: PlaygroundType.self) {

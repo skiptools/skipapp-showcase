@@ -205,16 +205,22 @@ struct ForEachContentListPlayground: View {
             ForEach(0..<10) { index in
                 Text("ForEach index row: \(index)")
             }
+            .padding()
+            .border(.blue)
             Text("Standalone row 2")
             ForEach(items(), id: \.id) {
                 Text($0.s)
             }
+            .padding()
+            .border(.yellow)
             Text("Standalone row 3")
             ForEach(0..<10) { index1 in
                 ForEach(1..<3) { index2 in
                     Text("Nested ForEach row: \(index1).\(index2)")
                 }
             }
+            .padding()
+            .border(.green)
         }
     }
 }
@@ -224,27 +230,42 @@ struct SectionedListPlayground: View {
         List {
             Section("Section 1") {
                 Text("Row 1.1")
-                ForEach(0..<10) { index in
-                    Text("ForEach row: 1.\(index)")
-                }
+                SectionedListSectionContent(prefix: 1)
             }
             Section {
                 Text("Row 2.1")
-                ForEach(0..<10) { index in
-                    Text("ForEach row: 2.\(index)")
-                }
+                SectionedListSectionContent(prefix: 2)
             } header: {
                 Text("Section 2")
             } footer: {
                 Text("Footer 2")
             }
-            ForEach(0..<2) { index1 in
-                Section("ForEach section \(index1)") {
-                    ForEach(0..<5) { index2 in
-                        Text("ForEach row: \(index1).\(index2)")
-                    }
-                }
+            .padding(8)
+            .border(.blue)
+            ForEach(0..<2) { index in
+                SectionedListSection(index: index)
             }
+        }
+    }
+}
+
+struct SectionedListSection: View {
+    let index: Int
+
+    var body: some View {
+        Section("Section \(index)") {
+            Text("Row \(index).1")
+            SectionedListSectionContent(prefix: index)
+        }
+    }
+}
+
+struct SectionedListSectionContent: View {
+    let prefix: Int
+
+    var body: some View {
+        ForEach(0..<10) { index in
+            Text("ForEach row: \(prefix).\(index)")
         }
     }
 }
@@ -363,9 +384,9 @@ struct HiddenBackgroundListPlayground: View {
                 Section {
                     ForEach(0..<30) { index in
                         Text("Row: 2.\(index)")
-                            .listRowBackground(Color.pink)
-                            .listRowSeparator(.hidden)
                     }
+                    .listRowBackground(Color.pink)
+                    .listRowSeparator(.hidden)
                 } header: {
                     Text("Pink Row Background")
                 } footer: {
@@ -390,9 +411,9 @@ struct HiddenBackgroundPlainStyleListPlayground: View {
                 Section {
                     ForEach(0..<30) { index in
                         Text("Row: 2.\(index)")
-                            .listRowBackground(Color.pink)
-                            .listRowSeparator(.hidden)
                     }
+                    .listRowBackground(Color.pink)
+                    .listRowSeparator(.hidden)
                 } header: {
                     Text("Section 2")
                 } footer: {

@@ -13,11 +13,7 @@ struct FormPlayground: View {
     var redaction: RedactionReasons = []
 
     var body: some View {
-        //~~~
-        #if SKIP
-        android.util.Log.e("", "COMPOSING FORM PLAYGROUND................................")
-        #endif
-        return List {
+        List {
             Label("Label", systemImage: "star.fill")
             Label("Label .font(.title)", systemImage: "star.fill")
                 .font(.title)

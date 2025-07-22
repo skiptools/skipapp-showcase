@@ -50,25 +50,19 @@ struct ConfirmationDialogPlayground: View {
             PlaygroundSourceLink(file: "ConfirmationDialogPlayground.swift")
         }
         .confirmationDialog("Title", isPresented: $defaultIsPresented) {
-            Button("Destructive", role: .destructive) {
-                value = "Destructive"
-            }
+            ConfirmationDialogDestructiveButton(value: $value)
             Button("Option") {
                 value = "Option"
             }
         }
         .confirmationDialog("Title", isPresented: $titleIsPresented, titleVisibility: .visible) {
-            Button("Destructive", role: .destructive) {
-                value = "Destructive"
-            }
+            ConfirmationDialogDestructiveButton(value: $value)
             Button("Option") {
                 value = "Option"
             }
         }
         .confirmationDialog("Title", isPresented: $titleMessageIsPresented, titleVisibility: .visible) {
-            Button("Destructive", role: .destructive) {
-                value = "Destructive"
-            }
+            ConfirmationDialogDestructiveButton(value: $value)
             Button("Option") {
                 value = "Option"
             }
@@ -76,20 +70,14 @@ struct ConfirmationDialogPlayground: View {
             Text("This is the message")
         }
         .confirmationDialog("Title", isPresented: $customCancelIsPresented) {
-            Button("Custom Cancel", role: .cancel) {
-                value = "Custom Cancel"
-            }
-            Button("Destructive", role: .destructive) {
-                value = "Destructive"
-            }
+            ConfirmationDialogCancelButton(value: $value)
+            ConfirmationDialogDestructiveButton(value: $value)
             Button("Option") {
                 value = "Option"
             }
         }
         .confirmationDialog("Title", isPresented: $scrollingIsPresented) {
-            Button("Destructive", role: .destructive) {
-                value = "Destructive"
-            }
+            ConfirmationDialogDestructiveButton(value: $value)
             ForEach(0..<20) { i in
                 Button("Option \(i)") {
                     value = "Option \(i)"
@@ -103,6 +91,26 @@ struct ConfirmationDialogPlayground: View {
             Button("Nil Data", role: .destructive) {
                 data = nil
             }
+        }
+    }
+}
+
+struct ConfirmationDialogCancelButton : View {
+    @Binding var value: String
+
+    var body: some View {
+        Button("Cancel", role: .cancel) {
+            value = "Custom Cancel"
+        }
+    }
+}
+
+struct ConfirmationDialogDestructiveButton : View {
+    @Binding var value: String
+
+    var body: some View {
+        Button("Destructive", role: .destructive) {
+            value = "Destructive"
         }
     }
 }

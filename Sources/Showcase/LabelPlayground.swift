@@ -43,8 +43,7 @@ struct LabelPlayground: View {
             }
             .padding()
             .toolbar {
-                ToolbarItemGroup(placement: placement
-                ) {
+                ToolbarItemGroup(placement: placement) {
                     Label("Icon Only", systemImage: "heart.fill")
                     Label("+ Title", systemImage: "star.fill")
                         .labelStyle(.titleAndIcon)
