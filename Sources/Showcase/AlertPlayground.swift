@@ -91,28 +91,18 @@ struct AlertPlayground: View {
             Button("Option") {
                 value = "Option"
             }
-            Button("Cancel", role: .cancel) {
-                value = "Custom Cancel"
-            }
+            AlertCancelButton(value: $value)
         }
         .alert("Three Buttons", isPresented: $threeButtonsIsPresented) {
-            Button("Cancel", role: .cancel) {
-                value = "Custom Cancel"
-            }
+            AlertCancelButton(value: $value)
             Button("Option") {
                 value = "Option"
             }
-            Button("Destructive", role: .destructive) {
-                value = "Destructive"
-            }
+            AlertDestructiveButton(value: $value)
         }
         .alert("Five Buttons", isPresented: $fiveButtonsIsPresented) {
-            Button("Cancel", role: .cancel) {
-                value = "Custom Cancel"
-            }
-            Button("Destructive", role: .destructive) {
-                value = "Destructive"
-            }
+            AlertCancelButton(value: $value)
+            AlertDestructiveButton(value: $value)
             Button("Option 1") {
                 value = "Option 1"
             }
@@ -128,9 +118,7 @@ struct AlertPlayground: View {
             Button("Submit") {
                 value = textFieldText
             }
-            Button("Cancel", role: .cancel) {
-                value = "Custom Cancel"
-            }
+            AlertCancelButton(value: $value)
         }
         .alert("Sign In", isPresented: $secureFieldIsPresented) {
             TextField("Username", text: $textFieldText)
@@ -138,9 +126,7 @@ struct AlertPlayground: View {
             Button("Submit") {
                 value = textFieldText
             }
-            Button("Cancel", role: .cancel) {
-                value = "Custom Cancel"
-            }
+            AlertCancelButton(value: $value)
         }
         .alert("Data", isPresented: $dataIsPresented, presenting: data) { d in
             Button("Data: \(d)") {
@@ -163,4 +149,24 @@ struct AlertPlayground: View {
 
 enum AlertPlaygroundError: LocalizedError {
     case testError
+}
+
+struct AlertCancelButton : View {
+    @Binding var value: String
+
+    var body: some View {
+        Button("Cancel", role: .cancel) {
+            value = "Custom Cancel"
+        }
+    }
+}
+
+struct AlertDestructiveButton : View {
+    @Binding var value: String
+
+    var body: some View {
+        Button("Destructive", role: .destructive) {
+            value = "Destructive"
+        }
+    }
 }
