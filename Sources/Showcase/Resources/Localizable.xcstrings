@@ -609,9 +609,6 @@
     "After another section empty row" : {
 
     },
-    "After expanding" : {
-
-    },
     "After fixed" : {
 
     },
@@ -1232,6 +1229,9 @@
     "Fixed Content" : {
 
     },
+    "Fixed vs Expanding:" : {
+
+    },
     "Fixed width" : {
 
     },
@@ -1478,9 +1478,6 @@
     "HSV" : {
 
     },
-    "I heard you like TabViews so we put a TabView inside your TabView inside your TabView" : {
-
-    },
     "Icon + Title" : {
 
     },
@@ -1652,7 +1649,7 @@
     "LazyVStack" : {
 
     },
-    "LazyVStack (fewer items)" : {
+    "LazyVStack (few items)" : {
 
     },
     "Light" : {
@@ -1674,6 +1671,9 @@
 
     },
     "Long press: %lld" : {
+
+    },
+    "Long text that should receive the extra space from the short text when the width is divided" : {
 
     },
     "Long values" : {
@@ -1901,6 +1901,9 @@
     "Over here!" : {
 
     },
+    "Overflow:" : {
+
+    },
     "Overlay" : {
 
     },
@@ -1914,6 +1917,9 @@
 
     },
     "Paging" : {
+
+    },
+    "Paging Tab %lld" : {
 
     },
     "Passing a string var does not format as markdown:" : {
@@ -1972,6 +1978,9 @@
 
     },
     "path.reverse()" : {
+
+    },
+    "Patterns:" : {
 
     },
     "PDF Image" : {
@@ -2386,6 +2395,9 @@
     "Sheet" : {
 
     },
+    "Short text" : {
+
+    },
     "Showcase" : {
       "comment" : "localized string",
       "localizations" : {
@@ -2585,6 +2597,9 @@
 
     },
     "Spacer" : {
+
+    },
+    "Spacer:" : {
 
     },
     "Stacks" : {
@@ -2798,7 +2813,13 @@
     "Text Field" : {
 
     },
+    "Text spacing:" : {
+
+    },
     "Text with background" : {
+
+    },
+    "Text:" : {
 
     },
     "Text1" : {
@@ -2834,7 +2855,7 @@
     "Third: %lld" : {
 
     },
-    "This is a horizontally swipable paging TabView" : {
+    "This is some long text that won't fit" : {
 
     },
     "This is text that uses a function that returns EmptyModifier()" : {

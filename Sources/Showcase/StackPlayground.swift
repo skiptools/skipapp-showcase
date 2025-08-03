@@ -5,22 +5,72 @@ struct StackPlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                Text("Fixed vs Expanding:").bold()
                 HStack {
-                    Text("Before fixed")
-                        .border(Color.blue)
+                    Color.red
+                    Color.green
+                    Color.red
+                }
+                .frame(height: 50)
+                HStack {
+                    Color.red.frame(width: 50)
+                    Color.green
+                    Color.red.frame(width: 50)
+                }
+                .frame(height: 50)
+                Text("Spacer:").bold()
+                HStack(spacing: 0) {
+                    Color.red
+                    Spacer()
+                    Color.green
+                    Spacer(minLength: 50)
+                    Color.red
+                }
+                .frame(height: 50)
+                HStack {
+                    Color.red
+                    Spacer(minLength: 1)
+                    Color.green
+                    Spacer(minLength: 50)
+                    Color.red
+                }
+                .frame(height: 50)
+                HStack {
+                    Color.red.frame(width: 50)
+                    Spacer()
+                    Color.green.frame(width: 50)
+                }
+                .frame(height: 50)
+                HStack {
+                    Color.red.frame(width: 50)
                     HStack {
                         Spacer()
-                        Text("After expanding")
+                        Color.blue.frame(width: 20)
+                        Spacer()
+                        Color.blue.frame(width: 20)
+                        Spacer()
                     }
-                    .border(Color.red)
-                    Text("After fixed")
-                        .border(Color.blue)
+                    Color.green.frame(width: 50)
                 }
+                .frame(height: 50)
+                HStack {
+                    Color.red.frame(width: 50)
+                    Spacer()
+                    Color.green
+                }
+                .frame(height: 50)
+                Text("Text spacing:").bold()
                 VStack {
                     Text("Text1 gy")
                     Text("Text2 TA")
                 }
                 .border(Color.blue)
+                Text("Text:").bold()
+                HStack {
+                    Text("Long text that should receive the extra space from the short text when the width is divided")
+                    Spacer()
+                    Text("Short text")
+                }
                 Text("Sized to content:").bold()
                 VStack(spacing: 0) {
                     Color.red.frame(width: 50, height: 50)
@@ -44,6 +94,35 @@ struct StackPlayground: View {
                     Text("Text2")
                 }
                 .border(Color.blue)
+                Text("Overflow:").bold()
+                HStack {
+                    Color.red.frame(width: 80)
+                    Color.green.frame(width: 80)
+                    Spacer(minLength: 30)
+                    Color.yellow.frame(width: 80)
+                }
+                .frame(width: 200, height: 50)
+                .border(.blue)
+                HStack {
+                    Color.red.frame(width: 50)
+                    Text("This is some long text that won't fit")
+                    Color.green.frame(width: 50)
+                    Color.yellow.frame(width: 50)
+                }
+                .frame(width: 200, height: 50)
+                .border(.blue)
+                Text("Patterns:").bold()
+                HStack {
+                    Spacer()
+                    Color.black.frame(width: 4.0)
+                    Spacer()
+                    Spacer()
+                    Color.black.frame(width: 4.0)
+                    Spacer()
+                }
+                .background(Color.white)
+                .frame(width: 28.0, height: 10.0)
+                .border(.yellow)
                 VStack(content: horizontalStripes)
                     .background(.yellow)
                     .frame(width: 100, height: 100)
@@ -86,9 +165,9 @@ struct StackPlayground: View {
                 }
                 NavigationLink {
                     LazyVStackScrollView(count: 5)
-                        .navigationTitle("LazyVStack")
+                        .navigationTitle("LazyVStack (few items)")
                 } label: {
-                    Text("LazyVStack (fewer items)").bold()
+                    Text("LazyVStack").bold()
                 }
                 NavigationLink {
                     ScrollViewStacksView()

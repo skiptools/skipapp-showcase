@@ -286,7 +286,7 @@ private struct ScrollViewReaderLazyVGridPlayground: View {
                     .padding([.top, .bottom])
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 200))]) {
-                        ForEach(0..<30) { index in
+                        ForEach(0..<30, id: \.self) { index in
                             ZStack {
                                 Color.yellow
                                 Text(String(describing: index))
@@ -309,7 +309,7 @@ private struct ScrollViewReaderLazyHGridPlayground: View {
                     .padding([.top, .bottom])
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: [GridItem(.adaptive(minimum: 200))]) {
-                        ForEach(0..<30) { index in
+                        ForEach(0..<30, id: \.self) { index in
                             ZStack {
                                 Color.yellow
                                 Text(String(describing: index))
