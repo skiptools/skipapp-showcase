@@ -117,27 +117,15 @@ struct TabPageViewContentView: View {
         ScrollView {
             VStack {
                 TabView(selection: $selection) {
-                    Rectangle()
-                        .fill(.gray)
-                        .overlay {
-                            Text("This is a horizontally swipable paging TabView")
-                                .padding()
-                        }
-                        .tag(1)
-                    Rectangle()
-                        .fill(.blue)
-                        .overlay {
-                            Text("Page 2")
-                                .padding()
-                        }
-                        .tag(2)
-                    Rectangle()
-                        .fill(.green)
-                        .overlay {
-                            Text("I heard you like TabViews so we put a TabView inside your TabView inside your TabView")
-                                .padding()
-                        }
-                        .tag(3)
+                    ForEach(1..<4) { index in
+                        Rectangle()
+                            .fill(.gray)
+                            .overlay {
+                                Text("Paging Tab \(index)")
+                                    .padding()
+                            }
+                            .tag(index)
+                    }
                 }
                 .frame(height: 128)
                 Text("Current Page: \(selection)")
