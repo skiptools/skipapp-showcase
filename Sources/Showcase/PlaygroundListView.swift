@@ -19,6 +19,7 @@ enum PlaygroundType: CaseIterable, View {
     case disclosureGroup
     case divider
     case documentPicker
+    case environment
     case focusState
     case form
     case frame
@@ -46,6 +47,7 @@ enum PlaygroundType: CaseIterable, View {
     case overlay
     case pasteboard
     case picker
+    case preference
     case progressView
     case redacted
     case safeArea
@@ -110,6 +112,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Divider")
         case .documentPicker:
             return LocalizedStringResource("DocumentPicker")
+        case .environment:
+            return LocalizedStringResource("Environment")
         case .focusState:
             return LocalizedStringResource("FocusState")
         case .form:
@@ -164,6 +168,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Pasteboard")
         case .picker:
             return LocalizedStringResource("Picker")
+        case .preference:
+            return LocalizedStringResource("Preferences")
         case .progressView:
             return LocalizedStringResource("ProgressView")
         case .redacted:
@@ -259,6 +265,8 @@ enum PlaygroundType: CaseIterable, View {
             DividerPlayground()
         case .documentPicker:
             DocumentPickerPlayground()
+        case .environment:
+            EnvironmentPlayground()
         case .focusState:
             FocusStatePlayground()
         case .form:
@@ -317,6 +325,8 @@ enum PlaygroundType: CaseIterable, View {
             PasteboardPlayground()
         case .picker:
             PickerPlayground()
+        case .preference:
+            PreferencePlayground()
         case .progressView:
             ProgressViewPlayground()
         case .redacted:

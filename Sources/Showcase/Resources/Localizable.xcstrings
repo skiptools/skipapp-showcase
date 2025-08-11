@@ -1181,6 +1181,9 @@
     "Enum: %@" : {
 
     },
+    "Environment" : {
+
+    },
     "EnvironmentObject" : {
 
     },
@@ -1506,6 +1509,9 @@
 
     },
     "Inc" : {
+
+    },
+    "Increment" : {
 
     },
     "Increment counter: %lld" : {
@@ -2029,6 +2035,12 @@
 
     },
     "Powered by [Skip](https://skip.tools)" : {
+
+    },
+    "Preference value: %lld" : {
+
+    },
+    "Preferences" : {
 
     },
     "Present" : {

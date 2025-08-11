@@ -1,40 +1,17 @@
 // Copyright 2023–2025 Skip
 import SwiftUI
 
-class TapCountObservable: ObservableObject {
-    @Published var tapCount = 0
-}
-
-struct TapCountStruct : Identifiable {
-    var id = 0
-    var tapCount = 0
-}
-
-class TapCountRepository: ObservableObject {
-    @Published var items: [TapCountStruct] = []
-
-    func add() {
-        items.append(TapCountStruct(id: items.count))
-    }
-
-    func increment() {
-        if !items.isEmpty {
-            items[items.count - 1].tapCount += 1
-        }
-    }
-}
-
 struct StatePlayground: View {
     @State var tapCount = 0
     @State var hasStateTapped: Bool? // Test optional vars
-    @StateObject var tapCountObservable: TapCountObservable
+    @State var tapCountObservable: TapCountObservable
     @State var tapCountStruct: TapCountStruct
     @StateObject var tapCountRepository = TapCountRepository() // Test ForEach observable
 
     init() {
         // Test that we can initialze state property wrappers
-        _tapCountObservable = StateObject(wrappedValue: TapCountObservable())
-        _tapCountStruct = State(wrappedValue: TapCountStruct())
+        _tapCountObservable = State(initialValue: TapCountObservable())
+        _tapCountStruct = State(initialValue: TapCountStruct())
     }
 
     var body: some View {
@@ -63,10 +40,6 @@ struct StatePlayground: View {
                     tapCountObservable.tapCount += 1
                 }
                 StatePlaygroundBindingView(tapCount: $tapCountObservable.tapCount)
-            }
-            Section {
-                StatePlaygroundEnvironmentObjectView()
-                    .environmentObject(tapCountObservable)
             }
             Section {
                 Text("Struct tap count: \(tapCountStruct.tapCount)")
@@ -125,18 +98,6 @@ struct StatePlaygroundStructBindingView: View {
         Button("Binding") {
             tapCountStruct.tapCount += 1
         }
-    }
-}
-
-struct StatePlaygroundEnvironmentObjectView: View {
-    @EnvironmentObject var tapCountObservable: TapCountObservable
-
-    var body: some View {
-        Text("EnvironmentObject tap count: \(tapCountObservable.tapCount)")
-        Button("EnvironmentObject") {
-            tapCountObservable.tapCount += 1
-        }
-        StatePlaygroundBindingView(tapCount: $tapCountObservable.tapCount)
     }
 }
 
