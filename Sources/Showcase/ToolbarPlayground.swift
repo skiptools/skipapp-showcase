@@ -28,6 +28,8 @@ enum ToolbarPlaygroundType: String, CaseIterable {
     case bottomGroup
     case bottomSpaced
     case customToolbarContent
+    case toolbarTitleMenu
+    case toolbarTitleMenuModifier
 
     var title: String {
         switch self {
@@ -83,6 +85,10 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return "Bottom 3 Spaced"
         case .customToolbarContent:
             return "Custom ToolbarContent"
+        case .toolbarTitleMenu:
+            return "Toolbar Title Menu"
+        case .toolbarTitleMenuModifier:
+            return ".toolbarTitleMenu"
         }
     }
 }
@@ -252,6 +258,12 @@ struct ToolbarPlayground: View {
                 ToolbarCustomContentPlayground()
                     .navigationTitle($0.title)
                 #endif
+            case .toolbarTitleMenu:
+                ToolbarTitleMenuPlayground()
+                    .navigationTitle($0.title)
+            case .toolbarTitleMenuModifier:
+                ToolbarTitleMenuModifierPlayground()
+                    .navigationTitle($0.title)
             }
         }
     }
@@ -610,3 +622,45 @@ struct ToolbarCustomContentItem: ToolbarContent {
     }
 }
 #endif
+
+struct ToolbarTitleMenuPlayground: View {
+    @State var selection = 0
+
+    var body: some View {
+        List(0..<100) { index in
+            if index == 0 {
+                Text("Selection: \(selection)")
+            } else {
+                Text("Row \(index)")
+            }
+        }
+        .toolbarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarTitleMenu {
+                Button("Option 1") { selection = 1 }
+                Button("Option 2") { selection = 2 }
+                Button("Option 3") { selection = 3 }
+            }
+        }
+    }
+}
+
+struct ToolbarTitleMenuModifierPlayground: View {
+    @State var selection = 0
+
+    var body: some View {
+        List(0..<100) { index in
+            if index == 0 {
+                Text("Selection: \(selection)")
+            } else {
+                Text("Row \(index)")
+            }
+        }
+        .toolbarTitleDisplayMode(.inline)
+        .toolbarTitleMenu {
+            Button("Option 1") { selection = 1 }
+            Button("Option 2") { selection = 2 }
+            Button("Option 3") { selection = 3 }
+        }
+    }
+}
