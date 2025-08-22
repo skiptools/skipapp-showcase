@@ -19,6 +19,9 @@ struct VideoPlayerPlayground: View {
             case .loopingClip:
                 LoopingPlayerView(url: URL(string: "https://assets.skip.tools/videos/looping_showcase_clip.mp4")!)
                     .navigationTitle(Text($0.title))
+            case .bipBop:
+                PlayerView(url: URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8")!)
+                    .navigationTitle(Text($0.title))
             case .videoList:
                 ScrollingVideoList()
                     .navigationTitle(Text($0.title))
@@ -30,6 +33,7 @@ struct VideoPlayerPlayground: View {
 enum VideoPlaygroundType: String, CaseIterable {
     case skipIntro
     case loopingClip
+    case bipBop
     case videoList
 
     var title: LocalizedStringResource {
@@ -38,6 +42,8 @@ enum VideoPlaygroundType: String, CaseIterable {
             return LocalizedStringResource("Skip Intro")
         case .loopingClip:
             return LocalizedStringResource("Looping Clip")
+        case .bipBop:
+            return LocalizedStringResource("BipBop")
         case .videoList:
             return LocalizedStringResource("Video List")
         }
@@ -47,6 +53,7 @@ enum VideoPlaygroundType: String, CaseIterable {
         return [
             .skipIntro,
             .loopingClip,
+            .bipBop,
             //.videoList // needs work
         ]
     }
@@ -80,7 +87,7 @@ struct PlayerView: View {
 
 struct LoopingPlayerView: View {
     @State var player: AVQueuePlayer
-    @State private var playerLooper: AVPlayerLooper
+    @State var playerLooper: AVPlayerLooper
     @State var rate = 1.0
 
     init(url: URL) {
