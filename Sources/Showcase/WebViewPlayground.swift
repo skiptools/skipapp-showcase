@@ -40,6 +40,7 @@ struct WebViewPlayground: View {
             .accessibilityLabel(Text("Forward"))
 
             Button {
+                self.javaScriptOutput = ""
                 self.showScriptSheet = true
             } label: {
                 Image(systemName: "ellipsis")
