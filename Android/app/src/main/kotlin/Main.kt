@@ -69,7 +69,7 @@ open class MainActivity: AppCompatActivity {
         //ActivityCompat.requestPermissions(self, permissions.toTypedArray(), requestTag)
     }
 
-    override fun onSaveInstanceState(bundle: android.os.Bundle): Unit = super.onSaveInstanceState(bundle)
+    override fun onSaveInstanceState(outState: android.os.Bundle): Unit = super.onSaveInstanceState(outState)
 
     override fun onRestoreInstanceState(bundle: android.os.Bundle) {
         // Usually you restore your state in onCreate(). It is possible to restore it in onRestoreInstanceState() as well, but not very common. (onRestoreInstanceState() is called after onStart(), whereas onCreate() is called before onStart().
