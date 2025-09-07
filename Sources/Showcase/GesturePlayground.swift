@@ -7,12 +7,15 @@ struct GesturePlayground: View {
     @State var longPressCount = 0
     @State var dragOffset: CGSize = .zero
     @State var globalDragOffset: CGSize = .zero
+    @State var magnification: CGFloat = 1.0
+    @State var rotation: Angle = .degrees(0.0)
     @State var isTouchDown = false
 
     @State var combinedTapPosition: CGPoint = .zero
     @State var combinedDoubleTapPosition: CGPoint = .zero
     @State var combinedLongPressCount = 0
     @State var combinedDragOffset: CGSize = .zero
+    @State var combinedMagnification: CGFloat = 1.0
 
     var body: some View {
         ScrollView {
@@ -119,21 +122,54 @@ struct GesturePlayground: View {
                                 .onEnded { _ in isTouchDown = false }
                         )
                 }
-                HStack {
-                    VStack(alignment: .leading) {
+                VStack {
+                    Text("Magnify")
+                    Color.red
+                        .frame(width: 150, height: 150)
+                        .scaleEffect(magnification)
+                        .gesture(
+                            MagnifyGesture()
+                                .onChanged { val in
+                                    magnification = val.magnification
+                                }
+                                .onEnded { _ in withAnimation { magnification = 1.0 } }
+                        )
+                }
+                VStack {
+                    Text("Rotate")
+                    Color.red
+                        .frame(width: 150, height: 150)
+                        .rotationEffect(rotation)
+                        .gesture(
+                            RotateGesture()
+                                .onChanged { val in
+                                    rotation = val.rotation
+                                }
+                                .onEnded { _ in withAnimation { rotation = .degrees(0.0) } }
+                        )
+                }
+                VStack {
+                    VStack {
                         Text("Tap: (\(Int(combinedTapPosition.x)), \(Int(combinedTapPosition.y)))")
                         Text("Double tap: (\(Int(combinedDoubleTapPosition.x)), \(Int(combinedDoubleTapPosition.y)))")
                         Text("Long press: \(combinedLongPressCount)")
-                        Text("Drag")
+                        Text("Drag, Magnify")
                     }
-                    Spacer()
                     Color.red
                         .frame(width: 150, height: 150)
                         .offset(combinedDragOffset)
+                        .scaleEffect(combinedMagnification)
                         .gesture(
                             DragGesture()
                                 .onChanged { val in combinedDragOffset = val.translation }
                                 .onEnded { _ in withAnimation { combinedDragOffset = .zero } }
+                        )
+                        .gesture(
+                            MagnifyGesture()
+                                .onChanged { val in
+                                    combinedMagnification = val.magnification
+                                }
+                                .onEnded { _ in withAnimation { combinedMagnification = 1.0 } }
                         )
                         .onTapGesture(count: 2) {
                             combinedDoubleTapPosition = $0
@@ -145,16 +181,7 @@ struct GesturePlayground: View {
                             combinedLongPressCount += 1
                         }
                 }
-                HStack {
-                    Text("Disabled tap: (\(Int(tapPosition.x)), \(Int(tapPosition.y)))")
-                    Spacer()
-                    Color.red
-                        .frame(width: 150, height: 150)
-                        .onTapGesture {
-                            tapPosition = $0
-                        }
-                        .disabled(true)
-                }
+                Spacer(minLength: 300)
             }
             .padding()
         }
