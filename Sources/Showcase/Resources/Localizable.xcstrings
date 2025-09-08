@@ -1070,16 +1070,6 @@
     "Disabled Tab" : {
 
     },
-    "Disabled tap: (%lld, %lld)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Disabled tap: (%1$lld, %2$lld)"
-          }
-        }
-      }
-    },
     "DisclosureGroup" : {
 
     },
@@ -1167,6 +1157,9 @@
       }
     },
     "Drag" : {
+
+    },
+    "Drag, Magnify" : {
 
     },
     "EllipitcalGradient" : {
@@ -1709,6 +1702,9 @@
     "Lottie Animation" : {
 
     },
+    "Magnify" : {
+
+    },
     "Map" : {
 
     },
@@ -2179,6 +2175,9 @@
 
     },
     "RGB" : {
+
+    },
+    "Rotate" : {
 
     },
     "Rotation" : {
