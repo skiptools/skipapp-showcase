@@ -636,9 +636,6 @@
     "Also see the `Transition` playground for view enter/exit animations" : {
 
     },
-    "an animated heart in the Lottie JSON format" : {
-
-    },
     "Animated" : {
 
     },
@@ -2042,6 +2039,9 @@
     "Plain Style" : {
 
     },
+    "Play" : {
+
+    },
     "Play Recording" : {
 
     },
@@ -2659,6 +2659,12 @@
 
     },
     "State tap count: %lld" : {
+
+    },
+    "State: %@" : {
+
+    },
+    "Stop" : {
 
     },
     "Stop Recording" : {

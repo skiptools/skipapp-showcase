@@ -32,6 +32,7 @@ enum PlaygroundType: CaseIterable, View {
     case icon
     case image
     case keyboard
+    case keychain
     case label
     case link
     case list
@@ -138,6 +139,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Image")
         case .keyboard:
             return LocalizedStringResource("Keyboard")
+        case .keychain:
+            return LocalizedStringResource("Keychain")
         case .link:
             return LocalizedStringResource("Link")
         case .label:
@@ -295,6 +298,8 @@ enum PlaygroundType: CaseIterable, View {
             ImagePlayground()
         case .keyboard:
             KeyboardPlayground()
+        case .keychain:
+            KeychainPlayground()
         case .label:
             LabelPlayground()
         case .link:
