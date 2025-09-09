@@ -62,6 +62,7 @@ enum VideoPlaygroundType: String, CaseIterable {
 struct PlayerView: View {
     @State var player: AVPlayer
     @State var isPlaying: Bool = false
+    @State var playerState = "ready"
 
     init(url: URL) {
         self.player = AVPlayer(playerItem: AVPlayerItem(url: url))
@@ -73,10 +74,23 @@ struct PlayerView: View {
                 isPlaying ? player.pause() : player.play()
                 isPlaying = !isPlaying
             } label: {
-                Image(systemName: isPlaying ? "stop" : "play")
-                    .padding()
+                if isPlaying {
+                    Text("Stop")
+                } else {
+                    Text("Play")
+                }
             }
+            Text("State: \(playerState)")
+            .buttonStyle(.borderedProminent)
             VideoPlayer(player: player)
+                .onReceive(NotificationCenter.default.publisher(for: AVPlayerItem.didPlayToEndTimeNotification)) { event in
+                    logger.info("didPlayToEndTimeNotification: \(event)")
+                    self.playerState = "finished"
+                }
+                .onReceive(NotificationCenter.default.publisher(for: AVPlayerItem.timeJumpedNotification)) { event in
+                    logger.info("timeJumpedNotification: \(event)")
+                    self.playerState = "jumped"
+                }
                 .onDisappear {
                     player.pause()
                     isPlaying = false
