@@ -9,8 +9,10 @@ struct KeychainPlayground: View {
         List {
             Section {
                 ForEach(allKeys, id: \.self) { key in
-                    NavigationLink(key) {
+                    NavigationLink {
                         KeychainValueEditor(key: key, isNewKey: false)
+                    } label: {
+                        Text(key)
                     }
                 }
                 .onDelete { indices in
@@ -22,8 +24,10 @@ struct KeychainPlayground: View {
             }
 
             Section {
-                NavigationLink("New Key") {
+                NavigationLink {
                     KeychainValueEditor(key: "", isNewKey: true)
+                } label: {
+                    Text("New Key")
                 }
             }
         }
