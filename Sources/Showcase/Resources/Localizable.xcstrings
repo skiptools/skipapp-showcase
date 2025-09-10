@@ -1037,6 +1037,9 @@
     "Data: %lld" : {
 
     },
+    "Date" : {
+
+    },
     "Date only" : {
 
     },
@@ -1573,7 +1576,19 @@
     "JavaScript" : {
 
     },
+    "Key" : {
+
+    },
+    "Key: %@" : {
+
+    },
     "Keyboard" : {
+
+    },
+    "Keychain" : {
+
+    },
+    "Keychain value" : {
 
     },
     "Label" : {
@@ -1825,6 +1840,12 @@
 
     },
     "Nested views" : {
+
+    },
+    "New Item" : {
+
+    },
+    "New Key" : {
 
     },
     "Nil data" : {
@@ -2223,6 +2244,9 @@
 
     },
     "SafeArea" : {
+
+    },
+    "Save" : {
 
     },
     "scale, rotate, offset, stroke" : {
@@ -2634,6 +2658,9 @@
     "Spacer:" : {
 
     },
+    "SQL" : {
+
+    },
     "Stacks" : {
 
     },
@@ -2978,6 +3005,9 @@
 
     },
     "UnevenRoundedRectangle" : {
+
+    },
+    "Untitled Item" : {
 
     },
     "URLs:" : {
