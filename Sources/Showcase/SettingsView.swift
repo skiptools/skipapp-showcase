@@ -24,6 +24,15 @@ struct SettingsView: View {
                             .font(Font.caption.monospaced())
                         }
                     }
+                    .toolbar {
+                        ToolbarItem {
+                            Button("System Settings") {
+                                Task {
+                                    await UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                                }
+                            }
+                        }
+                    }
                     .navigationTitle("System Information")
                 }
                 HStack {

@@ -1878,6 +1878,9 @@
     "Note: tint should not affect Label appearance" : {
 
     },
+    "Notifications" : {
+
+    },
     "Observable" : {
 
     },
@@ -2776,6 +2779,9 @@
 
     },
     "System Information" : {
+
+    },
+    "System Settings" : {
 
     },
     "systemName" : {
