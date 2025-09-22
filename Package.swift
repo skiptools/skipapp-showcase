@@ -1,16 +1,19 @@
 // swift-tools-version: 6.0
 import PackageDescription
 
+// switch between "lite" (Skip Lite transpiled) and "fuse" (Skip Fuse compiled)
+let SKIP_MODE = Context.environment["SKIP_MODE"] ?? "lite"
+
 let package = Package(
     name: "skipapp-showcase",
     defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14), .tvOS(.v17), .watchOS(.v10), .macCatalyst(.v17)],
     products: [
-        .library(name: "ShowcaseApp", type: .dynamic, targets: ["Showcase"]),
+        .library(name: "Showcase", type: .dynamic, targets: ["Showcase"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.4.0"),
-        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.26.0"),
+        .package(url: "https://source.skip.tools/skip.git", from: "1.6.21"),
+        SKIP_MODE == "lite" ? .package(url: "https://source.skip.tools/skip-ui.git", from: "1.0.0") : .package(url: "https://source.skip.tools/skip-fuse-ui.git", from: "1.0.0"),
         .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-kit.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-sql.git", "0.12.1"..<"2.0.0"),
@@ -21,10 +24,10 @@ let package = Package(
     ],
     targets: [
         .target(name: "Showcase", dependencies: [
-            .product(name: "SkipUI", package: "skip-ui"),
+            SKIP_MODE == "lite" ? .product(name: "SkipUI", package: "skip-ui") : .product(name: "SkipFuseUI", package: "skip-fuse-ui"),
             .product(name: "SkipAV", package: "skip-av"),
             .product(name: "SkipKit", package: "skip-kit"),
-            .product(name: "SkipSQL", package: "skip-sql"),
+            .product(name: "SkipSQLPlus", package: "skip-sql"),
             .product(name: "SkipWeb", package: "skip-web"),
             .product(name: "SkipDevice", package: "skip-device"),
             .product(name: "SkipMotion", package: "skip-motion"),

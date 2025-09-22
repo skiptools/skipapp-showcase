@@ -42,7 +42,7 @@ struct ColorSchemePlayground: View {
     }
 }
 
-private struct ColorSchemeSheetView: View {
+struct ColorSchemeSheetView: View {
     @Environment(\.dismiss) var dismiss
     @State var preferredColorScheme = ""
 

@@ -205,7 +205,7 @@ struct StackPlayground: View {
     }
 }
 
-private struct LazyVStackScrollView: View {
+struct LazyVStackScrollView: View {
     let count: Int
 
     var body: some View {
@@ -217,7 +217,7 @@ private struct LazyVStackScrollView: View {
     }
 }
 
-private struct LazyVStackView: View {
+struct LazyVStackView: View {
     let count: Int
 
     var body: some View {
@@ -233,7 +233,7 @@ private struct LazyVStackView: View {
     }
 }
 
-private struct ScrollViewStacksView: View {
+struct ScrollViewStacksView: View {
     var body: some View {
         ScrollView(.vertical) {
           ScrollView(.horizontal) {

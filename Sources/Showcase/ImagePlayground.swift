@@ -322,7 +322,7 @@ struct ImagePlayground: View {
     }
 }
 
-private struct ImagePlaygroundPagerView: View {
+struct ImagePlaygroundPagerView: View {
     var body: some View {
         GeometryReader { proxy in
             ScrollView(.horizontal) {
@@ -346,7 +346,7 @@ private struct ImagePlaygroundPagerView: View {
 
 struct PagingModifier: ViewModifier {
     func body(content: Content) -> some View {
-        #if !SKIP
+        #if !os(Android)
         if #available(iOS 17.0, macOS 14.0, *) {
             content
                 .scrollTargetBehavior(.paging)
@@ -359,7 +359,7 @@ struct PagingModifier: ViewModifier {
     }
 }
 
-private struct ImagePlaygroundComplexLayoutView: View {
+struct ImagePlaygroundComplexLayoutView: View {
     let imageName: String
 
     var body: some View {

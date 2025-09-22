@@ -1,4 +1,5 @@
 // Copyright 2023–2025 Skip
+import Foundation
 import SwiftUI
 
 struct SettingsView: View {
@@ -37,21 +38,38 @@ struct SettingsView: View {
                 }
                 HStack {
                     #if SKIP
+                    let powered = "Skip Lite"
                     ComposeView { ctx in // Mix in Compose code!
                         androidx.compose.material3.Text("💚", modifier: ctx.modifier)
                     }
-                    #else
+                    #elseif os(Android)
+                    let powered = "Skip Fuse"
+                    ComposeView {
+                        HeartComposer()
+                    }
+                    #elseif os(iOS)
+                    let powered = "SwiftUI and Skip"
                     Text(verbatim: "💙")
                     #endif
+                    Text("Powered by [\(powered)](https://skip.tools)")
+                }
+                HStack {
                     if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
                        let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
                         Text("Version \(version) (\(buildNumber))")
                             .foregroundStyle(.gray)
                     }
-                    Text("Powered by [Skip](https://skip.tools)")
                 }
             }
             .navigationTitle("Settings")
         }
     }
 }
+
+#if SKIP
+struct HeartComposer : ContentComposer {
+    @Composable func Compose(context: ComposeContext) {
+        androidx.compose.material3.Text("💚", modifier: context.modifier)
+    }
+}
+#endif

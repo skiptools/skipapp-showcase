@@ -20,9 +20,9 @@ struct TimerPlayground: View {
     }
 }
 
-private struct TimerPlaygroundTimerView: View {
+struct TimerPlaygroundTimerView: View, @unchecked Sendable {
     let message: String
-    let timer = Timer.publish(every: 1.0, on: .main, in: .default).autoconnect()
+    @State var timer: Timer?
     @State var timerDate: Date?
     @State var ticks = 0
 
@@ -33,9 +33,15 @@ private struct TimerPlaygroundTimerView: View {
             Text("Ticks: \(ticks)")
         }
         .font(.largeTitle)
-        .onReceive(timer) { date in
-            timerDate = date
-            ticks += 1
+        .task {
+            while !Task.isCancelled {
+                do {
+                    try await Task.sleep(nanoseconds: 1_000_000_000)
+                    timerDate = Date()
+                    ticks += 1
+                } catch {
+                }
+            }
         }
     }
 }

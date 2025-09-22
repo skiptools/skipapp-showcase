@@ -1,6 +1,6 @@
 # Skip Component Showcase
 
-Showcase is a [Skip Lite](https://skip.tools) app that demonstrates many of the components available in SkipUI.
+Showcase is a [Skip](https://skip.tools) app that demonstrates many of the components available in SkipUI.
 
 [<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play Store" height="80">](https://play.google.com/store/apps/details?id=org.appfair.app.Showcase) [<img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Get it on App Store" height="80">](https://apps.apple.com/us/app/skip-showcase/id6474885022)
 
@@ -24,14 +24,25 @@ $ git clone https://github.com/skiptools/skipapp-showcase.git
 5. Select and Run the `Showcase` target with an iOS simulator destination; the app will build and run side-by-side on the iOS simulator and Android emulator.
 
 
-## Project
+## Development
 
-This project was initialized with the command:
+The Showcase app supports both the Skip Lite transpiled mode as well as the Skip Fuse compiled mode.
+
+You can switch between the modes you use to develop by changing the default value of the `SKIP_MODE` constant in the `Package.swift` file between "fuse" and "lite".
+
+```swift
+let SKIP_MODE = Context.environment["SKIP_MODE"] ?? "lite" // change to "fuse"
+```
+
+Additionally, you need to switch the mode of the `Source/Showcase/Skip/skip.yml` file from 'transpiled' to 'native':
 
 ```
-skip init --no-module-tests --no-build --icon-color=8E8E93 --free --zero --appid=skip.showcase.App skipapp-showcase Showcase
+skip:
+  mode: 'transpiled'
+  #mode: 'native'
 ```
 
+Once you make this change, re-building and running the project will use SkipFuse mode rather than SkipLite.
 
 ## Testing
 

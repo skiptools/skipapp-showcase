@@ -64,9 +64,11 @@ struct TextPlayground: View {
 
                 Divider()
 
+                #if SKIP // Skip Lite only
                 Text(try! AttributedString(markdown: "Attributed *Italic text* with \("substitution1") and \("substitution2")"))
                 Text(try! AttributedString(markdown: "Attributed **Bold text** with .italic()"))
                     .italic()
+                #endif
 
                 Divider()
 

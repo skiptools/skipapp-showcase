@@ -610,7 +610,7 @@
 
     },
     "Accessibility" : {
-
+      "comment" : "Title of Accessibility playground"
     },
     "Add item" : {
 
@@ -637,7 +637,7 @@
 
     },
     "Alert" : {
-
+      "comment" : "Title of Alert playground"
     },
     "alignment: .bottomTrailing" : {
 
@@ -652,7 +652,7 @@
 
     },
     "Animation" : {
-
+      "comment" : "Title of Animation playground"
     },
     "Appearance" : {
 
@@ -812,9 +812,6 @@
     "AsyncImage" : {
 
     },
-    "Audio" : {
-
-    },
     "B" : {
 
     },
@@ -825,7 +822,7 @@
 
     },
     "Background" : {
-
+      "comment" : "Title of Background playground"
     },
     "background()" : {
 
@@ -870,7 +867,7 @@
 
     },
     "Blur" : {
-
+      "comment" : "Title of Blur playground"
     },
     "Body" : {
 
@@ -885,7 +882,7 @@
 
     },
     "Border" : {
-
+      "comment" : "Title of Border playground"
     },
     "Bottom" : {
 
@@ -909,7 +906,7 @@
 
     },
     "Button" : {
-
+      "comment" : "Title of Button playground"
     },
     "Button .automatic" : {
 
@@ -963,13 +960,13 @@
 
     },
     "Color" : {
-
+      "comment" : "Title of Color playground"
     },
     "Color + Offset" : {
 
     },
     "ColorScheme" : {
-
+      "comment" : "Title of ColorScheme playground"
     },
     "Combined: opacity+slide" : {
 
@@ -984,10 +981,10 @@
 
     },
     "Compose" : {
-
+      "comment" : "Title of Compose playground"
     },
     "ConfirmationDialog" : {
-
+      "comment" : "Title of ConfirmationDialog playground"
     },
     "Container" : {
 
@@ -1053,7 +1050,7 @@
 
     },
     "DatePicker" : {
-
+      "comment" : "Title of DatePicker playground"
     },
     "DatePicker .disabled" : {
 
@@ -1079,8 +1076,18 @@
     "Disabled Tab" : {
 
     },
+    "Disabled tap: (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Disabled tap: (%1$lld, %2$lld)"
+          }
+        }
+      }
+    },
     "DisclosureGroup" : {
-
+      "comment" : "Title of DisclosureGroup playground"
     },
     "DisclosureGroup .disabled" : {
 
@@ -1095,10 +1102,10 @@
 
     },
     "Divider" : {
-
+      "comment" : "Title of Divider playground"
     },
-    "DocumentPicker" : {
-
+    "Document and Media Pickers" : {
+      "comment" : "Title of Document and Media Pickers playground"
     },
     "Done" : {
       "comment" : "Done button text",
@@ -1190,7 +1197,7 @@
 
     },
     "Environment" : {
-
+      "comment" : "Title of Environment playground"
     },
     "EnvironmentObject" : {
 
@@ -1256,7 +1263,7 @@
 
     },
     "FocusState" : {
-
+      "comment" : "Title of FocusState playground"
     },
     "Font.body" : {
 
@@ -1365,13 +1372,13 @@
 
     },
     "Form" : {
-
+      "comment" : "Title of Form playground"
     },
     "Forward" : {
 
     },
     "Frame" : {
-
+      "comment" : "Title of Frame playground"
     },
     "Full screen .topLeading container" : {
 
@@ -1383,9 +1390,12 @@
 
     },
     "GeometryReader" : {
-
+      "comment" : "Title of GeometryReader playground"
     },
-    "Gestures" : {
+    "Gesture" : {
+      "comment" : "Title of Gesture playground"
+    },
+    "GestureState Drag" : {
 
     },
     "Global Drag" : {
@@ -1394,11 +1404,11 @@
     "Global frame: %@" : {
 
     },
-    "Gradients" : {
-
+    "Gradient" : {
+      "comment" : "Title of Gradient playground"
     },
     "Graphics" : {
-
+      "comment" : "Title of Graphics playground"
     },
     "Gray" : {
 
@@ -1407,16 +1417,16 @@
 
     },
     "Grids" : {
-
-    },
-    "Haptic Feedback" : {
-
+      "comment" : "Title of Grids playground"
     },
     "Haptic Feedback Unavailable in this OS version" : {
 
     },
     "Haptic Feedback: %@" : {
 
+    },
+    "Haptick Feedback" : {
+      "comment" : "Title of Haptick Feedback playground"
     },
     "Has strings:" : {
 
@@ -1505,10 +1515,10 @@
 
     },
     "Icons" : {
-
+      "comment" : "Title of Icons playground"
     },
     "Image" : {
-
+      "comment" : "Title of Image playground"
     },
     "Image from Data" : {
 
@@ -1592,16 +1602,16 @@
 
     },
     "Keyboard" : {
-
+      "comment" : "Title of Keyboard playground"
     },
     "Keychain" : {
-
+      "comment" : "Title of Keychain playground"
     },
     "Keychain value" : {
 
     },
     "Label" : {
-
+      "comment" : "Title of Label playground"
     },
     "Label .font(.title)" : {
 
@@ -1697,10 +1707,10 @@
 
     },
     "Link" : {
-
+      "comment" : "Title of Link playground"
     },
     "List" : {
-
+      "comment" : "Title of List playground"
     },
     "List.%@" : {
 
@@ -1709,7 +1719,7 @@
 
     },
     "Localization" : {
-
+      "comment" : "Title of Localization playground"
     },
     "Long press: %lld" : {
 
@@ -1727,13 +1737,13 @@
 
     },
     "Lottie Animation" : {
-
+      "comment" : "Title of Lottie playground"
     },
     "Magnify" : {
 
     },
     "Map" : {
-
+      "comment" : "Title of Map playground"
     },
     "Map requires iOS 17" : {
 
@@ -1776,7 +1786,7 @@
 
     },
     "Menu" : {
-
+      "comment" : "Title of Menu playground"
     },
     "Mint" : {
 
@@ -1791,7 +1801,7 @@
 
     },
     "Modifiers" : {
-
+      "comment" : "Title of Modifiers playground"
     },
     "More (page 2)" : {
 
@@ -1830,7 +1840,7 @@
 
     },
     "NavigationStack" : {
-
+      "comment" : "Title of NavigationStack playground"
     },
     "Negative padding" : {
 
@@ -1884,6 +1894,9 @@
     "Not supported on macOS" : {
 
     },
+    "Not supported on macOS or Skip Fuse" : {
+
+    },
     "Note: colors should not affect Divider appearance" : {
 
     },
@@ -1893,11 +1906,8 @@
     "Note: tint should not affect Label appearance" : {
 
     },
-    "Notifications" : {
-
-    },
     "Observable" : {
-
+      "comment" : "Title of Observable playground"
     },
     "Observable tap count: %lld" : {
 
@@ -1909,7 +1919,7 @@
 
     },
     "Offset/Position" : {
-
+      "comment" : "Title of Offset/Position playground"
     },
     "On" : {
 
@@ -1918,7 +1928,7 @@
 
     },
     "OnSubmit" : {
-
+      "comment" : "Title of OnSubmit playground"
     },
     "onTapGesture: (%lld, %lld)" : {
       "localizations" : {
@@ -1961,7 +1971,7 @@
 
     },
     "Overlay" : {
-
+      "comment" : "Title of Overlay playground"
     },
     "Overridden to title font" : {
 
@@ -1988,7 +1998,7 @@
 
     },
     "Pasteboard" : {
-
+      "comment" : "Title of Pasteboard playground"
     },
     "Pasteboard count:" : {
 
@@ -2046,7 +2056,7 @@
 
     },
     "Picker" : {
-
+      "comment" : "Title of Picker playground"
     },
     "Picker .disabled" : {
 
@@ -2078,23 +2088,30 @@
     "Plain Style" : {
 
     },
-    "Play" : {
-
-    },
     "Play Recording" : {
 
     },
     "Pop" : {
 
     },
-    "Powered by [Skip](https://skip.tools)" : {
+    "Pop %lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pop %1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "Powered by [%@](https://skip.tools)" : {
 
     },
     "Preference value: %lld" : {
 
     },
     "Preferences" : {
-
+      "comment" : "Title of Preferences playground"
     },
     "Present" : {
 
@@ -2148,7 +2165,7 @@
 
     },
     "ProgressView" : {
-
+      "comment" : "Title of ProgressView playground"
     },
     "Prompt" : {
 
@@ -2196,7 +2213,7 @@
 
     },
     "Redacted" : {
-
+      "comment" : "Title of Redacted playground"
     },
     "Refreshable" : {
 
@@ -2262,7 +2279,7 @@
 
     },
     "SafeArea" : {
-
+      "comment" : "Title of SafeArea playground"
     },
     "Save" : {
 
@@ -2280,7 +2297,7 @@
 
     },
     "ScenePhase" : {
-
+      "comment" : "Title of ScenePhase playground"
     },
     "ScenePhase history" : {
 
@@ -2304,7 +2321,7 @@
 
     },
     "ScrollView" : {
-
+      "comment" : "Title of ScrollView playground"
     },
     "ScrollView.%@" : {
 
@@ -2313,7 +2330,7 @@
 
     },
     "Searchable" : {
-
+      "comment" : "Title of Searchable playground"
     },
     "Second" : {
 
@@ -2352,7 +2369,7 @@
 
     },
     "SecureField" : {
-
+      "comment" : "Title of SecureField playground"
     },
     "Select Media" : {
 
@@ -2455,10 +2472,10 @@
       }
     },
     "Shadow" : {
-
+      "comment" : "Title of Shadow playground"
     },
     "Shape" : {
-
+      "comment" : "Title of Shape playground"
     },
     "Shape with background" : {
 
@@ -2467,10 +2484,10 @@
 
     },
     "ShareLink" : {
-
+      "comment" : "Title of ShareLink playground"
     },
     "Sheet" : {
-
+      "comment" : "Title of Sheet playground"
     },
     "Short text" : {
 
@@ -2662,7 +2679,7 @@
 
     },
     "Slider" : {
-
+      "comment" : "Title of Slider playground"
     },
     "Slow spring" : {
 
@@ -2674,16 +2691,16 @@
 
     },
     "Spacer" : {
-
+      "comment" : "Title of Spacer playground"
     },
     "Spacer:" : {
 
     },
     "SQL" : {
-
+      "comment" : "Title of SQL playground"
     },
     "Stacks" : {
-
+      "comment" : "Title of Stacks playground"
     },
     "Standalone row 1" : {
 
@@ -2704,22 +2721,16 @@
 
     },
     "State" : {
-
+      "comment" : "Title of State playground"
     },
     "State tap count: %lld" : {
-
-    },
-    "State: %@" : {
-
-    },
-    "Stop" : {
 
     },
     "Stop Recording" : {
 
     },
     "Storage" : {
-
+      "comment" : "Title of Storage playground"
     },
     "Storage Binding" : {
 
@@ -2785,7 +2796,7 @@
 
     },
     "Symbol" : {
-
+      "comment" : "Title of Symbol playground"
     },
     "Symbol Image Sizes" : {
 
@@ -2805,11 +2816,11 @@
     "systemName" : {
 
     },
-    "Table" : {
+    "Table not yet supported in Skip Fuse" : {
 
     },
     "TabView" : {
-
+      "comment" : "Title of TabView playground"
     },
     "Take Photo" : {
 
@@ -2888,7 +2899,7 @@
 
     },
     "Text" : {
-
+      "comment" : "Title of Text playground"
     },
     "Text / URL" : {
 
@@ -2930,10 +2941,10 @@
 
     },
     "TextEditor" : {
-
+      "comment" : "Title of Text playground"
     },
     "TextField" : {
-
+      "comment" : "Title of TextField playground"
     },
     "Thin footnote container" : {
 
@@ -2981,7 +2992,7 @@
 
     },
     "Timer" : {
-
+      "comment" : "Title of Timer playground"
     },
     "Title" : {
 
@@ -2996,7 +3007,7 @@
 
     },
     "Toggle" : {
-
+      "comment" : "Title of Toggle playground"
     },
     "Toggle Group" : {
 
@@ -3005,7 +3016,7 @@
 
     },
     "Toolbar" : {
-
+      "comment" : "Title of Toolbar playground"
     },
     "Top" : {
 
@@ -3017,7 +3028,7 @@
 
     },
     "Transition" : {
-
+      "comment" : "Title of Transition playground"
     },
     "Two Buttons" : {
 
@@ -3078,7 +3089,7 @@
 
     },
     "Video Player" : {
-
+      "comment" : "Title of WebView playground"
     },
     "View 0" : {
 
@@ -3189,7 +3200,7 @@
 
     },
     "WebView" : {
-
+      "comment" : "Title of WebView playground"
     },
     "Welcome" : {
       "comment" : "welcome string",
@@ -3328,6 +3339,9 @@
         }
       }
     },
+    "Welcome %@" : {
+
+    },
     "White" : {
 
     },
@@ -3377,7 +3391,7 @@
 
     },
     "ZIndex" : {
-
+      "comment" : "Title of ZIndex playground"
     },
     "ZStack.animation" : {
 

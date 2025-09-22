@@ -7,6 +7,9 @@ struct GesturePlayground: View {
     @State var longPressCount = 0
     @State var dragOffset: CGSize = .zero
     @State var globalDragOffset: CGSize = .zero
+    #if !SKIP // Skip Fuse only
+    @GestureState(initialValue: .zero, resetTransaction: Transaction(animation: .default)) var gestureStateDragOffset: CGSize
+    #endif
     @State var magnification: CGFloat = 1.0
     @State var rotation: Angle = .degrees(0.0)
     @State var isTouchDown = false
@@ -110,6 +113,22 @@ struct GesturePlayground: View {
                                 .onEnded { _ in withAnimation { globalDragOffset = .zero } }
                         )
                 }
+                #if !SKIP // Skip Fuse only
+                HStack {
+                    Text("GestureState Drag")
+                    Spacer()
+                    Color.red
+                        .frame(width: 150, height: 150)
+                        .offset(gestureStateDragOffset)
+                        .gesture(
+                            DragGesture()
+                                .updating($gestureStateDragOffset) { val, state, _ in
+                                    state = val.translation
+                                    logger.info("Drag position: (\(val.location.x), \(val.location.y))")
+                                }
+                        )
+                }
+                #endif
                 HStack {
                     Text("Touch")
                     Spacer()
@@ -122,6 +141,18 @@ struct GesturePlayground: View {
                                 .onEnded { _ in isTouchDown = false }
                         )
                 }
+                #if !SKIP // Skip Fuse only
+                HStack {
+                    Text("Disabled tap: (\(Int(tapPosition.x)), \(Int(tapPosition.y)))")
+                    Spacer()
+                    Color.red
+                        .frame(width: 150, height: 150)
+                        .onTapGesture {
+                            tapPosition = $0
+                        }
+                        .disabled(true)
+                }
+                #endif
                 VStack {
                     Text("Magnify")
                     Color.red
@@ -149,7 +180,7 @@ struct GesturePlayground: View {
                         )
                 }
                 VStack {
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Tap: (\(Int(combinedTapPosition.x)), \(Int(combinedTapPosition.y)))")
                         Text("Double tap: (\(Int(combinedDoubleTapPosition.x)), \(Int(combinedDoubleTapPosition.y)))")
                         Text("Long press: \(combinedLongPressCount)")

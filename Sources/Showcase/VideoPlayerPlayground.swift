@@ -1,6 +1,10 @@
 // Copyright 2023–2025 Skip
-import AVKit
 import SwiftUI
+#if canImport(SkipAV)
+import SkipAV
+#else
+import AVKit
+#endif
 
 /// This component uses the `SkipAV` module from https://source.skip.tools/skip-av
 struct VideoPlayerPlayground: View {
@@ -62,7 +66,6 @@ enum VideoPlaygroundType: String, CaseIterable {
 struct PlayerView: View {
     @State var player: AVPlayer
     @State var isPlaying: Bool = false
-    @State var playerState = "ready"
 
     init(url: URL) {
         self.player = AVPlayer(playerItem: AVPlayerItem(url: url))
@@ -74,23 +77,10 @@ struct PlayerView: View {
                 isPlaying ? player.pause() : player.play()
                 isPlaying = !isPlaying
             } label: {
-                if isPlaying {
-                    Text("Stop")
-                } else {
-                    Text("Play")
-                }
+                Image(systemName: isPlaying ? "stop" : "play")
+                    .padding()
             }
-            Text("State: \(playerState)")
-            .buttonStyle(.borderedProminent)
             VideoPlayer(player: player)
-                .onReceive(NotificationCenter.default.publisher(for: AVPlayerItem.didPlayToEndTimeNotification)) { event in
-                    logger.info("didPlayToEndTimeNotification: \(event)")
-                    self.playerState = "finished"
-                }
-                .onReceive(NotificationCenter.default.publisher(for: AVPlayerItem.timeJumpedNotification)) { event in
-                    logger.info("timeJumpedNotification: \(event)")
-                    self.playerState = "jumped"
-                }
                 .onDisappear {
                     player.pause()
                     isPlaying = false
@@ -120,7 +110,7 @@ struct LoopingPlayerView: View {
                 }
 
             Slider(value: $rate, in: 0.0...10.0, label: { Text("Rate") })
-                .onChange(of: rate) { newValue in
+                .onChange(of: rate) { oldValue, newValue in
                     player.rate = Float(newValue)
                 }
         }

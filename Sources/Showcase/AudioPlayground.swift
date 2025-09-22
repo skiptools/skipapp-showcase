@@ -1,12 +1,17 @@
 // Copyright 2023–2025 Skip
 import SwiftUI
 #if os(macOS)
+#elseif canImport(SkipAV)
+import SkipAV
 #else
 import AVFoundation
 #endif
+#if canImport(SkipFuse) && !SKIP
+import SkipFuse
+#endif
 
 struct AudioPlayground: View {
-    #if os(macOS)
+    #if !os(iOS) || !SKIP // Skip Lite only
     #else
     @State var isRecording: Bool = false
     @State var errorMessage: String? = nil
@@ -29,8 +34,8 @@ struct AudioPlayground: View {
     #endif
 
     var body: some View {
-        #if os(macOS)
-        Text("Not supported on macOS")
+        #if !os(iOS) || !SKIP // Skip Lite only
+        Text("Not supported on macOS or Skip Fuse")
         #else
         return VStack(spacing: 20) {
             Button(action: {
@@ -72,7 +77,7 @@ struct AudioPlayground: View {
         #endif
     }
     
-    #if os(macOS)
+    #if !os(iOS) || !SKIP // Skip Lite only
     #else
     func startRecording() {
         do {

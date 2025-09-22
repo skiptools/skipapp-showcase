@@ -24,7 +24,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-        android:label="${PRODUCT_NAME}"
+        android:label="Skip Showcase"
         android:name=".AndroidAppMain"
         android:allowBackup="true"
         android:supportsRtl="true"

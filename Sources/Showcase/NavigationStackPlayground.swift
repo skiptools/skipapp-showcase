@@ -52,7 +52,7 @@ struct NavigationStackPlayground: View {
     }
 }
 
-private struct PathBindingSheetContentView: View {
+struct PathBindingSheetContentView: View {
     @Environment(\.dismiss) var dismiss
     @State var path: [PathElement] = []
 
@@ -84,7 +84,7 @@ private struct PathBindingSheetContentView: View {
     }
 }
 
-private struct NavigationPathBindingSheetContentView: View {
+struct NavigationPathBindingSheetContentView: View {
     @Environment(\.dismiss) var dismiss
     @State var path = NavigationPath()
 
@@ -136,7 +136,7 @@ struct PathElement: RawRepresentable, Hashable, CustomStringConvertible {
     }
 }
 
-private struct PathElementView: View {
+struct PathElementView: View {
     @Environment(\.dismiss) var dismiss
     let element: PathElement
     @Binding var path: [PathElement]
@@ -183,7 +183,7 @@ private struct PathElementView: View {
     }
 }
 
-private struct NavigationPathElementView: View {
+struct NavigationPathElementView: View {
     @Environment(\.dismiss) var dismiss
     let element: PathElement
     @Binding var path: NavigationPath

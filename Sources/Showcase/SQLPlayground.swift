@@ -1,6 +1,7 @@
 // Copyright 2023–2025 Skip
 import SwiftUI
 import SkipSQL
+import SkipSQLPlus
 
 struct SQLPlayground: View {
     /// The shared global SQL context for the whole app
@@ -65,7 +66,7 @@ struct SQLPlayground: View {
     private static func openDatabase() throws -> SQLContext {
         let dir = URL.applicationSupportDirectory
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
-        let ctx = try SQLContext(path: dir.appendingPathComponent("db.sqlite").path, flags: [.create, .readWrite])
+        let ctx = try SQLContext(path: dir.appendingPathComponent("db.sqlite").path, flags: [.create, .readWrite], configuration: .plus)
 
         ctx.trace { sql in
             logger.info("SQLPlayground: \(sql)")

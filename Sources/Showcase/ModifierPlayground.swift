@@ -1,9 +1,5 @@
 // Copyright 2023–2025 Skip
 import SwiftUI
-#if SKIP
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxWidth
-#endif
 
 struct ModifierPlayground: View {
     var body: some View {
@@ -16,11 +12,15 @@ struct ModifierPlayground: View {
             Text("This is text that uses a function that returns EmptyModifier()")
                 .modifier(someModifier)
             Text(".composeModifier()")
-                #if SKIP
-                .composeModifier {
-                    $0.background(androidx.compose.ui.graphics.Color.Yellow).fillMaxWidth()
-                }
-                #endif
+//                #if os(Android)
+//                .composeModifier {
+//                    #if SKIP // Skip Lite mode
+//                    $0.background(androidx.compose.ui.graphics.Color.Yellow).fillMaxWidth()
+//                    #elseif !SKIP_BRIDGE // Skip Fuse mode
+//                    BackgroundModifier()
+//                    #endif
+//                }
+//                #endif
         }
         .padding()
     }
@@ -52,3 +52,16 @@ struct DismissModifier: ViewModifier {
             }
     }
 }
+
+#if SKIP
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxWidth
+
+struct BackgroundModifier : ContentModifier {
+    func modify(view: any View) -> any View {
+        view.composeModifier {
+            $0.background(androidx.compose.ui.graphics.Color.Yellow).fillMaxWidth()
+        }
+    }
+}
+#endif

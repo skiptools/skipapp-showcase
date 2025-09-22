@@ -78,7 +78,7 @@ struct ScrollViewPlayground: View {
     }
 }
 
-private struct VerticalScrollViewPlayground: View {
+struct VerticalScrollViewPlayground: View {
     var body: some View {
         ScrollView {
             VStack {
@@ -94,7 +94,7 @@ private struct VerticalScrollViewPlayground: View {
     }
 }
 
-private struct HorizontalScrollViewPlayground: View {
+struct HorizontalScrollViewPlayground: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
@@ -107,7 +107,7 @@ private struct HorizontalScrollViewPlayground: View {
     }
 }
 
-private struct ViewAlignedScrollViewPlayground: View {
+struct ViewAlignedScrollViewPlayground: View {
     var body: some View {
         if #available(iOS 17, *) {
             ScrollView(.horizontal) {
@@ -129,7 +129,7 @@ private struct ViewAlignedScrollViewPlayground: View {
     }
 }
 
-private struct ScrollViewReaderLazyVStackPlayground: View {
+struct ScrollViewReaderLazyVStackPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -149,7 +149,7 @@ private struct ScrollViewReaderLazyVStackPlayground: View {
     }
 }
 
-private struct ScrollViewReaderLazyHStackPlayground: View {
+struct ScrollViewReaderLazyHStackPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -169,7 +169,7 @@ private struct ScrollViewReaderLazyHStackPlayground: View {
     }
 }
 
-private struct ScrollViewReaderListPlayground: View {
+struct ScrollViewReaderListPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -198,7 +198,7 @@ private struct ScrollViewReaderListPlayground: View {
     }
 }
 
-private struct ScrollViewReaderStaticListPlayground: View {
+struct ScrollViewReaderStaticListPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -278,7 +278,7 @@ private struct ScrollViewReaderStaticListPlayground: View {
     }
 }
 
-private struct ScrollViewReaderLazyVGridPlayground: View {
+struct ScrollViewReaderLazyVGridPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -301,7 +301,7 @@ private struct ScrollViewReaderLazyVGridPlayground: View {
     }
 }
 
-private struct ScrollViewReaderLazyHGridPlayground: View {
+struct ScrollViewReaderLazyHGridPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -324,7 +324,7 @@ private struct ScrollViewReaderLazyHGridPlayground: View {
     }
 }
 
-private struct ScrollViewReaderJumpButtons: View {
+struct ScrollViewReaderJumpButtons: View {
     let proxy: ScrollViewProxy
 
     var body: some View {

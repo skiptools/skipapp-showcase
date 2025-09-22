@@ -14,6 +14,20 @@ permissions:
   attestations: write
 
 jobs:
+  export-variants:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Setup Skip"
+        run: |
+          brew install skiptools/skip/skip
+          skip android sdk install
+      - name: "Export Showcase Lite"
+        run: |
+          SKIP_MODE=lite skip export
+      - name: "Export Showcase Fuse"
+        run: |
+          SKIP_MODE=fuse skip export
   call-workflow:
     uses: skiptools/actions/.github/workflows/skip-app.yml@v1
     secrets:
