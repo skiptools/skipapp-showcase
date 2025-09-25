@@ -7,6 +7,15 @@ Showcase is a [Skip Lite](https://skip.tools) app that demonstrates many of the 
   <a href="https://apps.apple.com/us/app/skip-showcase/id6474885022" style="display: inline-block;"><img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" style="height: 60px; vertical-align: middle; object-fit: contain;" /></a>
 </div>
 
+## iPhone Screenshots
+
+<img src="Darwin/fastlane/screenshots/en-US/1_en-US.png" style="width: 18%" /> <img src="Darwin/fastlane/screenshots/en-US/2_en-US.png" style="width: 18%" /> <img src="Darwin/fastlane/screenshots/en-US/3_en-US.png" style="width: 18%" /> <img src="Darwin/fastlane/screenshots/en-US/4_en-US.png" style="width: 18%" /> <img src="Darwin/fastlane/screenshots/en-US/5_en-US.png" style="width: 18%" />
+
+
+## Android Screenshots
+
+<img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.png" style="width: 18%" /> <img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.png" style="width: 18%" /> <img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US.png" style="width: 18%" /> <img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/4_en-US.png" style="width: 18%" /> <img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/5_en-US.png" style="width: 18%" />
+
 ## Quickstart
 
 This repository contains an Xcode project with a SwiftUI app that uses the
