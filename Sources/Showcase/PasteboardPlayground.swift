@@ -55,9 +55,10 @@ struct PasteboardPlayground: View {
             }
             .padding()
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIPasteboard.changedNotification), perform: { notification in
-            pasteboardInfo = PasteboardInfo(notification.object as! UIPasteboard)
-        })
+        // TODO: NotificationCenter publisher
+//        .onReceive(NotificationCenter.default.publisher(for: UIPasteboard.changedNotification), perform: { notification in
+//            pasteboardInfo = PasteboardInfo(notification.object as! UIPasteboard)
+//        })
         .toolbar {
             PlaygroundSourceLink(file: "PasteboardPlayground.swift")
         }

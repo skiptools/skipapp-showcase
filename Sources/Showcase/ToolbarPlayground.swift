@@ -1,7 +1,7 @@
 // Copyright 2023–2025 Skip
 import SwiftUI
 
-enum ToolbarPlaygroundType: String, CaseIterable {
+enum ToolbarPlaygroundType: View, CaseIterable {
     case hideNavigationBar
     case hideBars
     case hideBarBackgrounds
@@ -16,6 +16,7 @@ enum ToolbarPlaygroundType: String, CaseIterable {
     case tint
     case custom
     case label
+    case stateful
     case toolbarItem
     case toolbarItemGroup
     case topLeadingItem
@@ -61,6 +62,8 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return "Custom"
         case .label:
             return "Label"
+        case .stateful:
+            return "Stateful"
         case .toolbarItem:
             return "ToolbarItem"
         case .toolbarItemGroup:
@@ -91,180 +94,169 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return ".toolbarTitleMenu"
         }
     }
+
+    var body: some View {
+        switch self {
+        case .hideNavigationBar:
+            #if os(macOS)
+            Text("Not supported on macOS")
+            #else
+            HideToolbarsPlayground()
+                .toolbar(.hidden, for: .navigationBar)
+                .ignoresSafeArea(edges: .top)
+            #endif
+        case .hideBars:
+            #if os(macOS)
+            Text("Not supported on macOS")
+            #else
+            HideToolbarsPlayground()
+                .toolbar(.hidden)
+                .ignoresSafeArea()
+            #endif
+        case .hideBarBackgrounds:
+            #if os(macOS)
+            Text("Not supported on macOS")
+            #else
+            HideToolbarsPlayground()
+                .toolbarBackground(.hidden, for: .navigationBar, .tabBar)
+            #endif
+        case .customBarColor:
+            #if os(macOS)
+            Text("Not supported on macOS")
+            #else
+            HideToolbarsPlayground()
+                .toolbarBackground(.blue, for: .navigationBar, .tabBar)
+            #endif
+        case .visibleCustomBarColor:
+            #if os(macOS)
+            Text("Not supported on macOS")
+            #else
+            HideToolbarsPlayground()
+                .toolbarBackground(.blue, for: .navigationBar, .tabBar)
+                .toolbarBackground(.visible, for: .navigationBar, .tabBar)
+            #endif
+        case .customBarBrush:
+            #if os(macOS)
+            Text("Not supported on macOS")
+            #else
+            HideToolbarsPlayground()
+                .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
+            #endif
+        case .customInlineBarBrush:
+            #if os(macOS)
+            Text("Not supported on macOS")
+            #else
+            HideToolbarsPlayground()
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
+            #endif
+        case .customBarColorScheme:
+            #if os(macOS)
+            Text("Not supported on macOS")
+            #else
+            HideToolbarsPlayground()
+                .toolbarColorScheme(.dark, for: .navigationBar, .tabBar)
+            #endif
+        case .customBarColorSchemeBrush:
+            #if os(macOS)
+            Text("Not supported on macOS")
+            #else
+            HideToolbarsPlayground()
+                .toolbarColorScheme(.dark, for: .navigationBar, .tabBar)
+                .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
+            #endif
+        case .default:
+            DefaultToolbarItemPlayground()
+        case .updating:
+            UpdatingToolbarItemPlayground()
+        case .tint:
+            TintToolbarItemGroupPlayground()
+        case .custom:
+            CustomToolbarItemPlayground()
+        case .label:
+            LabelToolbarItemPlayground()
+        case .stateful:
+            StatefulToolbarItemPlayground()
+        case .toolbarItem:
+            ToolbarItemPlayground(placement: ToolbarItemPlacement.automatic, placement2: ToolbarItemPlacement.automatic)
+        case .toolbarItemGroup:
+            ToolbarItemGroupPlayground(placement: ToolbarItemPlacement.automatic)
+        case .topLeadingItem:
+            #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+            Text("Not supported on macOS")
+            #else
+            ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading)
+            #endif
+        case .topLeadingItemGroup:
+            #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+            Text("Not supported on macOS")
+            #else
+            ToolbarItemGroupPlayground(placement: ToolbarItemPlacement.topBarLeading)
+            #endif
+        case .topLeadingBackButtonHidden:
+            #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+            Text("Not supported on macOS")
+            #else
+            ToolbarBackButtonHiddenPlayground()
+            #endif
+        case .topLeadingTrailingItems:
+            #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+            Text("Not supported on macOS")
+            #else
+            ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading, placement2: ToolbarItemPlacement.topBarTrailing)
+            #endif
+        case .principalItem:
+            ToolbarItemPrincipalPlayground()
+        case .bottom:
+            #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
+            Text("Not supported on macOS")
+            #else
+            ToolbarItemPlayground(placement: ToolbarItemPlacement.bottomBar, placement2: ToolbarItemPlacement.bottomBar)
+            #endif
+        case .bottomPlain:
+            #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
+            Text("Not supported on macOS")
+            #else
+            ToolbarItemPlainStylePlayground(placement: ToolbarItemPlacement.bottomBar, placement2: ToolbarItemPlacement.bottomBar)
+            #endif
+        case .bottomGroup:
+            #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
+            Text("Not supported on macOS")
+            #else
+            ToolbarBottomThreePlayground(spaced: false)
+            #endif
+        case .bottomSpaced:
+            #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
+            Text("Not supported on macOS")
+            #else
+            ToolbarBottomThreePlayground(spaced: true)
+            #endif
+        case .customToolbarContent:
+            #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
+            Text("Not supported on macOS")
+            #else
+            ToolbarCustomContentPlayground()
+            #endif
+        case .toolbarTitleMenu:
+            ToolbarTitleMenuPlayground()
+        case .toolbarTitleMenuModifier:
+            ToolbarTitleMenuModifierPlayground()
+        }
+    }
 }
 
 struct ToolbarPlayground: View {
     var body: some View {
-        List(ToolbarPlaygroundType.allCases, id: \.self) { type in
-            NavigationLink(type.title, value: type)
+        List {
+            ForEach(ToolbarPlaygroundType.allCases, id: \.self) { type in
+                NavigationLink(type.title, value: type)
+            }
         }
         .toolbar {
             PlaygroundSourceLink(file: "ToolbarPlayground.swift")
         }
         .navigationDestination(for: ToolbarPlaygroundType.self) {
-            switch $0 {
-            case .hideNavigationBar:
-                #if os(macOS)
-                Text("Not supported on macOS")
-                #else
-                HideToolbarsPlayground()
-                    .navigationTitle($0.title)
-                    .toolbar(.hidden, for: .navigationBar)
-                    .ignoresSafeArea(edges: .top)
-                #endif
-            case .hideBars:
-                #if os(macOS)
-                Text("Not supported on macOS")
-                #else
-                HideToolbarsPlayground()
-                    .navigationTitle($0.title)
-                    .toolbar(.hidden)
-                    .ignoresSafeArea()
-                #endif
-            case .hideBarBackgrounds:
-                #if os(macOS)
-                Text("Not supported on macOS")
-                #else
-                HideToolbarsPlayground()
-                    .navigationTitle($0.title)
-                    .toolbarBackground(.hidden, for: .navigationBar, .tabBar)
-                #endif
-            case .customBarColor:
-                #if os(macOS)
-                Text("Not supported on macOS")
-                #else
-                HideToolbarsPlayground()
-                    .navigationTitle($0.title)
-                    .toolbarBackground(.blue, for: .navigationBar, .tabBar)
-                #endif
-            case .visibleCustomBarColor:
-                #if os(macOS)
-                Text("Not supported on macOS")
-                #else
-                HideToolbarsPlayground()
-                    .navigationTitle($0.title)
-                    .toolbarBackground(.blue, for: .navigationBar, .tabBar)
-                    .toolbarBackground(.visible, for: .navigationBar, .tabBar)
-                #endif
-            case .customBarBrush:
-                #if os(macOS)
-                Text("Not supported on macOS")
-                #else
-                HideToolbarsPlayground()
-                    .navigationTitle($0.title)
-                    .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
-                #endif
-            case .customInlineBarBrush:
-                #if os(macOS)
-                Text("Not supported on macOS")
-                #else
-                HideToolbarsPlayground()
-                    .navigationTitle($0.title)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
-                #endif
-            case .customBarColorScheme:
-                #if os(macOS)
-                Text("Not supported on macOS")
-                #else
-                HideToolbarsPlayground()
-                    .navigationTitle($0.title)
-                    .toolbarColorScheme(.dark, for: .navigationBar, .tabBar)
-                #endif
-            case .customBarColorSchemeBrush:
-                #if os(macOS)
-                Text("Not supported on macOS")
-                #else
-                HideToolbarsPlayground()
-                    .navigationTitle($0.title)
-                    .toolbarColorScheme(.dark, for: .navigationBar, .tabBar)
-                    .toolbarBackground(.blue.gradient, for: .navigationBar, .tabBar)
-                #endif
-            case .default:
-                DefaultToolbarItemPlayground()
-                    .navigationTitle($0.title)
-            case .updating:
-                UpdatingToolbarItemPlayground()
-                    .navigationTitle($0.title)
-            case .tint:
-                TintToolbarItemGroupPlayground()
-                    .navigationTitle($0.title)
-            case .custom:
-                CustomToolbarItemPlayground()
-                    .navigationTitle($0.title)
-            case .label:
-                LabelToolbarItemPlayground()
-                    .navigationTitle($0.title)
-            case .toolbarItem:
-                ToolbarItemPlayground(placement: ToolbarItemPlacement.automatic, placement2: ToolbarItemPlacement.automatic)
-                    .navigationTitle($0.title)
-            case .toolbarItemGroup:
-                ToolbarItemGroupPlayground(placement: ToolbarItemPlacement.automatic)
-                    .navigationTitle($0.title)
-            case .topLeadingItem:
-                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
-                #else
-                ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading)
-                    .navigationTitle($0.title)
-                #endif
-            case .topLeadingItemGroup:
-                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
-                #else
-                ToolbarItemGroupPlayground(placement: ToolbarItemPlacement.topBarLeading)
-                    .navigationTitle($0.title)
-                #endif
-            case .topLeadingBackButtonHidden:
-                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
-                #else
-                ToolbarBackButtonHiddenPlayground()
-                    .navigationTitle($0.title)
-                #endif
-            case .topLeadingTrailingItems:
-                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
-                #else
-                ToolbarItemPlayground(placement: ToolbarItemPlacement.topBarLeading, placement2: ToolbarItemPlacement.topBarTrailing)
-                    .navigationTitle($0.title)
-                #endif
-            case .principalItem:
-                ToolbarItemPrincipalPlayground()
-                    .navigationTitle($0.title)
-            case .bottom:
-                #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
-                #else
-                ToolbarItemPlayground(placement: ToolbarItemPlacement.bottomBar, placement2: ToolbarItemPlacement.bottomBar)
-                    .navigationTitle($0.title)
-                #endif
-            case .bottomPlain:
-                #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
-                #else
-                ToolbarItemPlainStylePlayground(placement: ToolbarItemPlacement.bottomBar, placement2: ToolbarItemPlacement.bottomBar)
-                    .navigationTitle($0.title)
-                #endif
-            case .bottomGroup:
-                #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
-                #else
-                ToolbarBottomThreePlayground(spaced: false)
-                    .navigationTitle($0.title)
-                #endif
-            case .bottomSpaced:
-                #if os(macOS) // ToolbarItemPlacement.bottomBar unavailable on macOS
-                #else
-                ToolbarBottomThreePlayground(spaced: true)
-                    .navigationTitle($0.title)
-                #endif
-            case .customToolbarContent:
-                #if os(macOS) // ToolbarItemPlacement.topBarLeading unavailable on macOS
-                #else
-                ToolbarCustomContentPlayground()
-                    .navigationTitle($0.title)
-                #endif
-            case .toolbarTitleMenu:
-                ToolbarTitleMenuPlayground()
-                    .navigationTitle($0.title)
-            case .toolbarTitleMenuModifier:
-                ToolbarTitleMenuModifierPlayground()
-                    .navigationTitle($0.title)
-            }
+            $0.navigationTitle($0.title)
         }
     }
 }
@@ -291,7 +283,7 @@ struct DefaultToolbarItemPlayground: View {
 
     var body: some View {
         List {
-            Button("Pop") {
+            Button("Pop \(firstTapCount) / \(secondTapCount)") {
                 dismiss()
             }
             ForEach(0..<100) { i in
@@ -378,6 +370,49 @@ struct LabelToolbarItemPlayground: View {
                 Label("Dismiss", systemImage: "trash")
             }
         }
+    }
+}
+
+struct StatefulToolbarItemPlayground: View {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        List {
+            Button("Pop") {
+                dismiss()
+            }
+            ForEach(0..<100) { i in
+                Text("Content \(i)")
+            }
+        }
+        .toolbar {
+            ToolbarPlaygroundStatefulItem()
+        }
+    }
+}
+
+struct ToolbarPlaygroundStatefulItem: ToolbarContent {
+    @State var sheetIsPresented = false
+
+    var body: some ToolbarContent {
+        ToolbarItem {
+            Button(action: {
+                sheetIsPresented = true
+            }) {
+                Image(systemName: "bell")
+            }
+            .sheet(isPresented: $sheetIsPresented) {
+                ToolbarPlaygroundSheetView()
+            }
+        }
+    }
+}
+
+struct ToolbarPlaygroundSheetView : View {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        Button("Dismiss") { dismiss() }
     }
 }
 

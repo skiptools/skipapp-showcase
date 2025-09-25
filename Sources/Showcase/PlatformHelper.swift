@@ -1,14 +1,17 @@
 // Copyright 2023–2025 Skip
 import Foundation
+#if canImport(SkipFuse) && !SKIP
+import SkipFuse
+#endif
 
-#if !SKIP
-let isAndroid = false
-#else
+#if os(Android)
 let isAndroid = true
+#else
+let isAndroid = false
 #endif
 
 /// The name of the current app
-let appName = (Bundle.main.infoDictionary?["CFBundleName"] as? String) ?? "Unknown"
+let appName = (Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String) ?? (Bundle.main.infoDictionary?["CFBundleName"] as? String) ?? "Unknown"
 
 /// The current version of the app, using the main bundle's infoDictionary `CFBundleShortVersionString` property on iOS and `android.content.pm.PackageManager` `versionName` on Android.
 let appVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "0.0.0"

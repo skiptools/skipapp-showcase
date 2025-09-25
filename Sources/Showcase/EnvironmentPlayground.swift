@@ -16,8 +16,8 @@ struct EnvironmentPlayground: View {
                     .environment(\.environmentPlaygroundCustomKey, "Custom!")
             }
         }
-        .onChange(of: tapCountObservable.tapCount) {
-            logger.log("onChange(of: tapCountObservable.tapCount): \($0)")
+        .onChange(of: tapCountObservable.tapCount) { oldValue, newValue in
+            logger.log("onChange(of: tapCountObservable.tapCount): \(newValue)")
         }
         .toolbar {
             PlaygroundSourceLink(file: "EnvironmentPlayground.swift")

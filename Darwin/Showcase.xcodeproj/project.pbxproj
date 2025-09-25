@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		490010192BACD83F0000DE33 /* protest_guerrilla.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 490010182BACD83F0000DE33 /* protest_guerrilla.ttf */; };
-		49231BAC2AC5BCEF00F98ADF /* ShowcaseApp in Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */; };
-		49231BAD2AC5BCEF00F98ADF /* ShowcaseApp in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		498432B42E8080020035BBFA /* Showcase in Frameworks */ = {isa = PBXBuildFile; productRef = 498432B32E8080020035BBFA /* Showcase */; };
+		498432B52E8080020035BBFA /* Showcase in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 498432B32E8080020035BBFA /* Showcase */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		499CD43B2AC5B799001AE8D8 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F90C2B2A52156200F06D93 /* Main.swift */; };
 		499CD4402AC5B799001AE8D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F90C2F2A52156300F06D93 /* Assets.xcassets */; };
 		49DAAD422D2F51F60086DB92 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 49DAAD412D2F51F60086DB92 /* Localizable.xcstrings */; };
@@ -22,7 +22,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				49231BAD2AC5BCEF00F98ADF /* ShowcaseApp in Embed Frameworks */,
+				498432B52E8080020035BBFA /* Showcase in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49231BAC2AC5BCEF00F98ADF /* ShowcaseApp in Frameworks */,
+				498432B42E8080020035BBFA /* Showcase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +62,13 @@
 				490A40BF2B37A3C300275405 /* Showcase.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		498432B22E8080020035BBFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		49AB54462B066A7E007B79B2 /* SkipStone */ = {
@@ -82,6 +89,7 @@
 				493609562A6B7EAE00C401E2 /* Showcase */,
 				49F90C2A2A52156200F06D93 /* App */,
 				49AB54462B066A7E007B79B2 /* SkipStone */,
+				498432B22E8080020035BBFA /* Frameworks */,
 				490A40C02B37A3C300275405 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,7 +125,7 @@
 			);
 			name = Showcase;
 			packageProductDependencies = (
-				49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */,
+				498432B32E8080020035BBFA /* Showcase */,
 			);
 			productName = App;
 			productReference = 490A40BF2B37A3C300275405 /* Showcase.app */;
@@ -288,9 +296,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		49231BAB2AC5BCEF00F98ADF /* ShowcaseApp */ = {
+		498432B32E8080020035BBFA /* Showcase */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = ShowcaseApp;
+			productName = Showcase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

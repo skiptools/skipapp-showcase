@@ -13,10 +13,9 @@ struct ScenePhasePlayground: View {
                 }
             }
         }
-        .onChange(of: scenePhase) { phase in
-            logger.log("onChange(of: schenePhase): \(String(describing: phase))")
-            history.append(phase)
-
+        .onChange(of: scenePhase) { oldValue, newValue in
+            logger.log("onChange(of: schenePhase): \(String(describing: newValue))")
+            history.append(newValue)
         }
         .toolbar {
             PlaygroundSourceLink(file: "ScenePhasePlayground.swift")

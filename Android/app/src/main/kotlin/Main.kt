@@ -9,7 +9,6 @@ import android.Manifest
 import android.app.Application
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,7 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.core.app.ActivityCompat
 
-internal val logger: SkipLogger = SkipLogger(subsystem = "showcase.app", category = "ShowcaseApp")
+internal val logger: SkipLogger = SkipLogger(subsystem = "showcase", category = "Showcase")
 
 /// AndroidAppMain is the `android.app.Application` entry point, and must match `application android:name` in the AndroidMainfest.xml file.
 open class AndroidAppMain: Application {
@@ -69,12 +68,34 @@ open class MainActivity: AppCompatActivity {
         //ActivityCompat.requestPermissions(self, permissions.toTypedArray(), requestTag)
     }
 
-    override fun onSaveInstanceState(outState: android.os.Bundle): Unit = super.onSaveInstanceState(outState)
+    override fun onStart() {
+        super.onStart()
+        ShowcaseAppDelegate.shared.onStart()
+    }
 
-    override fun onRestoreInstanceState(bundle: android.os.Bundle) {
-        // Usually you restore your state in onCreate(). It is possible to restore it in onRestoreInstanceState() as well, but not very common. (onRestoreInstanceState() is called after onStart(), whereas onCreate() is called before onStart().
-        logger.info("onRestoreInstanceState")
-        super.onRestoreInstanceState(bundle)
+    override fun onResume() {
+        super.onResume()
+        ShowcaseAppDelegate.shared.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        ShowcaseAppDelegate.shared.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        ShowcaseAppDelegate.shared.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ShowcaseAppDelegate.shared.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        ShowcaseAppDelegate.shared.onLowMemory()
     }
 
     override fun onRestart() {
@@ -82,29 +103,12 @@ open class MainActivity: AppCompatActivity {
         super.onRestart()
     }
 
-    override fun onStart() {
-        logger.info("onStart")
-        super.onStart()
-    }
+    override fun onSaveInstanceState(outState: android.os.Bundle): Unit = super.onSaveInstanceState(outState)
 
-    override fun onResume() {
-        logger.info("onResume")
-        super.onResume()
-    }
-
-    override fun onPause() {
-        logger.info("onPause")
-        super.onPause()
-    }
-
-    override fun onStop() {
-        logger.info("onStop")
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        logger.info("onDestroy")
-        super.onDestroy()
+    override fun onRestoreInstanceState(bundle: android.os.Bundle) {
+        // Usually you restore your state in onCreate(). It is possible to restore it in onRestoreInstanceState() as well, but not very common. (onRestoreInstanceState() is called after onStart(), whereas onCreate() is called before onStart().
+        logger.info("onRestoreInstanceState")
+        super.onRestoreInstanceState(bundle)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: kotlin.Array<String>, grantResults: IntArray) {
@@ -122,7 +126,7 @@ internal fun PresentationRootView(context: ComposeContext) {
     PresentationRoot(defaultColorScheme = colorScheme, context = context) { ctx ->
         val contentContext = ctx.content()
         Box(modifier = ctx.modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            RootView().Compose(context = contentContext)
+            ShowcaseRootView().Compose(context = contentContext)
         }
     }
 }

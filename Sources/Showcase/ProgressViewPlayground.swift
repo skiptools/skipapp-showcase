@@ -82,7 +82,3 @@ struct ProgressViewPlayground: View {
         }
     }
 }
-
-#Preview {
-    ProgressViewPlayground()
-}

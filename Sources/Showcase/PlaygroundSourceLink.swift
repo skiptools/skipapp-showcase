@@ -1,4 +1,5 @@
 // Copyright 2023–2025 Skip
+import Foundation
 import SwiftUI
 
 /// Displays a link to the source code for the given playground type.

@@ -1,5 +1,4 @@
 // Copyright 2023–2025 Skip
-import Foundation
 import SwiftUI
 
 enum SearchablePlaygroundType: String, CaseIterable {
@@ -189,7 +188,7 @@ struct IsSearchingSearchablePlayground: View {
             .searchable(text: $searchText)
     }
 
-    private struct IsSearchingView: View {
+    struct IsSearchingView: View {
         @Environment(\.isSearching) var isSearching
 
         var body: some View {

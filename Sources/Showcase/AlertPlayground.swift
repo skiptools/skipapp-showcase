@@ -1,4 +1,5 @@
 // Copyright 2023–2025 Skip
+import Foundation
 import SwiftUI
 
 struct AlertPlayground: View {
@@ -20,34 +21,29 @@ struct AlertPlayground: View {
     var body: some View {
         VStack(spacing: 16) {
             Text(value).bold()
-            Group {
-                Button("Title") {
-                    titleIsPresented = true
-                }
-                Button("Title + Message") {
-                    titleMessageIsPresented = true
-                }
-                Button("Two Buttons") {
-                    twoButtonsIsPresented = true
-                }
-                Button("Three Buttons") {
-                    threeButtonsIsPresented = true
-                }
-                Button("Five Buttons") {
-                    fiveButtonsIsPresented = true
-                }
+            Button("Title") {
+                titleIsPresented = true
+            }
+            Button("Title + Message") {
+                titleMessageIsPresented = true
+            }
+            Button("Two Buttons") {
+                twoButtonsIsPresented = true
+            }
+            Button("Three Buttons") {
+                threeButtonsIsPresented = true
+            }
+            Button("Five Buttons") {
+                fiveButtonsIsPresented = true
             }
             Divider()
-            Group {
-                Button("Text Field") {
-                    textFieldIsPresented = true
-                }
-                Button("Secure Field") {
-                    secureFieldIsPresented = true
-                }
+            Button("Text Field") {
+                textFieldIsPresented = true
+            }
+            Button("Secure Field") {
+                secureFieldIsPresented = true
             }
             Divider()
-//            Group {
 //                Text("Present with error")
 //                Button("Error: \(String(describing: error))") {
 //                    error = AlertPlaygroundError.testError
@@ -58,23 +54,20 @@ struct AlertPlayground: View {
 //                Button("Present") {
 //                    errorIsPresented = true
 //                }
-//            }
 //            Divider()
-            Group {
-                Text("Present with data")
-                Button("Data: \(String(describing: data))") {
-                    if data == nil {
-                        data = 1
-                    } else {
-                        data = data! + 1
-                    }
+            Text("Present with data")
+            Button("Data: \(String(describing: data))") {
+                if data == nil {
+                    data = 1
+                } else {
+                    data = data! + 1
                 }
-                Button("Nil data") {
-                    data = nil
-                }
-                Button("Present") {
-                    dataIsPresented = true
-                }
+            }
+            Button("Nil data") {
+                data = nil
+            }
+            Button("Present") {
+                dataIsPresented = true
             }
         }
         .padding()
