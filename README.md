@@ -9,12 +9,12 @@ Showcase is a [Skip Lite](https://skip.tools) app that demonstrates many of the 
 
 ## iPhone Screenshots
 
-<img src="Darwin/fastlane/screenshots/en-US/1_en-US.png" style="width: 18%" /> <img src="Darwin/fastlane/screenshots/en-US/2_en-US.png" style="width: 18%" /> <img src="Darwin/fastlane/screenshots/en-US/3_en-US.png" style="width: 18%" /> <img src="Darwin/fastlane/screenshots/en-US/4_en-US.png" style="width: 18%" /> <img src="Darwin/fastlane/screenshots/en-US/5_en-US.png" style="width: 18%" />
+<img alt="iPhone Screenshot" src="Darwin/fastlane/screenshots/en-US/1_en-US.png" style="width: 18%" /> <img alt="iPhone Screenshot" src="Darwin/fastlane/screenshots/en-US/2_en-US.png" style="width: 18%" /> <img alt="iPhone Screenshot" src="Darwin/fastlane/screenshots/en-US/3_en-US.png" style="width: 18%" /> <img alt="iPhone Screenshot" src="Darwin/fastlane/screenshots/en-US/4_en-US.png" style="width: 18%" /> <img alt="iPhone Screenshot" src="Darwin/fastlane/screenshots/en-US/5_en-US.png" style="width: 18%" />
 
 
 ## Android Screenshots
 
-<img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.png" style="width: 18%" /> <img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.png" style="width: 18%" /> <img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US.png" style="width: 18%" /> <img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/4_en-US.png" style="width: 18%" /> <img src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/5_en-US.png" style="width: 18%" />
+<img alt="Android Screenshot" src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.png" style="width: 18%" /> <img alt="Android Screenshot" src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.png" style="width: 18%" /> <img alt="Android Screenshot" src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US.png" style="width: 18%" /> <img alt="Android Screenshot" src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/4_en-US.png" style="width: 18%" /> <img alt="Android Screenshot" src="Android/fastlane/metadata/android/en-US/images/phoneScreenshots/5_en-US.png" style="width: 18%" />
 
 ## Quickstart
 
@@ -31,18 +31,14 @@ $ brew install skiptools/skip/skip
 ```
 $ git clone https://github.com/skiptools/skipapp-showcase.git
 ```
-4. Navigate to the *Darwin* folder and open the Xcode project: `Showcase.xcodeproj`
-5. Select and Run the `Showcase` target with an iOS simulator destination; the app will build and run side-by-side on the iOS simulator and Android emulator.
+4. Open the Xcode workspace: `Project.xcworkspace`
+5. Select and Run the `Showcase App` target with an iOS simulator destination; the app will build and run side-by-side on the iOS simulator and Android emulator.
 
 
-## Project
+## Development
 
-This project was initialized with the command:
-
-```
-skip init --no-module-tests --no-build --icon-color=8E8E93 --free --zero --appid=skip.showcase.App skipapp-showcase Showcase
-```
-
+This app is ideal for experimenting with various SwiftUI constructs
+and exploring the various integrations that Skip offers.
 
 ## Testing
 
