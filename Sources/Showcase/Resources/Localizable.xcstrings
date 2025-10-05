@@ -657,6 +657,9 @@
     "Animation" : {
 
     },
+    "App Store Listing" : {
+
+    },
     "Appearance" : {
 
     },
@@ -3064,6 +3067,16 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Version %1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "Version %@ (%lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version %1$@ (%2$lld)"
           }
         }
       }

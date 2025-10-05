@@ -1,5 +1,7 @@
 // Copyright 2023–2025 Skip
 import SwiftUI
+import SkipKit
+import SkipMarketplace
 
 struct SettingsView: View {
     @Binding var appearance: String
@@ -43,12 +45,16 @@ struct SettingsView: View {
                     #else
                     Text(verbatim: "💙")
                     #endif
-                    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-                       let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                    if let version = ProcessInfo.processInfo.appVersionString,
+                       let buildNumber = ProcessInfo.processInfo.appVersionNumber {
                         Text("Version \(version) (\(buildNumber))")
                             .foregroundStyle(.gray)
                     }
                     Text("Powered by [Skip](https://skip.tools)")
+                }
+                .onTapGesture {
+                    logger.info("requesting marketplace review")
+                    Marketplace.current.requestReview(period: .days(0))
                 }
             }
             .navigationTitle("Settings")
