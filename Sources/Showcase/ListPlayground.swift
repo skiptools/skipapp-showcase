@@ -21,6 +21,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case plainStyleSectionedEditActions
     case onMoveDelete
     case positioned
+    case topContent
 
     var title: String {
         switch self {
@@ -62,6 +63,8 @@ enum ListPlaygroundType: String, CaseIterable {
             return ".onMove, .onDelete"
         case .positioned:
             return "Positioned"
+        case .topContent:
+            return "Top content"
         }
     }
 }
@@ -135,6 +138,10 @@ struct ListPlayground: View {
             case .positioned:
                 PositionedListPlayground()
                     .navigationTitle($0.title)
+            case .topContent:
+                ListWithTopContentPlayground()
+                    .navigationTitle($0.title)
+                
             }
         }
     }
@@ -690,6 +697,31 @@ struct PositionedListPlayground: View {
             .listStyle(.plain)
             Text("Content below")
                 .font(.largeTitle)
+        }
+    }
+}
+
+struct ListWithTopContentPlayground: View {
+    var body: some View {
+        List {
+            HStack(spacing: 0) {
+              
+                VStack {
+                    Text("left text")
+                        .frame(maxWidth: .infinity)
+                }
+                
+                VStack {
+                    Text("right text")
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            
+            Section {
+                ForEach(0..<30, id: \.self) { index in
+                    Text("Row \(index)")
+                }
+            }
         }
     }
 }
