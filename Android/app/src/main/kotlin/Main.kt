@@ -7,9 +7,11 @@ import skip.ui.*
 
 import android.Manifest
 import android.app.Application
+import android.graphics.Color as AndroidColor
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.SystemBarStyle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,9 +49,23 @@ open class MainActivity: AppCompatActivity {
         super.onCreate(savedInstanceState)
         logger.info("starting activity")
         UIApplication.launch(this)
-        enableEdgeToEdge()
-
+        
         setContent {
+            val dark = isSystemInDarkTheme()
+            val transparentColor = AndroidColor.TRANSPARENT
+            val style = if (dark) {
+                SystemBarStyle.dark(transparentColor)
+            } else {
+                SystemBarStyle.light(transparentColor, transparentColor)
+            }
+            
+            SideEffect {
+                enableEdgeToEdge(
+                    statusBarStyle = style,
+                    navigationBarStyle = style
+                )
+            }
+            
             val saveableStateHolder = rememberSaveableStateHolder()
             saveableStateHolder.SaveableStateProvider(true) {
                 PresentationRootView(ComposeContext())
