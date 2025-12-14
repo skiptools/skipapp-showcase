@@ -33,13 +33,13 @@ internal val logger: SkipLogger = SkipLogger(subsystem = "showcase.app", categor
 open class AndroidAppMain: Application {
     constructor() {
     }
-
+    
     override fun onCreate() {
         super.onCreate()
         logger.info("starting app")
         ProcessInfo.launch(applicationContext)
     }
-
+    
     companion object {
     }
 }
@@ -48,12 +48,13 @@ open class AndroidAppMain: Application {
 open class MainActivity: AppCompatActivity {
     constructor() {
     }
-
+    
     override fun onCreate(savedInstanceState: android.os.Bundle?) {
         super.onCreate(savedInstanceState)
         logger.info("starting activity")
         UIApplication.launch(this)
-
+        enableEdgeToEdge()
+        
         setContent {
             val saveableStateHolder = rememberSaveableStateHolder()
             saveableStateHolder.SaveableStateProvider(true) {
@@ -73,50 +74,50 @@ open class MainActivity: AppCompatActivity {
         //let requestTag = 1
         //ActivityCompat.requestPermissions(self, permissions.toTypedArray(), requestTag)
     }
-
+    
     override fun onSaveInstanceState(outState: android.os.Bundle): Unit = super.onSaveInstanceState(outState)
-
+    
     override fun onRestoreInstanceState(bundle: android.os.Bundle) {
         // Usually you restore your state in onCreate(). It is possible to restore it in onRestoreInstanceState() as well, but not very common. (onRestoreInstanceState() is called after onStart(), whereas onCreate() is called before onStart().
         logger.info("onRestoreInstanceState")
         super.onRestoreInstanceState(bundle)
     }
-
+    
     override fun onRestart() {
         logger.info("onRestart")
         super.onRestart()
     }
-
+    
     override fun onStart() {
         logger.info("onStart")
         super.onStart()
     }
-
+    
     override fun onResume() {
         logger.info("onResume")
         super.onResume()
     }
-
+    
     override fun onPause() {
         logger.info("onPause")
         super.onPause()
     }
-
+    
     override fun onStop() {
         logger.info("onStop")
         super.onStop()
     }
-
+    
     override fun onDestroy() {
         logger.info("onDestroy")
         super.onDestroy()
     }
-
+    
     override fun onRequestPermissionsResult(requestCode: Int, permissions: kotlin.Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         logger.info("onRequestPermissionsResult: ${requestCode}")
     }
-
+    
     companion object {
     }
 }
