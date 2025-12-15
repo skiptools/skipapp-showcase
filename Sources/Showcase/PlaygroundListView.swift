@@ -25,7 +25,6 @@ enum PlaygroundType: CaseIterable, View {
     case frame
     case gesture
     case geometryReader
-    case viewThatFits
     case gradient
     case graphics
     case grid
@@ -78,6 +77,7 @@ enum PlaygroundType: CaseIterable, View {
     case timer
     case transition
     case videoPlayer
+    case viewThatFits
     case webView
     case zIndex
 
