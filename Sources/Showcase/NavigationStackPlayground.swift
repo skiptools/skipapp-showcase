@@ -7,6 +7,7 @@ struct NavigationStackPlayground: View {
     @State var isPathBindingSheetWithInitialStackPresented = false
     @State var isNavigationPathBindingSheetPresented = false
     @State var nextIsPresented = false
+    @State var selectedItem: PathElement? = nil
 
     var body: some View {
         VStack(spacing: 16) {
@@ -15,6 +16,9 @@ struct NavigationStackPlayground: View {
             }
             Button("Present with binding") {
                 nextIsPresented = true
+            }
+            Button("Present with item binding") {
+                selectedItem = PathElement(rawValue: 42)
             }
             Button("Path binding sheet") {
                 isPathBindingSheetPresented = true
@@ -36,6 +40,9 @@ struct NavigationStackPlayground: View {
         }
         .navigationDestination(isPresented: $nextIsPresented) {
             Text("Pushed")
+        }
+        .navigationDestination(item: $selectedItem) { item in
+            ItemDestinationView(item: item, previousSelectedItem: $selectedItem)
         }
         .sheet(isPresented: $isPathBindingSheetPresented) {
             PathBindingSheetContentView()
@@ -220,5 +227,31 @@ private struct NavigationPathElementView: View {
             }
         }
         .navigationTitle(element.description)
+    }
+}
+
+private struct ItemDestinationView: View {
+    @Environment(\.dismiss) var dismiss
+    let item: PathElement
+    @Binding var previousSelectedItem: PathElement?
+    @State var nextSelectedItem: PathElement? = nil
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Item value: \(item.rawValue)")
+            Button("Navigate back (dismiss)") {
+                dismiss()
+            }
+            Button("Navigate back (set nil)") {
+                previousSelectedItem = nil
+            }
+            Button("Navigate forward to \(item.rawValue + 1)") {
+                nextSelectedItem = PathElement(rawValue: item.rawValue + 1)
+            }
+        }
+        .navigationTitle("Item \(item.rawValue)")
+        .navigationDestination(item: $nextSelectedItem) { nextItem in
+            ItemDestinationView(item: nextItem, previousSelectedItem: $nextSelectedItem)
+        }
     }
 }
