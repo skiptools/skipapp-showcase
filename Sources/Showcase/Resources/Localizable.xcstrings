@@ -434,6 +434,16 @@
     "%@ .moveDisabled" : {
 
     },
+    "%@: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
@@ -1210,6 +1220,9 @@
     "EnvironmentObject tap count: %lld" : {
 
     },
+    "Error: %@" : {
+
+    },
     "Evaluate JavaScript" : {
 
     },
@@ -1498,6 +1511,9 @@
     "Home" : {
 
     },
+    "host: %@" : {
+
+    },
     "HStack maxWidth: .infinity" : {
 
     },
@@ -1592,6 +1608,9 @@
 
     },
     "Item %lld" : {
+
+    },
+    "Item value: %lld" : {
 
     },
     "JavaScript" : {
@@ -1829,7 +1848,16 @@
     "Navigate back" : {
 
     },
+    "Navigate back (dismiss)" : {
+
+    },
+    "Navigate back (set nil)" : {
+
+    },
     "Navigate forward" : {
+
+    },
+    "Navigate forward to %lld" : {
 
     },
     "NavigationLink" : {
@@ -2021,6 +2049,9 @@
     "Path count: %lld" : {
 
     },
+    "path: %@" : {
+
+    },
     "Path: %@" : {
 
     },
@@ -2135,6 +2166,9 @@
     "Present with data" : {
 
     },
+    "Present with item binding" : {
+
+    },
     "Primary" : {
 
     },
@@ -2222,6 +2256,9 @@
     "Requires iOS 17+" : {
 
     },
+    "Result URL:" : {
+
+    },
     "RGB" : {
 
     },
@@ -2292,6 +2329,9 @@
 
     },
     "ScenePhase history" : {
+
+    },
+    "scheme: %@" : {
 
     },
     "Scroll to 0" : {
@@ -2950,6 +2990,9 @@
     "TextField" : {
 
     },
+    "The user cancelled the sign-in process." : {
+
+    },
     "Thin footnote container" : {
 
     },
@@ -3047,6 +3090,9 @@
 
     },
     "UnevenRoundedRectangle" : {
+
+    },
+    "URL Components:" : {
 
     },
     "URLs:" : {
@@ -3223,6 +3269,9 @@
 
     },
     "VStack.animation" : {
+
+    },
+    "Web Authentication Session" : {
 
     },
     "WebView" : {
