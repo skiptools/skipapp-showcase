@@ -1594,6 +1594,9 @@
     "Item %lld" : {
 
     },
+    "Item value: %lld" : {
+
+    },
     "JavaScript" : {
 
     },
@@ -1829,7 +1832,16 @@
     "Navigate back" : {
 
     },
+    "Navigate back (dismiss)" : {
+
+    },
+    "Navigate back (set nil)" : {
+
+    },
     "Navigate forward" : {
+
+    },
+    "Navigate forward to %lld" : {
 
     },
     "NavigationLink" : {
@@ -1903,6 +1915,12 @@
 
     },
     "Note: tint should not affect Label appearance" : {
+
+    },
+    "NotificationPlayground" : {
+
+    },
+    "Notifications" : {
 
     },
     "Observable" : {
@@ -2133,6 +2151,9 @@
 
     },
     "Present with data" : {
+
+    },
+    "Present with item binding" : {
 
     },
     "Primary" : {
@@ -2373,6 +2394,9 @@
 
     },
     "Selection Set" : {
+
+    },
+    "Selection: %@" : {
 
     },
     "Selection: %lld" : {

@@ -19,6 +19,7 @@ let package = Package(
         .package(url: "https://source.skip.tools/skip-motion.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-keychain.git", "0.3.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-marketplace.git", "0.0.0"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-notify.git", "0.0.0"..<"2.0.0"),
     ],
     targets: [
         .target(name: "Showcase", dependencies: [
@@ -31,6 +32,7 @@ let package = Package(
             .product(name: "SkipMotion", package: "skip-motion"),
             .product(name: "SkipKeychain", package: "skip-keychain"),
             .product(name: "SkipMarketplace", package: "skip-marketplace"),
+            .product(name: "SkipNotify", package: "skip-notify"),
         ], resources: [.process("Resources")], plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )
