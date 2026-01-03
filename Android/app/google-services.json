@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "25594159619",
+    "project_id": "app-fair-425519",
+    "storage_bucket": "app-fair-425519.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25594159619:android:965b6dc7c4ba7e6afc2436",
+        "android_client_info": {
+          "package_name": "org.appfair.app.ShowcaseLite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDICqY23CwGFFBM2hDf_-4oJPtUFRfK_1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
