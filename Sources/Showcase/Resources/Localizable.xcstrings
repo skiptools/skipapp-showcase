@@ -896,6 +896,9 @@
     "Bottom text" : {
 
     },
+    "Bottom: %lld" : {
+
+    },
     "Bound tap count 1: %lld" : {
 
     },
@@ -1594,6 +1597,9 @@
     "Item %lld" : {
 
     },
+    "Item value: %lld" : {
+
+    },
     "JavaScript" : {
 
     },
@@ -1700,6 +1706,9 @@
 
     },
     "LazyVStack.%@" : {
+
+    },
+    "Leading: %lld" : {
 
     },
     "Light" : {
@@ -1829,7 +1838,16 @@
     "Navigate back" : {
 
     },
+    "Navigate back (dismiss)" : {
+
+    },
+    "Navigate back (set nil)" : {
+
+    },
     "Navigate forward" : {
+
+    },
+    "Navigate forward to %lld" : {
 
     },
     "NavigationLink" : {
@@ -2135,6 +2153,9 @@
     "Present with data" : {
 
     },
+    "Present with item binding" : {
+
+    },
     "Primary" : {
 
     },
@@ -2268,6 +2289,9 @@
 
     },
     "Row: 2.%lld" : {
+
+    },
+    "Safe Area Insets" : {
 
     },
     "SafeArea" : {
@@ -3028,7 +3052,13 @@
     "Top" : {
 
     },
+    "Top: %lld" : {
+
+    },
     "Touch" : {
+
+    },
+    "Trailing: %lld" : {
 
     },
     "Transforms" : {
