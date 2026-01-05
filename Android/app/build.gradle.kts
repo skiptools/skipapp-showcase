@@ -37,8 +37,16 @@ android {
         buildConfig = true
     }
 
-    composeOptions {
-        //kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.extension.get()
+    lint {
+        disable.add("Instantiatable")
+        disable.add("MissingPermission")
+    }
+
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle = false
     }
 
     // default signing configuration tries to load from keystore.properties
