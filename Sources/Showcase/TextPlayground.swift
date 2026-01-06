@@ -81,6 +81,16 @@ struct TextPlayground: View {
                     .lineLimit(1)
                     .frame(width: 200)
                     .border(Color.blue)
+                Text(".truncationMode(.middle): This is some long text that should middle truncate when it exceeds the width of its frame")
+                    .truncationMode(.middle)
+                    .lineLimit(1)
+                    .frame(width: 200)
+                    .border(Color.blue)
+                Text(".truncationMode(.tail): This is some long text when it exceeds the width of its frame will head truncate")
+                    .truncationMode(.head)
+                    .lineLimit(1)
+                    .frame(width: 200)
+                    .border(Color.blue)
 
                 Divider()
 

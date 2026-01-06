@@ -410,6 +410,12 @@
     ".transition(.slide)" : {
 
     },
+    ".truncationMode(.middle): This is some long text that should middle truncate when it exceeds the width of its frame" : {
+
+    },
+    ".truncationMode(.tail): This is some long text when it exceeds the width of its frame will head truncate" : {
+
+    },
     "\"CustomRed\"" : {
 
     },
@@ -2399,6 +2405,9 @@
     "Selection Set" : {
 
     },
+    "Selection: %@" : {
+
+    },
     "Selection: %lld" : {
 
     },
@@ -2939,6 +2948,9 @@
 
     },
     "Text Field" : {
+
+    },
+    "Text Selection" : {
 
     },
     "Text spacing:" : {

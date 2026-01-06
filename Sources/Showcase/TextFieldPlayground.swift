@@ -64,6 +64,10 @@ struct TextFieldPlayground: View {
                     #endif
                 TextField("One Time Code", text: $text)
                     .textContentType(.oneTimeCode)
+
+                if #available(iOS 18.0, *) {
+                    TextSelectionView(text: $text)
+                }
             }
             .padding()
         }
@@ -92,5 +96,26 @@ struct TextFieldPlayground: View {
         }
 
         return result
+    }
+}
+
+@available(iOS 18.0, macOS 15.0, *)
+struct TextSelectionView: View {
+    @Binding var text: String
+    @State var selection: TextSelection? = nil
+    var body: some View {
+        VStack {
+            Text("Selection: \(selectionDescription)")
+            TextField("Text Selection", text: $text, selection: $selection)
+        }
+    }
+
+    var selectionDescription: String {
+        switch selection?.indices {
+        case .selection(let range):
+            return "single: \(range)"
+        default:
+            return "none (or other)"
+        }
     }
 }
