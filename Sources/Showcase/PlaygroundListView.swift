@@ -78,6 +78,7 @@ enum PlaygroundType: CaseIterable, View {
     case transition
     case videoPlayer
     case viewThatFits
+    case webAuthenticationSession
     case webView
     case zIndex
 
@@ -233,6 +234,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Transition")
         case .videoPlayer:
             return LocalizedStringResource("Video Player")
+        case .webAuthenticationSession:
+            return LocalizedStringResource("Web Authentication Session")
         case .webView:
             return LocalizedStringResource("WebView")
         case .zIndex:
@@ -396,6 +399,8 @@ enum PlaygroundType: CaseIterable, View {
             TransitionPlayground()
         case .videoPlayer:
             VideoPlayerPlayground()
+        case .webAuthenticationSession:
+            WebAuthenticationSessionPlayground()
         case .webView:
             WebViewPlayground()
         case .zIndex:
