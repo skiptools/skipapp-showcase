@@ -53,6 +53,9 @@ struct SafeAreaPlayground: View {
                     }
                 }
             }
+            NavigationLink("Geometry padding") {
+                SafeAreaPadded()
+            }
             Section("Sheet") {
                 ForEach(SafeAreaPlaygroundType.allCases, id: \.sheetId) { playgroundType in
                     Button(playgroundType.title) {
@@ -122,6 +125,61 @@ struct SafeAreaFullscreenContent: View {
         }
         .border(.blue, width: 20.0)
         .ignoresSafeArea()
+    }
+}
+
+struct SafeAreaPadded: View {
+    @State var navBarVisibility = Visibility.visible
+    @State var tabBarVisibility = Visibility.visible
+    @State var bottomBarVisibility = Visibility.visible
+    
+    var body: some View {
+        GeometryReader { proxy in
+            let _ = print("safeAreaInsets: \(proxy.safeAreaInsets)")
+            ScrollView(.vertical) {
+                VStack {
+                    SafeAreaVisibilityControl(name: "Navigation", visibility: $navBarVisibility)
+                    SafeAreaVisibilityControl(name: "Tab", visibility: $tabBarVisibility)
+                    SafeAreaVisibilityControl(name: "Bottom", visibility: $bottomBarVisibility)
+                    ForEach(0..<40) { index in
+                        Text("Row: \(index)")
+                    }
+                    SafeAreaVisibilityControl(name: "Navigation", visibility: $navBarVisibility)
+                    SafeAreaVisibilityControl(name: "Tab", visibility: $tabBarVisibility)
+                    SafeAreaVisibilityControl(name: "Bottom", visibility: $bottomBarVisibility)
+                }
+                .frame(maxWidth: .infinity)
+                .border(.blue)
+                .padding(proxy.safeAreaInsets)
+            }
+            .border(.red)
+            .ignoresSafeArea()
+        }
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                Button("Bottom bar") {}
+            }
+        }
+        .toolbar(navBarVisibility, for: .navigationBar)
+        .toolbar(tabBarVisibility, for: .tabBar)
+        .toolbar(bottomBarVisibility, for: .bottomBar)
+    }
+}
+
+struct SafeAreaVisibilityControl: View {
+    let name: String
+    @Binding var visibility: Visibility
+    
+    var body: some View {
+        if visibility == .hidden {
+            Button("Show \(name) Bar") {
+                visibility = .visible
+            }
+        } else {
+            Button("Hide \(name) Bar") {
+                visibility = .hidden
+            }
+        }
     }
 }
 
