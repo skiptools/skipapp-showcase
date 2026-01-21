@@ -156,6 +156,14 @@ struct StackPlayground: View {
                             .frame(width: 40, height: 40)
                         }
                     }
+                    .frame(height: 40)
+                }
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        Text("Left aligned")
+                            .border(.green)
+                    }
+                    .frame(height: 32)
                 }
                 NavigationLink {
                     LazyVStackScrollView(count: 50)
