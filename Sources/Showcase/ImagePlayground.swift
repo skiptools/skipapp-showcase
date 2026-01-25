@@ -284,6 +284,36 @@ struct ImagePlayground: View {
                         .border(Color.blue)
                 }
                 HStack {
+                    Text("No URL\n.aspectRatio(3/4)")
+                    Spacer()
+                    AsyncImage(url: nil)
+                        .aspectRatio(3.0/4.0, contentMode: .fit)
+                        .border(Color.blue)
+                }
+                HStack {
+                    Text("No URL\n.aspectRatio(3/4).frame(100)")
+                    Spacer()
+                    AsyncImage(url: nil)
+                        .aspectRatio(3.0/4.0, contentMode: .fit)
+                        .frame(width: 100)
+                        .border(Color.blue)
+                }
+                HStack {
+                    Text("Failed URL\n.aspectRatio(3/4)")
+                    Spacer()
+                    AsyncImage(url: URL(string: "file:///does_not_exist.png")!)
+                        .aspectRatio(3.0/4.0, contentMode: .fit)
+                        .border(Color.blue)
+                }
+                HStack {
+                    Text("Failed URL\n.aspectRatio(3/4).frame(100)")
+                    Spacer()
+                    AsyncImage(url: URL(string: "file:///does_not_exist.png")!)
+                        .aspectRatio(3.0/4.0, contentMode: .fit)
+                        .frame(width: 100)
+                        .border(Color.blue)
+                }
+                HStack {
                     Text("Custom placeholder")
                     Spacer()
                     AsyncImage(url: nil) { image in
