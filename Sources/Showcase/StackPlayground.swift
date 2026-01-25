@@ -157,6 +157,20 @@ struct StackPlayground: View {
                         }
                     }
                 }
+                Text("LazyHStack fills height").bold()
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        ForEach(0..<20) { i in
+                            ZStack {
+                                Color.yellow
+                                Text(String(describing: i))
+                            }
+                            .frame(width: 40, height: 40)
+                        }
+                    }
+                    .border(.blue, width: 2)
+                }
+                .frame(height: 80)
                 NavigationLink {
                     LazyVStackScrollView(count: 50)
                         .navigationTitle("LazyVStack")
