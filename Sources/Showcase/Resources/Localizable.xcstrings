@@ -163,12 +163,6 @@
     ".frame.animation" : {
 
     },
-    ".frame(100, 100)" : {
-
-    },
-    ".frame(100, 100)\nclipped" : {
-
-    },
     ".grayscale(0.25)" : {
 
     },
@@ -318,30 +312,6 @@
 
     },
     ".repeatForever()" : {
-
-    },
-    ".resizable\n.frame(100, 100)" : {
-
-    },
-    ".resizable()\n.aspectRatio(0.33, .fill)\n.frame(100, 100)\n.clipped" : {
-
-    },
-    ".resizable()\n.aspectRatio(0.33, .fit)\n.frame(100, 100)" : {
-
-    },
-    ".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)" : {
-
-    },
-    ".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)\n.foregroundStyle(.red)" : {
-
-    },
-    ".resizable()\n.frame(100, 100)" : {
-
-    },
-    ".resizable()\n.scaleToFill\n.frame(100, 100)\n.clipped" : {
-
-    },
-    ".resizable()\n.scaleToFit\n.frame(100, 100)" : {
 
     },
     ".rotation3DEffects" : {
@@ -819,12 +789,6 @@
         }
       }
     },
-    "Asset JPEG Image" : {
-
-    },
-    "Asset SVG Image" : {
-
-    },
     "Asymmetric: opacity+slide" : {
 
     },
@@ -924,12 +888,6 @@
     "Brown" : {
 
     },
-    "Bundled Image" : {
-
-    },
-    "Butterfly SVG image" : {
-
-    },
     "Button" : {
 
     },
@@ -997,12 +955,6 @@
 
     },
     "Complex content button" : {
-
-    },
-    "Complex Layout (Landscape)" : {
-
-    },
-    "Complex Layout (Portrait)" : {
 
     },
     "Compose" : {
@@ -1565,9 +1517,6 @@
     "Image" : {
 
     },
-    "Image from Data" : {
-
-    },
     "in: 0...2 step 0.5" : {
 
     },
@@ -1641,6 +1590,9 @@
 
     },
     "JavaScript" : {
+
+    },
+    "Just green" : {
 
     },
     "Key" : {
@@ -2045,9 +1997,6 @@
     "Page 2" : {
 
     },
-    "Pager" : {
-
-    },
     "Paging" : {
 
     },
@@ -2055,9 +2004,6 @@
 
     },
     "Passing a string var does not format as markdown:" : {
-
-    },
-    "Passkey" : {
 
     },
     "Password" : {
@@ -2116,9 +2062,6 @@
 
     },
     "Patterns:" : {
-
-    },
-    "PDF Image" : {
 
     },
     "Pick Document" : {
@@ -2356,9 +2299,6 @@
 
     },
     "scale, rotate, offset, stroke" : {
-
-    },
-    "scale: 2" : {
 
     },
     "scale(x: 0.5, y: 1.2)" : {
@@ -2755,9 +2695,6 @@
         }
       }
     },
-    "skiplogo PDF image" : {
-
-    },
     "Slider" : {
 
     },
@@ -2887,12 +2824,6 @@
     "Symbol" : {
 
     },
-    "Symbol Image Sizes" : {
-
-    },
-    "Symbol Image Weights" : {
-
-    },
     "System" : {
 
     },
@@ -2900,9 +2831,6 @@
 
     },
     "System Settings" : {
-
-    },
-    "systemName" : {
 
     },
     "Table" : {
