@@ -1244,6 +1244,12 @@
     "Expanding container in scroll view" : {
 
     },
+    "F1" : {
+
+    },
+    "F2" : {
+
+    },
     "Favorites" : {
 
     },
@@ -1367,6 +1373,12 @@
     "Footer 3" : {
 
     },
+    "Footer line 1" : {
+
+    },
+    "Footer line 2" : {
+
+    },
     "ForEach index row: %lld" : {
 
     },
@@ -1443,6 +1455,12 @@
     "Grids" : {
 
     },
+    "H1" : {
+
+    },
+    "H2" : {
+
+    },
     "Haptic Feedback" : {
 
     },
@@ -1459,6 +1477,12 @@
 
     },
     "Header" : {
+
+    },
+    "Header line 1" : {
+
+    },
+    "Header line 2" : {
 
     },
     "height: 50" : {
@@ -2305,6 +2329,9 @@
 
     },
     "Row 2.1" : {
+
+    },
+    "Row 3.1" : {
 
     },
     "Row 3a" : {
