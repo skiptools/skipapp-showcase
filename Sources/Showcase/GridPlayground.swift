@@ -129,13 +129,15 @@ private struct LazyVGridTrailingView: View {
 private struct LazyVGridSectionedView: View {
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], spacing: 20) {
                 ForEach(0..<5) { index in
                     Section {
                         VGridCellsView(start: index * 100, count: 10, color: .yellow)
                     } header: {
                         Text("Section \(index) Header")
+                        Text("Section \(index) Header")
                     } footer: {
+                        Text("Section footer")
                         Text("Section footer")
                     }
                     .border(.orange)
@@ -224,7 +226,9 @@ private struct LazyHGridSectionedView: View {
                         HGridCellsView(start: index * 100, count: 10, color: .yellow)
                     } header: {
                         Text("Section \(index) Header")
+                        Text("Section \(index) Header")
                     } footer: {
+                        Text("Section footer")
                         Text("Section footer")
                     }
                     .border(.orange)

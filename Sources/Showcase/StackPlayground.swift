@@ -147,14 +147,23 @@ struct StackPlayground: View {
                 }
                 Text("LazyHStack").bold()
                 ScrollView(.horizontal) {
-                    LazyHStack {
-                        ForEach(0..<20) { i in
-                            ZStack {
-                                Color.yellow
-                                Text(String(describing: i))
+                    LazyHStack(spacing: 20) {
+                        Section {
+                            ForEach(0..<20) { i in
+                                ZStack {
+                                    Color.yellow
+                                    Text(String(describing: i))
+                                }
+                                .frame(width: 40, height: 40)
                             }
-                            .frame(width: 40, height: 40)
+                        } header: {
+                            Text("H1")
+                            Text("H2")
+                        } footer: {
+                            Text("F1")
+                            Text("F2")
                         }
+                        .border(.red)
                     }
                 }
                 Text("LazyHStack fills height").bold()
