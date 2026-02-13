@@ -7,6 +7,8 @@ struct AlertPlayground: View {
     @State var data: Int? = nil
     @State var titleIsPresented = false
     @State var titleMessageIsPresented = false
+    @State var longMessageIsPresented = false
+    @State var longButtonTitlesIsPresented = false
     @State var twoButtonsIsPresented = false
     @State var threeButtonsIsPresented = false
     @State var fiveButtonsIsPresented = false
@@ -18,66 +20,74 @@ struct AlertPlayground: View {
     @State var dataIsPresented = false
 
     var body: some View {
-        VStack(spacing: 16) {
-            Text(value).bold()
-            Group {
-                Button("Title") {
-                    titleIsPresented = true
-                }
-                Button("Title + Message") {
-                    titleMessageIsPresented = true
-                }
-                Button("Two Buttons") {
-                    twoButtonsIsPresented = true
-                }
-                Button("Three Buttons") {
-                    threeButtonsIsPresented = true
-                }
-                Button("Five Buttons") {
-                    fiveButtonsIsPresented = true
-                }
-            }
-            Divider()
-            Group {
-                Button("Text Field") {
-                    textFieldIsPresented = true
-                }
-                Button("Secure Field") {
-                    secureFieldIsPresented = true
-                }
-            }
-            Divider()
-//            Group {
-//                Text("Present with error")
-//                Button("Error: \(String(describing: error))") {
-//                    error = AlertPlaygroundError.testError
-//                }
-//                Button("Nil error") {
-//                    error = nil
-//                }
-//                Button("Present") {
-//                    errorIsPresented = true
-//                }
-//            }
-//            Divider()
-            Group {
-                Text("Present with data")
-                Button("Data: \(String(describing: data))") {
-                    if data == nil {
-                        data = 1
-                    } else {
-                        data = data! + 1
+        ScrollView(.vertical) {
+            VStack(spacing: 16) {
+                Text(value).bold()
+                Group {
+                    Button("Title") {
+                        titleIsPresented = true
+                    }
+                    Button("Title + Message") {
+                        titleMessageIsPresented = true
+                    }
+                    Button("Long Message") {
+                        longMessageIsPresented = true
+                    }
+                    Button("Long Button Titles") {
+                        longButtonTitlesIsPresented = true
+                    }
+                    Button("Two Buttons") {
+                        twoButtonsIsPresented = true
+                    }
+                    Button("Three Buttons") {
+                        threeButtonsIsPresented = true
+                    }
+                    Button("Five Buttons") {
+                        fiveButtonsIsPresented = true
                     }
                 }
-                Button("Nil data") {
-                    data = nil
+                Divider()
+                Group {
+                    Button("Text Field") {
+                        textFieldIsPresented = true
+                    }
+                    Button("Secure Field") {
+                        secureFieldIsPresented = true
+                    }
                 }
-                Button("Present") {
-                    dataIsPresented = true
+                Divider()
+    //            Group {
+    //                Text("Present with error")
+    //                Button("Error: \(String(describing: error))") {
+    //                    error = AlertPlaygroundError.testError
+    //                }
+    //                Button("Nil error") {
+    //                    error = nil
+    //                }
+    //                Button("Present") {
+    //                    errorIsPresented = true
+    //                }
+    //            }
+    //            Divider()
+                Group {
+                    Text("Present with data")
+                    Button("Data: \(String(describing: data))") {
+                        if data == nil {
+                            data = 1
+                        } else {
+                            data = data! + 1
+                        }
+                    }
+                    Button("Nil data") {
+                        data = nil
+                    }
+                    Button("Present") {
+                        dataIsPresented = true
+                    }
                 }
             }
+            .padding()
         }
-        .padding()
         .toolbar {
             PlaygroundSourceLink(file: "AlertPlayground.swift")
         }
@@ -86,6 +96,18 @@ struct AlertPlayground: View {
         .alert("Title + Message", isPresented: $titleMessageIsPresented) {
         } message: {
             Text("This is the alert message to show beneath the title")
+        }
+        .alert("Long Message", isPresented: $longMessageIsPresented) {
+        } message: {
+            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo consectetur odio. Proin tempus orci ut tortor tincidunt elementum. Morbi finibus neque eget ullamcorper convallis. Suspendisse metus est, rhoncus vitae commodo non, ultricies ac leo. Proin scelerisque eros sed dolor dignissim accumsan id a nulla. Nulla tempor consequat nulla vel consequat. Etiam congue pretium sagittis. Quisque quis commodo velit, ac cursus massa. Aenean commodo congue velit in vestibulum. Proin viverra orci efficitur faucibus aliquet. Ut dignissim justo at dolor placerat, venenatis pulvinar dui consectetur. Nunc eget diam nec eros finibus finibus. Mauris et risus sit amet diam sagittis dapibus eu ac odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo consectetur odio. Proin tempus orci ut tortor tincidunt elementum. Morbi finibus neque eget ullamcorper convallis. Suspendisse metus est, rhoncus vitae commodo non, ultricies ac leo. Proin scelerisque eros sed dolor dignissim accumsan id a nulla. Nulla tempor consequat nulla vel consequat. Etiam congue pretium sagittis. Quisque quis commodo velit, ac cursus massa. Aenean commodo congue velit in vestibulum. Proin viverra orci efficitur faucibus aliquet. Ut dignissim justo at dolor placerat, venenatis pulvinar dui consectetur. Nunc eget diam nec eros finibus finibus. Mauris et risus sit amet diam sagittis dapibus eu ac odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo consectetur odio. Proin tempus orci ut tortor tincidunt elementum. Morbi finibus neque eget ullamcorper convallis. Suspendisse metus est, rhoncus vitae commodo non, ultricies ac leo. Proin scelerisque eros sed dolor dignissim accumsan id a nulla. Nulla tempor consequat nulla vel consequat. Etiam congue pretium sagittis. Quisque quis commodo velit, ac cursus massa. Aenean commodo congue velit in vestibulum. Proin viverra orci efficitur faucibus aliquet. Ut dignissim justo at dolor placerat, venenatis pulvinar dui consectetur. Nunc eget diam nec eros finibus finibus. Mauris et risus sit amet diam sagittis dapibus eu ac odio.")
+        }
+        .alert("Alert Title?", isPresented: $longButtonTitlesIsPresented) {
+            Button("Long destructive button text", role: .destructive) {
+            }
+            Button("Long cancel button text", role: .cancel) {
+            }
+        } message: {
+            Text("Long message body for the alert which is displayed in skip")
         }
         .alert("Two Buttons", isPresented: $twoButtonsIsPresented) {
             Button("Option") {
