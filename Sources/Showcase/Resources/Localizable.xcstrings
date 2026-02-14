@@ -1373,12 +1373,6 @@
     "Footer 3" : {
 
     },
-    "Footer line 1" : {
-
-    },
-    "Footer line 2" : {
-
-    },
     "ForEach index row: %lld" : {
 
     },
@@ -1477,12 +1471,6 @@
 
     },
     "Header" : {
-
-    },
-    "Header line 1" : {
-
-    },
-    "Header line 2" : {
 
     },
     "height: 50" : {
@@ -1629,6 +1617,9 @@
 
     },
     "iOS 17 / macOS 14 required for Observation framework" : {
+
+    },
+    "Is Authorized: %@" : {
 
     },
     "isOn" : {
@@ -1942,6 +1933,9 @@
     "New Key" : {
 
     },
+    "Next notification in %lld s" : {
+
+    },
     "Nil data" : {
 
     },
@@ -1952,6 +1946,9 @@
 
     },
     "NO" : {
+
+    },
+    "No scheduled notification" : {
 
     },
     "No URL" : {
@@ -1970,6 +1967,12 @@
 
     },
     "Note: tint should not affect Label appearance" : {
+
+    },
+    "Notification" : {
+      "extractionState" : "manual"
+    },
+    "Notifications" : {
 
     },
     "Observable" : {
@@ -2289,7 +2292,13 @@
     "Remapped URL" : {
 
     },
+    "Remove all pending notifications" : {
+
+    },
     "Repository item tap count: %lld" : {
+
+    },
+    "Request Notification Permission" : {
 
     },
     "Requires iOS 17+" : {
@@ -2329,9 +2338,6 @@
 
     },
     "Row 2.1" : {
-
-    },
-    "Row 3.1" : {
 
     },
     "Row 3a" : {
@@ -3135,6 +3141,12 @@
 
     },
     "Transition" : {
+
+    },
+    "Trigger Immediate Notification" : {
+
+    },
+    "Trigger Scheduled Notification" : {
 
     },
     "Two Buttons" : {
