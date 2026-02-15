@@ -1422,6 +1422,9 @@
     "Fullscreen cover" : {
 
     },
+    "Generate Push Notification Token" : {
+
+    },
     "GeometryReader" : {
 
     },
@@ -1769,6 +1772,9 @@
     "Local frame: %@" : {
 
     },
+    "Local Notifications" : {
+
+    },
     "Localization" : {
 
     },
@@ -1972,9 +1978,6 @@
     "Notification" : {
       "extractionState" : "manual"
     },
-    "Notifications" : {
-
-    },
     "Observable" : {
 
     },
@@ -2124,6 +2127,9 @@
     "PDF Image" : {
 
     },
+    "Permission Status: %@" : {
+
+    },
     "Pick Document" : {
 
     },
@@ -2253,6 +2259,9 @@
     "Push binding view" : {
 
     },
+    "Push Notification Client Token" : {
+
+    },
     "Push Text.position(100, 100)" : {
 
     },
@@ -2298,7 +2307,7 @@
     "Repository item tap count: %lld" : {
 
     },
-    "Request Notification Permission" : {
+    "Request Push Notification Permission" : {
 
     },
     "Requires iOS 17+" : {
@@ -2751,6 +2760,9 @@
 
     },
     "Skip Intro" : {
+
+    },
+    "Skip Notify" : {
 
     },
     "Skip Technology" : {

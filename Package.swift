@@ -10,11 +10,10 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "1.4.0"),
-        // TODO: Remove temporary reference to skip foundation after PR has been merged (see: https://github.com/skiptools/skip-foundation/pull/93)
-        .package(url: "https://github.com/fhasse95/skip-foundation.git", branch: "Added-Calendar-Enumeration-Support"),
         
-        // TODO: Update skip ui package URL and version after PR has been merged (see: TODO)
-        .package(url: "https://github.com/fhasse95/skip-ui.git", branch: "Triggered-Notification-Support"),
+        // TODO: Update package URLs and version after PRs have been merged (see: TODO)
+        .package(path: "/Users/fabian/Desktop/Develop/Contributions/skip-foundation"),
+        .package(path: "/Users/fabian/Desktop/Develop/Contributions/skip-ui"),
         
         .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-kit.git", "0.0.0"..<"2.0.0"),
@@ -25,6 +24,7 @@ let package = Package(
         .package(url: "https://source.skip.tools/skip-keychain.git", "0.3.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-marketplace.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-authentication-services.git", "0.0.0"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-notify.git", "0.0.0"..<"2.0.0"),
     ],
     targets: [
         .target(name: "Showcase", dependencies: [
@@ -38,6 +38,7 @@ let package = Package(
             .product(name: "SkipKeychain", package: "skip-keychain"),
             .product(name: "SkipMarketplace", package: "skip-marketplace"),
             .product(name: "SkipAuthenticationServices", package: "skip-authentication-services"),
+            .product(name: "SkipNotify", package: "skip-notify"),
         ], resources: [.process("Resources")], plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )

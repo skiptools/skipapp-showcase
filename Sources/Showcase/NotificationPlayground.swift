@@ -1,37 +1,102 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
+import SkipKit
+import SkipNotify
 
 struct NotificationPlayground: View {
+    @State var notificationPermission: String = ""
     
-    // MARK: - Variables
-    @State private var isAuthorized: Bool = false
+    var body: some View {
+        List {
+            Section {
+                Text("Permission Status: \(self.notificationPermission)")
+                    .task {
+                        self.notificationPermission = await PermissionManager.queryPostNotificationPermission().rawValue
+                    }
+                    .foregroundStyle(self.notificationPermission == "authorized" ? .green : .red)
+                
+                Button("Request Push Notification Permission") {
+                    Task { @MainActor in
+                        do {
+                            self.notificationPermission = try await PermissionManager.requestPostNotificationPermission(alert: true, sound: false, badge: true).rawValue
+                            logger.log("obtained push notification permission: \(self.notificationPermission)")
+                        } catch {
+                            logger.error("error obtaining push notification permission: \(error)")
+                            self.notificationPermission = "error: \(error)"
+                        }
+                    }
+                }
+                .buttonStyle(.plain)
+            }
+            
+            Section {
+                NavigationLink("Skip Notify") {
+                    SkipNotifyNotificationPlaygroundView()
+                }
+                
+                NavigationLink("Local Notifications") {
+                    LocalNotificationPlaygroundView()
+                }
+            }
+        }
+        .navigationTitle("Notification")
+    }
+}
+
+struct SkipNotifyNotificationPlaygroundView: View {
+    @State var token: String = ""
+    var body: some View {
+        VStack {
+            HStack {
+                TextField("Push Notification Client Token", text: $token)
+                    .textFieldStyle(.roundedBorder)
+                Button("Copy") {
+                    UIPasteboard.general.string = token
+                }
+                .buttonStyle(.automatic)
+            }
+
+            Button("Generate Push Notification Token") {
+                Task { @MainActor in
+                    do {
+                        self.token = try await SkipNotify.shared.fetchNotificationToken()
+                        logger.log("obtained push notification token: \(self.token)")
+                    } catch {
+                        logger.error("error obtaining push notification token: \(error)")
+                    }
+                }
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .navigationTitle("Skip Notify")
+        .padding()
+    }
+}
+
+struct LocalNotificationPlaygroundView: View {
+    @State var isAuthorized: Bool = false
     
-    @State private var now = Date()
-    @State private var nextTriggerDate: Date?
-    private  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var timerDate: Date?
+    @State var nextTriggerDate: Date?
     private var secondsUntilNextTrigger: Int? {
-        guard let nextTriggerDate = self.nextTriggerDate else { return nil }
-        let seconds = Int(nextTriggerDate.timeIntervalSince(self.now))
+        guard let timerDate, let nextTriggerDate else { return nil }
+        let seconds = Int(nextTriggerDate.timeIntervalSince(timerDate))
         return seconds > 0 ? seconds : nil
     }
     
     private let notificationCenterDelegate = NotificationCenterDelegate()
     
-    // MARK: - Initialization
-    
-    /// Initializes a new instance of the `NotificationPlayground` struct.
     init() {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.delegate = self.notificationCenterDelegate
     }
     
-    // MARK: - View
     var body: some View {
         VStack(spacing: 20) {
             Text("Is Authorized: \(self.isAuthorized ? "True" : "False")")
             
             VStack(spacing: 10) {
-                Button("Request Notification Permission") {
+                Button("Request Push Notification Permission") {
                     Task {
                         await self.requestNotificationPermission()
                     }
@@ -39,7 +104,7 @@ struct NotificationPlayground: View {
                 .buttonStyle(.bordered)
                 .disabled(self.isAuthorized)
                 
-                Button("Trigger Immediate Notification") {
+                Button("Trigger Immediate Push Notification") {
                     Task {
                         await self.addNotificationRequest(
                             title: "Title",
@@ -52,7 +117,7 @@ struct NotificationPlayground: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(!self.isAuthorized)
                 
-                Button("Trigger Scheduled Notification") {
+                Button("Trigger Scheduled Push Notification") {
                     Task {
                         await self.addNotificationRequest(
                             title: "Title",
@@ -88,31 +153,29 @@ struct NotificationPlayground: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .navigationTitle("Notifications")
+        .navigationTitle("Local Notifications")
         .onAppear {
             Task {
                 await self.requestNotificationPermission()
             }
         }
-        .onReceive(self.timer) { input in
-            self.now = input
+        .task {
+            while !Task.isCancelled {
+                do {
+                    try await Task.sleep(for: .seconds(1))
+                    self.timerDate = Date()
+                } catch {
+                }
+            }
         }
     }
     
-    /// Requests the permission to push notifications.
     private func requestNotificationPermission() async {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         let notificationCenter = UNUserNotificationCenter.current()
         self.isAuthorized = (try? await notificationCenter.requestAuthorization(options: options)) ?? false
     }
     
-    /// Adds a new notification request.
-    ///
-    /// - Parameters:
-    ///   - title: The notification title.
-    ///   - body: The notification body.
-    ///   - identifier: The notification identifier.
-    ///   - trigger: The (optional) notification trigger. If nil, the notification will trigger immediately.
     private func addNotificationRequest(
         title: String,
         body: String,
@@ -120,7 +183,6 @@ struct NotificationPlayground: View {
         trigger: UNNotificationTrigger? = nil
     ) async {
         
-        // Create a new notificiation content.
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
@@ -128,38 +190,27 @@ struct NotificationPlayground: View {
             "identifier": UUID().uuidString
         ]
         
-        // Create a new notification request.
         let request = UNNotificationRequest(
             identifier: identifier,
             content: content,
             trigger: trigger
         )
         
-        // Schedule the delivery of the notification.
         let notificationCenter = UNUserNotificationCenter.current()
         try? await notificationCenter.add(request)
     }
     
-    /// Removes all pending notification requests.
     private func removeAllPendingNotifications() {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.removeAllPendingNotificationRequests()
     }
 }
 
-// MARK: - UNUserNotificationCenterDelegate
 private final class NotificationCenterDelegate: NSObject, UNUserNotificationCenterDelegate {
-    
-    /// Asks the delegate how to handle a notification that arrived while the app was running in the foreground.
-    ///
-    /// - Parameters:
-    ///   - center: The shared user notification center object that received the notification.
-    ///   - notification: The notification that is about to be delivered.
-    /// - Returns: Constants indicating how to present a notification in a foreground app.
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification
     ) async -> UNNotificationPresentationOptions {
-        return [.banner, .sound, .badge]
+        return [.banner]
     }
 }
