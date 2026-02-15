@@ -74,8 +74,6 @@ struct SkipNotifyNotificationPlaygroundView: View {
 }
 
 struct LocalNotificationPlaygroundView: View {
-    @State var isAuthorized: Bool = false
-    
     @State var timerDate: Date?
     @State var nextTriggerDate: Date?
     private var secondsUntilNextTrigger: Int? {
@@ -93,17 +91,7 @@ struct LocalNotificationPlaygroundView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Is Authorized: \(self.isAuthorized ? "True" : "False")")
-            
             VStack(spacing: 10) {
-                Button("Request Push Notification Permission") {
-                    Task {
-                        await self.requestNotificationPermission()
-                    }
-                }
-                .buttonStyle(.bordered)
-                .disabled(self.isAuthorized)
-                
                 Button("Trigger Immediate Push Notification") {
                     Task {
                         await self.addNotificationRequest(
@@ -115,7 +103,6 @@ struct LocalNotificationPlaygroundView: View {
                 }
                 .backgroundStyle(.blue)
                 .buttonStyle(.borderedProminent)
-                .disabled(!self.isAuthorized)
                 
                 Button("Trigger Scheduled Push Notification") {
                     Task {
@@ -136,7 +123,7 @@ struct LocalNotificationPlaygroundView: View {
                 }
                 .backgroundStyle(.blue)
                 .buttonStyle(.borderedProminent)
-                .disabled(!self.isAuthorized || self.secondsUntilNextTrigger != nil)
+                .disabled(self.secondsUntilNextTrigger != nil)
             }
             
             if let seconds = self.secondsUntilNextTrigger {
@@ -154,11 +141,6 @@ struct LocalNotificationPlaygroundView: View {
             }
         }
         .navigationTitle("Local Notifications")
-        .onAppear {
-            Task {
-                await self.requestNotificationPermission()
-            }
-        }
         .task {
             while !Task.isCancelled {
                 do {
@@ -168,12 +150,6 @@ struct LocalNotificationPlaygroundView: View {
                 }
             }
         }
-    }
-    
-    private func requestNotificationPermission() async {
-        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
-        let notificationCenter = UNUserNotificationCenter.current()
-        self.isAuthorized = (try? await notificationCenter.requestAuthorization(options: options)) ?? false
     }
     
     private func addNotificationRequest(
