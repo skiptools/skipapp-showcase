@@ -76,6 +76,7 @@ struct SkipNotifyNotificationPlaygroundView: View {
 struct LocalNotificationPlaygroundView: View {
     @State var timerDate: Date?
     @State var nextTriggerDate: Date?
+    let timer = Timer.publish(every: 1.0, on: .main, in: .default).autoconnect()
     private var secondsUntilNextTrigger: Int? {
         guard let timerDate, let nextTriggerDate else { return nil }
         let seconds = Int(nextTriggerDate.timeIntervalSince(timerDate))
@@ -141,14 +142,8 @@ struct LocalNotificationPlaygroundView: View {
             }
         }
         .navigationTitle("Local Notifications")
-        .task {
-            while !Task.isCancelled {
-                do {
-                    try await Task.sleep(for: .seconds(1))
-                    self.timerDate = Date()
-                } catch {
-                }
-            }
+        .onReceive(self.timer) { date in
+            self.timerDate = Date()
         }
     }
     

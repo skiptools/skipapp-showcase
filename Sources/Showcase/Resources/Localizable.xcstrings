@@ -1622,9 +1622,6 @@
     "iOS 17 / macOS 14 required for Observation framework" : {
 
     },
-    "Is Authorized: %@" : {
-
-    },
     "isOn" : {
 
     },
@@ -3155,10 +3152,10 @@
     "Transition" : {
 
     },
-    "Trigger Immediate Notification" : {
+    "Trigger Immediate Push Notification" : {
 
     },
-    "Trigger Scheduled Notification" : {
+    "Trigger Scheduled Push Notification" : {
 
     },
     "Two Buttons" : {
