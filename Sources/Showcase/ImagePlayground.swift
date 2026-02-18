@@ -14,262 +14,6 @@ struct ImagePlayground: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                NavigationLink("Pager") {
-                    ImagePlaygroundPagerView()
-                }
-                NavigationLink("Complex Layout (Landscape)") {
-                    ImagePlaygroundComplexLayoutView(imageName: "Cat")
-                }
-                NavigationLink("Complex Layout (Portrait)") {
-                    ImagePlaygroundComplexLayoutView(imageName: "CatPortrait")
-                }
-
-                Text("Asset JPEG Image").font(.title).bold()
-                HStack {
-                    Spacer()
-                    Image("Cat", bundle: .module, label: Text("Cat JPEG image"))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .border(.yellow, width: 5.0)
-                        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
-                    Spacer()
-                }
-
-                Text("Asset SVG Image").font(.title).bold()
-                HStack {
-                    Spacer()
-                    Image("Butterfly", bundle: .module, label: Text("Butterfly SVG image"))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundStyle(.red)
-                    Spacer()
-                }
-
-                Text("Bundled Image").font(.title).bold()
-                HStack {
-                    Spacer()
-                    AsyncImage(url: localImageResourceURL)
-                        .border(.blue)
-                    Spacer()
-                }
-
-                Text("PDF Image").font(.title).bold()
-                HStack {
-                    Spacer()
-                    Image("skiplogo", bundle: .module, label: Text("skiplogo PDF image"))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                    Spacer()
-                }
-
-                #if os(macOS)
-                #else
-                Text("Image from Data").font(.title).bold()
-                HStack {
-                    Spacer()
-                    Image(uiImage: UIImage(data: try! Data(contentsOf: localImageResourceURL!))!)
-                        .border(.blue)
-                    Spacer()
-                }
-                #endif
-
-                Text("Symbol Image Weights").font(.title).bold()
-                HStack {
-                    // This symbol was downloaded from the Google Material Icons catalog and imported into the Module.xcassets: https://fonts.google.com/icons?selected=Material+Symbols+Outlined:passkey:FILL@0;wght@400;GRAD@0;opsz@24&icon.query=passkey&icon.size=24&icon.color=%235f6368&icon.platform=ios
-                    Image("passkey_passkey_symbol", bundle: .module)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundStyle(.red)
-                        .fontWeight(.ultraLight)
-                        .frame(width: 80.0, height: 80.0)
-                    Image("passkey_passkey_symbol", bundle: .module)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundStyle(.green)
-                        .frame(width: 80.0, height: 80.0)
-                    Image("passkey_passkey_symbol", bundle: .module, label: Text("Passkey"))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundStyle(.blue)
-                        .fontWeight(.black)
-                        .frame(width: 80.0, height: 80.0)
-                }
-
-                Text("Symbol Image Sizes").font(.title).bold()
-                HStack {
-                    Image("textformat.size.smaller", bundle: .module)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80.0, height: 80.0)
-                    Image("textformat.size", bundle: .module)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80.0, height: 80.0)
-                    Image("textformat.size.larger", bundle: .module)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80.0, height: 80.0)
-                }
-
-                Text("systemName").font(.title).bold()
-                HStack {
-                    Text(".frame(100, 100)")
-                    Spacer()
-                    Image(systemName: systemNameSample)
-                        .frame(width: 100, height: 100)
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable\n.frame(100, 100)")
-                    Spacer()
-                    Image(systemName: systemNameSample)
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.scaleToFill\n.frame(100, 100)\n.clipped")
-                    Spacer()
-                    Image(systemName: systemNameSample)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                        .clipped()
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.scaleToFit\n.frame(100, 100)")
-                    Spacer()
-                    Image(systemName: systemNameSample)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100, height: 100)
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.aspectRatio(0.33, .fill)\n.frame(100, 100)\n.clipped")
-                    Spacer()
-                    Image(systemName: systemNameSample)
-                        .resizable()
-                        .aspectRatio(0.33, contentMode: .fill)
-                        .frame(width: 100, height: 100)
-                        .clipped()
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.aspectRatio(0.33, .fit)\n.frame(100, 100)")
-                    Spacer()
-                    Image(systemName: systemNameSample)
-                        .resizable()
-                        .aspectRatio(0.33, contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)\n.foregroundStyle(.red)")
-                    Spacer()
-                    Image(systemName: systemNameSample)
-                        .resizable()
-                        .aspectRatio(3, contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                        .foregroundStyle(.red)
-                        .border(Color.blue)
-                }
-
-                Text("AsyncImage").font(.title).bold()
-                HStack {
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL)
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text("scale: 2")
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL, scale: 2)
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text(".frame(100, 100)")
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL)
-                        .frame(width: 100, height: 100)
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text(".frame(100, 100)\nclipped")
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL)
-                        .frame(width: 100, height: 100)
-                        .clipped()
-                        .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.frame(100, 100)")
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL) { image in
-                        image.resizable()
-                    } placeholder: {
-                    }
-                    .frame(width: 100, height: 100)
-                    .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.scaleToFill\n.frame(100, 100)\n.clipped")
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL) { image in
-                        image.resizable()
-                    } placeholder: {
-                    }
-                    .scaledToFill()
-                    .frame(width: 100, height: 100)
-                    .clipped()
-                    .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.scaleToFit\n.frame(100, 100)")
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL) { image in
-                        image.resizable()
-                    } placeholder: {
-                    }
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.aspectRatio(0.33, .fill)\n.frame(100, 100)\n.clipped")
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL) { image in
-                        image.resizable()
-                    } placeholder: {
-                    }
-                    .aspectRatio(0.33, contentMode: .fill)
-                    .frame(width: 100, height: 100)
-                    .clipped()
-                    .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.aspectRatio(0.33, .fit)\n.frame(100, 100)")
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL) { image in
-                        image.resizable()
-                    } placeholder: {
-                    }
-                    .aspectRatio(0.33, contentMode: .fit)
-                    .frame(width: 100, height: 100)
-                    .border(Color.blue)
-                }
-                HStack {
-                    Text(".resizable()\n.aspectRatio(3, .fit)\n.frame(100, 100)")
-                    Spacer()
-                    AsyncImage(url: remoteImageResourceURL) { image in
-                        image.resizable()
-                    } placeholder: {
-                    }
-                    .aspectRatio(3, contentMode: .fit)
-                    .frame(width: 100, height: 100)
-                    .border(Color.blue)
-                }
                 HStack {
                     Text("No URL")
                     Spacer()
@@ -281,6 +25,59 @@ struct ImagePlayground: View {
                     Spacer()
                     AsyncImage(url: nil)
                         .frame(width: 100, height: 100)
+                        .border(Color.blue)
+                }
+                HStack {
+                    Text("Just green")
+                    Spacer()
+                    Color.green
+                        #if SKIP
+                        .composeModifier { $0.logLayout2("Color") }
+                        #endif
+                        .aspectRatio(3.0/4.0, contentMode: .fit)
+                        .border(Color.blue)
+                }
+                #if SKIP
+                .composeModifier { $0.logLayout("Color HStack") }
+                #endif
+                HStack {
+                    Text("No URL\n.aspectRatio(3/4)")
+                    Spacer()
+                    AsyncImage(url: nil)  { image in
+                            EmptyView()
+                        } placeholder: {
+                            Color.green
+                            #if SKIP
+                            .composeModifier { $0.logLayout("Placeholder") }
+                            #endif
+                        }
+                        #if SKIP
+                        .composeModifier { $0.logLayout("AsyncImage") }
+                        #endif
+                        .aspectRatio(3.0/4.0, contentMode: .fit)
+                        .border(Color.blue)
+                }
+                HStack {
+                    Text("No URL\n.aspectRatio(3/4).frame(100)")
+                    Spacer()
+                    AsyncImage(url: nil)
+                        .aspectRatio(3.0/4.0, contentMode: .fit)
+                        .frame(width: 100)
+                        .border(Color.blue)
+                }
+                HStack {
+                    Text("Failed URL\n.aspectRatio(3/4)")
+                    Spacer()
+                    AsyncImage(url: URL(string: "file:///does_not_exist.png")!)
+                        .aspectRatio(3.0/4.0, contentMode: .fit)
+                        .border(Color.blue)
+                }
+                HStack {
+                    Text("Failed URL\n.aspectRatio(3/4).frame(100)")
+                    Spacer()
+                    AsyncImage(url: URL(string: "file:///does_not_exist.png")!)
+                        .aspectRatio(3.0/4.0, contentMode: .fit)
+                        .frame(width: 100)
                         .border(Color.blue)
                 }
                 HStack {
@@ -388,3 +185,20 @@ private struct ImagePlaygroundComplexLayoutView: View {
         }
     }
 }
+
+#if SKIP
+import androidx.compose.ui.Modifier
+
+extension Modifier {
+    /// Log layout constraints for debugging purposes.
+    ///
+    /// - Parameter tag: The log tag to use (default: "LogLayout").
+    /// - Returns: A modifier that logs layout constraints and bounds.
+    ///
+    public func logLayout2(tag: String = "LogLayout") -> Modifier {
+        return self.logLayoutModifier2(tag: tag)
+    }
+}
+
+
+#endif
