@@ -81,6 +81,8 @@ struct TextPlayground: View {
                     .lineLimit(1)
                     .frame(width: 200)
                     .border(Color.blue)
+                Text(".lineLimit(10, reservesSpace: true): 10-line short text")
+                    .lineLimit(10, reservesSpace: true)
                 Text(".truncationMode(.middle): This is some long text that should middle truncate when it exceeds the width of its frame")
                     .truncationMode(.middle)
                     .lineLimit(1)

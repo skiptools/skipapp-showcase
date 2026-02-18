@@ -211,6 +211,9 @@
     ".lineLimit(1): This is some long text that should wrap when it exceeds the width of its frame" : {
 
     },
+    ".lineLimit(10, reservesSpace: true): 10-line short text" : {
+
+    },
     ".material3SegmentedButton" : {
 
     },
@@ -1373,12 +1376,6 @@
     "Footer 3" : {
 
     },
-    "Footer line 1" : {
-
-    },
-    "Footer line 2" : {
-
-    },
     "ForEach index row: %lld" : {
 
     },
@@ -1477,12 +1474,6 @@
 
     },
     "Header" : {
-
-    },
-    "Header line 1" : {
-
-    },
-    "Header line 2" : {
 
     },
     "height: 50" : {
@@ -2329,9 +2320,6 @@
 
     },
     "Row 2.1" : {
-
-    },
-    "Row 3.1" : {
 
     },
     "Row 3a" : {
