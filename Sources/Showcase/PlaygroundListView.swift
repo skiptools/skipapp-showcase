@@ -42,6 +42,7 @@ enum PlaygroundType: CaseIterable, View {
     case menu
     case modifier
     case navigationStack
+    case notification
     case observable
     case offsetPosition
     case onSubmit
@@ -164,6 +165,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Modifiers")
         case .navigationStack:
             return LocalizedStringResource("NavigationStack")
+        case .notification:
+            return LocalizedStringResource("Notification")
         case .observable:
             return LocalizedStringResource("Observable")
         case .offsetPosition:
@@ -329,6 +332,8 @@ enum PlaygroundType: CaseIterable, View {
             ModifierPlayground()
         case .navigationStack:
             NavigationStackPlayground()
+        case .notification:
+            NotificationPlayground()
         case .observable:
             ObservablePlayground()
         case .offsetPosition:

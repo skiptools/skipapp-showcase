@@ -10,7 +10,11 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "1.4.0"),
-        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.26.0"),
+        
+        // TODO: Update package URLs and version after PRs have been merged (see: TODO)
+        .package(path: "/Users/fabian/Desktop/Develop/Contributions/skip-foundation"),
+        .package(path: "/Users/fabian/Desktop/Develop/Contributions/skip-ui"),
+        
         .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-kit.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-sql.git", "0.12.1"..<"2.0.0"),
@@ -20,6 +24,7 @@ let package = Package(
         .package(url: "https://source.skip.tools/skip-keychain.git", "0.3.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-marketplace.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-authentication-services.git", "0.0.0"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-notify.git", "0.0.0"..<"2.0.0"),
     ],
     targets: [
         .target(name: "Showcase", dependencies: [
@@ -33,6 +38,7 @@ let package = Package(
             .product(name: "SkipKeychain", package: "skip-keychain"),
             .product(name: "SkipMarketplace", package: "skip-marketplace"),
             .product(name: "SkipAuthenticationServices", package: "skip-authentication-services"),
+            .product(name: "SkipNotify", package: "skip-notify"),
         ], resources: [.process("Resources")], plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )
