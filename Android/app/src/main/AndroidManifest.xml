@@ -14,7 +14,6 @@
 
     <!-- permissions needed for notifications -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <!-- permissions needed for using the internet or an embedded WebKit browser -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -39,16 +38,6 @@
         <meta-data
             android:name="showcase.module.default_notification_icon"
             android:resource="@drawable/ic_notification" />
-        
-        <!-- Notification Receiver -->
-        <receiver
-            android:name=".NotificationReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="skip.notification.receiver"/>
-            </intent-filter>
-        </receiver>
         
         <!-- Google Maps -->
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBdt_bhz4zi6WAUelkVkEnxMs9pkbEKXKM"/>
