@@ -11,9 +11,9 @@ let package = Package(
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "1.4.0"),
         
-        // TODO: Update package URLs and version after PRs have been merged (see: TODO)
-        .package(path: "/Users/fabian/Desktop/Develop/Contributions/skip-foundation"),
+        // TODO: Update skip ui package URL and version after PR has been merged
         .package(path: "/Users/fabian/Desktop/Develop/Contributions/skip-ui"),
+        //.package(url: "https://source.skip.tools/skip-ui.git", from: "1.26.0"),
         
         .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-kit.git", "0.0.0"..<"2.0.0"),
