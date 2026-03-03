@@ -5,6 +5,7 @@ enum ScrollViewPlaygroundType: String, CaseIterable {
     case vertical
     case horizontal
     case viewAligned
+    case carousel
     case readerLazyVStack
     case readerLazyHStack
     case readerList
@@ -20,6 +21,8 @@ enum ScrollViewPlaygroundType: String, CaseIterable {
             return "Horizontal"
         case .viewAligned:
             return ".viewAligned"
+        case .carousel:
+            return "Carousel"
         case .readerLazyVStack:
             return "ScrollViewReader: LazyVStack"
         case .readerLazyHStack:
@@ -54,6 +57,9 @@ struct ScrollViewPlayground: View {
                     .navigationTitle($0.title)
             case .viewAligned:
                 ViewAlignedScrollViewPlayground()
+                    .navigationTitle($0.title)
+            case .carousel:
+                CarouselPlayground()
                     .navigationTitle($0.title)
             case .readerLazyVStack:
                 ScrollViewReaderLazyVStackPlayground()
@@ -125,6 +131,64 @@ private struct ViewAlignedScrollViewPlayground: View {
             .scrollTargetBehavior(.viewAligned)
         } else {
             Text("Requires iOS 17+")
+        }
+    }
+}
+
+private struct CarouselPlayground: View {
+    private let colors: [Color] = [
+        .red, .orange, .yellow, .green, .blue, .purple, .pink
+    ]
+    @State private var selectedId: AnyHashable? = 0
+
+    var body: some View {
+        if #available(iOS 17, *) {
+            VStack(spacing: 20) {
+                Text(selectedColorName)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 16) {
+                        ForEach(Array(colors.enumerated()), id: \.offset) { index, color in
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(color)
+                                Text(colorName(for: color))
+                                    .font(.title)
+                                    .foregroundStyle(.white)
+                            }
+                            .frame(width: 280, height: 400)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    .scrollTargetLayout()
+                }
+                .scrollTargetBehavior(.viewAligned)
+                .scrollPosition(id: $selectedId)
+            }
+        } else {
+            Text("Requires iOS 17+")
+        }
+    }
+
+    private var selectedColorName: String {
+        guard let selectedId = selectedId as? Int, selectedId >= 0, selectedId < colors.count else {
+            return ""
+        }
+        return colorName(for: colors[selectedId])
+    }
+
+    private func colorName(for color: Color) -> String {
+        switch color {
+        case .red: return "Red"
+        case .orange: return "Orange"
+        case .yellow: return "Yellow"
+        case .green: return "Green"
+        case .blue: return "Blue"
+        case .purple: return "Purple"
+        case .pink: return "Pink"
+        default: return ""
         }
     }
 }
