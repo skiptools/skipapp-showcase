@@ -15,6 +15,7 @@ enum PlaygroundType: CaseIterable, View {
     case colorScheme
     case compose
     case confirmationDialog
+    case contentMargins
     case datePicker
     case disclosureGroup
     case divider
@@ -108,6 +109,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Compose")
         case .confirmationDialog:
             return LocalizedStringResource("ConfirmationDialog")
+        case .contentMargins:
+            return LocalizedStringResource("Content Margins")
         case .datePicker:
             return LocalizedStringResource("DatePicker")
         case .disclosureGroup:
@@ -269,6 +272,8 @@ enum PlaygroundType: CaseIterable, View {
             ComposePlayground()
         case .confirmationDialog:
             ConfirmationDialogPlayground()
+        case .contentMargins:
+            ContentMarginsPlayground()
         case .datePicker:
             DatePickerPlayground()
         case .disclosureGroup:
