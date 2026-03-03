@@ -12,7 +12,7 @@ let package = Package(
         .package(url: "https://source.skip.tools/skip.git", from: "1.4.0"),
         
         // TODO: Update skip ui package URL and version after PR has been merged
-        .package(path: "/Users/fabian/Desktop/Develop/Contributions/skip-ui"),
+        .package(url: "https://github.com/fhasse95/skip-ui.git", branch: "Triggered-Notification-Support"),
         //.package(url: "https://source.skip.tools/skip-ui.git", from: "1.26.0"),
         
         .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0"),
