@@ -38,6 +38,7 @@ enum SafeAreaPlaygroundType: String, CaseIterable {
 struct SafeAreaPlayground: View {
     @State var isCoverPresented = false
     @State var isSheetPresented = false
+    @State var isGeometryPaddingSheetPresented = false
     @State var playgroundType: SafeAreaPlaygroundType = .fullscreenContent
 
     var body: some View {
@@ -56,6 +57,9 @@ struct SafeAreaPlayground: View {
             NavigationLink("Geometry padding") {
                 SafeAreaPadded()
             }
+            Button("Geometry padding in sheet") {
+                isGeometryPaddingSheetPresented = true
+            }
             Section("Sheet") {
                 ForEach(SafeAreaPlaygroundType.allCases, id: \.sheetId) { playgroundType in
                     Button(playgroundType.title) {
@@ -69,9 +73,15 @@ struct SafeAreaPlayground: View {
         .sheet(isPresented: $isSheetPresented) {
             playground(for: playgroundType)
         }
+        .sheet(isPresented: $isGeometryPaddingSheetPresented) {
+            SafeAreaGeometryPaddingSheet()
+        }
         #else
         .sheet(isPresented: $isSheetPresented) {
             playground(for: playgroundType)
+        }
+        .sheet(isPresented: $isGeometryPaddingSheetPresented) {
+            SafeAreaGeometryPaddingSheet()
         }
         .fullScreenCover(isPresented: $isCoverPresented) {
             playground(for: playgroundType)
@@ -163,6 +173,44 @@ struct SafeAreaPadded: View {
         .toolbar(navBarVisibility, for: .navigationBar)
         .toolbar(tabBarVisibility, for: .tabBar)
         .toolbar(bottomBarVisibility, for: .bottomBar)
+    }
+}
+
+struct SafeAreaGeometryPaddingSheet: View {
+    @Environment(\.dismiss) var dismiss
+    @State private var selectedTab = "Geometry"
+
+    var body: some View {
+        NavigationStack {
+            #if os(macOS)
+            SafeAreaPadded()
+                .navigationTitle("Geometry padding in sheet")
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Dismiss") {
+                            dismiss()
+                        }
+                    }
+                }
+            #else
+            TabView(selection: $selectedTab) {
+                SafeAreaPadded()
+                    .tabItem { Label("Geometry", systemImage: "ruler") }
+                    .tag("Geometry")
+                Text("Second tab")
+                    .tabItem { Label("Other", systemImage: "circle") }
+                    .tag("Other")
+            }
+            .navigationTitle("Geometry padding in sheet")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Dismiss") {
+                        dismiss()
+                    }
+                }
+            }
+            #endif
+        }
     }
 }
 
