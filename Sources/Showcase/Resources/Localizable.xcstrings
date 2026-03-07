@@ -1044,6 +1044,9 @@
     "Copy" : {
 
     },
+    "Count for id: %lld" : {
+
+    },
     "Current Page: %lld" : {
 
     },
@@ -2269,6 +2272,9 @@
 
     },
     "Redacted" : {
+
+    },
+    "Refresh" : {
 
     },
     "Refreshable" : {
