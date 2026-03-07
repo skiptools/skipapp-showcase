@@ -440,6 +440,9 @@
     "#colorLiteral" : {
 
     },
+    "%.1fx" : {
+
+    },
     "%@" : {
 
     },
@@ -462,16 +465,46 @@
     "%lld" : {
 
     },
+    "%lld%%" : {
+
+    },
     "+" : {
 
     },
     "+ Title" : {
 
     },
+    "1. Play / Pause" : {
+
+    },
     "1/3" : {
 
     },
+    "2. Animation Speed" : {
+
+    },
     "2/3" : {
+
+    },
+    "3. Loop Mode" : {
+
+    },
+    "4. Content Mode" : {
+
+    },
+    "5. Progress Scrubbing" : {
+
+    },
+    "6. Clip Range" : {
+
+    },
+    "7. Enable Merge Paths" : {
+
+    },
+    "8. On Complete Callback" : {
+
+    },
+    "9. Current Frame" : {
 
     },
     "16pt content margins, 8pt spacing, 8pt peek of next card" : {
@@ -646,6 +679,9 @@
     "Add item" : {
 
     },
+    "Adjust playback speed (0.1x - 3.0x)" : {
+
+    },
     "After" : {
 
     },
@@ -677,6 +713,9 @@
 
     },
     "Also see the `Transition` playground for view enter/exit animations" : {
+
+    },
+    "Android: Disabled by default for performance" : {
 
     },
     "Animated" : {
@@ -921,6 +960,9 @@
     "Bottom" : {
 
     },
+    "Bottom bar" : {
+
+    },
     "Bottom text" : {
 
     },
@@ -1014,6 +1056,9 @@
     "Combined: opacity+slide" : {
 
     },
+    "Completions: %lld" : {
+
+    },
     "Complex content button" : {
 
     },
@@ -1060,6 +1105,15 @@
 
     },
     "Content sizes to stack:" : {
+
+    },
+    "Control animation playback with isPlaying" : {
+
+    },
+    "Control how animation repeats" : {
+
+    },
+    "Control how animation scales within bounds" : {
 
     },
     "Copy" : {
@@ -1304,6 +1358,9 @@
     "First: %lld" : {
 
     },
+    "Fit" : {
+
+    },
     "Five Buttons" : {
 
     },
@@ -1400,6 +1457,9 @@
     "Footer 3" : {
 
     },
+    "For animations using After Effects boolean shape operations" : {
+
+    },
     "ForEach index row: %lld" : {
 
     },
@@ -1440,6 +1500,15 @@
     "Frame" : {
 
     },
+    "Frame: %lld" : {
+
+    },
+    "From must be < To" : {
+
+    },
+    "From:" : {
+
+    },
     "Full screen .topLeading container" : {
 
     },
@@ -1452,10 +1521,22 @@
     "Generate Push Notification Token" : {
 
     },
+    "Geometry" : {
+
+    },
+    "Geometry padding" : {
+
+    },
+    "Geometry padding in sheet" : {
+
+    },
     "GeometryReader" : {
 
     },
     "Gestures" : {
+
+    },
+    "Get notified when animation finishes" : {
 
     },
     "Global Drag" : {
@@ -1551,6 +1632,9 @@
 
     },
     "Hidden Tab" : {
+
+    },
+    "Hide %@ Bar" : {
 
     },
     "Hide the following element from accessibility:" : {
@@ -1649,6 +1733,9 @@
     "iOS 17 / macOS 14 required for Observation framework" : {
 
     },
+    "iOS: Not supported (ignored)" : {
+
+    },
     "isOn" : {
 
     },
@@ -1710,6 +1797,9 @@
 
     },
     "Large circle" : {
+
+    },
+    "Last: %@" : {
 
     },
     "Lazy Item %lld" : {
@@ -2029,6 +2119,9 @@
     "One Time Code" : {
 
     },
+    "Only needed for complex overlapping shapes" : {
+
+    },
     "OnSubmit" : {
 
     },
@@ -2061,6 +2154,9 @@
 
     },
     "Orange" : {
+
+    },
+    "Other" : {
 
     },
     "Output" : {
@@ -2199,7 +2295,19 @@
     "Play" : {
 
     },
+    "Play Once" : {
+
+    },
+    "Play only a portion of the animation" : {
+
+    },
     "Play Recording" : {
+
+    },
+    "Playing" : {
+
+    },
+    "Playing..." : {
 
     },
     "Pop" : {
@@ -2306,6 +2414,16 @@
     },
     "Range Width Columns" : {
 
+    },
+    "Range: %lld - %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Range: %1$lld - %2$lld"
+          }
+        }
+      }
     },
     "Rate" : {
 
@@ -2418,6 +2536,9 @@
     "scale(x: 1, y: -1)" : {
 
     },
+    "scaledToFill" : {
+
+    },
     "ScenePhase" : {
 
     },
@@ -2484,6 +2605,9 @@
     "Second" : {
 
     },
+    "Second tab" : {
+
+    },
     "Second: %lld" : {
 
     },
@@ -2518,6 +2642,12 @@
 
     },
     "SecureField" : {
+
+    },
+    "Seek to specific frame number" : {
+
+    },
+    "Seek to specific position (0.0 - 1.0)" : {
 
     },
     "Select Media" : {
@@ -2645,6 +2775,9 @@
 
     },
     "Short text" : {
+
+    },
+    "Show %@ Bar" : {
 
     },
     "Showcase" : {
@@ -2800,6 +2933,9 @@
           }
         }
       }
+    },
+    "Shuffle" : {
+
     },
     "Sign In" : {
 
@@ -2972,6 +3108,9 @@
 
     },
     "System" : {
+
+    },
+    "System Background" : {
 
     },
     "System Information" : {
@@ -3180,6 +3319,9 @@
 
     },
     "Title Only" : {
+
+    },
+    "To:" : {
 
     },
     "Toggle" : {
