@@ -9,22 +9,18 @@ let package = Package(
         .library(name: "ShowcaseApp", type: .dynamic, targets: ["Showcase"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.4.0"),
-        
-        // TODO: Update skip ui package URL and version after skip ui PR has been merged
-        .package(url: "https://source.skip.tools/skip-ui.git", branch: "main"),
-        //.package(url: "https://source.skip.tools/skip-ui.git", from: "1.26.0"),
-        
-        .package(url: "https://source.skip.tools/skip-av.git", "0.0.0"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-kit.git", "0.0.0"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-sql.git", "0.12.1"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-web.git", "0.0.0"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-device.git", "0.0.0"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-motion.git", "0.0.0"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-keychain.git", "0.3.0"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-marketplace.git", "0.0.0"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-authentication-services.git", "0.0.0"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-notify.git", "0.0.0"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip.git", from: "1.7.4"),
+        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.50.0"),
+        .package(url: "https://source.skip.tools/skip-av.git", "0.6.2"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-kit.git", "0.6.1"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-sql.git", "0.14.0"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-web.git", "0.8.3"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-device.git", "0.4.2"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-motion.git", "0.7.2"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-keychain.git", "0.3.2"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-marketplace.git", "0.2.1"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-authentication-services.git", "0.0.2"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-notify.git", "0.1.4"..<"2.0.0"),
     ],
     targets: [
         .target(name: "Showcase", dependencies: [
