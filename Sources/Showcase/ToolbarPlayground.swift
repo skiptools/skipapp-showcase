@@ -4,6 +4,7 @@ import SwiftUI
 enum ToolbarPlaygroundType: String, CaseIterable {
     case hideNavigationBar
     case hideBars
+    case hideBarsAutomatic
     case hideBarBackgrounds
     case customBarColor
     case visibleCustomBarColor
@@ -37,6 +38,8 @@ enum ToolbarPlaygroundType: String, CaseIterable {
             return "Hide Navigation Bar"
         case .hideBars:
             return "Hide Bars"
+        case .hideBarsAutomatic:
+            return "Hide Automatic Bar"
         case .hideBarBackgrounds:
             return "Hide Bar Backgrounds"
         case .customBarColor:
@@ -113,6 +116,15 @@ struct ToolbarPlayground: View {
                     .ignoresSafeArea(edges: .top)
                 #endif
             case .hideBars:
+                #if os(macOS)
+                Text("Not supported on macOS")
+                #else
+                HideToolbarsPlayground()
+                    .navigationTitle($0.title)
+                    .toolbar(.hidden, for: .navigationBar, .tabBar, .bottomBar)
+                    .ignoresSafeArea()
+                #endif
+            case .hideBarsAutomatic:
                 #if os(macOS)
                 Text("Not supported on macOS")
                 #else
