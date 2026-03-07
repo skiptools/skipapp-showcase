@@ -1449,6 +1449,9 @@
     "Fullscreen cover" : {
 
     },
+    "Generate Push Notification Token" : {
+
+    },
     "GeometryReader" : {
 
     },
@@ -1799,6 +1802,9 @@
     "Local frame: %@" : {
 
     },
+    "Local Notifications" : {
+
+    },
     "Localization" : {
 
     },
@@ -1963,6 +1969,9 @@
     "New Key" : {
 
     },
+    "Next notification in %lld s" : {
+
+    },
     "Nil data" : {
 
     },
@@ -1973,6 +1982,9 @@
 
     },
     "NO" : {
+
+    },
+    "No scheduled notification" : {
 
     },
     "No URL" : {
@@ -1992,6 +2004,9 @@
     },
     "Note: tint should not affect Label appearance" : {
 
+    },
+    "Notification" : {
+      "extractionState" : "manual"
     },
     "Observable" : {
 
@@ -2142,6 +2157,9 @@
     "PDF Image" : {
 
     },
+    "Permission Status: %@" : {
+
+    },
     "Pick Document" : {
 
     },
@@ -2271,6 +2289,9 @@
     "Push binding view" : {
 
     },
+    "Push Notification Client Token" : {
+
+    },
     "Push Text.position(100, 100)" : {
 
     },
@@ -2313,7 +2334,13 @@
     "Remapped URL" : {
 
     },
+    "Remove all pending notifications" : {
+
+    },
     "Repository item tap count: %lld" : {
+
+    },
+    "Request Push Notification Permission" : {
 
     },
     "Requires iOS 17+" : {
@@ -2792,6 +2819,9 @@
     "Skip Intro" : {
 
     },
+    "Skip Notify" : {
+
+    },
     "Skip Technology" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3180,6 +3210,12 @@
 
     },
     "Transition" : {
+
+    },
+    "Trigger Immediate Push Notification" : {
+
+    },
+    "Trigger Scheduled Push Notification" : {
 
     },
     "Two Buttons" : {
