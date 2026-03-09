@@ -76,7 +76,7 @@ struct WebAuthenticationSessionPlayground: View {
             PlaygroundSourceLink(file: "WebAuthenticationSessionPlayground.swift")
         }
     }
-    
+
     private func signIn() {
         errorMessage = nil
         cancelled = false

@@ -13,9 +13,9 @@ struct ScenePhasePlayground: View {
                 }
             }
         }
-        .onChange(of: scenePhase) { phase in
-            logger.log("onChange(of: schenePhase): \(String(describing: phase))")
-            history.append(phase)
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+            logger.log("onChange(of: schenePhase): \(String(describing: newPhase))")
+            history.append(newPhase)
 
         }
         .toolbar {

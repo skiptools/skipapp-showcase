@@ -13,7 +13,7 @@ struct WebViewPlayground: View {
 
     var body: some View {
         VStack {
-            WebView(configuration: config, navigator: navigator, url: URL(string: "https://skip.tools")!, state: $state)
+            WebView(configuration: config, navigator: navigator, url: URL(string: "https://skip.dev")!, state: $state)
         }
         .toolbar {
             Button {
