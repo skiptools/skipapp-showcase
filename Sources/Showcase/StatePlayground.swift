@@ -79,14 +79,14 @@ struct StatePlayground: View {
                 }
             }
         }
-        .onChange(of: tapCount) {
-            logger.log("onChange(of: tapCount): \($0)")
+        .onChange(of: tapCount) { oldValue, newValue in
+            logger.log("onChange(of: tapCount): \(newValue)")
         }
-        .onChange(of: tapCountObservable.tapCount) {
-            logger.log("onChange(of: tapCountObservable.tapCount): \($0)")
+        .onChange(of: tapCountObservable.tapCount) { oldValue, newValue in
+            logger.log("onChange(of: tapCountObservable.tapCount): \(newValue)")
         }
-        .onChange(of: tapCountStruct.tapCount) {
-            logger.log("onChange(of: tapCountStruct.tapCount): \($0)")
+        .onChange(of: tapCountStruct.tapCount) { oldValue, newValue in
+            logger.log("onChange(of: tapCountStruct.tapCount): \(newValue)")
         }
         .toolbar {
             PlaygroundSourceLink(file: "StatePlayground.swift")

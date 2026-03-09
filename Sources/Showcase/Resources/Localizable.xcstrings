@@ -673,6 +673,9 @@
     "Accessibility" : {
 
     },
+    "Actions" : {
+
+    },
     "Add" : {
 
     },
@@ -710,6 +713,9 @@
 
     },
     "alignment: .topLeading" : {
+
+    },
+    "All Options" : {
 
     },
     "Also see the `Transition` playground for view enter/exit animations" : {
@@ -1128,6 +1134,9 @@
     "Custom" : {
 
     },
+    "Custom Actions" : {
+
+    },
     "Custom Cancel" : {
 
     },
@@ -1290,6 +1299,9 @@
 
     },
     "Email" : {
+
+    },
+    "Embedded Browser" : {
 
     },
     "Enter text" : {
@@ -1802,6 +1814,9 @@
     "Last: %@" : {
 
     },
+    "Launch Browser" : {
+
+    },
     "Lazy Item %lld" : {
 
     },
@@ -2135,6 +2150,15 @@
         }
       }
     },
+    "Open in Embedded Browser" : {
+
+    },
+    "Open in System Browser" : {
+
+    },
+    "Open with No Params" : {
+
+    },
     "Option" : {
 
     },
@@ -2353,6 +2377,9 @@
 
     },
     "Present with item binding" : {
+
+    },
+    "Presentation Mode" : {
 
     },
     "Primary" : {
@@ -2769,6 +2796,9 @@
 
     },
     "Sheet" : {
+
+    },
+    "Sheet / Navigation" : {
 
     },
     "Short" : {
@@ -3554,6 +3584,9 @@
     "Web Authentication Session" : {
 
     },
+    "WebBrowser" : {
+
+    },
     "WebView" : {
 
     },
@@ -3707,6 +3740,9 @@
 
     },
     "width: 100, height: 100" : {
+
+    },
+    "With Custom Action" : {
 
     },
     "With prompt" : {

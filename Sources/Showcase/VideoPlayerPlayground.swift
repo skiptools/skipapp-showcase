@@ -120,7 +120,7 @@ struct LoopingPlayerView: View {
                 }
 
             Slider(value: $rate, in: 0.0...10.0, label: { Text("Rate") })
-                .onChange(of: rate) { newValue in
+                .onChange(of: rate) { oldValue, newValue in
                     player.rate = Float(newValue)
                 }
         }
