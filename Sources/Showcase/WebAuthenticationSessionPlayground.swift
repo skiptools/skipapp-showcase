@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 #if os(Android)
 import SkipAuthenticationServices
@@ -7,10 +7,10 @@ import AuthenticationServices
 #endif
 
 struct WebAuthenticationSessionPlayground: View {
-    @Environment(\.webAuthenticationSession) private var webAuthenticationSession: WebAuthenticationSession
-    @State private var resultURL: URL?
-    @State private var errorMessage: String?
-    @State private var cancelled = false
+    @Environment(\.webAuthenticationSession) var webAuthenticationSession: WebAuthenticationSession
+    @State var resultURL: URL?
+    @State var errorMessage: String?
+    @State var cancelled = false
     
     var body: some View {
         ScrollView {
@@ -87,14 +87,14 @@ struct WebAuthenticationSessionPlayground: View {
                 let urlWithToken: URL
                 if #available(iOS 17.4, *) {
                     urlWithToken = try await webAuthenticationSession.authenticate(
-                        using: URL(string: "https://skip.tools/docs/samples/webauth-demo/?scheme=org.appfair.app.showcaselite")!,
+                        using: URL(string: "https://push.skip.tools/webauth-demo/?scheme=org.appfair.app.showcaselite")!,
                         callback: .customScheme("org.appfair.app.showcaselite"),
                         preferredBrowserSession: .ephemeral,
                         additionalHeaderFields: [:]
                     )
                 } else {
                     urlWithToken = try await webAuthenticationSession.authenticate(
-                        using: URL(string: "https://skip.tools/docs/samples/webauth-demo/?scheme=org.appfair.app.showcaselite")!,
+                        using: URL(string: "https://push.skip.tools/webauth-demo/?scheme=org.appfair.app.showcaselite")!,
                         callbackURLScheme: "org.appfair.app.showcaselite",
                         preferredBrowserSession: .ephemeral
                     )
