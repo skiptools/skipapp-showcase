@@ -10,7 +10,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "1.7.4"),
-        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.50.0"),
+        .package(url: "https://github.com/fhasse95/skip-ui.git", branch: "Date-Picker-Range-Skip-Lite"),
         .package(url: "https://source.skip.tools/skip-av.git", "0.6.2"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-kit.git", "0.6.1"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-sql.git", "0.14.0"..<"2.0.0"),
