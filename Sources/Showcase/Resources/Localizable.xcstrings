@@ -1173,6 +1173,9 @@
     "Date only" : {
 
     },
+    "Date Range Examples" : {
+
+    },
     "DatePicker" : {
 
     },
@@ -2074,6 +2077,9 @@
     "New Key" : {
 
     },
+    "Next 30 days" : {
+
+    },
     "Next notification in %lld s" : {
 
     },
@@ -2217,6 +2223,9 @@
 
     },
     "Password" : {
+
+    },
+    "Past week only" : {
 
     },
     "Pasteboard" : {
@@ -3555,6 +3564,9 @@
 
     },
     "Viewbuilder init" : {
+
+    },
+    "ViewBuilder with range" : {
 
     },
     "ViewThatFits" : {
