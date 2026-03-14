@@ -73,10 +73,10 @@ struct LocalizationPreview: View {
                 
                 let pluralizationTypes = [(0, "zero"), (1, "singular"), (2, "plural")]
                 ForEach(pluralizationTypes, id: \.0) { pluralizationType in
+                    let numberOfDays = pluralizationType.0
                     let localizedStringResource = LocalizedStringResource("repeats_every_day", locale: currentLocale)
                     let localizedString = String(localized: localizedStringResource)
-                    Text(String.localizedStringWithFormat(localizedString, pluralizationType.0)).font(.body)
-                    
+                    Text(String.localizedStringWithFormat(localizedString, numberOfDays)).font(.body)
                 }
                 
                 Divider()
@@ -86,9 +86,10 @@ struct LocalizationPreview: View {
                 let monthSymbolsString = monthSymbolsToUse.joined(separator: ", ")
                 
                 ForEach(pluralizationTypes, id: \.0) { pluralizationType in
+                    let numberOfYears = pluralizationType.0
                     let localizedStringResource = LocalizedStringResource("repeats_every_year_in", locale: currentLocale)
                     let localizedString = String(localized: localizedStringResource)
-                    Text(String.localizedStringWithFormat(localizedString, pluralizationType.0, monthSymbolsString)).font(.body)
+                    Text(String.localizedStringWithFormat(localizedString, numberOfYears, monthSymbolsString)).font(.body)
                 }
             }
         }
