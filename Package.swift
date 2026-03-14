@@ -9,6 +9,9 @@ let package = Package(
         .library(name: "ShowcaseApp", type: .dynamic, targets: ["Showcase"]),
     ],
     dependencies: [
+        // TODO: Remove after Foundation PR merge
+        .package(url: "https://github.com/fhasse95/skip-foundation", branch: "String-Pluralization-Support"),
+        
         .package(url: "https://source.skip.tools/skip.git", from: "1.7.4"),
         .package(url: "https://source.skip.tools/skip-ui.git", from: "1.50.0"),
         .package(url: "https://source.skip.tools/skip-av.git", "0.6.2"..<"2.0.0"),
