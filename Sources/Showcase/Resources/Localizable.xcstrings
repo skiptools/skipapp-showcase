@@ -1113,6 +1113,9 @@
     "Content sizes to stack:" : {
 
     },
+    "Context Menu" : {
+
+    },
     "Control animation playback with isPlaying" : {
 
     },
@@ -1123,6 +1126,9 @@
 
     },
     "Copy" : {
+
+    },
+    "Copy Image" : {
 
     },
     "Count for id: %lld" : {
@@ -1150,6 +1156,9 @@
 
     },
     "Custom styling" : {
+
+    },
+    "Cut" : {
 
     },
     "Cyan" : {
@@ -1186,6 +1195,9 @@
 
     },
     "Default URL" : {
+
+    },
+    "Delete" : {
 
     },
     "Destructive" : {
@@ -1292,6 +1304,9 @@
     "Drag, Magnify" : {
 
     },
+    "Edit" : {
+
+    },
     "EllipitcalGradient" : {
 
     },
@@ -1343,6 +1358,9 @@
     "F2" : {
 
     },
+    "Favorite" : {
+
+    },
     "Favorites" : {
 
     },
@@ -1389,6 +1407,9 @@
 
     },
     "Fixed Width Columns" : {
+
+    },
+    "Flag" : {
 
     },
     "FocusState" : {
@@ -1811,6 +1832,9 @@
     "Large circle" : {
 
     },
+    "Last action: %@" : {
+
+    },
     "Last: %@" : {
 
     },
@@ -1911,6 +1935,12 @@
 
     },
     "Localization" : {
+
+    },
+    "Long Press Me" : {
+
+    },
+    "Long press on the items below to show context menus" : {
 
     },
     "Long press: %lld" : {
@@ -2217,6 +2247,9 @@
 
     },
     "Password" : {
+
+    },
+    "Paste" : {
 
     },
     "Pasteboard" : {
@@ -2551,6 +2584,9 @@
     "Save" : {
 
     },
+    "Save Image" : {
+
+    },
     "scale, rotate, offset, stroke" : {
 
     },
@@ -2677,6 +2713,9 @@
     "Seek to specific position (0.0 - 1.0)" : {
 
     },
+    "Select All" : {
+
+    },
     "Select Media" : {
 
     },
@@ -2790,6 +2829,9 @@
 
     },
     "Shape with overlay" : {
+
+    },
+    "Share" : {
 
     },
     "ShareLink" : {
@@ -3745,7 +3787,13 @@
     "With Custom Action" : {
 
     },
+    "With Labels" : {
+
+    },
     "With prompt" : {
+
+    },
+    "With Sections" : {
 
     },
     "With zIndex" : {
