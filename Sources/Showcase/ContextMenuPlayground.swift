@@ -55,6 +55,21 @@ struct ContextMenuPlayground: View {
                         Button("Delete", role: .destructive) { lastAction = "Delete Image" }
                     }
 
+                Button {
+                    lastAction = "Button Tapped"
+                } label: {
+                    Text("Tappable Button")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red.opacity(0.1))
+                        .cornerRadius(8)
+                }
+                .contextMenu {
+                    Button("Edit") { lastAction = "Edit" }
+                    Button("Duplicate") { lastAction = "Duplicate" }
+                    Button("Delete", role: .destructive) { lastAction = "Delete" }
+                }
+
                 Text("With Sections")
                     .padding()
                     .frame(maxWidth: .infinity)
