@@ -1304,6 +1304,9 @@
     "Drag, Magnify" : {
 
     },
+    "Duplicate" : {
+
+    },
     "Edit" : {
 
     },
@@ -3260,6 +3263,9 @@
           }
         }
       }
+    },
+    "Tappable Button" : {
+
     },
     "Teal" : {
 
