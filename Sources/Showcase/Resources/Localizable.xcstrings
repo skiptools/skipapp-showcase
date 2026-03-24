@@ -682,6 +682,15 @@
     "Add item" : {
 
     },
+    "Additional line 1" : {
+
+    },
+    "Additional line 2" : {
+
+    },
+    "Additional line 3" : {
+
+    },
     "Adjust playback speed (0.1x - 3.0x)" : {
 
     },
@@ -1047,6 +1056,9 @@
     "Close" : {
 
     },
+    "Collapse" : {
+
+    },
     "Collection Content" : {
 
     },
@@ -1111,6 +1123,9 @@
 
     },
     "Content sizes to stack:" : {
+
+    },
+    "Content Y offset: %lld" : {
 
     },
     "Context Menu" : {
@@ -1352,6 +1367,12 @@
     "Even" : {
 
     },
+    "Expand" : {
+
+    },
+    "Expand/Collapse Tracking" : {
+
+    },
     "Expanding container in scroll view" : {
 
     },
@@ -1566,6 +1587,9 @@
     "Geometry padding in sheet" : {
 
     },
+    "GeometryChange" : {
+
+    },
     "GeometryReader" : {
 
     },
@@ -1618,6 +1642,12 @@
 
     },
     "Header" : {
+
+    },
+    "Header content" : {
+
+    },
+    "Height: %lld" : {
 
     },
     "height: 50" : {
@@ -2161,6 +2191,9 @@
     "Offset/Position" : {
 
     },
+    "Old/New Value Tracking" : {
+
+    },
     "On" : {
 
     },
@@ -2212,6 +2245,16 @@
     },
     "Orange" : {
 
+    },
+    "Origin: (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Origin: (%1$lld, %2$lld)"
+          }
+        }
+      }
     },
     "Other" : {
 
@@ -2373,6 +2416,9 @@
     "Pop" : {
 
     },
+    "Position Tracking" : {
+
+    },
     "Powered by [Skip](https://skip.tools)" : {
 
     },
@@ -2527,6 +2573,9 @@
     "Requires iOS 17+" : {
 
     },
+    "Resize with the slider" : {
+
+    },
     "Result URL:" : {
 
     },
@@ -2627,6 +2676,12 @@
 
     },
     "Scroll to Page 2" : {
+
+    },
+    "Scroll to see the Y offset update" : {
+
+    },
+    "Scroll Tracking" : {
 
     },
     "Scroll View Stacks" : {
@@ -3023,6 +3078,19 @@
     },
     "Size" : {
 
+    },
+    "Size Tracking" : {
+
+    },
+    "Size: %lld x %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Size: %1$lld x %2$lld"
+          }
+        }
+      }
     },
     "Sized to content:" : {
 
@@ -3423,6 +3491,12 @@
     "Touch" : {
 
     },
+    "Tracks global frame of the box below" : {
+
+    },
+    "Tracks width changes with old and new values" : {
+
+    },
     "Trailing: %lld" : {
 
     },
@@ -3779,6 +3853,9 @@
 
     },
     "White, Opacity" : {
+
+    },
+    "Width change: %@" : {
 
     },
     "width: 100" : {
