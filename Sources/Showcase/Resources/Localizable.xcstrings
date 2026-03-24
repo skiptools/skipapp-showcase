@@ -1772,6 +1772,16 @@
     "iOS: Not supported (ignored)" : {
 
     },
+    "Is wide: %@, changes: %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Is wide: %1$@, changes: %2$lld"
+          }
+        }
+      }
+    },
     "isOn" : {
 
     },
@@ -2165,6 +2175,9 @@
 
     },
     "One Time Code" : {
+
+    },
+    "onGeometryChange" : {
 
     },
     "Only needed for complex overlapping shapes" : {

@@ -43,6 +43,17 @@ struct GeometryReaderPlayground: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .frame(height: 150)
+                    NavigationLink("onGeometryChange") {
+                        ScrollView(.vertical) {
+                            VStack {
+                                OnGeometryChangeExample()
+                                    .navigationTitle("onGeometryChange")
+                                ForEach(1..<100) { i in
+                                    Text("Item \(i)")
+                                }
+                            }
+                        }
+                    }
                 }
                 .padding(rootProxy.safeAreaInsets)
             }
@@ -56,6 +67,44 @@ struct GeometryReaderPlayground: View {
 
     private func string(for rect: CGRect) -> String {
         return "(\(Int(rect.minX)), \(Int(rect.minY)), \(Int(rect.width)), \(Int(rect.height)))"
+    }
+}
+
+struct OnGeometryChangeExample: View {
+    @State private var isWide = false
+    @State private var changeCount = 0
+
+    var body: some View {
+        let _ = logger.info("OnGeometryChangeExample isWide: \(isWide), changeCount: \(changeCount)")
+        if #available(iOS 18.0, *) {
+            Text("Is wide: \(isWide ? "Yes" : "No"), changes: \(changeCount)")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .frame(minHeight: 80)
+                .background(Color.yellow.opacity(0.3))
+                .onGeometryChange(for: Bool.self) { proxy in
+                    logger.info("OnGeometryChangeExample proxy.size.width: \(proxy.size.width)")
+                    return proxy.size.width > 450
+                } action: { old, new in
+                    logger.info("OnGeometryChangeExample old: \(old), new: \(new)")
+                    isWide = new
+                    changeCount += 1
+                }
+        } else {
+            Text("Is wide: \(isWide ? "Yes" : "No"), changes: \(changeCount)")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .frame(minHeight: 80)
+                .background(Color.yellow.opacity(0.3))
+                .onGeometryChange(for: Bool.self) { proxy in
+                    logger.info("OnGeometryChangeExample proxy.size.width: \(proxy.size.width)")
+                    return proxy.size.width > 450
+                } action: { new in
+                    logger.info("OnGeometryChangeExample new: \(new)")
+                    isWide = new
+                    changeCount += 1
+                }
+        }
     }
 }
 
