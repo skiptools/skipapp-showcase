@@ -23,6 +23,9 @@ struct ImagePlayground: View {
                 NavigationLink("Complex Layout (Portrait)") {
                     ImagePlaygroundComplexLayoutView(imageName: "CatPortrait")
                 }
+                NavigationLink("Butterfly LazyHGrid Stress") {
+                    ImagePlaygroundButterflyGridStressView()
+                }
 
                 Text("Asset JPEG Image").font(.title).bold()
                 HStack {
@@ -385,6 +388,29 @@ private struct ImagePlaygroundComplexLayoutView: View {
                 }
                 .frame(minHeight: geometry.size.height, alignment: .topLeading)
             }
+        }
+    }
+}
+
+private struct ImagePlaygroundButterflyGridStressView: View {
+    private let butterflies = Array(0..<600)
+    private let rows: [GridItem] = Array(repeating: GridItem(.fixed(24), spacing: 4), count: 10)
+
+    var body: some View {
+        ScrollView(.horizontal) {
+            LazyHGrid(rows: rows, spacing: 4) {
+                ForEach(butterflies, id: \.self) { _ in
+                    Image("Butterfly", bundle: .module, label: Text("Butterfly SVG image"))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24, height: 24)
+                }
+            }
+            .padding(8)
+        }
+        .navigationTitle("Butterfly Grid Stress")
+        .toolbar {
+            PlaygroundSourceLink(file: "ImagePlayground.swift")
         }
     }
 }
