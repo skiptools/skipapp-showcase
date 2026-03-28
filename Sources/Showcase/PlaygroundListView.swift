@@ -86,6 +86,7 @@ enum PlaygroundType: CaseIterable, View {
     case webBrowser
     case webView
     case zIndex
+    case game // displays as "Easter Egg", so show it at the end
 
     var title: LocalizedStringResource {
         switch self {
@@ -133,6 +134,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Form")
         case .frame:
             return LocalizedStringResource("Frame")
+        case .game:
+            return LocalizedStringResource("Easter Egg")
         case .geometryChange:
             return LocalizedStringResource("GeometryChange")
         case .geometryReader:
@@ -304,6 +307,8 @@ enum PlaygroundType: CaseIterable, View {
             FormPlayground()
         case .frame:
             FramePlayground()
+        case .game:
+            GamePlayground()
         case .geometryChange:
             GeometryChangePlayground()
         case .geometryReader:

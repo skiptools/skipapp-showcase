@@ -468,6 +468,9 @@
     "%lld%%" : {
 
     },
+    "%lldx Lines!" : {
+
+    },
     "+" : {
 
     },
@@ -939,6 +942,9 @@
     "Before vstack" : {
 
     },
+    "BEST" : {
+
+    },
     "Binding" : {
 
     },
@@ -949,6 +955,9 @@
 
     },
     "Black" : {
+
+    },
+    "Block Blast" : {
 
     },
     "Blue" : {
@@ -1072,6 +1081,9 @@
 
     },
     "Combined: opacity+slide" : {
+
+    },
+    "Combo x%lld!" : {
 
     },
     "Completions: %lld" : {
@@ -1320,6 +1332,9 @@
 
     },
     "Duplicate" : {
+
+    },
+    "Easter Egg" : {
 
     },
     "Edit" : {
@@ -1573,6 +1588,9 @@
 
     },
     "Fullscreen cover" : {
+
+    },
+    "Game Over" : {
 
     },
     "Generate Push Notification Token" : {
@@ -1946,6 +1964,9 @@
     "Light" : {
 
     },
+    "Line Clear!" : {
+
+    },
     "LinearGradient" : {
 
     },
@@ -2129,6 +2150,9 @@
 
     },
     "Nested views" : {
+
+    },
+    "New High Score!" : {
 
     },
     "New Item" : {
@@ -2398,6 +2422,9 @@
     "Play" : {
 
     },
+    "Play Again" : {
+
+    },
     "Play Once" : {
 
     },
@@ -2661,6 +2688,12 @@
 
     },
     "scheme: %@" : {
+
+    },
+    "Score" : {
+
+    },
+    "SCORE" : {
 
     },
     "Scroll indicators are inset but content stays at edges" : {
