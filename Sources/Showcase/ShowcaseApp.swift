@@ -1,4 +1,3 @@
-// Copyright 2023–2025 Skip
 import Foundation
 import OSLog
 import SwiftUI
@@ -15,31 +14,53 @@ let androidSDK = ProcessInfo.processInfo.environment["android.os.Build.VERSION.S
 /// The shared top-level view for the app, loaded from the platform-specific App delegates below.
 ///
 /// The default implementation merely loads the `ContentView` for the app and logs a message.
-public struct RootView : View {
+public struct ShowcaseRootView : View {
     public init() {
     }
 
     public var body: some View {
         ContentView()
-            .onAppear {
+            .task {
                 logger.log("Welcome to Skip on \(androidSDK != nil ? "Android" : "Darwin")!")
-                logger.warning("Skip app logs are viewable in the Xcode console for iOS; Android logs can be viewed in Studio or using adb logcat")
+                logger.info("Skip app logs are viewable in the Xcode console for iOS; Android logs can be viewed in Studio or using adb logcat")
             }
     }
 }
 
-#if !SKIP
-public protocol ShowcaseApp : App {
-}
+/// Global application delegate functions.
+///
+/// These functions can update a shared observable object to communicate app state changes to interested views.
+public final class ShowcaseAppDelegate : Sendable {
+    public static let shared = ShowcaseAppDelegate()
 
-/// The entry point to the Showcase app.
-/// The concrete implementation is in the ShowcaseApp module.
-public extension ShowcaseApp {
-    var body: some Scene {
-        WindowGroup {
-            RootView()
-        }
+    private init() {
+    }
+
+    public func onInit() {
+        logger.debug("onInit")
+    }
+
+    public func onLaunch() {
+        logger.debug("onLaunch")
+    }
+
+    public func onResume() {
+        logger.debug("onResume")
+    }
+
+    public func onPause() {
+        logger.debug("onPause")
+    }
+
+    public func onStop() {
+        logger.debug("onStop")
+    }
+
+    public func onDestroy() {
+        logger.debug("onDestroy")
+    }
+
+    public func onLowMemory() {
+        logger.debug("onLowMemory")
     }
 }
-
-#endif
