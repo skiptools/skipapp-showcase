@@ -1,5 +1,22 @@
 import java.util.Properties
 
+// Compose ui-test-junit4-android pulls Espresso 3.5.x; align all androidx.test artifacts or
+// ActivityScenario / ActivityInvoker can fail at runtime (see android/android-test#2259).
+configurations.configureEach {
+    if (name.contains("androidTest", ignoreCase = true)) {
+        resolutionStrategy {
+            force(
+                "androidx.test:runner:1.7.0",
+                "androidx.test:rules:1.7.0",
+                "androidx.test:core:1.7.0",
+                "androidx.test:monitor:1.8.0",
+                "androidx.test.espresso:espresso-core:3.7.0",
+                "androidx.test.espresso:espresso-idling-resource:3.7.0",
+            )
+        }
+    }
+}
+
 plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
@@ -27,6 +44,7 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.sdk.min.get().toInt()
         targetSdk = libs.versions.android.sdk.compile.get().toInt()
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         // skip.tools.skip-build-plugin will automatically use Skip.env properties for:
         // applicationId = PRODUCT_BUNDLE_IDENTIFIER
         // versionCode = CURRENT_PROJECT_VERSION
@@ -35,6 +53,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        compose = true
     }
 
     lint {
@@ -80,4 +99,20 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+}
+
+dependencies {
+    // Transpiled XCTest UI test sources need SkipUnit and SkipUIAutomation on the classpath (:SkipUIAutomation appears in skipstone after an Xcode Showcase build).
+    androidTestImplementation(project(":SkipUnit"))
+    androidTestImplementation(project(":SkipUIAutomation"))
+
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    androidTestImplementation("androidx.test:runner:1.7.0")
+    androidTestImplementation("androidx.test:rules:1.7.0")
+    androidTestImplementation("androidx.test:core:1.7.0")
+    androidTestImplementation("androidx.test.ext:junit:1.3.0")
+    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.4.0-beta02")
 }
