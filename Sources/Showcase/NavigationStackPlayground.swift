@@ -64,7 +64,7 @@ private struct PathBindingSheetContentView: View {
     @State var path: [PathElement] = []
 
     init(initialPath: [PathElement] = []) {
-        path.append(contentsOf: initialPath)
+        _path = State(initialValue: initialPath)
     }
 
     var body: some View {
