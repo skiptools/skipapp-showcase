@@ -27,9 +27,11 @@ INFOPLIST_KEY_NSCameraUsageDescription = "This app accesses the camera to demons
 INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app accesses the media library to demonstrate using a photo picker";
 INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses the location to demonstrate the map component";
 INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app uses the location to demonstrate the map component";
+INFOPLIST_KEY_NSMotionUsageDescription = "This app accesses motion sensors to demonstrate accelerometer, gyroscope, magnetometer, and barometer capabilities";
 
 IPHONEOS_DEPLOYMENT_TARGET = 17.0
 MACOSX_DEPLOYMENT_TARGET = 14.0
+SUPPORTS_MACCATALYST = NO
 
 // iPhone + iPad
 // TARGETED_DEVICE_FAMILY = 1,2
@@ -37,7 +39,7 @@ MACOSX_DEPLOYMENT_TARGET = 14.0
 // iPhone only
 TARGETED_DEVICE_FAMILY = 1
 
-SUPPORTS_MACCATALYST = NO
+SWIFT_EMIT_LOC_STRINGS = YES
 
 // the name of the product module; this can be anything, but cannot conflict with any Swift module names
 PRODUCT_MODULE_NAME = $(PRODUCT_NAME:c99extidentifier)App
@@ -48,7 +50,8 @@ PRODUCT_MODULE_NAME = $(PRODUCT_NAME:c99extidentifier)App
 SDKROOT = auto
 SUPPORTED_PLATFORMS = iphoneos iphonesimulator macosx
 SWIFT_EMIT_LOC_STRINGS = YES
-SWIFT_VERSION = 6.0
+
+SWIFT_VERSION = 6
 
 // Development team ID for on-device testing
 CODE_SIGNING_REQUIRED = NO
