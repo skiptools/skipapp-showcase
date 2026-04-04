@@ -5,6 +5,7 @@ import SkipMarketplace
 
 struct SettingsView: View {
     @Binding var appearance: String
+    @AppStorage("statusBarHidden") var statusBarHidden = false
 
     var body: some View {
         NavigationStack {
@@ -14,6 +15,7 @@ struct SettingsView: View {
                     Text("Light").tag("light")
                     Text("Dark").tag("dark")
                 }
+                Toggle("Hide status bar", isOn: $statusBarHidden)
                 NavigationLink("System Information") {
                     let env = ProcessInfo.processInfo.environment
                     List {
