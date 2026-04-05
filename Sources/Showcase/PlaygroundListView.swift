@@ -446,7 +446,7 @@ enum PlaygroundType: CaseIterable, View {
 
 /// List to navigate to each playground.
 public struct PlaygroundNavigationView: View {
-    @AppStorage("searchText") var searchText = ""
+    @State var searchText = ""
 
     public init() {
     }

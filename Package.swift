@@ -21,10 +21,12 @@ let package = Package(
         .package(url: "https://source.skip.tools/skip-marketplace.git", "0.2.1"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-authentication-services.git", "0.0.2"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-notify.git", "0.1.4"..<"2.0.0"),
+        .package(path: "../skip-ui-automation"),
     ],
     targets: [
         .target(name: "Showcase", dependencies: [
             .product(name: "SkipUI", package: "skip-ui"),
+            .product(name: "SkipUIAutomation", package: "skip-ui-automation"),
             .product(name: "SkipAV", package: "skip-av"),
             .product(name: "SkipKit", package: "skip-kit"),
             .product(name: "SkipSQL", package: "skip-sql"),
