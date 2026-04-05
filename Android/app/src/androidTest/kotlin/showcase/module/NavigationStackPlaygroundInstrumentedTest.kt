@@ -8,8 +8,6 @@ import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
-import androidx.compose.ui.semantics.SemanticsNode
-import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -42,7 +40,10 @@ private const val PLAYGROUND_PUSHED_TEXT = "Pushed"
 class NavigationStackPlaygroundInstrumentedTest {
 
     private val composeTestRule = createAndroidComposeRule<MainActivity>()
-    private var treeSnapshotCounter = 0
+
+    private val semanticsTreeLogger by lazy {
+        ComposeSemanticsTreeLogger(composeTestRule, "NavStackTest", "NavStackTree")
+    }
 
     @get:Rule
     val ruleChain: RuleChain = RuleChain.outerRule(object : TestWatcher() {
@@ -50,6 +51,7 @@ class NavigationStackPlaygroundInstrumentedTest {
             InstrumentationRegistry.getInstrumentation().targetContext
                 .getSharedPreferences("defaults", Context.MODE_PRIVATE)
                 .edit()
+                .putString("tab", "showcase")
                 .remove("searchText")
                 .commit()
         }
@@ -263,7 +265,9 @@ class NavigationStackPlaygroundInstrumentedTest {
         // Open the Showcase tab inside the bottom Material tab bar.
         clickNodeLogged("open_showcase_tab") {
             composeTestRule.onNode(
-                hasText(PLAYGROUND_TITLE) and hasAnyAncestor(hasTestTag(TAB_BAR_TEST_TAG)),
+                hasText(PLAYGROUND_TITLE, substring = false) and
+                    hasClickAction() and
+                    hasAnyAncestor(hasTestTag(TAB_BAR_TEST_TAG)),
             ).performClick()
         }
         waitForIdleLogged("openNavigationStackPlayground_afterShowcaseClick")
@@ -341,32 +345,6 @@ class NavigationStackPlaygroundInstrumentedTest {
     }
 
     private fun logTree(stage: String) {
-        treeSnapshotCounter += 1
-        val safeStage = stage.replace(" ", "_")
-        Log.i("NavStackTest", "snapshot=$treeSnapshotCounter stage=$safeStage")
-        try {
-            val tag = "NavStackTree$treeSnapshotCounter"
-            val roots = composeTestRule
-                .onAllNodes(isRoot(), useUnmergedTree = true)
-                .fetchSemanticsNodes()
-            Log.d(tag, "Printing with useUnmergedTree = 'true', roots=${roots.size}")
-            roots.forEachIndexed { index, root ->
-                Log.d(tag, "Root[$index]:")
-                logSemanticsNode(tag, root, depth = 1)
-            }
-        } catch (t: Throwable) {
-            Log.w("NavStackTest", "tree logging unavailable for stage=$safeStage", t)
-        }
-    }
-
-    private fun logSemanticsNode(tag: String, node: SemanticsNode, depth: Int) {
-        val indent = "  ".repeat(depth)
-        Log.d(tag, "${indent}Node #${node.id} at ${node.boundsInRoot}")
-        if (node.config.toString().isNotBlank()) {
-            Log.d(tag, "${indent}config=${node.config}")
-        }
-        node.children.forEach { child ->
-            logSemanticsNode(tag, child, depth + 1)
-        }
+        semanticsTreeLogger.logTree(stage)
     }
 }
