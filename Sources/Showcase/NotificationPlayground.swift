@@ -59,7 +59,9 @@ struct SkipNotifyNotificationPlaygroundView: View {
             Button("Generate Push Notification Token") {
                 Task { @MainActor in
                     do {
-                        self.token = try await SkipNotify.shared.fetchNotificationToken()
+                        // Firebase FCM senderID obtained from "Project number" at:
+                        // https://console.firebase.google.com/project/app-fair-425519/settings/general/android:org.appfair.app.Showcase
+                        self.token = try await SkipNotify.shared.fetchNotificationToken(firebaseProjectNumber: "25594159619")
                         logger.log("obtained push notification token: \(self.token)")
                     } catch {
                         logger.error("error obtaining push notification token: \(error)")
