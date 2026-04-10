@@ -14,6 +14,9 @@ struct SettingsView: View {
                     Text("Light").tag("light")
                     Text("Dark").tag("dark")
                 }
+                NavigationLink("Bill of Materials") {
+                    SBOMView(bundle: .module)
+                }
                 NavigationLink("System Information") {
                     let env = ProcessInfo.processInfo.environment
                     List {
