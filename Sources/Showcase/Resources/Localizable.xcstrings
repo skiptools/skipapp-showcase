@@ -468,13 +468,13 @@
     "%lld%%" : {
 
     },
-    "%lldx Lines!" : {
-
-    },
     "+" : {
 
     },
     "+ Title" : {
+
+    },
+    "▲" : {
 
     },
     "1. Play / Pause" : {
@@ -942,7 +942,7 @@
     "Before vstack" : {
 
     },
-    "BEST" : {
+    "Best" : {
 
     },
     "Bill of Materials" : {
@@ -960,9 +960,6 @@
     "Black" : {
 
     },
-    "Block Blast" : {
-
-    },
     "Blue" : {
 
     },
@@ -970,6 +967,9 @@
 
     },
     "Body" : {
+
+    },
+    "Body + default/body ScaledMetric" : {
 
     },
     "Bold" : {
@@ -1084,9 +1084,6 @@
 
     },
     "Combined: opacity+slide" : {
-
-    },
-    "Combo x%lld!" : {
 
     },
     "Completions: %lld" : {
@@ -1233,6 +1230,9 @@
     "Destructive" : {
 
     },
+    "Difficulty" : {
+
+    },
     "Dimiss" : {
 
     },
@@ -1265,7 +1265,6 @@
     },
     "Done" : {
       "comment" : "Done button text",
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -1338,6 +1337,9 @@
 
     },
     "Easter Egg" : {
+
+    },
+    "Easy" : {
 
     },
     "Edit" : {
@@ -1455,6 +1457,12 @@
 
     },
     "Flag" : {
+
+    },
+    "Flappy Bird" : {
+
+    },
+    "Flappy Bird Score" : {
 
     },
     "FocusState" : {
@@ -1596,7 +1604,7 @@
     "Fullscreen cover" : {
 
     },
-    "Game Over" : {
+    "GAME OVER" : {
 
     },
     "Generate Push Notification Token" : {
@@ -1657,6 +1665,9 @@
 
     },
     "Haptic Feedback: %@" : {
+
+    },
+    "Hard" : {
 
     },
     "Has strings:" : {
@@ -1746,6 +1757,9 @@
 
     },
     "HSV" : {
+
+    },
+    "I scored %lld in Flappy Bird!" : {
 
     },
     "Icon + Title" : {
@@ -1967,10 +1981,10 @@
     "Leading: %lld" : {
 
     },
-    "Light" : {
+    "Level" : {
 
     },
-    "Line Clear!" : {
+    "Light" : {
 
     },
     "LinearGradient" : {
@@ -2383,6 +2397,9 @@
     "Patterns:" : {
 
     },
+    "PAUSED" : {
+
+    },
     "PDF Image" : {
 
     },
@@ -2554,6 +2571,9 @@
     "Pushed" : {
 
     },
+    "Quit Game" : {
+
+    },
     "rad/s" : {
 
     },
@@ -2618,10 +2638,16 @@
     "Requires iOS 17+" : {
 
     },
+    "Reset High Score" : {
+
+    },
     "Resize with the slider" : {
 
     },
     "Result URL:" : {
+
+    },
+    "Resume" : {
 
     },
     "RGB" : {
@@ -2696,6 +2722,9 @@
     "scale(x: 1, y: -1)" : {
 
     },
+    "ScaledMetric" : {
+
+    },
     "scaledToFill" : {
 
     },
@@ -2709,9 +2738,6 @@
 
     },
     "Score" : {
-
-    },
-    "SCORE" : {
 
     },
     "Scroll indicators are inset but content stays at edges" : {
@@ -3349,6 +3375,9 @@
     "Tap to dismiss" : {
 
     },
+    "TAP TO FLY" : {
+
+    },
     "Tap to recompose in 1 sec" : {
 
     },
@@ -3638,6 +3667,9 @@
 
     },
     "Vertical fixed height" : {
+
+    },
+    "Vibrations" : {
 
     },
     "Video List" : {

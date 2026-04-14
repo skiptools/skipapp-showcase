@@ -1,408 +1,609 @@
-// Copyright 2023–2026 Skip
+// Flappy Bird in SwiftUI for iOS and Android!
 import SwiftUI
 import Observation
 import SkipKit
 
-struct GamePlayground: View {
-    var body: some View {
-        BlockBlastGameView()
+public struct GamePlayground: View {
+    @State var settings = FlappyBirdSettings()
+
+    public init() { }
+
+    public var body: some View {
+        FlappyBirdGameView()
             .navigationTitle("")
+            #if os(iOS) || os(Android)
             .toolbar(.hidden, for: .navigationBar)
             .toolbar(.hidden, for: .tabBar)
+            #endif
+            .colorScheme(.dark)
+            .environment(settings)
     }
 }
 
-/// A mini block blast game
-struct BlockBlastGameView: View {
-    @State var game = GameModel()
-    @State var dragPieceIndex: Int = -1
-    @State var dragOffset: CGSize = CGSize.zero
-    @State var dragLocation: CGPoint = CGPoint.zero
-    @State var isDragging: Bool = false
-    @State var highlightRow: Int = -1
-    @State var highlightCol: Int = -1
-    @State var highlightValid: Bool = false
-    @State var boardOrigin: CGPoint = CGPoint.zero
-    @State var cellSize: CGFloat = 0
-    @State var showCombo: Bool = false
-    @State var prevHighlightRow: Int = -1
-    @State var prevHighlightCol: Int = -1
+public func resetFlappyBirdHighScore() {
+    UserDefaults.standard.set(0, forKey: "flappybird_highscore")
+}
+
+// MARK: - Constants
+
+private let birdSize: Double = 30.0
+private let groundHeight: Double = 80.0
+private let birdX: Double = 80.0
+private let pipeWidth: Double = 52.0
+
+/// Difficulty-dependent parameters. Difficulty ranges from 1 (easiest) to 10 (hardest).
+/// Level 5 matches the original game feel.
+private func effectiveGravity(_ difficulty: Int) -> Double {
+    // 1 → 750, 5 → 950, 10 → 1200
+    return 750.0 + Double(difficulty - 1) * 50.0
+}
+
+private func effectiveFlapVelocity(_ difficulty: Int) -> Double {
+    // 1 → -290, 5 → -330, 10 → -380
+    return -290.0 - Double(difficulty - 1) * 10.0
+}
+
+private func effectivePipeSpeed(_ difficulty: Int) -> Double {
+    // 1 → 90, 5 → 130, 10 → 180
+    return 90.0 + Double(difficulty - 1) * 10.0
+}
+
+private func effectivePipeGap(_ difficulty: Int) -> Double {
+    // 1 → 210, 5 → 160, 10 → 115
+    return 210.0 - Double(difficulty - 1) * 10.5
+}
+
+private func effectivePipeSpacing(_ difficulty: Int) -> Double {
+    // 1 → 280, 5 → 210, 10 → 155
+    return 280.0 - Double(difficulty - 1) * 14.0
+}
+
+// MARK: - Pipe Model
+
+final class PipeData: Identifiable {
+    let id: Int
+    var x: Double
+    let gapY: Double // center of the gap
+    var scored: Bool
+
+    init(id: Int, x: Double, gapY: Double) {
+        self.id = id
+        self.x = x
+        self.gapY = gapY
+        self.scored = false
+    }
+}
+
+// MARK: - Game Model
+
+@Observable
+final class FlappyBirdModel {
+    var birdY: Double = 0.0
+    var birdVelocity: Double = 0.0
+    var birdRotation: Double = 0.0
+    var wingAngle: Double = 0.0 // -1 = up, 0 = mid, 1 = down
+    var wingTimer: Double = 0.0
+    var pipes: [PipeData] = []
+    var score: Int = 0
+    var highScore: Int = UserDefaults.standard.integer(forKey: "flappybird_highscore")
+    var isGameOver: Bool = false
+    var hasStarted: Bool = false
+    var fieldHeight: Double = 600.0
+    var fieldWidth: Double = 400.0
+    var difficulty: Int = 5
+
+    private var nextPipeID: Int = 0
+
+    private var gravity: Double { effectiveGravity(difficulty) }
+    private var flapVel: Double { effectiveFlapVelocity(difficulty) }
+    private var speed: Double { effectivePipeSpeed(difficulty) }
+    private var gap: Double { effectivePipeGap(difficulty) }
+    private var spacing: Double { effectivePipeSpacing(difficulty) }
+
+    func setup(width: Double, height: Double) {
+        fieldWidth = width
+        fieldHeight = height
+    }
+
+    func newGame() {
+        birdY = fieldHeight * 0.4
+        birdVelocity = 0.0
+        birdRotation = 0.0
+        wingAngle = 0.0
+        wingTimer = 0.0
+        pipes = []
+        score = 0
+        isGameOver = false
+        hasStarted = false
+        nextPipeID = 0
+    }
+
+    func flap() {
+        if isGameOver { return }
+        if !hasStarted {
+            hasStarted = true
+            spawnInitialPipes()
+        }
+        birdVelocity = flapVel
+        wingTimer = 0.3 // start a flap cycle lasting 0.3s
+        wingAngle = -1.0 // wing up
+    }
+
+    func update(dt: Double) {
+        guard hasStarted && !isGameOver else { return }
+
+        // Physics
+        birdVelocity += gravity * dt
+        birdY += birdVelocity * dt
+
+        // Bird rotation: nose up at -25 when flapping, rotate down to +90 when falling
+        let clampedVel = min(max(birdVelocity, flapVel), 400.0)
+        birdRotation = ((clampedVel - flapVel) / (400.0 - flapVel)) * 115.0 - 25.0
+
+        // Wing animation: flap cycle over 0.3s
+        // -1 (up) → 0 (mid) → 1 (down) → 0 (mid, rest)
+        if wingTimer > 0.0 {
+            wingTimer -= dt
+            if wingTimer <= 0.0 {
+                wingTimer = 0.0
+                wingAngle = 0.0
+            } else {
+                let t = 1.0 - wingTimer / 0.3 // 0→1 over the cycle
+                if t < 0.33 {
+                    wingAngle = -1.0 + t * 3.0 // -1 → 0
+                } else if t < 0.66 {
+                    wingAngle = (t - 0.33) * 3.0 // 0 → 1
+                } else {
+                    wingAngle = 1.0 - (t - 0.66) * 3.0 // 1 → 0
+                }
+            }
+        }
+
+        // Move pipes
+        let dx = speed * dt
+        for pipe in pipes {
+            pipe.x -= dx
+        }
+
+        // Score — bird passes the trailing edge of a pipe
+        for pipe in pipes {
+            if !pipe.scored && pipe.x + pipeWidth < birdX {
+                pipe.scored = true
+                score += 1
+            }
+        }
+
+        // Remove off-screen pipes
+        pipes = pipes.filter { $0.x + pipeWidth > -10.0 }
+
+        // Spawn new pipes
+        if let last = pipes.last {
+            if last.x < fieldWidth - spacing {
+                spawnPipe(atX: fieldWidth + 20.0)
+            }
+        } else {
+            spawnPipe(atX: fieldWidth + 20.0)
+        }
+
+        // Collision detection
+        let playableHeight = fieldHeight - groundHeight
+        if birdY - birdSize / 2.0 < 0.0 || birdY + birdSize / 2.0 > playableHeight {
+            gameOver()
+            return
+        }
+
+        for pipe in pipes {
+            if birdX + birdSize / 2.0 > pipe.x && birdX - birdSize / 2.0 < pipe.x + pipeWidth {
+                let topPipeBottom = pipe.gapY - gap / 2.0
+                let bottomPipeTop = pipe.gapY + gap / 2.0
+                if birdY - birdSize / 2.0 < topPipeBottom || birdY + birdSize / 2.0 > bottomPipeTop {
+                    gameOver()
+                    return
+                }
+            }
+        }
+    }
+
+    private func spawnInitialPipes() {
+        var x = fieldWidth + 60.0
+        for _ in 0..<3 {
+            spawnPipe(atX: x)
+            x += spacing
+        }
+    }
+
+    private func spawnPipe(atX x: Double) {
+        let playable = fieldHeight - groundHeight
+        let margin = gap / 2.0 + 40.0
+        let maxGap = playable - gap / 2.0 - 40.0
+        let gapY = Double.random(in: margin...max(margin, maxGap))
+        let pipe = PipeData(id: nextPipeID, x: x, gapY: gapY)
+        nextPipeID += 1
+        pipes.append(pipe)
+    }
+
+    private func gameOver() {
+        isGameOver = true
+        if score > highScore {
+            highScore = score
+            UserDefaults.standard.set(highScore, forKey: "flappybird_highscore")
+        }
+    }
+}
+
+// MARK: - Game View
+
+struct FlappyBirdGameView: View {
+    @State var game = FlappyBirdModel()
+    @State var tickTimer: Timer? = nil
+    @State var lastTick: Double = 0.0
+    @State var showPauseMenu = false
+    @State var showSettings = false
     @Environment(\.dismiss) var dismiss
+    @Environment(\.scenePhase) var scenePhase
+    @Environment(FlappyBirdSettings.self) var settings: FlappyBirdSettings
+
+    func playHaptic(_ pattern: HapticPattern) {
+        if settings.vibrations {
+            HapticFeedback.play(pattern)
+        }
+    }
 
     var body: some View {
-        ZStack {
-            // Background gradient
-            LinearGradient(
-                colors: [
-                    Color(red: 0.12, green: 0.13, blue: 0.25),
-                    Color(red: 0.08, green: 0.08, blue: 0.18)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
+        GeometryReader { geo in
+            let _ = initField(geo: geo)
+            ZStack {
+                // Sky background
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.30, green: 0.75, blue: 0.93),
+                        Color(red: 0.55, green: 0.85, blue: 0.95)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
 
-            VStack(spacing: 12) {
-                // Score header
-                scoreHeader
+                // Game field
+                gameField(width: geo.size.width, height: geo.size.height)
 
-                // Game board
-                gameBoard
+                // HUD overlay
+                headerView
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                    .padding(.top, 8)
 
-                // Piece tray
-                pieceTray
+                // Tap to start
+                if !game.hasStarted && !game.isGameOver {
+                    startPrompt
+                }
 
-                Spacer(minLength: 0)
+                // Game over
+                if game.isGameOver {
+                    gameOverOverlay
+                }
+
+                if showPauseMenu && !game.isGameOver {
+                    pauseMenuOverlay
+                }
             }
-            .padding(.horizontal, 8)
-            .padding(.top, 8)
-
-            // Game over overlay
-            if game.isGameOver {
-                gameOverOverlay
+            .onTapGesture {
+                if game.isGameOver || showPauseMenu { return }
+                game.flap()
+                playHaptic(.pick)
             }
-
-            // Combo popup
-            if showCombo && game.lastLinesCleared > 0 {
-                comboPopup
-            }
-
         }
         .navigationBarBackButtonHidden()
+        #if !os(macOS)
         .toolbar(.hidden, for: .navigationBar)
+        #endif
+        .onAppear {
+            game.difficulty = settings.difficulty
+            game.newGame()
+            startTimer()
+        }
+        .onDisappear { stopTimer() }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase != .active {
+                pauseGame()
+            }
+        }
+        .sheet(isPresented: $showSettings) {
+            FlappyBirdSettingsView(settings: settings)
+        }
+        .onChange(of: settings.difficulty) { _, newVal in
+            game.difficulty = newVal
+        }
     }
 
-    // MARK: - Score Header
+    private func initField(geo: GeometryProxy) -> Bool {
+        game.setup(width: geo.size.width, height: geo.size.height)
+        return true
+    }
 
-    var scoreHeader: some View {
+    // MARK: - Game Field
+
+    func gameField(width: Double, height: Double) -> some View {
+        let playableHeight = height - groundHeight
+
+        return ZStack(alignment: .topLeading) {
+            // Pipes
+            ForEach(game.pipes) { pipe in
+                pipeView(pipe: pipe, playableHeight: playableHeight)
+            }
+
+            // Bird
+            birdView
+                .position(x: birdX, y: game.birdY)
+
+            // Ground
+            groundView(width: width, height: height)
+        }
+    }
+
+    // MARK: - Bird
+    //
+    // Chunky, slightly wider-than-tall yellow bird viewed from the side.
+    // Body is an egg-shaped ellipse with a dark outline. A small wing
+    // protrudes from the back of the body and flaps when the player taps.
+    // wingAngle drives the wing position: -1 = raised, 0 = mid, 1 = lowered.
+
+    var birdView: some View {
+        let s = birdSize
+        let w = s * 1.18 // slightly wider than tall, egg-shaped
+        // Wing vertical offset driven by wingAngle (-1 up, 0 mid, 1 down)
+        let wingY = game.wingAngle * s * 0.22
+
+        return ZStack {
+            // Dark outline — slightly larger ellipse behind the body
+            Ellipse()
+                .fill(Color(red: 0.20, green: 0.15, blue: 0.05))
+                .frame(width: w + 4, height: s + 4)
+
+            // Main body — warm yellow, egg-shaped
+            Ellipse()
+                .fill(Color(red: 0.98, green: 0.82, blue: 0.15))
+                .frame(width: w, height: s)
+
+            // Belly highlight — lighter yellow on the lower half
+            Ellipse()
+                .fill(Color(red: 1.0, green: 0.93, blue: 0.50))
+                .frame(width: w * 0.50, height: s * 0.30)
+                .offset(y: s * 0.18)
+
+            // Wing — small rounded shape that moves up/down with the flap
+            // Wing outline
+            Ellipse()
+                .fill(Color(red: 0.20, green: 0.15, blue: 0.05))
+                .frame(width: s * 0.42, height: s * 0.28)
+                .offset(x: -w * 0.22, y: s * 0.02 + wingY)
+            // Wing fill
+            Ellipse()
+                .fill(Color(red: 0.90, green: 0.72, blue: 0.12))
+                .frame(width: s * 0.38, height: s * 0.24)
+                .offset(x: -w * 0.22, y: s * 0.02 + wingY)
+            // Wing inner highlight
+            Ellipse()
+                .fill(Color(red: 1.0, green: 0.88, blue: 0.35))
+                .frame(width: s * 0.22, height: s * 0.13)
+                .offset(x: -w * 0.22, y: s * 0.00 + wingY)
+
+            // Tail feathers — tiny dark mark at the back
+            Ellipse()
+                .fill(Color(red: 0.20, green: 0.15, blue: 0.05))
+                .frame(width: s * 0.14, height: s * 0.22)
+                .offset(x: -w * 0.52, y: -s * 0.02)
+            Ellipse()
+                .fill(Color(red: 0.75, green: 0.58, blue: 0.08))
+                .frame(width: s * 0.10, height: s * 0.18)
+                .offset(x: -w * 0.52, y: -s * 0.02)
+
+            // Eye — large white circle with black pupil, positioned upper-front
+            // Eye outline
+            Circle()
+                .fill(Color(red: 0.20, green: 0.15, blue: 0.05))
+                .frame(width: s * 0.40, height: s * 0.40)
+                .offset(x: w * 0.16, y: -s * 0.14)
+            Circle()
+                .fill(Color.white)
+                .frame(width: s * 0.36, height: s * 0.36)
+                .offset(x: w * 0.16, y: -s * 0.14)
+            // Pupil — pushed toward the front
+            Circle()
+                .fill(Color.black)
+                .frame(width: s * 0.17, height: s * 0.17)
+                .offset(x: w * 0.24, y: -s * 0.13)
+
+            // Beak — two-part, protruding from the front
+            // Upper beak (orange-yellow)
+            Ellipse()
+                .fill(Color(red: 0.20, green: 0.15, blue: 0.05))
+                .frame(width: s * 0.38, height: s * 0.20)
+                .offset(x: w * 0.44, y: s * 0.04)
+            Ellipse()
+                .fill(Color(red: 0.96, green: 0.58, blue: 0.12))
+                .frame(width: s * 0.34, height: s * 0.16)
+                .offset(x: w * 0.44, y: s * 0.04)
+
+            // Lower beak (darker red-orange)
+            Ellipse()
+                .fill(Color(red: 0.20, green: 0.15, blue: 0.05))
+                .frame(width: s * 0.34, height: s * 0.16)
+                .offset(x: w * 0.42, y: s * 0.15)
+            Ellipse()
+                .fill(Color(red: 0.88, green: 0.30, blue: 0.12))
+                .frame(width: s * 0.30, height: s * 0.12)
+                .offset(x: w * 0.42, y: s * 0.15)
+        }
+        .rotationEffect(.degrees(min(max(game.birdRotation, -25.0), 90.0)))
+    }
+
+    // MARK: - Pipes
+
+    func pipeView(pipe: PipeData, playableHeight: Double) -> some View {
+        let currentGap = effectivePipeGap(game.difficulty)
+        let topHeight = pipe.gapY - currentGap / 2.0
+        let bottomY = pipe.gapY + currentGap / 2.0
+        let bottomHeight = playableHeight - bottomY
+
+        return ZStack(alignment: .topLeading) {
+            // Top pipe
+            if topHeight > 0.0 {
+                pipeRect(width: pipeWidth, height: topHeight)
+                    .position(x: pipe.x + pipeWidth / 2.0, y: topHeight / 2.0)
+
+                // Top pipe cap (lip at the opening)
+                pipeCap(width: pipeWidth + 8.0)
+                    .position(x: pipe.x + pipeWidth / 2.0, y: topHeight - 12.0)
+            }
+
+            // Bottom pipe
+            if bottomHeight > 0.0 {
+                pipeRect(width: pipeWidth, height: bottomHeight)
+                    .position(x: pipe.x + pipeWidth / 2.0, y: bottomY + bottomHeight / 2.0)
+
+                // Bottom pipe cap
+                pipeCap(width: pipeWidth + 8.0)
+                    .position(x: pipe.x + pipeWidth / 2.0, y: bottomY + 12.0)
+            }
+        }
+    }
+
+    func pipeRect(width: Double, height: Double) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color(red: 0.32, green: 0.68, blue: 0.22))
+                .frame(width: width, height: height)
+            // Highlight stripe
+            RoundedRectangle(cornerRadius: 1)
+                .fill(Color(red: 0.42, green: 0.78, blue: 0.30))
+                .frame(width: width * 0.3, height: height)
+                .offset(x: -width * 0.15)
+            // Shadow stripe
+            RoundedRectangle(cornerRadius: 1)
+                .fill(Color(red: 0.22, green: 0.55, blue: 0.15))
+                .frame(width: width * 0.15, height: height)
+                .offset(x: width * 0.35)
+        }
+    }
+
+    func pipeCap(width: Double) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 3)
+                .fill(Color(red: 0.32, green: 0.68, blue: 0.22))
+                .frame(width: width, height: 24)
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color(red: 0.42, green: 0.78, blue: 0.30))
+                .frame(width: width * 0.3, height: 24)
+                .offset(x: -width * 0.15)
+        }
+    }
+
+    // MARK: - Ground
+
+    func groundView(width: Double, height: Double) -> some View {
+        VStack(spacing: 0) {
+            Spacer()
+            // Grass edge
+            Rectangle()
+                .fill(Color(red: 0.55, green: 0.78, blue: 0.22))
+                .frame(height: 8)
+            // Dirt
+            Rectangle()
+                .fill(Color(red: 0.84, green: 0.72, blue: 0.48))
+                .frame(height: groundHeight - 8.0)
+        }
+        .frame(width: width, height: height)
+    }
+
+    // MARK: - HUD
+
+    var headerView: some View {
         HStack(spacing: 12) {
             Button(action: { dismiss() }) {
-                Image(systemName: "xmark")
-                    .font(.system(size: 13, weight: .bold))
-                    .foregroundStyle(Color.white.opacity(0.7))
-                    .frame(width: 30, height: 30)
-                    .background(Color.white.opacity(0.12))
-                    .clipShape(Circle())
+                Image("cancel", bundle: .module)
+                    .font(.title2)
+                    .foregroundStyle(Color.white.opacity(0.8))
             }
+            Spacer()
 
-            VStack(alignment: .leading, spacing: 2) {
-                Text("SCORE")
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundStyle(Color.white.opacity(0.6))
+            // Score display
+            VStack(spacing: 0) {
                 Text("\(game.score)")
-                    .font(.title2)
-                    .fontWeight(.bold)
+                    .font(.system(size: 40))
+                    .fontWeight(.black)
                     .foregroundStyle(Color.white)
+                    .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
             }
 
             Spacer()
-
-            Text("Block Blast")
-                .font(.title3)
-                .fontWeight(.heavy)
-                .foregroundStyle(Color.white)
-
-            Spacer()
-
-            VStack(alignment: .trailing, spacing: 2) {
-                Text("BEST")
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundStyle(Color.white.opacity(0.6))
-                Text("\(game.highScore)")
+            Button(action: { pauseGame() }) {
+                Image("pause_circle", bundle: .module)
                     .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundStyle(Color.yellow)
+                    .foregroundStyle(Color.white.opacity(0.8))
             }
         }
-        .padding(.leading, 12)
-        .padding(.trailing, 16)
-        .padding(.vertical, 10)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.white.opacity(0.1))
-        )
+        .padding(.horizontal, 16)
     }
 
-    // MARK: - Game Board
+    // MARK: - Start Prompt
 
-    var gameBoard: some View {
-        GeometryReader { geo in
-            let boardSize = min(geo.size.width, geo.size.height)
-            let cs = boardSize / CGFloat(GameModel.gridSize)
-            let originX = (geo.size.width - boardSize) / 2.0
-            let originY: CGFloat = 0
+    var startPrompt: some View {
+        VStack(spacing: 16) {
+            Text("TAP TO FLY")
+                .font(.title)
+                .fontWeight(.black)
+                .foregroundStyle(Color.white)
+                .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
 
-            ZStack(alignment: .topLeading) {
-                // Board background
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color(red: 0.15, green: 0.16, blue: 0.3))
-                    .frame(width: boardSize, height: boardSize)
-                    .offset(x: originX)
-
-                // Grid cells
-                ForEach(0..<GameModel.gridSize, id: \.self) { row in
-                    ForEach(0..<GameModel.gridSize, id: \.self) { col in
-                        let cellValue = game.grid[row][col]
-                        let isHighlight = isDragging && isHighlightCell(row: row, col: col)
-
-                        cellView(
-                            colorIndex: cellValue,
-                            isHighlight: isHighlight,
-                            isValidHighlight: highlightValid,
-                            size: cs
-                        )
-                        .offset(
-                            x: originX + CGFloat(col) * cs,
-                            y: originY + CGFloat(row) * cs
-                        )
-                    }
-                }
-            }
-            .onAppear {
-                cellSize = cs
-            }
-            .onChange(of: geo.size) {
-                let newBoardSize = min(geo.size.width, geo.size.height)
-                cellSize = newBoardSize / CGFloat(GameModel.gridSize)
-            }
-            .background(
-                // Track the board's global frame so boardOrigin stays
-                // correct even after the navigation bar is hidden.
-                // Re-read on appear, size change, and drag start to
-                // catch position shifts from toolbar visibility changes.
-                GeometryReader { boardGeo in
-                    Color.clear
-                        .onAppear { updateBoardOrigin(boardGeo) }
-                        .onChange(of: boardGeo.size) { updateBoardOrigin(boardGeo) }
-                        .onChange(of: isDragging) { updateBoardOrigin(boardGeo) }
-                }
-                .frame(width: boardSize, height: boardSize)
-                .offset(x: originX)
-            )
+            // Bouncing arrow hint
+            Text("\u{25B2}")
+                .font(.largeTitle)
+                .foregroundStyle(Color.white.opacity(0.7))
         }
-        .aspectRatio(1.0, contentMode: .fit)
     }
 
-    func updateBoardOrigin(_ geo: GeometryProxy) {
-        let frame = geo.frame(in: .global)
-        boardOrigin = CGPoint(x: frame.minX, y: frame.minY)
-    }
-
-    func isHighlightCell(row: Int, col: Int) -> Bool {
-        if highlightRow < 0 || highlightCol < 0 { return false }
-        if dragPieceIndex < 0 || dragPieceIndex >= game.currentPieces.count { return false }
-        guard let piece = game.currentPieces[dragPieceIndex] else { return false }
-        for cell in piece.shape.cells {
-            if row == highlightRow + cell.row && col == highlightCol + cell.col {
-                return true
-            }
-        }
-        return false
-    }
-
-    func cellView(colorIndex: Int, isHighlight: Bool, isValidHighlight: Bool, size: CGFloat) -> some View {
-        let inset: CGFloat = 1.5
-        return ZStack {
-            if isHighlight {
-                RoundedRectangle(cornerRadius: 3)
-                    .fill(isValidHighlight ? Color.white.opacity(0.4) : Color.red.opacity(0.3))
-                    .frame(width: size - inset * 2, height: size - inset * 2)
-            } else if colorIndex >= 0 {
-                RoundedRectangle(cornerRadius: 3)
-                    .fill(BlockColors.color(for: colorIndex))
-                    .frame(width: size - inset * 2, height: size - inset * 2)
-                RoundedRectangle(cornerRadius: 3)
-                    .fill(
-                        LinearGradient(
-                            colors: [Color.white.opacity(0.3), Color.clear],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .frame(width: size - inset * 2, height: size - inset * 2)
-            } else {
-                RoundedRectangle(cornerRadius: 3)
-                    .fill(Color.white.opacity(0.05))
-                    .frame(width: size - inset * 2, height: size - inset * 2)
-            }
-        }
-        .frame(width: size, height: size)
-    }
-
-    // MARK: - Piece Tray
-
-    var pieceTray: some View {
-        HStack(spacing: 16) {
-            ForEach(0..<3, id: \.self) { index in
-                pieceView(index: index)
-            }
-        }
-        .padding(.vertical, 12)
-        .padding(.horizontal, 8)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.white.opacity(0.08))
-        )
-    }
-
-    /// Fixed height for each piece slot — accommodates the tallest piece (5 cells)
-    var pieceSlotHeight: CGFloat {
-        let pieceScale: CGFloat = cellSize > 0.0 ? cellSize * 0.55 : 16.0
-        return max(pieceScale * 5.0, 60.0)
-    }
-
-    func pieceView(index: Int) -> some View {
-        let piece = game.currentPieces[index]
-        let pieceScale: CGFloat = cellSize > 0.0 ? cellSize * 0.55 : 16.0
-        let isBeingDragged = isDragging && dragPieceIndex == index
-        let slotHeight = pieceSlotHeight
-
-        return ZStack {
-            if let piece = piece {
-                let w = piece.shape.width
-                let h = piece.shape.height
-                let pieceWidth = CGFloat(w) * pieceScale
-                let pieceHeight = CGFloat(h) * pieceScale
-
-                ZStack(alignment: .topLeading) {
-                    ForEach(0..<piece.shape.cells.count, id: \.self) { ci in
-                        let cell = piece.shape.cells[ci]
-                        RoundedRectangle(cornerRadius: 2)
-                            .fill(BlockColors.color(for: piece.shape.colorIndex))
-                            .frame(width: pieceScale - 2, height: pieceScale - 2)
-                            .offset(
-                                x: CGFloat(cell.col) * pieceScale + 1,
-                                y: CGFloat(cell.row) * pieceScale + 1
-                            )
-                    }
-                }
-                .frame(width: pieceWidth, height: pieceHeight, alignment: .topLeading)
-                .opacity(isBeingDragged ? 0.3 : 1.0)
-            }
-            // Invisible hit area that always maintains the fixed slot size
-            Color.white.opacity(0.001)
-        }
-        .frame(maxWidth: .infinity)
-        .frame(height: slotHeight)
-        .gesture(
-            DragGesture(coordinateSpace: .global)
-                .onChanged { value in
-                    if game.currentPieces[index] != nil {
-                        handleDragChanged(index: index, value: value)
-                    }
-                }
-                .onEnded { value in
-                    if game.currentPieces[index] != nil {
-                        handleDragEnded(index: index, value: value)
-                    }
-                }
-        )
-    }
-
-    // MARK: - Drag Handling
-
-    func handleDragChanged(index: Int, value: DragGesture.Value) {
-        let wasAlreadyDragging = isDragging
-        isDragging = true
-        dragPieceIndex = index
-        dragOffset = value.translation
-        dragLocation = value.location
-
-        if !wasAlreadyDragging {
-            HapticFeedback.play(.pick)
-        }
-
-        // Calculate which grid cell the drag is over
-        guard let piece = game.currentPieces[index] else { return }
-        let shape = piece.shape
-
-        // Offset the target point so the shape centers on the finger
-        // with a vertical offset so the piece appears above the finger
-        let fingerOffset: CGFloat = cellSize * 2.5
-        let targetX = dragLocation.x - boardOrigin.x - CGFloat(shape.width) * cellSize / 2.0
-        let targetY = dragLocation.y - boardOrigin.y - fingerOffset - CGFloat(shape.height) * cellSize / 2.0
-
-        let col = Int(round(targetX / cellSize))
-        let row = Int(round(targetY / cellSize))
-
-        // Fire snap haptic when moving to a new valid grid cell
-        if row != prevHighlightRow || col != prevHighlightCol {
-            let isValid = game.canPlace(shape: shape, atRow: row, col: col)
-            if isValid {
-                HapticFeedback.play(.snap)
-            }
-            prevHighlightRow = row
-            prevHighlightCol = col
-        }
-
-        highlightRow = row
-        highlightCol = col
-        highlightValid = game.canPlace(shape: shape, atRow: row, col: col)
-    }
-
-    func handleDragEnded(index: Int, value: DragGesture.Value) {
-        if highlightValid && highlightRow >= 0 && highlightCol >= 0 {
-            if let piece = game.currentPieces[index] {
-                game.placeShape(shape: piece.shape, atRow: highlightRow, col: highlightCol, pieceIndex: index)
-
-                if game.comboStreak > 2 {
-                    HapticFeedback.play(.combo(streak: game.comboStreak))
-                } else if game.lastLinesCleared > 1 {
-                    HapticFeedback.play(.bigCelebrate)
-                } else if game.lastLinesCleared > 0 {
-                    HapticFeedback.play(.celebrate)
-                } else {
-                    HapticFeedback.play(.place)
-                }
-
-                if game.lastLinesCleared > 0 {
-                    showCombo = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        showCombo = false
-                    }
-                }
-
-                if game.isGameOver {
-                    HapticFeedback.play(.error)
-                }
-            }
-        } else if isDragging {
-            HapticFeedback.play(.warning)
-        }
-
-        isDragging = false
-        dragPieceIndex = -1
-        dragOffset = CGSize.zero
-        highlightRow = -1
-        highlightCol = -1
-        highlightValid = false
-        prevHighlightRow = -1
-        prevHighlightCol = -1
-    }
-
-    // MARK: - Game Over Overlay
+    // MARK: - Game Over
 
     var gameOverOverlay: some View {
         ZStack {
-            Color.black.opacity(0.7)
+            Color.black.opacity(0.5)
                 .ignoresSafeArea()
 
-            VStack(spacing: 20) {
-                Text("Game Over")
+            VStack(spacing: 16) {
+                Text("GAME OVER")
                     .font(.largeTitle)
-                    .fontWeight(.heavy)
+                    .fontWeight(.black)
                     .foregroundStyle(Color.white)
 
-                VStack(spacing: 8) {
+                VStack(spacing: 4) {
                     Text("Score")
                         .font(.headline)
                         .foregroundStyle(Color.white.opacity(0.7))
                     Text("\(game.score)")
-                        .font(.system(size: 48))
+                        .font(.system(size: 44))
                         .fontWeight(.bold)
                         .foregroundStyle(Color.yellow)
+                        .monospaced()
+                }
+
+                VStack(spacing: 2) {
+                    Text("Best")
+                        .font(.caption)
+                        .foregroundStyle(Color.white.opacity(0.6))
+                    Text("\(game.highScore)")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color.white)
+                }
+
+                VStack(spacing: 2) {
+                    Text("Difficulty")
+                        .font(.caption)
+                        .foregroundStyle(Color.white.opacity(0.6))
+                    Text("\(game.difficulty)")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color.white)
                 }
 
                 if game.score >= game.highScore && game.score > 0 {
@@ -413,552 +614,318 @@ struct BlockBlastGameView: View {
                 }
 
                 Button(action: {
+                    game.difficulty = settings.difficulty
                     game.newGame()
+                    startTimer()
+                    playHaptic(.snap)
                 }) {
                     Text("Play Again")
-                        .font(.title3)
+                        .font(.headline)
+                        .foregroundStyle(.white)
                         .fontWeight(.bold)
-                        .foregroundStyle(Color.white)
-                        .padding(.horizontal, 40)
-                        .padding(.vertical, 14)
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.blue)
-                        )
+                        .frame(width: 160)
                 }
-                .padding(.top, 8)
+                .buttonStyle(.borderedProminent)
+                .tint(.blue)
+                .padding(.top, 4)
+
+                Button(action: { dismiss() }) {
+                    Text("Quit Game")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .fontWeight(.bold)
+                        .frame(width: 160)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.red)
+
+                ShareLink(
+                    item: "I scored \(game.score) in Flappy Bird (difficulty \(game.difficulty)) on Ship Showcase! Can you beat it?\nhttps://skip.dev/docs/samples/skipapp-showcase-fuse/",
+                    subject: Text("Flappy Bird Score"),
+                    message: Text("I scored \(game.score) in Flappy Bird!")
+                ) {
+                    Label("Share", systemImage: "square.and.arrow.up")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.white.opacity(0.7))
+                }
             }
-            .padding(32)
+            .padding(28)
             .background(
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(red: 0.15, green: 0.16, blue: 0.3))
+                    .fill(Color(red: 0.1, green: 0.1, blue: 0.2))
             )
         }
     }
 
-    // MARK: - Combo Popup
-
-    var comboPopup: some View {
-        VStack(spacing: 4) {
-            if game.lastLinesCleared > 1 {
-                Text("\(game.lastLinesCleared)x Lines!")
-                    .font(.title)
-                    .fontWeight(.heavy)
-                    .foregroundStyle(Color.yellow)
-            }
-            if game.comboStreak > 1 {
-                Text("Combo x\(game.comboStreak)!")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundStyle(Color.orange)
-            } else if game.lastLinesCleared == 1 {
-                Text("Line Clear!")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundStyle(Color.cyan)
-            }
-        }
-        .padding(.horizontal, 24)
-        .padding(.vertical, 12)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.black.opacity(0.7))
-        )
-        .allowsHitTesting(false)
-        .transition(.opacity)
-    }
-}
-
-// MARK: - Color Palette
-
-/// Block colors used throughout the game
-private struct BlockColors {
-    static func color(for index: Int) -> Color {
-        switch index {
-        case 0: return Color.red
-        case 1: return Color.blue
-        case 2: return Color.green
-        case 3: return Color.orange
-        case 4: return Color.purple
-        case 5: return Color.yellow
-        case 6: return Color.pink
-        default: return Color.gray
-        }
-    }
-
-    static func darkColor(for index: Int) -> Color {
-        switch index {
-        case 0: return Color(red: 0.7, green: 0.1, blue: 0.1)
-        case 1: return Color(red: 0.1, green: 0.2, blue: 0.7)
-        case 2: return Color(red: 0.1, green: 0.5, blue: 0.1)
-        case 3: return Color(red: 0.8, green: 0.4, blue: 0.0)
-        case 4: return Color(red: 0.5, green: 0.1, blue: 0.5)
-        case 5: return Color(red: 0.7, green: 0.6, blue: 0.0)
-        case 6: return Color(red: 0.8, green: 0.3, blue: 0.5)
-        default: return Color.gray
-        }
-    }
-}
-
-// MARK: - Block Shape Definitions
-
-/// Represents a single cell offset within a block shape
-struct CellOffset: Hashable, Sendable {
-    let row: Int
-    let col: Int
-}
-
-/// All available block shapes in the game (no rotation)
-final class BlockShape: Identifiable, Hashable, Sendable {
-    let id: String
-    let cells: [CellOffset]
-    let colorIndex: Int
-
-    init(id: String, cells: [CellOffset], colorIndex: Int) {
-        self.id = id
-        self.cells = cells
-        self.colorIndex = colorIndex
-    }
-
-    static func == (lhs: BlockShape, rhs: BlockShape) -> Bool {
-        lhs.id == rhs.id
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-
-    var width: Int {
-        var maxCol = 0
-        for c in cells {
-            if c.col > maxCol { maxCol = c.col }
-        }
-        return maxCol + 1
-    }
-
-    var height: Int {
-        var maxRow = 0
-        for c in cells {
-            if c.row > maxRow { maxRow = c.row }
-        }
-        return maxRow + 1
-    }
-}
-
-/// All the shapes available in the game
-struct ShapeLibrary {
-    static let allShapes: [BlockShape] = [
-        // Single dot
-        BlockShape(id: "dot", cells: [CellOffset(row: 0, col: 0)], colorIndex: 0),
-
-        // 1x2 horizontal
-        BlockShape(id: "h2", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1)
-        ], colorIndex: 1),
-
-        // 1x3 horizontal
-        BlockShape(id: "h3", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1), CellOffset(row: 0, col: 2)
-        ], colorIndex: 2),
-
-        // 1x4 horizontal
-        BlockShape(id: "h4", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1),
-            CellOffset(row: 0, col: 2), CellOffset(row: 0, col: 3)
-        ], colorIndex: 3),
-
-        // 1x5 horizontal
-        BlockShape(id: "h5", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1),
-            CellOffset(row: 0, col: 2), CellOffset(row: 0, col: 3),
-            CellOffset(row: 0, col: 4)
-        ], colorIndex: 4),
-
-        // 2x1 vertical
-        BlockShape(id: "v2", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 1, col: 0)
-        ], colorIndex: 1),
-
-        // 3x1 vertical
-        BlockShape(id: "v3", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 1, col: 0), CellOffset(row: 2, col: 0)
-        ], colorIndex: 2),
-
-        // 4x1 vertical
-        BlockShape(id: "v4", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 1, col: 0),
-            CellOffset(row: 2, col: 0), CellOffset(row: 3, col: 0)
-        ], colorIndex: 3),
-
-        // 5x1 vertical
-        BlockShape(id: "v5", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 1, col: 0),
-            CellOffset(row: 2, col: 0), CellOffset(row: 3, col: 0),
-            CellOffset(row: 4, col: 0)
-        ], colorIndex: 4),
-
-        // 2x2 square
-        BlockShape(id: "sq2", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1)
-        ], colorIndex: 5),
-
-        // 3x3 square
-        BlockShape(id: "sq3", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1), CellOffset(row: 0, col: 2),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1), CellOffset(row: 1, col: 2),
-            CellOffset(row: 2, col: 0), CellOffset(row: 2, col: 1), CellOffset(row: 2, col: 2)
-        ], colorIndex: 6),
-
-        // L-shape (bottom-left)
-        BlockShape(id: "L_bl", cells: [
-            CellOffset(row: 0, col: 0),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1)
-        ], colorIndex: 0),
-
-        // L-shape (bottom-right)
-        BlockShape(id: "L_br", cells: [
-            CellOffset(row: 0, col: 1),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1)
-        ], colorIndex: 1),
-
-        // L-shape (top-left)
-        BlockShape(id: "L_tl", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1),
-            CellOffset(row: 1, col: 0)
-        ], colorIndex: 2),
-
-        // L-shape (top-right)
-        BlockShape(id: "L_tr", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1),
-            CellOffset(row: 1, col: 1)
-        ], colorIndex: 3),
-
-        // Big L (bottom-left)
-        BlockShape(id: "bigL_bl", cells: [
-            CellOffset(row: 0, col: 0),
-            CellOffset(row: 1, col: 0),
-            CellOffset(row: 2, col: 0), CellOffset(row: 2, col: 1), CellOffset(row: 2, col: 2)
-        ], colorIndex: 4),
-
-        // Big L (bottom-right)
-        BlockShape(id: "bigL_br", cells: [
-            CellOffset(row: 0, col: 2),
-            CellOffset(row: 1, col: 2),
-            CellOffset(row: 2, col: 0), CellOffset(row: 2, col: 1), CellOffset(row: 2, col: 2)
-        ], colorIndex: 5),
-
-        // Big L (top-left)
-        BlockShape(id: "bigL_tl", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1), CellOffset(row: 0, col: 2),
-            CellOffset(row: 1, col: 0),
-            CellOffset(row: 2, col: 0)
-        ], colorIndex: 6),
-
-        // Big L (top-right)
-        BlockShape(id: "bigL_tr", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1), CellOffset(row: 0, col: 2),
-            CellOffset(row: 1, col: 2),
-            CellOffset(row: 2, col: 2)
-        ], colorIndex: 0),
-
-        // T-shape (pointing up)
-        BlockShape(id: "T_up", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1), CellOffset(row: 0, col: 2),
-            CellOffset(row: 1, col: 1)
-        ], colorIndex: 1),
-
-        // T-shape (pointing down)
-        BlockShape(id: "T_dn", cells: [
-            CellOffset(row: 0, col: 1),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1), CellOffset(row: 1, col: 2)
-        ], colorIndex: 2),
-
-        // T-shape (pointing left)
-        BlockShape(id: "T_lt", cells: [
-            CellOffset(row: 0, col: 0),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1),
-            CellOffset(row: 2, col: 0)
-        ], colorIndex: 3),
-
-        // T-shape (pointing right)
-        BlockShape(id: "T_rt", cells: [
-            CellOffset(row: 0, col: 1),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1),
-            CellOffset(row: 2, col: 1)
-        ], colorIndex: 4),
-
-        // S-shape horizontal
-        BlockShape(id: "S_h", cells: [
-            CellOffset(row: 0, col: 1), CellOffset(row: 0, col: 2),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1)
-        ], colorIndex: 5),
-
-        // Z-shape horizontal
-        BlockShape(id: "Z_h", cells: [
-            CellOffset(row: 0, col: 0), CellOffset(row: 0, col: 1),
-            CellOffset(row: 1, col: 1), CellOffset(row: 1, col: 2)
-        ], colorIndex: 6),
-
-        // S-shape vertical
-        BlockShape(id: "S_v", cells: [
-            CellOffset(row: 0, col: 0),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1),
-            CellOffset(row: 2, col: 1)
-        ], colorIndex: 5),
-
-        // Z-shape vertical
-        BlockShape(id: "Z_v", cells: [
-            CellOffset(row: 0, col: 1),
-            CellOffset(row: 1, col: 0), CellOffset(row: 1, col: 1),
-            CellOffset(row: 2, col: 0)
-        ], colorIndex: 6),
-    ]
-
-    static func randomShape() -> BlockShape {
-        let index = Int.random(in: 0..<allShapes.count)
-        return allShapes[index]
-    }
-
-    static func randomSet() -> [BlockShape] {
-        return [randomShape(), randomShape(), randomShape()]
-    }
-}
-
-// MARK: - Game Model
-
-/// A piece the player can place, with a unique identity for tracking
-final class GamePiece: Identifiable, Hashable {
-    let id: String
-    let shape: BlockShape
-
-    init(shape: BlockShape) {
-        self.id = UUID().uuidString
-        self.shape = shape
-    }
-
-    static func == (lhs: GamePiece, rhs: GamePiece) -> Bool {
-        lhs.id == rhs.id
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
-/// The main game model
-@Observable final class GameModel {
-    static let gridSize = 8
-
-    /// The 8x8 grid. Each cell is -1 if empty, or a colorIndex (0-6) if filled.
-    var grid: [[Int]] = Array(repeating: Array(repeating: -1, count: 8), count: 8)
-
-    /// The current set of three pieces available to place
-    var currentPieces: [GamePiece?] = [nil, nil, nil]
-
-    /// Current score
-    var score: Int = 0
-
-    /// High score
-    var highScore: Int = 0
-
-    /// Whether the game is over
-    var isGameOver: Bool = false
-
-    /// Number of lines cleared in last move (for combo display)
-    var lastLinesCleared: Int = 0
-
-    /// Combo streak counter
-    var comboStreak: Int = 0
-
-    /// Set of cells to animate as clearing
-    var clearingCells: Set<Int> = []
-
-    init() {
-        loadHighScore()
-        spawnNewPieces()
-    }
-
-    // MARK: - Core Game Logic
-
-    func newGame() {
-        grid = Array(repeating: Array(repeating: -1, count: 8), count: 8)
-        score = 0
-        isGameOver = false
-        lastLinesCleared = 0
-        comboStreak = 0
-        clearingCells = []
-        spawnNewPieces()
-    }
-
-    func spawnNewPieces() {
-        let shapes = ShapeLibrary.randomSet()
-        currentPieces = [
-            GamePiece(shape: shapes[0]),
-            GamePiece(shape: shapes[1]),
-            GamePiece(shape: shapes[2])
-        ]
-    }
-
-    /// Check if a shape can be placed at the given grid position
-    func canPlace(shape: BlockShape, atRow row: Int, col: Int) -> Bool {
-        for cell in shape.cells {
-            let r = row + cell.row
-            let c = col + cell.col
-            if r < 0 || r >= GameModel.gridSize || c < 0 || c >= GameModel.gridSize {
-                return false
-            }
-            if grid[r][c] != -1 {
-                return false
-            }
-        }
-        return true
-    }
-
-    /// Place a shape on the grid and handle scoring/clearing
-    func placeShape(shape: BlockShape, atRow row: Int, col: Int, pieceIndex: Int) {
-        // Place the cells
-        for cell in shape.cells {
-            let r = row + cell.row
-            let c = col + cell.col
-            grid[r][c] = shape.colorIndex
-        }
-
-        // Add points for placing (1 point per cell)
-        score += shape.cells.count
-
-        // Remove the placed piece
-        currentPieces[pieceIndex] = nil
-
-        // Check and clear completed lines
-        let linesCleared = clearCompletedLines()
-        lastLinesCleared = linesCleared
-
-        if linesCleared > 0 {
-            comboStreak += 1
-            // Scoring: 10 points per line, bonus for combos and multi-line clears
-            let linePoints = linesCleared * 10
-            let comboBonus = comboStreak > 1 ? comboStreak * 5 : 0
-            let multiLineBonus = linesCleared > 1 ? linesCleared * 5 : 0
-            score += linePoints + comboBonus + multiLineBonus
-        } else {
-            comboStreak = 0
-        }
-
-        // Check if all three pieces are placed
-        let allPlaced = currentPieces[0] == nil && currentPieces[1] == nil && currentPieces[2] == nil
-        if allPlaced {
-            spawnNewPieces()
-        }
-
-        // Check for game over
-        if checkGameOver() {
-            isGameOver = true
-            if score > highScore {
-                highScore = score
-                saveHighScore()
-            }
-        }
-    }
-
-    /// Clear any completed rows and columns, returns count cleared
-    func clearCompletedLines() -> Int {
-        var rowsToClear: [Int] = []
-        var colsToClear: [Int] = []
-
-        // Check rows
-        for r in 0..<GameModel.gridSize {
-            var full = true
-            for c in 0..<GameModel.gridSize {
-                if grid[r][c] == -1 {
-                    full = false
-                    break
+    // MARK: - Pause Menu
+
+    var pauseMenuOverlay: some View {
+        ZStack {
+            Color.black.opacity(0.7)
+                .ignoresSafeArea()
+
+            VStack(spacing: 16) {
+                Text("PAUSED")
+                    .font(.largeTitle)
+                    .fontWeight(.black)
+                    .foregroundStyle(Color.white)
+
+                Button(action: { resumeGame() }) {
+                    Text("Resume")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color.white)
+                        .frame(width: 180, height: 48)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(red: 0.2, green: 0.6, blue: 0.3))
+                        )
                 }
-            }
-            if full {
-                rowsToClear.append(r)
-            }
-        }
+                .buttonStyle(.plain)
 
-        // Check columns
-        for c in 0..<GameModel.gridSize {
-            var full = true
-            for r in 0..<GameModel.gridSize {
-                if grid[r][c] == -1 {
-                    full = false
-                    break
+                Button(action: { showSettings = true }) {
+                    Text("Settings")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color.white)
+                        .frame(width: 180, height: 48)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(red: 0.3, green: 0.4, blue: 0.6))
+                        )
                 }
-            }
-            if full {
-                colsToClear.append(c)
-            }
-        }
+                .buttonStyle(.plain)
 
-        // Build set of cells to clear for animation
-        var cellsToClear = Set<Int>()
-        for r in rowsToClear {
-            for c in 0..<GameModel.gridSize {
-                cellsToClear.insert(r * GameModel.gridSize + c)
+                Button(action: { dismiss() }) {
+                    Text("Quit Game")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color.white)
+                        .frame(width: 180, height: 48)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(red: 0.8, green: 0.2, blue: 0.2))
+                        )
+                }
+                .buttonStyle(.plain)
             }
+            .padding(28)
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color(red: 0.1, green: 0.1, blue: 0.2))
+            )
         }
-        for c in colsToClear {
-            for r in 0..<GameModel.gridSize {
-                cellsToClear.insert(r * GameModel.gridSize + c)
-            }
-        }
-        clearingCells = cellsToClear
-
-        // Clear the rows
-        for r in rowsToClear {
-            for c in 0..<GameModel.gridSize {
-                grid[r][c] = -1
-            }
-        }
-
-        // Clear the columns
-        for c in colsToClear {
-            for r in 0..<GameModel.gridSize {
-                grid[r][c] = -1
-            }
-        }
-
-        return rowsToClear.count + colsToClear.count
     }
 
-    /// Check if any remaining piece can be placed anywhere
-    func checkGameOver() -> Bool {
-        for piece in currentPieces {
-            guard let piece = piece else { continue }
-            for r in 0..<GameModel.gridSize {
-                for c in 0..<GameModel.gridSize {
-                    if canPlace(shape: piece.shape, atRow: r, col: c) {
-                        return false
+    func pauseGame() {
+        guard !showPauseMenu else { return }
+        stopTimer()
+        showPauseMenu = true
+    }
+
+    func resumeGame() {
+        showPauseMenu = false
+        startTimer()
+    }
+
+    // MARK: - Timer
+
+    func startTimer() {
+        stopTimer()
+        lastTick = currentTime()
+        tickTimer = Timer.scheduledTimer(withTimeInterval: 1.0 / 60.0, repeats: true) { _ in
+            tick()
+        }
+    }
+
+    func stopTimer() {
+        tickTimer?.invalidate()
+        tickTimer = nil
+    }
+
+    func tick() {
+        let now = currentTime()
+        var dt = now - lastTick
+        lastTick = now
+
+        // Clamp to avoid huge jumps after backgrounding
+        if dt > 0.1 { dt = 0.016 }
+
+        game.update(dt: dt)
+
+        if game.isGameOver {
+            playHaptic(.impact)
+            stopTimer()
+        }
+    }
+
+    func currentTime() -> Double {
+        return Date().timeIntervalSince1970
+    }
+}
+
+// MARK: - Preview Icon
+
+public struct FlappyBirdPreviewIcon: View {
+    public init() { }
+
+    public var body: some View {
+        ZStack {
+            // Sky
+            LinearGradient(
+                colors: [
+                    Color(red: 0.30, green: 0.75, blue: 0.93),
+                    Color(red: 0.55, green: 0.85, blue: 0.95)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+
+            // Mini pipes
+            HStack(spacing: 20) {
+                miniPipe(gapOffset: -10.0)
+                miniPipe(gapOffset: 8.0)
+            }
+
+            // Mini bird — egg-shaped yellow body, wing, white eye, orange beak
+            ZStack {
+                // Outline
+                Ellipse()
+                    .fill(Color(red: 0.20, green: 0.15, blue: 0.05))
+                    .frame(width: 18, height: 16)
+                // Body
+                Ellipse()
+                    .fill(Color(red: 0.98, green: 0.82, blue: 0.15))
+                    .frame(width: 16, height: 14)
+                // Wing
+                Ellipse()
+                    .fill(Color(red: 0.90, green: 0.72, blue: 0.12))
+                    .frame(width: 6, height: 4)
+                    .offset(x: -4, y: 1)
+                // Eye
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: 5, height: 5)
+                    .offset(x: 4, y: -2)
+                Circle()
+                    .fill(Color.black)
+                    .frame(width: 2.5, height: 2.5)
+                    .offset(x: 5, y: -1.5)
+                // Beak
+                Ellipse()
+                    .fill(Color(red: 0.96, green: 0.58, blue: 0.12))
+                    .frame(width: 6, height: 3)
+                    .offset(x: 9, y: 1)
+            }
+            .offset(x: -8, y: -4)
+
+            // Ground
+            VStack {
+                Spacer()
+                Rectangle()
+                    .fill(Color(red: 0.55, green: 0.78, blue: 0.22))
+                    .frame(height: 3)
+                Rectangle()
+                    .fill(Color(red: 0.84, green: 0.72, blue: 0.48))
+                    .frame(height: 16)
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+
+    func miniPipe(gapOffset: Double) -> some View {
+        VStack(spacing: 28) {
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color(red: 0.32, green: 0.68, blue: 0.22))
+                .frame(width: 14, height: 30)
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color(red: 0.32, green: 0.68, blue: 0.22))
+                .frame(width: 14, height: 30)
+        }
+        .offset(y: gapOffset)
+    }
+}
+
+// MARK: - Settings
+
+struct FlappyBirdSettingsView: View {
+    @Bindable var settings: FlappyBirdSettings
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section("Flappy Bird") {
+                    Toggle("Vibrations", isOn: $settings.vibrations)
+                }
+                Section("Difficulty") {
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Text("Level")
+                            Spacer()
+                            Text("\(settings.difficulty)")
+                                .foregroundStyle(Color.secondary)
+                                .monospaced()
+                        }
+                        Slider(
+                            value: Binding(
+                                get: { Double(settings.difficulty) },
+                                set: { settings.difficulty = Int($0.rounded()) }
+                            ),
+                            in: 1.0...10.0,
+                            step: 1.0
+                        )
+                        HStack {
+                            Text("Easy")
+                                .font(.caption2)
+                                .foregroundStyle(Color.secondary)
+                            Spacer()
+                            Text("Hard")
+                                .font(.caption2)
+                                .foregroundStyle(Color.secondary)
+                        }
+                    }
+                }
+                .textCase(nil)
+                Section("Data") {
+                    Button(role: .destructive, action: {
+                        resetFlappyBirdHighScore()
+                    }) {
+                        Text("Reset High Score")
                     }
                 }
             }
-        }
-        return true
-    }
-
-    /// Check if a specific piece can be placed anywhere on the board
-    func canPieceFit(piece: GamePiece) -> Bool {
-        for r in 0..<GameModel.gridSize {
-            for c in 0..<GameModel.gridSize {
-                if canPlace(shape: piece.shape, atRow: r, col: c) {
-                    return true
+            .navigationTitle("Settings")
+            #if !os(macOS)
+            .navigationBarTitleDisplayMode(.inline)
+            #endif
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") { dismiss() }
                 }
             }
         }
-        return false
+    }
+}
+
+@Observable
+public class FlappyBirdSettings {
+    public var vibrations: Bool = defaults.value(forKey: "flappyBirdVibrations", default: true) {
+        didSet { defaults.set(vibrations, forKey: "flappyBirdVibrations") }
     }
 
-    // MARK: - Persistence
-
-    private func saveHighScore() {
-        UserDefaults.standard.set(highScore, forKey: "blockblast_highscore")
+    public var difficulty: Int = defaults.value(forKey: "flappyBirdDifficulty", default: 5) {
+        didSet { defaults.set(difficulty, forKey: "flappyBirdDifficulty") }
     }
 
-    private func loadHighScore() {
-        highScore = UserDefaults.standard.integer(forKey: "blockblast_highscore")
+    public init() {
+    }
+}
+
+nonisolated(unsafe) private let defaults = UserDefaults.standard
+
+private extension UserDefaults {
+    func value<T>(forKey key: String, default defaultValue: T) -> T {
+        UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
     }
 }
