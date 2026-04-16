@@ -61,12 +61,12 @@ struct BackgroundPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background {
+                        .background(
                             HStack {
                                 Circle().fill(.red.opacity(0.2))
                                 Circle().fill(.green.opacity(0.2))
                             }
-                        }
+                        )
                         .border(.blue)
                 }
                 HStack {

@@ -6,11 +6,11 @@ struct OverlayPlayground: View {
         ScrollView {
             VStack(spacing: 16) {
                 HStack {
-                    Text(".red.opacity(0.5)")
+                    Text("Color.red.opacity(0.5)")
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .overlay(.red.opacity(0.5))
+                        .overlay(Color.red.opacity(0.5))
                 }
                 HStack {
                     Text("in: Capsule()")
@@ -64,11 +64,11 @@ struct OverlayPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .overlay {
+                        .overlay(
                             Circle()
                                 .fill(.red.opacity(0.5))
                                 .frame(width: 20, height: 20)
-                        }
+                        )
                         .border(.blue)
                 }
                 HStack {

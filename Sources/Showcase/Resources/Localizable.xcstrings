@@ -317,9 +317,6 @@
     ".red.gradient" : {
 
     },
-    ".red.opacity(0.5)" : {
-
-    },
     ".repeatForever()" : {
 
     },
@@ -1078,6 +1075,9 @@
 
     },
     "Color + Offset" : {
+
+    },
+    "Color.red.opacity(0.5)" : {
 
     },
     "ColorScheme" : {
