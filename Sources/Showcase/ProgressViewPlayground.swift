@@ -1,5 +1,9 @@
 // Copyright 2023–2025 Skip
 import SwiftUI
+#if SKIP
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.unit.dp
+#endif
 
 struct ProgressViewPlayground: View {
     var body: some View {
@@ -74,6 +78,54 @@ struct ProgressViewPlayground: View {
                     Text("2/3")
                     Divider()
                 }
+
+                #if SKIP
+                Text("Wavy (Material 3 expressive)")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack {
+                    Text("Indeterminate")
+                    Spacer()
+                    ProgressView()
+                        .material3WavyProgress()
+                        .composeModifier { $0.size(40.dp) }
+                }
+                HStack {
+                    Text("Indeterminate linear")
+                    Spacer()
+                    ProgressView()
+                        .progressViewStyle(.linear)
+                        .material3WavyProgress()
+                }
+                HStack {
+                    Text("Progress 0.5")
+                    Spacer()
+                    ProgressView(value: 0.5)
+                        .material3WavyProgress()
+                }
+                HStack {
+                    Text("Progress 0.5 circular")
+                    Spacer()
+                    ProgressView(value: 0.5)
+                        .progressViewStyle(.circular)
+                        .material3WavyProgress()
+                        .composeModifier { $0.size(40.dp) }
+                }
+                HStack {
+                    Text("Custom amplitude / wavelength")
+                    Spacer()
+                    ProgressView()
+                        .progressViewStyle(.linear)
+                        .material3WavyProgress(amplitude: 0.6, wavelength: 24)
+                }
+                HStack {
+                    Text(".tint(.red)")
+                    Spacer()
+                    ProgressView(value: 0.4)
+                        .tint(.red)
+                        .material3WavyProgress()
+                }
+                #endif
             }
             .padding()
         }
