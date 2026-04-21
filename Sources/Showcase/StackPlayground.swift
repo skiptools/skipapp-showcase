@@ -65,6 +65,38 @@ struct StackPlayground: View {
                     Text("Text2 TA")
                 }
                 .border(Color.blue)
+                Text("HStack firstTextBaseline (mixed sizes):").bold()
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text("Big")
+                        .font(.title)
+                    Text("Small")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(8)
+                .border(Color.blue)
+                Text("HStack firstTextBaseline (multi-line + single line):").bold()
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text("Line one\nLine two\nLine three")
+                        .font(.body)
+                        .multilineTextAlignment(.leading)
+                    Text("Note")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(8)
+                .border(Color.blue)
+                Text("HStack lastTextBaseline (multi-line + single line):").bold()
+                HStack(alignment: .lastTextBaseline, spacing: 8) {
+                    Text("Line one\nLine two\nLine three")
+                        .font(.body)
+                        .multilineTextAlignment(.leading)
+                    Text("Note")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(8)
+                .border(Color.blue)
                 Text("Text:").bold()
                 HStack {
                     Text("Long text that should receive the extra space from the short text when the width is divided")
