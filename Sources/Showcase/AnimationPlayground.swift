@@ -169,6 +169,41 @@ struct AnimationPlayground: View {
                 }
                 .buttonStyle(.bordered)
                 HStack {
+                    Text(".padding")
+                    Spacer()
+                    ZStack(alignment: .topLeading) {
+                        Color.red
+                            .frame(width: 44, height: 44)
+                            .padding(isOn ? 22.0 : 6.0)
+                            .background(Color.orange)
+                    }
+                    .frame(width: 100, height: 100, alignment: .topLeading)
+                    .background(.gray)
+                    .onTapGesture {
+                        isOn = !isOn
+                    }
+                }
+                HStack {
+                    Text(".padding.animation")
+                    Spacer()
+                    ZStack(alignment: .topLeading) {
+                        Color.red
+                            .frame(width: 44, height: 44)
+                            .padding(isOn ? 22.0 : 6.0)
+                            .background(Color.orange)
+                            .animation(.default, value: isOn)
+                    }
+                    .frame(width: 100, height: 100, alignment: .topLeading)
+                    .background(.gray)
+                    .onTapGesture {
+                        isOn = !isOn
+                    }
+                }
+                Button("withAnimation") {
+                    withAnimation { isOn = !isOn }
+                }
+                .buttonStyle(.bordered)
+                HStack {
                     Text(".rotationEffect")
                     Spacer()
                     Color.red
