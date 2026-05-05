@@ -142,28 +142,47 @@ struct SafeAreaPadded: View {
     @State var navBarVisibility = Visibility.visible
     @State var tabBarVisibility = Visibility.visible
     @State var bottomBarVisibility = Visibility.visible
-    
+    @AppStorage("statusBarHidden") var statusBarHidden = false
+
+    @State private var animatedSafeAreaInsets: EdgeInsets? = nil
+
     var body: some View {
         GeometryReader { proxy in
-            let _ = print("safeAreaInsets: \(proxy.safeAreaInsets)")
+            let _ = logger.debug("SafeAreaPadded proxy.safeAreaInsets=\(String(describing: proxy.safeAreaInsets)) animatedSafeAreaInsets=\(String(describing: animatedSafeAreaInsets))")
             ScrollView(.vertical) {
                 VStack {
+                    Toggle("Status bar hidden", isOn: $statusBarHidden)
                     SafeAreaVisibilityControl(name: "Navigation", visibility: $navBarVisibility)
                     SafeAreaVisibilityControl(name: "Tab", visibility: $tabBarVisibility)
                     SafeAreaVisibilityControl(name: "Bottom", visibility: $bottomBarVisibility)
                     ForEach(0..<40) { index in
                         Text("Row: \(index)")
                     }
+                    Toggle("Status bar hidden", isOn: $statusBarHidden)
                     SafeAreaVisibilityControl(name: "Navigation", visibility: $navBarVisibility)
                     SafeAreaVisibilityControl(name: "Tab", visibility: $tabBarVisibility)
                     SafeAreaVisibilityControl(name: "Bottom", visibility: $bottomBarVisibility)
                 }
                 .frame(maxWidth: .infinity)
                 .border(.blue)
-                .padding(proxy.safeAreaInsets)
+                .padding(animatedSafeAreaInsets ?? proxy.safeAreaInsets)
             }
             .border(.red)
             .ignoresSafeArea()
+            #if !SKIP
+            .onChange(of: proxy.safeAreaInsets) { oldValue, newValue in
+                // In SwiftUI, safe area insets are updated without animation when the bars change, so we need to animate the padding
+                if animatedSafeAreaInsets == nil {
+                    animatedSafeAreaInsets = newValue
+                } else if oldValue == newValue {
+                    animatedSafeAreaInsets = newValue
+                } else {
+                    withAnimation(.default) {
+                        animatedSafeAreaInsets = newValue
+                    }
+                }
+            }
+            #endif
         }
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
@@ -173,6 +192,9 @@ struct SafeAreaPadded: View {
         .toolbar(navBarVisibility, for: .navigationBar)
         .toolbar(tabBarVisibility, for: .tabBar)
         .toolbar(bottomBarVisibility, for: .bottomBar)
+        .animation(.default, value: navBarVisibility)
+        .animation(.default, value: tabBarVisibility)
+        .animation(.default, value: bottomBarVisibility)
     }
 }
 
@@ -221,10 +243,12 @@ struct SafeAreaVisibilityControl: View {
     var body: some View {
         if visibility == .hidden {
             Button("Show \(name) Bar") {
+                logger.debug("SafeAreaVisibilityControl show \(name) Bar")
                 visibility = .visible
             }
         } else {
             Button("Hide \(name) Bar") {
+                logger.debug("SafeAreaVisibilityControl hide \(name) Bar")
                 visibility = .hidden
             }
         }
