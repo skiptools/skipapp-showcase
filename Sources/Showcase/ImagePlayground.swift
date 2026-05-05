@@ -71,6 +71,15 @@ struct ImagePlayground: View {
                         .border(.blue)
                     Spacer()
                 }
+                
+                Text("UIImage Prepared Thumbnail").font(.title).bold()
+                let thumbnail = UIImage(data: try! Data(contentsOf: localImageResourceURL!))!.preparingThumbnail(of: .init(width: 25.0, height: 25.0))!
+                Text("Size: \(thumbnail.size.width)x\(thumbnail.size.height)").font(.footnote)
+                HStack {
+                    Spacer()
+                    Image(uiImage: thumbnail)
+                    Spacer()
+                }
                 #endif
 
                 Text("Symbol Image Weights").font(.title).bold()
