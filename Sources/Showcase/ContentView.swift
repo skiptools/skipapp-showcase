@@ -8,6 +8,7 @@ enum ContentTab: String, Hashable {
 struct ContentView: View {
     @AppStorage("tab") var tab = ContentTab.about
     @AppStorage("appearance") var appearance = ""
+    @AppStorage("statusBarHidden") var statusBarHidden = false
 
     var body: some View {
         TabView(selection: $tab) {
@@ -32,6 +33,7 @@ struct ContentView: View {
                 }
         }
         .preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
+        .statusBarHidden(statusBarHidden)
     }
 }
 
