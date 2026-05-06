@@ -32,8 +32,17 @@ struct ContentView: View {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
         }
+        .tabViewStyle(tabViewStyle)
         .preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
         .statusBarHidden(statusBarHidden)
+    }
+
+    var tabViewStyle: some TabViewStyle {
+        if #available(iOS 18.0, *) {
+            return .sidebarAdaptable
+        } else {
+            return .automatic
+        }
     }
 }
 
