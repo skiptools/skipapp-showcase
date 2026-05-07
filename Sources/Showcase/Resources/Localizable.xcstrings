@@ -266,6 +266,12 @@
     ".opacity.animation\n(different value)" : {
 
     },
+    ".padding" : {
+
+    },
+    ".padding.animation" : {
+
+    },
     ".padding()" : {
 
     },
@@ -940,6 +946,9 @@
 
     },
     "Best" : {
+
+    },
+    "Big" : {
 
     },
     "Bill of Materials" : {
@@ -1738,6 +1747,9 @@
     "Hide %@ Bar" : {
 
     },
+    "Hide status bar" : {
+
+    },
     "Hide the following element from accessibility:" : {
 
     },
@@ -1748,6 +1760,15 @@
 
     },
     "host: %@" : {
+
+    },
+    "HStack firstTextBaseline (mixed sizes):" : {
+
+    },
+    "HStack firstTextBaseline (multi-line + single line):" : {
+
+    },
+    "HStack lastTextBaseline (multi-line + single line):" : {
 
     },
     "HStack maxWidth: .infinity" : {
@@ -1987,6 +2008,9 @@
     "Light" : {
 
     },
+    "Line one\nLine two\nLine three" : {
+
+    },
     "LinearGradient" : {
 
     },
@@ -2206,6 +2230,9 @@
 
     },
     "Not supported on macOS" : {
+
+    },
+    "Note" : {
 
     },
     "Note: colors should not affect Divider appearance" : {
@@ -3162,6 +3189,16 @@
     "Size Tracking" : {
 
     },
+    "Size: %lfx%lf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Size: %1$lfx%2$lf"
+          }
+        }
+      }
+    },
     "Size: %lld x %lld" : {
       "localizations" : {
         "en" : {
@@ -3199,6 +3236,9 @@
 
     },
     "Slow spring" : {
+
+    },
+    "Small" : {
 
     },
     "Small circle" : {
@@ -3602,6 +3642,9 @@
 
     },
     "Two Buttons" : {
+
+    },
+    "UIImage Prepared Thumbnail" : {
 
     },
     "UIPasteboard is not available on macOS" : {
