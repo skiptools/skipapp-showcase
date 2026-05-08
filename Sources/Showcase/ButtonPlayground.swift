@@ -30,6 +30,28 @@ struct ButtonPlayground: View {
                     tapCount += 1
                 }
                 .buttonStyle(.plain)
+                #if SKIP
+                Button(".m3Text: \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.m3Text)
+                Button {
+                    tapCount += 1
+                } label: {
+                    Label(".m3Text", systemImage: "bell.fill")
+                }
+                .buttonStyle(.m3Text)
+                Button(".m3Text, .destructive: \(tapCount)", role: .destructive) {
+                    tapCount += 1
+                }
+                .buttonStyle(.m3Text)
+                Button(role: .destructive) {
+                    tapCount += 1
+                } label: {
+                    Label(".m3Text, .destructive", systemImage: "bell.fill")
+                }
+                .buttonStyle(.m3Text)
+                #endif
                 Button(".bordered: \(tapCount)") {
                     tapCount += 1
                 }
@@ -69,6 +91,20 @@ struct ButtonPlayground: View {
                 }
                 .buttonStyle(.plain)
                 .disabled(true)
+                #if SKIP
+                Button(".m3Text, .disabled(true): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.m3Text)
+                .disabled(true)
+                Button {
+                    tapCount += 1
+                } label: {
+                    Label(".m3Text, .disabled(true)", systemImage: "bell.fill")
+                }
+                .buttonStyle(.m3Text)
+                .disabled(true)
+                #endif
                 Button(".bordered, .disabled(true): \(tapCount)") {
                     tapCount += 1
                 }
@@ -103,6 +139,20 @@ struct ButtonPlayground: View {
                     Label(".foregroundStyle(.red)", systemImage: "bell.fill")
                 }
                 .foregroundStyle(.red)
+                #if SKIP
+                Button(".m3Text, .foregroundStyle(.red): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.m3Text)
+                .foregroundStyle(.red)
+                Button {
+                    tapCount += 1
+                } label: {
+                    Label(".m3Text, .foregroundStyle(.red)", systemImage: "bell.fill")
+                }
+                .buttonStyle(.m3Text)
+                .foregroundStyle(.red)
+                #endif
                 Button(".foregroundStyle(.red), .disabled(true): \(tapCount)") {
                     tapCount += 1
                 }
@@ -125,6 +175,20 @@ struct ButtonPlayground: View {
                     Label(".tint(.red)", systemImage: "bell.fill")
                 }
                 .tint(.red)
+                #if SKIP
+                Button(".m3Text, .tint(.red): \(tapCount)") {
+                    tapCount += 1
+                }
+                .buttonStyle(.m3Text)
+                .tint(.red)
+                Button {
+                    tapCount += 1
+                } label: {
+                    Label(".m3Text, .tint(.red)", systemImage: "bell.fill")
+                }
+                .buttonStyle(.m3Text)
+                .tint(.red)
+                #endif
                 Button(".tint(.red), .disabled(true): \(tapCount)") {
                     tapCount += 1
                 }
