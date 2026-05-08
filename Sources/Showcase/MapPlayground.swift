@@ -1,5 +1,6 @@
 // Copyright 2023–2025 Skip
 import SwiftUI
+import SkipGMaps
 #if !SKIP
 import MapKit
 #else
@@ -9,13 +10,60 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 #endif
 
-struct MapPlayground: View {
-    var body: some View {
-        MapView(latitude: 48.8566, longitude: 2.3522)
+enum MapPlaygroundType: String, CaseIterable {
+    case platform
+    case google
+
+    var title: String {
+        switch self {
+        case .platform:
+            return "Platform Map"
+        case .google:
+            return "Google Maps"
+        }
     }
 }
 
-struct MapView : View {
+struct MapPlayground: View {
+
+    var body: some View {
+        List(MapPlaygroundType.allCases, id: \.self) { type in
+            NavigationLink(type.title, value: type)
+        }
+        .toolbar {
+            PlaygroundSourceLink(file: "MapPlayground.swift")
+        }
+        .navigationDestination(for: MapPlaygroundType.self) {
+            switch $0 {
+            case .platform:
+                PlatformMapPlayground()
+                    .navigationTitle($0.title)
+            case .google:
+                GMapsPlayground()
+                    .navigationTitle($0.title)
+            }
+        }
+    }
+}
+
+struct GMapsPlayground: View {
+    init() {
+        GoogleMapsConfiguration.provideAPIKey("AIzaSyBdt_bhz4zi6WAUelkVkEnxMs9pkbEKXKM")
+    }
+
+    var body: some View {
+        GoogleMapView()
+    }
+}
+
+
+struct PlatformMapPlayground: View {
+    var body: some View {
+        SimpleMapView(latitude: 48.8566, longitude: 2.3522)
+    }
+}
+
+struct SimpleMapView : View {
     let latitude: Double
     let longitude: Double
 
