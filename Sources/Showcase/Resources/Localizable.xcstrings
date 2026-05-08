@@ -1218,6 +1218,9 @@
     "Date only" : {
 
     },
+    "Date Picker" : {
+
+    },
     "DatePicker" : {
 
     },
@@ -1919,6 +1922,21 @@
 
     },
     "Label Styles" : {
+
+    },
+    "Labeled Button" : {
+
+    },
+    "Labeled Content" : {
+
+    },
+    "Labeled Date Picker" : {
+
+    },
+    "Labeled Image" : {
+
+    },
+    "Labeled Value" : {
 
     },
     "Large circle" : {
