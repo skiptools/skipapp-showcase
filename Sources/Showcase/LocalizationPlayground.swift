@@ -21,7 +21,13 @@ struct LocalizationPlayground: View {
 struct LocalizationPreview: View {
     @Environment(\.locale) var currentLocale
     @State var date = Date.now
-
+    
+    private var calendar: Calendar {
+        var result = Calendar(identifier: .gregorian)
+        result.locale = Locale(identifier: currentLocale.identifier)
+        return result
+    }
+    
     func formatter(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> DateFormatter {
         let fmt = DateFormatter()
         fmt.dateStyle = dateStyle
@@ -31,36 +37,61 @@ struct LocalizationPreview: View {
     }
 
     var body: some View {
-        VStack {
-            Text("Welcome")
-                .font(.largeTitle)
-            Text(LocalizedStringResource("Welcome"))
-                .font(.title)
+        ScrollView {
+            VStack {
+                Text("Welcome")
+                    .font(.largeTitle)
+                Text(LocalizedStringResource("Welcome"))
+                    .font(.title)
 
-            Divider()
+                Divider()
 
-            Text(verbatim: currentLocale.localizedString(forLanguageCode: currentLocale.language.languageCode?.identifier ?? currentLocale.identifier) ?? "")
-                .font(.title)
-            Text(verbatim: currentLocale.localizedString(forRegionCode: currentLocale.region?.identifier ?? currentLocale.identifier) ?? "")
-                .font(.title2)
-            Text(verbatim: currentLocale.localizedString(forScriptCode: currentLocale.language.script?.identifier ?? currentLocale.identifier) ?? "")
-                .font(.title2)
+                Text(verbatim: currentLocale.localizedString(forLanguageCode: currentLocale.language.languageCode?.identifier ?? currentLocale.identifier) ?? "")
+                    .font(.title)
+                Text(verbatim: currentLocale.localizedString(forRegionCode: currentLocale.region?.identifier ?? currentLocale.identifier) ?? "")
+                    .font(.title2)
+                Text(verbatim: currentLocale.localizedString(forScriptCode: currentLocale.language.script?.identifier ?? currentLocale.identifier) ?? "")
+                    .font(.title2)
 
-            Divider()
+                Divider()
 
-            Text(verbatim: formatter(dateStyle: .full, timeStyle: .short).string(from: date))
-            Text(verbatim: formatter(dateStyle: .none, timeStyle: .full).string(from: date))
+                Text(verbatim: formatter(dateStyle: .full, timeStyle: .short).string(from: date))
+                Text(verbatim: formatter(dateStyle: .none, timeStyle: .full).string(from: date))
 
-            Text(verbatim: formatter(dateStyle: .long, timeStyle: .none).string(from: date))
-            Text(verbatim: formatter(dateStyle: .none, timeStyle: .long).string(from: date))
+                Text(verbatim: formatter(dateStyle: .long, timeStyle: .none).string(from: date))
+                Text(verbatim: formatter(dateStyle: .none, timeStyle: .long).string(from: date))
 
-            Text(verbatim: formatter(dateStyle: .medium, timeStyle: .none).string(from: date))
-            Text(verbatim: formatter(dateStyle: .none, timeStyle: .medium).string(from: date))
+                Text(verbatim: formatter(dateStyle: .medium, timeStyle: .none).string(from: date))
+                Text(verbatim: formatter(dateStyle: .none, timeStyle: .medium).string(from: date))
 
-            Text(verbatim: formatter(dateStyle: .short, timeStyle: .none).string(from: date))
-            Text(verbatim: formatter(dateStyle: .none, timeStyle: .short).string(from: date))
+                Text(verbatim: formatter(dateStyle: .short, timeStyle: .none).string(from: date))
+                Text(verbatim: formatter(dateStyle: .none, timeStyle: .short).string(from: date))
 
-            DatePicker("", selection: $date)
+                DatePicker("", selection: $date)
+                
+                Divider()
+                
+                let pluralizationTypes = [(0, "zero"), (1, "singular"), (2, "plural")]
+                ForEach(pluralizationTypes, id: \.0) { pluralizationType in
+                    let numberOfDays = pluralizationType.0
+                    let localizedStringResource = LocalizedStringResource("repeats_every_day", locale: currentLocale)
+                    let localizedString = String(localized: localizedStringResource)
+                    Text(String.localizedStringWithFormat(localizedString, numberOfDays)).font(.body)
+                }
+                
+                Divider()
+                
+                let monthSymbols = calendar.shortMonthSymbols
+                let monthSymbolsToUse = monthSymbols.enumerated().filter { $0.offset % 2 == 0 }.map { $0.element }.prefix(3)
+                let monthSymbolsString = monthSymbolsToUse.joined(separator: ", ")
+                
+                ForEach(pluralizationTypes, id: \.0) { pluralizationType in
+                    let numberOfYears = pluralizationType.0
+                    let localizedStringResource = LocalizedStringResource("repeats_every_year_in", locale: currentLocale)
+                    let localizedString = String(localized: localizedStringResource)
+                    Text(String.localizedStringWithFormat(localizedString, numberOfYears, monthSymbolsString)).font(.body)
+                }
+            }
         }
         .navigationTitle(currentLocale.localizedString(forIdentifier: currentLocale.identifier) ?? "???")
     }
