@@ -2,15 +2,12 @@
 import SwiftUI
 
 struct LabeledContentPlayground: View {
-    #if os(macOS)
-    let placement: ToolbarItemPlacement = .automatic
-    #else
-    let placement: ToolbarItemPlacement = .topBarLeading
-    #endif
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 LabeledContent("Label", value: "Value")
+                
+//  Not implemented, yet: Text does not support value:, format:. This would make a good improvement.
 //                LabeledContent("Label", value: 12, format: IntegerFormatStyle.number)
             }
             .padding()
