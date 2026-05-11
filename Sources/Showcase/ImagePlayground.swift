@@ -321,6 +321,35 @@ struct ImagePlayground: View {
                     .frame(width: 100, height: 100)
                     .border(Color.blue)
                 }
+                HStack {
+                    Text("Custom empty phase closure")
+                    Spacer()
+                    AsyncImage(url: remoteImageResourceURL) { phase in
+                        switch phase {
+                        case .empty:
+                            ZStack {
+                                if let image = phase.image {
+                                    let _ = logger.debug("Custom empty phase closure: .empty image")
+                                    ProgressView()
+                                    image
+                                } else {
+                                    ProgressView()
+                                }
+                            }
+                        case .failure:
+                            Color.red
+                        case .success(let image):
+                            image.resizable()
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(Color.blue)
+                }
+                #if os(Android)
+                //.subcomposeAsyncImage()
+                #endif
             }
             .padding()
         }
