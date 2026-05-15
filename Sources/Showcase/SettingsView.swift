@@ -10,20 +10,6 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                // SkipFuseUI 1.14.5 marks LabeledContent inits as unavailable
-                // for the bridged surface, so use a plain HStack for the
-                // "Skip Mode" row.
-                HStack {
-                    Text("Skip Mode")
-                    Spacer()
-                    #if SKIP_FUSE_MODE
-                    Text("Fuse (native)")
-                        .foregroundStyle(.green)
-                    #else
-                    Text("Lite (transpiled)")
-                        .foregroundStyle(.blue)
-                    #endif
-                }
                 Picker("Appearance", selection: $appearance) {
                     Text("System").tag("")
                     Text("Light").tag("light")
@@ -56,24 +42,41 @@ struct SettingsView: View {
                     }
                     .navigationTitle("System Information")
                 }
-                HStack {
-                    #if os(Android)
-                    ComposeView {
-                        HeartComposer()
-                    }
-                    #else
-                    Text(verbatim: "💙")
-                    #endif
+                LabeledContent(content: {
                     if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
                        let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                        Text("Version \(version) (\(buildNumber))")
+                        Text("\(version) (\(buildNumber))")
                             .foregroundStyle(.gray)
                     }
-                    Text("Powered by [Skip](https://skip.dev)")
+                }, label: {
+                    #if SKIP_FUSE_MODE
+                    let mode = "Fuse"
+                    #else
+                    let mode = "Lite"
+                    #endif
+                    Text("Powered by [Skip \(mode)](https://skip.dev)")
+                })
+
+                HStack {
+                    Spacer()
+                    ZStack(alignment: .center) {
+                        #if SKIP
+                        // Skip Lite (transpiled) can inline Compose calls directly
+                        androidx.compose.material3.Text("💚", modifier: context.modifier)
+                        #elseif os(Android)
+                        // Skip Fuse (compiled) uses ComposeView to bridge into the transpiled code in the SKIP block below
+                        ComposeView {
+                            HeartComposer()
+                        }
+                        #else
+                        Text(verbatim: "💙")
+                        #endif
+                    }
+                    Spacer()
                 }
                 .onTapGesture {
-                    logger.info("requesting marketplace review")
-                    Marketplace.current.requestReview(period: .days(0))
+                    let reqested = Marketplace.current.requestReview(period: .days(0))
+                    logger.info("requesting marketplace review: \(reqested)")
                 }
             }
             .navigationTitle("Settings")
@@ -83,7 +86,7 @@ struct SettingsView: View {
 
 #if SKIP
 
-struct HeartComposer : ContentComposer {
+struct HeartComposer: ContentComposer {
     @Composable func Compose(context: ComposeContext) {
         androidx.compose.material3.Text("💚", modifier: context.modifier)
     }

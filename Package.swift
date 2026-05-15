@@ -5,6 +5,8 @@ import PackageDescription
 // Set SKIP_MODE=fuse to depend on SkipFuseUI + SkipSQLPlus and compile with SKIP_FUSE_MODE defined,
 // which also causes skipstone to build the Showcase module in `native` mode
 // (Sources/Showcase/Skip/skip.yml sets `mode: 'automatic'`, which becomes 'native' when SkipFuse is present).
+//
+// Example usage: SKIP_MODE=fuse skip app launch
 var fuse = (Context.environment["SKIP_MODE"] ?? "lite") == "fuse"
 //fuse = true // manual override
 

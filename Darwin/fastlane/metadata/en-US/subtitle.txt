@@ -1,1 +1,1 @@
-A Skip user interface tour
+A showcase of Skip features

@@ -503,6 +503,16 @@
     "%@ .moveDisabled" : {
 
     },
+    "%@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@)"
+          }
+        }
+      }
+    },
     "%@: %@" : {
       "localizations" : {
         "en" : {
@@ -1842,9 +1852,6 @@
     "Fullscreen cover" : {
 
     },
-    "Fuse (native)" : {
-
-    },
     "GAME OVER" : {
 
     },
@@ -2343,9 +2350,6 @@
 
     },
     "ListPlayground uses Binding<T>.dynamic-member-lookup which the Lite transpiler doesn't yet bridge." : {
-
-    },
-    "Lite (transpiled)" : {
 
     },
     "Lite SkipUI marks the Stepper(value:in:step:) initializer as deprecated." : {
@@ -2900,7 +2904,7 @@
     "Position Tracking" : {
 
     },
-    "Powered by [Skip](https://skip.dev)" : {
+    "Powered by [Skip %@](https://skip.dev)" : {
 
     },
     "Preference value: %lld" : {
@@ -3679,9 +3683,6 @@
     "Skip Intro" : {
 
     },
-    "Skip Mode" : {
-
-    },
     "Skip Notify" : {
 
     },
@@ -4233,26 +4234,6 @@
     },
     "Value: %lld" : {
 
-    },
-    "Version %@ (%@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Version %1$@ (%2$@)"
-          }
-        }
-      }
-    },
-    "Version %@ (%lld)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Version %1$@ (%2$lld)"
-          }
-        }
-      }
     },
     "Vertical" : {
 

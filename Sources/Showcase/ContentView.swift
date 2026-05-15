@@ -33,11 +33,6 @@ struct ContentView: View {
                 }
         }
         .preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
-        // statusBarHidden is marked unavailable in the SkipFuseUI 1.14.5
-        // bridge and is also flagged by the Lite transpiler, so apply it only
-        // when neither restriction is in effect.
-        #if !SKIP_FUSE_MODE && !SKIP
         .statusBarHidden(statusBarHidden)
-        #endif
     }
 }

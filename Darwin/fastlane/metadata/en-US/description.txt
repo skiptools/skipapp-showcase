@@ -1,1 +1,19 @@
-The Skip Showcase app is a tour of the of the user interface of a dual-platform app built with Skip technology.
+Skip Showcase is a comprehensive, interactive catalog of user interface components built with Skip, the cross-platform development tool that lets you write one app in Swift and SwiftUI and run it natively on all mobile platforms.
+
+This app is written entirely in Swift and SwiftUI. On iOS, it runs as a standard native SwiftUI app. On other platforms, the same Swift code is compiled natively using the official Swift SDK for other platforms, and Skip's SkipUI framework translates SwiftUI views into Jetpack Compose, producing a genuinely native experience.
+
+Skip Showcase is the ideal way to compare how SwiftUI components look and behave across both platforms. Install the app on both devices to see exactly how Skip maps SwiftUI to native controls elsewhere, using the same Swift source code on both platforms.
+
+The app covers a wide range of SwiftUI features, including:
+
+- UI Controls: Button, Toggle, Slider, Stepper, Picker, DatePicker, TextField, SecureField, TextEditor, Menu, and more
+- Layout: Stacks, Grid, Form, List, ScrollView, GeometryReader, ViewThatFits, SafeArea, and Frame
+- Navigation: NavigationStack, TabView, Sheet, ConfirmationDialog, Alert, Toolbar, and Link
+- Graphics: Shape, Gradient, Shadow, Blur, BlendMode, Mask, Animation, Transition, and Color effects
+- State Management: @State, @Observable, @Environment, Preference keys, FocusState, and Timer
+- Text and Media: Text styling, SF Symbols, Image, VideoPlayer, Lottie animations, and Localization
+- Platform Integration: Haptic feedback, Pasteboard, ShareLink, Searchable, WebView, Map, SQL, and Keychain
+
+Skip Showcase is open source. Browse the source code at https://github.com/skiptools/skipapp-showcase-fuse to see how each component is implemented.
+
+Learn more about Skip at https://skip.dev
