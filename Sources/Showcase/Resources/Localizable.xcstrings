@@ -1858,9 +1858,6 @@
     "Gesture" : {
       "comment" : "Title of Gesture playground"
     },
-    "GesturePlayground exercises @GestureState/.updating, which SkipUI Lite doesn't bridge yet." : {
-
-    },
     "GestureState Drag" : {
 
     },
@@ -4078,9 +4075,6 @@
     },
     "Timer" : {
       "comment" : "Title of Timer playground"
-    },
-    "TimerPlayground uses Combine-style timer publishers not yet bridged for Lite." : {
-
     },
     "Title" : {
 

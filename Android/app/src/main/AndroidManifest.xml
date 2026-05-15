@@ -33,7 +33,7 @@
     </queries>
 
     <application
-        android:label="${PRODUCT_NAME}"
+        android:label="Skip Showcase"
         android:name=".AndroidAppMain"
         android:allowBackup="true"
         android:supportsRtl="true"
@@ -68,7 +68,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="org.appfair.app.showcaselite" android:host="auth" />
+                <data android:scheme="org.appfair.app.showcase" android:host="auth" />
             </intent-filter>
         </activity>
         
