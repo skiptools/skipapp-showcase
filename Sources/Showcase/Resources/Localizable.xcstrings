@@ -31,6 +31,9 @@
     ".backgroundStyle(.red)" : {
 
     },
+    ".blue" : {
+
+    },
     ".blue, 5" : {
 
     },
@@ -175,6 +178,9 @@
     ".grayscale(0.99)" : {
 
     },
+    ".green" : {
+
+    },
     ".init(_ label:action:): %lld" : {
 
     },
@@ -209,9 +215,6 @@
 
     },
     ".lineLimit(1): This is some long text that should wrap when it exceeds the width of its frame" : {
-
-    },
-    ".lineLimit(10, reservesSpace: true): 10-line short text" : {
 
     },
     ".material3SegmentedButton" : {
@@ -266,12 +269,6 @@
     ".opacity.animation\n(different value)" : {
 
     },
-    ".padding" : {
-
-    },
-    ".padding.animation" : {
-
-    },
     ".padding()" : {
 
     },
@@ -323,6 +320,12 @@
     ".red.gradient" : {
 
     },
+    ".red.opacity(0.5)" : {
+
+    },
+    ".regularMaterial" : {
+
+    },
     ".repeatForever()" : {
 
     },
@@ -359,6 +362,9 @@
     ".rotationEffect.animation" : {
 
     },
+    ".saturation(0.5).brightness(0.1).contrast(1.2)" : {
+
+    },
     ".scaleEffect" : {
 
     },
@@ -368,16 +374,43 @@
     ".scrollDismissesKeyboard" : {
 
     },
+    ".shadow(...) - NOT animated" : {
+
+    },
     ".submitLabel" : {
 
     },
     ".submitLabel(.%@)" : {
 
     },
+    ".symbolVariant(.circle.fill)" : {
+
+    },
+    ".symbolVariant(.circle)" : {
+
+    },
+    ".symbolVariant(.fill)" : {
+
+    },
+    ".symbolVariant(.slash)" : {
+
+    },
+    ".symbolVariant(.square)" : {
+
+    },
     ".textInputAutocapitalization" : {
 
     },
     ".textInputAutocapitalization(.%@)" : {
+
+    },
+    ".thickMaterial" : {
+
+    },
+    ".thinMaterial" : {
+
+    },
+    ".tint(.green)" : {
 
     },
     ".tint(.red)" : {
@@ -416,10 +449,28 @@
     ".transition(.slide)" : {
 
     },
-    ".truncationMode(.middle): This is some long text that should middle truncate when it exceeds the width of its frame" : {
+    ".trim" : {
 
     },
-    ".truncationMode(.tail): This is some long text when it exceeds the width of its frame will head truncate" : {
+    ".trim.animation" : {
+
+    },
+    ".trim(from: 0, to: 0.5)" : {
+
+    },
+    ".trim(from: 0, to: 0.25)" : {
+
+    },
+    ".trim(from: 0, to: 0.75)" : {
+
+    },
+    ".trim(from: 0.25, to: 0.75)" : {
+
+    },
+    ".ultraThickMaterial" : {
+
+    },
+    ".ultraThinMaterial" : {
 
     },
     "\"CustomRed\"" : {
@@ -438,9 +489,6 @@
 
     },
     "@Environment(\\.openURL)" : {
-
-    },
-    "#colorLiteral" : {
 
     },
     "%.1fx" : {
@@ -471,6 +519,9 @@
     "%lld%%" : {
 
     },
+    "→" : {
+
+    },
     "+" : {
 
     },
@@ -478,6 +529,12 @@
 
     },
     "▲" : {
+
+    },
+    "0.3 scale" : {
+
+    },
+    "0.5 scale" : {
 
     },
     "1. Play / Pause" : {
@@ -514,6 +571,9 @@
 
     },
     "16pt content margins, 8pt spacing, 8pt peek of next card" : {
+
+    },
+    "99+" : {
 
     },
     "123" : {
@@ -677,9 +737,12 @@
 
     },
     "Accessibility" : {
-
+      "comment" : "Title of Accessibility playground"
     },
     "Actions" : {
+
+    },
+    "Active" : {
 
     },
     "Add" : {
@@ -722,7 +785,7 @@
 
     },
     "Alert" : {
-
+      "comment" : "Title of Alert playground"
     },
     "alignment: .bottomTrailing" : {
 
@@ -733,16 +796,28 @@
     "All Options" : {
 
     },
+    "allowsHitTesting()" : {
+
+    },
     "Also see the `Transition` playground for view enter/exit animations" : {
 
     },
+    "Anchor" : {
+
+    },
     "Android: Disabled by default for performance" : {
+
+    },
+    "Animate All" : {
 
     },
     "Animated" : {
 
     },
     "Animation" : {
+      "comment" : "Title of Animation playground"
+    },
+    "AnimationPlayground uses SwiftUI animation curves with mixed Int/Double literals that the Lite transpiler can't auto-convert." : {
 
     },
     "Appearance" : {
@@ -904,6 +979,9 @@
 
     },
     "Audio" : {
+      "comment" : "Title of Audio playground"
+    },
+    "AudioPlayground is Lite-only until ported to SkipAV" : {
 
     },
     "B" : {
@@ -916,9 +994,27 @@
 
     },
     "Background" : {
-
+      "comment" : "Title of Background playground"
     },
     "background()" : {
+
+    },
+    "BackgroundPlayground uses material APIs that only SkipFuseUI exposes." : {
+
+    },
+    "Badge Prominence" : {
+
+    },
+    "Badge with Count" : {
+
+    },
+    "Badge with Text" : {
+
+    },
+    "Basic Double Stepper" : {
+
+    },
+    "Basic Int Stepper" : {
 
     },
     "BB" : {
@@ -966,11 +1062,23 @@
     "Black" : {
 
     },
+    "Blend Mode" : {
+
+    },
+    "Blend Mode Examples" : {
+
+    },
+    "BlendMode" : {
+      "comment" : "Title of BlendMode playground"
+    },
+    "BlendModePlayground reaches into Compose LayoutDirection enum, which only SkipFuseUI's Compose bridge resolves." : {
+
+    },
     "Blue" : {
 
     },
     "Blur" : {
-
+      "comment" : "Title of Blur playground"
     },
     "Body" : {
 
@@ -988,12 +1096,9 @@
 
     },
     "Border" : {
-
+      "comment" : "Title of Border playground"
     },
     "Bottom" : {
-
-    },
-    "Bottom bar" : {
 
     },
     "Bottom text" : {
@@ -1008,6 +1113,12 @@
     "Bound tap count 2: %lld" : {
 
     },
+    "brightness" : {
+
+    },
+    "brightness(%.2f)" : {
+
+    },
     "Brown" : {
 
     },
@@ -1018,7 +1129,7 @@
 
     },
     "Button" : {
-
+      "comment" : "Title of Button playground"
     },
     "Button .automatic" : {
 
@@ -1047,10 +1158,16 @@
     "Capsule" : {
 
     },
+    "Capsule.trim" : {
+
+    },
     "Card %lld" : {
 
     },
     "Carousel with .contentMargins(.horizontal, 16) + .scrollTargetBehavior(.viewAligned)" : {
+
+    },
+    "Cat image" : {
 
     },
     "Cat JPEG image" : {
@@ -1063,6 +1180,9 @@
 
     },
     "Circle" : {
+
+    },
+    "Circle mask" : {
 
     },
     "Circles" : {
@@ -1081,15 +1201,36 @@
 
     },
     "Color" : {
-
+      "comment" : "Title of Color playground"
     },
     "Color + Offset" : {
 
     },
-    "Color.red.opacity(0.5)" : {
+    "Color Burn" : {
+
+    },
+    "Color Dodge" : {
+
+    },
+    "Color Effects" : {
+      "comment" : "Title of Color Effects playground"
+    },
+    "colorInvert" : {
+
+    },
+    "colorInvert()" : {
+
+    },
+    "colorMultiply(_:)" : {
 
     },
     "ColorScheme" : {
+      "comment" : "Title of ColorScheme playground"
+    },
+    "Combined effects" : {
+
+    },
+    "Combined: .circle.fill" : {
 
     },
     "Combined: opacity+slide" : {
@@ -1108,10 +1249,10 @@
 
     },
     "Compose" : {
-
+      "comment" : "Title of Compose playground"
     },
     "ConfirmationDialog" : {
-
+      "comment" : "Title of ConfirmationDialog playground"
     },
     "Constraint: 140×40" : {
 
@@ -1137,9 +1278,6 @@
     "Content is inset but scroll indicators stay at edges" : {
 
     },
-    "Content Margins" : {
-
-    },
     "Content row %lld" : {
 
     },
@@ -1149,7 +1287,13 @@
     "Content Y offset: %lld" : {
 
     },
+    "ContentMargins" : {
+      "comment" : "Title of ContentMargins playground"
+    },
     "Context Menu" : {
+      "comment" : "Title of Context Menu playground"
+    },
+    "contrast(%.2f)" : {
 
     },
     "Control animation playback with isPlaying" : {
@@ -1176,6 +1320,9 @@
     "Custom" : {
 
     },
+    "Custom +10/-5" : {
+
+    },
     "Custom Actions" : {
 
     },
@@ -1194,6 +1341,12 @@
     "Custom styling" : {
 
     },
+    "Custom: %lld" : {
+
+    },
+    "CustomShape.trim" : {
+
+    },
     "Cut" : {
 
     },
@@ -1201,6 +1354,9 @@
 
     },
     "Dark" : {
+
+    },
+    "Darken" : {
 
     },
     "Data" : {
@@ -1221,13 +1377,25 @@
     "Date Picker" : {
 
     },
-    "DatePicker" : {
+    "Date Range Examples" : {
 
+    },
+    "DatePicker" : {
+      "comment" : "Title of DatePicker playground"
     },
     "DatePicker .disabled" : {
 
     },
+    "Decreased prominence" : {
+
+    },
     "Default" : {
+
+    },
+    "Default (0)" : {
+
+    },
+    "Default (no lineSpacing)" : {
 
     },
     "Default Columns" : {
@@ -1239,7 +1407,16 @@
     "Delete" : {
 
     },
+    "Demo" : {
+
+    },
     "Destructive" : {
+
+    },
+    "Detail View" : {
+
+    },
+    "Difference" : {
 
     },
     "Difficulty" : {
@@ -1248,14 +1425,27 @@
     "Dimiss" : {
 
     },
+    "Disable Scrolling" : {
+
+    },
     "Disabled" : {
 
     },
     "Disabled Tab" : {
 
     },
+    "Disabled tap: (%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Disabled tap: (%1$lld, %2$lld)"
+          }
+        }
+      }
+    },
     "DisclosureGroup" : {
-
+      "comment" : "Title of DisclosureGroup playground"
     },
     "DisclosureGroup .disabled" : {
 
@@ -1270,10 +1460,10 @@
 
     },
     "Divider" : {
-
+      "comment" : "Title of Divider playground"
     },
-    "DocumentPicker" : {
-
+    "Document and Media Pickers" : {
+      "comment" : "Title of Document and Media Pickers playground"
     },
     "Done" : {
       "comment" : "Done button text",
@@ -1319,6 +1509,15 @@
     "Double AppStorage" : {
 
     },
+    "Double in 0.0...5.0" : {
+
+    },
+    "Double in 0.0...10.0 step 0.25" : {
+
+    },
+    "Double step: 0.5" : {
+
+    },
     "Double tap: (%lf, %lf)" : {
       "localizations" : {
         "en" : {
@@ -1339,17 +1538,23 @@
         }
       }
     },
+    "Double: %@" : {
+
+    },
     "Drag" : {
 
     },
     "Drag, Magnify" : {
 
     },
+    "drawingGroup()" : {
+
+    },
     "Duplicate" : {
 
     },
     "Easter Egg" : {
-
+      "comment" : "Title of Game playground"
     },
     "Easy" : {
 
@@ -1357,10 +1562,19 @@
     "Edit" : {
 
     },
+    "Editing status: %@" : {
+
+    },
+    "Effects on shapes" : {
+
+    },
     "EllipitcalGradient" : {
 
     },
     "Ellipse" : {
+
+    },
+    "Ellipse.trim" : {
 
     },
     "Email" : {
@@ -1379,7 +1593,7 @@
 
     },
     "Environment" : {
-
+      "comment" : "Title of Environment playground"
     },
     "EnvironmentObject" : {
 
@@ -1397,6 +1611,9 @@
 
     },
     "Even" : {
+
+    },
+    "Exclusion" : {
 
     },
     "Expand" : {
@@ -1477,8 +1694,14 @@
     "Flappy Bird Score" : {
 
     },
-    "FocusState" : {
+    "Flips for RTL" : {
 
+    },
+    "flipsForRightToLeftLayoutDirection()" : {
+
+    },
+    "FocusState" : {
+      "comment" : "Title of FocusState playground"
     },
     "Font.body" : {
 
@@ -1558,6 +1781,9 @@
     "For animations using After Effects boolean shape operations" : {
 
     },
+    "Forces offscreen rendering (flattens view hierarchy)" : {
+
+    },
     "ForEach index row: %lld" : {
 
     },
@@ -1590,13 +1816,13 @@
 
     },
     "Form" : {
-
+      "comment" : "Title of Form playground"
     },
     "Forward" : {
 
     },
     "Frame" : {
-
+      "comment" : "Title of Frame playground"
     },
     "Frame: %lld" : {
 
@@ -1616,28 +1842,28 @@
     "Fullscreen cover" : {
 
     },
+    "Fuse (native)" : {
+
+    },
     "GAME OVER" : {
 
     },
     "Generate Push Notification Token" : {
 
     },
-    "Geometry" : {
-
-    },
-    "Geometry padding" : {
-
-    },
-    "Geometry padding in sheet" : {
-
-    },
     "GeometryChange" : {
-
+      "comment" : "Title of GeometryChange playground"
     },
     "GeometryReader" : {
+      "comment" : "Title of GeometryReader playground"
+    },
+    "Gesture" : {
+      "comment" : "Title of Gesture playground"
+    },
+    "GesturePlayground exercises @GestureState/.updating, which SkipUI Lite doesn't bridge yet." : {
 
     },
-    "Gestures" : {
+    "GestureState Drag" : {
 
     },
     "Get notified when animation finishes" : {
@@ -1649,11 +1875,14 @@
     "Global frame: %@" : {
 
     },
-    "Gradients" : {
+    "Gradient" : {
+      "comment" : "Title of Gradient playground"
+    },
+    "Gradient mask" : {
 
     },
     "Graphics" : {
-
+      "comment" : "Title of Graphics playground"
     },
     "Gray" : {
 
@@ -1662,7 +1891,7 @@
 
     },
     "Grids" : {
-
+      "comment" : "Title of Grids playground"
     },
     "H1" : {
 
@@ -1670,14 +1899,14 @@
     "H2" : {
 
     },
-    "Haptic Feedback" : {
-
-    },
     "Haptic Feedback Unavailable in this OS version" : {
 
     },
     "Haptic Feedback: %@" : {
 
+    },
+    "Haptick Feedback" : {
+      "comment" : "Title of Haptick Feedback playground"
     },
     "Hard" : {
 
@@ -1741,13 +1970,22 @@
         }
       }
     },
+    "Hello World" : {
+
+    },
+    "Hello World!" : {
+
+    },
     "Hidden" : {
+
+    },
+    "Hidden label" : {
 
     },
     "Hidden Tab" : {
 
     },
-    "Hide %@ Bar" : {
+    "Hide Scroll Indicators" : {
 
     },
     "Hide status bar" : {
@@ -1783,6 +2021,9 @@
     "HSV" : {
 
     },
+    "hueRotation(%lld°)" : {
+
+    },
     "I scored %lld in Flappy Bird!" : {
 
     },
@@ -1796,10 +2037,10 @@
 
     },
     "Icons" : {
-
+      "comment" : "Title of Icons playground"
     },
     "Image" : {
-
+      "comment" : "Title of Image playground"
     },
     "Image from Data" : {
 
@@ -1813,7 +2054,13 @@
     "in: Capsule()" : {
 
     },
+    "Inbox" : {
+
+    },
     "Inc" : {
+
+    },
+    "Increased prominence" : {
 
     },
     "Increment" : {
@@ -1855,7 +2102,22 @@
     "inset(by: 10)" : {
 
     },
+    "Int in 0...10" : {
+
+    },
+    "Int in 0...20 step 2" : {
+
+    },
+    "Int step: 5" : {
+
+    },
+    "Int: %lld" : {
+
+    },
     "Interactive dismiss: %@" : {
+
+    },
+    "Inverts all colors (like a photo negative)" : {
 
     },
     "iOS 17 / macOS 14 required for Observation framework" : {
@@ -1889,16 +2151,16 @@
 
     },
     "Keyboard" : {
-
+      "comment" : "Title of Keyboard playground"
     },
     "Keychain" : {
-
+      "comment" : "Title of Keychain playground"
     },
     "Keychain value" : {
 
     },
     "Label" : {
-
+      "comment" : "Title of Label playground"
     },
     "Label .font(.title)" : {
 
@@ -1939,7 +2201,25 @@
     "Labeled Value" : {
 
     },
+    "LabeledContent is not yet available in this mode." : {
+
+    },
+    "Labels are not visually displayed" : {
+
+    },
     "Large circle" : {
+
+    },
+    "Large font + lineSpacing: 15" : {
+
+    },
+    "Large font + tracking" : {
+
+    },
+    "Large title in narrow box:" : {
+
+    },
+    "Large title with extra line spacing applied to demonstrate the effect on bigger text." : {
 
     },
     "Last action: %@" : {
@@ -2017,6 +2297,9 @@
     "LazyVStack.%@" : {
 
     },
+    "Leading" : {
+
+    },
     "Leading: %lld" : {
 
     },
@@ -2026,22 +2309,46 @@
     "Light" : {
 
     },
+    "Lighten" : {
+
+    },
     "Line one\nLine two\nLine three" : {
 
+    },
+    "Line Spacing" : {
+      "comment" : "Title of Line Spacing playground"
     },
     "LinearGradient" : {
 
     },
-    "Link" : {
+    "lineSpacing: 5" : {
 
     },
-    "List" : {
+    "lineSpacing: 10" : {
 
+    },
+    "lineSpacing: 20" : {
+
+    },
+    "Link" : {
+      "comment" : "Title of Link playground"
+    },
+    "List" : {
+      "comment" : "Title of List playground"
     },
     "List with .contentMargins(40)" : {
 
     },
     "List.%@" : {
+
+    },
+    "ListPlayground uses Binding<T>.dynamic-member-lookup which the Lite transpiler doesn't yet bridge." : {
+
+    },
+    "Lite (transpiled)" : {
+
+    },
+    "Lite SkipUI marks the Stepper(value:in:step:) initializer as deprecated." : {
 
     },
     "Local frame: %@" : {
@@ -2051,7 +2358,7 @@
 
     },
     "Localization" : {
-
+      "comment" : "Title of Localization playground"
     },
     "Long Press Me" : {
 
@@ -2075,13 +2382,19 @@
 
     },
     "Lottie Animation" : {
+      "comment" : "Title of Lottie playground"
+    },
+    "luminanceToAlpha" : {
+
+    },
+    "luminanceToAlpha()" : {
 
     },
     "Magnify" : {
 
     },
     "Map" : {
-
+      "comment" : "Title of Map playground"
     },
     "Map requires iOS 17" : {
 
@@ -2092,12 +2405,12 @@
     "Markdown\nspanning multiple\nlines" : {
 
     },
-    "Markdown [Link text](https://skip.tools) and [%@](%@)" : {
+    "Markdown [Link text](https://skip.dev) and [%@](%@)" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Markdown [Link text](https://skip.tools) and [%1$@](%2$@)"
+            "value" : "Markdown [Link text](https://skip.dev) and [%1$@](%2$@)"
           }
         }
       }
@@ -2120,11 +2433,26 @@
     "Markdown ~~Strikethrough text~~" : {
 
     },
+    "Mask" : {
+      "comment" : "Title of Mask playground"
+    },
+    "Material Backgrounds" : {
+
+    },
+    "Material in shape" : {
+
+    },
     "maxWidth: .infinity, maxHeight: .infinity" : {
 
     },
     "Menu" : {
+      "comment" : "Title of Menu playground"
+    },
+    "Messages" : {
 
+    },
+    "MinimumScaleFactor" : {
+      "comment" : "Title of MinimumScaleFactor playground"
     },
     "Mint" : {
 
@@ -2138,8 +2466,11 @@
     "minWidth: 300, minHeight: 100\n  minHeight: 100, maxHeight: .infinity" : {
 
     },
-    "Modifiers" : {
+    "ModifierPlayground uses ContentModifier with .composeModifier(), a Fuse-only extension." : {
 
+    },
+    "Modifiers" : {
+      "comment" : "Title of Modifiers playground"
     },
     "More (page 2)" : {
 
@@ -2148,6 +2479,12 @@
 
     },
     "multilineTextAlignment: This is some long text that should wrap when it exceeds the width of its frame" : {
+
+    },
+    "Multiplies each pixel by the given color" : {
+
+    },
+    "Multiply" : {
 
     },
     "My custom control" : {
@@ -2177,6 +2514,9 @@
     "Navigate forward to %lld" : {
 
     },
+    "Navigation with Badges" : {
+
+    },
     "NavigationLink" : {
 
     },
@@ -2187,7 +2527,7 @@
 
     },
     "NavigationStack" : {
-
+      "comment" : "Title of NavigationStack playground"
     },
     "Negative padding" : {
 
@@ -2214,6 +2554,9 @@
     "Nested views" : {
 
     },
+    "New" : {
+
+    },
     "New High Score!" : {
 
     },
@@ -2221,6 +2564,9 @@
 
     },
     "New Key" : {
+
+    },
+    "Next 30 days" : {
 
     },
     "Next notification in %lld s" : {
@@ -2238,6 +2584,12 @@
     "NO" : {
 
     },
+    "No badge (count 0)" : {
+
+    },
+    "No scale" : {
+
+    },
     "No scheduled notification" : {
 
     },
@@ -2247,10 +2599,16 @@
     "No URL\n.frame(100, 100)" : {
 
     },
+    "Normal" : {
+
+    },
     "Not supported on macOS" : {
 
     },
     "Note" : {
+
+    },
+    "Note: Android Compose does not show scroll indicators by default" : {
 
     },
     "Note: colors should not affect Divider appearance" : {
@@ -2265,8 +2623,11 @@
     "Notification" : {
       "extractionState" : "manual"
     },
+    "Notifications" : {
+      "comment" : "Title of Notification playground"
+    },
     "Observable" : {
-
+      "comment" : "Title of Observable playground"
     },
     "Observable tap count: %lld" : {
 
@@ -2278,7 +2639,7 @@
 
     },
     "Offset/Position" : {
-
+      "comment" : "Title of Offset/Position playground"
     },
     "Old/New Value Tracking" : {
 
@@ -2289,11 +2650,14 @@
     "One Time Code" : {
 
     },
+    "onEditingChanged" : {
+
+    },
     "Only needed for complex overlapping shapes" : {
 
     },
     "OnSubmit" : {
-
+      "comment" : "Title of OnSubmit playground"
     },
     "onTapGesture: (%lld, %lld)" : {
       "localizations" : {
@@ -2345,6 +2709,12 @@
         }
       }
     },
+    "Original" : {
+
+    },
+    "Original (no effects)" : {
+
+    },
     "Other" : {
 
     },
@@ -2358,6 +2728,9 @@
 
     },
     "Overlay" : {
+      "comment" : "Title of Overlay playground"
+    },
+    "Overlay allows hit testing" : {
 
     },
     "Overridden to title font" : {
@@ -2384,11 +2757,14 @@
     "Password" : {
 
     },
+    "Past week only" : {
+
+    },
     "Paste" : {
 
     },
     "Pasteboard" : {
-
+      "comment" : "Title of Pasteboard playground"
     },
     "Pasteboard count:" : {
 
@@ -2458,7 +2834,7 @@
 
     },
     "Picker" : {
-
+      "comment" : "Title of Picker playground"
     },
     "Picker .disabled" : {
 
@@ -2490,9 +2866,6 @@
     "Plain Style" : {
 
     },
-    "Play" : {
-
-    },
     "Play Again" : {
 
     },
@@ -2514,17 +2887,27 @@
     "Pop" : {
 
     },
+    "Pop %lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pop %1$lld / %2$lld"
+          }
+        }
+      }
+    },
     "Position Tracking" : {
 
     },
-    "Powered by [Skip](https://skip.tools)" : {
+    "Powered by [Skip](https://skip.dev)" : {
 
     },
     "Preference value: %lld" : {
 
     },
     "Preferences" : {
-
+      "comment" : "Title of Preferences playground"
     },
     "Present" : {
 
@@ -2587,7 +2970,7 @@
 
     },
     "ProgressView" : {
-
+      "comment" : "Title of ProgressView playground"
     },
     "Prompt" : {
 
@@ -2631,6 +3014,9 @@
     "Range Width Columns" : {
 
     },
+    "Range: -1.0 (black) to 1.0 (white)" : {
+
+    },
     "Range: %lld - %lld" : {
       "localizations" : {
         "en" : {
@@ -2641,20 +3027,32 @@
         }
       }
     },
+    "Range: 0.0 (gray) to 2.0 (high contrast)" : {
+
+    },
+    "Range: 0.0 (grayscale) to 3.0 (oversaturated)" : {
+
+    },
     "Rate" : {
 
     },
     "Rectangle" : {
 
     },
+    "Rectangle.trim" : {
+
+    },
     "Red" : {
+
+    },
+    "Red overlay blocks taps" : {
 
     },
     "Red, .opacity(0.5)" : {
 
     },
     "Redacted" : {
-
+      "comment" : "Title of Redacted playground"
     },
     "Refresh" : {
 
@@ -2683,6 +3081,9 @@
     "Requires iOS 17+" : {
 
     },
+    "Reset" : {
+
+    },
     "Reset High Score" : {
 
     },
@@ -2701,13 +3102,28 @@
     "Rotate" : {
 
     },
+    "Rotates all colors around the color wheel" : {
+
+    },
     "Rotation" : {
+
+    },
+    "rotation + scale (.%@)" : {
 
     },
     "rotation(Angle(degrees: 45))" : {
 
     },
+    "rotationEffect(.%@)" : {
+
+    },
+    "RoundedRect mask" : {
+
+    },
     "RoundedRectangle" : {
+
+    },
+    "RoundedRectangle.trim" : {
 
     },
     "Row %lld" : {
@@ -2743,10 +3159,22 @@
     "Row: 2.%lld" : {
 
     },
+    "RTL Layout" : {
+
+    },
+    "Run the app with SKIP_MODE=fuse to see this playground." : {
+
+    },
     "Safe Area Insets" : {
 
     },
     "SafeArea" : {
+      "comment" : "Title of SafeArea playground"
+    },
+    "saturation(%.2f)" : {
+
+    },
+    "saturation(0)" : {
 
     },
     "Save" : {
@@ -2768,13 +3196,16 @@
 
     },
     "ScaledMetric" : {
-
+      "comment" : "Title of ScaledMetric playground"
     },
     "scaledToFill" : {
 
     },
-    "ScenePhase" : {
+    "scaleEffect(.%@)" : {
 
+    },
+    "ScenePhase" : {
+      "comment" : "Title of ScenePhase playground"
     },
     "ScenePhase history" : {
 
@@ -2783,6 +3214,9 @@
 
     },
     "Score" : {
+
+    },
+    "Screen" : {
 
     },
     "Scroll indicators are inset but content stays at edges" : {
@@ -2809,11 +3243,17 @@
     "Scroll View Stacks" : {
 
     },
+    "scrollDisabled(%@)" : {
+
+    },
+    "scrollIndicators(%@)" : {
+
+    },
     "Scrolling" : {
 
     },
     "ScrollView" : {
-
+      "comment" : "Title of ScrollView playground"
     },
     "ScrollView + LazyVStack with .contentMargins(40)" : {
 
@@ -2843,12 +3283,9 @@
 
     },
     "Searchable" : {
-
+      "comment" : "Title of Searchable playground"
     },
     "Second" : {
-
-    },
-    "Second tab" : {
 
     },
     "Second: %lld" : {
@@ -2885,7 +3322,7 @@
 
     },
     "SecureField" : {
-
+      "comment" : "Title of SecureField playground"
     },
     "Seek to specific frame number" : {
 
@@ -2894,6 +3331,9 @@
 
     },
     "Select All" : {
+
+    },
+    "Select Blend Mode" : {
 
     },
     "Select Media" : {
@@ -3003,10 +3443,10 @@
       }
     },
     "Shadow" : {
-
+      "comment" : "Title of Shadow playground"
     },
     "Shape" : {
-
+      "comment" : "Title of Shape playground"
     },
     "Shape with background" : {
 
@@ -3018,10 +3458,10 @@
 
     },
     "ShareLink" : {
-
+      "comment" : "Title of ShareLink playground"
     },
     "Sheet" : {
-
+      "comment" : "Title of Sheet playground"
     },
     "Sheet / Navigation" : {
 
@@ -3030,9 +3470,6 @@
 
     },
     "Short text" : {
-
-    },
-    "Show %@ Bar" : {
 
     },
     "Showcase" : {
@@ -3192,7 +3629,13 @@
     "Shuffle" : {
 
     },
+    "Side by side (lineLimit 1):" : {
+
+    },
     "Sign In" : {
+
+    },
+    "Simplified on Android: semi-transparent white overlay" : {
 
     },
     "Simulate a custom control with an accessibility label, value, and traits:" : {
@@ -3230,7 +3673,13 @@
     "Sized to content:" : {
 
     },
+    "SKIP" : {
+
+    },
     "Skip Intro" : {
+
+    },
+    "Skip Mode" : {
 
     },
     "Skip Notify" : {
@@ -3251,7 +3700,7 @@
 
     },
     "Slider" : {
-
+      "comment" : "Title of Slider playground"
     },
     "Slow spring" : {
 
@@ -3266,19 +3715,22 @@
 
     },
     "Spacer" : {
-
+      "comment" : "Title of Spacer playground"
     },
     "Spacer:" : {
 
     },
-    "SQL" : {
+    "Spam" : {
 
+    },
+    "SQL" : {
+      "comment" : "Title of SQL playground"
     },
     "SQL Log" : {
 
     },
     "Stacks" : {
-
+      "comment" : "Title of Stacks playground"
     },
     "Standalone row 1" : {
 
@@ -3292,7 +3744,13 @@
     "Standard" : {
 
     },
+    "Standard (default)" : {
+
+    },
     "Standard Row Background" : {
+
+    },
+    "Star mask" : {
 
     },
     "Start" : {
@@ -3302,13 +3760,19 @@
 
     },
     "State" : {
-
+      "comment" : "Title of State playground"
     },
     "State tap count: %lld" : {
 
     },
-    "State: %@" : {
+    "Status" : {
 
+    },
+    "Status: %@" : {
+
+    },
+    "Stepper" : {
+      "comment" : "Title of Stepper playground"
     },
     "Stop" : {
 
@@ -3317,7 +3781,7 @@
 
     },
     "Storage" : {
-
+      "comment" : "Title of Storage playground"
     },
     "Storage Binding" : {
 
@@ -3373,6 +3837,9 @@
     "Submit" : {
 
     },
+    "SwiftUI Table is not yet available in SkipFuseUI" : {
+
+    },
     "Switch to Favorites" : {
 
     },
@@ -3383,12 +3850,15 @@
 
     },
     "Symbol" : {
-
+      "comment" : "Title of Symbol playground"
     },
     "Symbol Image Sizes" : {
 
     },
     "Symbol Image Weights" : {
+
+    },
+    "Symbol Variants" : {
 
     },
     "System" : {
@@ -3407,15 +3877,18 @@
 
     },
     "Table" : {
-
+      "comment" : "Title of Table playground"
     },
     "TabView" : {
-
+      "comment" : "Title of TabView playground"
     },
     "Take Photo" : {
 
     },
     "Tap" : {
+
+    },
+    "Tap + to add letters:" : {
 
     },
     "Tap below to increment state tap count" : {
@@ -3425,6 +3898,12 @@
 
     },
     "Tap Count: %lld" : {
+
+    },
+    "Tap each item to animate" : {
+
+    },
+    "Tap Me" : {
 
     },
     "Tap Start to begin monitoring" : {
@@ -3482,6 +3961,9 @@
     "Tappable Button" : {
 
     },
+    "Taps pass through overlay" : {
+
+    },
     "Teal" : {
 
     },
@@ -3498,7 +3980,7 @@
 
     },
     "Text" : {
-
+      "comment" : "Title of Text playground"
     },
     "Text / URL" : {
 
@@ -3512,7 +3994,7 @@
     "Text Field" : {
 
     },
-    "Text Selection" : {
+    "Text mask" : {
 
     },
     "Text spacing:" : {
@@ -3543,10 +4025,10 @@
 
     },
     "TextEditor" : {
-
+      "comment" : "Title of Text playground"
     },
     "TextField" : {
-
+      "comment" : "Title of TextField playground"
     },
     "The user cancelled the sign-in process." : {
 
@@ -3561,6 +4043,18 @@
 
     },
     "This is a much longer string that likely won't fit." : {
+
+    },
+    "This is a multi-line text that demonstrates the default line spacing. Notice how the lines are spaced normally without any additional spacing applied." : {
+
+    },
+    "This is a multi-line text with lineSpacing of 5 points. Notice the slightly increased space between each line of text." : {
+
+    },
+    "This is a multi-line text with lineSpacing of 10 points. The lines are now more spread out, making the text easier to read." : {
+
+    },
+    "This is a multi-line text with lineSpacing of 20 points. Very large line spacing creates significant gaps between lines." : {
 
     },
     "This is some long text that won't fit" : {
@@ -3600,6 +4094,9 @@
 
     },
     "Timer" : {
+      "comment" : "Title of Timer playground"
+    },
+    "TimerPlayground uses Combine-style timer publishers not yet bridged for Lite." : {
 
     },
     "Title" : {
@@ -3618,7 +4115,7 @@
 
     },
     "Toggle" : {
-
+      "comment" : "Title of Toggle playground"
     },
     "Toggle Group" : {
 
@@ -3627,7 +4124,7 @@
 
     },
     "Toolbar" : {
-
+      "comment" : "Title of Toolbar playground"
     },
     "Top" : {
 
@@ -3638,25 +4135,52 @@
     "Touch" : {
 
     },
+    "Tracking" : {
+      "comment" : "Title of Tracking playground"
+    },
+    "Tracking: -1" : {
+
+    },
+    "Tracking: 2" : {
+
+    },
+    "Tracking: 5" : {
+
+    },
+    "Tracking: 10" : {
+
+    },
     "Tracks global frame of the box below" : {
 
     },
     "Tracks width changes with old and new values" : {
 
     },
+    "Trailing" : {
+
+    },
     "Trailing: %lld" : {
+
+    },
+    "Transform" : {
+      "comment" : "Title of Transform playground"
+    },
+    "TransformPlayground passes IntRange to Slider(in: ClosedRange<Double>)." : {
 
     },
     "Transforms" : {
 
     },
     "Transition" : {
-
+      "comment" : "Title of Transition playground"
     },
     "Trigger Immediate Push Notification" : {
 
     },
     "Trigger Scheduled Push Notification" : {
+
+    },
+    "Trim" : {
 
     },
     "Two Buttons" : {
@@ -3677,10 +4201,16 @@
     "UnevenRoundedRectangle" : {
 
     },
+    "Updates" : {
+
+    },
     "URL Components:" : {
 
     },
     "URLs:" : {
+
+    },
+    "Use Animation" : {
 
     },
     "Username" : {
@@ -3733,11 +4263,8 @@
     "Vibrations" : {
 
     },
-    "Video List" : {
-
-    },
     "Video Player" : {
-
+      "comment" : "Title of VideoPlayer playground"
     },
     "View 0" : {
 
@@ -3835,8 +4362,14 @@
     "Viewbuilder init" : {
 
     },
-    "ViewThatFits" : {
+    "ViewBuilder label" : {
 
+    },
+    "ViewBuilder with range" : {
+
+    },
+    "ViewThatFits" : {
+      "comment" : "Title of ViewThatFits playground"
     },
     "ViewThatFits (default: both axes)" : {
 
@@ -3847,7 +4380,13 @@
     "ViewThatFits(in: .vertical)" : {
 
     },
+    "Volume" : {
+
+    },
     "VStack" : {
+
+    },
+    "VStack mask" : {
 
     },
     "VStack maxWidth: .infinity" : {
@@ -4005,6 +4544,9 @@
         }
       }
     },
+    "Welcome %@" : {
+
+    },
     "White" : {
 
     },
@@ -4026,7 +4568,16 @@
     "With Custom Action" : {
 
     },
+    "With label (for accessibility)" : {
+
+    },
     "With Labels" : {
+
+    },
+    "With minimumScaleFactor(0.5):" : {
+
+    },
+    "With onEditingChanged" : {
 
     },
     "With prompt" : {
@@ -4053,6 +4604,9 @@
     "withAnimation(repeatCount(3))" : {
 
     },
+    "Without scaling (wraps):" : {
+
+    },
     "Without zIndex" : {
 
     },
@@ -4066,7 +4620,7 @@
 
     },
     "ZIndex" : {
-
+      "comment" : "Title of ZIndex playground"
     },
     "ZStack.animation" : {
 
