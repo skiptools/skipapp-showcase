@@ -1,10 +1,6 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
 
-// In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
-// Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
-// the original implementation is kept for Fuse only and Lite gets a stub.
-#if SKIP_MODE_FUSE
 struct BlendModePlayground: View {
     @State internal var selectedMode: BlendMode = .multiply
 
@@ -228,7 +224,7 @@ struct FlipsForRTLDemo: View {
                         .flipsForRightToLeftLayoutDirection(true)
                 }
             }
-            .environment(\.layoutDirection, isRTL ? .rightToLeft : .leftToRight)
+            .environment(\.layoutDirection, isRTL ? LayoutDirection.rightToLeft : LayoutDirection.leftToRight)
 
             HStack {
                 Text("Leading")
@@ -236,26 +232,7 @@ struct FlipsForRTLDemo: View {
                 Text("Trailing")
             }
             .padding(.horizontal)
-            .environment(\.layoutDirection, isRTL ? .rightToLeft : .leftToRight)
+            .environment(\.layoutDirection, isRTL ? LayoutDirection.rightToLeft : LayoutDirection.leftToRight)
         }
     }
 }
-#else
-struct BlendModePlayground: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("BlendModePlayground reaches into Compose LayoutDirection enum, which only SkipFuseUI's Compose bridge resolves.")
-                .multilineTextAlignment(.center)
-                .padding()
-            Text("Run the app with SKIP_MODE=fuse to see this playground.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-        .toolbar {
-            PlaygroundSourceLink(file: "BlendModePlayground.swift")
-        }
-    }
-}
-#endif

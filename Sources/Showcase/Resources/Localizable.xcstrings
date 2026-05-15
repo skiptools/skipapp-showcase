@@ -1081,9 +1081,6 @@
     "BlendMode" : {
       "comment" : "Title of BlendMode playground"
     },
-    "BlendModePlayground reaches into Compose LayoutDirection enum, which only SkipFuseUI's Compose bridge resolves." : {
-
-    },
     "Blue" : {
 
     },
@@ -2347,9 +2344,6 @@
 
     },
     "List.%@" : {
-
-    },
-    "ListPlayground uses Binding<T>.dynamic-member-lookup which the Lite transpiler doesn't yet bridge." : {
 
     },
     "Lite SkipUI marks the Stepper(value:in:step:) initializer as deprecated." : {
