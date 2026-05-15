@@ -1,10 +1,6 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
 
-// In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
-// Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
-// the original implementation is kept for Fuse only and Lite gets a stub.
-#if SKIP_MODE_FUSE
 struct BackgroundPlayground: View {
     var body: some View {
         ScrollView {
@@ -144,6 +140,7 @@ struct BackgroundPlayground: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
+                #if !SKIP // materials not yet available in Skip Fuse
                 ZStack {
                     LinearGradient(colors: [.red, .blue, .green], startPoint: .topLeading, endPoint: .bottomTrailing)
                     VStack(spacing: 8) {
@@ -175,6 +172,7 @@ struct BackgroundPlayground: View {
                         .padding()
                         .background(.regularMaterial, in: Capsule())
                 }
+                #endif
             }
             .padding()
         }
@@ -183,22 +181,3 @@ struct BackgroundPlayground: View {
         }
     }
 }
-#else
-struct BackgroundPlayground: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("BackgroundPlayground uses material APIs that only SkipFuseUI exposes.")
-                .multilineTextAlignment(.center)
-                .padding()
-            Text("Run the app with SKIP_MODE=fuse to see this playground.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-        .toolbar {
-            PlaygroundSourceLink(file: "BackgroundPlayground.swift")
-        }
-    }
-}
-#endif

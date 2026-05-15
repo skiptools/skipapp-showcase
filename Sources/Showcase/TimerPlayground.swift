@@ -1,10 +1,6 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
 
-// In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
-// Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
-// the original implementation is kept for Fuse only and Lite gets a stub.
-#if SKIP_MODE_FUSE
 struct TimerPlayground: View {
     @State var count = 0
 
@@ -12,7 +8,7 @@ struct TimerPlayground: View {
         VStack(spacing: 16) {
             TimerPlaygroundTimerView(message: "Tap count: \(count)")
             Button("Tap to recompose in 1 sec") {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     count += 1
                 }
             }
@@ -49,22 +45,3 @@ struct TimerPlaygroundTimerView: View, @unchecked Sendable {
         }
     }
 }
-#else
-struct TimerPlayground: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("TimerPlayground uses Combine-style timer publishers not yet bridged for Lite.")
-                .multilineTextAlignment(.center)
-                .padding()
-            Text("Run the app with SKIP_MODE=fuse to see this playground.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-        .toolbar {
-            PlaygroundSourceLink(file: "TimerPlayground.swift")
-        }
-    }
-}
-#endif

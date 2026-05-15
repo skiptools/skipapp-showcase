@@ -1,10 +1,6 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
 
-// In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
-// Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
-// the original implementation is kept for Fuse only and Lite gets a stub.
-#if SKIP_MODE_FUSE
 struct StepperPlayground: View {
     @State var intValue = 5
     @State var doubleValue = 2.5
@@ -38,11 +34,13 @@ struct StepperPlayground: View {
                     // Int stepper with step
                     Stepper("Int step: 5", value: $intValue, step: 5)
 
+                    #if !SKIP // stepper ranges only available in Skip Fuse mode
                     // Int stepper with bounds
                     Stepper("Int in 0...10", value: $intValue, in: 0...10)
 
                     // Int stepper with bounds and step
                     Stepper("Int in 0...20 step 2", value: $intValue, in: 0...20, step: 2)
+                    #endif
 
                     Divider()
 
@@ -52,11 +50,13 @@ struct StepperPlayground: View {
                     // Double stepper with step
                     Stepper("Double step: 0.5", value: $doubleValue, step: 0.5)
 
+                    #if !SKIP // stepper ranges only available in Skip Fuse mode
                     // Double stepper with bounds
                     Stepper("Double in 0.0...5.0", value: $doubleValue, in: 0.0...5.0)
 
                     // Double stepper with bounds and step
                     Stepper("Double in 0.0...10.0 step 0.25", value: $doubleValue, in: 0.0...10.0, step: 0.25)
+                    #endif
 
                     Divider()
 
@@ -123,22 +123,3 @@ struct StepperPlayground: View {
         }
     }
 }
-#else
-struct StepperPlayground: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("Lite SkipUI marks the Stepper(value:in:step:) initializer as deprecated.")
-                .multilineTextAlignment(.center)
-                .padding()
-            Text("Run the app with SKIP_MODE=fuse to see this playground.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-        .toolbar {
-            PlaygroundSourceLink(file: "StepperPlayground.swift")
-        }
-    }
-}
-#endif

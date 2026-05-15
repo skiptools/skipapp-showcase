@@ -1,10 +1,6 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
 
-// In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
-// Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
-// the original implementation is kept for Fuse only and Lite gets a stub.
-#if SKIP_MODE_FUSE
 struct TransformPlayground: View {
     enum Tab: String, CaseIterable {
         case rotation = "Rotation"
@@ -80,7 +76,7 @@ struct TransformPlayground: View {
             Spacer()
 
             controlsSection {
-                sliderRow(label: "Angle", value: $rotationAngle, range: -180...180, format: "%.0f°")
+                sliderRow(label: "Angle", value: $rotationAngle, from: -180.0, to: 180.0, format: "%.0f°")
             }
         }
     }
@@ -102,7 +98,7 @@ struct TransformPlayground: View {
             Spacer()
 
             controlsSection {
-                sliderRow(label: "Scale", value: $scale, range: 0.25...2.0, format: "%.2fx")
+                sliderRow(label: "Scale", value: $scale, from: 0.25, to: 2.0, format: "%.2fx")
             }
         }
     }
@@ -125,8 +121,8 @@ struct TransformPlayground: View {
             Spacer()
 
             controlsSection {
-                sliderRow(label: "Angle", value: $rotationAngle, range: -180...180, format: "%.0f°")
-                sliderRow(label: "Scale", value: $scale, range: 0.25...2.0, format: "%.2fx")
+                sliderRow(label: "Angle", value: $rotationAngle, from: -180.0, to: 180.0, format: "%.0f°")
+                sliderRow(label: "Scale", value: $scale, from: 0.25, to: 2.0, format: "%.2fx")
             }
         }
     }
@@ -183,11 +179,11 @@ struct TransformPlayground: View {
         }
     }
 
-    private func sliderRow(label: String, value: Binding<Double>, range: ClosedRange<Double>, format: String) -> some View {
+    private func sliderRow(label: String, value: Binding<Double>, from min: Double, to max: Double, format: String) -> some View {
         HStack {
             Text(label)
                 .frame(width: 60, alignment: .leading)
-            Slider(value: value, in: range)
+            Slider(value: value, in: min...max)
             Text(String(format: format, value.wrappedValue))
                 .frame(width: 50, alignment: .trailing)
                 .monospaced()
@@ -215,22 +211,3 @@ struct TransformPlayground: View {
         )
     }
 }
-#else
-struct TransformPlayground: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("TransformPlayground passes IntRange to Slider(in: ClosedRange<Double>).")
-                .multilineTextAlignment(.center)
-                .padding()
-            Text("Run the app with SKIP_MODE=fuse to see this playground.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-        .toolbar {
-            PlaygroundSourceLink(file: "TransformPlayground.swift")
-        }
-    }
-}
-#endif

@@ -1,10 +1,6 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
 
-// In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
-// Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
-// the original implementation is kept for Fuse only and Lite gets a stub.
-#if SKIP_MODE_FUSE
 struct AnimationPlayground: View {
     @State var isOn = false
     @State var unrelatedIsOn = false
@@ -491,12 +487,12 @@ struct AnimationPlayground: View {
                 HStack(spacing: 12) {
                     animationCell(label: ".blur") {
                         gradientRect()
-                            .blur(radius: blur ? 10 : 0)
+                            .blur(radius: blur ? 10.0 : 0.0)
                     } action: { blur.toggle() }
 
                     animationCell(label: ".brightness") {
                         gradientRect()
-                            .brightness(brightness ? 0.3 : 0)
+                            .brightness(brightness ? 0.3 : 0.0)
                     } action: { brightness.toggle() }
 
                     animationCell(label: ".saturation") {
@@ -513,36 +509,36 @@ struct AnimationPlayground: View {
 
                     animationCell(label: ".hueRotation") {
                         gradientRect()
-                            .hueRotation(.degrees(hue ? 180 : 0))
+                            .hueRotation(.degrees(hue ? 180.0 : 0.0))
                     } action: { hue.toggle() }
 
                     animationCell(label: ".grayscale") {
                         gradientRect()
-                            .grayscale(grayscale ? 1.0 : 0)
+                            .grayscale(grayscale ? 1.0 : 0.0)
                     } action: { grayscale.toggle() }
                 }
 
                 HStack(spacing: 12) {
                     animationCell(label: ".border") {
                         gradientRect()
-                            .border(Color.blue, width: border ? 8 : 1)
+                            .border(Color.blue, width: border ? 8.0 : 1.0)
                     } action: { border.toggle() }
 
                     animationCell(label: ".cornerRadius") {
                         gradientRect()
-                            .cornerRadius(corner ? 35 : 0)
+                            .cornerRadius(corner ? 35.0 : 0.0)
                     } action: { corner.toggle() }
 
                     animationCell(label: "Combined") {
                         gradientRect()
-                            .blur(radius: combined ? 10 : 0)
-                            .brightness(combined ? 0.3 : 0)
+                            .blur(radius: combined ? 10.0 : 0.0)
+                            .brightness(combined ? 0.3 : 0.0)
                             .saturation(combined ? 0.2 : 1.0)
                             .contrast(combined ? 2.0 : 1.0)
-                            .hueRotation(.degrees(combined ? 180 : 0))
-                            .grayscale(combined ? 1.0 : 0)
-                            .border(Color.white, width: combined ? 8 : 1)
-                            .cornerRadius(combined ? 35 : 8)
+                            .hueRotation(.degrees(combined ? 180.0 : 0.0))
+                            .grayscale(combined ? 1.0 : 0.0)
+                            .border(Color.white, width: combined ? 8.0 : 1.0)
+                            .cornerRadius(combined ? 35.0 : 8.0)
                     } action: { combined.toggle() }
                 }
 
@@ -556,7 +552,7 @@ struct AnimationPlayground: View {
                     Rectangle()
                         .fill(LinearGradient(colors: [.blue, .purple, .pink], startPoint: .topLeading, endPoint: .bottomTrailing))
                         .frame(width: 70, height: 70)
-                        .shadow(color: .black.opacity(0.5), radius: shadow ? 15 : 0, x: shadow ? 10 : 0, y: shadow ? 10 : 0)
+                        .shadow(color: .black.opacity(0.5), radius: shadow ? 15.0 : 0.0, x: shadow ? 10.0 : 0.0, y: shadow ? 10.0 : 0.0)
                         .padding(20)
                         .onTapGesture {
                             performAnimation {
@@ -604,22 +600,3 @@ struct AnimationPlayground: View {
         }
     }
 }
-#else
-struct AnimationPlayground: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("AnimationPlayground uses SwiftUI animation curves with mixed Int/Double literals that the Lite transpiler can't auto-convert.")
-                .multilineTextAlignment(.center)
-                .padding()
-            Text("Run the app with SKIP_MODE=fuse to see this playground.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-        .toolbar {
-            PlaygroundSourceLink(file: "AnimationPlayground.swift")
-        }
-    }
-}
-#endif

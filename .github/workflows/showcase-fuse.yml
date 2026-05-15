@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   call-workflow:
-    uses: skiptools/actions/.github/workflows/skip-app.yml@env-input
+    uses: skiptools/actions/.github/workflows/skip-app.yml@v1
     with:
       env: SKIP_MODE=fuse
     secrets:
