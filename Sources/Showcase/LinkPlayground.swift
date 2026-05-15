@@ -1,4 +1,5 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
+import Foundation
 import SwiftUI
 
 struct LinkPlayground: View {

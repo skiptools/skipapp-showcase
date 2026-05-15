@@ -1,7 +1,8 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 import SkipSQL
 import SkipSQLCore
+import SkipSQLPlus
 
 struct SQLPlayground: View {
     /// The shared SQL context for the view hierarchy
@@ -158,7 +159,7 @@ public struct SQLItem: Identifiable, Hashable, SQLCodable {
     public init(name: String) throws {
         let dir = URL.applicationSupportDirectory
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
-        let ctx = try SQLContext(path: dir.appendingPathComponent(name).path, flags: [.create, .readWrite], configuration: .platform)
+        let ctx = try SQLContext(path: dir.appendingPathComponent(name).path, flags: [.create, .readWrite], configuration: .plus)
         self.context = ctx
 
         // track all SQL statements that have been executed

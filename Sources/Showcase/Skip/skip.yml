@@ -1,7 +1,13 @@
-# All the skip.yml files in a project are combined to create
-# settings.gradle.kts and build.gradle.kts, which the Gradle build system
-# uses to configure the build. Dependencies, metadata, versions, and configuration
-# settings are all specified here. See https://skip.tools/docs
+# Configuration file for the Showcase module (https://skip.dev).
+#
+# mode: 'automatic' lets skipstone decide between 'native' (Skip Fuse) and
+# 'transpiled' (Skip Lite) based on whether the SkipFuse module appears in
+# the resolved dependency graph. When SKIP_MODE=fuse is set in the environment,
+# Package.swift wires in SkipFuseUI (which pulls SkipFuse), so this becomes
+# 'native'. Otherwise it stays 'transpiled'.
+skip:
+  mode: 'automatic'
+
 build:
   contents:
     - block: 'dependencies'

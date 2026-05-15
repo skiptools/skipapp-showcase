@@ -1,12 +1,17 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
+// In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
+// Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
+// the original implementation is kept for Fuse only and Lite gets a stub.
+#if SKIP_FUSE_MODE
 struct GesturePlayground: View {
     @State var tapPosition: CGPoint = .zero
     @State var doubleTapPosition: CGPoint = .zero
     @State var longPressCount = 0
     @State var dragOffset: CGSize = .zero
     @State var globalDragOffset: CGSize = .zero
+    @GestureState(initialValue: .zero, resetTransaction: Transaction(animation: .default)) var gestureStateDragOffset: CGSize
     @State var magnification: CGFloat = 1.0
     @State var rotation: Angle = .degrees(0.0)
     @State var isTouchDown = false
@@ -111,6 +116,20 @@ struct GesturePlayground: View {
                         )
                 }
                 HStack {
+                    Text("GestureState Drag")
+                    Spacer()
+                    Color.red
+                        .frame(width: 150, height: 150)
+                        .offset(gestureStateDragOffset)
+                        .gesture(
+                            DragGesture()
+                                .updating($gestureStateDragOffset) { val, state, _ in
+                                    state = val.translation
+                                    logger.info("Drag position: (\(val.location.x), \(val.location.y))")
+                                }
+                        )
+                }
+                HStack {
                     Text("Touch")
                     Spacer()
                     Rectangle()
@@ -121,6 +140,16 @@ struct GesturePlayground: View {
                                 .onChanged { _ in isTouchDown = true }
                                 .onEnded { _ in isTouchDown = false }
                         )
+                }
+                HStack {
+                    Text("Disabled tap: (\(Int(tapPosition.x)), \(Int(tapPosition.y)))")
+                    Spacer()
+                    Color.red
+                        .frame(width: 150, height: 150)
+                        .onTapGesture {
+                            tapPosition = $0
+                        }
+                        .disabled(true)
                 }
                 VStack {
                     Text("Magnify")
@@ -149,7 +178,7 @@ struct GesturePlayground: View {
                         )
                 }
                 VStack {
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Tap: (\(Int(combinedTapPosition.x)), \(Int(combinedTapPosition.y)))")
                         Text("Double tap: (\(Int(combinedDoubleTapPosition.x)), \(Int(combinedDoubleTapPosition.y)))")
                         Text("Long press: \(combinedLongPressCount)")
@@ -190,3 +219,22 @@ struct GesturePlayground: View {
         }
     }
 }
+#else
+struct GesturePlayground: View {
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("GesturePlayground exercises @GestureState/.updating, which SkipUI Lite doesn't bridge yet.")
+                .multilineTextAlignment(.center)
+                .padding()
+            Text("Run the app with SKIP_MODE=fuse to see this playground.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .padding()
+        .toolbar {
+            PlaygroundSourceLink(file: "GesturePlayground.swift")
+        }
+    }
+}
+#endif

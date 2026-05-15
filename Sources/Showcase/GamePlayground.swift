@@ -1,6 +1,9 @@
 // Flappy Bird in SwiftUI for iOS and Android!
 import SwiftUI
 import Observation
+#if SKIP_FUSE_MODE
+import SkipFuse
+#endif
 import SkipKit
 
 public struct GamePlayground: View {
@@ -101,6 +104,7 @@ final class FlappyBirdModel {
     private var spacing: Double { effectivePipeSpacing(difficulty) }
 
     func setup(width: Double, height: Double) {
+        guard fieldWidth != width || fieldHeight != height else { return }
         fieldWidth = width
         fieldHeight = height
     }
@@ -235,7 +239,7 @@ final class FlappyBirdModel {
 
 struct FlappyBirdGameView: View {
     @State var game = FlappyBirdModel()
-    @State var tickTimer: Timer? = nil
+    @State var gameLoopTask: Task<Void, Never>? = nil
     @State var lastTick: Double = 0.0
     @State var showPauseMenu = false
     @State var showSettings = false
@@ -640,7 +644,7 @@ struct FlappyBirdGameView: View {
                 .tint(.red)
 
                 ShareLink(
-                    item: "I scored \(game.score) in Flappy Bird (difficulty \(game.difficulty)) on Ship Showcase! Can you beat it?\nhttps://skip.dev/docs/samples/skipapp-showcase-fuse/",
+                    item: "I scored \(game.score) in Flappy Bird (difficulty \(game.difficulty)) on Ship Showcase! Can you beat it?\nhttps://skip.dev/docs/samples/skipapp-showcase/",
                     subject: Text("Flappy Bird Score"),
                     message: Text("I scored \(game.score) in Flappy Bird!")
                 ) {
@@ -733,14 +737,17 @@ struct FlappyBirdGameView: View {
     func startTimer() {
         stopTimer()
         lastTick = currentTime()
-        tickTimer = Timer.scheduledTimer(withTimeInterval: 1.0 / 60.0, repeats: true) { _ in
-            tick()
+        gameLoopTask = Task { @MainActor in
+            while !Task.isCancelled {
+                try? await Task.sleep(nanoseconds: 1_000_000_000 / 60) // ~60fps
+                tick()
+            }
         }
     }
 
     func stopTimer() {
-        tickTimer?.invalidate()
-        tickTimer = nil
+        gameLoopTask?.cancel()
+        gameLoopTask = nil
     }
 
     func tick() {

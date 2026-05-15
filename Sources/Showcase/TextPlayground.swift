@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct TextPlayground: View {
@@ -47,7 +47,7 @@ struct TextPlayground: View {
                 Text("Markdown **Bold text**")
                 Text("Markdown ~~Strikethrough text~~")
                 Text("Markdown `Code text`")
-                Text("Markdown [Link text](https://skip.tools) and [\("Another link")](\("https://swift.org"))")
+                Text("Markdown [Link text](https://skip.dev) and [\("Another link")](\("https://swift.org"))")
                 Text("Markdown **Bold text** with .italic()")
                     .italic()
                 Text("Markdown **bold** \("**String interpolation**") is not formatted")
@@ -64,9 +64,10 @@ struct TextPlayground: View {
 
                 Divider()
 
-                Text(try! AttributedString(markdown: "Attributed *Italic text* with \("substitution1") and \("substitution2")"))
-                Text(try! AttributedString(markdown: "Attributed **Bold text** with .italic()"))
-                    .italic()
+                // TODO: AttributedString
+//                Text(try! AttributedString(markdown: "Attributed *Italic text* with \("substitution1") and \("substitution2")"))
+//                Text(try! AttributedString(markdown: "Attributed **Bold text** with .italic()"))
+//                    .italic()
 
                 Divider()
 
@@ -81,18 +82,17 @@ struct TextPlayground: View {
                     .lineLimit(1)
                     .frame(width: 200)
                     .border(Color.blue)
-                Text(".lineLimit(10, reservesSpace: true): 10-line short text")
-                    .lineLimit(10, reservesSpace: true)
-                Text(".truncationMode(.middle): This is some long text that should middle truncate when it exceeds the width of its frame")
-                    .truncationMode(.middle)
-                    .lineLimit(1)
-                    .frame(width: 200)
-                    .border(Color.blue)
-                Text(".truncationMode(.tail): This is some long text when it exceeds the width of its frame will head truncate")
-                    .truncationMode(.head)
-                    .lineLimit(1)
-                    .frame(width: 200)
-                    .border(Color.blue)
+                // TODO: once we have skip-fuse-ui parity for of https://github.com/skiptools/skip-ui/pull/288
+//                Text(".truncationMode(.middle): This is some long text that should middle truncate when it exceeds the width of its frame")
+//                    .truncationMode(.middle)
+//                    .lineLimit(1)
+//                    .frame(width: 200)
+//                    .border(Color.blue)
+//                Text(".truncationMode(.tail): This is some long text when it exceeds the width of its frame will head truncate")
+//                    .truncationMode(.head)
+//                    .lineLimit(1)
+//                    .frame(width: 200)
+//                    .border(Color.blue)
 
                 Divider()
 
@@ -138,3 +138,5 @@ struct TextPlayground: View {
         }
     }
 }
+
+

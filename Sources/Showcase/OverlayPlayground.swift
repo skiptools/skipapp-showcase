@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct OverlayPlayground: View {
@@ -6,7 +6,7 @@ struct OverlayPlayground: View {
         ScrollView {
             VStack(spacing: 16) {
                 HStack {
-                    Text("Color.red.opacity(0.5)")
+                    Text(".red.opacity(0.5)")
                     Spacer()
                     Text("Hello")
                         .padding()
@@ -64,11 +64,11 @@ struct OverlayPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .overlay(
+                        .overlay {
                             Circle()
                                 .fill(.red.opacity(0.5))
                                 .frame(width: 20, height: 20)
-                        )
+                        }
                         .border(.blue)
                 }
                 HStack {

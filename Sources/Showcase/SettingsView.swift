@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 import SkipKit
 import SkipMarketplace
@@ -10,6 +10,20 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                // SkipFuseUI 1.14.5 marks LabeledContent inits as unavailable
+                // for the bridged surface, so use a plain HStack for the
+                // "Skip Mode" row.
+                HStack {
+                    Text("Skip Mode")
+                    Spacer()
+                    #if SKIP_FUSE_MODE
+                    Text("Fuse (native)")
+                        .foregroundStyle(.green)
+                    #else
+                    Text("Lite (transpiled)")
+                        .foregroundStyle(.blue)
+                    #endif
+                }
                 Picker("Appearance", selection: $appearance) {
                     Text("System").tag("")
                     Text("Light").tag("light")
@@ -43,19 +57,19 @@ struct SettingsView: View {
                     .navigationTitle("System Information")
                 }
                 HStack {
-                    #if SKIP
-                    ComposeView { ctx in // Mix in Compose code!
-                        androidx.compose.material3.Text("💚", modifier: ctx.modifier)
+                    #if os(Android)
+                    ComposeView {
+                        HeartComposer()
                     }
                     #else
                     Text(verbatim: "💙")
                     #endif
-                    if let version = ProcessInfo.processInfo.appVersionString,
-                       let buildNumber = ProcessInfo.processInfo.appVersionNumber {
+                    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                       let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
                         Text("Version \(version) (\(buildNumber))")
                             .foregroundStyle(.gray)
                     }
-                    Text("Powered by [Skip](https://skip.tools)")
+                    Text("Powered by [Skip](https://skip.dev)")
                 }
                 .onTapGesture {
                     logger.info("requesting marketplace review")
@@ -66,3 +80,13 @@ struct SettingsView: View {
         }
     }
 }
+
+#if SKIP
+
+struct HeartComposer : ContentComposer {
+    @Composable func Compose(context: ComposeContext) {
+        androidx.compose.material3.Text("💚", modifier: context.modifier)
+    }
+}
+
+#endif

@@ -1,6 +1,10 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
+// In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
+// Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
+// the original implementation is kept for Fuse only and Lite gets a stub.
+#if SKIP_FUSE_MODE
 struct BackgroundPlayground: View {
     var body: some View {
         ScrollView {
@@ -61,12 +65,12 @@ struct BackgroundPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background(
+                        .background {
                             HStack {
                                 Circle().fill(.red.opacity(0.2))
                                 Circle().fill(.green.opacity(0.2))
                             }
-                        )
+                        }
                         .border(.blue)
                 }
                 HStack {
@@ -132,6 +136,45 @@ struct BackgroundPlayground: View {
                         }
                         .border(.blue)
                 }
+
+                // Material backgrounds
+                Divider()
+                Text("Material Backgrounds").font(.headline)
+                Text("Simplified on Android: semi-transparent white overlay")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                ZStack {
+                    LinearGradient(colors: [.red, .blue, .green], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    VStack(spacing: 8) {
+                        Text(".ultraThinMaterial")
+                            .padding()
+                            .background(.ultraThinMaterial)
+                        Text(".thinMaterial")
+                            .padding()
+                            .background(.thinMaterial)
+                        Text(".regularMaterial")
+                            .padding()
+                            .background(.regularMaterial)
+                        Text(".thickMaterial")
+                            .padding()
+                            .background(.thickMaterial)
+                        Text(".ultraThickMaterial")
+                            .padding()
+                            .background(.ultraThickMaterial)
+                    }
+                    .padding()
+                }
+                .frame(height: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+
+                HStack {
+                    Text("Material in shape")
+                    Spacer()
+                    Text("Hello")
+                        .padding()
+                        .background(.regularMaterial, in: Capsule())
+                }
             }
             .padding()
         }
@@ -140,4 +183,22 @@ struct BackgroundPlayground: View {
         }
     }
 }
-
+#else
+struct BackgroundPlayground: View {
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("BackgroundPlayground uses material APIs that only SkipFuseUI exposes.")
+                .multilineTextAlignment(.center)
+                .padding()
+            Text("Run the app with SKIP_MODE=fuse to see this playground.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .padding()
+        .toolbar {
+            PlaygroundSourceLink(file: "BackgroundPlayground.swift")
+        }
+    }
+}
+#endif

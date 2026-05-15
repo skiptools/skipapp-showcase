@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 enum ContentTab: String, Hashable {
@@ -32,20 +32,12 @@ struct ContentView: View {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
         }
-        .tabViewStyle(tabViewStyle)
         .preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
+        // statusBarHidden is marked unavailable in the SkipFuseUI 1.14.5
+        // bridge and is also flagged by the Lite transpiler, so apply it only
+        // when neither restriction is in effect.
+        #if !SKIP_FUSE_MODE && !SKIP
         .statusBarHidden(statusBarHidden)
+        #endif
     }
-
-    var tabViewStyle: some TabViewStyle {
-        if #available(iOS 18.0, *) {
-            return .sidebarAdaptable
-        } else {
-            return .automatic
-        }
-    }
-}
-
-#Preview {
-    ContentView()
 }

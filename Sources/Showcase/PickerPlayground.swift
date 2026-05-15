@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct PickerPlayground: View {
@@ -48,11 +48,11 @@ struct PickerPlayground: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                #if os(Android)
-                .material3SegmentedButton {
-                    $0.copy(icon: {})
-                }
-                #endif
+                // Note: the original Fuse showcase added a Material 3 segmented
+                // button no-icon modifier here via SkipUI's `ContentModifier`,
+                // which is only available to the transpiled SkipUI module and
+                // can't be reached from native Swift in Fuse mode. Drop it
+                // until SkipFuseUI exposes an equivalent native API.
                 VStack {
                     Text(".disabled(true)")
                     Picker("Label", selection: $selectedValue) {
@@ -164,3 +164,17 @@ struct PickerPlayground: View {
     }
 }
 
+// SkipUI's `ContentModifier` is only reachable from the transpiled Kotlin side,
+// not from Swift in Fuse mode. The original Lite-mode helper struct
+// `NoIconModifier` is therefore restricted to Lite (`#if SKIP`).
+#if SKIP
+
+struct NoIconModifier : ContentModifier {
+    func modify(view: any View) -> any View {
+        view.material3SegmentedButton {
+            $0.copy(icon: {})
+        }
+    }
+}
+
+#endif

@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct StackPlayground: View {
@@ -260,7 +260,7 @@ struct StackPlayground: View {
     }
 }
 
-private struct LazyVStackScrollView: View {
+struct LazyVStackScrollView: View {
     let count: Int
 
     var body: some View {
@@ -272,7 +272,7 @@ private struct LazyVStackScrollView: View {
     }
 }
 
-private struct LazyVStackView: View {
+struct LazyVStackView: View {
     let count: Int
 
     var body: some View {
@@ -288,7 +288,7 @@ private struct LazyVStackView: View {
     }
 }
 
-private struct ScrollViewStacksView: View {
+struct ScrollViewStacksView: View {
     var body: some View {
         ScrollView(.vertical) {
           ScrollView(.horizontal) {

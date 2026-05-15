@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 #if os(macOS)
@@ -55,9 +55,10 @@ struct PasteboardPlayground: View {
             }
             .padding()
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIPasteboard.changedNotification), perform: { notification in
-            pasteboardInfo = PasteboardInfo(notification.object as! UIPasteboard)
-        })
+        // TODO: NotificationCenter publisher
+//        .onReceive(NotificationCenter.default.publisher(for: UIPasteboard.changedNotification), perform: { notification in
+//            pasteboardInfo = PasteboardInfo(notification.object as! UIPasteboard)
+//        })
         .toolbar {
             PlaygroundSourceLink(file: "PasteboardPlayground.swift")
         }

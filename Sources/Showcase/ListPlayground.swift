@@ -1,6 +1,10 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
+// In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
+// Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
+// the original implementation is kept for Fuse only and Lite gets a stub.
+#if SKIP_FUSE_MODE
 enum ListPlaygroundType: String, CaseIterable {
     case fixedContent
     case indexedContent
@@ -21,6 +25,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case plainStyleSectionedEditActions
     case onMoveDelete
     case positioned
+    case badges
 
     var title: String {
         switch self {
@@ -62,16 +67,20 @@ enum ListPlaygroundType: String, CaseIterable {
             return ".onMove, .onDelete"
         case .positioned:
             return "Positioned"
+        case .badges:
+            return "Badges"
         }
     }
 }
 
 struct ListPlayground: View {
-    @StateObject var editActionsModel = ObservableEditActionsListPlayground.Model()
+    @State var editActionsModel = ObservableEditActionsListPlayground.Model()
 
     var body: some View {
-        List(ListPlaygroundType.allCases, id: \.self) { type in
-            NavigationLink(type.title, value: type)
+        List {
+            ForEach(ListPlaygroundType.allCases, id: \.self) { type in
+                NavigationLink(type.title, value: type)
+            }
         }
         .toolbar {
             PlaygroundSourceLink(file: "ListPlayground.swift")
@@ -134,6 +143,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .positioned:
                 PositionedListPlayground()
+                    .navigationTitle($0.title)
+            case .badges:
+                BadgeListPlayground()
                     .navigationTitle($0.title)
             }
         }
@@ -347,8 +359,9 @@ struct PlainStyleEmptyListPlayground: View {
 }
 
 struct RefreshableListPlayground: View {
-    class Model: ObservableObject {
-        @Published var items: [Int] = {
+    @Observable
+    class Model {
+        var items: [Int] = {
             var items: [Int] = []
             for i in 0..<50 {
                 items.append(i)
@@ -357,7 +370,7 @@ struct RefreshableListPlayground: View {
         }()
     }
 
-    @StateObject var model = Model()
+    @State var model = Model()
 
     var body: some View {
         List(model.items, id: \.self) { item in
@@ -442,7 +455,8 @@ struct EditActionsListPlayground: View {
     }()
 
     var body: some View {
-        List($items, id: \.i, editActions: .all) { $item in
+        List($items, id: \.i, editActions: .all) { itemBinding in
+            let item = itemBinding.wrappedValue
             if item.i % 5 == 0 {
                 Text("\(item.s) .deleteDisabled")
                     .deleteDisabled(true)
@@ -453,7 +467,7 @@ struct EditActionsListPlayground: View {
                 HStack {
                     Text(item.s)
                     Spacer()
-                    Toggle("isOn", isOn: $item.toggled)
+                    Toggle("isOn", isOn: itemBinding.toggled)
                         .labelsHidden()
                 }
             }
@@ -462,8 +476,8 @@ struct EditActionsListPlayground: View {
 }
 
 struct ObservableEditActionsListPlayground: View {
-    class Model: ObservableObject {
-        @Published var items: [ListItem] = {
+    @Observable class Model {
+        var items: [ListItem] = {
             var items: [ListItem] = []
             for i in 0..<50 {
                 items.append(ListItem(i: i, s: "Item \(i)"))
@@ -477,14 +491,15 @@ struct ObservableEditActionsListPlayground: View {
         var toggled = false
     }
 
-    @ObservedObject var model: Model
+    @Bindable var model: Model
 
     var body: some View {
-        List($model.items, id: \.i, editActions: .all) { $item in
+        List($model.items, id: \.i, editActions: .all) { itemBinding in
+            let item = itemBinding.wrappedValue
             HStack {
                 Text(item.s)
                 Spacer()
-                Toggle("isOn", isOn: $item.toggled)
+                Toggle("isOn", isOn: itemBinding.toggled)
                     .labelsHidden()
             }
         }
@@ -693,3 +708,71 @@ struct PositionedListPlayground: View {
         }
     }
 }
+
+struct BadgeListPlayground: View {
+    var body: some View {
+        List {
+            Section("Badge with Count") {
+                Text("Messages")
+                    .badge(5)
+                Text("Notifications")
+                    .badge(42)
+                Text("No badge (count 0)")
+                    .badge(0)
+            }
+
+            Section("Badge with Text") {
+                Text("Updates")
+                    .badge("New")
+                Text("Status")
+                    .badge("Active")
+            }
+
+            Section("Badge Prominence") {
+                Text("Standard (default)")
+                    .badge(10)
+                Text("Increased prominence")
+                    .badge(10)
+                    .badgeProminence(.increased)
+                Text("Decreased prominence")
+                    .badge(10)
+                    .badgeProminence(.decreased)
+            }
+
+            Section("Navigation with Badges") {
+                NavigationLink {
+                    Text("Detail View")
+                } label: {
+                    Text("Inbox")
+                }
+                .badge(3)
+
+                NavigationLink {
+                    Text("Detail View")
+                } label: {
+                    Text("Spam")
+                }
+                .badge("99+")
+            }
+        }
+    }
+}
+#else
+struct ListPlayground: View {
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("ListPlayground uses Binding<T>.dynamic-member-lookup which the Lite transpiler doesn't yet bridge.")
+                .multilineTextAlignment(.center)
+                .padding()
+            Text("Run the app with SKIP_MODE=fuse to see this playground.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .padding()
+        .toolbar {
+            PlaygroundSourceLink(file: "ListPlayground.swift")
+        }
+    }
+}
+#endif

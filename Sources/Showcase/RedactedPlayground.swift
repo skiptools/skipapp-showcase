@@ -1,4 +1,4 @@
-// Copyright 2024–2025 Skip
+// Copyright 2024–2026 Skip
 import SwiftUI
 
 struct RedactedPlayground: View {

@@ -1,10 +1,11 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 enum ScrollViewPlaygroundType: String, CaseIterable {
     case vertical
     case horizontal
     case viewAligned
+    case modifiers
     case carousel
     case readerLazyVStack
     case readerLazyHStack
@@ -21,6 +22,8 @@ enum ScrollViewPlaygroundType: String, CaseIterable {
             return "Horizontal"
         case .viewAligned:
             return ".viewAligned"
+        case .modifiers:
+            return "Modifiers"
         case .carousel:
             return "Carousel"
         case .readerLazyVStack:
@@ -58,6 +61,9 @@ struct ScrollViewPlayground: View {
             case .viewAligned:
                 ViewAlignedScrollViewPlayground()
                     .navigationTitle($0.title)
+            case .modifiers:
+                ScrollViewModifiersPlayground()
+                    .navigationTitle($0.title)
             case .carousel:
                 CarouselPlayground()
                     .navigationTitle($0.title)
@@ -84,7 +90,7 @@ struct ScrollViewPlayground: View {
     }
 }
 
-private struct VerticalScrollViewPlayground: View {
+struct VerticalScrollViewPlayground: View {
     var body: some View {
         ScrollView {
             VStack {
@@ -100,7 +106,7 @@ private struct VerticalScrollViewPlayground: View {
     }
 }
 
-private struct HorizontalScrollViewPlayground: View {
+struct HorizontalScrollViewPlayground: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
@@ -113,7 +119,7 @@ private struct HorizontalScrollViewPlayground: View {
     }
 }
 
-private struct ViewAlignedScrollViewPlayground: View {
+struct ViewAlignedScrollViewPlayground: View {
     var body: some View {
         if #available(iOS 17, *) {
             ScrollView(.horizontal) {
@@ -135,65 +141,7 @@ private struct ViewAlignedScrollViewPlayground: View {
     }
 }
 
-private struct CarouselPlayground: View {
-    private let colors: [Color] = [
-        .red, .orange, .yellow, .green, .blue, .purple, .pink
-    ]
-    @State private var selectedId: AnyHashable? = 0
-
-    var body: some View {
-        if #available(iOS 17, *) {
-            VStack(spacing: 20) {
-                Text(selectedColorName)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-
-                ScrollView(.horizontal) {
-                    LazyHStack(spacing: 16) {
-                        ForEach(Array(colors.enumerated()), id: \.offset) { index, color in
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .fill(color)
-                                Text(colorName(for: color))
-                                    .font(.title)
-                                    .foregroundStyle(.white)
-                            }
-                            .frame(width: 280, height: 400)
-                        }
-                    }
-                    .padding(.horizontal, 16)
-                    .scrollTargetLayout()
-                }
-                .scrollTargetBehavior(.viewAligned)
-                .scrollPosition(id: $selectedId)
-            }
-        } else {
-            Text("Requires iOS 17+")
-        }
-    }
-
-    private var selectedColorName: String {
-        guard let selectedId = selectedId as? Int, selectedId >= 0, selectedId < colors.count else {
-            return ""
-        }
-        return colorName(for: colors[selectedId])
-    }
-
-    private func colorName(for color: Color) -> String {
-        switch color {
-        case .red: return "Red"
-        case .orange: return "Orange"
-        case .yellow: return "Yellow"
-        case .green: return "Green"
-        case .blue: return "Blue"
-        case .purple: return "Purple"
-        case .pink: return "Pink"
-        default: return ""
-        }
-    }
-}
-
-private struct ScrollViewReaderLazyVStackPlayground: View {
+struct ScrollViewReaderLazyVStackPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -213,7 +161,7 @@ private struct ScrollViewReaderLazyVStackPlayground: View {
     }
 }
 
-private struct ScrollViewReaderLazyHStackPlayground: View {
+struct ScrollViewReaderLazyHStackPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -233,7 +181,7 @@ private struct ScrollViewReaderLazyHStackPlayground: View {
     }
 }
 
-private struct ScrollViewReaderListPlayground: View {
+struct ScrollViewReaderListPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -262,7 +210,7 @@ private struct ScrollViewReaderListPlayground: View {
     }
 }
 
-private struct ScrollViewReaderStaticListPlayground: View {
+struct ScrollViewReaderStaticListPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -342,7 +290,7 @@ private struct ScrollViewReaderStaticListPlayground: View {
     }
 }
 
-private struct ScrollViewReaderLazyVGridPlayground: View {
+struct ScrollViewReaderLazyVGridPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -365,7 +313,7 @@ private struct ScrollViewReaderLazyVGridPlayground: View {
     }
 }
 
-private struct ScrollViewReaderLazyHGridPlayground: View {
+struct ScrollViewReaderLazyHGridPlayground: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: 16) {
@@ -388,7 +336,7 @@ private struct ScrollViewReaderLazyHGridPlayground: View {
     }
 }
 
-private struct ScrollViewReaderJumpButtons: View {
+struct ScrollViewReaderJumpButtons: View {
     let proxy: ScrollViewProxy
 
     var body: some View {
@@ -418,6 +366,125 @@ private struct ScrollViewReaderJumpButtons: View {
                     withAnimation { proxy.scrollTo(29) }
                 }
             }
+        }
+    }
+}
+
+struct ScrollViewModifiersPlayground: View {
+    @State var isScrollDisabled = false
+    @State var hideScrollIndicators = false
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Toggle("Disable Scrolling", isOn: $isScrollDisabled)
+                .padding(.horizontal)
+
+            Text("scrollDisabled(\(isScrollDisabled ? "true" : "false"))")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            ScrollView {
+                VStack(spacing: 8) {
+                    ForEach(0..<20) { i in
+                        Text("Item \(i)")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue.opacity(0.1))
+                            .cornerRadius(8)
+                    }
+                }
+                .padding()
+            }
+            .scrollDisabled(isScrollDisabled)
+            .border(Color.gray)
+
+            Divider()
+
+            Toggle("Hide Scroll Indicators", isOn: $hideScrollIndicators)
+                .padding(.horizontal)
+
+            Text("scrollIndicators(\(hideScrollIndicators ? ".hidden" : ".automatic"))")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Text("Note: Android Compose does not show scroll indicators by default")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+
+            ScrollView {
+                VStack(spacing: 8) {
+                    ForEach(0..<10) { i in
+                        Text("Item \(i)")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.green.opacity(0.1))
+                            .cornerRadius(8)
+                    }
+                }
+                .padding()
+            }
+            .scrollIndicators(hideScrollIndicators ? .hidden : .automatic)
+            .frame(height: 150)
+            .border(Color.gray)
+        }
+        .padding()
+    }
+}
+
+struct CarouselPlayground: View {
+    let colors: [Color] = [
+        .red, .orange, .yellow, .green, .blue, .purple, .pink
+    ]
+    @State var selectedId: AnyHashable? = 0
+
+    var body: some View {
+        if #available(iOS 17, *) {
+            VStack(spacing: 20) {
+                Text(selectedColorName)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 16) {
+                        ForEach(Array(colors.enumerated()), id: \.offset) { index, color in
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(color)
+                                Text(colorName(for: color))
+                                    .font(.title)
+                                    .foregroundStyle(.white)
+                            }
+                            .frame(width: 280, height: 400)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    .scrollTargetLayout()
+                }
+                .scrollTargetBehavior(.viewAligned)
+                .scrollPosition(id: $selectedId)
+            }
+        } else {
+            Text("Requires iOS 17+")
+        }
+    }
+
+    var selectedColorName: String {
+        guard let selectedId = selectedId as? Int, selectedId >= 0, selectedId < colors.count else {
+            return ""
+        }
+        return colorName(for: colors[selectedId])
+    }
+
+    func colorName(for color: Color) -> String {
+        switch color {
+        case .red: return "Red"
+        case .orange: return "Orange"
+        case .yellow: return "Yellow"
+        case .green: return "Green"
+        case .blue: return "Blue"
+        case .purple: return "Purple"
+        case .pink: return "Pink"
+        default: return ""
         }
     }
 }
