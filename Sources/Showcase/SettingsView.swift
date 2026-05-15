@@ -49,7 +49,7 @@ struct SettingsView: View {
                             .foregroundStyle(.gray)
                     }
                 }, label: {
-                    #if SKIP_FUSE_MODE
+                    #if SKIP_MODE_FUSE
                     let mode = "Fuse"
                     #else
                     let mode = "Lite"
@@ -62,7 +62,9 @@ struct SettingsView: View {
                     ZStack(alignment: .center) {
                         #if SKIP
                         // Skip Lite (transpiled) can inline Compose calls directly
-                        androidx.compose.material3.Text("💚", modifier: context.modifier)
+                        ComposeView { ctx in
+                            androidx.compose.material3.Text("💚", modifier: ctx.modifier)
+                        }
                         #elseif os(Android)
                         // Skip Fuse (compiled) uses ComposeView to bridge into the transpiled code in the SKIP block below
                         ComposeView {

@@ -15,8 +15,17 @@ struct MapView : View {
     let longitude: Double
 
     var body: some View {
-        #if os(Android)
-        // on Android platforms, we use com.google.maps.android.compose.GoogleMap within in a ComposeView
+        #if SKIP
+        // Skip Lite (transpiled) embeds compose views inline
+        // we use com.google.maps.android.compose.GoogleMap within in a ComposeView
+        ComposeView { ctx in
+            GoogleMap(cameraPositionState: rememberCameraPositionState {
+                position = CameraPosition.fromLatLngZoom(LatLng(latitude, longitude), Float(12.0))
+            })
+        }
+        #elseif os(Android)
+        // Skip Fuse (compiled) embeds compose views via a bridged ComposeView
+        // we use com.google.maps.android.compose.GoogleMap within in a ComposeView
         ComposeView { MapComposer(latitude: latitude, longitude: longitude) }
         #else
         // on Darwin platforms, we use the new SwiftUI Map type

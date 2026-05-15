@@ -2,7 +2,7 @@
 import PackageDescription
 
 // SKIP_MODE toggles between Skip Lite (default) and Skip Fuse for the Showcase app.
-// Set SKIP_MODE=fuse to depend on SkipFuseUI + SkipSQLPlus and compile with SKIP_FUSE_MODE defined,
+// Set SKIP_MODE=fuse to depend on SkipFuseUI + SkipSQLPlus and compile with SKIP_MODE_FUSE defined,
 // which also causes skipstone to build the Showcase module in `native` mode
 // (Sources/Showcase/Skip/skip.yml sets `mode: 'automatic'`, which becomes 'native' when SkipFuse is present).
 //
@@ -48,7 +48,7 @@ let package = Package(
             .product(name: "SkipAuthenticationServices", package: "skip-authentication-services"),
             .product(name: "SkipNotify", package: "skip-notify"),
         ], resources: [.process("Resources")],
-           swiftSettings: fuse ? [.define("SKIP_FUSE_MODE")] : [],
+           swiftSettings: fuse ? [.define("SKIP_MODE_FUSE")] : [.define("SKIP_MODE_LITE")],
            plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )

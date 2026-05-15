@@ -4,7 +4,7 @@ import SwiftUI
 // SwiftUI Table is not yet exposed by SkipFuseUI on Android, so the playground
 // only builds in Lite mode (iOS native compile + transpiled Kotlin); gate it
 // out of Fuse mode entirely.
-#if !SKIP_FUSE_MODE
+#if !SKIP_MODE_FUSE
 enum TablePlaygroundType: String, CaseIterable {
     case defaultColumns
     case fixedWidthColumns

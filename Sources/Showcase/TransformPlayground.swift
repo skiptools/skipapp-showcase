@@ -4,7 +4,7 @@ import SwiftUI
 // In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
 // Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
 // the original implementation is kept for Fuse only and Lite gets a stub.
-#if SKIP_FUSE_MODE
+#if SKIP_MODE_FUSE
 struct TransformPlayground: View {
     enum Tab: String, CaseIterable {
         case rotation = "Rotation"

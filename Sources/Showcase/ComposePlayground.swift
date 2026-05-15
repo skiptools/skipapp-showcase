@@ -4,7 +4,17 @@ import SwiftUI
 struct ComposePlayground: View {
     var body: some View {
         Group {
-            #if os(Android)
+            #if SKIP
+            // In Skip Lite (transpiled), we can include the Compose code directly inline
+            ComposeView { context in
+                androidx.compose.foundation.layout.Column(modifier: context.modifier) {
+                    androidx.compose.material3.Text("Hello from Compose!")
+                    androidx.compose.material3.Text("This content is rendered with Compose code using ComposeView")
+                }
+            }
+            .border(.blue)
+            #elseif os(Android)
+            // In Skip Fuse (compiled), the transpiled MessageComposer in the SKIP block (below) is bridged to the native layer, which we can then include within a ComposeView
             ComposeView {
                 MessageComposer(message: Text("Welcome"), textColor: .red)
             }
@@ -22,7 +32,7 @@ struct ComposePlayground: View {
 
 #if SKIP
 
-struct MessageComposer : ContentComposer {
+struct MessageComposer: ContentComposer {
     let message: Text
     let textColor: Color
 

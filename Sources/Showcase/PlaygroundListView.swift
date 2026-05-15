@@ -27,6 +27,7 @@ enum PlaygroundType: CaseIterable, View {
     case focusState
     case form
     case frame
+    case game
     case gesture
     case geometryChange
     case geometryReader
@@ -96,7 +97,6 @@ enum PlaygroundType: CaseIterable, View {
     case webBrowser
     case webView
     case zIndex
-    case game // displays as "Easter Egg", so show it at the end
 
     var title: LocalizedStringResource {
         switch self {
@@ -149,7 +149,7 @@ enum PlaygroundType: CaseIterable, View {
         case .frame:
             return LocalizedStringResource("Frame", comment: "Title of Frame playground")
         case .game:
-            return LocalizedStringResource("Easter Egg", comment: "Title of Game playground")
+            return LocalizedStringResource("Game", comment: "Title of Game playground")
         case .geometryChange:
             return LocalizedStringResource("GeometryChange", comment: "Title of GeometryChange playground")
         case .geometryReader:
@@ -300,7 +300,7 @@ enum PlaygroundType: CaseIterable, View {
         case .animation:
             AnimationPlayground()
         case .audio:
-            #if !SKIP_FUSE_MODE
+            #if !SKIP_MODE_FUSE
             AudioPlayground()
             #else
             Text("AudioPlayground is Lite-only until ported to SkipAV")
@@ -456,7 +456,7 @@ enum PlaygroundType: CaseIterable, View {
         case .symbol:
             SymbolPlayground()
         case .table:
-            #if !SKIP_FUSE_MODE
+            #if !SKIP_MODE_FUSE
             TablePlayground()
             #else
             Text("SwiftUI Table is not yet available in SkipFuseUI")

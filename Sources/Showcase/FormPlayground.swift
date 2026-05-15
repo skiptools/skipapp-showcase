@@ -23,10 +23,7 @@ struct FormPlayground: View {
                 .tint(.red)
             Label("Label .listItemTint(.red)", systemImage: "star.fill")
                 .listItemTint(.red)
-            // LabeledContent is marked @available(*, unavailable) in
-            // SkipFuseUI 1.14.5 and is not yet supported by Lite's SkipUI
-            // transpiler, so gate the rows out of both modes for now.
-            #if !SKIP_FUSE_MODE && !SKIP
+
             LabeledContent("Labeled Value", value: "Value")
             LabeledContent("Labeled Image") {
                 Image(systemName: "star.fill")
@@ -41,7 +38,7 @@ struct FormPlayground: View {
             LabeledContent("Labeled Content") {
                 Label("Label", systemImage: "star.fill")
             }
-            #endif
+
             NavigationLink(value: "Test") {
                 Label("Label in NavigationLink", systemImage: "star.fill")
             }

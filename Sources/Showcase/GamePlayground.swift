@@ -1,7 +1,7 @@
 // Flappy Bird in SwiftUI for iOS and Android!
 import SwiftUI
 import Observation
-#if SKIP_FUSE_MODE
+#if SKIP_MODE_FUSE
 import SkipFuse
 #endif
 import SkipKit

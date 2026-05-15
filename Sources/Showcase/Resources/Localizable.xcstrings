@@ -1563,9 +1563,6 @@
     "Duplicate" : {
 
     },
-    "Easter Egg" : {
-      "comment" : "Title of Game playground"
-    },
     "Easy" : {
 
     },
@@ -1851,6 +1848,9 @@
     },
     "Fullscreen cover" : {
 
+    },
+    "Game" : {
+      "comment" : "Title of Game playground"
     },
     "GAME OVER" : {
 

@@ -1,6 +1,6 @@
 // Copyright 2023–2026 Skip
 import Foundation
-#if SKIP_FUSE_MODE
+#if SKIP_MODE_FUSE
 import SkipFuse
 #endif
 
