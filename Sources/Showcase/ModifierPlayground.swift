@@ -26,7 +26,11 @@ struct ModifierPlayground: View {
                 // SKIP as well rather than os(Android).
                 #if SKIP
                 .composeModifier {
+                    #if SKIP
+                    $0.background(androidx.compose.ui.graphics.Color.Yellow).fillMaxWidth()
+                    #else
                     BackgroundModifier()
+                    #endif
                 }
                 #endif
         }

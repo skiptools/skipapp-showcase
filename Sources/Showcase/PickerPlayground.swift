@@ -53,6 +53,11 @@ struct PickerPlayground: View {
                 // which is only available to the transpiled SkipUI module and
                 // can't be reached from native Swift in Fuse mode. Drop it
                 // until SkipFuseUI exposes an equivalent native API.
+                #if SKIP
+                .material3SegmentedButton {
+                    $0.copy(icon: {})
+                }
+                #endif
                 VStack {
                     Text(".disabled(true)")
                     Picker("Label", selection: $selectedValue) {

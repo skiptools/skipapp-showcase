@@ -269,6 +269,12 @@
     ".opacity.animation\n(different value)" : {
 
     },
+    ".padding" : {
+
+    },
+    ".padding.animation" : {
+
+    },
     ".padding()" : {
 
     },
@@ -1102,6 +1108,9 @@
     "Bottom" : {
 
     },
+    "Bottom bar" : {
+
+    },
     "Bottom text" : {
 
     },
@@ -1849,6 +1858,15 @@
     "Generate Push Notification Token" : {
 
     },
+    "Geometry" : {
+
+    },
+    "Geometry padding" : {
+
+    },
+    "Geometry padding in sheet" : {
+
+    },
     "GeometryChange" : {
       "comment" : "Title of GeometryChange playground"
     },
@@ -1978,6 +1996,9 @@
 
     },
     "Hidden Tab" : {
+
+    },
+    "Hide %@ Bar" : {
 
     },
     "Hide Scroll Indicators" : {
@@ -3271,6 +3292,9 @@
     "Second" : {
 
     },
+    "Second tab" : {
+
+    },
     "Second: %lld" : {
 
     },
@@ -3453,6 +3477,9 @@
 
     },
     "Short text" : {
+
+    },
+    "Show %@ Bar" : {
 
     },
     "Showcase" : {
@@ -3748,6 +3775,9 @@
     "Status" : {
 
     },
+    "Status bar hidden" : {
+
+    },
     "Status: %@" : {
 
     },
@@ -3975,6 +4005,9 @@
 
     },
     "Text mask" : {
+
+    },
+    "Text Selection" : {
 
     },
     "Text spacing:" : {

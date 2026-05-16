@@ -55,10 +55,11 @@ struct PasteboardPlayground: View {
             }
             .padding()
         }
-        // TODO: NotificationCenter publisher
-//        .onReceive(NotificationCenter.default.publisher(for: UIPasteboard.changedNotification), perform: { notification in
-//            pasteboardInfo = PasteboardInfo(notification.object as! UIPasteboard)
-//        })
+        #if SKIP // Skip Fuse does not support NotificationCenter publisher
+        .onReceive(NotificationCenter.default.publisher(for: UIPasteboard.changedNotification), perform: { notification in
+            pasteboardInfo = PasteboardInfo(notification.object as! UIPasteboard)
+        })
+        #endif
         .toolbar {
             PlaygroundSourceLink(file: "PasteboardPlayground.swift")
         }

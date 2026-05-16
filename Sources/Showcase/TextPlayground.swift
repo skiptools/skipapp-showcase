@@ -64,10 +64,11 @@ struct TextPlayground: View {
 
                 Divider()
 
-                // TODO: AttributedString
-//                Text(try! AttributedString(markdown: "Attributed *Italic text* with \("substitution1") and \("substitution2")"))
-//                Text(try! AttributedString(markdown: "Attributed **Bold text** with .italic()"))
-//                    .italic()
+                #if SKIP
+                Text(try! AttributedString(markdown: "Attributed *Italic text* with \("substitution1") and \("substitution2")"))
+                Text(try! AttributedString(markdown: "Attributed **Bold text** with .italic()"))
+                    .italic()
+                #endif
 
                 Divider()
 
@@ -82,17 +83,19 @@ struct TextPlayground: View {
                     .lineLimit(1)
                     .frame(width: 200)
                     .border(Color.blue)
-                // TODO: once we have skip-fuse-ui parity for of https://github.com/skiptools/skip-ui/pull/288
-//                Text(".truncationMode(.middle): This is some long text that should middle truncate when it exceeds the width of its frame")
-//                    .truncationMode(.middle)
-//                    .lineLimit(1)
-//                    .frame(width: 200)
-//                    .border(Color.blue)
-//                Text(".truncationMode(.tail): This is some long text when it exceeds the width of its frame will head truncate")
-//                    .truncationMode(.head)
-//                    .lineLimit(1)
-//                    .frame(width: 200)
-//                    .border(Color.blue)
+
+                #if SKIP
+                Text(".truncationMode(.middle): This is some long text that should middle truncate when it exceeds the width of its frame")
+                    .truncationMode(.middle)
+                    .lineLimit(1)
+                    .frame(width: 200)
+                    .border(Color.blue)
+                Text(".truncationMode(.tail): This is some long text when it exceeds the width of its frame will head truncate")
+                    .truncationMode(.head)
+                    .lineLimit(1)
+                    .frame(width: 200)
+                    .border(Color.blue)
+                #endif
 
                 Divider()
 
