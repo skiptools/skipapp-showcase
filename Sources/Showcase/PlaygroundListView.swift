@@ -40,6 +40,7 @@ enum PlaygroundType: CaseIterable, View {
     case keyboard
     case keychain
     case label
+    case labeledContent
     case lineSpacing
     case link
     case list
@@ -174,6 +175,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Keychain", comment: "Title of Keychain playground")
         case .label:
             return LocalizedStringResource("Label", comment: "Title of Label playground")
+        case .labeledContent:
+            return LocalizedStringResource("Labeled Content", comment: "Title of Labeled Content playground")
         case .lineSpacing:
             return LocalizedStringResource("Line Spacing", comment: "Title of Line Spacing playground")
         case .link:
@@ -281,11 +284,11 @@ enum PlaygroundType: CaseIterable, View {
         case .viewThatFits:
             return LocalizedStringResource("ViewThatFits", comment: "Title of ViewThatFits playground")
         case .webAuthenticationSession:
-            return LocalizedStringResource("Web Authentication Session")
+            return LocalizedStringResource("Web Authentication Session", comment: "Title of Web Authentication Session playground")
         case .webBrowser:
-            return LocalizedStringResource("WebBrowser")
+            return LocalizedStringResource("WebBrowser", comment: "Title of WebBrowser playground")
         case .webView:
-            return LocalizedStringResource("WebView")
+            return LocalizedStringResource("WebView", comment: "Title of WebView playground")
         case .zIndex:
             return LocalizedStringResource("ZIndex", comment: "Title of ZIndex playground")
         }
@@ -375,6 +378,8 @@ enum PlaygroundType: CaseIterable, View {
             KeychainPlayground()
         case .label:
             LabelPlayground()
+        case .labeledContent:
+            LabeledContentPlayground()
         case .lineSpacing:
             LineSpacingPlayground()
         case .link:

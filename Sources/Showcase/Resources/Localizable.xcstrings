@@ -2206,7 +2206,7 @@
 
     },
     "Labeled Content" : {
-
+      "comment" : "Title of Labeled Content playground"
     },
     "Labeled Date Picker" : {
 
@@ -4386,13 +4386,13 @@
 
     },
     "Web Authentication Session" : {
-
+      "comment" : "Title of Web Authentication Session playground"
     },
     "WebBrowser" : {
-
+      "comment" : "Title of WebBrowser playground"
     },
     "WebView" : {
-
+      "comment" : "Title of WebView playground"
     },
     "Welcome" : {
       "comment" : "welcome string",
