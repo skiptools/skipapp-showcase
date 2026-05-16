@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 enum ListPlaygroundType: String, CaseIterable {
@@ -21,6 +21,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case plainStyleSectionedEditActions
     case onMoveDelete
     case positioned
+    case badges
 
     var title: String {
         switch self {
@@ -62,16 +63,20 @@ enum ListPlaygroundType: String, CaseIterable {
             return ".onMove, .onDelete"
         case .positioned:
             return "Positioned"
+        case .badges:
+            return "Badges"
         }
     }
 }
 
 struct ListPlayground: View {
-    @StateObject var editActionsModel = ObservableEditActionsListPlayground.Model()
+    @State var editActionsModel = ObservableEditActionsListPlayground.Model()
 
     var body: some View {
-        List(ListPlaygroundType.allCases, id: \.self) { type in
-            NavigationLink(type.title, value: type)
+        List {
+            ForEach(ListPlaygroundType.allCases, id: \.self) { type in
+                NavigationLink(type.title, value: type)
+            }
         }
         .toolbar {
             PlaygroundSourceLink(file: "ListPlayground.swift")
@@ -134,6 +139,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .positioned:
                 PositionedListPlayground()
+                    .navigationTitle($0.title)
+            case .badges:
+                BadgeListPlayground()
                     .navigationTitle($0.title)
             }
         }
@@ -347,8 +355,9 @@ struct PlainStyleEmptyListPlayground: View {
 }
 
 struct RefreshableListPlayground: View {
-    class Model: ObservableObject {
-        @Published var items: [Int] = {
+    @Observable
+    class Model {
+        var items: [Int] = {
             var items: [Int] = []
             for i in 0..<50 {
                 items.append(i)
@@ -357,7 +366,7 @@ struct RefreshableListPlayground: View {
         }()
     }
 
-    @StateObject var model = Model()
+    @State var model = Model()
 
     var body: some View {
         List(model.items, id: \.self) { item in
@@ -442,6 +451,25 @@ struct EditActionsListPlayground: View {
     }()
 
     var body: some View {
+        #if !SKIP // Skip Fuse
+        List($items, id: \.i, editActions: .all) { itemBinding in
+            let item = itemBinding.wrappedValue
+            if item.i % 5 == 0 {
+                Text("\(item.s) .deleteDisabled")
+                    .deleteDisabled(true)
+            } else if item.i % 4 == 0 {
+                Text("\(item.s) .moveDisabled")
+                    .moveDisabled(true)
+            } else {
+                HStack {
+                    Text(item.s)
+                    Spacer()
+                    Toggle("isOn", isOn: itemBinding.toggled)
+                        .labelsHidden()
+                }
+            }
+        }
+        #elseif !SKIP_BRIDGE // Skip Lite
         List($items, id: \.i, editActions: .all) { $item in
             if item.i % 5 == 0 {
                 Text("\(item.s) .deleteDisabled")
@@ -458,10 +486,42 @@ struct EditActionsListPlayground: View {
                 }
             }
         }
+        #endif
     }
 }
 
 struct ObservableEditActionsListPlayground: View {
+    #if !SKIP // Skip Fuse
+    @Observable class Model {
+        var items: [ListItem] = {
+            var items: [ListItem] = []
+            for i in 0..<50 {
+                items.append(ListItem(i: i, s: "Item \(i)"))
+            }
+            return items
+        }()
+    }
+    struct ListItem {
+        let i: Int
+        let s: String
+        var toggled = false
+    }
+
+    @Bindable var model: Model
+
+    var body: some View {
+        List($model.items, id: \.i, editActions: .all) { itemBinding in
+            let item = itemBinding.wrappedValue
+            HStack {
+                Text(item.s)
+                Spacer()
+                Toggle("isOn", isOn: itemBinding.toggled)
+                    .labelsHidden()
+            }
+        }
+        .listStyle(.plain)
+    }
+    #elseif !SKIP_BRIDGE // Skip Lite
     class Model: ObservableObject {
         @Published var items: [ListItem] = {
             var items: [ListItem] = []
@@ -487,9 +547,10 @@ struct ObservableEditActionsListPlayground: View {
                 Toggle("isOn", isOn: $item.toggled)
                     .labelsHidden()
             }
+            .listStyle(.plain)
         }
-        .listStyle(.plain)
     }
+    #endif
 }
 
 struct SectionedEditActionsListPlayground: View {
@@ -690,6 +751,55 @@ struct PositionedListPlayground: View {
             .listStyle(.plain)
             Text("Content below")
                 .font(.largeTitle)
+        }
+    }
+}
+
+struct BadgeListPlayground: View {
+    var body: some View {
+        List {
+            Section("Badge with Count") {
+                Text("Messages")
+                    .badge(5)
+                Text("Notifications")
+                    .badge(42)
+                Text("No badge (count 0)")
+                    .badge(0)
+            }
+
+            Section("Badge with Text") {
+                Text("Updates")
+                    .badge("New")
+                Text("Status")
+                    .badge("Active")
+            }
+
+            Section("Badge Prominence") {
+                Text("Standard (default)")
+                    .badge(10)
+                Text("Increased prominence")
+                    .badge(10)
+                    .badgeProminence(.increased)
+                Text("Decreased prominence")
+                    .badge(10)
+                    .badgeProminence(.decreased)
+            }
+
+            Section("Navigation with Badges") {
+                NavigationLink {
+                    Text("Detail View")
+                } label: {
+                    Text("Inbox")
+                }
+                .badge(3)
+
+                NavigationLink {
+                    Text("Detail View")
+                } label: {
+                    Text("Spam")
+                }
+                .badge("99+")
+            }
         }
     }
 }

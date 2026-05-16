@@ -33,6 +33,15 @@ android {
         // versionName = MARKETING_VERSION
     }
 
+    // Needed when packaging the Swift runtime .so files in Skip Fuse mode;
+    // harmless in Skip Lite mode.
+    packaging {
+        jniLibs {
+            keepDebugSymbols.add("**/*.so")
+            pickFirsts.add("**/*.so")
+        }
+    }
+
     buildFeatures {
         buildConfig = true
     }

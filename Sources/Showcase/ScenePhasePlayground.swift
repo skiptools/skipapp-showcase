@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct ScenePhasePlayground: View {
@@ -13,9 +13,9 @@ struct ScenePhasePlayground: View {
                 }
             }
         }
-        .onChange(of: scenePhase) { oldPhase, newPhase in
-            logger.log("onChange(of: schenePhase): \(String(describing: newPhase))")
-            history.append(newPhase)
+        .onChange(of: scenePhase) { phase in
+            logger.log("onChange(of: schenePhase): \(String(describing: phase))")
+            history.append(phase)
 
         }
         .toolbar {

@@ -1,4 +1,5 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
+import Foundation
 import SwiftUI
 
 /// Information and links for Skip and the Showcase app.
@@ -13,11 +14,11 @@ struct AboutView: View {
                     .padding()
                 LinkDivider()
                 Link(destination: URL(string: "https://skip.dev")!) {
-                    LinkLabel(text: NSLocalizedString("Skip Technology", bundle: .module, comment: "localized technology title"))
+                    LinkLabel(text: NSLocalizedString("Skip Technology", bundle: .module, comment: "Localized technology title"))
                 }
                 LinkDivider()
                 Link(destination: URL(string: showcaseSourceURLString + "DOWNLOAD.md")!) {
-                    LinkLabel(text: "\(appName) \(isAndroid ? "Android" : "iOS") \(isDebugBuild ? "Development" : "Release")")
+                    LinkLabel(text: "\(appName) \(isAndroid ? "Android" : "iOS")")
                 }
                 LinkDivider()
                 Link(destination: URL(string: showcaseSourceURLString)!) {

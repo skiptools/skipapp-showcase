@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct GridPlayground: View {
@@ -70,7 +70,7 @@ struct GridPlayground: View {
     }
 }
 
-private struct LazyVGridAdaptiveView: View {
+struct LazyVGridAdaptiveView: View {
     let count: Int
 
     var body: some View {
@@ -82,7 +82,7 @@ private struct LazyVGridAdaptiveView: View {
     }
 }
 
-private struct LazyVGridFlexibleView: View {
+struct LazyVGridFlexibleView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
@@ -95,7 +95,7 @@ private struct LazyVGridFlexibleView: View {
     }
 }
 
-private struct LazyVGridFixedView: View {
+struct LazyVGridFixedView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.fixed(80)), GridItem(.fixed(80)), GridItem(.fixed(80)), GridItem(.fixed(80))]) {
@@ -110,7 +110,7 @@ private struct LazyVGridFixedView: View {
     }
 }
 
-private struct LazyVGridTrailingView: View {
+struct LazyVGridTrailingView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80), alignment: .trailing)]) {
@@ -126,7 +126,7 @@ private struct LazyVGridTrailingView: View {
     }
 }
 
-private struct LazyVGridSectionedView: View {
+struct LazyVGridSectionedView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], spacing: 20) {
@@ -147,7 +147,7 @@ private struct LazyVGridSectionedView: View {
     }
 }
 
-private struct LazyVGridRefreshableView: View {
+struct LazyVGridRefreshableView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
@@ -160,7 +160,7 @@ private struct LazyVGridRefreshableView: View {
     }
 }
 
-private struct LazyHGridAdaptiveView: View {
+struct LazyHGridAdaptiveView: View {
     let count: Int
 
     var body: some View {
@@ -172,7 +172,7 @@ private struct LazyHGridAdaptiveView: View {
     }
 }
 
-private struct LazyHGridFlexibleView: View {
+struct LazyHGridFlexibleView: View {
     var body: some View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
@@ -185,7 +185,7 @@ private struct LazyHGridFlexibleView: View {
     }
 }
 
-private struct LazyHGridFixedView: View {
+struct LazyHGridFixedView: View {
     var body: some View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.fixed(80)), GridItem(.fixed(80)), GridItem(.fixed(80)), GridItem(.fixed(80))]) {
@@ -201,7 +201,7 @@ private struct LazyHGridFixedView: View {
     }
 }
 
-private struct LazyHGridBottomView: View {
+struct LazyHGridBottomView: View {
     var body: some View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.adaptive(minimum: 80), alignment: .bottom)]) {
@@ -217,7 +217,7 @@ private struct LazyHGridBottomView: View {
     }
 }
 
-private struct LazyHGridSectionedView: View {
+struct LazyHGridSectionedView: View {
     var body: some View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.adaptive(minimum: 80))]) {
@@ -238,7 +238,7 @@ private struct LazyHGridSectionedView: View {
     }
 }
 
-private struct LazyVGridPaddingView: View {
+struct LazyVGridPaddingView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {

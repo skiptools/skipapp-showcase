@@ -6,9 +6,9 @@ struct LabeledContentPlayground: View {
         ScrollView {
             VStack(spacing: 16) {
                 LabeledContent("Label", value: "Value")
-                
-//  Not implemented, yet: Text does not support value:, format:. This would make a good improvement.
-//                LabeledContent("Label", value: 12, format: IntegerFormatStyle.number)
+
+                // Not implemented, yet: Text does not support value:, format:. This would make a good improvement.
+                // LabeledContent("Label", value: 12, format: IntegerFormatStyle.number)
             }
             .padding()
         }

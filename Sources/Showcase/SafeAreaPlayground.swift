@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 enum SafeAreaPlaygroundType: String, CaseIterable {
@@ -72,9 +72,6 @@ struct SafeAreaPlayground: View {
         #if os(macOS)
         .sheet(isPresented: $isSheetPresented) {
             playground(for: playgroundType)
-        }
-        .sheet(isPresented: $isGeometryPaddingSheetPresented) {
-            SafeAreaGeometryPaddingSheet()
         }
         #else
         .sheet(isPresented: $isSheetPresented) {
@@ -239,7 +236,7 @@ struct SafeAreaGeometryPaddingSheet: View {
 struct SafeAreaVisibilityControl: View {
     let name: String
     @Binding var visibility: Visibility
-    
+
     var body: some View {
         if visibility == .hidden {
             Button("Show \(name) Bar") {

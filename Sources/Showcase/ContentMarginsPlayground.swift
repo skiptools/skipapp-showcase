@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 enum ContentMarginsPlaygroundType: String, CaseIterable {
@@ -78,7 +78,7 @@ struct ContentMarginsPlayground: View {
     }
 }
 
-private struct ContentMarginsVStackUniformPlayground: View {
+struct ContentMarginsVStackUniformPlayground: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("ScrollView + VStack with .contentMargins(40)")
@@ -102,7 +102,7 @@ private struct ContentMarginsVStackUniformPlayground: View {
     }
 }
 
-private struct ContentMarginsVStackHorizontalPlayground: View {
+struct ContentMarginsVStackHorizontalPlayground: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("ScrollView + VStack with .contentMargins(.horizontal, 60)")
@@ -126,7 +126,7 @@ private struct ContentMarginsVStackHorizontalPlayground: View {
     }
 }
 
-private struct ContentMarginsVStackInsetsPlayground: View {
+struct ContentMarginsVStackInsetsPlayground: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("ScrollView + VStack with EdgeInsets(top: 20, leading: 40, bottom: 60, trailing: 80)")
@@ -150,7 +150,7 @@ private struct ContentMarginsVStackInsetsPlayground: View {
     }
 }
 
-private struct ContentMarginsLazyVStackUniformPlayground: View {
+struct ContentMarginsLazyVStackUniformPlayground: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("ScrollView + LazyVStack with .contentMargins(40)")
@@ -177,7 +177,7 @@ private struct ContentMarginsLazyVStackUniformPlayground: View {
     }
 }
 
-private struct ContentMarginsLazyHStackHorizontalPlayground: View {
+struct ContentMarginsLazyHStackHorizontalPlayground: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("ScrollView(.horizontal) + LazyHStack with .contentMargins(.horizontal, 40)")
@@ -203,7 +203,7 @@ private struct ContentMarginsLazyHStackHorizontalPlayground: View {
     }
 }
 
-private struct ContentMarginsListUniformPlayground: View {
+struct ContentMarginsListUniformPlayground: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("List with .contentMargins(40)")
@@ -231,7 +231,7 @@ private struct ContentMarginsListUniformPlayground: View {
     }
 }
 
-private struct ContentMarginsScrollContentPlacementPlayground: View {
+struct ContentMarginsScrollContentPlacementPlayground: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("ScrollView with .contentMargins(40, for: .scrollContent)")
@@ -258,7 +258,7 @@ private struct ContentMarginsScrollContentPlacementPlayground: View {
     }
 }
 
-private struct ContentMarginsScrollIndicatorsPlacementPlayground: View {
+struct ContentMarginsScrollIndicatorsPlacementPlayground: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("ScrollView with .contentMargins(40, for: .scrollIndicators)")
@@ -285,7 +285,7 @@ private struct ContentMarginsScrollIndicatorsPlacementPlayground: View {
     }
 }
 
-private struct CarouselCard: View {
+struct CarouselCard: View {
     let color: Color
     let index: Int
     let width: CGFloat
@@ -303,7 +303,7 @@ private struct CarouselCard: View {
     }
 }
 
-private struct ContentMarginsCarouselViewAlignedPlayground: View {
+struct ContentMarginsCarouselViewAlignedPlayground: View {
     let colors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink, .cyan, .mint, .indigo]
 
     var body: some View {

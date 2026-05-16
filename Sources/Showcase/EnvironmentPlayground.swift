@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct EnvironmentPlayground: View {
@@ -16,8 +16,8 @@ struct EnvironmentPlayground: View {
                     .environment(\.environmentPlaygroundCustomKey, "Custom!")
             }
         }
-        .onChange(of: tapCountObservable.tapCount) { oldTapCount, newTapCount in
-            logger.log("onChange(of: tapCountObservable.tapCount): \(newTapCount)")
+        .onChange(of: tapCountObservable.tapCount) {
+            logger.log("onChange(of: tapCountObservable.tapCount): \($0)")
         }
         .toolbar {
             PlaygroundSourceLink(file: "EnvironmentPlayground.swift")
