@@ -1,10 +1,11 @@
 // Copyright 2023–2025 Skip
-import SwiftUI
 
 // SwiftUI Table is not yet exposed by SkipFuseUI on Android, so the playground
 // only builds in Lite mode (iOS native compile + transpiled Kotlin); gate it
 // out of Fuse mode entirely.
-#if !SKIP_MODE_FUSE
+#if !os(Android) || !SKIP_MODE_FUSE
+import SwiftUI
+
 enum TablePlaygroundType: String, CaseIterable {
     case defaultColumns
     case fixedWidthColumns
@@ -58,7 +59,7 @@ struct TablePlayground: View {
     }
 }
 
-private struct TableData: Identifiable {
+struct TableData: Identifiable {
     let id = UUID()
     let name: String
     let value: Int
@@ -68,7 +69,7 @@ private struct TableData: Identifiable {
     }
 }
 
-private struct DefaultColumnsTablePlayground: View {
+struct DefaultColumnsTablePlayground: View {
     @State var data = TableData.initialData
 
     var body: some View {
@@ -85,7 +86,7 @@ private struct DefaultColumnsTablePlayground: View {
     }
 }
 
-private struct FixedWidthColumnsTablePlayground: View {
+struct FixedWidthColumnsTablePlayground: View {
     @State var data = TableData.initialData
 
     var body: some View {
@@ -104,7 +105,7 @@ private struct FixedWidthColumnsTablePlayground: View {
     }
 }
 
-private struct RangeWidthColumnsTablePlayground: View {
+struct RangeWidthColumnsTablePlayground: View {
     @State var data = TableData.initialData
 
     var body: some View {
@@ -123,7 +124,7 @@ private struct RangeWidthColumnsTablePlayground: View {
     }
 }
 
-private struct SelectionTablePlayground: View {
+struct SelectionTablePlayground: View {
     @State var data = TableData.initialData
     @State var selection: UUID?
 
@@ -141,7 +142,7 @@ private struct SelectionTablePlayground: View {
     }
 }
 
-private struct SelectionSetTablePlayground: View {
+struct SelectionSetTablePlayground: View {
     @State var data = TableData.initialData
     @State var selection: Set<UUID> = []
 
