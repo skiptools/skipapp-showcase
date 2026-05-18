@@ -3,6 +3,14 @@ import SwiftUI
 
 struct AccessibilityPlayground: View {
     @State var isOn = false
+    @Environment(\.accessibilityEnabled) var accessibilityEnabled
+    @Environment(\.accessibilityInvertColors) var accessibilityInvertColors
+    @Environment(\.accessibilityReduceMotion) var accessibilityReduceMotion
+    @Environment(\.accessibilityReduceTransparency) var accessibilityReduceTransparency
+    @Environment(\.accessibilitySwitchControlEnabled) var accessibilitySwitchControlEnabled
+    @Environment(\.accessibilityVoiceOverEnabled) var accessibilityVoiceOverEnabled
+    @Environment(\.legibilityWeight) var legibilityWeight
+    @Environment(\.colorSchemeContrast) var colorSchemeContrast
 
     var body: some View {
         ScrollView {
@@ -20,6 +28,20 @@ struct AccessibilityPlayground: View {
                 Text("Hidden").font(.largeTitle)
                     .accessibilityHeading(.h2)
                     .accessibilityHidden(true)
+                Divider()
+                Text(verbatim: "accessibilityEnabled: \(accessibilityEnabled)")
+                Text(verbatim: "accessibilityInvertColors: \(accessibilityInvertColors)")
+                Text(verbatim: "accessibilityReduceMotion: \(accessibilityReduceMotion)")
+                Text(verbatim: "accessibilityReduceTransparency: \(accessibilityReduceTransparency)")
+                Text(verbatim: "accessibilitySwitchControlEnabled: \(accessibilitySwitchControlEnabled)")
+                Text(verbatim: "accessibilityVoiceOverEnabled: \(accessibilityVoiceOverEnabled)")
+                if let legibilityWeight {
+                    Text(verbatim: "legibilityWeight: \(String(describing: legibilityWeight))")
+                } else {
+                    Text(verbatim: "legibilityWeight: nil")
+                }
+                Text(verbatim: "colorSchemeContrast: \(String(describing: colorSchemeContrast))")
+
             }
             .padding()
         }
