@@ -40,6 +40,13 @@ struct TextPlayground: View {
                 Text("Font.caption").font(.caption)
                 Text("Font.caption2").font(.caption2)
 
+                Text("Rainbow text")
+                    .foregroundStyle(LinearGradient(
+                        colors: [.red, .orange, .yellow, .green, .blue, .purple],
+                        startPoint: .leading,
+                        endPoint: .trailing)
+                    )
+
                 Divider()
 
                 Text("Markdown\nspanning multiple\nlines")
