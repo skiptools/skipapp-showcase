@@ -48,6 +48,12 @@ struct TextPlayground: View {
                 Text("Markdown ~~Strikethrough text~~")
                 Text("Markdown `Code text`")
                 Text("Markdown [Link text](https://skip.dev) and [\("Another link")](\("https://swift.org"))")
+                Text("Markdown [Link text](example://intercept) to intercept")
+                    .environment(\.openURL, OpenURLAction { url in
+                        logger.info("Intercepted link: \(url)")
+                        return OpenURLAction.Result.handled
+                    })
+                    .tint(.red)
                 Text("Markdown **Bold text** with .italic()")
                     .italic()
                 Text("Markdown **bold** \("**String interpolation**") is not formatted")
