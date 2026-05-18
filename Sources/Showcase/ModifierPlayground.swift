@@ -4,12 +4,9 @@ import SwiftUI
 // In Lite (transpiled) mode this playground uses Fuse-only API surfaces or
 // Kotlin/Compose helpers that the transpiled SkipUI does not yet expose, so
 // the original implementation is kept for Fuse only and Lite gets a stub.
-#if SKIP_MODE_FUSE
-//#if SKIP
-//import androidx.compose.foundation.background
-//import androidx.compose.foundation.layout.fillMaxWidth
-//#endif
+#if !os(Android) || !SKIP_MODE_FUSE
 
+// SKIP @nobridge
 struct ModifierPlayground: View {
     var body: some View {
         VStack(spacing: 16) {

@@ -303,7 +303,7 @@ enum PlaygroundType: CaseIterable, View {
         case .animation:
             AnimationPlayground()
         case .audio:
-            #if !SKIP_MODE_FUSE
+            #if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
             AudioPlayground()
             #else
             Text("AudioPlayground is Lite-only until ported to SkipAV")
@@ -461,7 +461,7 @@ enum PlaygroundType: CaseIterable, View {
         case .symbol:
             SymbolPlayground()
         case .table:
-            #if !SKIP_MODE_FUSE
+            #if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
             TablePlayground()
             #else
             Text("SwiftUI Table is not yet available in SkipFuseUI")
