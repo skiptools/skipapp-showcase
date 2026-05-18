@@ -141,7 +141,7 @@ struct SafeAreaPadded: View {
     @State var bottomBarVisibility = Visibility.visible
     @AppStorage("statusBarHidden") var statusBarHidden = false
 
-    @State private var animatedSafeAreaInsets: EdgeInsets? = nil
+    @State var animatedSafeAreaInsets: EdgeInsets? = nil
 
     var body: some View {
         GeometryReader { proxy in
@@ -197,7 +197,7 @@ struct SafeAreaPadded: View {
 
 struct SafeAreaGeometryPaddingSheet: View {
     @Environment(\.dismiss) var dismiss
-    @State private var selectedTab = "Geometry"
+    @State var selectedTab = "Geometry"
 
     var body: some View {
         NavigationStack {
