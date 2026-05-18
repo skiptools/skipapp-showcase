@@ -4,7 +4,7 @@ import SwiftUI
 
 #if os(macOS)
 // no-op on macOS
-#elseif canImport(AVFoundation)
+#else
 import AVFoundation
 #endif
 

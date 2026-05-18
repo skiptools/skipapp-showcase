@@ -140,7 +140,7 @@ struct BackgroundPlayground: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
-                #if !os(Android) || !SKIP_MODE_FUSE // materials not yet available in Skip Fuse
+                #if !os(Android) // materials not yet available in Skip
                 ZStack {
                     LinearGradient(colors: [.red, .blue, .green], startPoint: .topLeading, endPoint: .bottomTrailing)
                     VStack(spacing: 8) {
