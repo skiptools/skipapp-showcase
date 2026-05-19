@@ -18,7 +18,6 @@ jobs:
     uses: skiptools/actions/.github/workflows/skip-app.yml@v1
     with:
       env: SKIP_MODE=fuse
-      skip-source: SKIP_MODE_FUSE
     secrets:
       # These optional secrets enable the Android app to be signed
       KEYSTORE_JKS: ${{ secrets.KEYSTORE_JKS }}
