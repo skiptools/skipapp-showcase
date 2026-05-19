@@ -1,18 +1,16 @@
 // Copyright 2023–2025 Skip
+#if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
 import SwiftUI
 
-// AudioPlayground uses AVFoundation on iOS and Kotlin shims (in #if SKIP blocks)
-// on Android. That layout is the Skip Lite (transpiled) pattern. In Fuse mode
-// AVFoundation is not available to the Android Swift toolchain, so we gate the
-// whole playground out until it is ported to SkipAV's bridged AVFoundation.
-#if !SKIP_MODE_FUSE
 #if os(macOS)
+// no-op on macOS
 #else
 import AVFoundation
 #endif
 
 struct AudioPlayground: View {
     #if os(macOS)
+    // no-op on macOS
     #else
     @State var isRecording: Bool = false
     @State var errorMessage: String? = nil

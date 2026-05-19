@@ -49,7 +49,7 @@ let package = Package(
             .product(name: "SkipMarketplace", package: "skip-marketplace"),
             .product(name: "SkipAuthenticationServices", package: "skip-authentication-services"),
         ], resources: [.process("Resources")],
-           swiftSettings: fuse ? [.define("SKIP_MODE_FUSE")] : [.define("SKIP_MODE_LITE")],
+                swiftSettings: [.define(fuse ? "SKIP_MODE_FUSE" : "SKIP_MODE_LITE", .when(platforms: [.android]))],
            plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )

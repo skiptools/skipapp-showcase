@@ -63,9 +63,11 @@ struct TextFieldPlayground: View {
                     #endif
                 TextField("One Time Code", text: $text)
                     .textContentType(.oneTimeCode)
+                #if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
                 if #available(iOS 18.0, *) {
                     TextSelectionView(text: $text)
                 }
+                #endif
             }
             .padding()
         }
@@ -97,6 +99,7 @@ struct TextFieldPlayground: View {
     }
 }
 
+#if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
 @available(iOS 18.0, macOS 15.0, *)
 struct TextSelectionView: View {
     @Binding var text: String
@@ -117,3 +120,5 @@ struct TextSelectionView: View {
         }
     }
 }
+#endif
+
