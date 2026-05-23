@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.1
 import PackageDescription
 
 // SKIP_MODE toggles between Skip Lite (default) and Skip Fuse for the Showcase app.
