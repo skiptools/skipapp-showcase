@@ -1,7 +1,6 @@
 import java.util.Properties
 
 plugins {
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.android.application)
     id("skip-build-plugin")
@@ -86,7 +85,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false // can be set to true for debugging release build, but needs to be false when uploading to store
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 }

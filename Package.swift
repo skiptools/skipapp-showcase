@@ -7,8 +7,9 @@ import PackageDescription
 // (Sources/Showcase/Skip/skip.yml sets `mode: 'automatic'`, which becomes 'native' when SkipFuse is present).
 //
 // Example usage: SKIP_MODE=fuse skip app launch
-var fuse = (Context.environment["SKIP_MODE"] ?? "lite") == "fuse"
-//fuse = true // manual override
+let defaultMode = "lite"
+//let defaultMode = "fuse"
+let fuse = (Context.environment["SKIP_MODE"] ?? defaultMode) == "fuse"
 
 let package = Package(
     name: "skipapp-showcase",
@@ -22,7 +23,7 @@ let package = Package(
              : .package(url: "https://source.skip.tools/skip-ui.git", from: "1.0.0"),
         .package(url: "https://source.skip.tools/skip.git", from: "1.7.7"),
         .package(url: "https://source.skip.tools/skip-kit.git", from: "1.0.0"),
-        .package(url: "https://source.skip.tools/skip-av.git", branch: "main"), // "0.6.2"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-av.git", "0.6.2"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-web.git", "0.9.1"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-sql.git", "0.16.0"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-device.git", "0.4.2"..<"2.0.0"),
