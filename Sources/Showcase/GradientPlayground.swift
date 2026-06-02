@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct GradientPlayground: View {
@@ -38,3 +38,4 @@ struct GradientPlayground: View {
         }
     }
 }
+

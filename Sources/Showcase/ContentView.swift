@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 enum ContentTab: String, Hashable {
@@ -38,14 +38,14 @@ struct ContentView: View {
     }
 
     var tabViewStyle: some TabViewStyle {
+        #if os(Android)
+        return .sidebarAdaptable
+        #else
         if #available(iOS 18.0, *) {
             return .sidebarAdaptable
         } else {
             return .automatic
         }
+        #endif
     }
-}
-
-#Preview {
-    ContentView()
 }

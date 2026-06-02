@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct ColorSchemePlayground: View {
@@ -42,7 +42,7 @@ struct ColorSchemePlayground: View {
     }
 }
 
-private struct ColorSchemeSheetView: View {
+struct ColorSchemeSheetView: View {
     @Environment(\.dismiss) var dismiss
     @State var preferredColorScheme = ""
 

@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct BackgroundPlayground: View {
@@ -61,12 +61,12 @@ struct BackgroundPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .background(
+                        .background {
                             HStack {
                                 Circle().fill(.red.opacity(0.2))
                                 Circle().fill(.green.opacity(0.2))
                             }
-                        )
+                        }
                         .border(.blue)
                 }
                 HStack {
@@ -132,6 +132,47 @@ struct BackgroundPlayground: View {
                         }
                         .border(.blue)
                 }
+
+                // Material backgrounds
+                Divider()
+                Text("Material Backgrounds").font(.headline)
+                Text("Simplified on Android: semi-transparent white overlay")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                #if !os(Android) // materials not yet available in Skip
+                ZStack {
+                    LinearGradient(colors: [.red, .blue, .green], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    VStack(spacing: 8) {
+                        Text(".ultraThinMaterial")
+                            .padding()
+                            .background(.ultraThinMaterial)
+                        Text(".thinMaterial")
+                            .padding()
+                            .background(.thinMaterial)
+                        Text(".regularMaterial")
+                            .padding()
+                            .background(.regularMaterial)
+                        Text(".thickMaterial")
+                            .padding()
+                            .background(.thickMaterial)
+                        Text(".ultraThickMaterial")
+                            .padding()
+                            .background(.ultraThickMaterial)
+                    }
+                    .padding()
+                }
+                .frame(height: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+
+                HStack {
+                    Text("Material in shape")
+                    Spacer()
+                    Text("Hello")
+                        .padding()
+                        .background(.regularMaterial, in: Capsule())
+                }
+                #endif
             }
             .padding()
         }
@@ -140,4 +181,3 @@ struct BackgroundPlayground: View {
         }
     }
 }
-

@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 /// All Showcase playgrounds.
@@ -8,15 +8,17 @@ enum PlaygroundType: CaseIterable, View {
     case animation
     case audio
     case background
+    case blendMode
     case blur
     case border
     case button
     case color
+    case colorEffects
     case colorScheme
     case compose
+    case contentMargins
     case contextMenu
     case confirmationDialog
-    case contentMargins
     case datePicker
     case disclosureGroup
     case divider
@@ -25,6 +27,7 @@ enum PlaygroundType: CaseIterable, View {
     case focusState
     case form
     case frame
+    case game
     case gesture
     case geometryChange
     case geometryReader
@@ -38,11 +41,14 @@ enum PlaygroundType: CaseIterable, View {
     case keychain
     case label
     case labeledContent
+    case lineSpacing
     case link
     case list
     case localization
     case lottie
     case map
+    case mask
+    case minimumScaleFactor
     case menu
     case modifier
     case navigationStack
@@ -72,6 +78,7 @@ enum PlaygroundType: CaseIterable, View {
     case sql
     case stack
     case state
+    case stepper
     case storage
     case symbol
     case table
@@ -81,6 +88,8 @@ enum PlaygroundType: CaseIterable, View {
     case textField
     case toggle
     case toolbar
+    case tracking
+    case transform
     case timer
     case transition
     case videoPlayer
@@ -89,184 +98,199 @@ enum PlaygroundType: CaseIterable, View {
     case webBrowser
     case webView
     case zIndex
-    case game // displays as "Easter Egg", so show it at the end
 
     var title: LocalizedStringResource {
         switch self {
         case .accessibility:
-            return LocalizedStringResource("Accessibility")
+            return LocalizedStringResource("Accessibility", comment: "Title of Accessibility playground")
         case .alert:
-            return LocalizedStringResource("Alert")
+            return LocalizedStringResource("Alert", comment: "Title of Alert playground")
         case .animation:
-            return LocalizedStringResource("Animation")
+            return LocalizedStringResource("Animation", comment: "Title of Animation playground")
         case .audio:
-            return LocalizedStringResource("Audio")
+            return LocalizedStringResource("Audio", comment: "Title of Audio playground")
         case .background:
-            return LocalizedStringResource("Background")
+            return LocalizedStringResource("Background", comment: "Title of Background playground")
+        case .blendMode:
+            return LocalizedStringResource("BlendMode", comment: "Title of BlendMode playground")
         case .blur:
-            return LocalizedStringResource("Blur")
+            return LocalizedStringResource("Blur", comment: "Title of Blur playground")
         case .border:
-            return LocalizedStringResource("Border")
+            return LocalizedStringResource("Border", comment: "Title of Border playground")
         case .button:
-            return LocalizedStringResource("Button")
+            return LocalizedStringResource("Button", comment: "Title of Button playground")
         case .color:
-            return LocalizedStringResource("Color")
+            return LocalizedStringResource("Color", comment: "Title of Color playground")
+        case .colorEffects:
+            return LocalizedStringResource("Color Effects", comment: "Title of Color Effects playground")
         case .colorScheme:
-            return LocalizedStringResource("ColorScheme")
+            return LocalizedStringResource("ColorScheme", comment: "Title of ColorScheme playground")
         case .compose:
-            return LocalizedStringResource("Compose")
-        case .contextMenu:
-            return LocalizedStringResource("Context Menu")
-        case .confirmationDialog:
-            return LocalizedStringResource("ConfirmationDialog")
+            return LocalizedStringResource("Compose", comment: "Title of Compose playground")
         case .contentMargins:
-            return LocalizedStringResource("Content Margins")
+            return LocalizedStringResource("ContentMargins", comment: "Title of ContentMargins playground")
+        case .contextMenu:
+            return LocalizedStringResource("Context Menu", comment: "Title of Context Menu playground")
+        case .confirmationDialog:
+            return LocalizedStringResource("ConfirmationDialog", comment: "Title of ConfirmationDialog playground")
         case .datePicker:
-            return LocalizedStringResource("DatePicker")
+            return LocalizedStringResource("DatePicker", comment: "Title of DatePicker playground")
         case .disclosureGroup:
-            return LocalizedStringResource("DisclosureGroup")
+            return LocalizedStringResource("DisclosureGroup", comment: "Title of DisclosureGroup playground")
         case .divider:
-            return LocalizedStringResource("Divider")
+            return LocalizedStringResource("Divider", comment: "Title of Divider playground")
         case .documentPicker:
-            return LocalizedStringResource("DocumentPicker")
+            return LocalizedStringResource("Document and Media Pickers", comment: "Title of Document and Media Pickers playground")
         case .environment:
-            return LocalizedStringResource("Environment")
+            return LocalizedStringResource("Environment", comment: "Title of Environment playground")
         case .focusState:
-            return LocalizedStringResource("FocusState")
+            return LocalizedStringResource("FocusState", comment: "Title of FocusState playground")
         case .form:
-            return LocalizedStringResource("Form")
+            return LocalizedStringResource("Form", comment: "Title of Form playground")
         case .frame:
-            return LocalizedStringResource("Frame")
+            return LocalizedStringResource("Frame", comment: "Title of Frame playground")
         case .game:
-            return LocalizedStringResource("Easter Egg")
+            return LocalizedStringResource("Game", comment: "Title of Game playground")
         case .geometryChange:
-            return LocalizedStringResource("GeometryChange")
+            return LocalizedStringResource("GeometryChange", comment: "Title of GeometryChange playground")
         case .geometryReader:
-            return LocalizedStringResource("GeometryReader")
-        case .viewThatFits:
-            return LocalizedStringResource("ViewThatFits")
+            return LocalizedStringResource("GeometryReader", comment: "Title of GeometryReader playground")
         case .gesture:
-            return LocalizedStringResource("Gestures")
+            return LocalizedStringResource("Gesture", comment: "Title of Gesture playground")
         case .gradient:
-            return LocalizedStringResource("Gradients")
+            return LocalizedStringResource("Gradient", comment: "Title of Gradient playground")
         case .graphics:
-            return LocalizedStringResource("Graphics")
+            return LocalizedStringResource("Graphics", comment: "Title of Graphics playground")
         case .grid:
-            return LocalizedStringResource("Grids")
+            return LocalizedStringResource("Grids", comment: "Title of Grids playground")
         case .hapticFeedback:
-            return LocalizedStringResource("Haptic Feedback")
+            return LocalizedStringResource("Haptick Feedback", comment: "Title of Haptick Feedback playground")
         case .icon:
-            return LocalizedStringResource("Icons")
+            return LocalizedStringResource("Icons", comment: "Title of Icons playground")
         case .image:
-            return LocalizedStringResource("Image")
+            return LocalizedStringResource("Image", comment: "Title of Image playground")
         case .keyboard:
-            return LocalizedStringResource("Keyboard")
+            return LocalizedStringResource("Keyboard", comment: "Title of Keyboard playground")
         case .keychain:
-            return LocalizedStringResource("Keychain")
-        case .link:
-            return LocalizedStringResource("Link")
+            return LocalizedStringResource("Keychain", comment: "Title of Keychain playground")
         case .label:
-            return LocalizedStringResource("Label")
+            return LocalizedStringResource("Label", comment: "Title of Label playground")
         case .labeledContent:
-            return LocalizedStringResource("Labeled Content")
+            return LocalizedStringResource("Labeled Content", comment: "Title of Labeled Content playground")
+        case .lineSpacing:
+            return LocalizedStringResource("Line Spacing", comment: "Title of Line Spacing playground")
+        case .link:
+            return LocalizedStringResource("Link", comment: "Title of Link playground")
         case .list:
-            return LocalizedStringResource("List")
+            return LocalizedStringResource("List", comment: "Title of List playground")
         case .localization:
-            return LocalizedStringResource("Localization")
+            return LocalizedStringResource("Localization", comment: "Title of Localization playground")
         case .lottie:
-            return LocalizedStringResource("Lottie Animation")
+            return LocalizedStringResource("Lottie Animation", comment: "Title of Lottie playground")
         case .map:
-            return LocalizedStringResource("Map")
+            return LocalizedStringResource("Map", comment: "Title of Map playground")
+        case .mask:
+            return LocalizedStringResource("Mask", comment: "Title of Mask playground")
+        case .minimumScaleFactor:
+            return LocalizedStringResource("MinimumScaleFactor", comment: "Title of MinimumScaleFactor playground")
         case .menu:
-            return LocalizedStringResource("Menu")
+            return LocalizedStringResource("Menu", comment: "Title of Menu playground")
         case .modifier:
-            return LocalizedStringResource("Modifiers")
+            return LocalizedStringResource("Modifiers", comment: "Title of Modifiers playground")
         case .navigationStack:
-            return LocalizedStringResource("NavigationStack")
+            return LocalizedStringResource("NavigationStack", comment: "Title of NavigationStack playground")
         case .notification:
-            return LocalizedStringResource("Notification")
+            return LocalizedStringResource("Notifications", comment: "Title of Notification playground")
         case .observable:
-            return LocalizedStringResource("Observable")
+            return LocalizedStringResource("Observable", comment: "Title of Observable playground")
         case .offsetPosition:
-            return LocalizedStringResource("Offset/Position")
+            return LocalizedStringResource("Offset/Position", comment: "Title of Offset/Position playground")
         case .onSubmit:
-            return LocalizedStringResource("OnSubmit")
+            return LocalizedStringResource("OnSubmit", comment: "Title of OnSubmit playground")
         case .overlay:
-            return LocalizedStringResource("Overlay")
+            return LocalizedStringResource("Overlay", comment: "Title of Overlay playground")
         case .pasteboard:
-            return LocalizedStringResource("Pasteboard")
+            return LocalizedStringResource("Pasteboard", comment: "Title of Pasteboard playground")
         case .picker:
-            return LocalizedStringResource("Picker")
+            return LocalizedStringResource("Picker", comment: "Title of Picker playground")
         case .preference:
-            return LocalizedStringResource("Preferences")
+            return LocalizedStringResource("Preferences", comment: "Title of Preferences playground")
         case .progressView:
-            return LocalizedStringResource("ProgressView")
+            return LocalizedStringResource("ProgressView", comment: "Title of ProgressView playground")
         case .redacted:
-            return LocalizedStringResource("Redacted")
+            return LocalizedStringResource("Redacted", comment: "Title of Redacted playground")
         case .safeArea:
-            return LocalizedStringResource("SafeArea")
+            return LocalizedStringResource("SafeArea", comment: "Title of SafeArea playground")
         case .scaledMetric:
-            return LocalizedStringResource("ScaledMetric")
+            return LocalizedStringResource("ScaledMetric", comment: "Title of ScaledMetric playground")
         case .scenePhase:
-            return LocalizedStringResource("ScenePhase")
+            return LocalizedStringResource("ScenePhase", comment: "Title of ScenePhase playground")
         case .scrollView:
-            return LocalizedStringResource("ScrollView")
+            return LocalizedStringResource("ScrollView", comment: "Title of ScrollView playground")
         case .searchable:
-            return LocalizedStringResource("Searchable")
+            return LocalizedStringResource("Searchable", comment: "Title of Searchable playground")
         case .secureField:
-            return LocalizedStringResource("SecureField")
+            return LocalizedStringResource("SecureField", comment: "Title of SecureField playground")
         case .sensors:
             return LocalizedStringResource("Sensors", comment: "Title of Sensors playground")
         case .shadow:
-            return LocalizedStringResource("Shadow")
+            return LocalizedStringResource("Shadow", comment: "Title of Shadow playground")
         case .shape:
-            return LocalizedStringResource("Shape")
+            return LocalizedStringResource("Shape", comment: "Title of Shape playground")
         case .shareLink:
-            return LocalizedStringResource("ShareLink")
+            return LocalizedStringResource("ShareLink", comment: "Title of ShareLink playground")
         case .sheet:
-            return LocalizedStringResource("Sheet")
+            return LocalizedStringResource("Sheet", comment: "Title of Sheet playground")
         case .slider:
-            return LocalizedStringResource("Slider")
+            return LocalizedStringResource("Slider", comment: "Title of Slider playground")
         case .spacer:
-            return LocalizedStringResource("Spacer")
+            return LocalizedStringResource("Spacer", comment: "Title of Spacer playground")
         case .sql:
-            return LocalizedStringResource("SQL")
+            return LocalizedStringResource("SQL", comment: "Title of SQL playground")
         case .stack:
-            return LocalizedStringResource("Stacks")
+            return LocalizedStringResource("Stacks", comment: "Title of Stacks playground")
         case .state:
-            return LocalizedStringResource("State")
+            return LocalizedStringResource("State", comment: "Title of State playground")
+        case .stepper:
+            return LocalizedStringResource("Stepper", comment: "Title of Stepper playground")
         case .storage:
-            return LocalizedStringResource("Storage")
+            return LocalizedStringResource("Storage", comment: "Title of Storage playground")
         case .symbol:
-            return LocalizedStringResource("Symbol")
+            return LocalizedStringResource("Symbol", comment: "Title of Symbol playground")
         case .table:
-            return LocalizedStringResource("Table")
+            return LocalizedStringResource("Table", comment: "Title of Table playground")
         case .tabView:
-            return LocalizedStringResource("TabView")
+            return LocalizedStringResource("TabView", comment: "Title of TabView playground")
         case .text:
-            return LocalizedStringResource("Text")
+            return LocalizedStringResource("Text", comment: "Title of Text playground")
         case .textEditor:
-            return LocalizedStringResource("TextEditor")
+            return LocalizedStringResource("TextEditor", comment: "Title of Text playground")
         case .textField:
-            return LocalizedStringResource("TextField")
+            return LocalizedStringResource("TextField", comment: "Title of TextField playground")
         case .timer:
-            return LocalizedStringResource("Timer")
+            return LocalizedStringResource("Timer", comment: "Title of Timer playground")
         case .toggle:
-            return LocalizedStringResource("Toggle")
+            return LocalizedStringResource("Toggle", comment: "Title of Toggle playground")
         case .toolbar:
-            return LocalizedStringResource("Toolbar")
+            return LocalizedStringResource("Toolbar", comment: "Title of Toolbar playground")
+        case .tracking:
+            return LocalizedStringResource("Tracking", comment: "Title of Tracking playground")
+        case .transform:
+            return LocalizedStringResource("Transform", comment: "Title of Transform playground")
         case .transition:
-            return LocalizedStringResource("Transition")
+            return LocalizedStringResource("Transition", comment: "Title of Transition playground")
         case .videoPlayer:
-            return LocalizedStringResource("Video Player")
+            return LocalizedStringResource("Video Player", comment: "Title of VideoPlayer playground")
+        case .viewThatFits:
+            return LocalizedStringResource("ViewThatFits", comment: "Title of ViewThatFits playground")
         case .webAuthenticationSession:
-            return LocalizedStringResource("Web Authentication Session")
+            return LocalizedStringResource("Web Authentication Session", comment: "Title of Web Authentication Session playground")
         case .webBrowser:
-            return LocalizedStringResource("WebBrowser")
+            return LocalizedStringResource("WebBrowser", comment: "Title of WebBrowser playground")
         case .webView:
-            return LocalizedStringResource("WebView")
+            return LocalizedStringResource("WebView", comment: "Title of WebView playground")
         case .zIndex:
-            return LocalizedStringResource("ZIndex")
+            return LocalizedStringResource("ZIndex", comment: "Title of ZIndex playground")
         }
     }
 
@@ -279,9 +303,15 @@ enum PlaygroundType: CaseIterable, View {
         case .animation:
             AnimationPlayground()
         case .audio:
+            #if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
             AudioPlayground()
+            #else
+            Text("AudioPlayground is Lite-only until ported to SkipAV")
+            #endif
         case .background:
             BackgroundPlayground()
+        case .blendMode:
+            BlendModePlayground()
         case .blur:
             BlurPlayground()
         case .border:
@@ -290,16 +320,18 @@ enum PlaygroundType: CaseIterable, View {
             ButtonPlayground()
         case .color:
             ColorPlayground()
+        case .colorEffects:
+            ColorEffectsPlayground()
         case .colorScheme:
             ColorSchemePlayground()
         case .compose:
             ComposePlayground()
+        case .contentMargins:
+            ContentMarginsPlayground()
         case .contextMenu:
             ContextMenuPlayground()
         case .confirmationDialog:
             ConfirmationDialogPlayground()
-        case .contentMargins:
-            ContentMarginsPlayground()
         case .datePicker:
             DatePickerPlayground()
         case .disclosureGroup:
@@ -322,8 +354,6 @@ enum PlaygroundType: CaseIterable, View {
             GeometryChangePlayground()
         case .geometryReader:
             GeometryReaderPlayground()
-        case .viewThatFits:
-            ViewThatFitsPlayground()
         case .gesture:
             GesturePlayground()
         case .gradient:
@@ -350,6 +380,8 @@ enum PlaygroundType: CaseIterable, View {
             LabelPlayground()
         case .labeledContent:
             LabeledContentPlayground()
+        case .lineSpacing:
+            LineSpacingPlayground()
         case .link:
             LinkPlayground()
         case .list:
@@ -360,6 +392,10 @@ enum PlaygroundType: CaseIterable, View {
             LottiePlayground()
         case .map:
             MapPlayground()
+        case .mask:
+            MaskPlayground()
+        case .minimumScaleFactor:
+            MinimumScaleFactorPlayground()
         case .menu:
             MenuPlayground()
         case .modifier:
@@ -418,12 +454,18 @@ enum PlaygroundType: CaseIterable, View {
             StackPlayground()
         case .state:
             StatePlayground()
+        case .stepper:
+            StepperPlayground()
         case .storage:
             StoragePlayground()
         case .symbol:
             SymbolPlayground()
         case .table:
+            #if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
             TablePlayground()
+            #else
+            Text("SwiftUI Table is not yet available in SkipFuseUI")
+            #endif
         case .tabView:
             TabViewPlayground()
         case .text:
@@ -438,10 +480,16 @@ enum PlaygroundType: CaseIterable, View {
             TogglePlayground()
         case .toolbar:
             ToolbarPlayground()
+        case .tracking:
+            TrackingPlayground()
+        case .transform:
+            TransformPlayground()
         case .transition:
             TransitionPlayground()
         case .videoPlayer:
             VideoPlayerPlayground()
+        case .viewThatFits:
+            ViewThatFitsPlayground()
         case .webAuthenticationSession:
             WebAuthenticationSessionPlayground()
         case .webBrowser:
@@ -463,8 +511,10 @@ public struct PlaygroundNavigationView: View {
 
     public var body: some View {
         NavigationStack {
-            List(matchingPlaygroundTypes(), id: \.self) { playground in
-                NavigationLink(value: playground, label: { Text(playground.title) })
+            List {
+                ForEach(matchingPlaygroundTypes, id: \.self) { playground in
+                    NavigationLink(value: playground, label: { Text(playground.title) })
+                }
             }
             .navigationTitle(Text("Showcase"))
             .navigationDestination(for: PlaygroundType.self) {
@@ -474,11 +524,14 @@ public struct PlaygroundNavigationView: View {
         }
     }
 
-    private func matchingPlaygroundTypes() -> [PlaygroundType] {
-        return PlaygroundType.allCases.filter {
-            let words = String(localized: $0.title).split(separator: " ")
+    private var matchingPlaygroundTypes: [PlaygroundType] {
+        return PlaygroundType.allCases.filter { playground in
+            // Filter by search text
+            let words = playground.title.key.split(separator: " ")
             let prefix = searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
             return words.contains { $0.lowercased().starts(with: prefix) }
         }
     }
 }
+
+

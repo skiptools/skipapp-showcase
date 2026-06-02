@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 import SkipKit
 import SkipMarketplace
@@ -42,27 +42,56 @@ struct SettingsView: View {
                     }
                     .navigationTitle("System Information")
                 }
-                HStack {
-                    #if SKIP
-                    ComposeView { ctx in // Mix in Compose code!
-                        androidx.compose.material3.Text("💚", modifier: ctx.modifier)
-                    }
-                    #else
-                    Text(verbatim: "💙")
-                    #endif
-                    if let version = ProcessInfo.processInfo.appVersionString,
-                       let buildNumber = ProcessInfo.processInfo.appVersionNumber {
-                        Text("Version \(version) (\(buildNumber))")
+                LabeledContent(content: {
+                    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                       let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                        Text("\(version) (\(buildNumber))")
                             .foregroundStyle(.gray)
                     }
-                    Text("Powered by [Skip](https://skip.tools)")
+                }, label: {
+                    #if SKIP_MODE_FUSE
+                    let mode = "Fuse"
+                    #else
+                    let mode = "Lite"
+                    #endif
+                    Text("Powered by [Skip \(mode)](https://skip.dev)")
+                })
+
+                HStack {
+                    Spacer()
+                    ZStack(alignment: .center) {
+                        #if SKIP
+                        // Skip Lite (transpiled) can inline Compose calls directly
+                        ComposeView { ctx in
+                            androidx.compose.material3.Text("💚", modifier: ctx.modifier)
+                        }
+                        #elseif os(Android)
+                        // Skip Fuse (compiled) uses ComposeView to bridge into the transpiled code in the SKIP block below
+                        ComposeView {
+                            HeartComposer()
+                        }
+                        #else
+                        Text(verbatim: "💙")
+                        #endif
+                    }
+                    Spacer()
                 }
                 .onTapGesture {
-                    logger.info("requesting marketplace review")
-                    Marketplace.current.requestReview(period: .days(0))
+                    let reqested = Marketplace.current.requestReview(period: .days(0))
+                    logger.info("requesting marketplace review: \(reqested)")
                 }
             }
             .navigationTitle("Settings")
         }
     }
 }
+
+#if SKIP
+
+struct HeartComposer: ContentComposer {
+    @Composable func Compose(context: ComposeContext) {
+        androidx.compose.material3.Text("💚", modifier: context.modifier)
+    }
+}
+
+#endif

@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 enum SafeAreaPlaygroundType: String, CaseIterable {
@@ -73,9 +73,6 @@ struct SafeAreaPlayground: View {
         .sheet(isPresented: $isSheetPresented) {
             playground(for: playgroundType)
         }
-        .sheet(isPresented: $isGeometryPaddingSheetPresented) {
-            SafeAreaGeometryPaddingSheet()
-        }
         #else
         .sheet(isPresented: $isSheetPresented) {
             playground(for: playgroundType)
@@ -144,7 +141,7 @@ struct SafeAreaPadded: View {
     @State var bottomBarVisibility = Visibility.visible
     @AppStorage("statusBarHidden") var statusBarHidden = false
 
-    @State private var animatedSafeAreaInsets: EdgeInsets? = nil
+    @State var animatedSafeAreaInsets: EdgeInsets? = nil
 
     var body: some View {
         GeometryReader { proxy in
@@ -200,7 +197,7 @@ struct SafeAreaPadded: View {
 
 struct SafeAreaGeometryPaddingSheet: View {
     @Environment(\.dismiss) var dismiss
-    @State private var selectedTab = "Geometry"
+    @State var selectedTab = "Geometry"
 
     var body: some View {
         NavigationStack {
@@ -239,7 +236,7 @@ struct SafeAreaGeometryPaddingSheet: View {
 struct SafeAreaVisibilityControl: View {
     let name: String
     @Binding var visibility: Visibility
-    
+
     var body: some View {
         if visibility == .hidden {
             Button("Show \(name) Bar") {
