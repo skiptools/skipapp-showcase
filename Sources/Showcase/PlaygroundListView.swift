@@ -84,6 +84,7 @@ enum PlaygroundType: CaseIterable, View {
     case table
     case tabView
     case text
+    case textConcatenation
     case textEditor
     case textField
     case toggle
@@ -263,6 +264,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("TabView", comment: "Title of TabView playground")
         case .text:
             return LocalizedStringResource("Text", comment: "Title of Text playground")
+        case .textConcatenation:
+            return LocalizedStringResource("Text Concatenation", comment: "Title of Text Concatenation playground")
         case .textEditor:
             return LocalizedStringResource("TextEditor", comment: "Title of Text playground")
         case .textField:
@@ -470,6 +473,8 @@ enum PlaygroundType: CaseIterable, View {
             TabViewPlayground()
         case .text:
             TextPlayground()
+        case .textConcatenation:
+            TextConcatenationPlayground()
         case .textEditor:
             TextEditorPlayground()
         case .textField:
