@@ -2858,6 +2858,9 @@
     "Picker .tint(.red)" : {
 
     },
+    "Pin" : {
+
+    },
     "Pink" : {
 
     },
@@ -3131,6 +3134,9 @@
 
     },
     "Row %lld" : {
+
+    },
+    "Row %lld — Add to favorites" : {
 
     },
     "Row %lld.1" : {

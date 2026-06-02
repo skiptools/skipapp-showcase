@@ -20,6 +20,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case sectionedEditActions
     case plainStyleSectionedEditActions
     case onMoveDelete
+    case swipeActions
     case positioned
     case badges
 
@@ -61,6 +62,8 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Plain Style Sectioned EditActions"
         case .onMoveDelete:
             return ".onMove, .onDelete"
+        case .swipeActions:
+            return ".swipeActions"
         case .positioned:
             return "Positioned"
         case .badges:
@@ -136,6 +139,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .onMoveDelete:
                 OnMoveDeleteListPlayground()
+                    .navigationTitle($0.title)
+            case .swipeActions:
+                SwipeActionsListPlayground()
                     .navigationTitle($0.title)
             case .positioned:
                 PositionedListPlayground()
@@ -799,6 +805,44 @@ struct BadgeListPlayground: View {
                     Text("Spam")
                 }
                 .badge("99+")
+            }
+        }
+    }
+}
+
+struct SwipeActionsListPlayground: View {
+    @State var rows: [Int] = Array(0..<12)
+    @State var lastAction = ""
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Text(lastAction.isEmpty ? "Swipe a row" : lastAction)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .padding(8)
+            List {
+                ForEach(rows, id: \.self) { i in
+                    Text("Row \(i) — Add to favorites")
+                        .swipeActions(edge: .trailing) {
+                            Button("Pin") {
+                                lastAction = "Pinned row \(i)"
+                            }
+                            .tint(.purple)
+                            
+                            Button("Delete", role: .destructive) {
+                                lastAction = "Deleted row \(i)"
+                            }
+                        }
+                        .swipeActions(edge: .leading) {
+                            Button("Flag") {
+                                lastAction = "Flagged row \(i)"
+                            }
+                            .tint(.orange)
+                        }
+                }
+                .onDelete { offsets in
+                    rows.remove(atOffsets: offsets)
+                }
             }
         }
     }
