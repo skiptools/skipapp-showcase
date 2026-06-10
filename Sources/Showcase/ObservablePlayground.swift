@@ -31,9 +31,45 @@ struct ObservablePlayground: View {
     }
 }
 
+/// Demonstrates assigning a new `[String: Struct]` to an `@Observable` property.
+/// `VersionedItem` uses identity `Equatable` (id only). The label reads
+/// `items["alpha"]?.version`. Tap "Replace dictionary" to assign version 2.
+@available(iOS 17.0, macOS 14.0, *)
+@Observable class DictionaryPlaygroundModel {
+    var items: [String: VersionedItem] = [:]
+
+    init() {
+        items = ["alpha": VersionedItem(version: 1)]
+    }
+
+    func replace() {
+        items = ["alpha": VersionedItem(version: 2)]
+    }
+}
+
+@available(iOS 17.0, macOS 14.0, *)
+struct VersionedItem: Equatable, Hashable {
+    let id: String
+    var version: Int
+
+    init(id: String = "alpha", version: Int) {
+        self.id = id
+        self.version = version
+    }
+
+    static func == (lhs: VersionedItem, rhs: VersionedItem) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
 @available(iOS 17.0, macOS 14.0, *)
 struct ObservablesOuterView: View {
     @State var stateObject = PlaygroundObservable(text: "initialState")
+    @State var dictionaryModel = DictionaryPlaygroundModel()
     @Environment(PlaygroundEnvironmentObject.self) var environmentObject
     var body: some View {
         VStack {
@@ -43,6 +79,25 @@ struct ObservablesOuterView: View {
                 .border(Color.red)
             ObservablesBindingView(text: $stateObject.text)
                 .border(Color.blue)
+            DictionaryObservableView(model: dictionaryModel)
+                .border(Color.green)
+        }
+    }
+}
+
+@available(iOS 17.0, macOS 14.0, *)
+struct DictionaryObservableView: View {
+    let model: DictionaryPlaygroundModel
+
+    var body: some View {
+        let displayedVersion = model.items["alpha"]?.version ?? -1
+        return VStack {
+            Text("Dictionary version: \(displayedVersion)")
+                .accessibilityIdentifier("dictionary-version")
+            Button("Replace dictionary") {
+                model.replace()
+            }
+            .accessibilityIdentifier("dictionary-replace-button")
         }
     }
 }
