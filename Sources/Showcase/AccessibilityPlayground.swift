@@ -3,14 +3,14 @@ import SwiftUI
 
 struct AccessibilityPlayground: View {
     @State var isOn = false
-    @Environment(\.accessibilityEnabled) var accessibilityEnabled
-    @Environment(\.accessibilityInvertColors) var accessibilityInvertColors
-    @Environment(\.accessibilityReduceMotion) var accessibilityReduceMotion
-    @Environment(\.accessibilityReduceTransparency) var accessibilityReduceTransparency
-    @Environment(\.accessibilitySwitchControlEnabled) var accessibilitySwitchControlEnabled
-    @Environment(\.accessibilityVoiceOverEnabled) var accessibilityVoiceOverEnabled
-    @Environment(\.legibilityWeight) var legibilityWeight
-    @Environment(\.colorSchemeContrast) var colorSchemeContrast
+    @Environment(\.accessibilityEnabled) var accessibilityEnabled: Bool
+    @Environment(\.accessibilityInvertColors) var accessibilityInvertColors: Bool
+    @Environment(\.accessibilityReduceMotion) var accessibilityReduceMotion: Bool
+    @Environment(\.accessibilityReduceTransparency) var accessibilityReduceTransparency: Bool
+    @Environment(\.accessibilitySwitchControlEnabled) var accessibilitySwitchControlEnabled: Bool
+    @Environment(\.accessibilityVoiceOverEnabled) var accessibilityVoiceOverEnabled: Bool
+    @Environment(\.legibilityWeight) var legibilityWeight: LegibilityWeight?
+    @Environment(\.colorSchemeContrast) var colorSchemeContrast: ColorSchemeContrast
 
     var body: some View {
         ScrollView {

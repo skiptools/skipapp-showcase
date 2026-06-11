@@ -822,13 +822,14 @@ struct SwipeActionsListPlayground: View {
                 .padding(8)
             List {
                 ForEach(rows, id: \.self) { i in
+                    #if !SKIP
                     Text("Row \(i) — Add to favorites")
                         .swipeActions(edge: .trailing) {
                             Button("Pin") {
                                 lastAction = "Pinned row \(i)"
                             }
                             .tint(.purple)
-                            
+
                             Button("Delete", role: .destructive) {
                                 lastAction = "Deleted row \(i)"
                             }
@@ -839,6 +840,9 @@ struct SwipeActionsListPlayground: View {
                             }
                             .tint(.orange)
                         }
+                    #else
+                    Text("Row \(i) — Add to favorites")
+                    #endif
                 }
                 .onDelete { offsets in
                     rows.remove(atOffsets: offsets)
