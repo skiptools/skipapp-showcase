@@ -77,4 +77,12 @@ if let dependencyRoot = Context.environment["SKIP_DEPENDENCY_ROOT"] {
             return dep
         }
     }
+    // Root-package dependencies override transitive dependencies with the same identity,
+    // so also pin transitive skip libraries that the app doesn't depend on directly.
+    package.dependencies.append(.package(path: dependencyRoot + "/skip-model"))
+    if fuse {
+        // In Fuse mode skip-ui is only reachable through skip-fuse-ui; in Lite mode it is a
+        // direct dependency already mapped above (appending it again would be a duplicate).
+        package.dependencies.append(.package(path: dependencyRoot + "/skip-ui"))
+    }
 }
