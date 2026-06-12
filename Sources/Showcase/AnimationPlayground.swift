@@ -54,6 +54,18 @@ struct AnimationPlayground: View {
                 Divider()
                     .padding(.vertical, 8)
 
+                Text("@Observable provenance")
+                    .font(.headline)
+                Text("The same two-square pattern, but driven by properties of an @Observable model: 'animated' is mutated inside withAnimation, 'unrelated' outside it in the same handler. In both demos the red square must fade over 1.5s while the green square snaps.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                ObservableDirectDemoView()
+                ObservableEnvironmentDemoView()
+
+                Divider()
+                    .padding(.vertical, 8)
+
                 Text("Independent withAnimation scopes")
                     .font(.headline)
                 Text("One tap fires several withAnimation blocks; each animation applies only to the state changed inside its own block")
@@ -788,6 +800,81 @@ struct AnimationPlayground: View {
             }
         } else {
             action()
+        }
+    }
+}
+
+// MARK: - @Observable provenance demos
+
+/// Model for the @Observable provenance demos: `run()` mutates `unrelated` outside any
+/// animation scope and `animated` inside `withAnimation(.linear(duration: 1.5))`.
+@Observable
+class ObservableAnimationDemoModel {
+    var animated = false
+    var unrelated = false
+
+    func run() {
+        unrelated.toggle()
+        withAnimation(.linear(duration: 1.5)) {
+            animated.toggle()
+        }
+    }
+}
+
+/// The view that owns the model reads its properties directly at the modifier sites.
+struct ObservableDirectDemoView: View {
+    @State var model = ObservableAnimationDemoModel()
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text("Direct model reads")
+                .font(.subheadline)
+            HStack {
+                Color.green
+                    .frame(width: 100, height: 100)
+                    .opacity(model.unrelated ? 0.2 : 1.0)
+                Color.red
+                    .frame(width: 100, height: 100)
+                    .opacity(model.animated ? 0.2 : 1.0)
+            }
+            Button("withAnimation (observable)") {
+                model.run()
+            }
+            .buttonStyle(.bordered)
+        }
+    }
+}
+
+/// The model is handed down through the SwiftUI environment; a child view reads its
+/// properties at the modifier sites via @Environment.
+struct ObservableEnvironmentDemoView: View {
+    @State var model = ObservableAnimationDemoModel()
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text("@Environment model reads")
+                .font(.subheadline)
+            ObservableEnvironmentDemoTiles()
+            Button("withAnimation (environment)") {
+                model.run()
+            }
+            .buttonStyle(.bordered)
+        }
+        .environment(model)
+    }
+}
+
+struct ObservableEnvironmentDemoTiles: View {
+    @Environment(ObservableAnimationDemoModel.self) var model: ObservableAnimationDemoModel
+
+    var body: some View {
+        HStack {
+            Color.green
+                .frame(width: 100, height: 100)
+                .opacity(model.unrelated ? 0.2 : 1.0)
+            Color.red
+                .frame(width: 100, height: 100)
+                .opacity(model.animated ? 0.2 : 1.0)
         }
     }
 }
