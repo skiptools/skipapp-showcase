@@ -14,3 +14,14 @@ build:
       contents:
         # dependency used by MapPlayground for custom compose integration
         - 'implementation("com.google.maps.android:maps-compose:6.4.1")'
+
+settings:
+  contents:
+    - block: 'dependencyResolutionManagement'
+      contents:
+        - block: 'versionCatalogs'
+          contents:
+            - block: 'create("libs")'
+              remove: ['version("android-sdk-min", "28")']
+              contents:
+                - 'version("android-sdk-min", "24")'
