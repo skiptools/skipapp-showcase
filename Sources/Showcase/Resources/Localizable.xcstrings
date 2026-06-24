@@ -494,7 +494,13 @@
     "(Critical for Android: List has its own scroll container)" : {
 
     },
+    "@Environment model reads" : {
+
+    },
     "@Environment(\\.openURL)" : {
+
+    },
+    "@Observable provenance" : {
 
     },
     "%.1fx" : {
@@ -1435,6 +1441,9 @@
     "Dimiss" : {
 
     },
+    "Direct model reads" : {
+
+    },
     "Disable Scrolling" : {
 
     },
@@ -1561,6 +1570,12 @@
 
     },
     "Duplicate" : {
+
+    },
+    "easeInOut(0.5s) with .delay(0 / 0.15 / 0.3)" : {
+
+    },
+    "easeInOut(2s) • bouncy • no animation (snaps)" : {
 
     },
     "Easy" : {
@@ -2088,6 +2103,9 @@
     "Increment last" : {
 
     },
+    "Independent withAnimation scopes" : {
+
+    },
     "Indeterminate" : {
 
     },
@@ -2330,6 +2348,9 @@
     },
     "Line Spacing" : {
       "comment" : "Title of Line Spacing playground"
+    },
+    "linear(0.5s) • easeInOut(1.5s) • spring(1s, bounce)" : {
+
     },
     "LinearGradient" : {
 
@@ -2649,6 +2670,9 @@
 
     },
     "On" : {
+
+    },
+    "One tap fires several withAnimation blocks; each animation applies only to the state changed inside its own block" : {
 
     },
     "One Time Code" : {
@@ -3009,6 +3033,9 @@
     "Quit Game" : {
 
     },
+    "Race" : {
+
+    },
     "rad/s" : {
 
     },
@@ -3109,6 +3136,12 @@
     "Rotate" : {
 
     },
+    "Rotate • Scale • Fade" : {
+
+    },
+    "rotate easeOut(1.5s) • scale interpolatingSpring • fade linear(2s)" : {
+
+    },
     "Rotates all colors around the color wheel" : {
 
     },
@@ -3197,6 +3230,9 @@
 
     },
     "scale: 2" : {
+
+    },
+    "Scale: slow • bouncy • snap" : {
 
     },
     "scale(x: 0.5, y: 1.2)" : {
@@ -4049,6 +4085,9 @@
     "TextField" : {
       "comment" : "Title of TextField playground"
     },
+    "The same two-square pattern, but driven by properties of an @Observable model: 'animated' is mutated inside withAnimation, 'unrelated' outside it in the same handler. In both demos the red square must fade over 1.5s while the green square snaps." : {
+
+    },
     "The user cancelled the sign-in process." : {
 
     },
@@ -4391,6 +4430,9 @@
     "VStack.animation" : {
 
     },
+    "Wave (staggered .delay)" : {
+
+    },
     "Web Authentication Session" : {
       "comment" : "Title of Web Authentication Session playground"
     },
@@ -4586,6 +4628,12 @@
 
     },
     "withAnimation" : {
+
+    },
+    "withAnimation (environment)" : {
+
+    },
+    "withAnimation (observable)" : {
 
     },
     "withAnimation(.easeIn(duration: 1))" : {
