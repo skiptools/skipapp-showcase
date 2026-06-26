@@ -12,10 +12,12 @@ enum PlaygroundType: CaseIterable, View {
     case blur
     case border
     case button
+    case calendar
     case color
     case colorEffects
     case colorScheme
     case compose
+    case contacts
     case contentMargins
     case contextMenu
     case confirmationDialog
@@ -119,6 +121,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("Border", comment: "Title of Border playground")
         case .button:
             return LocalizedStringResource("Button", comment: "Title of Button playground")
+        case .calendar:
+            return LocalizedStringResource("Calendar", comment: "Title of Calendar playground")
         case .color:
             return LocalizedStringResource("Color", comment: "Title of Color playground")
         case .colorEffects:
@@ -127,6 +131,8 @@ enum PlaygroundType: CaseIterable, View {
             return LocalizedStringResource("ColorScheme", comment: "Title of ColorScheme playground")
         case .compose:
             return LocalizedStringResource("Compose", comment: "Title of Compose playground")
+        case .contacts:
+            return LocalizedStringResource("Contacts", comment: "Title of Contacts playground")
         case .contentMargins:
             return LocalizedStringResource("ContentMargins", comment: "Title of ContentMargins playground")
         case .contextMenu:
@@ -318,6 +324,8 @@ enum PlaygroundType: CaseIterable, View {
             BorderPlayground()
         case .button:
             ButtonPlayground()
+        case .calendar:
+            CalendarPlayground()
         case .color:
             ColorPlayground()
         case .colorEffects:
@@ -326,6 +334,8 @@ enum PlaygroundType: CaseIterable, View {
             ColorSchemePlayground()
         case .compose:
             ComposePlayground()
+        case .contacts:
+            ContactsPlayground()
         case .contentMargins:
             ContentMarginsPlayground()
         case .contextMenu:
