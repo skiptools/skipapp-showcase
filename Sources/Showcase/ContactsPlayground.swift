@@ -4,12 +4,15 @@ import SkipKit
 import SkipContacts
 
 /// Demonstrates the major features of the SkipContacts framework: requesting permission,
-/// fetching the device contacts, and creating and deleting contacts.
+/// fetching the device contacts, presenting the native contact picker, and creating and
+/// deleting contacts.
 struct ContactsPlayground: View {
     @State var permission: String = "unknown"
     @State var contacts: [Contact] = []
     @State var message: String = ""
     @State var createdIDs: [String] = []
+    @State var showContactPicker = false
+    @State var selectedContact: Contact? = nil
 
     var isAuthorized: Bool {
         permission == "authorized" || permission == "limited"
@@ -24,6 +27,32 @@ struct ContactsPlayground: View {
                     Task { @MainActor in
                         permission = (await requestContactsPermission()).rawValue
                         logger.log("contacts permission: \(permission)")
+                    }
+                }
+            }
+
+            Section("Native Picker") {
+                // The system contact picker presents in its own process, so it works without the app
+                // holding contacts permission; the selected contact's full details are then loaded below.
+                Button("Pick a Contact…") {
+                    showContactPicker = true
+                }
+            }
+
+            if let contact = selectedContact {
+                Section("Selected Contact") {
+                    contactRow("Name", contact.displayName)
+                    if !contact.organizationName.isEmpty {
+                        contactRow("Organization", contact.organizationName)
+                    }
+                    if !contact.jobTitle.isEmpty {
+                        contactRow("Title", contact.jobTitle)
+                    }
+                    ForEach(contact.phoneNumbers, id: \.value) { phone in
+                        contactRow("Phone (\(phone.label.rawValue))", phone.value)
+                    }
+                    ForEach(contact.emailAddresses, id: \.value) { email in
+                        contactRow("Email (\(email.label.rawValue))", email.value)
                     }
                 }
             }
@@ -74,6 +103,20 @@ struct ContactsPlayground: View {
         .task {
             permission = ContactManager.queryContactsPermission().rawValue
         }
+        .withContactPicker(isPresented: $showContactPicker, onSelectContact: { contactID in
+            selectContact(contactID)
+        })
+    }
+
+    @ViewBuilder func contactRow(_ label: String, _ value: String) -> some View {
+        HStack {
+            Text(label)
+                .foregroundStyle(.secondary)
+            Spacer()
+            Text(value)
+                .multilineTextAlignment(.trailing)
+        }
+        .font(.subheadline)
     }
 
     /// Request contacts permission. On iOS and in Skip Lite the cross-platform `ContactManager` request
@@ -86,6 +129,21 @@ struct ContactsPlayground: View {
         #else
         return await ContactManager.requestContactsPermission()
         #endif
+    }
+
+    /// Load the full details of the contact chosen in the native picker so they can be displayed.
+    func selectContact(_ contactID: String) {
+        do {
+            if let contact = try ContactManager.shared.getContact(id: contactID) {
+                selectedContact = contact
+                message = "Picked contact: \(contact.displayName)"
+            } else {
+                message = "Picked contact \(contactID) — grant Contacts permission to view details"
+            }
+        } catch {
+            message = "Picked contact \(contactID); could not load details: \(error)"
+            logger.error("contacts getContact error: \(error)")
+        }
     }
 
     func loadContacts() {

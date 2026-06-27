@@ -773,6 +773,12 @@
     "Add item" : {
 
     },
+    "Add Sample Contact" : {
+
+    },
+    "Add Sample Event" : {
+
+    },
     "Additional line 1" : {
 
     },
@@ -1168,6 +1174,12 @@
     "C" : {
 
     },
+    "Calendar" : {
+      "comment" : "Title of Calendar playground"
+    },
+    "Calendars (%lld)" : {
+
+    },
     "Cancel" : {
 
     },
@@ -1277,6 +1289,12 @@
 
     },
     "Constraint: width 160" : {
+
+    },
+    "Contacts" : {
+      "comment" : "Title of Contacts playground"
+    },
+    "Contacts (%lld)" : {
 
     },
     "Container" : {
@@ -1421,6 +1439,9 @@
 
     },
     "Delete" : {
+
+    },
+    "Delete %lld Added Sample(s)" : {
 
     },
     "Demo" : {
@@ -2376,6 +2397,15 @@
     "List.%@" : {
 
     },
+    "Load Calendars" : {
+
+    },
+    "Load Contacts" : {
+
+    },
+    "Load Next 30 Days" : {
+
+    },
     "Local frame: %@" : {
 
     },
@@ -2524,6 +2554,12 @@
     "Name" : {
 
     },
+    "Native Event UI" : {
+
+    },
+    "Native Picker" : {
+
+    },
     "Navigate back" : {
 
     },
@@ -2580,6 +2616,9 @@
 
     },
     "New" : {
+
+    },
+    "New Event in Native Editor…" : {
 
     },
     "New High Score!" : {
@@ -2852,10 +2891,16 @@
     "PDF Image" : {
 
     },
+    "Permission" : {
+
+    },
     "Permission Status: %@" : {
 
     },
     "Permission:" : {
+
+    },
+    "Pick a Contact…" : {
 
     },
     "Pick Document" : {
@@ -3070,6 +3115,9 @@
     "Rate" : {
 
     },
+    "read-only" : {
+
+    },
     "Rectangle" : {
 
     },
@@ -3107,6 +3155,12 @@
 
     },
     "Repository item tap count: %lld" : {
+
+    },
+    "Request Calendar Permission" : {
+
+    },
+    "Request Contacts Permission" : {
 
     },
     "Request Push Notification Permission" : {
@@ -3386,6 +3440,12 @@
 
     },
     "Select Media" : {
+
+    },
+    "Selected Contact" : {
+
+    },
+    "Selected Event" : {
 
     },
     "Selected Image: %@" : {
@@ -4251,6 +4311,9 @@
 
     },
     "UnevenRoundedRectangle" : {
+
+    },
+    "Upcoming Events (%lld)" : {
 
     },
     "Updates" : {

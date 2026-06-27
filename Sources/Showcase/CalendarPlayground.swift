@@ -4,13 +4,18 @@ import SkipKit
 import SkipCalendar
 
 /// Demonstrates the major features of the SkipCalendar framework: requesting permission,
-/// listing calendars, querying upcoming events, and creating and deleting events.
+/// listing calendars, querying upcoming events, presenting the native event editor and viewer,
+/// and creating and deleting events.
 struct CalendarPlayground: View {
     @State var permission: String = "unknown"
     @State var calendars: [CalendarItem] = []
     @State var events: [CalendarEvent] = []
     @State var message: String = ""
     @State var createdEventIDs: [String] = []
+    @State var showEventEditor = false
+    @State var showEventViewer = false
+    @State var viewerEventID = ""
+    @State var selectedEvent: CalendarEvent? = nil
 
     var isAuthorized: Bool {
         permission == "authorized" || permission == "limited"
@@ -25,6 +30,29 @@ struct CalendarPlayground: View {
                     Task { @MainActor in
                         permission = (await requestCalendarPermission()).rawValue
                         logger.log("calendar permission: \(permission)")
+                    }
+                }
+            }
+
+            Section("Native Event UI") {
+                // EventKit has no system event picker, so the native event editor (EKEventEditViewController)
+                // is used to compose an event; tap a listed event below to open the native viewer.
+                Button("New Event in Native Editor…") {
+                    showEventEditor = true
+                }
+                .disabled(!isAuthorized)
+            }
+
+            if let event = selectedEvent {
+                Section("Selected Event") {
+                    eventRow("Title", event.title)
+                    eventRow("Starts", eventDateFormatter.string(from: event.startDate))
+                    eventRow("Ends", eventDateFormatter.string(from: event.endDate))
+                    if let location = event.location, !location.isEmpty {
+                        eventRow("Location", location)
+                    }
+                    if let notes = event.notes, !notes.isEmpty {
+                        eventRow("Notes", notes)
                     }
                 }
             }
@@ -70,14 +98,20 @@ struct CalendarPlayground: View {
                     }
                 }
 
+                // Tap an event to view it in the native viewer and show its details above.
                 ForEach(events, id: \.id) { event in
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(event.title)
-                            .font(.headline)
-                        Text(eventDateFormatter.string(from: event.startDate))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                    Button {
+                        viewEvent(event)
+                    } label: {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(event.title)
+                                .font(.headline)
+                            Text(eventDateFormatter.string(from: event.startDate))
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
                     }
+                    .buttonStyle(.plain)
                 }
             }
 
@@ -92,6 +126,46 @@ struct CalendarPlayground: View {
         .navigationTitle("Calendar")
         .task {
             permission = CalendarManager.queryCalendarPermission().rawValue
+        }
+        .withEventEditor(isPresented: $showEventEditor, options: eventEditorOptions(), onComplete: { result in
+            message = "Native editor: \(result.rawValue)"
+            if result == .saved {
+                loadEvents()
+            }
+        })
+        .withEventViewer(isPresented: $showEventViewer, eventID: viewerEventID, onComplete: { _ in })
+    }
+
+    @ViewBuilder func eventRow(_ label: String, _ value: String) -> some View {
+        HStack {
+            Text(label)
+                .foregroundStyle(.secondary)
+            Spacer()
+            Text(value)
+                .multilineTextAlignment(.trailing)
+        }
+        .font(.subheadline)
+    }
+
+    /// A pre-filled sample event for the native editor.
+    func eventEditorOptions() -> EventEditorOptions {
+        let start = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
+        let end = Calendar.current.date(byAdding: .hour, value: 2, to: Date()) ?? Date()
+        return EventEditorOptions(
+            defaultTitle: "Skip Showcase Event",
+            defaultLocation: "Anywhere",
+            defaultNotes: "Composed in the native event editor from the Showcase Calendar playground",
+            defaultStartDate: start,
+            defaultEndDate: end
+        )
+    }
+
+    /// Show the selected event's details in-app and open the native event viewer.
+    func viewEvent(_ event: CalendarEvent) {
+        selectedEvent = event
+        if let id = event.id, !id.isEmpty {
+            viewerEventID = id
+            showEventViewer = true
         }
     }
 
