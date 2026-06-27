@@ -32,6 +32,8 @@ let package = Package(
         .package(url: "https://source.skip.tools/skip-keychain.git", "0.3.2"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-marketplace.git", "0.2.1"..<"2.0.0"),
         .package(url: "https://source.skip.tools/skip-authentication-services.git", "0.0.2"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-contacts.git", "0.0.0"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-calendar.git", "0.0.0"..<"2.0.0"),
     ],
     targets: [
         .target(name: "Showcase", dependencies: [
@@ -49,6 +51,8 @@ let package = Package(
             .product(name: "SkipKeychain", package: "skip-keychain"),
             .product(name: "SkipMarketplace", package: "skip-marketplace"),
             .product(name: "SkipAuthenticationServices", package: "skip-authentication-services"),
+            .product(name: "SkipContacts", package: "skip-contacts"),
+            .product(name: "SkipCalendar", package: "skip-calendar"),
         ], resources: [.process("Resources")],
                 swiftSettings: [.define(fuse ? "SKIP_MODE_FUSE" : "SKIP_MODE_LITE", .when(platforms: [.android]))],
            plugins: [.plugin(name: "skipstone", package: "skip")]),
