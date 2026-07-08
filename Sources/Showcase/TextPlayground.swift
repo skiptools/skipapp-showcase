@@ -5,6 +5,22 @@ struct TextPlayground: View {
     var redaction: RedactionReasons = []
     let markdownVar = "String `var` with markdown"
 
+    private var welcomeAttributedText: AttributedString {
+        var attributedString = AttributedString("Welcome to Skip")
+        attributedString.font = .system(size: 16)
+        attributedString.foregroundColor = .blue
+        attributedString.underlineStyle = .single
+        return attributedString
+    }
+
+    private var concatenatedAttributedText: AttributedString {
+        var a = AttributedString("Hello ")
+        a.foregroundColor = .blue
+        var b = AttributedString("World")
+        b.foregroundColor = .green
+        return a + b
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -69,6 +85,10 @@ struct TextPlayground: View {
                 Text(try! AttributedString(markdown: "Attributed **Bold text** with .italic()"))
                     .italic()
                 #endif
+
+                Text(welcomeAttributedText)
+                Text(concatenatedAttributedText)
+                Text(verbatim: "Left ") + Text(verbatim: "Right")
 
                 Divider()
 
