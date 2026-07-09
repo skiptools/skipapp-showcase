@@ -43,6 +43,7 @@
     <application
         android:label="Skip Showcase"
         android:name=".AndroidAppMain"
+        android:largeHeap="true"
         android:allowBackup="true"
         android:supportsRtl="true"
         android:enableOnBackInvokedCallback="true"
