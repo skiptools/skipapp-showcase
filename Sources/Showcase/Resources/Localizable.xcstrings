@@ -824,6 +824,9 @@
     "All Options" : {
 
     },
+    "Allows Multiple Selection" : {
+
+    },
     "allowsHitTesting()" : {
 
     },
@@ -2906,6 +2909,15 @@
     "Pick Document" : {
 
     },
+    "Pick Documents" : {
+
+    },
+    "Pick Photo" : {
+
+    },
+    "Pick Photos" : {
+
+    },
     "Picker" : {
       "comment" : "Title of Picker playground"
     },
@@ -3439,16 +3451,10 @@
     "Select Blend Mode" : {
 
     },
-    "Select Media" : {
-
-    },
     "Selected Contact" : {
 
     },
     "Selected Event" : {
-
-    },
-    "Selected Image: %@" : {
 
     },
     "Selection" : {
