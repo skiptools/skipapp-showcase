@@ -20,7 +20,7 @@
     <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
 
     <uses-permission android:name="android.permission.VIBRATE"/>
-    
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -33,6 +33,9 @@
     <!-- permissions needed for the Calendar playground (SkipCalendar) -->
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <!-- permissions needed for the Biometric Authentication playground (SkipKit) -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <queries>
         <intent>
