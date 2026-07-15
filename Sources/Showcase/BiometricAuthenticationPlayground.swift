@@ -4,11 +4,12 @@ import SkipKit
 
 /// This component uses the `SkipKit` module from https://source.skip.tools/skip-kit
 struct BiometricAuthenticationPlayground: View {
-    private var canAuthenticate: Bool { BiometricAuthentication.canAuthenticate }
     @State var authenticationType = BiometricAuthentication.authenticationType
     @State var result = "Not authenticated"
     @State var authenticationAttempt = 0
 
+    private var canAuthenticate: Bool { BiometricAuthentication.canAuthenticate }
+    
     private var resultColor: Color {
         switch self.result {
         case "Authenticated": .green
