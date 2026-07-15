@@ -4,9 +4,9 @@ import SkipKit
 
 struct BiometricAuthenticationPlayground: View {
     private var canAuthenticate: Bool { BiometricAuthentication.canAuthenticate }
-    @State private var authenticationType = BiometricAuthentication.authenticationType
-    @State private var result = "Not authenticated"
-    @State private var authenticationAttempt = 0
+    @State var authenticationType = BiometricAuthentication.authenticationType
+    @State var result = "Not authenticated"
+    @State var authenticationAttempt = 0
 
     private var resultColor: Color {
         switch self.result {
