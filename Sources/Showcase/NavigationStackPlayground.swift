@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct NavigationStackPlayground: View {
@@ -59,12 +59,12 @@ struct NavigationStackPlayground: View {
     }
 }
 
-private struct PathBindingSheetContentView: View {
+struct PathBindingSheetContentView: View {
     @Environment(\.dismiss) var dismiss
     @State var path: [PathElement] = []
 
     init(initialPath: [PathElement] = []) {
-        path.append(contentsOf: initialPath)
+        _path = State(initialValue: initialPath)
     }
 
     var body: some View {
@@ -91,7 +91,7 @@ private struct PathBindingSheetContentView: View {
     }
 }
 
-private struct NavigationPathBindingSheetContentView: View {
+struct NavigationPathBindingSheetContentView: View {
     @Environment(\.dismiss) var dismiss
     @State var path = NavigationPath()
 
@@ -143,7 +143,7 @@ struct PathElement: RawRepresentable, Hashable, CustomStringConvertible {
     }
 }
 
-private struct PathElementView: View {
+struct PathElementView: View {
     @Environment(\.dismiss) var dismiss
     let element: PathElement
     @Binding var path: [PathElement]
@@ -190,7 +190,7 @@ private struct PathElementView: View {
     }
 }
 
-private struct NavigationPathElementView: View {
+struct NavigationPathElementView: View {
     @Environment(\.dismiss) var dismiss
     let element: PathElement
     @Binding var path: NavigationPath
@@ -230,7 +230,7 @@ private struct NavigationPathElementView: View {
     }
 }
 
-private struct ItemDestinationView: View {
+struct ItemDestinationView: View {
     @Environment(\.dismiss) var dismiss
     let item: PathElement
     @Binding var previousSelectedItem: PathElement?

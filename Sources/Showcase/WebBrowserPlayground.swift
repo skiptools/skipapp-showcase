@@ -1,6 +1,6 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
-import SkipWeb
+import SkipKit
 
 struct WebBrowserPlayground: View {
     let skipURL = URL(string: "https://skip.dev")!

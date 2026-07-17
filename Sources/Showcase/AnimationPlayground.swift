@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct AnimationPlayground: View {
@@ -6,10 +6,190 @@ struct AnimationPlayground: View {
     @State var unrelatedIsOn = false
     @State var isRepeatOn = false
 
+    // Independent withAnimation scopes: each state is toggled inside its own
+    // withAnimation block, so each view animates with its own timing/curve.
+    @State var raceLinear = false
+    @State var raceEase = false
+    @State var raceSpring = false
+    @State var mixSlow = false
+    @State var mixBouncy = false
+    @State var mixSnap = false
+    @State var fxRotate = false
+    @State var fxScale = false
+    @State var fxFade = false
+    @State var wave1 = false
+    @State var wave2 = false
+    @State var wave3 = false
+
+    @State var blur = false
+    @State var brightness = false
+    @State var saturation = false
+    @State var contrast = false
+    @State var hue = false
+    @State var grayscale = false
+    @State var shadow = false
+    @State var border = false
+    @State var corner = false
+    @State var combined = false
+    @State var useAnimation = true
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Also see the `Transition` playground for view enter/exit animations")
+                HStack {
+                    Color.green
+                        .frame(width: 100, height: 100)
+                        .opacity(unrelatedIsOn ? 0.2 : 1.0)
+                    Color.red
+                        .frame(width: 100, height: 100)
+                        .opacity(isOn ? 0.2 : 1.0)
+                }
+                Button("withAnimation") {
+                    withAnimation { isOn.toggle() }
+                    unrelatedIsOn.toggle()
+                }
+                .buttonStyle(.bordered)
+
+                Divider()
+                    .padding(.vertical, 8)
+
+                Text("@Observable provenance")
+                    .font(.headline)
+                Text("The same two-square pattern, but driven by properties of an @Observable model: 'animated' is mutated inside withAnimation, 'unrelated' outside it in the same handler. In both demos the red square must fade over 1.5s while the green square snaps.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                ObservableDirectDemoView()
+                ObservableEnvironmentDemoView()
+
+                Divider()
+                    .padding(.vertical, 8)
+
+                Text("Independent withAnimation scopes")
+                    .font(.headline)
+                Text("One tap fires several withAnimation blocks; each animation applies only to the state changed inside its own block")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                // Race: three balls, one tap, three different timings
+                VStack(alignment: .leading, spacing: 10) {
+                    ZStack(alignment: .leading) {
+                        Color.gray.opacity(0.3)
+                        Circle()
+                            .fill(Color.red)
+                            .frame(width: 24, height: 24)
+                            .offset(x: raceLinear ? 216.0 : 0.0, y: 0.0)
+                    }
+                    .frame(width: 240, height: 28)
+                    ZStack(alignment: .leading) {
+                        Color.gray.opacity(0.3)
+                        Circle()
+                            .fill(Color.green)
+                            .frame(width: 24, height: 24)
+                            .offset(x: raceEase ? 216.0 : 0.0, y: 0.0)
+                    }
+                    .frame(width: 240, height: 28)
+                    ZStack(alignment: .leading) {
+                        Color.gray.opacity(0.3)
+                        Circle()
+                            .fill(Color.blue)
+                            .frame(width: 24, height: 24)
+                            .offset(x: raceSpring ? 216.0 : 0.0, y: 0.0)
+                    }
+                    .frame(width: 240, height: 28)
+                    Text("linear(0.5s) • easeInOut(1.5s) • spring(1s, bounce)")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+                Button("Race") {
+                    withAnimation(.linear(duration: 0.5)) { raceLinear.toggle() }
+                    withAnimation(.easeInOut(duration: 1.5)) { raceEase.toggle() }
+                    withAnimation(.spring(duration: 1.0, bounce: 0.5)) { raceSpring.toggle() }
+                }
+                .buttonStyle(.bordered)
+
+                // Mix: two animated scopes plus one plain write that must snap
+                HStack(spacing: 20) {
+                    Circle()
+                        .fill(Color.purple)
+                        .frame(width: 60, height: 60)
+                        .scaleEffect(mixSlow ? 1.0 : 0.5)
+                    Circle()
+                        .fill(Color.orange)
+                        .frame(width: 60, height: 60)
+                        .scaleEffect(mixBouncy ? 1.0 : 0.5)
+                    Circle()
+                        .fill(Color.blue)
+                        .frame(width: 60, height: 60)
+                        .scaleEffect(mixSnap ? 1.0 : 0.5)
+                }
+                .frame(height: 70)
+                Text("easeInOut(2s) • bouncy • no animation (snaps)")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                Button("Scale: slow • bouncy • snap") {
+                    withAnimation(.easeInOut(duration: 2.0)) { mixSlow.toggle() }
+                    withAnimation(.bouncy) { mixBouncy.toggle() }
+                    mixSnap.toggle()
+                }
+                .buttonStyle(.bordered)
+
+                // Effects: a different effect and curve per scope
+                HStack(spacing: 20) {
+                    Rectangle()
+                        .fill(Color.purple)
+                        .frame(width: 60, height: 60)
+                        .rotationEffect(fxRotate ? .degrees(180) : .degrees(0))
+                    Rectangle()
+                        .fill(Color.pink)
+                        .frame(width: 60, height: 60)
+                        .scaleEffect(fxScale ? 1.2 : 0.6)
+                    Rectangle()
+                        .fill(Color.green)
+                        .frame(width: 60, height: 60)
+                        .opacity(fxFade ? 1.0 : 0.25)
+                }
+                .frame(height: 80)
+                Text("rotate easeOut(1.5s) • scale interpolatingSpring • fade linear(2s)")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                Button("Rotate • Scale • Fade") {
+                    withAnimation(.easeOut(duration: 1.5)) { fxRotate.toggle() }
+                    withAnimation(.interpolatingSpring(stiffness: 80.0, damping: 5.0)) { fxScale.toggle() }
+                    withAnimation(.linear(duration: 2.0)) { fxFade.toggle() }
+                }
+                .buttonStyle(.bordered)
+
+                // Wave: same curve, staggered with .delay per scope
+                HStack(spacing: 24) {
+                    Circle()
+                        .fill(Color.blue)
+                        .frame(width: 30, height: 30)
+                        .offset(x: 0.0, y: wave1 ? -20.0 : 20.0)
+                    Circle()
+                        .fill(Color.blue)
+                        .frame(width: 30, height: 30)
+                        .offset(x: 0.0, y: wave2 ? -20.0 : 20.0)
+                    Circle()
+                        .fill(Color.blue)
+                        .frame(width: 30, height: 30)
+                        .offset(x: 0.0, y: wave3 ? -20.0 : 20.0)
+                }
+                .frame(height: 90)
+                Text("easeInOut(0.5s) with .delay(0 / 0.15 / 0.3)")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                Button("Wave (staggered .delay)") {
+                    withAnimation(.easeInOut(duration: 0.5)) { wave1.toggle() }
+                    withAnimation(.easeInOut(duration: 0.5).delay(0.15)) { wave2.toggle() }
+                    withAnimation(.easeInOut(duration: 0.5).delay(0.3)) { wave3.toggle() }
+                }
+                .buttonStyle(.bordered)
+
+                Divider()
+                    .padding(.vertical, 8)
+
                 HStack {
                     Text(".opacity")
                     Spacer()
@@ -159,6 +339,41 @@ struct AnimationPlayground: View {
                             .animation(.default, value: isOn)
                     }
                     .frame(width: 100, height: 100)
+                    .background(.gray)
+                    .onTapGesture {
+                        isOn = !isOn
+                    }
+                }
+                Button("withAnimation") {
+                    withAnimation { isOn = !isOn }
+                }
+                .buttonStyle(.bordered)
+                HStack {
+                    Text(".padding")
+                    Spacer()
+                    ZStack(alignment: .topLeading) {
+                        Color.red
+                            .frame(width: 44, height: 44)
+                            .padding(isOn ? 22.0 : 6.0)
+                            .background(Color.orange)
+                    }
+                    .frame(width: 100, height: 100, alignment: .topLeading)
+                    .background(.gray)
+                    .onTapGesture {
+                        isOn = !isOn
+                    }
+                }
+                HStack {
+                    Text(".padding.animation")
+                    Spacer()
+                    ZStack(alignment: .topLeading) {
+                        Color.red
+                            .frame(width: 44, height: 44)
+                            .padding(isOn ? 22.0 : 6.0)
+                            .background(Color.orange)
+                            .animation(.default, value: isOn)
+                    }
+                    .frame(width: 100, height: 100, alignment: .topLeading)
                     .background(.gray)
                     .onTapGesture {
                         isOn = !isOn
@@ -365,15 +580,301 @@ struct AnimationPlayground: View {
                         isOn = !isOn
                     }
                 }
+                HStack {
+                    Text(".trim")
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .stroke(Color.gray.opacity(0.3), lineWidth: 12)
+                        Circle()
+                            .trim(from: 0, to: isOn ? 1.0 : 0.0)
+                            .stroke(
+                                LinearGradient(
+                                    colors: [.blue, .purple],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                style: StrokeStyle(lineWidth: 12, lineCap: .round)
+                            )
+                            .rotationEffect(.degrees(-90))
+                        Text("\(Int((isOn ? 1.0 : 0.0) * 100))%")
+                            .font(.title)
+                            .bold()
+                    }
+                    .frame(width: 120, height: 120)
+                    .onTapGesture {
+                        isOn = !isOn
+                    }
+                }
+                HStack {
+                    Text(".trim.animation")
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .stroke(Color.gray.opacity(0.3), lineWidth: 12)
+                        Circle()
+                            .trim(from: 0, to: isOn ? 1.0 : 0.0)
+                            .stroke(
+                                LinearGradient(
+                                    colors: [.blue, .purple],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                style: StrokeStyle(lineWidth: 12, lineCap: .round)
+                            )
+                            .rotationEffect(.degrees(-90))
+                            .animation(.easeInOut(duration: 1.5), value: isOn)
+                        Text("\(Int((isOn ? 1.0 : 0.0) * 100))%")
+                            .font(.title)
+                            .bold()
+                    }
+                    .frame(width: 120, height: 120)
+                    .onTapGesture {
+                        isOn = !isOn
+                    }
+                }
+                Button("withAnimation") {
+                    withAnimation(.easeInOut(duration: 1.5)) { isOn = !isOn }
+                }
+                .buttonStyle(.bordered)
                 NavigationLink("Push") {
                     Text("Pushed")
                 }
                 .buttonStyle(.bordered)
+
+                Divider()
+                    .padding(.vertical, 8)
+
+                Text("Tap each item to animate")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                Toggle("Use Animation", isOn: $useAnimation)
+                    .padding(.vertical, 4)
+
+                Button(action: {
+                    performAnimation {
+                        blur.toggle()
+                        brightness.toggle()
+                        saturation.toggle()
+                        contrast.toggle()
+                        hue.toggle()
+                        grayscale.toggle()
+                        shadow.toggle()
+                        border.toggle()
+                        corner.toggle()
+                        combined.toggle()
+                    }
+                }) {
+                    Text("Animate All")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
+                .padding(.bottom, 4)
+
+                // cannot use LazyVGrid in Scrollview, else
+                /*
+                let columns = [
+                    GridItem(.flexible(), spacing: 12),
+                    GridItem(.flexible(), spacing: 12),
+                    GridItem(.flexible(), spacing: 12)
+                ]
+
+                LazyVGrid(columns: columns, spacing: 12) {
+                */    
+
+                HStack(spacing: 12) {
+                    animationCell(label: ".blur") {
+                        gradientRect()
+                            .blur(radius: blur ? 10.0 : 0.0)
+                    } action: { blur.toggle() }
+
+                    animationCell(label: ".brightness") {
+                        gradientRect()
+                            .brightness(brightness ? 0.3 : 0.0)
+                    } action: { brightness.toggle() }
+
+                    animationCell(label: ".saturation") {
+                        gradientRect()
+                            .saturation(saturation ? 0.2 : 1.0)
+                    } action: { saturation.toggle() }
+                }
+
+                HStack(spacing: 12) {
+                    animationCell(label: ".contrast") {
+                        gradientRect()
+                            .contrast(contrast ? 2.0 : 1.0)
+                    } action: { contrast.toggle() }
+
+                    animationCell(label: ".hueRotation") {
+                        gradientRect()
+                            .hueRotation(.degrees(hue ? 180.0 : 0.0))
+                    } action: { hue.toggle() }
+
+                    animationCell(label: ".grayscale") {
+                        gradientRect()
+                            .grayscale(grayscale ? 1.0 : 0.0)
+                    } action: { grayscale.toggle() }
+                }
+
+                HStack(spacing: 12) {
+                    animationCell(label: ".border") {
+                        gradientRect()
+                            .border(Color.blue, width: border ? 8.0 : 1.0)
+                    } action: { border.toggle() }
+
+                    animationCell(label: ".cornerRadius") {
+                        gradientRect()
+                            .cornerRadius(corner ? 35.0 : 0.0)
+                    } action: { corner.toggle() }
+
+                    animationCell(label: "Combined") {
+                        gradientRect()
+                            .blur(radius: combined ? 10.0 : 0.0)
+                            .brightness(combined ? 0.3 : 0.0)
+                            .saturation(combined ? 0.2 : 1.0)
+                            .contrast(combined ? 2.0 : 1.0)
+                            .hueRotation(.degrees(combined ? 180.0 : 0.0))
+                            .grayscale(combined ? 1.0 : 0.0)
+                            .border(Color.white, width: combined ? 8.0 : 1.0)
+                            .cornerRadius(combined ? 35.0 : 8.0)
+                    } action: { combined.toggle() }
+                }
+
+                Divider()
+                    .padding(.vertical, 4)
+
+                // Shadow Test (NOT animated - crashes when animated)
+                HStack {
+                    Text(".shadow(...) - NOT animated").font(.caption)
+                    Spacer()
+                    Rectangle()
+                        .fill(LinearGradient(colors: [.blue, .purple, .pink], startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .frame(width: 70, height: 70)
+                        .shadow(color: .black.opacity(0.5), radius: shadow ? 15.0 : 0.0, x: shadow ? 10.0 : 0.0, y: shadow ? 10.0 : 0.0)
+                        .padding(20)
+                        .onTapGesture {
+                            performAnimation {
+                                shadow.toggle()
+                            }
+                        }
+                }
             }
             .padding()
         }
         .toolbar {
             PlaygroundSourceLink(file: "AnimationPlayground.swift")
+        }
+    }
+
+    private func gradientRect() -> some View {
+        Rectangle()
+            .fill(LinearGradient(colors: [.blue, .purple, .pink], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .aspectRatio(1, contentMode: .fit)
+    }
+
+    private func animationCell<V: View>(label: String, @ViewBuilder content: () -> V, action: @escaping () -> Void) -> some View {
+        VStack(spacing: 4) {
+            content()
+                .clipShape(Rectangle())
+            Text(label)
+                .font(.system(size: 10))
+                .lineLimit(1)
+                .foregroundStyle(.secondary)
+        }
+        .onTapGesture {
+            performAnimation {
+                action()
+            }
+        }
+    }
+
+    private func performAnimation(_ action: @escaping () -> Void) {
+        if useAnimation {
+            withAnimation(.spring(duration: 1.0)) {
+                action()
+            }
+        } else {
+            action()
+        }
+    }
+}
+
+// MARK: - @Observable provenance demos
+
+/// Model for the @Observable provenance demos: `run()` mutates `unrelated` outside any
+/// animation scope and `animated` inside `withAnimation(.linear(duration: 1.5))`.
+@Observable
+class ObservableAnimationDemoModel {
+    var animated = false
+    var unrelated = false
+
+    func run() {
+        unrelated.toggle()
+        withAnimation(.linear(duration: 1.5)) {
+            animated.toggle()
+        }
+    }
+}
+
+/// The view that owns the model reads its properties directly at the modifier sites.
+struct ObservableDirectDemoView: View {
+    @State var model = ObservableAnimationDemoModel()
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text("Direct model reads")
+                .font(.subheadline)
+            HStack {
+                Color.green
+                    .frame(width: 100, height: 100)
+                    .opacity(model.unrelated ? 0.2 : 1.0)
+                Color.red
+                    .frame(width: 100, height: 100)
+                    .opacity(model.animated ? 0.2 : 1.0)
+            }
+            Button("withAnimation (observable)") {
+                model.run()
+            }
+            .buttonStyle(.bordered)
+        }
+    }
+}
+
+/// The model is handed down through the SwiftUI environment; a child view reads its
+/// properties at the modifier sites via @Environment.
+struct ObservableEnvironmentDemoView: View {
+    @State var model = ObservableAnimationDemoModel()
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text("@Environment model reads")
+                .font(.subheadline)
+            ObservableEnvironmentDemoTiles()
+            Button("withAnimation (environment)") {
+                model.run()
+            }
+            .buttonStyle(.bordered)
+        }
+        .environment(model)
+    }
+}
+
+struct ObservableEnvironmentDemoTiles: View {
+    @Environment(ObservableAnimationDemoModel.self) var model: ObservableAnimationDemoModel
+
+    var body: some View {
+        HStack {
+            Color.green
+                .frame(width: 100, height: 100)
+                .opacity(model.unrelated ? 0.2 : 1.0)
+            Color.red
+                .frame(width: 100, height: 100)
+                .opacity(model.animated ? 0.2 : 1.0)
         }
     }
 }

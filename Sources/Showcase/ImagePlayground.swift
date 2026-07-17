@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import Foundation
 import SwiftUI
 
@@ -69,6 +69,15 @@ struct ImagePlayground: View {
                     Spacer()
                     Image(uiImage: UIImage(data: try! Data(contentsOf: localImageResourceURL!))!)
                         .border(.blue)
+                    Spacer()
+                }
+                
+                Text("UIImage Prepared Thumbnail").font(.title).bold()
+                let thumbnail = UIImage(data: try! Data(contentsOf: localImageResourceURL!))!.preparingThumbnail(of: .init(width: 25.0, height: 25.0))!
+                Text("Size: \(thumbnail.size.width)x\(thumbnail.size.height)").font(.footnote)
+                HStack {
+                    Spacer()
+                    Image(uiImage: thumbnail)
                     Spacer()
                 }
                 #endif
@@ -322,7 +331,7 @@ struct ImagePlayground: View {
     }
 }
 
-private struct ImagePlaygroundPagerView: View {
+struct ImagePlaygroundPagerView: View {
     var body: some View {
         GeometryReader { proxy in
             ScrollView(.horizontal) {
@@ -346,7 +355,7 @@ private struct ImagePlaygroundPagerView: View {
 
 struct PagingModifier: ViewModifier {
     func body(content: Content) -> some View {
-        #if !SKIP
+        #if !os(Android)
         if #available(iOS 17.0, macOS 14.0, *) {
             content
                 .scrollTargetBehavior(.paging)
@@ -359,7 +368,7 @@ struct PagingModifier: ViewModifier {
     }
 }
 
-private struct ImagePlaygroundComplexLayoutView: View {
+struct ImagePlaygroundComplexLayoutView: View {
     let imageName: String
 
     var body: some View {

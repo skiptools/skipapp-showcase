@@ -1,10 +1,10 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 @available(macOS 14.0, iOS 17.0, *)
 struct HapticFeedbackPlayground: View {
-    @State private var feedbackValue = 0.0
-    @State private var feedbackType = FeedbackType.success
+    @State var feedbackValue = 0.0
+    @State var feedbackType = FeedbackType.success
 
     enum FeedbackType: String, CaseIterable {
         case success
@@ -52,6 +52,7 @@ struct HapticFeedbackPlayground: View {
             }
         }
     }
+
     var body: some View {
         VStack {
             Spacer()

@@ -1,6 +1,10 @@
-// Copyright 2023–2025 Skip
-import Combine
+// Copyright 2023–2026 Skip
 import Observation
+#if SKIP_MODE_FUSE
+import SkipFuse
+#endif
+
+// Test that observables in a different file work
 
 @Observable
 class TapCountObservable {
@@ -12,8 +16,9 @@ struct TapCountStruct : Identifiable {
     var tapCount = 0
 }
 
-class TapCountRepository: ObservableObject {
-    @Published var items: [TapCountStruct] = []
+@Observable
+class TapCountRepository {
+    var items: [TapCountStruct] = []
 
     func add() {
         items.append(TapCountStruct(id: items.count))

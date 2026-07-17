@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct FormPlayground: View {
@@ -23,6 +23,22 @@ struct FormPlayground: View {
                 .tint(.red)
             Label("Label .listItemTint(.red)", systemImage: "star.fill")
                 .listItemTint(.red)
+
+            LabeledContent("Labeled Value", value: "Value")
+            LabeledContent("Labeled Image") {
+                Image(systemName: "star.fill")
+            }
+            LabeledContent("Labeled Date Picker") {
+                DatePicker("Date Picker", selection: $dateValue)
+                    .labelsHidden()
+            }
+            LabeledContent("Labeled Button") {
+                Button("Button") {}
+            }
+            LabeledContent("Labeled Content") {
+                Label("Label", systemImage: "star.fill")
+            }
+
             NavigationLink(value: "Test") {
                 Label("Label in NavigationLink", systemImage: "star.fill")
             }

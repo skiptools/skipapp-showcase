@@ -59,7 +59,9 @@ struct SkipNotifyNotificationPlaygroundView: View {
             Button("Generate Push Notification Token") {
                 Task { @MainActor in
                     do {
-                        self.token = try await SkipNotify.shared.fetchNotificationToken()
+                        // Firebase FCM senderID obtained from "Project number" at:
+                        // https://console.firebase.google.com/project/app-fair-425519/settings/general/android:org.appfair.app.Showcase
+                        self.token = try await SkipNotify.shared.fetchNotificationToken(firebaseProjectNumber: "25594159619")
                         logger.log("obtained push notification token: \(self.token)")
                     } catch {
                         logger.error("error obtaining push notification token: \(error)")
@@ -76,7 +78,6 @@ struct SkipNotifyNotificationPlaygroundView: View {
 struct LocalNotificationPlaygroundView: View {
     @State var timerDate: Date?
     @State var nextTriggerDate: Date?
-    let timer = Timer.publish(every: 1.0, on: .main, in: .default).autoconnect()
     private var secondsUntilNextTrigger: Int? {
         guard let timerDate, let nextTriggerDate else { return nil }
         let seconds = Int(nextTriggerDate.timeIntervalSince(timerDate))
@@ -142,8 +143,14 @@ struct LocalNotificationPlaygroundView: View {
             }
         }
         .navigationTitle("Local Notifications")
-        .onReceive(self.timer) { date in
-            self.timerDate = Date()
+        .task {
+            while !Task.isCancelled {
+                do {
+                    try await Task.sleep(for: .seconds(1))
+                    self.timerDate = Date()
+                } catch {
+                }
+            }
         }
     }
     

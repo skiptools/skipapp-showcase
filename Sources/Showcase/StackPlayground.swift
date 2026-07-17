@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct StackPlayground: View {
@@ -64,6 +64,38 @@ struct StackPlayground: View {
                     Text("Text1 gy")
                     Text("Text2 TA")
                 }
+                .border(Color.blue)
+                Text("HStack firstTextBaseline (mixed sizes):").bold()
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text("Big")
+                        .font(.title)
+                    Text("Small")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(8)
+                .border(Color.blue)
+                Text("HStack firstTextBaseline (multi-line + single line):").bold()
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text("Line one\nLine two\nLine three")
+                        .font(.body)
+                        .multilineTextAlignment(.leading)
+                    Text("Note")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(8)
+                .border(Color.blue)
+                Text("HStack lastTextBaseline (multi-line + single line):").bold()
+                HStack(alignment: .lastTextBaseline, spacing: 8) {
+                    Text("Line one\nLine two\nLine three")
+                        .font(.body)
+                        .multilineTextAlignment(.leading)
+                    Text("Note")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(8)
                 .border(Color.blue)
                 Text("Text:").bold()
                 HStack {
@@ -228,7 +260,7 @@ struct StackPlayground: View {
     }
 }
 
-private struct LazyVStackScrollView: View {
+struct LazyVStackScrollView: View {
     let count: Int
 
     var body: some View {
@@ -240,7 +272,7 @@ private struct LazyVStackScrollView: View {
     }
 }
 
-private struct LazyVStackView: View {
+struct LazyVStackView: View {
     let count: Int
 
     var body: some View {
@@ -256,7 +288,7 @@ private struct LazyVStackView: View {
     }
 }
 
-private struct ScrollViewStacksView: View {
+struct ScrollViewStacksView: View {
     var body: some View {
         ScrollView(.vertical) {
           ScrollView(.horizontal) {

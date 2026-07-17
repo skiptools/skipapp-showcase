@@ -29,17 +29,21 @@ import androidx.core.app.ActivityCompat
 
 internal val logger: SkipLogger = SkipLogger(subsystem = "showcase.app", category = "ShowcaseApp")
 
+private typealias AppRootView = ShowcaseRootView
+private typealias AppDelegate = ShowcaseAppDelegate
+
 /// AndroidAppMain is the `android.app.Application` entry point, and must match `application android:name` in the AndroidMainfest.xml file.
 open class AndroidAppMain: Application {
     constructor() {
     }
-    
+
     override fun onCreate() {
         super.onCreate()
         logger.info("starting app")
         ProcessInfo.launch(applicationContext)
+        AppDelegate.shared.onInit()
     }
-    
+
     companion object {
     }
 }
@@ -48,13 +52,13 @@ open class AndroidAppMain: Application {
 open class MainActivity: AppCompatActivity {
     constructor() {
     }
-    
+
     override fun onCreate(savedInstanceState: android.os.Bundle?) {
         super.onCreate(savedInstanceState)
         logger.info("starting activity")
         UIApplication.launch(this)
         enableEdgeToEdge()
-        
+
         setContent {
             val saveableStateHolder = rememberSaveableStateHolder()
             saveableStateHolder.SaveableStateProvider(true) {
@@ -62,7 +66,9 @@ open class MainActivity: AppCompatActivity {
                 SideEffect { saveableStateHolder.removeState(true) }
             }
         }
-        
+
+        AppDelegate.shared.onLaunch()
+
         // Example of requesting permissions on startup.
         // These must match the permissions in the AndroidManifest.xml file.
         //let permissions = listOf(
@@ -74,50 +80,55 @@ open class MainActivity: AppCompatActivity {
         //let requestTag = 1
         //ActivityCompat.requestPermissions(self, permissions.toTypedArray(), requestTag)
     }
-    
+
+    override fun onStart() {
+        logger.info("onStart")
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        AppDelegate.shared.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        AppDelegate.shared.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        AppDelegate.shared.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AppDelegate.shared.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        AppDelegate.shared.onLowMemory()
+    }
+
+    override fun onRestart() {
+        logger.info("onRestart")
+        super.onRestart()
+    }
+
     override fun onSaveInstanceState(outState: android.os.Bundle): Unit = super.onSaveInstanceState(outState)
-    
+
     override fun onRestoreInstanceState(bundle: android.os.Bundle) {
         // Usually you restore your state in onCreate(). It is possible to restore it in onRestoreInstanceState() as well, but not very common. (onRestoreInstanceState() is called after onStart(), whereas onCreate() is called before onStart().
         logger.info("onRestoreInstanceState")
         super.onRestoreInstanceState(bundle)
     }
-    
-    override fun onRestart() {
-        logger.info("onRestart")
-        super.onRestart()
-    }
-    
-    override fun onStart() {
-        logger.info("onStart")
-        super.onStart()
-    }
-    
-    override fun onResume() {
-        logger.info("onResume")
-        super.onResume()
-    }
-    
-    override fun onPause() {
-        logger.info("onPause")
-        super.onPause()
-    }
-    
-    override fun onStop() {
-        logger.info("onStop")
-        super.onStop()
-    }
-    
-    override fun onDestroy() {
-        logger.info("onDestroy")
-        super.onDestroy()
-    }
-    
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: kotlin.Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         logger.info("onRequestPermissionsResult: ${requestCode}")
     }
-    
+
     companion object {
     }
 }
@@ -125,14 +136,14 @@ open class MainActivity: AppCompatActivity {
 @Composable
 internal fun SyncSystemBarsWithTheme() {
     val dark = MaterialTheme.colorScheme.background.luminance() < 0.5f
-    
+
     val transparent = AndroidColor.TRANSPARENT
     val style = if (dark) {
         SystemBarStyle.dark(transparent)
     } else {
         SystemBarStyle.light(transparent, transparent)
     }
-    
+
     val activity = LocalContext.current as? ComponentActivity
     DisposableEffect(style) {
         activity?.enableEdgeToEdge(
@@ -148,10 +159,10 @@ internal fun PresentationRootView(context: ComposeContext) {
     val colorScheme = if (isSystemInDarkTheme()) ColorScheme.dark else ColorScheme.light
     PresentationRoot(defaultColorScheme = colorScheme, context = context) { ctx ->
         SyncSystemBarsWithTheme()
-        
+
         val contentContext = ctx.content()
         Box(modifier = ctx.modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            RootView().Compose(context = contentContext)
+            AppRootView().Compose(context = contentContext)
         }
     }
 }

@@ -1,6 +1,5 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
-
 
 struct TextFieldPlayground: View {
     @State var text = ""
@@ -54,7 +53,7 @@ struct TextFieldPlayground: View {
                     #if !os(macOS) || os(Android)
                     .keyboardType(UIKeyboardType.phonePad)
                     #endif
-                    .onChange(of: phone) { oldValue, newValue in
+                    .onChange(of: phone) { newValue in
                         phone = formatPhone(newValue)
                     }
                 TextField("Email", text: $text)
@@ -64,10 +63,11 @@ struct TextFieldPlayground: View {
                     #endif
                 TextField("One Time Code", text: $text)
                     .textContentType(.oneTimeCode)
-
+                #if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
                 if #available(iOS 18.0, *) {
                     TextSelectionView(text: $text)
                 }
+                #endif
             }
             .padding()
         }
@@ -99,6 +99,7 @@ struct TextFieldPlayground: View {
     }
 }
 
+#if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
 @available(iOS 18.0, macOS 15.0, *)
 struct TextSelectionView: View {
     @Binding var text: String
@@ -119,3 +120,5 @@ struct TextSelectionView: View {
         }
     }
 }
+#endif
+

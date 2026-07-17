@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct StatePlayground: View {
@@ -6,13 +6,13 @@ struct StatePlayground: View {
     @State var hasStateTapped: Bool? // Test optional vars
     @State var tapCountObservable: TapCountObservable
     @State var tapCountStruct: TapCountStruct
-    @StateObject var tapCountRepository = TapCountRepository() // Test ForEach observable
+    @State var tapCountRepository = TapCountRepository() // Test ForEach observable
     @State var idToggle = false
 
     init() {
         // Test that we can initialze state property wrappers
         _tapCountObservable = State(initialValue: TapCountObservable())
-        _tapCountStruct = State(initialValue: TapCountStruct())
+        _tapCountStruct = State(wrappedValue: TapCountStruct())
     }
 
     var body: some View {
@@ -73,20 +73,19 @@ struct StatePlayground: View {
                     StatePlaygroundIdView()
                         .id(idToggle)
                     Button("Refresh") {
-                        idToggle = !idToggle
+                        idToggle.toggle()
                     }
-                    .buttonStyle(.bordered)
                 }
             }
         }
-        .onChange(of: tapCount) { oldValue, newValue in
-            logger.log("onChange(of: tapCount): \(newValue)")
+        .onChange(of: tapCount) {
+            logger.log("onChange(of: tapCount): \($0)")
         }
-        .onChange(of: tapCountObservable.tapCount) { oldValue, newValue in
-            logger.log("onChange(of: tapCountObservable.tapCount): \(newValue)")
+        .onChange(of: tapCountObservable.tapCount) {
+            logger.log("onChange(of: tapCountObservable.tapCount): \($0)")
         }
-        .onChange(of: tapCountStruct.tapCount) { oldValue, newValue in
-            logger.log("onChange(of: tapCountStruct.tapCount): \(newValue)")
+        .onChange(of: tapCountStruct.tapCount) {
+            logger.log("onChange(of: tapCountStruct.tapCount): \($0)")
         }
         .toolbar {
             PlaygroundSourceLink(file: "StatePlayground.swift")
@@ -170,7 +169,6 @@ struct StatePlaygroundIdView: View {
             Button("Increment") {
                 count += 1
             }
-            .buttonStyle(.bordered)
         }
     }
 }
