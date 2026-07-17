@@ -1,0 +1,320 @@
+{
+  "creationInfo" : {
+    "created" : "2026-04-08T18:20:58Z",
+    "creators" : [
+      "Tool: skip-sbom"
+    ],
+    "licenseListVersion" : "3.22"
+  },
+  "dataLicense" : "CC0-1.0",
+  "documentNamespace" : "https://skip.dev/spdx/skipapp-showcase/ios",
+  "name" : "skipapp-showcase-ios",
+  "packages" : [
+    {
+      "downloadLocation" : "NOASSERTION",
+      "filesAnalyzed" : false,
+      "name" : "skipapp-showcase",
+      "primaryPackagePurpose" : "APPLICATION",
+      "SPDXID" : "SPDXRef-Package-skipapp-showcase",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "source"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://github.com/airbnb/lottie-ios.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://github.com/airbnb/lottie-ios.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "lottie-ios",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-lottie-ios",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "4.5.2"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "1.6.6"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-av.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-av.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-av",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-av",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "0.5.1"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-device.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-device.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-device",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-device",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "0.4.2"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-foundation.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-foundation.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-foundation",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-foundation",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "1.3.8"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-kit.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-kit.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-kit",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-kit",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "0.5.2"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-lib.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-lib.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-lib",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-lib",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "1.3.7"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-model.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-model.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-model",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-model",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "1.5.0"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-motion.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-motion.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-motion",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-motion",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "0.6.1"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-ui.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-ui.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-ui",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-ui",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "1.36.0"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-unit.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-unit.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-unit",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-unit",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "1.3.0"
+    },
+    {
+      "copyrightText" : "NOASSERTION",
+      "downloadLocation" : "https://source.skip.tools/skip-web.git",
+      "externalRefs" : [
+        {
+          "referenceCategory" : "PACKAGE-MANAGER",
+          "referenceLocator" : "https://source.skip.tools/skip-web.git",
+          "referenceType" : "swiftpm"
+        }
+      ],
+      "filesAnalyzed" : false,
+      "licenseConcluded" : "NOASSERTION",
+      "licenseDeclared" : "NOASSERTION",
+      "name" : "skip-web",
+      "primaryPackagePurpose" : "LIBRARY",
+      "SPDXID" : "SPDXRef-Package-skip-web",
+      "supplier" : "NOASSERTION",
+      "versionInfo" : "0.7.2"
+    }
+  ],
+  "relationships" : [
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skipapp-showcase",
+      "relationshipType" : "DESCRIBES",
+      "spdxElementId" : "SPDXRef-DOCUMENT"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-lottie-ios",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-av",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-device",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-foundation",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-kit",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-lib",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-model",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-motion",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-ui",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-unit",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    },
+    {
+      "relatedSpdxElement" : "SPDXRef-Package-skip-web",
+      "relationshipType" : "DEPENDS_ON",
+      "spdxElementId" : "SPDXRef-Package-skipapp-showcase"
+    }
+  ],
+  "SPDXID" : "SPDXRef-DOCUMENT",
+  "spdxVersion" : "SPDX-2.3"
+}

@@ -1,7 +1,15 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 import SkipSQL
 import SkipSQLCore
+
+#if SKIP_MODE_FUSE && !SKIP
+import SkipSQLPlus
+// in SkipFuse mode, we need to use the .plus configuration, which uses a source build of SQLite (since Android does not expose the native SQLite library)
+nonisolated(unsafe) private let sqliteConfiguration: SQLiteConfiguration = .plus
+#elseif !SKIP_BRIDGE
+nonisolated(unsafe) private let sqliteConfiguration: SQLiteConfiguration = .platform
+#endif
 
 struct SQLPlayground: View {
     /// The shared SQL context for the view hierarchy
@@ -158,7 +166,7 @@ public struct SQLItem: Identifiable, Hashable, SQLCodable {
     public init(name: String) throws {
         let dir = URL.applicationSupportDirectory
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
-        let ctx = try SQLContext(path: dir.appendingPathComponent(name).path, flags: [.create, .readWrite], configuration: .platform)
+        let ctx = try SQLContext(path: dir.appendingPathComponent(name).path, flags: [.create, .readWrite], configuration: sqliteConfiguration)
         self.context = ctx
 
         // track all SQL statements that have been executed

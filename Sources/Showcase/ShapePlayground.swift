@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct ShapePlayground: View {
@@ -308,6 +308,111 @@ struct ShapePlayground: View {
                             .rotation(Angle(degrees: -30))
                             .offset(x: 30, y: 10)
                             .stroke(.red, lineWidth: 10)
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                Text("Trim").font(.title).bold()
+                HStack {
+                    Text(".trim(from: 0, to: 0.25)")
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .trim(from: 0, to: 0.25)
+                            .stroke(.blue, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                            .rotationEffect(.degrees(-90))
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                HStack {
+                    Text(".trim(from: 0, to: 0.5)")
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .trim(from: 0, to: 0.5)
+                            .stroke(.green, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                            .rotationEffect(.degrees(-90))
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                HStack {
+                    Text(".trim(from: 0, to: 0.75)")
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .trim(from: 0, to: 0.75)
+                            .stroke(.orange, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                            .rotationEffect(.degrees(-90))
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                HStack {
+                    Text(".trim(from: 0.25, to: 0.75)")
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .trim(from: 0.25, to: 0.75)
+                            .stroke(.purple, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                            .rotationEffect(.degrees(-90))
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Rectangle.trim")
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .trim(from: 0, to: 0.5)
+                            .stroke(.red, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("RoundedRectangle.trim")
+                    Spacer()
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .trim(from: 0, to: 0.75)
+                            .stroke(.green, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                    }
+                    .frame(width: 100, height: 100)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Capsule.trim")
+                    Spacer()
+                    ZStack {
+                        Capsule()
+                            .trim(from: 0.25, to: 0.75)
+                            .stroke(.orange, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                    }
+                    .frame(width: 100, height: 50)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("Ellipse.trim")
+                    Spacer()
+                    ZStack {
+                        Ellipse()
+                            .trim(from: 0, to: 0.6)
+                            .stroke(.pink, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                            .rotationEffect(.degrees(-90))
+                    }
+                    .frame(width: 100, height: 60)
+                    .border(.blue)
+                }
+                HStack {
+                    Text("CustomShape.trim")
+                    Spacer()
+                    ZStack {
+                        CustomShape()
+                            .trim(from: 0, to: 0.5)
+                            .stroke(.cyan, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                     }
                     .frame(width: 100, height: 100)
                     .border(.blue)

@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 enum ContentTab: String, Hashable {
@@ -8,6 +8,7 @@ enum ContentTab: String, Hashable {
 struct ContentView: View {
     @AppStorage("tab") var tab = ContentTab.about
     @AppStorage("appearance") var appearance = ""
+    @AppStorage("statusBarHidden") var statusBarHidden = false
 
     var body: some View {
         TabView(selection: $tab) {
@@ -31,10 +32,20 @@ struct ContentView: View {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
         }
+        .tabViewStyle(tabViewStyle)
         .preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
+        .statusBarHidden(statusBarHidden)
     }
-}
 
-#Preview {
-    ContentView()
+    var tabViewStyle: some TabViewStyle {
+        #if os(Android)
+        return .sidebarAdaptable
+        #else
+        if #available(iOS 18.0, *) {
+            return .sidebarAdaptable
+        } else {
+            return .automatic
+        }
+        #endif
+    }
 }

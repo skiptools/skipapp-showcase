@@ -27,17 +27,22 @@ INFOPLIST_KEY_NSCameraUsageDescription = "This app accesses the camera to demons
 INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app accesses the media library to demonstrate using a photo picker";
 INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses the location to demonstrate the map component";
 INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app uses the location to demonstrate the map component";
+INFOPLIST_KEY_NSMotionUsageDescription = "This app accesses motion sensors to demonstrate accelerometer, gyroscope, magnetometer, and barometer capabilities";
+INFOPLIST_KEY_NSContactsUsageDescription = "This app accesses your contacts to demonstrate the SkipContacts framework";
+INFOPLIST_KEY_NSCalendarsUsageDescription = "This app accesses your calendar to demonstrate the SkipCalendar framework";
+INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "This app needs full access to your calendar to demonstrate creating and editing events with the SkipCalendar framework";
 
 IPHONEOS_DEPLOYMENT_TARGET = 17.0
 MACOSX_DEPLOYMENT_TARGET = 14.0
+SUPPORTS_MACCATALYST = NO
 
 // iPhone + iPad
-// TARGETED_DEVICE_FAMILY = 1,2
+TARGETED_DEVICE_FAMILY = 1,2
 
 // iPhone only
 TARGETED_DEVICE_FAMILY = 1
 
-SUPPORTS_MACCATALYST = NO
+SWIFT_EMIT_LOC_STRINGS = YES
 
 // the name of the product module; this can be anything, but cannot conflict with any Swift module names
 PRODUCT_MODULE_NAME = $(PRODUCT_NAME:c99extidentifier)App
@@ -48,7 +53,8 @@ PRODUCT_MODULE_NAME = $(PRODUCT_NAME:c99extidentifier)App
 SDKROOT = auto
 SUPPORTED_PLATFORMS = iphoneos iphonesimulator macosx
 SWIFT_EMIT_LOC_STRINGS = YES
-SWIFT_VERSION = 6.0
+
+SWIFT_VERSION = 6
 
 // Development team ID for on-device testing
 CODE_SIGNING_REQUIRED = NO
@@ -57,9 +63,12 @@ CODE_SIGN_ENTITLEMENTS = Entitlements.plist
 
 PRODUCT_BUNDLE_IDENTIFIER[config=Release] = org.appfair.app.Showcase
 
-DEVELOPMENT_TEAM[config=Release] = 25KG25YA3R
-CODE_SIGN_IDENTITY[config=Release] = Apple Distribution: The App Fair Project Inc (25KG25YA3R)
+DEVELOPMENT_TEAM = 25KG25YA3R
+
+CODE_SIGN_IDENTITY[config=Debug] = Apple Development
+CODE_SIGN_IDENTITY[config=Release] = Apple Distribution
+
+CODE_SIGN_STYLE[config=Debug] = Automatic
 CODE_SIGN_STYLE[config=Release] = Manual
-PROVISIONING_PROFILE_SPECIFIER[config=Release] = org.appfair.app.Showcase
 
-
+PROVISIONING_PROFILE_SPECIFIER[config=Release] = org.appfair.app.Showcase AppStore

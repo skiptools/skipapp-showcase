@@ -81,25 +81,25 @@ struct WebAuthenticationSessionPlayground: View {
         errorMessage = nil
         cancelled = false
         resultURL = nil
-        
+
         Task {
             do {
                 let urlWithToken: URL
                 if #available(iOS 17.4, *) {
                     urlWithToken = try await webAuthenticationSession.authenticate(
-                        using: URL(string: "https://push.skip.tools/webauth-demo/?scheme=org.appfair.app.showcaselite")!,
-                        callback: .customScheme("org.appfair.app.showcaselite"),
+                        using: URL(string: "https://push.skip.tools/webauth-demo/?scheme=org.appfair.app.showcase")!,
+                        callback: .customScheme("org.appfair.app.showcase"),
                         preferredBrowserSession: .ephemeral,
                         additionalHeaderFields: [:]
                     )
                 } else {
                     urlWithToken = try await webAuthenticationSession.authenticate(
-                        using: URL(string: "https://push.skip.tools/webauth-demo/?scheme=org.appfair.app.showcaselite")!,
-                        callbackURLScheme: "org.appfair.app.showcaselite",
+                        using: URL(string: "https://push.skip.tools/webauth-demo/?scheme=org.appfair.app.showcase")!,
+                        callbackURLScheme: "org.appfair.app.showcase",
                         preferredBrowserSession: .ephemeral
                     )
                 }
-                
+
                 resultURL = urlWithToken
             } catch {
                 logger.error("error: \(error)")

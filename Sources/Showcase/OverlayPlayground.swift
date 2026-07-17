@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct OverlayPlayground: View {
@@ -10,7 +10,7 @@ struct OverlayPlayground: View {
                     Spacer()
                     Text("Hello")
                         .padding()
-                        .overlay(.red.opacity(0.5))
+                        .overlay(Color.red.opacity(0.5))
                 }
                 HStack {
                     Text("in: Capsule()")

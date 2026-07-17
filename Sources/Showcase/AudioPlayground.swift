@@ -1,12 +1,16 @@
 // Copyright 2023–2025 Skip
+#if !os(Android) || !SKIP_MODE_FUSE // not yet available in Skip Fuse
 import SwiftUI
+
 #if os(macOS)
+// no-op on macOS
 #else
 import AVFoundation
 #endif
 
 struct AudioPlayground: View {
     #if os(macOS)
+    // no-op on macOS
     #else
     @State var isRecording: Bool = false
     @State var errorMessage: String? = nil
@@ -131,3 +135,4 @@ struct AudioPlayground: View {
     #endif
     #endif
 }
+#endif

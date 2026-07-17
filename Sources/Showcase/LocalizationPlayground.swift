@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 import Foundation
 
@@ -21,13 +21,14 @@ struct LocalizationPlayground: View {
 struct LocalizationPreview: View {
     @Environment(\.locale) var currentLocale
     @State var date = Date.now
-    
     private var calendar: Calendar {
         var result = Calendar(identifier: .gregorian)
         result.locale = Locale(identifier: currentLocale.identifier)
         return result
     }
-    
+
+    let skipper = "Skipper"
+
     func formatter(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> DateFormatter {
         let fmt = DateFormatter()
         fmt.dateStyle = dateStyle
@@ -37,12 +38,15 @@ struct LocalizationPreview: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack {
-                Text("Welcome")
-                    .font(.largeTitle)
-                Text(LocalizedStringResource("Welcome"))
-                    .font(.title)
+        VStack {
+            Text("Welcome")
+                .font(.largeTitle)
+            Text(LocalizedStringResource("Welcome"))
+                .font(.title)
+            Text("Welcome \(skipper)")
+                .font(.largeTitle)
+            Text(LocalizedStringResource("Welcome \(skipper)"))
+                .font(.title)
 
                 Divider()
 

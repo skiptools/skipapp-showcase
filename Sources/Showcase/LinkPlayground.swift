@@ -1,9 +1,10 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
+import Foundation
 import SwiftUI
 
 struct LinkPlayground: View {
     @Environment(\.openURL) var openURL
-    let destination = URL(string: "https://skip.tools")!
+    let destination = URL(string: "https://skip.dev")!
 
     var body: some View {
         ScrollView {

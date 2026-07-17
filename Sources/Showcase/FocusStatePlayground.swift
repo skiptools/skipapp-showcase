@@ -1,4 +1,4 @@
-// Copyright 2025 Skip
+// Copyright 2025–2026 Skip
 import SwiftUI
 
 struct FocusStatePlayground: View {

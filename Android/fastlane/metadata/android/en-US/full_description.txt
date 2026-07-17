@@ -1,3 +1,27 @@
-This app demonstrates the output of the Skip transpiler, which takes an iOS SwiftUI app and converts into an Android Jetpack Compose app. 
+Skip Showcase is a comprehensive, interactive catalog of user interface components built with Skip, the cross-platform development tool that lets you write one app in Swift and SwiftUI and run it natively on both iOS and Android.
 
-This application shows the various components that are generated from the SwiftUI transpilation.
+This app is written entirely in Swift and SwiftUI. On iOS, it runs as a standard native SwiftUI app. On Android, the same Swift code is compiled natively using the official Swift SDK for Android, and Skip's SkipUI framework translates SwiftUI views into Jetpack Compose, producing a genuinely native Android experience.
+
+Skip Showcase is the ideal way to compare how SwiftUI components look and behave across both platforms. Every screen in the app is the same Swift source code running on both iOS and Android, so you can see exactly how Skip maps SwiftUI to native Android controls.
+
+The app covers a wide range of SwiftUI features, including:
+
+UI Controls: Button, Toggle, Slider, Stepper, Picker, DatePicker, TextField, SecureField, TextEditor, Menu, and more.
+
+Layout: Stack views (HStack, VStack, ZStack), Grid, Form, List, ScrollView, Spacer, GeometryReader, ViewThatFits, SafeArea, and Frame.
+
+Navigation: NavigationStack, TabView, Sheet, ConfirmationDialog, Alert, Toolbar, DisclosureGroup, and Link.
+
+Graphics and Effects: Shape, Gradient, Shadow, Blur, BlendMode, Mask, Overlay, Border, Animation, Transition, Transform, and Color effects.
+
+Data and State: @State, @Observable, @Environment, Preference keys, FocusState, ScenePhase, Storage, Timer, and Notification.
+
+Text and Media: Text styling, SF Symbols, Image, VideoPlayer, Lottie animations, and Localization.
+
+Platform Integration: Haptic feedback, Keyboard handling, Pasteboard, ShareLink, Searchable, WebView, Map, SQL database, Keychain, Document picker, and Web authentication.
+
+Custom Compose: Demonstrates how to embed custom Jetpack Compose views directly within SwiftUI code using Skip's ComposeView bridging.
+
+Skip Showcase is open source. Browse the source code at https://github.com/skiptools/skipapp-showcase-fuse to see how each component is implemented.
+
+Learn more about Skip at https://skip.dev

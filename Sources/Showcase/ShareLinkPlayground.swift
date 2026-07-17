@@ -1,4 +1,4 @@
-// Copyright 2023–2025 Skip
+// Copyright 2023–2026 Skip
 import SwiftUI
 
 struct ShareLinkPlayground: View {
@@ -13,7 +13,7 @@ struct ShareLinkPlayground: View {
                 HStack {
                     Text("Default URL")
                     Spacer()
-                    ShareLink(item: URL(string: "https://skip.tools")!)
+                    ShareLink(item: URL(string: "https://skip.dev")!)
                 }
                 HStack {
                     Text("Subject & Message")
@@ -23,7 +23,7 @@ struct ShareLinkPlayground: View {
                 HStack {
                     Text("Subject & Message URL")
                     Spacer()
-                    ShareLink(item: URL(string: "https://skip.tools")!, subject: Text("My subject"), message: Text("My message"))
+                    ShareLink(item: URL(string: "https://skip.dev")!, subject: Text("My subject"), message: Text("My message"))
                 }
                 HStack {
                     Text("Title")
