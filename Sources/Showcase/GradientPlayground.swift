@@ -30,6 +30,12 @@ struct GradientPlayground: View {
                     RadialGradient(colors: [.red, .blue], center: UnitPoint(x: 0.5, y: 0.5), startRadius: 25, endRadius: 50)
                         .frame(width: 100, height: 100)
                 }
+                HStack {
+                    Text("AngularGradient")
+                    Spacer()
+                    AngularGradient(colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple, .red], center: .center)
+                        .frame(width: 100, height: 100)
+                }
             }
             .padding()
         }
@@ -38,4 +44,3 @@ struct GradientPlayground: View {
         }
     }
 }
-
