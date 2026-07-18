@@ -1006,10 +1006,28 @@
     "AsyncImage" : {
 
     },
+    "Authenticate" : {
+
+    },
+    "Authenticate with biometrics" : {
+
+    },
+    "Authenticated" : {
+
+    },
+    "Authenticating..." : {
+
+    },
+    "Authentication" : {
+
+    },
     "Audio" : {
       "comment" : "Title of Audio playground"
     },
     "AudioPlayground is Lite-only until ported to SkipAV" : {
+
+    },
+    "Availability" : {
 
     },
     "B" : {
@@ -1080,6 +1098,9 @@
     },
     "Binding View" : {
 
+    },
+    "Biometric Authentication" : {
+      "comment" : "Title of Biometric Authentication playground"
     },
     "BipBop" : {
 
@@ -1184,6 +1205,12 @@
 
     },
     "Cancel" : {
+
+    },
+    "Cancelled" : {
+
+    },
+    "Can Authenticate" : {
 
     },
     "Capsule" : {
@@ -1677,6 +1704,12 @@
     "F2" : {
 
     },
+    "Facial Recognition" : {
+
+    },
+    "Failed" : {
+
+    },
     "Favorite" : {
 
     },
@@ -1702,6 +1735,9 @@
 
     },
     "fill(.red)\n  .stroke(.green, lineWidth: 10)" : {
+
+    },
+    "Fingerprint" : {
 
     },
     "First" : {
@@ -2651,6 +2687,9 @@
     "NO" : {
 
     },
+    "No" : {
+
+    },
     "No badge (count 0)" : {
 
     },
@@ -2667,6 +2706,12 @@
 
     },
     "Normal" : {
+
+    },
+    "None" : {
+
+    },
+    "Not authenticated" : {
 
     },
     "Not supported on macOS" : {
@@ -5355,6 +5400,9 @@
     "Title Only" : {
 
     },
+    "Type" : {
+
+    },
     "To:" : {
 
     },
@@ -5434,6 +5482,9 @@
 
     },
     "Unavailable" : {
+
+    },
+    "Unspecified Biometric" : {
 
     },
     "Underline" : {
@@ -5847,6 +5898,9 @@
 
     },
     "Yellow" : {
+
+    },
+    "Yes" : {
 
     },
     "YES" : {
