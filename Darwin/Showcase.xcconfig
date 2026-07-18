@@ -31,6 +31,7 @@ INFOPLIST_KEY_NSMotionUsageDescription = "This app accesses motion sensors to de
 INFOPLIST_KEY_NSContactsUsageDescription = "This app accesses your contacts to demonstrate the SkipContacts framework";
 INFOPLIST_KEY_NSCalendarsUsageDescription = "This app accesses your calendar to demonstrate the SkipCalendar framework";
 INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "This app needs full access to your calendar to demonstrate creating and editing events with the SkipCalendar framework";
+INFOPLIST_KEY_NSFaceIDUsageDescription = "This app uses Face ID to demonstrate biometric authentication";
 
 IPHONEOS_DEPLOYMENT_TARGET = 17.0
 MACOSX_DEPLOYMENT_TARGET = 14.0
