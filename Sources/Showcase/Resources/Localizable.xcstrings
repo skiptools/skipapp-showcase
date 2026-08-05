@@ -1009,6 +1009,12 @@
     "AsyncImage" : {
 
     },
+    "Audio" : {
+      "comment" : "Title of Audio playground"
+    },
+    "AudioPlayground is Lite-only until ported to SkipAV" : {
+
+    },
     "Authenticate" : {
 
     },
@@ -1022,12 +1028,6 @@
 
     },
     "Authentication" : {
-
-    },
-    "Audio" : {
-      "comment" : "Title of Audio playground"
-    },
-    "AudioPlayground is Lite-only until ported to SkipAV" : {
 
     },
     "Availability" : {
@@ -1207,13 +1207,13 @@
     "Calendars (%lld)" : {
 
     },
+    "Can Authenticate" : {
+
+    },
     "Cancel" : {
 
     },
     "Cancelled" : {
-
-    },
-    "Can Authenticate" : {
 
     },
     "Capsule" : {
@@ -1486,6 +1486,9 @@
     "Detail View" : {
 
     },
+    "Dictionary version: %lld" : {
+
+    },
     "Difference" : {
 
     },
@@ -1699,6 +1702,9 @@
 
     },
     "Expanding container in scroll view" : {
+
+    },
+    "Export Photo" : {
 
     },
     "F1" : {
@@ -2687,10 +2693,10 @@
     "Nil Enum" : {
 
     },
-    "NO" : {
+    "No" : {
 
     },
-    "No" : {
+    "NO" : {
 
     },
     "No badge (count 0)" : {
@@ -2708,10 +2714,10 @@
     "No URL\n.frame(100, 100)" : {
 
     },
-    "Normal" : {
+    "None" : {
 
     },
-    "None" : {
+    "Normal" : {
 
     },
     "Not authenticated" : {
@@ -4340,6 +4346,9 @@
         }
       }
     },
+    "Replace dictionary" : {
+
+    },
     "Repository item tap count: %lld" : {
 
     },
@@ -5406,9 +5415,6 @@
     "Title Only" : {
 
     },
-    "Type" : {
-
-    },
     "To:" : {
 
     },
@@ -5481,6 +5487,9 @@
     "Two Buttons" : {
 
     },
+    "Type" : {
+
+    },
     "UIImage Prepared Thumbnail" : {
 
     },
@@ -5490,13 +5499,13 @@
     "Unavailable" : {
 
     },
-    "Unspecified Biometric" : {
-
-    },
     "Underline" : {
 
     },
     "UnevenRoundedRectangle" : {
+
+    },
+    "Unspecified Biometric" : {
 
     },
     "Upcoming Events (%lld)" : {
