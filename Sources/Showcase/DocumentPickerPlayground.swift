@@ -8,6 +8,7 @@ struct DocumentPickerPlayground: View {
     @State var presentPreview = false
     @State var presentCamera = false
     @State var presentMediaPicker = false
+    @State var presentDocumentExporter = false
 
     @State var allowsMultipleSelection = true
 
@@ -15,6 +16,7 @@ struct DocumentPickerPlayground: View {
     @State var selectedFilenames: [String] = []
     @State var selectedFileMimeTypes: [String] = []
     @State var selectedMediaURLs: [URL] = []
+    @State var exportDocumentURL: URL?
     @State var resultItems: [ResultItem] = []
     @State var resultItemHeights: [String: Double] = [:]
 
@@ -79,6 +81,24 @@ struct DocumentPickerPlayground: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 VStack(alignment: .center, spacing: 8) {
+                    Button {
+                        if let url = photoExportURL() {
+                            exportDocumentURL = url
+                            presentDocumentExporter = true
+                        }
+                    } label: {
+                        Text("Export Photo")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .withDocumentExporter(
+                        isPresented: $presentDocumentExporter,
+                        contentType: .png,
+                        documentURL: exportDocumentURL
+                    )
+
+                    Divider()
+
                     Button {
                         presentCamera = true
                     } label: {
@@ -227,6 +247,31 @@ struct DocumentPickerPlayground: View {
         .frame(maxWidth: .infinity, minHeight: 150, alignment: .leading)
         .background(Color.secondary.opacity(0.12))
         .clipShape(RoundedRectangle(cornerRadius: 8))
+    }
+
+    private func photoExportURL() -> URL? {
+        guard let resourceURL = Bundle.module.url(forResource: "skip-logo", withExtension: "png") else {
+            return nil
+        }
+
+        #if SKIP
+        guard let cacheDir = UIApplication.shared.androidActivity?.cacheDir else {
+            return nil
+        }
+
+        let destinationFile = java.io.File(cacheDir, "skip-logo.png")
+        let destinationURL = URL(fileURLWithPath: destinationFile.absolutePath)
+
+        do {
+            let data = try Data(contentsOf: resourceURL)
+            try data.write(to: destinationURL)
+            return destinationURL
+        } catch {
+            return nil
+        }
+        #else
+        return resourceURL
+        #endif
     }
 
     private func filename(at index: Int, fallback: String) -> String {
