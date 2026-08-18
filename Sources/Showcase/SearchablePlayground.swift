@@ -8,6 +8,7 @@ enum SearchablePlaygroundType: String, CaseIterable {
     case lazyStack
     case submit
     case isSearching
+    case isPresented
     case withoutNavStack
 
     var title: String {
@@ -24,6 +25,8 @@ enum SearchablePlaygroundType: String, CaseIterable {
             return "Submit"
         case .isSearching:
             return "isSearching"
+        case .isPresented:
+            return "isPresented"
         case .withoutNavStack:
             return "Without NavStack"
         }
@@ -65,6 +68,9 @@ struct SearchablePlayground: View {
                     .navigationTitle($0.title)
             case .isSearching:
                 IsSearchingSearchablePlayground()
+                    .navigationTitle($0.title)
+            case .isPresented:
+                IsPresentedSearchablePlayground()
                     .navigationTitle($0.title)
             case .withoutNavStack:
                 EmptyView()
@@ -202,6 +208,20 @@ struct IsSearchingSearchablePlayground: View {
                 }
             }
         }
+    }
+}
+
+struct IsPresentedSearchablePlayground: View {
+    @State var searchText = ""
+    @State var isSearchPresented = false
+
+    var body: some View {
+        List {
+            Button(isSearchPresented ? "Hide Search" : "Show Search") {
+                isSearchPresented.toggle()
+            }
+        }
+        .searchable(text: $searchText, isPresented: $isSearchPresented)
     }
 }
 

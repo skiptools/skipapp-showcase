@@ -19,8 +19,8 @@ let package = Package(
         .library(name: "Showcase", type: .dynamic, targets: ["Showcase"]),
     ],
     dependencies: [
-        fuse ? .package(url: "https://source.skip.tools/skip-fuse-ui.git", from: "1.0.0")
-             : .package(url: "https://source.skip.tools/skip-ui.git", from: "1.59.0"),
+        fuse ? .package(url: "https://github.com/fhasse95/skip-fuse-ui.git", branch: "searchable-is-presented")
+             : .package(url: "https://github.com/fhasse95/skip-ui.git", branch: "searchable-is-presented"),
         .package(url: "https://source.skip.tools/skip.git", from: "1.9.4"),
         .package(url: "https://source.skip.tools/skip-kit.git", from: "1.1.0"),
         .package(url: "https://source.skip.tools/skip-av.git", "0.7.1"..<"2.0.0"),
