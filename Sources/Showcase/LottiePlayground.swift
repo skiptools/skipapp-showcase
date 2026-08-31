@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 import SkipMotion
 
-/// This component uses the `SkipMotion` module from https://source.skip.tools/skip-motion
+/// This component uses the `SkipMotion` module from https://github.com/skiptools/skip-motion
 struct LottiePlayground: View {
     @State internal var refreshID = UUID()
 

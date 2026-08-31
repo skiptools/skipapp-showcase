@@ -40,11 +40,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip.git",
+      "downloadLocation" : "https://github.com/skiptools/skip.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip.git",
+          "referenceLocator" : "https://github.com/skiptools/skip.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -59,11 +59,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-av.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-av.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-av.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-av.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -78,11 +78,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-device.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-device.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-device.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-device.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -97,11 +97,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-foundation.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-foundation.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-foundation.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-foundation.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -116,11 +116,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-kit.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-kit.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-kit.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-kit.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -135,11 +135,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-lib.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-lib.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-lib.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-lib.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -154,11 +154,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-model.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-model.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-model.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-model.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -173,11 +173,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-motion.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-motion.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-motion.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-motion.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -192,11 +192,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-ui.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-ui.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-ui.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-ui.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -211,11 +211,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-unit.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-unit.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-unit.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-unit.git",
           "referenceType" : "swiftpm"
         }
       ],
@@ -230,11 +230,11 @@
     },
     {
       "copyrightText" : "NOASSERTION",
-      "downloadLocation" : "https://source.skip.tools/skip-web.git",
+      "downloadLocation" : "https://github.com/skiptools/skip-web.git",
       "externalRefs" : [
         {
           "referenceCategory" : "PACKAGE-MANAGER",
-          "referenceLocator" : "https://source.skip.tools/skip-web.git",
+          "referenceLocator" : "https://github.com/skiptools/skip-web.git",
           "referenceType" : "swiftpm"
         }
       ],

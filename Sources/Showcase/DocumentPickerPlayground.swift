@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 import SkipKit
 
-/// This component uses the `SkipKit` module from https://source.skip.tools/skip-kit
+/// This component uses the `SkipKit` module from https://github.com/skiptools/skip-kit
 struct DocumentPickerPlayground: View {
     @State var presentPreview = false
     @State var presentCamera = false

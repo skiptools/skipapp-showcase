@@ -39,16 +39,16 @@ The showcase integrates 10 Skip framework libraries beyond the core SkipUI, demo
 
 | Framework | Repository | Purpose |
 |---|---|---|
-| [SkipFuseUI](https://github.com/skiptools/skip-fuse-ui) | [skip-fuse-ui](https://source.skip.tools/skip-fuse-ui) | Core SwiftUI-to-Compose bridge for Fuse mode |
-| [SkipKit](https://github.com/skiptools/skip-kit) | [skip-kit](https://source.skip.tools/skip-kit) | Permissions, document/media pickers, haptics, device info |
-| [SkipAV](https://github.com/skiptools/skip-av) | [skip-av](https://source.skip.tools/skip-av) | Video playback (AVKit on iOS, ExoPlayer on Android) |
-| [SkipWeb](https://github.com/skiptools/skip-web) | [skip-web](https://source.skip.tools/skip-web) | Embedded web views (WKWebView / android.webkit.WebView) |
-| [SkipDevice](https://github.com/skiptools/skip-device) | [skip-device](https://source.skip.tools/skip-device) | Sensors (accelerometer, gyroscope, magnetometer, barometer) and location |
-| [SkipMotion](https://github.com/skiptools/skip-motion) | [skip-motion](https://source.skip.tools/skip-motion) | Lottie animations |
-| [SkipKeychain](https://github.com/skiptools/skip-keychain) | [skip-keychain](https://source.skip.tools/skip-keychain) | Keychain / EncryptedSharedPreferences |
-| [SkipSQL](https://github.com/skiptools/skip-sql) | [skip-sql](https://source.skip.tools/skip-sql) | SQLite database access |
-| [SkipNotify](https://github.com/skiptools/skip-notify) | [skip-notify](https://source.skip.tools/skip-notify) | Push and local notifications |
-| [SkipAuthenticationServices](https://github.com/skiptools/skip-authentication-services) | [skip-authentication-services](https://source.skip.tools/skip-authentication-services) | Web authentication sessions (OAuth flows) |
+| [SkipFuseUI](https://github.com/skiptools/skip-fuse-ui) | [skip-fuse-ui](https://github.com/skiptools/skip-fuse-ui) | Core SwiftUI-to-Compose bridge for Fuse mode |
+| [SkipKit](https://github.com/skiptools/skip-kit) | [skip-kit](https://github.com/skiptools/skip-kit) | Permissions, document/media pickers, haptics, device info |
+| [SkipAV](https://github.com/skiptools/skip-av) | [skip-av](https://github.com/skiptools/skip-av) | Video playback (AVKit on iOS, ExoPlayer on Android) |
+| [SkipWeb](https://github.com/skiptools/skip-web) | [skip-web](https://github.com/skiptools/skip-web) | Embedded web views (WKWebView / android.webkit.WebView) |
+| [SkipDevice](https://github.com/skiptools/skip-device) | [skip-device](https://github.com/skiptools/skip-device) | Sensors (accelerometer, gyroscope, magnetometer, barometer) and location |
+| [SkipMotion](https://github.com/skiptools/skip-motion) | [skip-motion](https://github.com/skiptools/skip-motion) | Lottie animations |
+| [SkipKeychain](https://github.com/skiptools/skip-keychain) | [skip-keychain](https://github.com/skiptools/skip-keychain) | Keychain / EncryptedSharedPreferences |
+| [SkipSQL](https://github.com/skiptools/skip-sql) | [skip-sql](https://github.com/skiptools/skip-sql) | SQLite database access |
+| [SkipNotify](https://github.com/skiptools/skip-notify) | [skip-notify](https://github.com/skiptools/skip-notify) | Push and local notifications |
+| [SkipAuthenticationServices](https://github.com/skiptools/skip-authentication-services) | [skip-authentication-services](https://github.com/skiptools/skip-authentication-services) | Web authentication sessions (OAuth flows) |
 
 ## Playground Guide
 

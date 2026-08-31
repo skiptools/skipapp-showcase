@@ -2,7 +2,7 @@
 import SwiftUI
 import SkipKit
 
-/// This component uses the `SkipKit` module from https://source.skip.tools/skip-kit
+/// This component uses the `SkipKit` module from https://github.com/skiptools/skip-kit
 struct BiometricAuthenticationPlayground: View {
     @State var authenticationType = BiometricAuthentication.authenticationType
     @State var result = "Not authenticated"
