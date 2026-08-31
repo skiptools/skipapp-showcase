@@ -2,7 +2,7 @@
 import Foundation
 
 /// URL string of the source this app.
-let showcaseSourceURLString = "https://source.skip.tools/skipapp-showcase/tree/main/"
+let showcaseSourceURLString = "https://github.com/skiptools/skipapp-showcase/tree/main/"
 let playgroundPath = "Sources/Showcase/"
 
 /// The Android SDK number we are running against, or `nil` if not running on Android

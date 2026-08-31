@@ -2,7 +2,7 @@
 import SwiftUI
 import SkipWeb
 
-/// This component uses the `SkipWeb` module from https://source.skip.tools/skip-web
+/// This component uses the `SkipWeb` module from https://github.com/skiptools/skip-web
 struct WebViewPlayground: View {
     @State var config = WebEngineConfiguration()
     @State var navigator = WebViewNavigator()
