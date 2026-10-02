@@ -41,7 +41,6 @@ let package = Package(
                  : .product(name: "SkipUI", package: "skip-ui"),
             fuse ? .product(name: "SkipSQLPlus", package: "skip-sql")
                  : .product(name: "SkipSQL", package: "skip-sql"),
-            .product(name: "SkipSQL", package: "skip-sql"),
             .product(name: "SkipAV", package: "skip-av"),
             .product(name: "SkipKit", package: "skip-kit"),
             .product(name: "SkipWeb", package: "skip-web"),
