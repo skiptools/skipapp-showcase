@@ -22,7 +22,7 @@ let package = Package(
         fuse ? .package(url: "https://github.com/skiptools/skip-fuse-ui.git", from: "1.0.0")
              : .package(url: "https://github.com/skiptools/skip-ui.git", from: "1.59.2"),
         .package(url: "https://github.com/skiptools/skip.git", from: "1.9.7"),
-        .package(url: "https://github.com/skiptools/skip-kit.git", from: "1.1.2"),
+        .package(url: "https://github.com/skiptools/skip-kit.git", from: "1.1.3"),
         .package(url: "https://github.com/skiptools/skip-av.git", "0.7.2"..<"2.0.0"),
         .package(url: "https://github.com/skiptools/skip-web.git", "0.11.3"..<"2.0.0"),
         .package(url: "https://github.com/skiptools/skip-sql.git", "0.16.0"..<"2.0.0"),
