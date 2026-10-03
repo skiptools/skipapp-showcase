@@ -2088,6 +2088,9 @@
     "Hide Scroll Indicators" : {
 
     },
+    "Hide Search" : {
+
+    },
     "Hide status bar" : {
 
     },
@@ -4771,6 +4774,9 @@
 
     },
     "Show %@ Bar" : {
+
+    },
+    "Show Search" : {
 
     },
     "Showcase" : {
