@@ -120,6 +120,18 @@ struct ImagePlayground: View {
                         .frame(width: 80.0, height: 80.0)
                 }
 
+                Text("Symbol Template and Font Size").font(.title).bold()
+                ForEach([12.0, 17.0, 28.0], id: \.self) { size in
+                    HStack {
+                        Text("Hx \(Int(size)) pt")
+                            .font(.system(size: size))
+                        Image("template.xmark", bundle: .module)
+                            .font(.system(size: size))
+                        Text("Hx")
+                            .font(.system(size: size))
+                    }
+                }
+
                 Text("systemName").font(.title).bold()
                 HStack {
                     Text(".frame(100, 100)")
