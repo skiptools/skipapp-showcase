@@ -3,6 +3,7 @@ import SwiftUI
 
 struct MenuPlayground: View {
     @State var primaryActionCount = 0
+    @State var disabledItemTapCount = 0
 
     var body: some View {
         ScrollView {
@@ -36,6 +37,21 @@ struct MenuPlayground: View {
                     Button(action: { logger.log("Option 1") }) { Label("Option 1", systemImage: "heart.fill") }
                     Button(action: { logger.log("Option 2") }) { Label("Option 2", systemImage: "heart.fill") }
                     Button(action: { logger.log("Option 3") }) { Label("Option 3", systemImage: "heart.fill") }
+                }
+                Menu(".disabled(true) items: \(disabledItemTapCount)") {
+                    Button("Option 1") { logger.log("Option 1") }
+                    Button("Option 2") { disabledItemTapCount += 1 }
+                        .disabled(true)
+                    Button(action: { disabledItemTapCount += 1 }) { Label("Option 3", systemImage: "heart.fill") }
+                        .disabled(true)
+                    Menu("Nested") {
+                        Button("Option 4") { disabledItemTapCount += 1 }
+                    }
+                    .disabled(true)
+                    Section("Section") {
+                        Button("Option 5") { disabledItemTapCount += 1 }
+                    }
+                    .disabled(true)
                 }
                 Menu("Text & Divider") {
                     Text("Text")
