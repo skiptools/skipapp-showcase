@@ -16,9 +16,6 @@ struct SettingsView: View {
                     Text("Dark").tag("dark")
                 }
                 Toggle("Hide status bar", isOn: $statusBarHidden)
-                NavigationLink("Bill of Materials") {
-                    SBOMView(bundle: .module)
-                }
                 NavigationLink("System Information") {
                     let env = ProcessInfo.processInfo.environment
                     List {
