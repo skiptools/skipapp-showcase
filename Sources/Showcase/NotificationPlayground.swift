@@ -258,7 +258,10 @@ struct NotificationTapsView: View {
 }
 
 /// Shows banners while the app is open and hands every tap to the `NotificationTapLog`.
-final class NotificationCenterDelegate: NSObject, UNUserNotificationCenterDelegate, Sendable {
+///
+/// Both callbacks run on the main actor: iOS requires the completion handler behind each `async`
+/// callback to be called on the main thread.
+final class NotificationCenterDelegate: NSObject, @preconcurrency UNUserNotificationCenterDelegate, Sendable {
     private static let shared = NotificationCenterDelegate()
     
     /// Makes this the notification center's delegate. Runs at launch, before any tap can arrive: iOS
@@ -267,6 +270,7 @@ final class NotificationCenterDelegate: NSObject, UNUserNotificationCenterDelega
         UNUserNotificationCenter.current().delegate = shared
     }
     
+    @MainActor
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification
@@ -274,13 +278,11 @@ final class NotificationCenterDelegate: NSObject, UNUserNotificationCenterDelega
         return [.banner]
     }
     
+    @MainActor
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse
     ) async {
-        // The response is not Sendable; its two strings are.
-        let identifier = response.notification.request.identifier
-        let actionIdentifier = response.actionIdentifier
-        await NotificationTapLog.shared.record(identifier: identifier, actionIdentifier: actionIdentifier)
+        NotificationTapLog.shared.record(identifier: response.notification.request.identifier, actionIdentifier: response.actionIdentifier)
     }
 }
