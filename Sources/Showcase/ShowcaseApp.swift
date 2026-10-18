@@ -39,6 +39,7 @@ public final class ShowcaseAppDelegate : Sendable {
 
     /* SKIP @bridge */public func onInit() {
         logger.debug("onInit")
+        NotificationCenterDelegate.install()
     }
 
     /* SKIP @bridge */public func onLaunch() {

@@ -84,12 +84,7 @@ struct LocalNotificationPlaygroundView: View {
         return seconds > 0 ? seconds : nil
     }
     
-    private let notificationCenterDelegate = NotificationCenterDelegate()
-    
-    init() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.delegate = self.notificationCenterDelegate
-    }
+    private let taps = NotificationTapLog.shared
     
     var body: some View {
         VStack(spacing: 20) {
@@ -99,7 +94,7 @@ struct LocalNotificationPlaygroundView: View {
                         await self.addNotificationRequest(
                             title: "Title",
                             body: "Body",
-                            identifier: UUID().uuidString
+                            identifier: self.taps.nextIdentifier("immediate")
                         )
                     }
                 }
@@ -111,7 +106,7 @@ struct LocalNotificationPlaygroundView: View {
                         await self.addNotificationRequest(
                             title: "Title",
                             body: "Body",
-                            identifier: UUID().uuidString,
+                            identifier: self.taps.nextIdentifier("scheduled"),
                             trigger: {
                                 let result = UNTimeIntervalNotificationTrigger(
                                     timeInterval: 10,
@@ -141,6 +136,10 @@ struct LocalNotificationPlaygroundView: View {
                 Text("No scheduled notification")
                     .foregroundStyle(.secondary)
             }
+            
+            Divider()
+            
+            NotificationTapsView(taps: self.taps)
         }
         .navigationTitle("Local Notifications")
         .task {
@@ -184,11 +183,106 @@ struct LocalNotificationPlaygroundView: View {
     }
 }
 
-private final class NotificationCenterDelegate: NSObject, UNUserNotificationCenterDelegate {
+/// The taps the user has made on this app's notifications since launch, newest first.
+///
+/// A tap reaches `didReceive` whether the app is open, in the background, or was swiped away:
+/// in the last case it launches the app. Showing each one here is how the delivery is verified.
+@MainActor @Observable final class NotificationTapLog {
+    static let shared = NotificationTapLog()
+    
+    struct Tap: Identifiable {
+        let id = UUID()
+        let identifier: String
+        let actionIdentifier: String
+        let received = Date()
+        
+        /// What the user did: "opened" for the default action, else the action's identifier.
+        var action: String {
+            return actionIdentifier == UNNotificationDefaultActionIdentifier ? "opened" : actionIdentifier
+        }
+    }
+    
+    private(set) var taps: [Tap] = []
+    private var requestCount = 0
+    
+    private init() {
+    }
+    
+    func record(identifier: String, actionIdentifier: String) {
+        taps.insert(Tap(identifier: identifier, actionIdentifier: actionIdentifier), at: 0)
+    }
+    
+    func clear() {
+        taps = []
+    }
+    
+    /// A readable identifier for the next request, numbered in the order the requests were made.
+    func nextIdentifier(_ kind: String) -> String {
+        requestCount += 1
+        return "\(kind)-\(requestCount)"
+    }
+}
+
+/// The taps received so far, with a hint on how to produce one while none has arrived.
+struct NotificationTapsView: View {
+    let taps: NotificationTapLog
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("Taps received")
+                .font(.headline)
+            if taps.taps.isEmpty {
+                Text("Tap a notification to see it here. Try it with the app open, in the background, and after swiping it away.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            } else {
+                ForEach(taps.taps) { tap in
+                    HStack {
+                        Text(tap.identifier)
+                        Spacer()
+                        Text(tap.action)
+                            .foregroundStyle(.secondary)
+                        Text(tap.received, style: .time)
+                            .foregroundStyle(.secondary)
+                    }
+                    .font(.callout)
+                    .padding(.horizontal)
+                }
+                Button("Clear") {
+                    taps.clear()
+                }
+            }
+        }
+    }
+}
+
+/// Shows banners while the app is open and hands every tap to the `NotificationTapLog`.
+///
+/// Both callbacks run on the main actor: iOS requires the completion handler behind each `async`
+/// callback to be called on the main thread.
+final class NotificationCenterDelegate: NSObject, @preconcurrency UNUserNotificationCenterDelegate, Sendable {
+    private static let shared = NotificationCenterDelegate()
+    
+    /// Makes this the notification center's delegate. Runs at launch, before any tap can arrive: iOS
+    /// delivers the tap that launched the app only to a delegate set before launch finishes.
+    static func install() {
+        UNUserNotificationCenter.current().delegate = shared
+    }
+    
+    @MainActor
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification
     ) async -> UNNotificationPresentationOptions {
         return [.banner]
+    }
+    
+    @MainActor
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse
+    ) async {
+        NotificationTapLog.shared.record(identifier: response.notification.request.identifier, actionIdentifier: response.actionIdentifier)
     }
 }
