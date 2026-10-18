@@ -1,13 +1,18 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
 import SkipSQLCore
+// The Android Fuse build is the one place SkipSQL is not linked (see Package.swift). Gate on
+// SKIP_MODE_FUSE rather than SKIP_BRIDGE: the generated SQLPlayground_Bridge.swift copies this
+// file's imports, and skipstone's transpiler treats SKIP_BRIDGE as undefined there.
+#if !SKIP_MODE_FUSE
+import SkipSQL
+#endif
 
 #if SKIP_MODE_FUSE && !SKIP
 import SkipSQLPlus
 // in SkipFuse mode, we need to use the .plus configuration, which uses a source build of SQLite (since Android does not expose the native SQLite library)
 nonisolated(unsafe) private let sqliteConfiguration: SQLiteConfiguration = .plus
 #elseif !SKIP_BRIDGE
-import SkipSQL
 nonisolated(unsafe) private let sqliteConfiguration: SQLiteConfiguration = .platform
 #endif
 
