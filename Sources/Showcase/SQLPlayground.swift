@@ -1,6 +1,5 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
-import SkipSQL
 import SkipSQLCore
 
 #if SKIP_MODE_FUSE && !SKIP
@@ -8,6 +7,7 @@ import SkipSQLPlus
 // in SkipFuse mode, we need to use the .plus configuration, which uses a source build of SQLite (since Android does not expose the native SQLite library)
 nonisolated(unsafe) private let sqliteConfiguration: SQLiteConfiguration = .plus
 #elseif !SKIP_BRIDGE
+import SkipSQL
 nonisolated(unsafe) private let sqliteConfiguration: SQLiteConfiguration = .platform
 #endif
 
