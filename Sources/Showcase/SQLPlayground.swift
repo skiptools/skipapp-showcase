@@ -1,10 +1,11 @@
 // Copyright 2023–2026 Skip
 import SwiftUI
 import SkipSQLCore
-// The Android Fuse build is the one place SkipSQL is not linked (see Package.swift). Gate on
-// SKIP_MODE_FUSE rather than SKIP_BRIDGE: the generated SQLPlayground_Bridge.swift copies this
-// file's imports, and skipstone's transpiler treats SKIP_BRIDGE as undefined there.
-#if !SKIP_MODE_FUSE
+// SkipSQL is linked everywhere except the Android Fuse build (see Package.swift). Both terms are
+// needed: the native compilers only see SKIP_MODE_FUSE, while skipstone's transpiler, which copies
+// this file's imports into SQLPlayground_Bridge.swift and into the Lite Kotlin, ignores any #if
+// without a Skip symbol and defines SKIP_MODE_FUSE only while generating bridges.
+#if !SKIP_BRIDGE && !SKIP_MODE_FUSE
 import SkipSQL
 #endif
 
