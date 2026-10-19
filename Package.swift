@@ -44,7 +44,7 @@ let package = Package(
             // Android has no system SQLite, so the Fuse build uses SkipSQLPlus there and SkipSQL only on Apple
             // platforms. Linking both into the Android app puts SkipSQLCore and SkipFFI into two dynamic
             // libraries, which swift-build rejects as a diamond.
-            .product(name: "SkipSQL", package: "skip-sql", condition: fuse ? .when(platforms: [.iOS, .macOS, .tvOS, .watchOS, .macCatalyst, .visionOS]) : nil),
+            .product(name: "SkipSQL", package: "skip-sql", condition: fuse ? .when(platforms: [.iOS, .macOS, .tvOS, .watchOS, .macCatalyst]) : nil),
             .product(name: "SkipAV", package: "skip-av"),
             .product(name: "SkipKit", package: "skip-kit"),
             .product(name: "SkipWeb", package: "skip-web"),
