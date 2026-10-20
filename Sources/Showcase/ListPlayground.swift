@@ -23,6 +23,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case swipeActions
     case positioned
     case badges
+    case rowModifiers
 
     var title: String {
         switch self {
@@ -68,6 +69,8 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Positioned"
         case .badges:
             return "Badges"
+        case .rowModifiers:
+            return "Row Modifiers"
         }
     }
 }
@@ -148,6 +151,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .badges:
                 BadgeListPlayground()
+                    .navigationTitle($0.title)
+            case .rowModifiers:
+                RowModifiersListPlayground()
                     .navigationTitle($0.title)
             }
         }
@@ -841,6 +847,28 @@ struct SwipeActionsListPlayground: View {
                         }
                 }
             }
+        }
+    }
+}
+
+/// When a row carries the same list row modifier twice, the innermost one applies.
+struct RowModifiersListPlayground: View {
+    var body: some View {
+        List {
+            Text("Background: green")
+                .listRowBackground(Color.green)
+            Text("Background: green, then red")
+                .listRowBackground(Color.green)
+                .listRowBackground(Color.red)
+            Text("Separator: hidden")
+                .listRowSeparator(.hidden)
+            Text("Separator: hidden, then visible")
+                .listRowSeparator(.hidden)
+                .listRowSeparator(.visible)
+            Text("Separator: visible, then hidden")
+                .listRowSeparator(.visible)
+                .listRowSeparator(.hidden)
+            Text("Last row")
         }
     }
 }
