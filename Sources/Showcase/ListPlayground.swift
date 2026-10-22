@@ -23,6 +23,7 @@ enum ListPlaygroundType: String, CaseIterable {
     case swipeActions
     case positioned
     case badges
+    case separatorAlignment
 
     var title: String {
         switch self {
@@ -54,10 +55,10 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Hidden Background Plain Style"
         case .editActions:
             return "EditActions"
-        case .observableEditActions:
-            return "Observable Plain Style EditActions"
         case .sectionedEditActions:
             return "Sectioned EditActions"
+        case .observableEditActions:
+            return "Observable Plain Style EditActions"
         case .plainStyleSectionedEditActions:
             return "Plain Style Sectioned EditActions"
         case .onMoveDelete:
@@ -68,6 +69,8 @@ enum ListPlaygroundType: String, CaseIterable {
             return "Positioned"
         case .badges:
             return "Badges"
+        case .separatorAlignment:
+            return "Separator Alignment"
         }
     }
 }
@@ -148,6 +151,9 @@ struct ListPlayground: View {
                     .navigationTitle($0.title)
             case .badges:
                 BadgeListPlayground()
+                    .navigationTitle($0.title)
+            case .separatorAlignment:
+                SeparatorAlignmentListPlayground()
                     .navigationTitle($0.title)
             }
         }
@@ -840,6 +846,53 @@ struct SwipeActionsListPlayground: View {
                             .tint(.orange)
                         }
                 }
+            }
+        }
+    }
+}
+
+struct SeparatorAlignmentListPlayground: View {
+    var body: some View {
+        List {
+            Section("Default Alignment") {
+                ForEach(0..<2) { index in
+                    Text("Default row \(index + 1)")
+                }
+            }
+
+            Section("Custom Alignment") {
+                ForEach(0..<2) { index in
+                    Text("Inset row \(index + 1)")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .alignmentGuide(.listRowSeparatorLeading) { dimensions in
+                            dimensions[.leading] + 40
+                        }
+                        .alignmentGuide(.listRowSeparatorTrailing) { dimensions in
+                            dimensions[.trailing] - 20
+                        }
+                }
+            }
+
+            Section {
+                ForEach(0..<2) { index in
+                    HStack(spacing: 12) {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.orange)
+                            .frame(width: 32)
+                        VStack(alignment: .leading) {
+                            Text("Nested row \(index + 1)")
+                            Text("Separator starts at this text")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        .alignmentGuide(.listRowSeparatorLeading) { dimensions in
+                            dimensions[.leading]
+                        }
+                        Spacer()
+                    }
+                }
+            } header: {
+                Text("Nested Content")
             }
         }
     }

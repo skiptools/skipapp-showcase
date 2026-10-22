@@ -1093,9 +1093,6 @@
     "Big" : {
 
     },
-    "Bill of Materials" : {
-
-    },
     "Binding" : {
 
     },
@@ -1393,6 +1390,9 @@
     "Custom Actions" : {
 
     },
+    "Custom Alignment" : {
+
+    },
     "Custom Cancel" : {
 
     },
@@ -1465,7 +1465,13 @@
     "Default (no lineSpacing)" : {
 
     },
+    "Default Alignment" : {
+
+    },
     "Default Columns" : {
+
+    },
+    "Default row %lld" : {
 
     },
     "Default URL" : {
@@ -1972,6 +1978,9 @@
     "Global frame: %@" : {
 
     },
+    "Glow behind a button, on a dark background" : {
+
+    },
     "Gradient" : {
       "comment" : "Title of Gradient playground"
     },
@@ -2127,6 +2136,12 @@
     "hueRotation(%lld°)" : {
 
     },
+    "Hx" : {
+
+    },
+    "Hx %lld pt" : {
+
+    },
     "I scored %lld in Flappy Bird!" : {
 
     },
@@ -2203,6 +2218,9 @@
 
     },
     "Inner button" : {
+
+    },
+    "Inset row %lld" : {
 
     },
     "inset(by: 10)" : {
@@ -2650,6 +2668,9 @@
     "Nested Again" : {
 
     },
+    "Nested Content" : {
+
+    },
     "Nested ForEach row: %lld.%lld" : {
       "localizations" : {
         "en" : {
@@ -2661,6 +2682,9 @@
       }
     },
     "Nested menu" : {
+
+    },
+    "Nested row %lld" : {
 
     },
     "Nested views" : {
@@ -2685,9 +2709,6 @@
 
     },
     "Next notification in %lld s" : {
-
-    },
-    "Nil data" : {
 
     },
     "Nil Data" : {
@@ -3157,6 +3178,9 @@
 
     },
     "Radius" : {
+
+    },
+    "Radius with opacity" : {
 
     },
     "Range Width Columns" : {
@@ -4619,9 +4643,6 @@
     "Section footer" : {
 
     },
-    "Secure Field" : {
-
-    },
     "SecureField" : {
       "comment" : "Title of SecureField playground"
     },
@@ -4657,6 +4678,9 @@
     },
     "Sensors" : {
       "comment" : "Title of Sensors playground"
+    },
+    "Separator starts at this text" : {
+
     },
     "Set focus to A via Boolean" : {
 
@@ -5165,6 +5189,9 @@
     "Symbol Image Weights" : {
 
     },
+    "Symbol Template and Font Size" : {
+
+    },
     "Symbol Variants" : {
 
     },
@@ -5196,6 +5223,9 @@
 
     },
     "Tap + to add letters:" : {
+
+    },
+    "Tap a notification to see it here. Try it with the app open, in the background, and after swiping it away." : {
 
     },
     "Tap below to increment state tap count" : {
@@ -5269,6 +5299,9 @@
 
     },
     "Taps pass through overlay" : {
+
+    },
+    "Taps received" : {
 
     },
     "Teal" : {
