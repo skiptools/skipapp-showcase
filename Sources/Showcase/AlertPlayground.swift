@@ -19,6 +19,86 @@ struct AlertPlayground: View {
     @State var dataIsPresented = false
 
     var body: some View {
+        titledAlerts
+    }
+
+    // Split the chained `.alert` modifiers so Swift 6.4 can type-check the view.
+    private var titledAlerts: some View {
+        fieldAlerts
+            .alert("Title", isPresented: $titleIsPresented) {
+            }
+            .alert("Title + Message", isPresented: $titleMessageIsPresented) {
+            } message: {
+                Text("This is the alert message to show beneath the title")
+            }
+            .alert("Two Buttons", isPresented: $twoButtonsIsPresented) {
+                Button("Option") {
+                    value = "Option"
+                }
+                AlertCancelButton(value: $value)
+            }
+            .alert("Three Buttons", isPresented: $threeButtonsIsPresented) {
+                AlertCancelButton(value: $value)
+                Button("Option") {
+                    value = "Option"
+                }
+                AlertDestructiveButton(value: $value)
+            }
+            .alert("Five Buttons", isPresented: $fiveButtonsIsPresented) {
+                AlertCancelButton(value: $value)
+                AlertDestructiveButton(value: $value)
+                Button("Option 1") {
+                    value = "Option 1"
+                }
+                Button("Option 2") {
+                    value = "Option 2"
+                }
+                Button("Option 3") {
+                    value = "Option 3"
+                }
+            }
+    }
+
+    private var fieldAlerts: some View {
+        dataAlert
+            .alert("Text Field", isPresented: $textFieldIsPresented) {
+                TextField("Enter text", text: $textFieldText)
+                Button("Submit") {
+                    value = textFieldText
+                }
+                AlertCancelButton(value: $value)
+            }
+            .alert("Sign In", isPresented: $secureFieldIsPresented) {
+                TextField("Username", text: $textFieldText)
+                SecureField("Password", text: $secureFieldText)
+                Button("Submit") {
+                    value = textFieldText
+                }
+                AlertCancelButton(value: $value)
+            }
+    }
+
+    private var dataAlert: some View {
+        content
+            .alert("Data", isPresented: $dataIsPresented, presenting: data) { d in
+                Button("Data: \(d)") {
+                    value = "\(d)"
+                }
+                Button("Nil Data", role: .destructive) {
+                    data = nil
+                }
+            }
+            //        .alert(isPresented: $errorIsPresented, error: error) {
+            //            Button("Error: \(String(describing: error))") {
+            //                value = "\(String(describing: error))"
+            //            }
+            //            Button("Nil Error", role: .destructive) {
+            //                error = nil
+            //            }
+            //        }
+    }
+
+    private var content: some View {
         VStack(spacing: 16) {
             Text(value).bold()
             Button("Title") {
@@ -74,69 +154,6 @@ struct AlertPlayground: View {
         .toolbar {
             PlaygroundSourceLink(file: "AlertPlayground.swift")
         }
-        .alert("Title", isPresented: $titleIsPresented) {
-        }
-        .alert("Title + Message", isPresented: $titleMessageIsPresented) {
-        } message: {
-            Text("This is the alert message to show beneath the title")
-        }
-        .alert("Two Buttons", isPresented: $twoButtonsIsPresented) {
-            Button("Option") {
-                value = "Option"
-            }
-            AlertCancelButton(value: $value)
-        }
-        .alert("Three Buttons", isPresented: $threeButtonsIsPresented) {
-            AlertCancelButton(value: $value)
-            Button("Option") {
-                value = "Option"
-            }
-            AlertDestructiveButton(value: $value)
-        }
-        .alert("Five Buttons", isPresented: $fiveButtonsIsPresented) {
-            AlertCancelButton(value: $value)
-            AlertDestructiveButton(value: $value)
-            Button("Option 1") {
-                value = "Option 1"
-            }
-            Button("Option 2") {
-                value = "Option 2"
-            }
-            Button("Option 3") {
-                value = "Option 3"
-            }
-        }
-        .alert("Text Field", isPresented: $textFieldIsPresented) {
-            TextField("Enter text", text: $textFieldText)
-            Button("Submit") {
-                value = textFieldText
-            }
-            AlertCancelButton(value: $value)
-        }
-        .alert("Sign In", isPresented: $secureFieldIsPresented) {
-            TextField("Username", text: $textFieldText)
-            SecureField("Password", text: $secureFieldText)
-            Button("Submit") {
-                value = textFieldText
-            }
-            AlertCancelButton(value: $value)
-        }
-        .alert("Data", isPresented: $dataIsPresented, presenting: data) { d in
-            Button("Data: \(d)") {
-                value = "\(d)"
-            }
-            Button("Nil Data", role: .destructive) {
-                data = nil
-            }
-        }
-        //        .alert(isPresented: $errorIsPresented, error: error) {
-        //            Button("Error: \(String(describing: error))") {
-        //                value = "\(String(describing: error))"
-        //            }
-        //            Button("Nil Error", role: .destructive) {
-        //                error = nil
-        //            }
-        //        }
     }
 }
 
