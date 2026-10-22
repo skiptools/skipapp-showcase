@@ -19,8 +19,8 @@ let package = Package(
         .library(name: "Showcase", type: .dynamic, targets: ["Showcase"]),
     ],
     dependencies: [
-        fuse ? .package(url: "https://github.com/skiptools/skip-fuse-ui.git", from: "1.19.0")
-             : .package(url: "https://github.com/skiptools/skip-ui.git", from: "1.61.0"),
+        fuse ? .package(url: "https://github.com/fhasse95/skip-fuse-ui.git", branch: "Alignment-Guide-Support")  // TODO: Update
+             : .package(url: "https://github.com/fhasse95/skip-ui.git", branch: "Alignment-Guide-Support"), // TODO: Update
         .package(url: "https://github.com/skiptools/skip.git", from: "1.9.7"),
         .package(url: "https://github.com/skiptools/skip-kit.git", from: "1.1.3"),
         .package(url: "https://github.com/skiptools/skip-av.git", "0.7.2"..<"2.0.0"),
