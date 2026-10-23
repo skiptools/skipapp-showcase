@@ -50,6 +50,9 @@ struct ViewThatFitsPlayground: View {
                     .frame(height: 44)
                     .border(.blue)
                 }
+
+                Text("First child grows after layout").bold()
+                ViewThatFitsGrowRepro()
             }
             .padding()
         }
@@ -59,4 +62,23 @@ struct ViewThatFitsPlayground: View {
     }
 }
 
+/// First candidate is placed while it fits. After one second the leading text
+/// grows past the frame.
+struct ViewThatFitsGrowRepro: View {
+    @State var caption = " "
 
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 4) {
+                Text(caption)
+                Text("XXXXXXXXXXX")
+            }
+            Text("x")
+        }
+        .frame(width: 196, alignment: .leading)
+        .task {
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            caption = "YYYYY YYYY"
+        }
+    }
+}
