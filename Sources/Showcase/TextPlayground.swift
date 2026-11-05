@@ -156,6 +156,8 @@ struct TextPlayground: View {
                 Text("Initializing a localized key **does** format as markdown:")
                     .font(.footnote)
                 Text(LocalizedStringKey(markdownVar))
+                Text("Markdown **bold** \("**String interpolation**") is not formatted")
+                Text("Markdown [Link text](https://skip.dev) and [\("Another link")](\("https://swift.org"))")
 
                 Divider()
 
