@@ -75,7 +75,7 @@ Text display, input, and formatting.
 
 | Playground | Components | Source |
 |---|---|---|
-| [Text](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | Text with bold, italic, strikethrough, underline, markdown, all font sizes, custom fonts | [TextPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/TextPlayground.swift) |
+| [Text](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | Text with bold, italic, strikethrough, underline, editable attributed ranges, links, baseline offsets, markdown, all font sizes, custom fonts | [TextPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/TextPlayground.swift) |
 | [TextField](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | TextField with `.roundedBorder`, `.plain`, custom styles | [TextFieldPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/TextFieldPlayground.swift) |
 | [SecureField](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | SecureField with prompts, disabled states | [SecureFieldPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/SecureFieldPlayground.swift) |
 | [TextEditor](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | Multi-line text editing | [TextEditorPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/TextEditorPlayground.swift) |
