@@ -5,6 +5,99 @@ struct TextPlayground: View {
     var redaction: RedactionReasons = []
     let markdownVar = "String `var` with markdown"
 
+    /// Use the same editable inline Markdown API in Lite, Fuse, and SwiftUI.
+    private func markdownText(_ source: String) -> Text {
+        return Text(try! AttributedString(markdown: source, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)))
+    }
+
+    private var styledAttributedText: AttributedString {
+        var text = AttributedString("Fonts and colors in one Text")
+        if let range = text.range(of: "Fonts") {
+            text[range].font = .title2.bold()
+        }
+        if let range = text.range(of: "colors") {
+            text[range].foregroundColor = .orange
+        }
+        if let range = text.range(of: "one Text") {
+            text[range].font = .system(.body, design: .monospaced).italic()
+            text[range].foregroundColor = .blue
+        }
+        return text
+    }
+
+    private var searchHighlightedText: AttributedString {
+        var text = AttributedString("Search highlighting in Skip")
+        if let range = text.range(of: "skip", options: .caseInsensitive) {
+            text[range].foregroundColor = .accentColor
+        }
+        return text
+    }
+
+    private var unicodeSearchHighlightedText: AttributedString {
+        var text = AttributedString("Unicode search: CAFÉ!")
+        // The query uses a separate accent; the result retains the original text's length.
+        if let range = text.range(of: "cafe\u{0301}", options: .caseInsensitive) {
+            text[range].foregroundColor = .accentColor
+            text[range].underlineStyle = .single
+        }
+        return text
+    }
+
+    private var decoratedAttributedText: AttributedString {
+        var text = AttributedString("Underline, strikethrough, and both")
+        if let range = text.range(of: "Underline") { text[range].underlineStyle = .single }
+        if let range = text.range(of: "strikethrough") { text[range].strikethroughStyle = .single }
+        if let range = text.range(of: "both") {
+            text[range].underlineStyle = .single
+            text[range].strikethroughStyle = .single
+        }
+        return text
+    }
+
+    private var linkedAttributedText: AttributedString {
+        var text = AttributedString("Visit Skip or Swift")
+        if let range = text.range(of: "Skip") { text[range].link = URL(string: "https://skip.dev") }
+        if let range = text.range(of: "Swift") { text[range].link = URL(string: "https://swift.org") }
+        return text
+    }
+
+    private var superscriptAttributedText: AttributedString {
+        var text = AttributedString("E = mc2")
+        if let range = text.range(of: "2") {
+            text[range].font = .caption
+            text[range].baselineOffset = 6
+        }
+        return text
+    }
+
+    private var subscriptAttributedText: AttributedString {
+        var text = AttributedString("Water: H2O")
+        if let range = text.range(of: "2") {
+            text[range].font = .caption
+            text[range].baselineOffset = -4
+        }
+        return text
+    }
+
+    private var unicodeAttributedText: AttributedString {
+        var text = AttributedString("Unicode 👩🏽‍💻 and cafe\u{0301} wrap without splitting their styled ranges.")
+        if let range = text.range(of: "👩🏽‍💻 and cafe\u{0301}") {
+            text[range].foregroundColor = .purple
+            text[range].underlineStyle = .single
+        }
+        return text
+    }
+
+    private var editedMarkdownText: AttributedString {
+        var text = try! AttributedString(markdown: "Edit **bold** and [linked text](https://skip.dev) after parsing.", options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
+        if let range = text.range(of: "linked text") {
+            text[range].foregroundColor = .orange
+            text[range].underlineStyle = .single
+            text[range].link = URL(string: "https://swift.org")
+        }
+        return text
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -42,16 +135,18 @@ struct TextPlayground: View {
 
                 Divider()
 
-                Text("Markdown\nspanning multiple\nlines")
-                Text("Markdown *Italic text* including _underscores_")
-                Text("Markdown **Bold text**")
-                Text("Markdown ~~Strikethrough text~~")
-                Text("Markdown `Code text`")
-                Text("Markdown [Link text](https://skip.dev) and [\("Another link")](\("https://swift.org"))")
-                Text("Markdown **Bold text** with .italic()")
+                Text("Markdown").font(.headline)
+                markdownText("Markdown\nspanning multiple\nlines")
+                markdownText("Markdown *Italic text* including _underscores_")
+                markdownText("Markdown **Bold text**")
+                markdownText("Markdown ~~Strikethrough text~~")
+                markdownText("Markdown `Code text`")
+                markdownText("Markdown [Link text](https://skip.dev) and [Another link](https://swift.org)")
+                markdownText("Markdown **Bold text** with .italic()")
                     .italic()
-                Text("Markdown **bold** \("**String interpolation**") is not formatted")
-                Text("Markdown\n\n- Block\n-Elements\n\nare **not** supported")
+                markdownText("Markdown **bold and *italic*** with `code` and ~~strikethrough~~")
+                markdownText("  Whitespace: **bold**  text\n\nnext paragraph  ")
+                markdownText("Markdown\n\n- Block\n-Elements\n\nare **not** supported")
 
                 Divider()
 
@@ -61,14 +156,28 @@ struct TextPlayground: View {
                 Text("Initializing a localized key **does** format as markdown:")
                     .font(.footnote)
                 Text(LocalizedStringKey(markdownVar))
+                Text("Markdown **bold** \("**String interpolation**") is not formatted")
+                Text("Markdown [Link text](https://skip.dev) and [\("Another link")](\("https://swift.org"))")
 
                 Divider()
 
-                #if SKIP
-                Text(try! AttributedString(markdown: "Attributed *Italic text* with \("substitution1") and \("substitution2")"))
-                Text(try! AttributedString(markdown: "Attributed **Bold text** with .italic()"))
-                    .italic()
-                #endif
+                Text("Attributed strings").font(.headline)
+                Text("Case-insensitive search for “skip” and “café”:").font(.footnote)
+                Text(searchHighlightedText)
+                Text(unicodeSearchHighlightedText)
+                Text(styledAttributedText)
+                Text(decoratedAttributedText)
+                Text(linkedAttributedText)
+                Text(editedMarkdownText)
+                Text(superscriptAttributedText).font(.title2)
+                Text(subscriptAttributedText).font(.title2)
+                Text(unicodeAttributedText)
+                    .frame(width: 220)
+                    .border(.secondary)
+                Text("Inherited font and color:").font(.footnote)
+                Text(AttributedString("This text inherits its surrounding style."))
+                    .font(.title3)
+                    .foregroundColor(.purple)
 
                 Divider()
 

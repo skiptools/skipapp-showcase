@@ -75,7 +75,7 @@ Text display, input, and formatting.
 
 | Playground | Components | Source |
 |---|---|---|
-| [Text](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | Text with bold, italic, strikethrough, underline, markdown, all font sizes, custom fonts | [TextPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/TextPlayground.swift) |
+| [Text](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | Text with bold, italic, strikethrough, underline, editable attributed ranges, links, baseline offsets, markdown, all font sizes, custom fonts | [TextPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/TextPlayground.swift) |
 | [TextField](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | TextField with `.roundedBorder`, `.plain`, custom styles | [TextFieldPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/TextFieldPlayground.swift) |
 | [SecureField](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | SecureField with prompts, disabled states | [SecureFieldPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/SecureFieldPlayground.swift) |
 | [TextEditor](https://skip.dev/docs/modules/skip-ui/#supported-swiftui) | Multi-line text editing | [TextEditorPlayground.swift](https://source.skip.dev/skipapp-showcase/blob/main/Sources/Showcase/TextEditorPlayground.swift) |
@@ -318,3 +318,15 @@ A build phases runs the "Launch Android APK" script that
 will deploy the transpiled app a running Android emulator or connected device.
 Logging output for the iOS app can be viewed in the Xcode console, and in
 Android Studio's logcat tab for the transpiled Kotlin app.
+
+## Attributed text examples
+
+Open **Showcase → Text → Attributed strings** for range styling, case-insensitive
+search highlighting, links, decorations, baseline offsets, Unicode ranges, and
+attribute edits after Markdown parsing. The examples use the same Swift code in
+Lite, Fuse, and SwiftUI.
+
+See [SkipFoundation's supported subset](https://github.com/skiptools/skip-foundation#editable-attributed-strings)
+for search and range limitations, and [SkipUI's rendering limitations](https://github.com/skiptools/skip-ui#editable-attributed-text)
+for supported styles. The package references merged upstream commits until
+releases containing the required changes are available.
