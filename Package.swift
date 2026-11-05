@@ -19,9 +19,9 @@ let package = Package(
         .library(name: "Showcase", type: .dynamic, targets: ["Showcase"]),
     ],
     dependencies: [
-        // Temporary pins to merged attributed-text support. Replace with numbered releases before merging.
+        // Merged upstream attributed-text support; use minimum release versions once tagged.
         fuse ? .package(url: "https://github.com/skiptools/skip-fuse-ui.git", revision: "3c884de238bc68bd56a4c10eed3e5bfce1d332f0")
-             : .package(url: "https://github.com/skiptools/skip-ui.git", revision: "8aed4c746937e3f86ea550c1302f70f81f00db70"),
+             : .package(url: "https://github.com/skiptools/skip-ui.git", revision: "55c7b41b92cd4e742bff35a09bed4776c44cddfd"),
         .package(url: "https://github.com/skiptools/skip.git", from: "1.9.7"),
         .package(url: "https://github.com/skiptools/skip-kit.git", from: "1.1.3"),
         .package(url: "https://github.com/skiptools/skip-av.git", "0.7.2"..<"2.0.0"),

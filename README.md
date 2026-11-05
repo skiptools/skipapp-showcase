@@ -318,3 +318,15 @@ A build phases runs the "Launch Android APK" script that
 will deploy the transpiled app a running Android emulator or connected device.
 Logging output for the iOS app can be viewed in the Xcode console, and in
 Android Studio's logcat tab for the transpiled Kotlin app.
+
+## Attributed text examples
+
+Open **Showcase → Text → Attributed strings** for range styling, case-insensitive
+search highlighting, links, decorations, baseline offsets, Unicode ranges, and
+attribute edits after Markdown parsing. The examples use the same Swift code in
+Lite, Fuse, and SwiftUI.
+
+See [SkipFoundation's supported subset](https://github.com/skiptools/skip-foundation#editable-attributed-strings)
+for search and range limitations, and [SkipUI's rendering limitations](https://github.com/skiptools/skip-ui#editable-attributed-text)
+for supported styles. The package references merged upstream commits until
+releases containing the required changes are available.

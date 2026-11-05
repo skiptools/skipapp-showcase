@@ -5,16 +5,11 @@ struct TextPlayground: View {
     var redaction: RedactionReasons = []
     let markdownVar = "String `var` with markdown"
 
-    /// Lite retains its existing parser API; Apple and Fuse use editable native values.
+    /// Use the same editable inline Markdown API in Lite, Fuse, and SwiftUI.
     private func markdownText(_ source: String) -> Text {
-        #if SKIP
-        return Text(try! AttributedString(markdown: source))
-        #else
         return Text(try! AttributedString(markdown: source, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)))
-        #endif
     }
 
-    #if !SKIP
     private var styledAttributedText: AttributedString {
         var text = AttributedString("Fonts and colors in one Text")
         if let range = text.range(of: "Fonts") {
@@ -26,6 +21,24 @@ struct TextPlayground: View {
         if let range = text.range(of: "one Text") {
             text[range].font = .system(.body, design: .monospaced).italic()
             text[range].foregroundColor = .blue
+        }
+        return text
+    }
+
+    private var searchHighlightedText: AttributedString {
+        var text = AttributedString("Search highlighting in Skip")
+        if let range = text.range(of: "skip", options: .caseInsensitive) {
+            text[range].foregroundColor = .accentColor
+        }
+        return text
+    }
+
+    private var unicodeSearchHighlightedText: AttributedString {
+        var text = AttributedString("Unicode search: CAFÉ!")
+        // The query uses a separate accent; the result retains the original text's length.
+        if let range = text.range(of: "cafe\u{0301}", options: .caseInsensitive) {
+            text[range].foregroundColor = .accentColor
+            text[range].underlineStyle = .single
         }
         return text
     }
@@ -67,14 +80,23 @@ struct TextPlayground: View {
     }
 
     private var unicodeAttributedText: AttributedString {
-        var text = AttributedString("Unicode 👩🏽‍💻 and cafe\u{301} wrap without splitting their styled ranges.")
-        if let range = text.range(of: "👩🏽‍💻 and cafe\u{301}") {
+        var text = AttributedString("Unicode 👩🏽‍💻 and cafe\u{0301} wrap without splitting their styled ranges.")
+        if let range = text.range(of: "👩🏽‍💻 and cafe\u{0301}") {
             text[range].foregroundColor = .purple
             text[range].underlineStyle = .single
         }
         return text
     }
-    #endif
+
+    private var editedMarkdownText: AttributedString {
+        var text = try! AttributedString(markdown: "Edit **bold** and [linked text](https://skip.dev) after parsing.", options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
+        if let range = text.range(of: "linked text") {
+            text[range].foregroundColor = .orange
+            text[range].underlineStyle = .single
+            text[range].link = URL(string: "https://swift.org")
+        }
+        return text
+    }
 
     var body: some View {
         ScrollView {
@@ -138,10 +160,13 @@ struct TextPlayground: View {
                 Divider()
 
                 Text("Attributed strings").font(.headline)
-                #if !SKIP
+                Text("Case-insensitive search for “skip” and “café”:").font(.footnote)
+                Text(searchHighlightedText)
+                Text(unicodeSearchHighlightedText)
                 Text(styledAttributedText)
                 Text(decoratedAttributedText)
                 Text(linkedAttributedText)
+                Text(editedMarkdownText)
                 Text(superscriptAttributedText).font(.title2)
                 Text(subscriptAttributedText).font(.title2)
                 Text(unicodeAttributedText)
@@ -151,11 +176,6 @@ struct TextPlayground: View {
                 Text(AttributedString("This text inherits its surrounding style."))
                     .font(.title3)
                     .foregroundColor(.purple)
-                #else
-                Text(try! AttributedString(markdown: "Attributed *Italic text* with \("substitution1") and \("substitution2")"))
-                Text(try! AttributedString(markdown: "Attributed **Bold text** with .italic()"))
-                    .italic()
-                #endif
 
                 Divider()
 

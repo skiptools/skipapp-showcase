@@ -18,7 +18,7 @@ struct AlertPlayground: View {
 //    @State var errorIsPresented = false
     @State var dataIsPresented = false
 
-    private var controls: some View {
+    var body: some View {
         VStack(spacing: 16) {
             Text(value).bold()
             Button("Title") {
@@ -70,10 +70,6 @@ struct AlertPlayground: View {
                 dataIsPresented = true
             }
         }
-    }
-
-    private var buttonAlerts: some View {
-        controls
         .padding()
         .toolbar {
             PlaygroundSourceLink(file: "AlertPlayground.swift")
@@ -110,10 +106,6 @@ struct AlertPlayground: View {
                 value = "Option 3"
             }
         }
-    }
-
-    var body: some View {
-        buttonAlerts
         .alert("Text Field", isPresented: $textFieldIsPresented) {
             TextField("Enter text", text: $textFieldText)
             Button("Submit") {
